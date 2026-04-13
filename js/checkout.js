@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════
    MATCHMAKERS — checkout.js
    Pre-checkout modal + product configuration
+   Two independent products. No dependency. No sequence.
    ═══════════════════════════════════════════════════ */
 
 var MM_PRODUCTS = {
@@ -8,7 +9,7 @@ var MM_PRODUCTS = {
     eyebrow: 'The MatchMakers Playbook',
     product: 'The MatchMakers Playbook',
     price: '$500',
-    includes: 'Lifetime access \u00b7 PDF download \u00b7 100+ guided scripts \u2014 7 real situations, 3 steps each \u00b7 Complete 5-phase curriculum \u00b7 Intent through Commitment',
+    includes: 'Lifetime access \u00b7 Instant delivery \u00b7 100+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
     priceId: 'price_playbook_500',
     btnBg: '#C9A84C',
     btnColor: '#0B1727'
@@ -16,19 +17,9 @@ var MM_PRODUCTS = {
   dating_coach: {
     eyebrow: 'MatchMakers Dating Coach',
     product: 'MatchMakers Dating Coach',
-    price: '+$500 upgrade',
-    includes: 'The MatchMakers Playbook included free ($500 value) \u00b7 30-day AI advisor access \u00b7 Available 24/7 \u00b7 Trained on 7 years of MatchMakers data',
-    priceId: 'price_dc_1000',
-    btnBg: '#0B1727',
-    btnColor: '#C9A84C',
-    btnBorder: '1.5px solid rgba(201,168,76,.4)'
-  },
-  dc_upgrade: {
-    eyebrow: 'Dating Coach \u2014 Playbook Owner Upgrade',
-    product: 'MatchMakers Dating Coach',
     price: '$500',
-    includes: 'Your $500 Playbook credit applied \u00b7 30-day AI advisor access \u00b7 Available 24/7 \u00b7 Starts immediately after purchase',
-    priceId: 'price_dc_upgrade_500',
+    includes: '30-day AI coaching access \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
+    priceId: 'price_dc_500',
     btnBg: '#0B1727',
     btnColor: '#C9A84C',
     btnBorder: '1.5px solid rgba(201,168,76,.4)'
