@@ -1,8 +1,10 @@
 /* ═══════════════════════════════════════════════════
    MATCHMAKERS — checkout.js
-   Pre-checkout modal + product configuration
+   Pre-checkout modal + Stripe Checkout integration
    Two independent products. No dependency. No sequence.
    ═══════════════════════════════════════════════════ */
+
+var STRIPE_PK = 'pk_test_51TLpRO0HZcOoiu2G4FQ8bZMISxmT4tAX7LD00SeokHo5vBhtrGuFbKUDVDwyTHDiliSN4P8L2w84XFxegWziGxan00t5SPHetc';
 
 var MM_PRODUCTS = {
   playbook: {
@@ -10,7 +12,8 @@ var MM_PRODUCTS = {
     product: 'The MatchMakers Playbook',
     price: '$500',
     includes: 'Lifetime access \u00b7 Instant delivery \u00b7 100+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
-    priceId: 'price_playbook_500',
+    priceId: 'price_1TLpYq0HZcOoiu2Ga9xib5Re',
+    paymentLink: null, // TODO: Create Payment Link in Stripe Dashboard and paste URL here
     btnBg: '#C9A84C',
     btnColor: '#0B1727'
   },
@@ -19,7 +22,8 @@ var MM_PRODUCTS = {
     product: 'MatchMakers Dating Coach',
     price: '$500',
     includes: '30-day AI coaching access \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
-    priceId: 'price_dc_500',
+    priceId: 'price_1TLpb80HZcOoiu2G0HWMX7MD',
+    paymentLink: null, // TODO: Create Payment Link in Stripe Dashboard and paste URL here
     btnBg: '#0B1727',
     btnColor: '#C9A84C',
     btnBorder: '1.5px solid rgba(201,168,76,.4)'
@@ -79,10 +83,17 @@ function proceedToCheckout() {
   btn.textContent = 'Redirecting to payment\u2026';
   btn.disabled = true;
 
-  // Redirect to checkout
-  // TODO: Replace with Stripe Checkout Session URL when Stripe is configured
-  window.location.href = 'https://matchmakersusa.com/checkout?product=' +
-    encodeURIComponent(_pcmProduct) + '&email=' + encodeURIComponent(email);
+  // Redirect to Stripe Payment Link
+  // Payment Links are created in Stripe Dashboard > Payment Links
+  // They handle the full checkout flow including payment collection
+  var p = MM_PRODUCTS[_pcmProduct];
+  if (p.paymentLink) {
+    window.location.href = p.paymentLink + '?prefilled_email=' + encodeURIComponent(email);
+  } else {
+    // Fallback if payment link not yet configured
+    btn.textContent = 'Payment link coming soon';
+    btn.disabled = true;
+  }
 }
 
 // Close modal on overlay click or Escape
