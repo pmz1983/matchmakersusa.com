@@ -37,7 +37,7 @@ var MM_PRODUCTS = {
     price: '$500',
     includes: 'Lifetime access \u00b7 Instant delivery \u00b7 100+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
     priceId: 'price_1TLpYq0HZcOoiu2Ga9xib5Re',
-    paymentLink: '',  /* NEEDS LIVE STRIPE PAYMENT LINK */
+    paymentLink: 'https://buy.stripe.com/4gM00baxrdXLfWz60Q2Nq02',
     btnBg: '#C9A84C',
     btnColor: '#0B1727'
   },
@@ -47,7 +47,7 @@ var MM_PRODUCTS = {
     price: '$500',
     includes: '30-day AI coaching access \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
     priceId: 'price_1TLpb80HZcOoiu2G0HWMX7MD',
-    paymentLink: '',  /* NEEDS LIVE STRIPE PAYMENT LINK */
+    paymentLink: 'https://buy.stripe.com/3cI00b4939HveSvdti2Nq01',
     requiresPlaybook: true,
     btnBg: '#0B1727',
     btnColor: '#C9A84C',
