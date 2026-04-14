@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════
    MATCHMAKERS — checkout.js
    Pre-checkout modal + Stripe Checkout integration
-   Two independent products. No dependency. No sequence.
+   Playbook-first: Dating Coach requires Playbook purchase
    ═══════════════════════════════════════════════════ */
 
 var STRIPE_PK = 'pk_test_51TLpRO0HZcOoiu2G4FQ8bZMISxmT4tAX7LD00SeokHo5vBhtrGuFbKUDVDwyTHDiliSN4P8L2w84XFxegWziGxan00t5SPHetc';
@@ -24,6 +24,7 @@ var MM_PRODUCTS = {
     includes: '30-day AI coaching access \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
     priceId: 'price_1TLpb80HZcOoiu2G0HWMX7MD',
     paymentLink: 'https://buy.stripe.com/test_7sY14feGq2Ko45QfDN5c401',
+    requiresPlaybook: true,
     btnBg: '#0B1727',
     btnColor: '#C9A84C',
     btnBorder: '1.5px solid rgba(201,168,76,.4)'
@@ -32,16 +33,32 @@ var MM_PRODUCTS = {
 
 var _pcmProduct = null;
 
+// Check if user has Playbook access (stored when they enter access code)
+function hasPlaybookAccess() {
+  return localStorage.getItem('pb_access') === '1';
+}
+
 function openPreCheckout(el) {
   var product = el.getAttribute('data-product');
   var p = MM_PRODUCTS[product];
   if (!p) return;
+
+  // Playbook-first gating: Dating Coach requires Playbook
+  if (p.requiresPlaybook && !hasPlaybookAccess()) {
+    showPlaybookRequired();
+    return;
+  }
+
   _pcmProduct = product;
 
   document.getElementById('pcm-eyebrow').textContent = p.eyebrow;
   document.getElementById('pcm-product').textContent = p.product;
   document.getElementById('pcm-price').textContent = p.price;
   document.getElementById('pcm-includes').textContent = p.includes;
+
+  // Hide the playbook-required message if showing
+  document.getElementById('pcm-gate').style.display = 'none';
+  document.getElementById('pcm-checkout').style.display = 'block';
 
   var btn = document.getElementById('pcm-proceed');
   btn.style.background = p.btnBg || '#C9A84C';
@@ -59,6 +76,15 @@ function openPreCheckout(el) {
   setTimeout(function () {
     document.getElementById('pcm-email').focus();
   }, 100);
+}
+
+function showPlaybookRequired() {
+  // Show the Playbook-required message inside the modal
+  var modal = document.getElementById('preCheckoutModal');
+  modal.style.display = 'flex';
+
+  document.getElementById('pcm-gate').style.display = 'block';
+  document.getElementById('pcm-checkout').style.display = 'none';
 }
 
 function closePreCheckout() {
@@ -83,14 +109,10 @@ function proceedToCheckout() {
   btn.textContent = 'Redirecting to payment\u2026';
   btn.disabled = true;
 
-  // Redirect to Stripe Payment Link
-  // Payment Links are created in Stripe Dashboard > Payment Links
-  // They handle the full checkout flow including payment collection
   var p = MM_PRODUCTS[_pcmProduct];
   if (p.paymentLink) {
     window.location.href = p.paymentLink + '?prefilled_email=' + encodeURIComponent(email);
   } else {
-    // Fallback if payment link not yet configured
     btn.textContent = 'Payment link coming soon';
     btn.disabled = true;
   }

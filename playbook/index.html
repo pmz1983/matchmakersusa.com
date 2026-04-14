@@ -257,6 +257,16 @@
 <div id="preCheckoutModal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(8,15,26,.88);align-items:center;justify-content:center;padding:20px;">
   <div style="background:#0F2035;border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:32px;max-width:440px;width:100%;position:relative;">
     <button onclick="closePreCheckout()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(200,214,229,.35);font-size:1.5rem;cursor:pointer;line-height:1;" aria-label="Close">&times;</button>
+    <!-- Playbook Required Gate (shown when Dating Coach attempted without Playbook) -->
+    <div id="pcm-gate" style="display:none;text-align:center;padding:1rem 0;">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:'Outfit',sans-serif;">The Playbook Comes First</div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
+      <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
+      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;">Get The Playbook &mdash; $500 &rarr;</button>
+      <p style="font-size:.72rem;color:rgba(200,214,229,.3);margin:8px 0 0;">Already have the Playbook? <a href="/playbook/content/" style="color:rgba(201,168,76,.5);text-decoration:none;">Enter your access code &rarr;</a></p>
+    </div>
+    <!-- Normal Checkout (shown for Playbook, or Dating Coach when Playbook owned) -->
+    <div id="pcm-checkout">
     <div id="pcm-eyebrow" style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#C9A84C;margin-bottom:6px;font-family:'Outfit',sans-serif;"></div>
     <div id="pcm-product" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:2px;line-height:1.2;"></div>
     <div id="pcm-price" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:600;color:#C9A84C;margin-bottom:6px;line-height:1;"></div>
@@ -266,6 +276,7 @@
     <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:'Outfit',sans-serif;"></div>
     <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;transition:all .2s;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
+    </div>
   </div>
 </div>
 

@@ -399,7 +399,7 @@
             <div style="font-size:.68rem;color:rgba(200,214,229,.4);font-family:'Outfit',sans-serif;">Standalone · 30-Day Access · 30-day coaching</div>
           </div>
           <p style="font-size:.78rem;color:rgba(200,214,229,.5);font-style:italic;margin-bottom:.85rem;font-family:'DM Sans',sans-serif;">"You'll always know what to say."</p>
-          <button data-product="dating_coach" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;width:100%;display:flex;">Unlock Dating Coach — $500 →</button>
+          <button data-product="dating_coach" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;width:100%;display:flex;">Get Dating Coach — $500 →</button>
           <p style="font-size:.68rem;color:rgba(200,214,229,.22);text-align:center;margin:.5rem 0 0;"><a href="/coach/" style="color:rgba(201,168,76,.3);text-decoration:none;font-family:'Outfit',sans-serif;">Read the full program overview →</a></p>
         </div>
       </div>
@@ -564,7 +564,7 @@
       </div>
       <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;">
         <button data-product="playbook" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Get The Playbook — $500 →</button>
-        <button data-product="dating_coach" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Unlock Dating Coach — $500 →</button>
+        <button data-product="dating_coach" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Get Dating Coach — $500 →</button>
       </div>
       <p style="font-size:.72rem;color:rgba(200,214,229,.28);text-align:center;font-family:'Outfit',sans-serif;line-height:1.6;">Dating Coach available separately for $500. · VIP by consultation only. · Free app on iOS now.</p>
       <div class="gold-line" style="margin-top:2.5rem;"></div>
@@ -576,6 +576,16 @@
 <div id="preCheckoutModal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(8,15,26,.88);align-items:center;justify-content:center;padding:20px;">
   <div style="background:#0F2035;border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:32px;max-width:440px;width:100%;position:relative;">
     <button onclick="closePreCheckout()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(200,214,229,.35);font-size:1.5rem;cursor:pointer;line-height:1;" aria-label="Close">&times;</button>
+    <!-- Playbook Required Gate (shown when Dating Coach attempted without Playbook) -->
+    <div id="pcm-gate" style="display:none;text-align:center;padding:1rem 0;">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:'Outfit',sans-serif;">The Playbook Comes First</div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
+      <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
+      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;">Get The Playbook &mdash; $500 &rarr;</button>
+      <p style="font-size:.72rem;color:rgba(200,214,229,.3);margin:8px 0 0;">Already have the Playbook? <a href="/playbook/content/" style="color:rgba(201,168,76,.5);text-decoration:none;">Enter your access code &rarr;</a></p>
+    </div>
+    <!-- Normal Checkout (shown for Playbook, or Dating Coach when Playbook owned) -->
+    <div id="pcm-checkout">
     <div id="pcm-eyebrow" style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#C9A84C;margin-bottom:6px;font-family:'Outfit',sans-serif;"></div>
     <div id="pcm-product" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:2px;line-height:1.2;"></div>
     <div id="pcm-price" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:600;color:#C9A84C;margin-bottom:6px;line-height:1;"></div>
@@ -585,6 +595,7 @@
     <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:'Outfit',sans-serif;"></div>
     <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;transition:all .2s;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
+    </div>
   </div>
 </div>
 
