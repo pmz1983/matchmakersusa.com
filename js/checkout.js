@@ -110,6 +110,7 @@ function openPreCheckout(el) {
 
   var modal = document.getElementById('preCheckoutModal');
   modal.style.display = 'flex';
+  document.body.classList.add('checkout-open');
   setTimeout(function () {
     document.getElementById('pcm-email').focus();
   }, 100);
@@ -119,6 +120,7 @@ function showPlaybookRequired() {
   // Show the Playbook-required message inside the modal
   var modal = document.getElementById('preCheckoutModal');
   modal.style.display = 'flex';
+  document.body.classList.add('checkout-open');
 
   document.getElementById('pcm-gate').style.display = 'block';
   document.getElementById('pcm-checkout').style.display = 'none';
@@ -126,6 +128,7 @@ function showPlaybookRequired() {
 
 function closePreCheckout() {
   document.getElementById('preCheckoutModal').style.display = 'none';
+  document.body.classList.remove('checkout-open');
 }
 
 // Called from the "Playbook Required" gate on the coach page

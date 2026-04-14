@@ -1934,3 +1934,69 @@ body.coach-open{
   /* JS sets --scroll-y to preserve scroll position on lock/unlock */
   top:var(--scroll-y, 0);
 }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════ */
+footer{background:var(--dk);border-top:1px solid var(--rim);padding:4rem 0 2rem;margin-top:6rem;}
+.fg{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem);display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:clamp(2rem,4vw,4rem);}
+.fn{display:flex;align-items:center;gap:.6rem;}
+.fn .nm{font-family:var(--pd);font-size:1.05rem;font-weight:700;color:var(--white);letter-spacing:-.01em;}
+.fc{display:flex;flex-direction:column;gap:.5rem;}
+.fc h4{font-family:var(--pd);font-size:.72rem;font-weight:700;color:rgba(200,214,229,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem;}
+.fc a{font-size:.82rem;color:var(--sl);transition:color .2s;}
+.fc a:hover{color:var(--gold);}
+.fbot{max-width:1280px;margin:2.5rem auto 0;padding:1.5rem clamp(1.25rem,4vw,3.5rem) 0;border-top:1px solid var(--rim);display:flex;justify-content:space-between;align-items:center;}
+.fc-copy{font-size:.72rem;color:rgba(120,149,175,.45);}
+
+@media(max-width:760px){
+  .fg{grid-template-columns:1fr 1fr;gap:2rem 1.5rem;}
+  .fbot{flex-direction:column;gap:.5rem;text-align:center;}
+}
+@media(max-width:480px){
+  .fg{grid-template-columns:1fr;}
+}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE FIXES — QA Audit P0/P1
+   ═══════════════════════════════════════════════════ */
+
+/* Prevent horizontal overflow at the html level */
+html{overflow-x:hidden;}
+
+/* Pre-checkout modal — body scroll lock */
+body.checkout-open{
+  overflow:hidden !important;
+}
+
+/* Pre-checkout modal — mobile sizing */
+@media(max-width:480px){
+  #preCheckoutModal > div{padding:20px 16px !important;}
+}
+
+/* iOS Safari: prevent zoom on email input (must be 16px+) */
+#pcm-email{font-size:16px;}
+
+/* Assessment: dvh fallback for question screens */
+.ia-q-screen,.ia-loading{min-height:100svh;min-height:100vh;}
+
+/* Touch targets: nav links */
+@media(max-width:760px){
+  .nl{padding:.85rem 0;min-height:44px;}
+}
+
+/* Onboarding safe-area padding */
+@media(max-width:760px){
+  .cp-onboard{padding-bottom:max(24px, env(safe-area-inset-bottom));}
+}
+
+/* Small text readability floor — mobile */
+@media(max-width:760px){
+  .hero-stat-lbl,.trust-item,.prog-step,.prog-label,.prog-desc{font-size:.75rem;}
+  .phase-desc{font-size:.82rem;}
+}
+
+/* Raise contrast on low-opacity decorative labels */
+.hero-stat-lbl{color:rgba(200,214,229,.55);}
+.trust-item{color:rgba(120,149,175,.55);}
+.prog-label{color:rgba(120,149,175,.55);}
