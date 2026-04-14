@@ -63,7 +63,7 @@ function checkAccess(){
     document.body.style.overflow='';
     localStorage.setItem('pb_access','1');
   } else {
-    err.textContent='Code not recognised. Check your purchase confirmation email.';
+    err.textContent='Code not recognized. Please check your code and try again.';
     document.getElementById('accessCode').style.borderColor='rgba(229,115,115,.5)';
   }
 }
@@ -100,7 +100,7 @@ window.pbDcCheckAccess = function(){
     localStorage.setItem('pb_dc_access','1');
     pbDcInit();
   } else {
-    err.textContent='Code not recognised. Check your purchase confirmation email.';
+    err.textContent='Code not recognized. Please check your code and try again.';
   }
 };
 document.getElementById('pb-dc-code')?.addEventListener('keydown',e=>{if(e.key==='Enter')pbDcCheckAccess();});
