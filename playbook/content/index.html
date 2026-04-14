@@ -217,7 +217,7 @@
     <div class="cta-bridge-title">The app is where your profile lives.</div>
     <p class="cta-bridge-body">Download the app, set your Intent, and let the community rate your profile. The higher your Level, the more powerful every script in this Playbook becomes — because your profile is doing the trust-building before the first message arrives.</p>
     <p class="cta-bridge-sub">Available now on iOS. Android coming soon.</p>
-    <button data-product="app" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Download the App — Free →</button>
+    <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Download the App — Free →</a>
     
   </div>
 </div>
@@ -514,7 +514,7 @@
     <div class="cta-bridge-title">Most people never make it this far with the right person.</div>
     <p class="cta-bridge-body">VIP MatchMaking exists for members who want a dedicated MatchMaker actively working to find their match from the 66,000+ network — and coaching them through every phase of the connection that follows.</p>
     <p class="cta-bridge-sub">Invite-only · By consultation · Full ecosystem included</p>
-    <button data-product="vip_matchmaking" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Apply for VIP MatchMaking →</button>
+    <a href="/vip/" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Apply for VIP MatchMaking →</a>
     
   </div>
 </div>
@@ -893,8 +893,8 @@
     <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;transition:all .2s;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
     <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
-      <a href="#" id="pcm-promo-toggle" onclick="event.preventDefault();this.style.display='none';document.getElementById('pcm-promo-area').style.display='flex';" style="font-size:.72rem;color:rgba(201,168,76,.5);text-decoration:none;font-family:'Outfit',sans-serif;">Have an access or promo code? &rarr;</a>
-      <div id="pcm-promo-area" style="display:none;gap:8px;margin-top:8px;flex-wrap:wrap;">
+      <p id="pcm-promo-toggle" style="font-size:.75rem;color:rgba(201,168,76,.7);font-family:'Outfit',sans-serif;margin:0 0 8px;">Have an access or promo code?</p>
+      <div id="pcm-promo-area" style="display:flex;gap:8px;margin-top:0;flex-wrap:wrap;">
         <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:'Outfit',sans-serif;outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
         <button onclick="applyPromoCode()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:#C9A84C;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Apply</button>
       </div>
