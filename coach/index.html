@@ -273,7 +273,91 @@
   </div>
 </footer>
 
+<!-- ── Coach Orb & Panel ── -->
+<div class="coach-orb" role="button" aria-label="Dating Coach" tabindex="0">
+  <span class="co-label">M</span>
+</div>
+
+<div class="coach-tooltip" id="coach-orb-tooltip">
+  <div class="ct-title">MatchMakers Dating Coach</div>
+  Your Dating Coach is ready. Tap to start.
+</div>
+
+<div class="coach-locked-pop">
+  <div class="clp-title">MatchMakers Dating Coach</div>
+  <div class="clp-desc">Real-time AI coaching built on the Playbook methodology. Available 24/7 for 30 days.</div>
+  <button class="clp-btn" id="co-locked-buy">Get Dating Coach — $500 →</button>
+  <span class="clp-code-link" id="co-locked-code-link">Already have a code? Enter it here.</span>
+  <div class="clp-code-area" id="co-locked-code-area">
+    <input type="text" class="clp-code-input" id="co-locked-code" placeholder="Access code" maxlength="32">
+    <button class="clp-code-submit" id="co-locked-code-submit">Go</button>
+  </div>
+  <div class="clp-code-msg" id="co-locked-err"></div>
+</div>
+
+<div class="coach-panel">
+  <div class="cp-header">
+    <div class="cp-av">M</div>
+    <div class="cp-info">
+      <div class="cp-name">MatchMakers Dating Coach</div>
+      <div class="cp-status" id="co-status">Ready</div>
+    </div>
+    <span class="cp-days" id="co-days"></span>
+    <button class="cp-new" id="co-new-session" title="New session">New</button>
+    <button class="cp-close" aria-label="Close coach">✕</button>
+  </div>
+
+  <div id="co-onboard" class="cp-onboard">
+    <div class="cp-ob-pips">
+      <div class="cp-ob-pip active" id="co-pip1"></div>
+      <div class="cp-ob-pip" id="co-pip2"></div>
+      <div class="cp-ob-pip" id="co-pip3"></div>
+    </div>
+    <div class="cp-ob-step active" id="co-ob-step1">
+      <div class="cp-ob-q">What is your Intent?</div>
+      <div class="cp-ob-opts">
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Long-Term')">Long-Term</button>
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Marriage')">Marriage</button>
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Fall in Love')">Fall in Love</button>
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Casual')">Casual</button>
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Short-Term')">Short-Term</button>
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Not Sure')">Not Sure</button>
+      </div>
+      <button class="cp-ob-next" id="co-ob-btn1" disabled onclick="coObNext(2)">Continue →</button>
+    </div>
+    <div class="cp-ob-step" id="co-ob-step2">
+      <div class="cp-ob-q">Where are you right now?</div>
+      <div class="cp-ob-opts">
+        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 1 — Setting Intent')">Phase 1 — Setting Intent</button>
+        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 2 — Building Profile')">Phase 2 — Building Profile</button>
+        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 3 — Active Conversations')">Phase 3 — Active Conversations</button>
+        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 4 — Courtship / Dating')">Phase 4 — Courtship / Dating</button>
+        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 5 — Commitment')">Phase 5 — Commitment</button>
+      </div>
+      <button class="cp-ob-next" id="co-ob-btn2" disabled onclick="coObNext(3)">Continue →</button>
+    </div>
+    <div class="cp-ob-step" id="co-ob-step3">
+      <div class="cp-ob-q">What are you working on?</div>
+      <div class="cp-ob-opts">
+        <button class="cp-ob-opt co-focus-opt" onclick="coSelectFocus(this,'A specific connection')">A specific connection</button>
+        <button class="cp-ob-opt co-focus-opt" onclick="coSelectFocus(this,'An existing situation')">An existing situation</button>
+        <button class="cp-ob-opt co-focus-opt" onclick="coSelectFocus(this,'General strategy')">General strategy</button>
+      </div>
+      <button class="cp-ob-next" id="co-ob-btn3" disabled onclick="coStartCoach()">Begin Coaching Session →</button>
+    </div>
+  </div>
+
+  <div id="co-chat" style="display:none;flex:1;flex-direction:column;">
+    <div class="cp-messages" id="co-messages"></div>
+    <div class="cp-input-area">
+      <textarea class="cp-input" id="co-input" rows="1" placeholder="Ask your coach anything..."></textarea>
+      <button class="cp-send" id="co-send-btn" aria-label="Send">↑</button>
+    </div>
+  </div>
+</div>
+
 <script src="/js/main.js"></script>
 <script src="/js/checkout.js"></script>
+<script src="/js/coach-orb.js"></script>
 </body>
 </html>
