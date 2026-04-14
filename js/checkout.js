@@ -34,7 +34,7 @@ var MM_PRODUCTS = {
     eyebrow: 'The MatchMakers Playbook',
     product: 'The MatchMakers Playbook',
     price: '$500',
-    includes: 'Lifetime access \u00b7 Instant delivery \u00b7 100+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
+    includes: 'Lifetime access \u00b7 Instant delivery \u00b7 50+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
     priceId: 'price_1TLpYq0HZcOoiu2Ga9xib5Re',
     paymentLink: 'https://buy.stripe.com/4gM00baxrdXLfWz60Q2Nq02',
     btnBg: '#C9A84C',
