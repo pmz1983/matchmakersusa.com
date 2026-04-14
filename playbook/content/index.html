@@ -41,6 +41,9 @@
       <input type="text" class="pb-gate-input" id="accessCode" placeholder="Access code" autocomplete="off" maxlength="32">
       <div class="pb-gate-error" id="gateError"></div>
       <button onclick="checkAccess()" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;width:100%;display:flex;">Unlock My Playbook →</button>
+      <div style="text-align:center;font-family:'DM Sans',sans-serif;font-size:.7rem;color:rgba(200,214,229,.35);margin:16px 0 10px;text-transform:lowercase;">or verify with your purchase email</div>
+      <input type="email" class="pb-gate-input" id="gateEmail" placeholder="Email used at checkout" autocomplete="email" style="font-size:16px;">
+      <button onclick="checkAccessByEmail()" style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:rgba(201,168,76,.7);align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:8px;cursor:pointer;transition:background .2s;white-space:nowrap;width:100%;display:flex;margin-top:8px;">Verify Purchase →</button>
     </div>
     <p class="pb-gate-note">Don't have the Playbook yet? <a href="/playbook/" style="color:rgba(201,168,76,.5);text-decoration:none;">Learn more →</a></p>
   </div>
@@ -1057,53 +1060,23 @@
     <p style="font-size:.7rem;color:rgba(120,149,175,.3);font-family:'DM Sans',system-ui,sans-serif;margin-top:.85rem;">Don't have the Dating Coach yet? <a href="/coach/" style="color:rgba(201,168,76,.4);text-decoration:none;">Get Dating Coach — $500 →</a></p>
   </div>
 
-  <!-- Onboarding (shown after code, before first message) -->
+  <!-- Onboarding — single card (matches coach-orb.js design) -->
   <div id="pb-dc-onboard" class="pb-dc-onboard">
-    <div class="pb-ob-progress">
-      <div class="pb-ob-pip active" id="pb-pip1"></div>
-      <div class="pb-ob-pip" id="pb-pip2"></div>
-      <div class="pb-ob-pip" id="pb-pip3"></div>
-    </div>
-
-    <div class="pb-ob-step active" id="pb-ob-step1">
-      <div class="pb-ob-label">Step 1 of 3</div>
-      <div class="pb-ob-title">What is your Intent?</div>
-      <div class="pb-ob-sub">Your coach tailors every response to your declared Intent.</div>
-      <div class="pb-intent-grid">
-        <div class="pb-intent-opt" onclick="pbSelectIntent(this,'Long-Term')"><div class="io-name">Long-Term</div></div>
-        <div class="pb-intent-opt" onclick="pbSelectIntent(this,'Marriage')"><div class="io-name">Marriage</div></div>
-        <div class="pb-intent-opt" onclick="pbSelectIntent(this,'Fall in Love')"><div class="io-name">Fall in Love</div></div>
-        <div class="pb-intent-opt" onclick="pbSelectIntent(this,'Casual')"><div class="io-name">Casual</div></div>
-        <div class="pb-intent-opt" onclick="pbSelectIntent(this,'Short-Term')"><div class="io-name">Short-Term</div></div>
-        <div class="pb-intent-opt" onclick="pbSelectIntent(this,'Not Sure')"><div class="io-name">Not Sure</div></div>
+    <div class="pb-ob-card" style="max-width:380px;margin:0 auto;padding:24px 20px;">
+      <div class="pb-ob-title" style="font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;color:var(--white,#EDF2F7);margin-bottom:4px;text-align:center;">What brings you here?</div>
+      <div class="pb-ob-sub" style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--sl,#7A95AF);margin-bottom:16px;text-align:center;">Your coach tailors every response to your context.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;justify-content:center;">
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'Long-Term')" style="padding:9px 18px;border:1px solid rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--tx,#C2D1E0);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;">Long-Term</button>
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'Marriage')" style="padding:9px 18px;border:1px solid rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--tx,#C2D1E0);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;">Marriage</button>
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'Fall in Love')" style="padding:9px 18px;border:1px solid rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--tx,#C2D1E0);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;">Fall in Love</button>
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'Casual')" style="padding:9px 18px;border:1px solid rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--tx,#C2D1E0);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;">Casual</button>
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'Short-Term')" style="padding:9px 18px;border:1px solid rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--tx,#C2D1E0);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;">Short-Term</button>
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'Friends')" style="padding:9px 18px;border:1px solid rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--tx,#C2D1E0);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;">Friends</button>
+        <button class="pb-intent-opt co-intent-opt" onclick="pbSelectIntent(this,'not_sure')" style="padding:9px 18px;border:1px dashed rgba(65,91,124,.22);border-radius:20px;background:transparent;font-family:'DM Sans',sans-serif;font-size:.74rem;color:var(--sl,#7A95AF);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;width:100%;justify-content:center;">I'm Not Sure Yet</button>
       </div>
-      <button id="pb-ob-btn1" onclick="pbObNext(2)" disabled style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Continue →</button>
-    </div>
-
-    <div class="pb-ob-step" id="pb-ob-step2">
-      <div class="pb-ob-label">Step 2 of 3</div>
-      <div class="pb-ob-title">Where are you right now?</div>
-      <div class="pb-ob-sub">Your coach gives phase-specific guidance from the first message.</div>
-      <div class="pb-phase-opts">
-        <div class="pb-phase-opt" onclick="pbSelectPhase(this,'Phase 1 — Intent')"><div class="po-num">1</div><div><div class="po-title">Intent — Just Starting Out</div></div></div>
-        <div class="pb-phase-opt" onclick="pbSelectPhase(this,'Phase 2 — Profile')"><div class="po-num">2</div><div><div class="po-title">Profile — Building My Level</div></div></div>
-        <div class="pb-phase-opt" onclick="pbSelectPhase(this,'Phase 3 — Connection')"><div class="po-num">3</div><div><div class="po-title">Connection — Active Conversations</div></div></div>
-        <div class="pb-phase-opt" onclick="pbSelectPhase(this,'Phase 4 — Courtship')"><div class="po-num">4</div><div><div class="po-title">Courtship — In-Person Meetings</div></div></div>
-        <div class="pb-phase-opt" onclick="pbSelectPhase(this,'Phase 5 — Commitment')"><div class="po-num">5</div><div><div class="po-title">Commitment — Defining the Relationship</div></div></div>
-      </div>
-      <button id="pb-ob-btn2" onclick="pbObNext(3)" disabled style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Continue →</button>
-    </div>
-
-    <div class="pb-ob-step" id="pb-ob-step3">
-      <div class="pb-ob-label">Step 3 of 3</div>
-      <div class="pb-ob-title">What are you working on?</div>
-      <div class="pb-ob-sub">Sets the tone for your first session.</div>
-      <div class="pb-focus-opts">
-        <div class="pb-focus-opt" onclick="pbSelectFocus(this,'A specific new connection')"><div class="fo-icon">💬</div><div><div class="fo-title">A specific new connection</div><div class="fo-desc">Someone you're interested in right now</div></div></div>
-        <div class="pb-focus-opt" onclick="pbSelectFocus(this,'An existing situation')"><div class="fo-icon">🔄</div><div><div class="fo-title">An existing situation</div><div class="fo-desc">Something happening right now that needs guidance</div></div></div>
-        <div class="pb-focus-opt" onclick="pbSelectFocus(this,'Strategy and profile work')"><div class="fo-icon">🗺️</div><div><div class="fo-title">Strategy and positioning</div><div class="fo-desc">Profile, methodology, overall approach</div></div></div>
-      </div>
-      <button id="pb-ob-btn3" onclick="pbStartCoach()" disabled style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Begin Coaching Session →</button>
+      <div style="text-align:center;font-family:'DM Sans',sans-serif;font-size:.7rem;color:var(--sl,#7A95AF);margin:10px 0;text-transform:lowercase;">or just tell me what's going on</div>
+      <textarea id="pb-dc-freetext" rows="2" placeholder="e.g. She stopped responding after our second date..." style="width:100%;resize:none;border:1px solid rgba(65,91,124,.22);border-radius:12px;padding:10px 14px;background:rgba(5,9,15,.5);color:var(--white,#EDF2F7);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.4;margin-bottom:14px;box-sizing:border-box;"></textarea>
+      <button id="pb-ob-begin" onclick="pbStartCoach()" disabled style="display:block;width:100%;padding:12px 20px;border:none;border-radius:10px;background:#C9A84C;color:#0B1727;font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;min-height:44px;">Begin Coaching Session</button>
     </div>
   </div>
 
