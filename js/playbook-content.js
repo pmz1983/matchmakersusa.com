@@ -58,7 +58,7 @@ function checkAccess(){
   const code=document.getElementById('accessCode').value.trim().toUpperCase();
   const err=document.getElementById('gateError');
   if(!code){err.textContent='Please enter your access code.';return;}
-  if(VALID_CODES.includes(code)||code.startsWith('MM-')){
+  if(VALID_CODES.includes(code)){
     document.getElementById('pb-gate').style.display='none';
     document.body.style.overflow='';
     localStorage.setItem('pb_access','1');
