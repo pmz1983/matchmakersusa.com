@@ -446,13 +446,13 @@
   function onDocClick(e) {
     // Close locked popover if clicking outside it and outside orb
     if (lockedPop && lockedPop.classList.contains('show')) {
-      if (!lockedPop.contains(e.target) && !orbEl.contains(e.target)) {
+      if (!lockedPop.contains(e.target) && !(orbEl && orbEl.contains(e.target))) {
         hideLockedPop();
       }
     }
     // Close panel if clicking outside panel and outside orb
     if (isPanelOpen()) {
-      if (!panelEl.contains(e.target) && !orbEl.contains(e.target)) {
+      if (!panelEl.contains(e.target) && !(orbEl && orbEl.contains(e.target))) {
         closePanel();
       }
     }
