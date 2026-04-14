@@ -294,7 +294,10 @@ function captureAndRedirect(email, p, btn) {
   }).catch(function() { /* non-blocking */ });
 
   if (p.paymentLink) {
-    var url = p.paymentLink + '?prefilled_email=' + encodeURIComponent(email);
+    var successUrl = 'https://matchmakersusa.com/success/?email=' + encodeURIComponent(email) + '&product=' + encodeURIComponent(_pcmProduct);
+    var url = p.paymentLink
+      + '?prefilled_email=' + encodeURIComponent(email)
+      + '&success_url=' + encodeURIComponent(successUrl);
     if (_appliedPromo && _appliedPromo.stripeCoupon) {
       url += '&coupon=' + encodeURIComponent(_appliedPromo.stripeCoupon);
     }

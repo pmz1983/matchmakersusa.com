@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Purchase Confirmed — MatchMakers</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/img/icon.png" type="image/png">
+  <style>
+    .success-page{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:40px 20px;
+    }
+    .success-card{
+      max-width:560px;width:100%;text-align:center;
+    }
+    .success-icon{
+      width:80px;height:80px;border-radius:50%;margin:0 auto 28px;
+      background:radial-gradient(circle at 40% 38%,#F0D878 0%,#D4B65E 25%,#C9A84C 50%,#A8893D 80%);
+      display:flex;align-items:center;justify-content:center;
+      font-size:2.2rem;line-height:1;
+      box-shadow:0 0 40px rgba(201,168,76,.2),0 0 80px rgba(201,168,76,.08);
+      animation:successPulse 2s ease-in-out infinite;
+    }
+    @keyframes successPulse{
+      0%,100%{box-shadow:0 0 40px rgba(201,168,76,.2),0 0 80px rgba(201,168,76,.08);}
+      50%{box-shadow:0 0 50px rgba(201,168,76,.3),0 0 100px rgba(201,168,76,.12);}
+    }
+    .success-title{
+      font-family:'Cormorant Garamond',serif;font-weight:700;
+      font-size:2.2rem;color:var(--white,#EDF2F7);margin-bottom:10px;
+      line-height:1.15;
+    }
+    .success-subtitle{
+      font-family:'DM Sans',sans-serif;font-size:1rem;
+      color:var(--sl,#7A95AF);margin-bottom:32px;line-height:1.6;
+    }
+    .success-product{
+      font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;
+      text-transform:uppercase;letter-spacing:.1em;
+      color:#C9A84C;margin-bottom:6px;
+    }
+    .success-divider{
+      width:48px;height:1px;background:rgba(201,168,76,.25);margin:28px auto;
+    }
+
+    /* Access code display */
+    .success-code-section{
+      background:rgba(5,9,15,.5);border:1px solid rgba(201,168,76,.2);
+      border-radius:14px;padding:24px;margin-bottom:28px;
+    }
+    .success-code-label{
+      font-family:'Outfit',sans-serif;font-weight:600;font-size:.7rem;
+      text-transform:uppercase;letter-spacing:.08em;
+      color:var(--sl,#7A95AF);margin-bottom:10px;
+    }
+    .success-code{
+      font-family:'Outfit',sans-serif;font-weight:700;font-size:1.6rem;
+      color:#C9A84C;letter-spacing:.12em;margin-bottom:6px;
+      user-select:all;
+    }
+    .success-code-copy{
+      font-family:'DM Sans',sans-serif;font-size:.75rem;
+      color:var(--sl,#7A95AF);cursor:pointer;
+      text-decoration:underline;text-underline-offset:2px;
+    }
+    .success-code-copy:hover{color:#C9A84C;}
+
+    /* Checking state */
+    .success-checking{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      font-family:'DM Sans',sans-serif;font-size:.85rem;
+      color:var(--sl,#7A95AF);padding:16px 0;
+    }
+    .success-spinner{
+      width:18px;height:18px;border:2px solid rgba(201,168,76,.2);
+      border-top-color:#C9A84C;border-radius:50%;
+      animation:spin .8s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    /* Next steps */
+    .success-steps{
+      text-align:left;margin-bottom:32px;
+    }
+    .success-step{
+      display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;
+    }
+    .success-step-num{
+      width:28px;height:28px;border-radius:50%;flex-shrink:0;
+      background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;
+      color:#C9A84C;
+    }
+    .success-step-text{
+      font-family:'DM Sans',sans-serif;font-size:.88rem;
+      color:var(--tx,#C2D1E0);line-height:1.55;padding-top:3px;
+    }
+    .success-step-text strong{color:var(--white,#EDF2F7);}
+
+    /* CTA button */
+    .success-cta{
+      display:inline-block;padding:14px 36px;border-radius:10px;
+      background:#C9A84C;color:#0B1727;text-decoration:none;
+      font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;
+      letter-spacing:.06em;text-transform:uppercase;
+      transition:background .2s,transform .15s;
+    }
+    .success-cta:hover{background:#D4B65E;transform:translateY(-1px);}
+    .success-cta-secondary{
+      display:block;margin-top:14px;
+      font-family:'DM Sans',sans-serif;font-size:.78rem;
+      color:var(--sl,#7A95AF);text-decoration:underline;
+      text-underline-offset:2px;
+    }
+    .success-cta-secondary:hover{color:#C9A84C;}
+
+    /* Email note */
+    .success-email-note{
+      font-family:'DM Sans',sans-serif;font-size:.75rem;
+      color:var(--sl,#7A95AF);margin-top:28px;line-height:1.6;
+      opacity:.7;
+    }
+
+    /* Processing state (webhook hasn't fired yet) */
+    .success-processing{display:none;}
+    .success-confirmed{display:block;}
+
+    @media(max-width:600px){
+      .success-title{font-size:1.7rem;}
+      .success-code{font-size:1.3rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" style="display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;">
+      <img src="/img/logo.png" class="ni" alt="MatchMakers" width="36" height="36">
+      <span class="nm">MatchMakers<sup>&trade;</sup></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#about" class="nl">About</a>
+      <a href="/#app" class="nl">App</a>
+      <a href="/playbook/" class="nl">Playbook</a>
+      <a href="/coach/" class="nl">Coach</a>
+      <a href="/vip/" class="nl">VIP</a>
+      <a href="/assessment/" class="nl">Assessment</a>
+      <a href="/guide/" class="nb">Free Guide</a>
+    </div>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="success-page">
+  <div class="success-card">
+
+    <div class="success-icon">M</div>
+
+    <!-- Loading state while we check purchase -->
+    <div id="success-loading">
+      <div class="success-title">Confirming Your Purchase</div>
+      <div class="success-subtitle">
+        Verifying your payment with Stripe. This usually takes just a moment.
+      </div>
+      <div class="success-checking">
+        <div class="success-spinner"></div>
+        <span id="success-status-text">Checking...</span>
+      </div>
+    </div>
+
+    <!-- Confirmed state: Playbook -->
+    <div id="success-playbook" style="display:none;">
+      <div class="success-product">The MatchMakers Playbook</div>
+      <div class="success-title">You're In.</div>
+      <div class="success-subtitle">
+        Your Playbook purchase is confirmed. You now have lifetime access to the complete 5-phase MatchMakers methodology.
+      </div>
+
+      <div class="success-code-section">
+        <div class="success-code-label">Your Access Code</div>
+        <div class="success-code" id="playbook-access-code">---</div>
+        <div class="success-code-copy" onclick="copyCode('playbook-access-code')">Copy to clipboard</div>
+      </div>
+
+      <div class="success-steps">
+        <div class="success-step">
+          <div class="success-step-num">1</div>
+          <div class="success-step-text"><strong>Save your access code.</strong> You'll need it to unlock your Playbook content on any device.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">2</div>
+          <div class="success-step-text"><strong>Access your Playbook.</strong> All 9 chapters, 50+ scripts, and frameworks are waiting for you.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">3</div>
+          <div class="success-step-text"><strong>Unlock the Dating Coach.</strong> Your Playbook purchase qualifies you for the AI Dating Coach — your real-time methodology partner.</div>
+        </div>
+      </div>
+
+      <a href="/playbook/content/" class="success-cta">Open Your Playbook</a>
+      <a href="/coach/" class="success-cta-secondary">Explore the Dating Coach</a>
+
+      <div class="success-email-note">
+        A confirmation email with your access code and download link will be sent to <strong id="playbook-email">your email</strong>. Check spam if you don't see it within 5 minutes.
+      </div>
+    </div>
+
+    <!-- Confirmed state: Dating Coach -->
+    <div id="success-coach" style="display:none;">
+      <div class="success-product">MatchMakers Dating Coach</div>
+      <div class="success-title">Your Coach Is Ready.</div>
+      <div class="success-subtitle">
+        30 days of AI-powered dating coaching, available 24/7. Built on the full MatchMakers methodology.
+      </div>
+
+      <div class="success-code-section">
+        <div class="success-code-label">Your Access Code</div>
+        <div class="success-code" id="coach-access-code">---</div>
+        <div class="success-code-copy" onclick="copyCode('coach-access-code')">Copy to clipboard</div>
+      </div>
+
+      <div class="success-steps">
+        <div class="success-step">
+          <div class="success-step-num">1</div>
+          <div class="success-step-text"><strong>Save your access code.</strong> You'll need it to activate coaching on any device.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">2</div>
+          <div class="success-step-text"><strong>Open your Dating Coach.</strong> Click the gold orb on any page, enter your code, and start your first session.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">3</div>
+          <div class="success-step-text"><strong>Your 30-day window starts now.</strong> Get the most from your coaching by bringing real situations — messages, profiles, and conversations.</div>
+        </div>
+      </div>
+
+      <a href="/" class="success-cta" id="coach-cta">Start Your First Session</a>
+
+      <div class="success-email-note">
+        A confirmation email with your access code will be sent to <strong id="coach-email">your email</strong>. Check spam if you don't see it within 5 minutes.
+      </div>
+    </div>
+
+    <!-- Fallback: purchase not yet confirmed (webhook delay) -->
+    <div id="success-pending" style="display:none;">
+      <div class="success-title">Payment Received</div>
+      <div class="success-subtitle">
+        Your payment was successful. We're processing your purchase now — this can take up to 60 seconds.
+      </div>
+
+      <div class="success-divider"></div>
+
+      <div class="success-steps">
+        <div class="success-step">
+          <div class="success-step-num">1</div>
+          <div class="success-step-text"><strong>Your access code is being generated.</strong> It will be delivered to your email within a few minutes.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">2</div>
+          <div class="success-step-text"><strong>Check your email.</strong> Look for a message from MatchMakers with your access code and next steps.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">3</div>
+          <div class="success-step-text"><strong>Need help?</strong> Contact us at <a href="mailto:support@matchmakersusa.com" style="color:#C9A84C;">support@matchmakersusa.com</a> with your purchase email.</div>
+        </div>
+      </div>
+
+      <a href="/" class="success-cta">Return to MatchMakers</a>
+    </div>
+
+    <!-- Error state -->
+    <div id="success-error" style="display:none;">
+      <div class="success-title">Something Went Wrong</div>
+      <div class="success-subtitle">
+        We couldn't verify your purchase. This doesn't mean your payment failed — it may just need a moment to process.
+      </div>
+      <div class="success-divider"></div>
+      <div class="success-steps">
+        <div class="success-step">
+          <div class="success-step-num">1</div>
+          <div class="success-step-text"><strong>Check your email</strong> for a Stripe receipt confirming your payment.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">2</div>
+          <div class="success-step-text"><strong>Try refreshing this page</strong> in a minute — your purchase may still be processing.</div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">3</div>
+          <div class="success-step-text"><strong>Contact us</strong> at <a href="mailto:support@matchmakersusa.com" style="color:#C9A84C;">support@matchmakersusa.com</a> if the issue persists.</div>
+        </div>
+      </div>
+      <a href="/" class="success-cta">Return to MatchMakers</a>
+    </div>
+
+  </div>
+</section>
+
+<script src="/js/main.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  var SUPABASE_FN_URL = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1';
+  var MAX_RETRIES = 6;
+  var RETRY_INTERVAL = 5000; // 5 seconds between retries
+
+  // Parse URL params
+  var params = new URLSearchParams(window.location.search);
+  var email = (params.get('email') || '').trim().toLowerCase();
+  var product = params.get('product') || '';
+
+  // Elements
+  var loadingEl = document.getElementById('success-loading');
+  var playbookEl = document.getElementById('success-playbook');
+  var coachEl = document.getElementById('success-coach');
+  var pendingEl = document.getElementById('success-pending');
+  var errorEl = document.getElementById('success-error');
+  var statusText = document.getElementById('success-status-text');
+
+  function hideAll() {
+    loadingEl.style.display = 'none';
+    playbookEl.style.display = 'none';
+    coachEl.style.display = 'none';
+    pendingEl.style.display = 'none';
+    errorEl.style.display = 'none';
+  }
+
+  function showPlaybook(code, emailAddr) {
+    hideAll();
+    playbookEl.style.display = 'block';
+    document.getElementById('playbook-access-code').textContent = code || 'Check your email';
+    if (emailAddr) {
+      document.getElementById('playbook-email').textContent = emailAddr;
+    }
+    // Store access locally
+    localStorage.setItem('pb_access', '1');
+  }
+
+  function showCoach(code, emailAddr) {
+    hideAll();
+    coachEl.style.display = 'block';
+    document.getElementById('coach-access-code').textContent = code || 'Check your email';
+    if (emailAddr) {
+      document.getElementById('coach-email').textContent = emailAddr;
+    }
+    // Store access locally
+    localStorage.setItem('pb_dc_access', '1');
+    if (!localStorage.getItem('pb_dc_first')) {
+      localStorage.setItem('pb_dc_first', Date.now().toString());
+    }
+  }
+
+  function showPending() {
+    hideAll();
+    pendingEl.style.display = 'block';
+  }
+
+  function showError() {
+    hideAll();
+    errorEl.style.display = 'block';
+  }
+
+  // Verify purchase with Supabase
+  function checkPurchase(email, product, attempt) {
+    if (!email) {
+      showPending();
+      return;
+    }
+
+    if (statusText) {
+      statusText.textContent = attempt > 1 ? 'Still processing... (' + attempt + '/' + MAX_RETRIES + ')' : 'Checking...';
+    }
+
+    fetch(SUPABASE_FN_URL + '/check-eligibility', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        product: product || 'playbook',
+        action: 'verify-access'
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.has_access && data.access_code) {
+        // Purchase confirmed!
+        if (product === 'dating_coach') {
+          showCoach(data.access_code, email);
+        } else {
+          showPlaybook(data.access_code, email);
+        }
+      } else if (attempt < MAX_RETRIES) {
+        // Webhook may not have fired yet — retry
+        setTimeout(function() {
+          checkPurchase(email, product, attempt + 1);
+        }, RETRY_INTERVAL);
+      } else {
+        // Max retries exceeded — show pending state
+        showPending();
+      }
+    })
+    .catch(function() {
+      if (attempt < MAX_RETRIES) {
+        setTimeout(function() {
+          checkPurchase(email, product, attempt + 1);
+        }, RETRY_INTERVAL);
+      } else {
+        showError();
+      }
+    });
+  }
+
+  // Copy access code to clipboard
+  window.copyCode = function(elementId) {
+    var el = document.getElementById(elementId);
+    if (!el) return;
+    var code = el.textContent;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code).then(function() {
+        el.nextElementSibling.textContent = 'Copied!';
+        setTimeout(function() {
+          el.nextElementSibling.textContent = 'Copy to clipboard';
+        }, 2000);
+      });
+    }
+  };
+
+  // Start verification
+  if (email) {
+    checkPurchase(email, product, 1);
+  } else {
+    // No email in URL — show pending state with generic instructions
+    showPending();
+  }
+})();
+</script>
+
+</body>
+</html>
