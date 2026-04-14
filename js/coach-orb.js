@@ -78,9 +78,10 @@
   var todayMsgCount = 0;        // Today's user message count (persistent)
 
   // ── DOM References (set during init) ──
-  var orbEl, panelEl, lockedPop;
+  var orbEl, panelEl, lockedPop, backdropEl;
   var messagesEl, inputEl, sendBtn, statusEl, daysEl;
   var onboardEl, chatEl, settingsEl;
+  var savedScrollY = 0;
 
   // ── Helpers ──
   function isMobile() {
@@ -100,14 +101,17 @@
     return localStorage.getItem('pb_dc_access') === '1';
   }
 
+  // ── Body Scroll Lock (iOS Safari safe) ──
   function lockBodyScroll() {
-    if (isMobile()) {
-      document.body.style.overflow = 'hidden';
-    }
+    savedScrollY = window.scrollY;
+    document.documentElement.style.setProperty('--scroll-y', '-' + savedScrollY + 'px');
+    document.body.classList.add('coach-open');
   }
 
   function unlockBodyScroll() {
-    document.body.style.overflow = '';
+    document.body.classList.remove('coach-open');
+    document.documentElement.style.removeProperty('--scroll-y');
+    window.scrollTo(0, savedScrollY);
   }
 
   // ── Days Remaining ──
@@ -148,14 +152,16 @@
     if (!orbEl || !panelEl) return;
     orbEl.classList.add('open');
     panelEl.classList.add('open');
+    if (backdropEl) backdropEl.classList.add('open');
     lockBodyScroll();
-    if (inputEl) inputEl.focus();
+    if (inputEl) setTimeout(function() { inputEl.focus(); }, 100);
   }
 
   function closePanel() {
     if (!orbEl || !panelEl) return;
     orbEl.classList.remove('open');
     panelEl.classList.remove('open');
+    if (backdropEl) backdropEl.classList.remove('open');
     unlockBodyScroll();
   }
 
@@ -845,11 +851,30 @@
         hideLockedPop();
       }
     }
-    // Close panel if clicking outside panel and outside orb
-    if (isPanelOpen()) {
-      if (!panelEl.contains(e.target) && !(orbEl && orbEl.contains(e.target))) {
-        closePanel();
+  }
+
+  // ── Backdrop click closes panel ──
+  function onBackdropClick(e) {
+    if (e.target === backdropEl) {
+      closePanel();
+    }
+  }
+
+  // ── Prevent touch scroll from leaking to body ──
+  function preventScrollLeak(e) {
+    if (!isPanelOpen()) return;
+    // Allow scrolling inside messages area and other scrollable children
+    var target = e.target;
+    while (target && target !== panelEl) {
+      if (target === messagesEl || target.classList.contains('cp-onboard') ||
+          target.classList.contains('cp-settings-body')) {
+        return; // Allow scroll inside these containers
       }
+      target = target.parentElement;
+    }
+    // If not inside a scrollable child, prevent the touch from scrolling
+    if (target === panelEl) {
+      e.preventDefault();
     }
   }
 
@@ -936,10 +961,22 @@
       });
     }
 
+    // Backdrop click to close panel
+    if (backdropEl) {
+      backdropEl.addEventListener('click', onBackdropClick);
+      // Prevent scroll events on backdrop from reaching body
+      backdropEl.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+    }
+
+    // Prevent touch scroll leaking from panel edges to body
+    if (panelEl) {
+      panelEl.addEventListener('touchmove', preventScrollLeak, { passive: false });
+    }
+
     // Global keyboard shortcuts
     document.addEventListener('keydown', onKeyDown);
 
-    // Click outside to close
+    // Click outside locked popover
     document.addEventListener('click', onDocClick);
 
     // Bug fix 2: cross-tab sync
@@ -967,6 +1004,14 @@
 
     // If no orb element on page, bail out
     if (!orbEl) return;
+
+    // Create backdrop element for scroll/click isolation
+    backdropEl = document.querySelector('.coach-backdrop');
+    if (!backdropEl) {
+      backdropEl = document.createElement('div');
+      backdropEl.className = 'coach-backdrop';
+      document.body.appendChild(backdropEl);
+    }
 
     // Set orb state (active vs locked)
     refreshOrbState();
