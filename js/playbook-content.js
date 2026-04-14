@@ -53,7 +53,7 @@ function doCopy(btn){
 }
 
 // ── Gate ──
-const VALID_CODES=['MM-PLAYBOOK-2024','MATCHMAKERS','MM2024','MM-BETA-001','MM-BETA-002','MM-BETA-003','MM-BETA-004','MM-BETA-005','MM-FRIEND-001','MM-FRIEND-002','MM-FRIEND-003','MM-FRIEND-004','MM-FRIEND-005','MM-VIP-TEST'];
+const VALID_CODES=['MATCH777','MM-PLAYBOOK-2024','MATCHMAKERS','MM2024','MM-BETA-001','MM-BETA-002','MM-BETA-003','MM-BETA-004','MM-BETA-005','MM-FRIEND-001','MM-FRIEND-002','MM-FRIEND-003','MM-FRIEND-004','MM-FRIEND-005','MM-VIP-TEST'];
 function checkAccess(){
   const code=document.getElementById('accessCode').value.trim().toUpperCase();
   const err=document.getElementById('gateError');

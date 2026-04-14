@@ -40,13 +40,13 @@
 </div><div class="pb-progress-bar"><div class="pb-progress-fill" id="pbProgress"></div></div>
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nb"><img src="/img/logo.png" class="ni" alt="M" width="36" height="36"><span class="nm">MatchMakers<sup>™</sup></span></a>
+    <a href="/" class="nb"><img src="/img/logo.png" class="ni" alt="M" width="36" height="36"><span class="nm">MatchMakers<sup>™</sup></span></a>
     <div class="nav-links" style="display:flex;align-items:center;gap:1.75rem;">
-      <a href="index.html" class="nl">Home</a>
-      <a href="matchmakers-dating-coach-overview.html" class="nl">Dating Coach</a>
-      <a href="matchmakers-vip-matchmaking-overview.html" class="nl">VIP</a>
+      <a href="/" class="nl">Home</a>
+      <a href="/coach/" class="nl">Dating Coach</a>
+      <a href="/vip/" class="nl">VIP</a>
     </div>
-    <a href="matchmakers-dating-coach-overview.html" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;;font-size:.72rem;padding:7px 14px;">Get Dating Coach →</a>
+    <a href="/coach/" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;;font-size:.72rem;padding:7px 14px;">Get Dating Coach →</a>
   </div>
 </nav>
 <div class="pb-wrap">
@@ -872,7 +872,14 @@
       <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
       <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
       <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;">Get The Playbook &mdash; $500 &rarr;</button>
-      <p style="font-size:.72rem;color:rgba(200,214,229,.3);margin:8px 0 0;">Already have the Playbook? <a href="/playbook/content/" style="color:rgba(201,168,76,.5);text-decoration:none;">Enter your access code &rarr;</a></p>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
+        <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:'Outfit',sans-serif;outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
+          <button onclick="unlockFromGate()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:#C9A84C;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Unlock</button>
+        </div>
+        <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:'Outfit',sans-serif;"></div>
+      </div>
     </div>
     <!-- Normal Checkout (shown for Playbook, or Dating Coach when Playbook owned) -->
     <div id="pcm-checkout">
@@ -885,6 +892,14 @@
     <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:'Outfit',sans-serif;"></div>
     <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;transition:all .2s;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
+    <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
+      <a href="#" id="pcm-promo-toggle" onclick="event.preventDefault();this.style.display='none';document.getElementById('pcm-promo-area').style.display='flex';" style="font-size:.72rem;color:rgba(201,168,76,.5);text-decoration:none;font-family:'Outfit',sans-serif;">Have an access or promo code? &rarr;</a>
+      <div id="pcm-promo-area" style="display:none;gap:8px;margin-top:8px;flex-wrap:wrap;">
+        <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:'Outfit',sans-serif;outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
+        <button onclick="applyPromoCode()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:#C9A84C;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Apply</button>
+      </div>
+      <div id="pcm-promo-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:'Outfit',sans-serif;"></div>
+    </div>
     </div>
   </div>
 </div>
