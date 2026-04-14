@@ -212,27 +212,42 @@
 
     try {
       var sessionId = getSessionId();
+      // Anthropic API requires first message to be 'user' role
+      // Filter history to ensure valid message sequence
+      var apiMessages = cp_history.filter(function(m, i) {
+        if (i === 0 && m.role === 'assistant') return false; // skip welcome message
+        return true;
+      });
       var res = await fetch(COACH_PROXY, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'x-session-id': sessionId
         },
-        body: JSON.stringify({ context: memberCtx, messages: cp_history })
+        body: JSON.stringify({ context: memberCtx, messages: apiMessages })
       });
       var data = await res.json();
 
-      if (data.error) {
+      // Handle all error response formats (our Edge Function, Supabase gateway, etc.)
+      var errMsg = data.error || data.message || null;
+      if (errMsg || data.code) {
         hideTyping();
-        addMessage('coach', data.error);
+        addMessage('coach', errMsg || 'Something went wrong — please try again.');
         typing = false;
         if (sendBtn) sendBtn.disabled = false;
         if (statusEl) statusEl.textContent = 'Ready';
         return;
       }
 
-      var reply = (data && data.content && data.content[0] && data.content[0].text)
-        || "I didn't catch that \u2014 try rephrasing.";
+      var reply = (data && data.content && data.content[0] && data.content[0].text) || '';
+      if (!reply) {
+        hideTyping();
+        addMessage('coach', 'I wasn\'t able to generate a response. Could you try rephrasing your question? The more specific you are about your situation, the better I can help.');
+        typing = false;
+        if (sendBtn) sendBtn.disabled = false;
+        if (statusEl) statusEl.textContent = 'Ready';
+        return;
+      }
       hideTyping();
       addMessage('coach', reply);
       cp_history.push({ role: 'assistant', content: reply });

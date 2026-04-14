@@ -197,8 +197,10 @@ window.pbDcSend = async function(){
     const sessionId=localStorage.getItem('dc_session')||(function(){const s='dc_'+Date.now()+'_'+Math.random().toString(36).slice(2);localStorage.setItem('dc_session',s);return s;})();
     const r=await fetch('https://peamviowxkyaglyjpagc.supabase.co/functions/v1/coach-proxy',{method:'POST',headers:{'Content-Type':'application/json','x-session-id':sessionId},body:JSON.stringify({context:memberCtx,messages:pb_history})});
     const data=await r.json();
-    if(data.error){pbHideTyping();pbAddMsg('coach',data.error);pb_typing=false;document.getElementById('pb-dc-send-btn').disabled=false;document.getElementById('pb-dc-status').textContent='Ready';return;}
-    const reply=data?.content?.[0]?.text||"I didn't catch that — try rephrasing.";
+    const errMsg=data.error||data.message||null;
+    if(errMsg||data.code){pbHideTyping();pbAddMsg('coach',errMsg||'Something went wrong — please try again.');pb_typing=false;document.getElementById('pb-dc-send-btn').disabled=false;document.getElementById('pb-dc-status').textContent='Ready';return;}
+    const reply=data?.content?.[0]?.text||'';
+    if(!reply){pbHideTyping();pbAddMsg('coach','I wasn\'t able to generate a response. Could you try rephrasing your question? The more specific you are about your situation, the better I can help.');pb_typing=false;document.getElementById('pb-dc-send-btn').disabled=false;document.getElementById('pb-dc-status').textContent='Ready';return;}
     pbHideTyping(); pbAddMsg('coach',reply); pb_history.push({role:'assistant',content:reply});
     if(pb_history.length>40) pb_history=pb_history.slice(-40);
   } catch(e){
