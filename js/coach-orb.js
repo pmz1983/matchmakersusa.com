@@ -18,31 +18,31 @@
     'Long-Term': [
       'Help me write an opening message',
       'Review my dating profile',
-      'She stopped responding \u2014 what do I do?',
+      'They stopped responding \u2014 what do I do?',
       'How do I move from texting to a real date?'
     ],
     'Marriage': [
       'Help me write an opening message',
       'Review my dating profile',
-      'She stopped responding \u2014 what do I do?',
+      'They stopped responding \u2014 what do I do?',
       'How do I move from texting to a real date?'
     ],
     'Fall in Love': [
       'Help me write an opening message',
       'Review my dating profile',
-      'She stopped responding \u2014 what do I do?',
+      'They stopped responding \u2014 what do I do?',
       'How do I move from texting to a real date?'
     ],
     'Casual': [
       'Best opening lines for casual dating',
       'How do I keep things fun and light?',
-      'She wants something serious but I don\'t',
+      'They want something serious but I don\'t',
       'When should I suggest meeting up?'
     ],
     'Short-Term': [
       'Best opening lines for casual dating',
       'How do I keep things fun and light?',
-      'She wants something serious but I don\'t',
+      'They want something serious but I don\'t',
       'When should I suggest meeting up?'
     ],
     'Friends': [
