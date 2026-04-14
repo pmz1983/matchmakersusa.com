@@ -65,10 +65,17 @@
     ]
   };
 
+  // ── Session Summary Config ──
+  var SUMMARY_THRESHOLD = 10;   // Generate summary every N message pairs
+  var RECENT_KEEP = 5;          // Always keep last N exchanges in full
+
   // ── State ──
   var cp_history = [];
   var typing = false;
   var intent = '';
+  var sessionSummary = '';      // Compressed context from older messages
+  var storageReady = false;     // Whether IndexedDB loaded successfully
+  var todayMsgCount = 0;        // Today's user message count (persistent)
 
   // ── DOM References (set during init) ──
   var orbEl, panelEl, lockedPop;
@@ -231,6 +238,15 @@
 
   // ── Welcome Message + Suggested Prompts ──
   function showWelcome() {
+    // Check if we have persisted history — show "welcome back" instead
+    if (sessionSummary) {
+      var msg = 'Welcome back. Last time we were working on: ' + sessionSummary + '\n\nWant to pick up where we left off, or start something new?';
+      addMessage('coach', msg);
+      cp_history.push({ role: 'assistant', content: msg });
+      showSuggestedPrompts();
+      return;
+    }
+
     var msg;
     if (intent === 'not_sure') {
       msg = 'No problem \u2014 that\'s actually where a lot of people start. Tell me: are you actively on dating apps right now, or are you thinking about getting started?';
@@ -286,12 +302,98 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
+  // ── Build API messages with summary compression ──
+  function buildApiMessages() {
+    // Filter out leading assistant messages (Anthropic requires user-first)
+    var msgs = cp_history.filter(function(m, i) {
+      if (i === 0 && m.role === 'assistant') return false;
+      return true;
+    });
+
+    // If we have a summary and enough messages, prepend summary as system context
+    if (sessionSummary && msgs.length > RECENT_KEEP * 2) {
+      // Keep only the last RECENT_KEEP exchanges (user+assistant pairs)
+      var recentStart = Math.max(0, msgs.length - RECENT_KEEP * 2);
+      var recentMsgs = msgs.slice(recentStart);
+
+      // Prepend summary as a user message for context
+      var summaryMsg = {
+        role: 'user',
+        content: '[Previous conversation summary: ' + sessionSummary + ']\n\nContinuing our conversation:'
+      };
+      // Need to ensure first message is user role
+      if (recentMsgs.length > 0 && recentMsgs[0].role === 'assistant') {
+        return [summaryMsg].concat(recentMsgs);
+      }
+      // Merge summary into first user message
+      recentMsgs[0] = {
+        role: 'user',
+        content: '[Previous conversation summary: ' + sessionSummary + ']\n\n' + recentMsgs[0].content
+      };
+      return recentMsgs;
+    }
+
+    return msgs;
+  }
+
+  // ── Generate session summary from older messages ──
+  function maybeGenerateSummary() {
+    // Count user messages since last summary
+    var userMsgCount = cp_history.filter(function(m) { return m.role === 'user'; }).length;
+    if (userMsgCount < SUMMARY_THRESHOLD) return;
+    if (userMsgCount % SUMMARY_THRESHOLD !== 0) return; // Only at thresholds
+
+    // Build summary from all but the last RECENT_KEEP exchanges
+    var cutoff = Math.max(0, cp_history.length - RECENT_KEEP * 2);
+    if (cutoff < 4) return; // Need enough messages to summarize
+
+    var toSummarize = cp_history.slice(0, cutoff);
+    var topics = [];
+    toSummarize.forEach(function(m) {
+      if (m.role === 'user' && m.content.length > 10) {
+        // Extract key phrases (first 80 chars of each user message)
+        topics.push(m.content.substring(0, 80).replace(/\n/g, ' '));
+      }
+    });
+
+    if (topics.length > 0) {
+      // Client-side summary: extract topics discussed
+      sessionSummary = topics.slice(-5).join('; ');
+
+      // Persist summary
+      var sid = getSessionId();
+      if (window.CoachStorage) {
+        CoachStorage.saveSessionMeta(sid, {
+          summary: sessionSummary,
+          intent: intent,
+          messageCount: cp_history.length,
+          lastTopic: topics[topics.length - 1]
+        });
+      }
+    }
+  }
+
+  // ── Persist message to IndexedDB ──
+  function persistMessage(role, content) {
+    if (window.CoachStorage) {
+      var sid = getSessionId();
+      CoachStorage.saveMessage(sid, role, content);
+    }
+  }
+
   // ── Send Message ──
   async function sendMessage() {
     if (typing) return;
     if (!inputEl) return;
     var txt = inputEl.value.trim();
     if (!txt) return;
+
+    // ── Rate limit check (persistent, daily) ──
+    todayMsgCount++;
+    if (todayMsgCount > 50) {
+      addMessage('coach', 'You\'ve reached today\'s message limit (50 messages). Your limit resets at midnight. Need unlimited access? Premium is coming soon.');
+      return;
+    }
 
     inputEl.value = '';
     inputEl.style.height = 'auto';
@@ -305,6 +407,7 @@
 
     addMessage('user', txt);
     cp_history.push({ role: 'user', content: txt });
+    persistMessage('user', txt);
     showTyping();
     if (orbEl) orbEl.classList.add('thinking');
 
@@ -320,12 +423,7 @@
 
     try {
       var sessionId = getSessionId();
-      // Anthropic API requires first message to be 'user' role
-      // Filter history to ensure valid message sequence
-      var apiMessages = cp_history.filter(function(m, i) {
-        if (i === 0 && m.role === 'assistant') return false; // skip welcome message
-        return true;
-      });
+      var apiMessages = buildApiMessages();
       var res = await fetch(COACH_PROXY, {
         method: 'POST',
         headers: {
@@ -359,6 +457,10 @@
       hideTyping();
       addMessage('coach', reply);
       cp_history.push({ role: 'assistant', content: reply });
+      persistMessage('assistant', reply);
+
+      // Check if we should generate a summary
+      maybeGenerateSummary();
 
       if (cp_history.length > HISTORY_CAP) {
         cp_history = cp_history.slice(-HISTORY_CAP);
@@ -378,8 +480,16 @@
   function newSession() {
     var currentLabel = intent || 'none';
     if (!confirm('Start a new conversation? Your Intent (' + currentLabel + ') will stay the same. To change it, use Settings.')) return;
+    // Clear IndexedDB for current session
+    var sid = getSessionId();
+    if (window.CoachStorage) {
+      CoachStorage.clearSession(sid);
+    }
     cp_history = [];
+    sessionSummary = '';
     if (messagesEl) messagesEl.innerHTML = '';
+    // Generate new session ID
+    localStorage.removeItem('dc_session');
     setTimeout(showWelcome, 200);
   }
 
@@ -479,10 +589,10 @@
       }
     });
 
-    // Usage
+    // Usage (today's count from persistent storage)
     var usageEl = document.getElementById('co-settings-usage');
     if (usageEl) {
-      usageEl.textContent = cp_history.filter(function(m) { return m.role === 'user'; }).length + ' / 50 messages';
+      usageEl.textContent = todayMsgCount + ' / 50 messages today';
     }
 
     // Days
@@ -529,8 +639,16 @@
 
   window.coClearHistory = function () {
     if (!confirm('Clear all conversation history? This cannot be undone.')) return;
+    // Clear IndexedDB completely
+    if (window.CoachStorage) {
+      CoachStorage.clearAllData();
+    }
     cp_history = [];
+    sessionSummary = '';
+    todayMsgCount = 0;
     if (messagesEl) messagesEl.innerHTML = '';
+    // Generate new session ID
+    localStorage.removeItem('dc_session');
     showToast('Conversation cleared');
     setTimeout(function() {
       coCloseSettings();
@@ -624,6 +742,45 @@
     }
   }
 
+  // ── Load persisted conversation from IndexedDB ──
+  async function loadPersistedConversation() {
+    if (!window.CoachStorage) return;
+    var sid = getSessionId();
+
+    try {
+      // Load session metadata (summary)
+      var meta = await CoachStorage.loadSessionMeta(sid);
+      if (meta && meta.summary) {
+        sessionSummary = meta.summary;
+      }
+
+      // Load messages
+      var msgs = await CoachStorage.loadMessages(sid);
+      if (msgs && msgs.length > 0) {
+        // Restore history
+        cp_history = msgs.map(function(m) {
+          return { role: m.role, content: m.content };
+        });
+
+        // Render messages in the UI
+        msgs.forEach(function(m) {
+          addMessage(m.role === 'assistant' ? 'coach' : 'user', m.content);
+        });
+
+        storageReady = true;
+        return true; // Had persisted messages
+      }
+
+      // Load today's message count for rate limiting
+      todayMsgCount = await CoachStorage.getMessageCount(sid);
+
+      storageReady = true;
+    } catch (err) {
+      console.warn('[coach-orb] Failed to load persisted data:', err);
+    }
+    return false; // No persisted messages
+  }
+
   // ── Initialize Coach Panel (after access confirmed) ──
   function initCoachPanel() {
     updateDaysRemaining();
@@ -635,10 +792,19 @@
       intent = localStorage.getItem('pb_dc_intent') || '';
       if (chatEl) { chatEl.style.display = 'flex'; }
       if (onboardEl) { onboardEl.style.display = 'none'; }
-      // Only show welcome if no messages yet
-      if (cp_history.length === 0) {
-        showWelcome();
-      }
+
+      // Try to load persisted conversation from IndexedDB
+      loadPersistedConversation().then(function(hadMessages) {
+        if (!hadMessages && cp_history.length === 0) {
+          showWelcome();
+        }
+        // Load today's rate limit count
+        if (window.CoachStorage) {
+          CoachStorage.getMessageCount(getSessionId()).then(function(count) {
+            todayMsgCount = count;
+          });
+        }
+      });
     } else {
       // Not onboarded, or onboarded but missing intent — show onboarding
       localStorage.removeItem('pb_dc_onboarded');
