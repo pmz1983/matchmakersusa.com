@@ -172,13 +172,41 @@
     if (t) t.remove();
   }
 
-  // ── Welcome Message ──
+  // ── Welcome Message + Suggested Prompts ──
   function showWelcome() {
     var msg = intent || phase
       ? 'Your context is set \u2014 ' + intent + ' Intent, ' + phase + '. What are you working on right now?'
-      : 'Welcome to your Dating Coach. What are you working on right now?';
+      : 'Welcome to your Dating Coach. I know the full MatchMakers methodology \u2014 all 5 phases, 50+ scripts, and the Connection Code. What are you working on right now?';
     addMessage('coach', msg);
     cp_history.push({ role: 'assistant', content: msg });
+    showSuggestedPrompts();
+  }
+
+  function showSuggestedPrompts() {
+    if (!messagesEl) return;
+    var prompts = [
+      'Help me write an opening message',
+      'Review my dating profile',
+      'She stopped responding \u2014 what do I do?',
+      'How do I ask for a video call?'
+    ];
+    var wrap = document.createElement('div');
+    wrap.className = 'cp-suggestions';
+    wrap.id = 'co-suggestions';
+    prompts.forEach(function(p) {
+      var btn = document.createElement('button');
+      btn.className = 'cp-suggest-btn';
+      btn.textContent = p;
+      btn.addEventListener('click', function() {
+        if (inputEl) { inputEl.value = p; }
+        var el = document.getElementById('co-suggestions');
+        if (el) el.remove();
+        sendMessage();
+      });
+      wrap.appendChild(btn);
+    });
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   // ── Send Message ──
@@ -194,9 +222,14 @@
     typing = true;
     if (statusEl) statusEl.textContent = 'Thinking...';
 
+    // Remove suggested prompts if still showing
+    var sugg = document.getElementById('co-suggestions');
+    if (sugg) sugg.remove();
+
     addMessage('user', txt);
     cp_history.push({ role: 'user', content: txt });
     showTyping();
+    if (orbEl) orbEl.classList.add('thinking');
 
     var memberCtx = '';
     if (intent || phase) {
@@ -263,6 +296,7 @@
     typing = false;
     if (sendBtn) sendBtn.disabled = false;
     if (statusEl) statusEl.textContent = 'Ready';
+    if (orbEl) orbEl.classList.remove('thinking');
   }
 
   // ── New Session ──

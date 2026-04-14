@@ -1697,6 +1697,31 @@ body { max-width:100vw; }
 .cp-onboard .cp-ob-pip.active{background:#C9A84C;}
 .cp-onboard .cp-ob-pip.done{background:rgba(201,168,76,.4);}
 
+/* Suggested prompts */
+.cp-suggestions{
+  display:flex;flex-wrap:wrap;gap:6px;padding:4px 0;
+}
+.cp-suggest-btn{
+  padding:7px 14px;border-radius:20px;border:1px solid rgba(201,168,76,.2);
+  background:rgba(201,168,76,.05);color:rgba(201,168,76,.7);
+  font-family:'DM Sans',sans-serif;font-size:.72rem;cursor:pointer;
+  transition:background .2s,border-color .2s,color .2s;
+  white-space:nowrap;
+}
+.cp-suggest-btn:hover{
+  background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.35);
+  color:#C9A84C;
+}
+
+/* Orb thinking state */
+.coach-orb.thinking{
+  animation:coachThinking 1s infinite;
+}
+@keyframes coachThinking{
+  0%,100%{transform:scale(1);box-shadow:0 4px 24px rgba(0,0,0,.4),0 0 20px rgba(201,168,76,.12);}
+  50%{transform:scale(.92);box-shadow:0 2px 16px rgba(0,0,0,.3),0 0 14px rgba(201,168,76,.08);}
+}
+
 /* ── Mobile ≤760px ──────────────────────────────── */
 @media(max-width:760px){
   .coach-orb{width:48px;height:48px;bottom:20px;right:16px;}
