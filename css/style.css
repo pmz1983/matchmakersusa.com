@@ -274,17 +274,31 @@ section{position:relative}
 /* ── COUNTER ANIMATION ── */
 .count-up { display:inline-block; }
 
-/* ── ECOSYSTEM LADDER ── */
+/* ── ECOSYSTEM LADDER (legacy) ── */
 .ladder { display:flex;flex-direction:column;gap:0; }
 .ladder-item { display:flex;align-items:stretch;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(65,91,124,.12); }
 .ladder-item:last-child { border-bottom:none; }
 .ladder-step { display:flex;flex-direction:column;align-items:center;width:32px;flex-shrink:0;padding-top:.2rem; }
-.ladder-num { width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.62rem;font-weight:800;flex-shrink:0; }
+.ladder-num { width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--pd);font-size:.62rem;font-weight:800;flex-shrink:0; }
 .ladder-line { width:1px;flex:1;margin:4px 0;background:rgba(65,91,124,.2); }
 .ladder-content { flex:1; }
-.ladder-title { font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:800;color:var(--white);margin-bottom:.2rem;letter-spacing:-.01em; }
+.ladder-title { font-family:var(--pd);font-size:.95rem;font-weight:800;color:var(--white);margin-bottom:.2rem;letter-spacing:-.01em; }
 .ladder-desc { font-size:.82rem;color:#7A95AF;line-height:1.6; }
 .ladder-price { font-family:var(--cg);font-size:1.4rem;font-weight:700;color:var(--gold);flex-shrink:0;align-self:flex-start;padding-top:.15rem; }
+
+/* ── ENGAGE GRID — 5-card overview strip ── */
+.engage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem}
+.engage-card{background:var(--mid);border:1px solid var(--rim);border-radius:12px;padding:1.25rem 1.1rem;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}
+.engage-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.18);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.engage-card--active{border-color:rgba(45,184,122,.3)}
+.engage-card--gold{border-color:rgba(201,168,76,.15)}
+.engage-card--vip{border-color:rgba(201,168,76,.22);background:linear-gradient(165deg,var(--mid) 60%,rgba(201,168,76,.04))}
+.engage-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--pd);font-size:.6rem;font-weight:800;margin-bottom:.75rem;flex-shrink:0}
+.engage-name{font-family:var(--pd);font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:.3rem;letter-spacing:-.01em;line-height:1.25}
+.engage-desc{font-size:.72rem;color:var(--sl);line-height:1.55;flex:1;margin-bottom:.75rem}
+.engage-price{font-family:var(--cg);font-size:1.2rem;font-weight:700;color:var(--gold);margin-bottom:.6rem}
+.engage-cta{font-family:var(--pd);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.6);text-decoration:none;transition:color .2s}
+.engage-cta:hover{color:var(--gold)}
 
 /* ── MOBILE RESPONSIVE ADDITIONS ── */
 @media(max-width:760px) {
@@ -498,6 +512,11 @@ section{position:relative}
   .ladder-price { width:100%; text-align:right; font-size:1.2rem; }
   .ladder-content { flex:1; min-width:0; }
 }
+
+/* Engage grid responsive */
+@media(max-width:900px){.engage-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.engage-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}}
+@media(max-width:400px){.engage-grid{grid-template-columns:1fr}}
 
 /* Phase cards: ensure text doesn't overflow card boundaries */
 .phase-card { overflow:hidden; word-break:break-word; }

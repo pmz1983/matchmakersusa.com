@@ -31,18 +31,18 @@
       50%{box-shadow:0 0 50px rgba(201,168,76,.3),0 0 100px rgba(201,168,76,.12);}
     }
     .success-title{
-      font-family:'Cormorant Garamond',serif;font-weight:700;
+      font-family:var(--cg);font-weight:700;
       font-size:2.2rem;color:var(--white,#EDF2F7);margin-bottom:10px;
       line-height:1.15;
     }
     .success-subtitle{
-      font-family:'DM Sans',sans-serif;font-size:1rem;
+      font-family:var(--sr);font-size:1rem;
       color:var(--sl,#7A95AF);margin-bottom:32px;line-height:1.6;
     }
     .success-product{
-      font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;
+      font-family:var(--pd);font-weight:700;font-size:.7rem;
       text-transform:uppercase;letter-spacing:.1em;
-      color:#C9A84C;margin-bottom:6px;
+      color:var(--gold);margin-bottom:6px;
     }
     .success-divider{
       width:48px;height:1px;background:rgba(201,168,76,.25);margin:28px auto;
@@ -54,31 +54,31 @@
       border-radius:14px;padding:24px;margin-bottom:28px;
     }
     .success-code-label{
-      font-family:'Outfit',sans-serif;font-weight:600;font-size:.7rem;
+      font-family:var(--pd);font-weight:600;font-size:.7rem;
       text-transform:uppercase;letter-spacing:.08em;
       color:var(--sl,#7A95AF);margin-bottom:10px;
     }
     .success-code{
-      font-family:'Outfit',sans-serif;font-weight:700;font-size:1.6rem;
-      color:#C9A84C;letter-spacing:.12em;margin-bottom:6px;
+      font-family:var(--pd);font-weight:700;font-size:1.6rem;
+      color:var(--gold);letter-spacing:.12em;margin-bottom:6px;
       user-select:all;
     }
     .success-code-copy{
-      font-family:'DM Sans',sans-serif;font-size:.75rem;
+      font-family:var(--sr);font-size:.75rem;
       color:var(--sl,#7A95AF);cursor:pointer;
       text-decoration:underline;text-underline-offset:2px;
     }
-    .success-code-copy:hover{color:#C9A84C;}
+    .success-code-copy:hover{color:var(--gold);}
 
     /* Checking state */
     .success-checking{
       display:flex;align-items:center;justify-content:center;gap:10px;
-      font-family:'DM Sans',sans-serif;font-size:.85rem;
+      font-family:var(--sr);font-size:.85rem;
       color:var(--sl,#7A95AF);padding:16px 0;
     }
     .success-spinner{
       width:18px;height:18px;border:2px solid rgba(201,168,76,.2);
-      border-top-color:#C9A84C;border-radius:50%;
+      border-top-color:var(--gold);border-radius:50%;
       animation:spin .8s linear infinite;
     }
     @keyframes spin{to{transform:rotate(360deg);}}
@@ -94,11 +94,11 @@
       width:28px;height:28px;border-radius:50%;flex-shrink:0;
       background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);
       display:flex;align-items:center;justify-content:center;
-      font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;
-      color:#C9A84C;
+      font-family:var(--pd);font-weight:700;font-size:.7rem;
+      color:var(--gold);
     }
     .success-step-text{
-      font-family:'DM Sans',sans-serif;font-size:.88rem;
+      font-family:var(--sr);font-size:.88rem;
       color:var(--tx,#C2D1E0);line-height:1.55;padding-top:3px;
     }
     .success-step-text strong{color:var(--white,#EDF2F7);}
@@ -106,23 +106,23 @@
     /* CTA button */
     .success-cta{
       display:inline-block;padding:14px 36px;border-radius:10px;
-      background:#C9A84C;color:#0B1727;text-decoration:none;
-      font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;
+      background:var(--gold);color:var(--navy);text-decoration:none;
+      font-family:var(--pd);font-weight:700;font-size:.82rem;
       letter-spacing:.06em;text-transform:uppercase;
       transition:background .2s,transform .15s;
     }
     .success-cta:hover{background:#D4B65E;transform:translateY(-1px);}
     .success-cta-secondary{
       display:block;margin-top:14px;
-      font-family:'DM Sans',sans-serif;font-size:.78rem;
+      font-family:var(--sr);font-size:.78rem;
       color:var(--sl,#7A95AF);text-decoration:underline;
       text-underline-offset:2px;
     }
-    .success-cta-secondary:hover{color:#C9A84C;}
+    .success-cta-secondary:hover{color:var(--gold);}
 
     /* Email note */
     .success-email-note{
-      font-family:'DM Sans',sans-serif;font-size:.75rem;
+      font-family:var(--sr);font-size:.75rem;
       color:var(--sl,#7A95AF);margin-top:28px;line-height:1.6;
       opacity:.7;
     }
@@ -270,7 +270,7 @@
         </div>
         <div class="success-step">
           <div class="success-step-num">3</div>
-          <div class="success-step-text"><strong>Need help?</strong> Contact us at <a href="mailto:support@matchmakersusa.com" style="color:#C9A84C;">support@matchmakersusa.com</a> with your purchase email.</div>
+          <div class="success-step-text"><strong>Need help?</strong> Contact us at <a href="mailto:support@matchmakersusa.com" style="color:var(--gold);">support@matchmakersusa.com</a> with your purchase email.</div>
         </div>
       </div>
 
@@ -295,7 +295,7 @@
         </div>
         <div class="success-step">
           <div class="success-step-num">3</div>
-          <div class="success-step-text"><strong>Contact us</strong> at <a href="mailto:support@matchmakersusa.com" style="color:#C9A84C;">support@matchmakersusa.com</a> if the issue persists.</div>
+          <div class="success-step-text"><strong>Contact us</strong> at <a href="mailto:support@matchmakersusa.com" style="color:var(--gold);">support@matchmakersusa.com</a> if the issue persists.</div>
         </div>
       </div>
       <a href="/" class="success-cta">Return to MatchMakers</a>

@@ -49,7 +49,7 @@
   <h1 class="vip-hero-wm">The pinnacle of<br>intentional <em>matchmaking.</em></h1>
   <div class="vip-hero-rule"></div>
   <p class="vip-hero-sub">A dedicated MatchMaker working directly with you — on strategy, positioning, vetting, and coaching through every phase. Backed by the only methodology built on seven years of real outcomes.</p>
-  <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Apply for VIP MatchMaking →</a>
+  <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold">Apply for VIP MatchMaking →</a>
 </section>
 <section class="vip-section" id="for-whom">
   <div class="vip-w">
@@ -77,8 +77,8 @@
     </div>
     <div style="background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:1.25rem 1.5rem;margin-top:.5rem;">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;margin-bottom:.85rem;padding:.75rem 1rem;background:rgba(65,91,124,.1);border:1px solid rgba(65,91,124,.22);border-radius:8px;">
-        <span style="font-family:'DM Sans',system-ui,sans-serif;font-size:.8rem;color:rgba(200,214,229,.55);">If you haven't taken the Intent Assessment, start there — it's the first qualification signal.</span>
-        <a href="/assessment/" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;font-size:.68rem;padding:7px 14px;">Take the Assessment →</a>
+        <span style="font-family:var(--sr);font-size:.8rem;color:rgba(200,214,229,.55);">If you haven't taken the Intent Assessment, start there — it's the first qualification signal.</span>
+        <a href="/assessment/" class="btn-gold btn-gold-sm">Take the Assessment →</a>
       </div>
       <p class="vip-p" style="margin:0;font-size:.85rem;color:rgba(200,214,229,.6);">VIP MatchMaking is designed for clients who are serious about finding their match. Every VIP engagement includes full access to the Playbook and Dating Coach as part of the service. <a href="/coach/" style="color:rgba(201,168,76,.5);text-decoration:none;">Learn about the Dating Coach →</a></p>
     </div>
@@ -227,7 +227,7 @@
       <div class="inv-badge">◆ By Consultation · Invite Only</div>
       <div class="inv-price">By Consultation</div>
       <div class="inv-price-sub">Price determined by scope of engagement<br>Initial consultation at no cost · No obligation to proceed</div>
-      <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Apply for VIP MatchMaking →</a>
+      <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold">Apply for VIP MatchMaking →</a>
       <div class="inv-compare">For context: traditional high-end matchmakers typically charge $5,000–$50,000+ per month for access to a limited private rolodex and individual judgment — without the methodology, the platform network, or the included coaching resources. The MatchMakers VIP fee reflects the full scope of a unified engagement.</div>
     </div>
   </div>
@@ -302,7 +302,7 @@
         <option>I have the Playbook but not the Dating Coach</option>
         <option>Not yet — I'd like guidance on where to start</option>
       </select>
-      <button onclick="submitApplication()" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;width:100%;display:flex;">Submit Application →</button>
+      <button onclick="submitApplication()" class="btn-gold" style="width:100%;display:flex;">Submit Application →</button>
       <p class="app-form-note">Your application is confidential. We do not share your information with any third parties. Your advisor will reach out within 2 business days.</p>
     </div>
     <div class="app-success" id="appSuccess">
@@ -324,14 +324,14 @@
         <div class="redirect-name">The MatchMakers Playbook</div>
         <div class="redirect-price">$500</div>
         <div class="redirect-desc">50+ guided scripts across all 5 phases. 9 Intent frameworks. The complete methodology. Your VIP advisor will use this as their operational reference — read it first.</div>
-        <button data-product="playbook" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Get The Playbook — $500 →</button>
+        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get The Playbook — $500 →</button>
       </div>
       <div class="redirect-card">
         <div class="redirect-badge">$500 · Standalone · 30-Day Access</div>
         <div class="redirect-name">MatchMakers Dating Coach</div>
         <div class="redirect-price">$500</div>
         <div class="redirect-desc">30-day AI coaching trained on the full methodology. Required before VIP engagement. Apply the framework before your consultation — and arrive knowing exactly what you want.</div>
-        <button data-product="dating_coach" onclick="openPreCheckout(this)" style="background:transparent;border:1.5px solid rgba(201,168,76,.5);color:#C9A84C;display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;text-decoration:none;gap:7px;">Get Dating Coach — $500 →</button>
+        <button data-product="dating_coach" onclick="openPreCheckout(this)" class="btn-gold">Get Dating Coach — $500 →</button>
       </div>
     </div>
   </div>
@@ -343,37 +343,37 @@
     <button onclick="closePreCheckout()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(200,214,229,.35);font-size:1.5rem;cursor:pointer;line-height:1;" aria-label="Close">&times;</button>
     <!-- Playbook Required Gate (shown when Dating Coach attempted without Playbook) -->
     <div id="pcm-gate" style="display:none;text-align:center;padding:1rem 0;">
-      <div style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:'Outfit',sans-serif;">The Playbook Comes First</div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:var(--pd);">The Playbook Comes First</div>
+      <div style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
       <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
-      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;">Get The Playbook &mdash; $500 &rarr;</button>
+      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $500 &rarr;</button>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
         <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:'Outfit',sans-serif;outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
-          <button onclick="unlockFromGate()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:#C9A84C;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Unlock</button>
+          <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
+          <button onclick="unlockFromGate()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:var(--gold);font-family:var(--pd);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Unlock</button>
         </div>
-        <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:'Outfit',sans-serif;"></div>
+        <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
       </div>
     </div>
     <!-- Normal Checkout (shown for Playbook, or Dating Coach when Playbook owned) -->
     <div id="pcm-checkout">
-    <div id="pcm-eyebrow" style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#C9A84C;margin-bottom:6px;font-family:'Outfit',sans-serif;"></div>
-    <div id="pcm-product" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#fff;margin-bottom:2px;line-height:1.2;"></div>
-    <div id="pcm-price" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.4rem;font-weight:600;color:#C9A84C;margin-bottom:6px;line-height:1;"></div>
+    <div id="pcm-eyebrow" style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-family:var(--pd);"></div>
+    <div id="pcm-product" style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:2px;line-height:1.2;"></div>
+    <div id="pcm-price" style="font-family:var(--cg);font-size:2.4rem;font-weight:600;color:var(--gold);margin-bottom:6px;line-height:1;"></div>
     <div id="pcm-includes" style="font-size:.78rem;color:rgba(200,214,229,.55);margin-bottom:20px;line-height:1.6;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);"></div>
-    <label for="pcm-email" style="font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8BA0BC;font-family:'Outfit',sans-serif;display:block;margin-bottom:6px;">Your Email</label>
-    <input type="email" id="pcm-email" placeholder="your@email.com" style="width:100%;padding:12px 16px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.9rem;font-family:'Outfit',sans-serif;outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')proceedToCheckout()">
-    <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:'Outfit',sans-serif;"></div>
-    <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:#C9A84C;color:#0B1727;transition:all .2s;">Continue to Payment &rarr;</button>
+    <label for="pcm-email" style="font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8BA0BC;font-family:var(--pd);display:block;margin-bottom:6px;">Your Email</label>
+    <input type="email" id="pcm-email" placeholder="your@email.com" style="width:100%;padding:12px 16px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.9rem;font-family:var(--pd);outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')proceedToCheckout()">
+    <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:var(--pd);"></div>
+    <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);transition:all .2s;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
     <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
-      <p id="pcm-promo-toggle" style="font-size:.75rem;color:rgba(201,168,76,.7);font-family:'Outfit',sans-serif;margin:0 0 8px;">Have an access or promo code?</p>
+      <p id="pcm-promo-toggle" style="font-size:.75rem;color:rgba(201,168,76,.7);font-family:var(--pd);margin:0 0 8px;">Have an access or promo code?</p>
       <div id="pcm-promo-area" style="display:flex;gap:8px;margin-top:0;flex-wrap:wrap;">
-        <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:'Outfit',sans-serif;outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
-        <button onclick="applyPromoCode()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:#C9A84C;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Apply</button>
+        <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
+        <button onclick="applyPromoCode()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:var(--gold);font-family:var(--pd);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Apply</button>
       </div>
-      <div id="pcm-promo-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:'Outfit',sans-serif;"></div>
+      <div id="pcm-promo-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
     </div>
     </div>
   </div>
@@ -389,7 +389,7 @@
       <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The first dating app built around declared Intent. 66,000+ members. Zero paid advertising. Seven years of real outcomes.</p>
       <div style="margin-top:1rem;display:flex;align-items:center;gap:.75rem;">
         <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;opacity:.88;transition:opacity .2s;">
-          <span style="font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:rgba(200,214,229,.5);letter-spacing:.06em;text-transform:uppercase;">Download on App Store</span>
+          <span style="font-family:var(--pd);font-size:.7rem;font-weight:700;color:rgba(200,214,229,.5);letter-spacing:.06em;text-transform:uppercase;">Download on App Store</span>
         </a>
       </div>
     </div>

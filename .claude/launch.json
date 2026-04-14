@@ -4,7 +4,7 @@
     {
       "name": "matchmakers-site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8080"],
+      "runtimeArgs": ["-m", "http.server", "8080", "-d", "/Users/paulzigerelli/Desktop/matchmakersusa.com"],
       "port": 8080
     }
   ]
