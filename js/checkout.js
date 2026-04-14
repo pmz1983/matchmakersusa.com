@@ -6,6 +6,8 @@
 
 var STRIPE_PK = 'pk_live_51TLpRD1ihNKVY3uGHhlj9mvYq5zfXgBenCw6HxeJS0cU3Z3ON0epQW5RAc5vTQXkyvwouAVrRY29k15frJW8J9TR00rVq4Kq76';
 
+var SUPABASE_FN_URL = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1';
+
 /* ── Promo / Access Codes ──
    type: 'free'     → unlocks content immediately, no payment
    type: 'discount' → applies % off, user continues to Stripe
@@ -35,7 +37,7 @@ var MM_PRODUCTS = {
     product: 'The MatchMakers Playbook',
     price: '$500',
     includes: 'Lifetime access \u00b7 Instant delivery \u00b7 50+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
-    priceId: 'price_1TLpYq0HZcOoiu2Ga9xib5Re',
+    priceId: 'price_1TLyin1ihNKVY3uGtdOvWGP2',
     paymentLink: 'https://buy.stripe.com/4gM00baxrdXLfWz60Q2Nq02',
     btnBg: '#C9A84C',
     btnColor: '#0B1727'
@@ -45,7 +47,7 @@ var MM_PRODUCTS = {
     product: 'MatchMakers Dating Coach',
     price: '$500',
     includes: '30-day AI coaching access \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
-    priceId: 'price_1TLpb80HZcOoiu2G0HWMX7MD',
+    priceId: 'price_1TLykh1ihNKVY3uG4a08H5UT',
     paymentLink: 'https://buy.stripe.com/3cI00b4939HveSvdti2Nq01',
     requiresPlaybook: true,
     btnBg: '#0B1727',
@@ -246,10 +248,51 @@ function proceedToCheckout() {
   err.style.display = 'none';
 
   var btn = document.getElementById('pcm-proceed');
-  btn.textContent = 'Redirecting to payment\u2026';
+  btn.textContent = 'Checking\u2026';
   btn.disabled = true;
 
   var p = MM_PRODUCTS[_pcmProduct];
+
+  // For Dating Coach: verify Playbook ownership via Supabase before proceeding
+  if (p.requiresPlaybook && !hasPlaybookAccess()) {
+    fetch(SUPABASE_FN_URL + '/check-eligibility', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, product: 'dating_coach' })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.eligible) {
+        // Playbook purchase confirmed in Supabase — proceed to Dating Coach checkout
+        captureAndRedirect(email, p, btn);
+      } else {
+        // No Playbook purchase found for this email
+        btn.textContent = 'Continue to Payment \u2192';
+        btn.disabled = false;
+        err.innerHTML = 'No Playbook purchase found for <strong>' + email + '</strong>. The Dating Coach requires the Playbook as your foundation. <a href="javascript:void(0)" onclick="_pcmProduct=\'playbook\';openPreCheckout(document.querySelector(\'[data-product=playbook]\')||document.createElement(\'div\'));_pcmProduct=\'playbook\';" style="color:#C9A84C;text-decoration:underline;">Get the Playbook first</a>, or try a different email.';
+        err.style.display = 'block';
+      }
+    })
+    .catch(function() {
+      // On network error, fall through to payment (Stripe is the final gate)
+      captureAndRedirect(email, p, btn);
+    });
+    return;
+  }
+
+  captureAndRedirect(email, p, btn);
+}
+
+function captureAndRedirect(email, p, btn) {
+  btn.textContent = 'Redirecting to payment\u2026';
+
+  // Capture email intent in Supabase (fire-and-forget, don't block checkout)
+  fetch(SUPABASE_FN_URL + '/check-eligibility', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, action: 'capture-intent', product: _pcmProduct })
+  }).catch(function() { /* non-blocking */ });
+
   if (p.paymentLink) {
     var url = p.paymentLink + '?prefilled_email=' + encodeURIComponent(email);
     if (_appliedPromo && _appliedPromo.stripeCoupon) {
