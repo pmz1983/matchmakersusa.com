@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 const STRIPE_WEBHOOK_SECRET = Deno.env.get("STRIPE_WEBHOOK_SECRET")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -72,6 +73,146 @@ const PRICE_TO_PRODUCT: Record<string, string> = {
   price_1TLyin1ihNKVY3uGtdOvWGP2: "playbook",
   price_1TLykh1ihNKVY3uG4a08H5UT: "dating_coach",
 };
+
+// ── Email Templates ────────────────────────────────────────────────────
+function buildEmailHTML(product: string, accessCode: string): string {
+  const isPlaybook = product === "playbook";
+  const productName = isPlaybook ? "The MatchMakers Playbook" : "MatchMakers Dating Coach";
+  const accessDuration = isPlaybook ? "Lifetime access" : "30-day access";
+  const nextStepUrl = isPlaybook
+    ? "https://matchmakersusa.com/playbook/content/"
+    : "https://matchmakersusa.com/";
+  const nextStepLabel = isPlaybook ? "Open Your Playbook" : "Start Your First Session";
+  const nextStepDesc = isPlaybook
+    ? "All 9 chapters, 50+ scripts, and the complete 5-phase methodology are ready for you."
+    : "Click the gold orb on any page, enter your access code, and start coaching immediately.";
+
+  return `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#05090F;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#05090F;padding:40px 20px;">
+<tr><td align="center">
+<table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
+
+<!-- Logo -->
+<tr><td align="center" style="padding-bottom:32px;">
+  <span style="font-size:1.3rem;font-weight:700;color:#EDF2F7;letter-spacing:.02em;">MatchMakers</span><sup style="color:#C9A84C;font-size:.6rem;">™</sup>
+</td></tr>
+
+<!-- Card -->
+<tr><td style="background:#0B1727;border:1px solid rgba(65,91,124,.2);border-radius:16px;padding:40px 36px;">
+
+  <!-- Product badge -->
+  <div style="font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C9A84C;margin-bottom:8px;text-align:center;">${productName}</div>
+
+  <!-- Headline -->
+  <h1 style="font-size:1.8rem;font-weight:700;color:#EDF2F7;margin:0 0 8px;text-align:center;line-height:1.2;">
+    ${isPlaybook ? "You're In." : "Your Coach Is Ready."}
+  </h1>
+
+  <p style="font-size:.9rem;color:#7A95AF;line-height:1.6;text-align:center;margin:0 0 28px;">
+    Your purchase is confirmed. ${accessDuration} — starting now.
+  </p>
+
+  <!-- Access Code Box -->
+  <div style="background:rgba(5,9,15,.6);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:20px;text-align:center;margin-bottom:28px;">
+    <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7A95AF;margin-bottom:8px;">Your Access Code</div>
+    <div style="font-size:1.5rem;font-weight:700;color:#C9A84C;letter-spacing:.12em;font-family:'Courier New',monospace;">${accessCode}</div>
+    <div style="font-size:.72rem;color:#7A95AF;margin-top:6px;">Save this code — you'll need it to access your content.</div>
+  </div>
+
+  <!-- Divider -->
+  <div style="width:48px;height:1px;background:rgba(201,168,76,.25);margin:0 auto 24px;"></div>
+
+  <!-- Next Steps -->
+  <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A84C;margin-bottom:14px;">Next Steps</div>
+
+  <div style="margin-bottom:12px;display:flex;gap:12px;">
+    <div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);text-align:center;line-height:24px;font-size:.7rem;font-weight:700;color:#C9A84C;flex-shrink:0;">1</div>
+    <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">${nextStepDesc}</div>
+  </div>
+
+  ${isPlaybook ? `<div style="margin-bottom:12px;display:flex;gap:12px;">
+    <div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);text-align:center;line-height:24px;font-size:.7rem;font-weight:700;color:#C9A84C;flex-shrink:0;">2</div>
+    <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">Your Playbook purchase unlocks the Dating Coach. When you're ready, add AI coaching for real-time methodology guidance.</div>
+  </div>` : `<div style="margin-bottom:12px;display:flex;gap:12px;">
+    <div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);text-align:center;line-height:24px;font-size:.7rem;font-weight:700;color:#C9A84C;flex-shrink:0;">2</div>
+    <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">Bring real situations — messages, profiles, conversations. Your coach applies the full MatchMakers methodology to your specific context.</div>
+  </div>`}
+
+  <!-- CTA Button -->
+  <div style="text-align:center;margin-top:28px;">
+    <a href="${nextStepUrl}" style="display:inline-block;padding:14px 36px;background:#C9A84C;color:#0B1727;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:10px;">${nextStepLabel}</a>
+  </div>
+
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="padding:28px 0;text-align:center;">
+  <p style="font-size:.72rem;color:rgba(122,149,175,.5);line-height:1.6;margin:0;">
+    MatchMakers LLC · matchmakersusa.com<br>
+    Questions? Reply to this email or contact support@matchmakersusa.com
+  </p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+function buildEmailText(product: string, accessCode: string): string {
+  const isPlaybook = product === "playbook";
+  const productName = isPlaybook ? "The MatchMakers Playbook" : "MatchMakers Dating Coach";
+  const nextStepUrl = isPlaybook
+    ? "https://matchmakersusa.com/playbook/content/"
+    : "https://matchmakersusa.com/";
+
+  return `${productName} — Purchase Confirmed
+
+Your access code: ${accessCode}
+
+Save this code — you'll need it to access your content.
+
+Next step: ${nextStepUrl}
+
+Questions? Contact support@matchmakersusa.com
+
+— MatchMakers LLC`;
+}
+
+async function sendConfirmationEmail(
+  to: string,
+  product: string,
+  accessCode: string
+): Promise<void> {
+  const isPlaybook = product === "playbook";
+  const subject = isPlaybook
+    ? "Your MatchMakers Playbook Is Ready"
+    : "Your Dating Coach Is Ready";
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "MatchMakers <noreply@matchmakersusa.com>",
+      to: [to],
+      subject,
+      html: buildEmailHTML(product, accessCode),
+      text: buildEmailText(product, accessCode),
+    }),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Resend API error ${res.status}: ${errText}`);
+  }
+}
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
@@ -180,8 +321,24 @@ Deno.serve(async (req: Request) => {
 
     console.log(`Purchase recorded: ${email} → ${product} (${accessCode})`);
 
-    // TODO: Trigger confirmation email with access code + PDF download link
-    // This will be added when email delivery is set up
+    // ── Send confirmation email ──────────────────────────────────────
+    if (RESEND_API_KEY) {
+      try {
+        await sendConfirmationEmail(email, product, accessCode);
+        console.log(`Confirmation email sent to ${email}`);
+
+        // Mark email as sent
+        await supabase
+          .from("purchases")
+          .update({ email_sent: true })
+          .eq("stripe_session_id", sessionId);
+      } catch (emailErr) {
+        // Don't fail the webhook if email fails — purchase is already recorded
+        console.error("Email send error:", emailErr);
+      }
+    } else {
+      console.warn("RESEND_API_KEY not configured — skipping confirmation email");
+    }
 
     return new Response(JSON.stringify({ received: true, access_code: accessCode }), { status: 200 });
   }
