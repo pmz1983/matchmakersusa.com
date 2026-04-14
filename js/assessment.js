@@ -46,20 +46,23 @@ window.iaSelect = function(qi, oi) {
 window.iaContinue = function(qi) {
   const oi = iaAnswers[qi];
   if (oi === undefined) return;
-  const q = IA_QUESTIONS[qi];
-  const opt = q.options[oi];
 
-  // Score intent
-  if (q.cat === 'intent') {
-    const intMap = opt[1];
-    Object.entries(intMap).forEach(([intent, pts]) => {
-      iaScores[intent] = (iaScores[intent] || 0) + pts;
-    });
-  }
-  // Score clarity
-  if (q.cat === 'readiness' || q.cat === 'signal') {
-    iaClarity += (opt[2] || 0);
-  }
+  // Recalculate all scores from scratch to avoid double-counting
+  // when a user navigates back and then forward again
+  iaScores = {};
+  iaClarity = 0;
+  Object.entries(iaAnswers).forEach(([qIdx, oIdx]) => {
+    const q = IA_QUESTIONS[qIdx];
+    const opt = q.options[oIdx];
+    if (q.cat === 'intent') {
+      Object.entries(opt[1]).forEach(([intent, pts]) => {
+        iaScores[intent] = (iaScores[intent] || 0) + pts;
+      });
+    }
+    if (q.cat === 'readiness' || q.cat === 'signal') {
+      iaClarity += (opt[2] || 0);
+    }
+  });
 
   if (qi < TOTAL - 1) {
     showQ(qi + 1);

@@ -14,6 +14,24 @@
     });
   }
 
+  // Mobile hamburger menu
+  var hamburger = document.querySelector('.hamburger');
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', function () {
+      var expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('menu-open');
+    });
+    // Close menu when a nav link is clicked
+    var navLinks = document.querySelectorAll('.nav-links .nl, .nav-links .nb');
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        hamburger.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('menu-open');
+      });
+    });
+  }
+
   // Scroll-reveal (IntersectionObserver)
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('.reveal').forEach(function (el) {
