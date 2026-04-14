@@ -269,7 +269,8 @@ function proceedToCheckout() {
         // No Playbook purchase found for this email
         btn.textContent = 'Continue to Payment \u2192';
         btn.disabled = false;
-        err.innerHTML = 'No Playbook purchase found for <strong>' + email + '</strong>. The Dating Coach requires the Playbook as your foundation. <a href="javascript:void(0)" onclick="_pcmProduct=\'playbook\';openPreCheckout(document.querySelector(\'[data-product=playbook]\')||document.createElement(\'div\'));_pcmProduct=\'playbook\';" style="color:#C9A84C;text-decoration:underline;">Get the Playbook first</a>, or try a different email.';
+        var safeEmail = email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        err.innerHTML = 'No Playbook purchase found for <strong>' + safeEmail + '</strong>. The Dating Coach requires the Playbook as your foundation. <a href="javascript:void(0)" onclick="_pcmProduct=\'playbook\';openPreCheckout(document.querySelector(\'[data-product=playbook]\')||document.createElement(\'div\'));_pcmProduct=\'playbook\';" style="color:#C9A84C;text-decoration:underline;">Get the Playbook first</a>, or try a different email.';
         err.style.display = 'block';
       }
     })

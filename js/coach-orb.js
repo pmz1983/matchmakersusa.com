@@ -760,6 +760,9 @@
         sessionSummary = meta.summary;
       }
 
+      // Load today's message count for rate limiting (always, regardless of messages)
+      todayMsgCount = await CoachStorage.getMessageCount(sid);
+
       // Load messages
       var msgs = await CoachStorage.loadMessages(sid);
       if (msgs && msgs.length > 0) {
@@ -776,9 +779,6 @@
         storageReady = true;
         return true; // Had persisted messages
       }
-
-      // Load today's message count for rate limiting
-      todayMsgCount = await CoachStorage.getMessageCount(sid);
 
       storageReady = true;
     } catch (err) {
@@ -804,12 +804,6 @@
         if (!hadMessages && cp_history.length === 0) {
           showWelcome();
         }
-        // Load today's rate limit count
-        if (window.CoachStorage) {
-          CoachStorage.getMessageCount(getSessionId()).then(function(count) {
-            todayMsgCount = count;
-          });
-        }
       });
     } else {
       // Not onboarded, or onboarded but missing intent — show onboarding
@@ -828,7 +822,7 @@
       } else if (isPanelOpen()) {
         closePanel();
         e.preventDefault();
-      } else if (lockedPop && lockedPop.classList.contains('visible')) {
+      } else if (lockedPop && lockedPop.classList.contains('show')) {
         hideLockedPop();
         e.preventDefault();
       }

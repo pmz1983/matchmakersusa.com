@@ -29,7 +29,7 @@ if (window.IntersectionObserver && chapterEls.length) {
 }
 
 // ── Smooth scroll ──
-function scrollTo(id) {
+function pbScrollTo(id) {
   var el = document.getElementById(id);
   if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
   return false;
@@ -38,7 +38,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (e) {
     e.preventDefault();
     var id = a.getAttribute('href').slice(1);
-    scrollTo(id);
+    pbScrollTo(id);
   });
 });
 
