@@ -304,6 +304,7 @@
   </div>
 </section>
 
+<script src="/js/analytics.js"></script>
 <script src="/js/main.js"></script>
 <script>
 (function() {
@@ -393,6 +394,7 @@
     .then(function(data) {
       if (data.has_access && data.access_code) {
         // Purchase confirmed!
+        if (window.mmTrack) { mmTrack('purchase_confirmed', { product: product, email: email }); mmFlush(); }
         if (product === 'dating_coach') {
           showCoach(data.access_code, email);
         } else {

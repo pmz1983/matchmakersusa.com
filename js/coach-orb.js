@@ -181,6 +181,7 @@
   // ── Orb Click Handler ──
   function onOrbClick(e) {
     e.stopPropagation();
+    if (window.mmTrack) mmTrack('coach_orb_click', { has_access: hasAccess() });
     if (hasAccess()) {
       if (isPanelOpen()) {
         closePanel();
@@ -401,6 +402,7 @@
       return;
     }
 
+    if (window.mmTrack) mmTrack('coach_message_sent', { intent: intent, msg_count: todayMsgCount });
     inputEl.value = '';
     inputEl.style.height = 'auto';
     if (sendBtn) sendBtn.disabled = true;
@@ -565,6 +567,7 @@
 
   // ── Onboarding: Begin ──
   window.coStartCoach = function () {
+    if (window.mmTrack) mmTrack('coach_session_start', { intent: intent || 'custom' });
     var freetext = document.getElementById('co-freetext');
     var freetextVal = freetext ? freetext.value.trim() : '';
 

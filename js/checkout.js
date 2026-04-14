@@ -70,11 +70,14 @@ function openPreCheckout(el) {
 
   // Playbook-first gating: Dating Coach requires Playbook
   if (p.requiresPlaybook && !hasPlaybookAccess()) {
+    if (window.mmTrack) mmTrack('playbook_gate_shown', { product: product });
     showPlaybookRequired();
     return;
   }
 
   _pcmProduct = product;
+
+  if (window.mmTrack) mmTrack('checkout_modal_open', { product: product, price: p.price });
 
   document.getElementById('pcm-eyebrow').textContent = p.eyebrow;
   document.getElementById('pcm-product').textContent = p.product;
@@ -190,6 +193,7 @@ function applyPromoCode() {
   input.style.borderColor = 'rgba(201,168,76,.5)';
 
   if (promo.type === 'free') {
+    if (window.mmTrack) mmTrack('promo_code_applied', { code: code, type: 'free', product: _pcmProduct });
     localStorage.setItem('pb_access', '1');
 
     if (_pcmProduct === 'dating_coach') {
@@ -217,6 +221,7 @@ function applyPromoCode() {
   }
 
   if (promo.type === 'discount') {
+    if (window.mmTrack) mmTrack('promo_code_applied', { code: code, type: 'discount', percent: promo.percent, product: _pcmProduct });
     _appliedPromo = promo;
     msg.textContent = promo.percent + '% discount applied! Continue to payment below.';
     msg.style.color = '#4CAF50';
@@ -285,6 +290,7 @@ function proceedToCheckout() {
 }
 
 function captureAndRedirect(email, p, btn) {
+  if (window.mmTrack) mmTrack('checkout_redirect', { product: _pcmProduct, price: p.price });
   btn.textContent = 'Redirecting to payment\u2026';
 
   // Capture email intent in Supabase (fire-and-forget, don't block checkout)

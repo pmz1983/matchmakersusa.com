@@ -14,6 +14,7 @@ const TOTAL = IA_QUESTIONS.length;
 
 // ── Start ──────────────────────────────────────────────────────────
 window.iaStart = function() {
+  if (window.mmTrack) mmTrack('assessment_start');
   document.getElementById('ia-land').style.display = 'none';
   showQ(0);
 };
@@ -92,6 +93,15 @@ function renderResult() {
   let topIntent = 'notsure';
   let topScore  = 0;
   Object.entries(iaScores).forEach(([k,v]) => { if(v > topScore) { topScore = v; topIntent = k; } });
+
+  // Track assessment completion
+  var clarityKey = iaClarity >= 14 ? 'high' : iaClarity >= 8 ? 'medium' : 'low';
+  if (window.mmTrack) mmTrack('assessment_complete', {
+    intent: topIntent,
+    clarity_score: iaClarity,
+    clarity_level: clarityKey,
+    intent_score: topScore
+  });
 
   // Clarity level
   const maxClarity = 27;

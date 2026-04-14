@@ -128,6 +128,7 @@ function checkAccessByEmail() {
 }
 
 function unlockPlaybook() {
+  if (window.mmTrack) mmTrack('playbook_unlocked');
   document.getElementById('pb-gate').style.display = 'none';
   document.body.style.overflow = '';
   localStorage.setItem('pb_access', '1');
