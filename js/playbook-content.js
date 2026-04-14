@@ -190,8 +190,10 @@ window.pbDcSend = async function(){
   pbAddMsg('user',txt); pb_history.push({role:'user',content:txt}); pbShowTyping();
   const ctx=SYSTEM+(pb_intent||pb_phase?`\n\n---\nMEMBER CONTEXT:\nIntent: ${pb_intent||'Not specified'}\nPhase: ${pb_phase||'Not specified'}\nFocus: ${pb_focus||'Not specified'}\n---`:'');
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:ctx,messages:pb_history})});
+    const sessionId=localStorage.getItem('dc_session')||(function(){const s='dc_'+Date.now()+'_'+Math.random().toString(36).slice(2);localStorage.setItem('dc_session',s);return s;})();
+    const r=await fetch('https://peamviowxkyaglyjpagc.supabase.co/functions/v1/coach-proxy',{method:'POST',headers:{'Content-Type':'application/json','x-session-id':sessionId},body:JSON.stringify({system:ctx,messages:pb_history})});
     const data=await r.json();
+    if(data.error){pbHideTyping();pbAddMsg('coach',data.error);pb_typing=false;document.getElementById('pb-dc-send-btn').disabled=false;document.getElementById('pb-dc-status').textContent='Ready';return;}
     const reply=data?.content?.[0]?.text||"I didn't catch that — try rephrasing.";
     pbHideTyping(); pbAddMsg('coach',reply); pb_history.push({role:'assistant',content:reply});
     if(pb_history.length>40) pb_history=pb_history.slice(-40);
