@@ -146,17 +146,18 @@ function unlockFromGate() {
     return;
   }
 
-  // Unlock playbook access and proceed to Dating Coach checkout
+  // Unlock both Playbook and Dating Coach access
   localStorage.setItem('pb_access', '1');
-  msg.textContent = 'Playbook unlocked! Loading Dating Coach checkout…';
+  localStorage.setItem('pb_dc_access', '1');
+  if (!localStorage.getItem('pb_dc_first'))
+    localStorage.setItem('pb_dc_first', Date.now().toString());
+  msg.textContent = 'Both unlocked! Redirecting to your Dating Coach…';
   msg.style.color = '#4CAF50';
   msg.style.display = 'block';
   input.style.borderColor = 'rgba(201,168,76,.5)';
 
   setTimeout(function () {
-    closePreCheckout();
-    var coachBtn = document.querySelector('[data-product="dating_coach"]');
-    if (coachBtn) openPreCheckout(coachBtn);
+    window.location.href = '/playbook/content/#dating-coach';
   }, 800);
 }
 
@@ -189,16 +190,16 @@ function applyPromoCode() {
   if (promo.type === 'free') {
     localStorage.setItem('pb_access', '1');
 
-    // If buying Dating Coach, unlocking Playbook means proceed to coach checkout
     if (_pcmProduct === 'dating_coach') {
-      msg.textContent = 'Playbook unlocked! Proceeding to Dating Coach checkout…';
+      // Unlock both Playbook and Dating Coach access
+      localStorage.setItem('pb_dc_access', '1');
+      if (!localStorage.getItem('pb_dc_first'))
+        localStorage.setItem('pb_dc_first', Date.now().toString());
+      msg.textContent = 'Code accepted! Redirecting to your Dating Coach…';
       msg.style.color = '#4CAF50';
       msg.style.display = 'block';
       setTimeout(function () {
-        closePreCheckout();
-        // Re-open the modal for Dating Coach — now hasPlaybookAccess() returns true
-        var coachBtn = document.querySelector('[data-product="dating_coach"]');
-        if (coachBtn) openPreCheckout(coachBtn);
+        window.location.href = '/playbook/content/#dating-coach';
       }, 800);
       return;
     }

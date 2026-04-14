@@ -93,7 +93,11 @@ window.pbDcCheckAccess = function(){
   const code = document.getElementById('pb-dc-code').value.trim().toUpperCase();
   const err  = document.getElementById('pb-dc-err');
   if(!code){ err.textContent='Enter your access code.'; return; }
-  if(code===DC_CODE||code.startsWith('MMCOACH')){
+  // Accept MMCOACH codes or any valid free promo code from checkout system
+  var isValidCoach = code===DC_CODE||code.startsWith('MMCOACH');
+  var promoCheck = (typeof lookupPromo==='function') ? lookupPromo(code) : null;
+  var isValidPromo = promoCheck && promoCheck.type==='free';
+  if(isValidCoach||isValidPromo){
     document.getElementById('pb-dc-gate').style.display='none';
     if(!localStorage.getItem('pb_dc_first'))
       localStorage.setItem('pb_dc_first',Date.now().toString());
