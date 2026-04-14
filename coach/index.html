@@ -307,47 +307,58 @@
       <div class="cp-status" id="co-status">Ready</div>
     </div>
     <span class="cp-days" id="co-days"></span>
+    <button class="cp-gear" onclick="coOpenSettings()" aria-label="Settings" title="Settings">&#9881;</button>
     <button class="cp-new" id="co-new-session" title="New session">New</button>
-    <button class="cp-close" aria-label="Close coach">✕</button>
+    <button class="cp-close" aria-label="Close coach">&#10005;</button>
+  </div>
+
+  <div id="co-settings" class="cp-settings" style="display:none;">
+    <div class="cp-settings-header">
+      <button class="cp-settings-back" onclick="coCloseSettings()">&larr; Back</button>
+      <span>Settings</span>
+    </div>
+    <div class="cp-settings-body">
+      <div class="cp-settings-section">
+        <div class="cp-settings-label">Your Intent</div>
+        <div class="cp-settings-intents" id="co-settings-intents">
+          <button class="cp-settings-opt" data-intent="Long-Term" onclick="coChangeIntent(this,'Long-Term')">Long-Term</button>
+          <button class="cp-settings-opt" data-intent="Marriage" onclick="coChangeIntent(this,'Marriage')">Marriage</button>
+          <button class="cp-settings-opt" data-intent="Fall in Love" onclick="coChangeIntent(this,'Fall in Love')">Fall in Love</button>
+          <button class="cp-settings-opt" data-intent="Casual" onclick="coChangeIntent(this,'Casual')">Casual</button>
+          <button class="cp-settings-opt" data-intent="Short-Term" onclick="coChangeIntent(this,'Short-Term')">Short-Term</button>
+          <button class="cp-settings-opt" data-intent="Friends" onclick="coChangeIntent(this,'Friends')">Friends</button>
+          <button class="cp-settings-opt" data-intent="not_sure" onclick="coChangeIntent(this,'not_sure')">Not Sure</button>
+        </div>
+      </div>
+      <div class="cp-settings-section">
+        <div class="cp-settings-label">Today's Usage</div>
+        <div class="cp-settings-value" id="co-settings-usage">&mdash; / 50 messages</div>
+      </div>
+      <div class="cp-settings-section">
+        <div class="cp-settings-label">Access</div>
+        <div class="cp-settings-value" id="co-settings-days">&mdash;</div>
+      </div>
+      <div class="cp-settings-section">
+        <button class="cp-settings-clear" onclick="coClearHistory()">Clear Conversation History</button>
+      </div>
+    </div>
   </div>
 
   <div id="co-onboard" class="cp-onboard">
-    <div class="cp-ob-pips">
-      <div class="cp-ob-pip active" id="co-pip1"></div>
-      <div class="cp-ob-pip" id="co-pip2"></div>
-      <div class="cp-ob-pip" id="co-pip3"></div>
-    </div>
-    <div class="cp-ob-step active" id="co-ob-step1">
-      <div class="cp-ob-q">What is your Intent?</div>
+    <div class="cp-ob-card">
+      <div class="cp-ob-q">What brings you here?</div>
       <div class="cp-ob-opts">
         <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Long-Term')">Long-Term</button>
         <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Marriage')">Marriage</button>
         <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Fall in Love')">Fall in Love</button>
         <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Casual')">Casual</button>
         <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Short-Term')">Short-Term</button>
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Not Sure')">Not Sure</button>
+        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Friends')">Friends</button>
+        <button class="cp-ob-opt co-intent-opt co-intent-notsure" onclick="coSelectIntent(this,'not_sure')">I'm Not Sure Yet</button>
       </div>
-      <button class="cp-ob-next" id="co-ob-btn1" disabled onclick="coObNext(2)">Continue →</button>
-    </div>
-    <div class="cp-ob-step" id="co-ob-step2">
-      <div class="cp-ob-q">Where are you right now?</div>
-      <div class="cp-ob-opts">
-        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 1 — Setting Intent')">Phase 1 — Setting Intent</button>
-        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 2 — Building Profile')">Phase 2 — Building Profile</button>
-        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 3 — Active Conversations')">Phase 3 — Active Conversations</button>
-        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 4 — Courtship / Dating')">Phase 4 — Courtship / Dating</button>
-        <button class="cp-ob-opt co-phase-opt" onclick="coSelectPhase(this,'Phase 5 — Commitment')">Phase 5 — Commitment</button>
-      </div>
-      <button class="cp-ob-next" id="co-ob-btn2" disabled onclick="coObNext(3)">Continue →</button>
-    </div>
-    <div class="cp-ob-step" id="co-ob-step3">
-      <div class="cp-ob-q">What are you working on?</div>
-      <div class="cp-ob-opts">
-        <button class="cp-ob-opt co-focus-opt" onclick="coSelectFocus(this,'A specific connection')">A specific connection</button>
-        <button class="cp-ob-opt co-focus-opt" onclick="coSelectFocus(this,'An existing situation')">An existing situation</button>
-        <button class="cp-ob-opt co-focus-opt" onclick="coSelectFocus(this,'General strategy')">General strategy</button>
-      </div>
-      <button class="cp-ob-next" id="co-ob-btn3" disabled onclick="coStartCoach()">Begin Coaching Session →</button>
+      <div class="cp-ob-or">or</div>
+      <textarea class="cp-ob-freetext" id="co-freetext" rows="2" placeholder="Tell me in your own words..."></textarea>
+      <button class="cp-ob-begin" id="co-ob-begin" disabled onclick="coStartCoach()">Begin</button>
     </div>
   </div>
 

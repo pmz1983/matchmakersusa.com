@@ -13,17 +13,67 @@
   var MOBILE_BP = 760;
   var TEXTAREA_MAX = 100;
 
+  // ── Intent-aware Suggested Prompts ──
+  var PROMPTS_BY_INTENT = {
+    'Long-Term': [
+      'Help me write an opening message',
+      'Review my dating profile',
+      'She stopped responding \u2014 what do I do?',
+      'How do I move from texting to a real date?'
+    ],
+    'Marriage': [
+      'Help me write an opening message',
+      'Review my dating profile',
+      'She stopped responding \u2014 what do I do?',
+      'How do I move from texting to a real date?'
+    ],
+    'Fall in Love': [
+      'Help me write an opening message',
+      'Review my dating profile',
+      'She stopped responding \u2014 what do I do?',
+      'How do I move from texting to a real date?'
+    ],
+    'Casual': [
+      'Best opening lines for casual dating',
+      'How do I keep things fun and light?',
+      'She wants something serious but I don\'t',
+      'When should I suggest meeting up?'
+    ],
+    'Short-Term': [
+      'Best opening lines for casual dating',
+      'How do I keep things fun and light?',
+      'She wants something serious but I don\'t',
+      'When should I suggest meeting up?'
+    ],
+    'Friends': [
+      'How do I make genuine connections?',
+      'Best ways to start a friendship conversation',
+      'How do I set boundaries around just being friends?',
+      'Tips for building a social circle'
+    ],
+    'not_sure': [
+      'Help me figure out what I\'m looking for',
+      'What should my dating profile say?',
+      'I just got out of a relationship',
+      'How do dating apps actually work?'
+    ],
+    'custom': [
+      'Help me figure out what I\'m looking for',
+      'What should my dating profile say?',
+      'I just got out of a relationship',
+      'How do dating apps actually work?'
+    ]
+  };
+
   // ── State ──
   var cp_history = [];
   var typing = false;
   var intent = '';
-  var phase = '';
-  var focus = '';
 
   // ── DOM References (set during init) ──
   var orbEl, panelEl, lockedPop;
   var messagesEl, inputEl, sendBtn, statusEl, daysEl;
-  var onboardEl, chatEl;
+  var onboardEl, chatEl, settingsEl;
 
   // ── Helpers ──
   function isMobile() {
@@ -172,11 +222,43 @@
     if (t) t.remove();
   }
 
+  // ── Get Prompts for Current Intent ──
+  function getPromptsForIntent() {
+    if (PROMPTS_BY_INTENT[intent]) return PROMPTS_BY_INTENT[intent];
+    // Default / fallback
+    return PROMPTS_BY_INTENT['not_sure'];
+  }
+
   // ── Welcome Message + Suggested Prompts ──
   function showWelcome() {
-    var msg = intent || phase
-      ? 'Your context is set \u2014 ' + intent + ' Intent, ' + phase + '. What are you working on right now?'
-      : 'Welcome to your Dating Coach. I know the full MatchMakers methodology \u2014 all 5 phases, 50+ scripts, and the Connection Code. What are you working on right now?';
+    var msg;
+    if (intent === 'not_sure') {
+      msg = 'No problem \u2014 that\'s actually where a lot of people start. Tell me: are you actively on dating apps right now, or are you thinking about getting started?';
+    } else if (intent === 'custom') {
+      msg = 'Welcome back \u2014 tell me what you\'re working on, and I\'ll jump right in.';
+    } else if (intent) {
+      msg = 'Welcome back \u2014 ' + intent + ' Intent. What are you working on today?';
+    } else {
+      msg = 'Welcome to your Dating Coach. I know the full MatchMakers methodology \u2014 all 5 phases, 50+ scripts, and the Connection Code. What are you working on right now?';
+    }
+    addMessage('coach', msg);
+    cp_history.push({ role: 'assistant', content: msg });
+    showSuggestedPrompts();
+  }
+
+  // Welcome shown right after onboarding completes (first time)
+  function showFirstWelcome() {
+    var msg;
+    if (intent === 'not_sure') {
+      msg = 'No problem \u2014 that\'s actually where a lot of people start. Tell me: are you actively on dating apps right now, or are you thinking about getting started?';
+    } else if (intent === 'custom') {
+      // Custom intent: the free text was sent as first message, no welcome needed
+      return;
+    } else if (intent) {
+      msg = 'Your context is set \u2014 ' + intent + ' Intent. What are you working on right now?';
+    } else {
+      msg = 'Welcome to your Dating Coach. What are you working on right now?';
+    }
     addMessage('coach', msg);
     cp_history.push({ role: 'assistant', content: msg });
     showSuggestedPrompts();
@@ -184,12 +266,7 @@
 
   function showSuggestedPrompts() {
     if (!messagesEl) return;
-    var prompts = [
-      'Help me write an opening message',
-      'Review my dating profile',
-      'She stopped responding \u2014 what do I do?',
-      'How do I ask for a video call?'
-    ];
+    var prompts = getPromptsForIntent();
     var wrap = document.createElement('div');
     wrap.className = 'cp-suggestions';
     wrap.id = 'co-suggestions';
@@ -232,11 +309,9 @@
     if (orbEl) orbEl.classList.add('thinking');
 
     var memberCtx = '';
-    if (intent || phase) {
+    if (intent) {
       memberCtx =
-        '\n\n---\nMEMBER CONTEXT:\nIntent: ' + (intent || 'Not specified') +
-        '\nPhase: ' + (phase || 'Not specified') +
-        '\nFocus: ' + (focus || 'Not specified') +
+        '\n\n---\nMEMBER CONTEXT:\nIntent: ' + intent +
         '\nPage: ' + window.location.pathname +
         '\n---';
     } else {
@@ -265,7 +340,7 @@
       var errMsg = data.error || data.message || null;
       if (errMsg || data.code) {
         hideTyping();
-        addMessage('coach', errMsg || 'Something went wrong — please try again.');
+        addMessage('coach', errMsg || 'Something went wrong \u2014 please try again.');
         typing = false;
         if (sendBtn) sendBtn.disabled = false;
         if (statusEl) statusEl.textContent = 'Ready';
@@ -301,7 +376,8 @@
 
   // ── New Session ──
   function newSession() {
-    if (!confirm('Clear conversation history?')) return;
+    var currentLabel = intent || 'none';
+    if (!confirm('Start a new conversation? Your Intent (' + currentLabel + ') will stay the same. To change it, use Settings.')) return;
     cp_history = [];
     if (messagesEl) messagesEl.innerHTML = '';
     setTimeout(showWelcome, 200);
@@ -313,60 +389,173 @@
     if (chatEl) { chatEl.style.display = 'none'; }
   }
 
-  function finishOnboarding() {
+  function finishOnboarding(sendFreeText) {
     localStorage.setItem('pb_dc_onboarded', '1');
     localStorage.setItem('pb_dc_intent', intent);
-    localStorage.setItem('pb_dc_phase', phase);
-    localStorage.setItem('pb_dc_focus', focus);
+    // Clean up removed keys
+    localStorage.removeItem('pb_dc_phase');
+    localStorage.removeItem('pb_dc_focus');
     if (onboardEl) { onboardEl.style.display = 'none'; }
     if (chatEl) { chatEl.style.display = 'flex'; }
-    setTimeout(showWelcome, 300);
+
+    if (sendFreeText) {
+      // Custom intent: send the free text as first message
+      if (inputEl) { inputEl.value = sendFreeText; }
+      setTimeout(function() { sendMessage(); }, 300);
+    } else {
+      setTimeout(showFirstWelcome, 300);
+    }
   }
 
-  function selectOnboardOption(groupClass, el, value) {
-    document.querySelectorAll('.' + groupClass).forEach(function (o) {
+  // ── Onboarding: Intent Selection ──
+  window.coSelectIntent = function (el, v) {
+    // Deselect all intent buttons
+    document.querySelectorAll('.co-intent-opt').forEach(function (o) {
       o.classList.remove('sel');
     });
     el.classList.add('sel');
-    return value;
+    intent = v;
+
+    // Clear free text if an intent button is selected
+    var freetext = document.getElementById('co-freetext');
+    if (freetext) freetext.value = '';
+
+    // Enable begin button
+    var btn = document.getElementById('co-ob-begin');
+    if (btn) btn.disabled = false;
+  };
+
+  // ── Onboarding: Free text input handler ──
+  function onFreetextInput() {
+    var freetext = document.getElementById('co-freetext');
+    var btn = document.getElementById('co-ob-begin');
+    if (!freetext || !btn) return;
+
+    var hasText = freetext.value.trim().length > 0;
+
+    if (hasText) {
+      // Deselect all intent buttons when typing
+      document.querySelectorAll('.co-intent-opt').forEach(function (o) {
+        o.classList.remove('sel');
+      });
+      intent = '';
+      btn.disabled = false;
+    } else {
+      // Re-check if an intent button is selected
+      var selected = document.querySelector('.co-intent-opt.sel');
+      btn.disabled = !selected;
+    }
   }
 
-  // Expose onboarding handlers globally
-  window.coSelectIntent = function (el, v) {
-    intent = selectOnboardOption('co-intent-opt', el, v);
-    var btn = document.getElementById('co-ob-btn1');
-    if (btn) btn.disabled = false;
-  };
+  // ── Onboarding: Begin ──
+  window.coStartCoach = function () {
+    var freetext = document.getElementById('co-freetext');
+    var freetextVal = freetext ? freetext.value.trim() : '';
 
-  window.coSelectPhase = function (el, v) {
-    phase = selectOnboardOption('co-phase-opt', el, v);
-    var btn = document.getElementById('co-ob-btn2');
-    if (btn) btn.disabled = false;
-  };
-
-  window.coSelectFocus = function (el, v) {
-    focus = selectOnboardOption('co-focus-opt', el, v);
-    var btn = document.getElementById('co-ob-btn3');
-    if (btn) btn.disabled = false;
-  };
-
-  window.coObNext = function (step) {
-    document.querySelectorAll('.cp-ob-step').forEach(function (s) {
-      s.classList.remove('active');
-    });
-    var next = document.getElementById('co-ob-step' + step);
-    if (next) next.classList.add('active');
-    for (var i = 1; i <= 3; i++) {
-      var pip = document.getElementById('co-pip' + i);
-      if (pip) {
-        pip.className = 'cp-ob-pip' + (i < step ? ' done' : (i === step ? ' active' : ''));
-      }
+    if (freetextVal && !intent) {
+      // User typed free text instead of selecting a button
+      intent = 'custom';
+      localStorage.setItem('pb_dc_custom_intent', freetextVal);
+      finishOnboarding(freetextVal);
+    } else {
+      // User selected an intent button
+      finishOnboarding(null);
     }
   };
 
-  window.coStartCoach = function () {
-    finishOnboarding();
+  // ── Settings Panel ──
+  window.coOpenSettings = function () {
+    if (!settingsEl) settingsEl = document.getElementById('co-settings');
+    if (!settingsEl) return;
+
+    // Populate current values
+    var intentBtns = settingsEl.querySelectorAll('.cp-settings-opt');
+    intentBtns.forEach(function(btn) {
+      btn.classList.remove('sel');
+      if (btn.getAttribute('data-intent') === intent ||
+          btn.textContent.trim() === intent ||
+          (intent === 'not_sure' && btn.getAttribute('data-intent') === 'not_sure')) {
+        btn.classList.add('sel');
+      }
+    });
+
+    // Usage
+    var usageEl = document.getElementById('co-settings-usage');
+    if (usageEl) {
+      usageEl.textContent = cp_history.filter(function(m) { return m.role === 'user'; }).length + ' / 50 messages';
+    }
+
+    // Days
+    var settingsDaysEl = document.getElementById('co-settings-days');
+    if (settingsDaysEl) {
+      var first = parseInt(localStorage.getItem('pb_dc_first') || Date.now(), 10);
+      var days = Math.max(0, 30 - Math.floor((Date.now() - first) / 86400000));
+      settingsDaysEl.textContent = days > 0 ? days + ' days remaining' : 'Access expired';
+    }
+
+    // Show settings, hide chat
+    settingsEl.style.display = 'flex';
+    if (chatEl) chatEl.style.display = 'none';
+    if (onboardEl) onboardEl.style.display = 'none';
   };
+
+  window.coCloseSettings = function () {
+    if (settingsEl) settingsEl.style.display = 'none';
+    if (chatEl) chatEl.style.display = 'flex';
+  };
+
+  window.coChangeIntent = function (el, v) {
+    // Update selection UI
+    var container = document.getElementById('co-settings-intents');
+    if (container) {
+      container.querySelectorAll('.cp-settings-opt').forEach(function(btn) {
+        btn.classList.remove('sel');
+      });
+    }
+    el.classList.add('sel');
+
+    // Update state
+    intent = v;
+    localStorage.setItem('pb_dc_intent', intent);
+
+    // Show toast
+    showToast('Intent updated to ' + (v === 'not_sure' ? 'Not Sure' : v));
+
+    // Close settings after brief delay
+    setTimeout(function() {
+      coCloseSettings();
+    }, 600);
+  };
+
+  window.coClearHistory = function () {
+    if (!confirm('Clear all conversation history? This cannot be undone.')) return;
+    cp_history = [];
+    if (messagesEl) messagesEl.innerHTML = '';
+    showToast('Conversation cleared');
+    setTimeout(function() {
+      coCloseSettings();
+      setTimeout(showWelcome, 200);
+    }, 400);
+  };
+
+  function showToast(msg) {
+    // Create a simple toast notification inside the panel
+    var existing = document.getElementById('co-toast');
+    if (existing) existing.remove();
+
+    var toast = document.createElement('div');
+    toast.id = 'co-toast';
+    toast.className = 'cp-toast';
+    toast.textContent = msg;
+    if (panelEl) {
+      panelEl.appendChild(toast);
+      setTimeout(function() { toast.classList.add('show'); }, 10);
+      setTimeout(function() {
+        toast.classList.remove('show');
+        setTimeout(function() { toast.remove(); }, 300);
+      }, 2000);
+    }
+  }
 
   // ── Auto-resize Textarea ──
   function autoResizeInput() {
@@ -388,7 +577,7 @@
       return;
     }
 
-    // Check MMCOACH prefix
+    // Check MMCOACH prefix (case-insensitive, already uppercased)
     var isValidCoach = code.startsWith('MMCOACH');
 
     // Check promo codes via lookupPromo if available
@@ -438,11 +627,12 @@
   // ── Initialize Coach Panel (after access confirmed) ──
   function initCoachPanel() {
     updateDaysRemaining();
+    // Bug fix 5: refresh days remaining every 60 seconds
+    setInterval(updateDaysRemaining, 60000);
 
-    if (localStorage.getItem('pb_dc_onboarded')) {
+    // Bug fix 3: verify intent exists if onboarded
+    if (localStorage.getItem('pb_dc_onboarded') && localStorage.getItem('pb_dc_intent')) {
       intent = localStorage.getItem('pb_dc_intent') || '';
-      phase = localStorage.getItem('pb_dc_phase') || '';
-      focus = localStorage.getItem('pb_dc_focus') || '';
       if (chatEl) { chatEl.style.display = 'flex'; }
       if (onboardEl) { onboardEl.style.display = 'none'; }
       // Only show welcome if no messages yet
@@ -450,6 +640,8 @@
         showWelcome();
       }
     } else {
+      // Not onboarded, or onboarded but missing intent — show onboarding
+      localStorage.removeItem('pb_dc_onboarded');
       startOnboarding();
     }
   }
@@ -458,7 +650,10 @@
   function onKeyDown(e) {
     // Escape closes panel or locked popover
     if (e.key === 'Escape') {
-      if (isPanelOpen()) {
+      if (settingsEl && settingsEl.style.display !== 'none') {
+        coCloseSettings();
+        e.preventDefault();
+      } else if (isPanelOpen()) {
         closePanel();
         e.preventDefault();
       } else if (lockedPop && lockedPop.classList.contains('visible')) {
@@ -492,6 +687,20 @@
     }
   }
 
+  // ── Bug fix 2: Storage event listener for cross-tab sync ──
+  function onStorageChange(e) {
+    if (e.key === 'pb_dc_intent') {
+      intent = e.newValue || '';
+    }
+    if (e.key === 'pb_dc_onboarded') {
+      if (e.newValue === '1' && localStorage.getItem('pb_dc_intent')) {
+        intent = localStorage.getItem('pb_dc_intent') || '';
+        if (chatEl) { chatEl.style.display = 'flex'; }
+        if (onboardEl) { onboardEl.style.display = 'none'; }
+      }
+    }
+  }
+
   // ── Bind Events ──
   function bindEvents() {
     if (orbEl) {
@@ -518,6 +727,12 @@
     if (inputEl) {
       inputEl.addEventListener('input', autoResizeInput);
       inputEl.addEventListener('keydown', onInputKeyDown);
+    }
+
+    // Onboarding free text input
+    var freetext = document.getElementById('co-freetext');
+    if (freetext) {
+      freetext.addEventListener('input', onFreetextInput);
     }
 
     // New session button
@@ -548,9 +763,9 @@
     }
 
     // Locked popover: code input Enter key
-    var codeInput = document.getElementById('co-locked-code');
-    if (codeInput) {
-      codeInput.addEventListener('keydown', function (e) {
+    var codeInputEl = document.getElementById('co-locked-code');
+    if (codeInputEl) {
+      codeInputEl.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') onLockedCodeSubmit();
       });
     }
@@ -560,6 +775,9 @@
 
     // Click outside to close
     document.addEventListener('click', onDocClick);
+
+    // Bug fix 2: cross-tab sync
+    window.addEventListener('storage', onStorageChange);
   }
 
   // ── Expose globals for inline handlers if needed ──
@@ -579,6 +797,7 @@
     daysEl = document.getElementById('co-days');
     onboardEl = document.getElementById('co-onboard');
     chatEl = document.getElementById('co-chat');
+    settingsEl = document.getElementById('co-settings');
 
     // If no orb element on page, bail out
     if (!orbEl) return;
