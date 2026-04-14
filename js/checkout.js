@@ -4,7 +4,7 @@
    Playbook-first: Dating Coach requires Playbook purchase
    ═══════════════════════════════════════════════════ */
 
-var STRIPE_PK = 'pk_test_51TLpRO0HZcOoiu2G4FQ8bZMISxmT4tAX7LD00SeokHo5vBhtrGuFbKUDVDwyTHDiliSN4P8L2w84XFxegWziGxan00t5SPHetc';
+var STRIPE_PK = 'pk_live_51TLpRD1ihNKVY3uGHhlj9mvYq5zfXgBenCw6HxeJS0cU3Z3ON0epQW5RAc5vTQXkyvwouAVrRY29k15frJW8J9TR00rVq4Kq76';
 
 /* ── Promo / Access Codes ──
    type: 'free'     → unlocks content immediately, no payment
