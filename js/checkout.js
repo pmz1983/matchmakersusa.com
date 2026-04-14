@@ -17,16 +17,15 @@ var MM_PROMO_CODES = {
   'MM2024':           { type: 'free' },
   'MM-PLAYBOOK-2024': { type: 'free' },
   'MM-VIP-TEST':      { type: 'free' },
-  'MM-HALF':          { type: 'discount', percent: 50, stripeCoupon: '' },
-  'MM-25OFF':         { type: 'discount', percent: 25, stripeCoupon: '' }
+  'MM-HALF':          { type: 'free' },
+  'MM-25OFF':         { type: 'free' }
 };
 
-// Also accept any code starting with MM-BETA- or MM-FRIEND- as free
+// Accept codes from MM_PROMO_CODES or specific prefixes for beta testers
 function lookupPromo(code) {
   code = code.toUpperCase().trim();
   if (MM_PROMO_CODES[code]) return MM_PROMO_CODES[code];
   if (code.startsWith('MM-BETA-') || code.startsWith('MM-FRIEND-')) return { type: 'free' };
-  if (code.startsWith('MM-')) return { type: 'free' };
   return null;
 }
 
