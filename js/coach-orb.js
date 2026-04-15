@@ -429,6 +429,10 @@
       memberCtx = '\n\n---\nPage: ' + window.location.pathname + '\n---';
     }
 
+    // AbortController with 30-second timeout to prevent indefinite hangs
+    var controller = new AbortController();
+    var timeoutId = setTimeout(function () { controller.abort(); }, 30000);
+
     try {
       var sessionId = getSessionId();
       var apiMessages = buildApiMessages();
@@ -438,8 +442,10 @@
           'Content-Type': 'application/json',
           'x-session-id': sessionId
         },
-        body: JSON.stringify({ context: memberCtx, messages: apiMessages })
+        body: JSON.stringify({ context: memberCtx, messages: apiMessages }),
+        signal: controller.signal
       });
+      clearTimeout(timeoutId);
       var data = await res.json();
 
       // Handle all error response formats (our Edge Function, Supabase gateway, etc.)
@@ -447,9 +453,6 @@
       if (errMsg || data.code) {
         hideTyping();
         addMessage('coach', errMsg || 'Something went wrong \u2014 please try again.');
-        typing = false;
-        if (sendBtn) sendBtn.disabled = false;
-        if (statusEl) statusEl.textContent = 'Ready';
         return;
       }
 
@@ -457,9 +460,6 @@
       if (!reply) {
         hideTyping();
         addMessage('coach', 'I wasn\'t able to generate a response. Could you try rephrasing your question? The more specific you are about your situation, the better I can help.');
-        typing = false;
-        if (sendBtn) sendBtn.disabled = false;
-        if (statusEl) statusEl.textContent = 'Ready';
         return;
       }
       hideTyping();
@@ -474,14 +474,19 @@
         cp_history = cp_history.slice(-HISTORY_CAP);
       }
     } catch (e) {
+      clearTimeout(timeoutId);
       hideTyping();
-      addMessage('coach', 'Connection error \u2014 try again in a moment.');
+      if (e.name === 'AbortError') {
+        addMessage('coach', 'That took too long \u2014 the server may be busy. Please try again.');
+      } else {
+        addMessage('coach', 'Connection error \u2014 try again in a moment.');
+      }
+    } finally {
+      typing = false;
+      if (sendBtn) sendBtn.disabled = false;
+      if (statusEl) statusEl.textContent = 'Ready';
+      if (orbEl) orbEl.classList.remove('thinking');
     }
-
-    typing = false;
-    if (sendBtn) sendBtn.disabled = false;
-    if (statusEl) statusEl.textContent = 'Ready';
-    if (orbEl) orbEl.classList.remove('thinking');
   }
 
   // ── New Session ──

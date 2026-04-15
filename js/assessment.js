@@ -94,21 +94,20 @@ function renderResult() {
   let topScore  = 0;
   Object.entries(iaScores).forEach(([k,v]) => { if(v > topScore) { topScore = v; topIntent = k; } });
 
-  // Track assessment completion
-  var clarityKey = iaClarity >= 14 ? 'high' : iaClarity >= 8 ? 'medium' : 'low';
-  if (window.mmTrack) mmTrack('assessment_complete', {
-    intent: topIntent,
-    clarity_score: iaClarity,
-    clarity_level: clarityKey,
-    intent_score: topScore
-  });
-
   // Clarity level
   const maxClarity = 27;
   const clarityPct = Math.round((iaClarity / maxClarity) * 100);
   let clarityKey = 'low';
   if (iaClarity >= 14) clarityKey = 'high';
   else if (iaClarity >= 8) clarityKey = 'medium';
+
+  // Track assessment completion
+  if (window.mmTrack) mmTrack('assessment_complete', {
+    intent: topIntent,
+    clarity_score: iaClarity,
+    clarity_level: clarityKey,
+    intent_score: topScore
+  });
 
   const intent   = IA_INTENTS[topIntent] || IA_INTENTS.notsure;
   const clarity  = IA_CLARITY[clarityKey];
