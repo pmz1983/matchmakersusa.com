@@ -151,7 +151,7 @@ nav.scrolled{background:rgba(5,9,15,.96)}
 .action-box{background:var(--mid);border:1px solid var(--rim);border-radius:18px;padding:2.25rem;position:relative;overflow:hidden;display:flex;flex-direction:column;height:100%;box-sizing:border-box;transition:box-shadow .3s ease,transform .3s ease}
 .action-box:hover{box-shadow:0 0 0 1px rgba(201,168,76,.25),0 20px 60px rgba(0,0,0,.45),0 0 40px rgba(201,168,76,.07);transform:translateY(-4px)}
 .action-box .top-line{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gb) 30%,rgba(201,168,76,.85) 50%,var(--gb) 70%,transparent)}
-.action-badge{display:inline-block;font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:.85rem}
+.action-badge{display:inline-block;font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:.85rem;align-self:center}
 .action-name{font-family:var(--pd);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.2rem;letter-spacing:-.01em}
 .action-price{font-family:var(--cg);font-size:2.5rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.3rem}
 .action-psub{font-size:.72rem;color:var(--sl);margin-bottom:1.25rem;display:block}
