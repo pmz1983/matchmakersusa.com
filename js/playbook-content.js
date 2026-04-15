@@ -358,20 +358,21 @@ if (window.IntersectionObserver) {
         return true;
       });
 
+      var pbCtrl = new AbortController();
+      var pbTimeoutId = setTimeout(function () { pbCtrl.abort(); }, 30000);
       var r = await fetch('https://peamviowxkyaglyjpagc.supabase.co/functions/v1/coach-proxy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-session-id': sessionId },
-        body: JSON.stringify({ context: memberCtx, messages: apiMessages })
+        body: JSON.stringify({ context: memberCtx, messages: apiMessages }),
+        signal: pbCtrl.signal
       });
+      clearTimeout(pbTimeoutId);
       var data = await r.json();
       var errMsg = data.error || data.message || null;
 
       if (errMsg || data.code) {
         pbHideTyping();
         pbAddMsg('coach', errMsg || 'Something went wrong \u2014 please try again.');
-        pb_typing = false;
-        if (sendBtn) sendBtn.disabled = false;
-        if (statusEl) statusEl.textContent = 'Ready';
         return;
       }
 
@@ -379,9 +380,6 @@ if (window.IntersectionObserver) {
       if (!reply) {
         pbHideTyping();
         pbAddMsg('coach', 'I wasn\'t able to generate a response. Try rephrasing your question.');
-        pb_typing = false;
-        if (sendBtn) sendBtn.disabled = false;
-        if (statusEl) statusEl.textContent = 'Ready';
         return;
       }
       pbHideTyping();
@@ -390,12 +388,16 @@ if (window.IntersectionObserver) {
       if (pb_history.length > 40) pb_history = pb_history.slice(-40);
     } catch (e) {
       pbHideTyping();
-      pbAddMsg('coach', 'Connection error \u2014 try again in a moment.');
+      if (e.name === 'AbortError') {
+        pbAddMsg('coach', 'That took too long \u2014 the server may be busy. Please try again.');
+      } else {
+        pbAddMsg('coach', 'Connection error \u2014 try again in a moment.');
+      }
+    } finally {
+      pb_typing = false;
+      if (sendBtn) sendBtn.disabled = false;
+      if (statusEl) statusEl.textContent = 'Ready';
     }
-
-    pb_typing = false;
-    if (sendBtn) sendBtn.disabled = false;
-    if (statusEl) statusEl.textContent = 'Ready';
   };
 
   window.pbDcNewSession = function () {

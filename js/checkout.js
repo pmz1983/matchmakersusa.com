@@ -263,12 +263,15 @@ function proceedToCheckout() {
 
   // For Dating Coach: verify Playbook ownership via Supabase before proceeding
   if (p.requiresPlaybook && !hasPlaybookAccess()) {
+    var eligCtrl = new AbortController();
+    var eligTimeout = setTimeout(function() { eligCtrl.abort(); }, 15000);
     fetch(SUPABASE_FN_URL + '/check-eligibility', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, product: 'dating_coach' })
+      body: JSON.stringify({ email: email, product: 'dating_coach' }),
+      signal: eligCtrl.signal
     })
-    .then(function(r) { return r.json(); })
+    .then(function(r) { clearTimeout(eligTimeout); return r.json(); })
     .then(function(data) {
       if (data.eligible) {
         // Playbook purchase confirmed in Supabase — proceed to Dating Coach checkout
@@ -283,7 +286,8 @@ function proceedToCheckout() {
       }
     })
     .catch(function() {
-      // On network error, fall through to payment (Stripe is the final gate)
+      clearTimeout(eligTimeout);
+      // On network error or timeout, fall through to payment (Stripe is the final gate)
       captureAndRedirect(email, p, btn);
     });
     return;
