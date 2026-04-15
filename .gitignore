@@ -1,4 +1,12 @@
 node_modules/
 pdf/
-node_modules/
 package*.json
+.env
+.env.*
+!.env.example
+migration/.env
+*.jks
+*.keystore
+SETUP-PROGRESS.md
+SESSION-STARTERS.md
+SYSTEMS-AUDIT.md
