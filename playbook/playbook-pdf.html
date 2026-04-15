@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The MatchMakers Playbook — Print Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dk: #05090F;
+      --navy: #0B1727;
+      --mid: #101D2F;
+      --gold: #C9A84C;
+      --white: #EDF2F7;
+      --sl: #7A95AF;
+      --tx: #C2D1E0;
+      --cg: 'Cormorant Garamond', Georgia, serif;
+      --pd: 'Outfit', 'Helvetica Neue', sans-serif;
+      --sr: 'DM Sans', 'Segoe UI', sans-serif;
+    }
+
+    @page {
+      size: letter;
+      margin: 0.75in 0.85in;
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--dk);
+      color: var(--tx);
+      font-family: var(--sr);
+      font-size: .92rem;
+      line-height: 1.88;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Page break utilities ── */
+    .pb-chapter { break-before: page; page-break-before: always; }
+    .cover-page { break-after: page; page-break-after: always; }
+    .toc-page { break-after: page; page-break-after: always; }
+
+    .script-card, .rule-box, .intent-card, .profile-pillar, .phase-marker,
+    .chapter-head, .qr-table, .level-grid, .journey-strip, .legend-box,
+    .script-group, .pillar-group {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    p.bp { break-inside: avoid; page-break-inside: avoid; }
+
+    /* ── Cover Page ── */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .cover-wordmark {
+      font-family: var(--cg);
+      font-size: 3.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: .02em;
+      opacity: .95;
+    }
+    .cover-wordmark sup { font-size: .5em; }
+    .cover-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,.5), transparent);
+      margin: 1rem auto;
+    }
+    .cover-title {
+      font-family: var(--cg);
+      font-size: 3.2rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: .5rem;
+    }
+    .cover-title em { color: var(--gold); font-style: italic; }
+    .cover-subtitle {
+      font-family: var(--sr);
+      font-size: .95rem;
+      color: rgba(200,214,229,.5);
+      margin: 1.5rem 0 2.5rem;
+      line-height: 1.7;
+    }
+    .cover-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.25rem 2rem;
+      border-top: 1px solid rgba(201,168,76,.12);
+      border-bottom: 1px solid rgba(201,168,76,.08);
+      background: rgba(201,168,76,.02);
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    .cover-stat-n {
+      font-family: var(--cg);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .cover-stat-l {
+      font-family: var(--pd);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.45);
+    }
+    .cover-stat-div { width: 1px; height: 28px; background: rgba(65,91,124,.2); }
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(201,168,76,.08);
+      border: 1px solid rgba(201,168,76,.18);
+      border-radius: 24px;
+      padding: .4rem 1.1rem;
+      font-family: var(--pd);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.6);
+    }
+
+    /* ── Table of Contents ── */
+    .toc-page { padding: 3rem 1rem; }
+    .toc-page h2 {
+      font-family: var(--cg);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: .5rem;
+    }
+    .toc-divider {
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,.45), transparent);
+      margin: .75rem 0 2rem;
+    }
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid rgba(65,91,124,.1);
+    }
+    .toc-num {
+      font-family: var(--cg);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      min-width: 30px;
+    }
+    .toc-title {
+      font-family: var(--pd);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .toc-sub {
+      font-family: var(--sr);
+      font-size: .72rem;
+      color: var(--sl);
+      margin-top: .15rem;
+    }
+    .toc-phase {
+      margin-left: auto;
+      font-family: var(--pd);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.35);
+      white-space: nowrap;
+    }
+
+    /* ── Chapter headings ── */
+    .chapter-head { break-inside: avoid; page-break-inside: avoid; margin-bottom: 1.5rem; }
+    .ch-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
+    .ch-number {
+      font-family: var(--pd);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.5);
+    }
+    .ch-phase-tag {
+      font-family: var(--pd);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.4);
+      background: rgba(65,91,124,.12);
+      border: 1px solid rgba(65,91,124,.2);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+    .ch-title {
+      font-family: var(--cg);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin-bottom: .45rem;
+    }
+    .ch-sub {
+      font-family: var(--sr);
+      font-size: .88rem;
+      color: var(--sl);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+    .ch-rule {
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201,168,76,.4), transparent);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Body paragraphs ── */
+    p.bp {
+      font-family: var(--sr);
+      font-size: .92rem;
+      color: var(--tx);
+      line-height: 1.88;
+      margin-bottom: 1.25rem;
+    }
+    p.bp b, p.bp strong { color: var(--white); }
+
+    /* ── Subheadings ── */
+    .subh {
+      font-family: var(--pd);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.5);
+      margin: 2.5rem 0 1.25rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid rgba(65,91,124,.1);
+    }
+
+    /* ── Rule boxes ── */
+    .rule-box {
+      border-left: 3px solid var(--gold);
+      background: rgba(201,168,76,.04);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.75rem 0;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .rb-ey {
+      font-family: var(--pd);
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.6);
+      margin-bottom: .6rem;
+    }
+    .rb-body {
+      font-size: .88rem;
+      color: var(--tx);
+      line-height: 1.75;
+      font-family: var(--sr);
+    }
+    .rb-body b { color: var(--white); }
+
+    /* ── Script cards ── */
+    .script-card {
+      background: rgba(16,29,47,.6);
+      border: 1px solid rgba(65,91,124,.22);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .sc-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-bottom: .75rem;
+      flex-wrap: wrap;
+    }
+    .sc-title {
+      font-family: var(--pd);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .sc-badges { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .sc-badge {
+      font-family: var(--pd);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .sc-badge.cp {
+      background: rgba(201,168,76,.12);
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,.25);
+    }
+    .sc-badge.hp {
+      background: rgba(201,168,76,.08);
+      color: rgba(201,168,76,.7);
+      border: 1px solid rgba(201,168,76,.18);
+    }
+    .sc-badge.phase {
+      background: rgba(65,91,124,.12);
+      color: var(--sl);
+      border: 1px solid rgba(65,91,124,.25);
+    }
+    .sc-meta {
+      font-family: var(--pd);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.5);
+      margin-bottom: .75rem;
+    }
+    .sc-meta span {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--sl);
+      font-family: var(--sr);
+      font-size: .78rem;
+    }
+    .sc-body { margin-bottom: .75rem; }
+    .sc-quote {
+      font-family: var(--sr);
+      font-size: .9rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.75;
+      padding: 1rem 1.25rem;
+      background: rgba(5,9,15,.4);
+      border-radius: 10px;
+      border-left: 2px solid rgba(201,168,76,.2);
+    }
+    .sc-why {
+      display: flex;
+      gap: .75rem;
+      align-items: baseline;
+      padding-top: .5rem;
+      border-top: 1px solid rgba(65,91,124,.1);
+    }
+    .sc-why-label {
+      font-family: var(--pd);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.45);
+      white-space: nowrap;
+    }
+    .sc-why-text {
+      font-family: var(--sr);
+      font-size: .8rem;
+      color: var(--sl);
+      line-height: 1.65;
+    }
+
+    /* ── Phase marker ── */
+    .phase-marker {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .pm-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(65,91,124,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--cg);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .pm-title {
+      font-family: var(--pd);
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .pm-sub {
+      font-family: var(--sr);
+      font-size: .75rem;
+      color: var(--sl);
+    }
+
+    /* ── Intent grid ── */
+    .intent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: 1.5rem 0;
+    }
+    .intent-card {
+      background: var(--mid);
+      border: 1px solid rgba(65,91,124,.18);
+      border-radius: 12px;
+      padding: 1rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .intent-num {
+      font-family: var(--cg);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(201,168,76,.25);
+      margin-bottom: .25rem;
+    }
+    .intent-name {
+      font-family: var(--pd);
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .25rem;
+    }
+    .intent-desc {
+      font-family: var(--sr);
+      font-size: .72rem;
+      color: var(--sl);
+      line-height: 1.55;
+    }
+
+    /* ── Profile pillars ── */
+    .profile-pillar {
+      display: flex;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid rgba(65,91,124,.08);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .pp-num {
+      font-family: var(--cg);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(201,168,76,.25);
+      min-width: 28px;
+    }
+    .pp-title {
+      font-family: var(--pd);
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .pp-body {
+      font-family: var(--sr);
+      font-size: .82rem;
+      color: var(--sl);
+      line-height: 1.65;
+    }
+
+    /* ── Level grid ── */
+    .level-grid {
+      display: flex;
+      gap: .75rem;
+      margin: 1.5rem 0;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .level-card {
+      flex: 1;
+      background: var(--mid);
+      border: 1px solid rgba(65,91,124,.18);
+      border-radius: 10px;
+      padding: .85rem .5rem;
+      text-align: center;
+    }
+    .level-num {
+      font-family: var(--cg);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .level-label {
+      font-family: var(--pd);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.45);
+      margin-top: .2rem;
+    }
+
+    /* ── Journey strip ── */
+    .journey-strip {
+      display: flex;
+      gap: .5rem;
+      margin: 2rem 0 1rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .journey-step {
+      flex: 1;
+      background: var(--mid);
+      border: 1px solid rgba(65,91,124,.18);
+      border-radius: 10px;
+      padding: .75rem .5rem;
+      text-align: center;
+    }
+    .journey-step.active {
+      border-color: rgba(201,168,76,.25);
+      background: rgba(201,168,76,.04);
+    }
+    .js-num {
+      font-family: var(--pd);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.4);
+      margin-bottom: .15rem;
+    }
+    .js-name {
+      font-family: var(--pd);
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ── Connection Code badge ── */
+    .cc-badge {
+      display: inline-flex;
+      font-family: var(--pd);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(201,168,76,.07);
+      border: 1px solid rgba(201,168,76,.15);
+      color: rgba(201,168,76,.5);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Quick reference tables ── */
+    .qr-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      font-family: var(--sr);
+      font-size: .78rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .qr-table thead th {
+      text-align: left;
+      font-family: var(--pd);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(120,149,175,.45);
+      padding: .6rem .75rem;
+      border-bottom: 1px solid rgba(65,91,124,.2);
+    }
+    .qr-table tbody td {
+      padding: .6rem .75rem;
+      border-bottom: 1px solid rgba(65,91,124,.08);
+      color: var(--sl);
+      vertical-align: top;
+    }
+    .qr-title {
+      font-family: var(--pd);
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .qr-badge {
+      display: inline-block;
+      font-family: var(--pd);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .qr-cat {
+      font-size: .7rem;
+      color: rgba(120,149,175,.5);
+      margin-top: .15rem;
+    }
+
+    /* ── Legend box ── */
+    .legend-box {
+      background: var(--mid);
+      border: 1px solid rgba(65,91,124,.2);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .legend-item-title {
+      font-family: var(--pd);
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .legend-item-desc {
+      font-size: .72rem;
+      color: var(--sl);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     COVER PAGE
+═══════════════════════════════════════════════════════ -->
+<div class="cover-page">
+  <div class="cover-wordmark">MatchMakers<sup>&trade;</sup></div>
+  <div class="cover-divider"></div>
+  <h1 class="cover-title">The MatchMakers<br><em>Playbook</em></h1>
+  <div class="cover-divider"></div>
+  <div class="cover-subtitle">9 chapters &middot; 50+ scripts &middot; The complete 5-Phase Methodology</div>
+  <div class="cover-stats">
+    <div style="text-align:center;"><div class="cover-stat-n">9</div><div class="cover-stat-l">Chapters</div></div>
+    <div class="cover-stat-div"></div>
+    <div style="text-align:center;"><div class="cover-stat-n">50+</div><div class="cover-stat-l">Scripts</div></div>
+    <div class="cover-stat-div"></div>
+    <div style="text-align:center;"><div class="cover-stat-n">5</div><div class="cover-stat-l">Phases</div></div>
+    <div class="cover-stat-div"></div>
+    <div style="text-align:center;"><div class="cover-stat-n">&infin;</div><div class="cover-stat-l">Access</div></div>
+  </div>
+  <div class="cover-badge">&#9670; Lifetime Access &middot; Unlocked</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TABLE OF CONTENTS
+═══════════════════════════════════════════════════════ -->
+<div class="toc-page">
+  <h2>Table of Contents</h2>
+  <div class="toc-divider"></div>
+
+  <div class="toc-item">
+    <div class="toc-num">01</div>
+    <div>
+      <div class="toc-title">The MatchMakers Philosophy</div>
+      <div class="toc-sub">Before the first script, before the first message.</div>
+    </div>
+    <div class="toc-phase">Foundation</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">02</div>
+    <div>
+      <div class="toc-title">Understanding Your Dating Intent</div>
+      <div class="toc-sub">The declaration that changes everything.</div>
+    </div>
+    <div class="toc-phase">Phase 1</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">03</div>
+    <div>
+      <div class="toc-title">Dating App Profile Mastery</div>
+      <div class="toc-sub">Your Level is determined by your community. Your profile earns it.</div>
+    </div>
+    <div class="toc-phase">Phase 2</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">04</div>
+    <div>
+      <div class="toc-title">Opening Scripts &mdash; Phase 3 Begins</div>
+      <div class="toc-sub">The first message is not an introduction. It is an invitation.</div>
+    </div>
+    <div class="toc-phase">Phase 3</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">05</div>
+    <div>
+      <div class="toc-title">The Video Invite &amp; Courtship Entry</div>
+      <div class="toc-sub">The 20-minute call that eliminates ambiguity.</div>
+    </div>
+    <div class="toc-phase">Phase 3 &rarr; 4</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">06</div>
+    <div>
+      <div class="toc-title">From First Date to Commitment</div>
+      <div class="toc-sub">The stage most people handle by instinct. The Playbook gives you structure.</div>
+    </div>
+    <div class="toc-phase">Phase 4 &ndash; 5</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">07</div>
+    <div>
+      <div class="toc-title">Scripts for Every Difficult Situation</div>
+      <div class="toc-sub">The conversations most people handle badly.</div>
+    </div>
+    <div class="toc-phase">Reference</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">08</div>
+    <div>
+      <div class="toc-title">The Script Builder Framework</div>
+      <div class="toc-sub">How to write your own high-performing scripts.</div>
+    </div>
+    <div class="toc-phase">Reference</div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">09</div>
+    <div>
+      <div class="toc-title">Quick Reference &mdash; Complete Script Library</div>
+      <div class="toc-sub">All scripts organized by phase and situation.</div>
+    </div>
+    <div class="toc-phase">Index</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 01 — THE MATCHMAKERS PHILOSOPHY
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 01</span></div>
+    <h2 class="ch-title">The MatchMakers Philosophy</h2>
+    <p class="ch-sub">Before the first script, before the first message, before the first match &mdash; understand the one principle that makes all of it work.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <p class="bp">Most dating apps are built around discovery. You scroll, you swipe, you see who's available. The assumption is that if you see enough people, eventually the right one appears. MatchMakers was built around a different assumption entirely: that the problem was never access to people. It was clarity about purpose.</p>
+  <p class="bp">The methodology in this Playbook was developed from seven years of behavioral data across 66,000+ real member interactions. Every script, every framework, every principle here exists because it was observed to work &mdash; repeatedly, across different Intent types, different Levels, different situations. Nothing here is theory. It is pattern.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE ONE PRINCIPLE</div>
+    <div class="rb-body">Every failure in dating &mdash; confusion, ghosting, mismatched expectations, wasted connections &mdash; traces back to one source: <b>unclear intent operating in an unclear system.</b> MatchMakers fixes the system. This Playbook fixes the intent.</div>
+  </div>
+
+  <p class="bp">The 5-Phase Methodology is not a suggestion. It is the architecture of every successful connection that has happened on this platform. Intent comes first. Profile follows. Connection happens within structure. Courtship has stages. Commitment is the only outcome the system is built for.</p>
+  <p class="bp">The <strong style="color:var(--white);">MatchMakers Connection Code</strong> is the operating principle at every phase &mdash; five behavioral signals that, when followed in sequence, produce consistent outcomes. This Playbook teaches all five in depth: <strong style="color:var(--gold);">Intent &middot; Position &middot; Open &middot; Build &middot; Progress.</strong></p>
+  <p class="bp">This Playbook walks you through all five phases in sequence. Use it as a reference, not a script library. The scripts demonstrate principles. The principles are what you internalize.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">HOW TO USE THIS PLAYBOOK</div>
+    <div class="rb-body">Read chapters 1&ndash;3 before you send a single message. Chapters 4&ndash;6 are where the scripts live &mdash; return to them as situations arise. Chapter 7 is for when things go wrong. Chapter 8 is for when you want to write your own. Chapter 9 is the reference index.</div>
+  </div>
+
+  <div class="journey-strip">
+    <div class="journey-step active"><div class="js-num">Phase 1</div><div class="js-name">Intent</div></div>
+    <div class="journey-step"><div class="js-num">Phase 2</div><div class="js-name">Profile</div></div>
+    <div class="journey-step"><div class="js-num">Phase 3</div><div class="js-name">Connection</div></div>
+    <div class="journey-step"><div class="js-num">Phase 4</div><div class="js-name">Courtship</div></div>
+    <div class="journey-step"><div class="js-num">Phase 5</div><div class="js-name">Commitment</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 02 — UNDERSTANDING YOUR DATING INTENT
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="phase-marker">
+    <div class="pm-num" style="border-color:rgba(65,91,124,.3)">1</div>
+    <div>
+      <div class="pm-title">Phase 1 of 5 &mdash; Intent</div>
+      <div class="pm-sub">Declare your purpose before your first connection</div>
+    </div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 02</span></div>
+    <h2 class="ch-title">Understanding Your Dating Intent</h2>
+    <p class="ch-sub">The most important decision you'll make on any dating platform &mdash; and the one most people make incorrectly.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <p class="bp">Intent is not a preference. It is a declaration. When you join MatchMakers, you are not asked what kind of person you want to meet. You are asked what outcome you are there for. This distinction is the foundation of everything that follows.</p>
+  <p class="bp">Every other dating platform allows Intent to remain ambiguous. Someone looking for marriage and someone looking for a casual connection can match, exchange numbers, and spend weeks in a conversation that was never going to work. MatchMakers eliminates this. Your Intent is visible to every potential match before the first message is sent.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">WHY INTENT CHANGES EVERYTHING</div>
+    <div class="rb-body">When your match already knows what you're there for, the entire dynamic of the first conversation changes. There is no subtext. There is no 'so what are you looking for?' You can begin building a real connection from message one because both people already know the context.</div>
+  </div>
+
+  <p class="bp"><strong style="color:rgba(201,168,76,.7);">This is Signal 1 of the Connection Code.</strong> Choosing your Intent is not about limiting who you connect with. It is about being honest &mdash; with your matches and with yourself. Members who select an Intent that reflects their actual goal consistently report higher-quality connections and fewer wasted conversations. Members who select a strategically safe Intent (typically "Not Sure") to avoid commitment tend to attract matches who are equally uncommitted.</p>
+
+  <div class="subh">The 9 Intent Types</div>
+  <div class="intent-grid">
+    <div class="intent-card"><div class="intent-num">01</div><div class="intent-name">Long-Term</div><div class="intent-desc">Looking for a serious relationship with real potential. Not casual. Not situational.</div></div>
+    <div class="intent-card"><div class="intent-num">02</div><div class="intent-name">Marriage</div><div class="intent-desc">Actively seeking a life partner. The highest-commitment declaration on the platform.</div></div>
+    <div class="intent-card"><div class="intent-num">03</div><div class="intent-name">Fall in Love</div><div class="intent-desc">Open to wherever it leads, but the emotional outcome matters as much as the relationship.</div></div>
+    <div class="intent-card"><div class="intent-num">04</div><div class="intent-name">Casual</div><div class="intent-desc">Not looking for commitment. Honest about it. The platform honors this as much as Marriage.</div></div>
+    <div class="intent-card"><div class="intent-num">05</div><div class="intent-name">Friendship</div><div class="intent-desc">Genuine connection without romantic pressure. Rare but respected on the platform.</div></div>
+    <div class="intent-card"><div class="intent-num">06</div><div class="intent-name">Companionship</div><div class="intent-desc">Presence, connection, consistency &mdash; without necessarily labeling it.</div></div>
+    <div class="intent-card"><div class="intent-num">07</div><div class="intent-name">Not Sure</div><div class="intent-desc">Honest uncertainty. Valid, but attracts similarly uncertain matches &mdash; understand the tradeoff.</div></div>
+    <div class="intent-card"><div class="intent-num">08</div><div class="intent-name">Short-Term</div><div class="intent-desc">Time-bounded connection. Honest framing of what you're available for right now.</div></div>
+    <div class="intent-card"><div class="intent-num">09</div><div class="intent-name">Open to All</div><div class="intent-desc">The widest net. Useful for high-Level members who want maximum reach.</div></div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE INTENT RULE</div>
+    <div class="rb-body">Your Intent should reflect where you actually are &mdash; not where you want to appear to be. Members who declare Marriage when they mean Casual create the worst possible match dynamic. Members who declare Casual when they mean Long-Term miss every connection that would have worked.</div>
+  </div>
+
+  <p class="bp">Once your Intent is set, every script in this Playbook is calibrated to it. A Profile-Specific Opener from a Marriage-Intent member reads differently than the same opener from a Casual-Intent member &mdash; and your match will feel that difference. The Intent-Specific adaptations in later chapters show you exactly how.</p>
+
+  <div class="subh">Phase 1 &middot; Intent Scripts</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Intent Declaration</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Someone asks "what are you looking for?" in the first few messages</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'm here for [your intent]. I've found that being upfront about that from the beginning leads to much better conversations &mdash; even if it means some people filter out. What about you?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">States your position clearly without being aggressive. The phrase 'even if it means some people filter out' shows confidence in your own standards. Returning the question creates reciprocity.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Intent Mismatch Response</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 1</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You discover your match has a fundamentally different intent than yours</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I appreciate you being honest about that. It sounds like we're looking for different things, and I'd rather acknowledge that now than three weeks from now. I genuinely wish you well."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Respectful, direct, and complete. No negotiation, no attempt to change their mind. Acknowledging the mismatch early is a sign of emotional maturity &mdash; and it preserves your time and theirs.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The 'Not Sure' Navigation</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 1</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Your match says they're "not sure" what they're looking for and you want to explore whether there's alignment</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I get that &mdash; I think 'not sure' is honest when it's real. For me, I know I want [your intent]. I'm not asking you to match that right now, but I am curious &mdash; what does a good outcome look like for you?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Validates their uncertainty without accepting it as permanent. States your own intent clearly. The question 'what does a good outcome look like' reframes the conversation from labels to feelings.</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 03 — DATING APP PROFILE MASTERY
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="phase-marker">
+    <div class="pm-num" style="border-color:rgba(65,91,124,.3)">2</div>
+    <div>
+      <div class="pm-title">Phase 2 of 5 &mdash; Profile</div>
+      <div class="pm-sub">Build the profile that earns your Level</div>
+    </div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 03</span></div>
+    <h2 class="ch-title">Dating App Profile Mastery</h2>
+    <p class="ch-sub">Your Level is determined by your community. Your profile is what earns it.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <p class="bp">Your Level &mdash; rated 6 through 10 by real members &mdash; is the most important number on your profile. It determines who you see and who sees you. It cannot be purchased, gamed, or inflated. It is a genuine quality signal built by the community, which makes it the most meaningful metric in dating technology.</p>
+  <p class="bp">Most members approach their profile the way they approach a resume: list what you have, describe what you want, hope for the best. A Level-9 profile does something different. It makes the viewer feel something before they've read the second line &mdash; and it gives them a clear, specific reason to message you.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">WHAT GETS RATED</div>
+    <div class="rb-body">Community members rate profiles on overall impression &mdash; not individual photos. The Level reflects the combined quality of your photos, your bio, and how coherently they tell a story. A technically attractive person with a generic bio will rate lower than a moderately attractive person with a specific, interesting profile.</div>
+  </div>
+
+  <div class="subh">The Five Profile Pillars</div>
+  <div style="margin-bottom:2rem;">
+    <div class="profile-pillar"><div class="pp-num">01</div><div class="pp-content"><div class="pp-title">The Lead Photo</div><div class="pp-body">Your lead photo should show your face clearly, in natural light, doing something that hints at personality &mdash; not a posed headshot or a group photo. It is not a modeling shot. It is an invitation to ask a question.</div></div></div>
+    <div class="profile-pillar"><div class="pp-num">02</div><div class="pp-content"><div class="pp-title">The Context Photos</div><div class="pp-body">Two to four photos that show who you are when you're not posing. Activities, environments, moments. Each photo should give someone a specific thing to reference in an opener.</div></div></div>
+    <div class="profile-pillar"><div class="pp-num">03</div><div class="pp-content"><div class="pp-title">The Bio</div><div class="pp-body">Three sentences maximum. One specific thing you do or care about. One line that reveals personality or perspective. One line that gives someone a clear reason to message you. Specificity always beats completeness.</div></div></div>
+    <div class="profile-pillar"><div class="pp-num">04</div><div class="pp-content"><div class="pp-title">The Prompts</div><div class="pp-body">Answer prompts as if you are talking to someone who already likes you &mdash; not as if you are auditioning. The best prompt answers reveal a real opinion, an unusual interest, or a specific story.</div></div></div>
+    <div class="profile-pillar"><div class="pp-num">05</div><div class="pp-content"><div class="pp-title">Intent Alignment</div><div class="pp-body">Your photos, bio, and prompts should reflect your declared Intent. A Marriage-Intent profile should feel settled, purposeful, and genuine. A Casual-Intent profile should feel present-tense, honest, and easy. Misalignment between Intent and profile is the fastest way to get lower-quality matches.</div></div></div>
+  </div>
+
+  <div class="level-grid">
+    <div class="level-card"><div class="level-num">6</div><div class="level-label">Starting Point</div></div>
+    <div class="level-card"><div class="level-num">7</div><div class="level-label">Building</div></div>
+    <div class="level-card"><div class="level-num">8</div><div class="level-label">Strong</div></div>
+    <div class="level-card"><div class="level-num">9</div><div class="level-label">High Reach</div></div>
+    <div class="level-card"><div class="level-num">10</div><div class="level-label">Elite</div></div>
+  </div>
+  <p class="bp" style="font-size:.8rem;color:var(--sl);">Every member starts at Level 6. Level 10 is earned through community ratings over time. Premium membership expands your ability to message across all Levels &mdash; but your Level determines the quality of matches who see you organically.</p>
+
+  <div class="subh">Phase 2 &middot; Profile Scripts</div>
+  <p class="bp">These scripts are not conversation starters &mdash; they are the building blocks of your profile itself. Your bio, your prompts, and how you present yourself are the first message your match reads before you ever say a word.</p>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Bio Builder</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Writing or rewriting your dating profile bio</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I [specific thing you do that reveals personality]. Most weekends you'll find me [specific activity]. I'm looking for someone who [one genuine quality] &mdash; and who doesn't take themselves too seriously about [specific thing]."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Three sentences. Each one does specific work: reveals who you are, shows your lifestyle, states what you want. The final line adds personality and approachability. This structure consistently produces Level 8+ bios.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Prompt Response Formula</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Answering dating app prompts that ask about preferences, deal-breakers, or interests</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"The way to my heart is through [specific, slightly unexpected thing]. Not [obvious cliche]. I once [brief story that proves it]. If that makes you want to ask a follow-up question, we're probably going to get along."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Specificity over generality. The 'not [cliche]' line shows self-awareness. The brief story makes it real. The closing line is a soft invitation to message &mdash; without being desperate.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Photo Audit Checklist</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Selecting which photos to include in your profile</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Lead photo: face visible, natural light, hint of personality. Photo 2-3: doing something you actually do, not posing. Photo 4: with friends or in a social setting (you clearly identifiable). No sunglasses in lead. No group shots where they have to guess. No photos older than 12 months."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">This is not a script you send &mdash; it is a script you follow. Every high-rated profile on the platform follows this structure. The community rates the story your photos tell, not individual attractiveness.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Profile Review Request</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 2</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Asking a trusted friend to review your profile before going live</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Be honest with me &mdash; if you saw this profile and didn't know me, would you swipe right? What's the first thing you notice? What's missing? And does this sound like me or like everyone else?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Outside perspective catches blind spots you cannot see. The four specific questions force useful feedback instead of 'looks good.' Friends who know you can identify when your profile undersells who you actually are.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Minimal Profile Opener</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Their profile gives you almost nothing to work with &mdash; sparse bio, generic photos, no prompts answered</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Your profile is playing it pretty close to the vest &mdash; so I'll go first. I'm [one specific thing about you]. What's the one thing your profile doesn't say about you that I should know?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Acknowledges the sparse profile without criticizing it. Leading with your own vulnerability creates safety. The question is specific enough to get a real answer but open enough to let them choose what to reveal.</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 04 — OPENING SCRIPTS
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="phase-marker">
+    <div class="pm-num" style="border-color:rgba(201,168,76,.25)">3</div>
+    <div>
+      <div class="pm-title">Phase 3 of 5 &mdash; Connection</div>
+      <div class="pm-sub">From first message through meaningful exchange to the invite</div>
+    </div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 04</span></div>
+    <h2 class="ch-title">Opening Scripts &mdash; Phase 3 Begins</h2>
+    <p class="ch-sub">The first message is not an introduction. It is an invitation.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <p class="bp">Phase 3 is where most dating app experiences succeed or fail. Profile quality and Intent alignment bring the right people into view. What happens next determines whether anything moves forward. The opening message is not about making a good impression &mdash; it is about opening a specific door.</p>
+  <p class="bp">Generic openers ("Hey", "How's your week?", "You seem interesting") share one property: they give the recipient nothing to work with. They are questions without context, interest without specificity. A Level-9 opener does the opposite. It references something real, reveals something about you, and asks one open question &mdash; in that order.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE OPENING MESSAGE FORMULA</div>
+    <div class="rb-body"><b>[Specific observation from their profile] + [Your genuine response to it] + [One open question]</b><br><br>20&ndash;35 words. Specific. Warm. Curious. One question only. This formula is not a template &mdash; it is a structure. Fill it with authenticity every time. The scripts below demonstrate how.</div>
+  </div>
+
+  <div class="subh">Phase 3 &middot; Stage 1 &mdash; The Opening Message</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Profile-Specific Opener</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They have something specific in their bio, photos, or prompts you genuinely noticed</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Hey [Name] &mdash; I noticed you listed [specific thing]. That's actually something I care a lot about too. What got you into it?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Specificity signals that you read their actual profile, not just looked at photos. The reciprocal 'me too' creates common ground. The question invites them to share a story.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Prompt Opener</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They've answered a prompt that gives you a genuine entry point</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Your answer to [prompt] is the most interesting response I've seen to that question. [Briefly why.] I'm curious &mdash; where did that come from?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Showing that you read their prompts demonstrates effort. Calling it the 'most interesting' is a genuine compliment about their mind, not their appearance.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Shared Interest Opener</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You genuinely share something specific mentioned in their profile</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"We both seem to have [specific interest] in common &mdash; which is either a good sign or going to lead to a very competitive argument. What's your relationship with it?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">The playful tension ('good sign or argument') adds energy and personality. The question invites their perspective.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Observation Opener</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Their photos reveal something about their lifestyle or personality worth noticing</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Your photo from [location/activity] caught my eye &mdash; looks like something I'd love to do. Have you been doing that long?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Compliments the experience and lifestyle rather than appearance. Shows attention to detail. Opens a specific conversation.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Polarizing Statement Opener</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Their profile suggests they have strong opinions and will enjoy engaging with yours</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I have a fairly strong take on [topic they mentioned] that I'm aware is somewhat controversial. Curious if you agree: [take]. Where do you land?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Reveals personality and confidence. Invites genuine engagement rather than a polite response. Works best with people whose profiles suggest they're opinionated.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Humor Opener</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Their profile shows wit, sarcasm, or playful energy and you want to match it</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I have a theory about people who [reference something specific from their profile] &mdash; and it's either going to make you laugh or make you unmatch me. Want to hear it?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Creates instant intrigue. The self-aware risk ('unmatch me') shows confidence and humor simultaneously. The question format guarantees a response if they're interested.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Direct Interest Opener</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You're genuinely attracted and want to lead with honest, non-creepy directness</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'm going to skip the clever opener &mdash; your profile genuinely caught my attention and I'd rather be direct about that. What's the story behind [specific thing from their profile]?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Directness is disarming when it's genuine. Naming that you're skipping the performance makes you stand out from everyone performing. The specific question proves it's not a copy-paste.</span></div>
+  </div>
+
+  <div class="subh">Phase 3 &middot; Stage 2 &mdash; Building Depth</div>
+  <p class="bp">Once the conversation is open, the work is building depth &mdash; not trading information. Most conversations stall because they become exchanges of facts rather than exchanges of perspective. The following scripts are tools for creating genuine momentum.</p>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Pivot to Depth</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Surface-level small talk needs to move toward something more substantive</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"The easy answer is [X]. The honest answer is probably more like [Y]. What about you &mdash; do you find yourself giving the easy version more often than the real one?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Creates emotional safety for honesty. Signals your own willingness to be real. The question invites reciprocal vulnerability without requiring it.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Follow-Through</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They gave a great answer and you want to go deeper without seeming like an interrogator</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"That's actually really interesting to me &mdash; specifically the part about [X]. Most people would have said [common version] but you said [what they said]. Tell me more about that."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Shows you were genuinely listening. Distinguishes their specific answer from what most people would have said &mdash; a genuine compliment on their distinctiveness.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Reciprocal Share</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You want to create genuine two-way exchange rather than an interview dynamic</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'll trade you &mdash; I'll tell you my honest take on [topic] if you tell me yours. I'll go first: [honest take]. Your turn."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Removes the interrogation dynamic by sharing first. Creates a structure of genuine mutual exchange.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Slow Burn Transition</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>A conversation is going well and you want to increase the depth of connection</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I've really enjoyed this conversation &mdash; you're clearly someone who thinks carefully about things. Can I ask you something I actually want to know the real answer to?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">The framing 'something I actually want to know the real answer to' signals that what follows is genuine curiosity, not small talk. Creates anticipation.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Vulnerability Invitation</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>The conversation is warm but still surface-level and you want to create real emotional connection</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Can I tell you something I don't usually lead with? [Genuine personal detail &mdash; not trauma, just real]. I think the best conversations happen when someone goes first. So &mdash; your turn, if you want."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Vulnerability without oversharing. The bracket is a framework &mdash; fill it with something genuine but appropriate. 'Your turn, if you want' removes pressure while creating emotional momentum.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Values Discovery</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You want to understand what actually matters to them beyond surface interests</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Here's a question I think reveals a lot about a person: what's something you used to believe about relationships that you've completely changed your mind about?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">This question bypasses small talk entirely. Their answer reveals self-awareness, growth, and what they've learned from past experiences &mdash; all critical compatibility signals.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Future Painting</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>The connection is strong and you want to create shared anticipation without being premature</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I keep thinking about how good our conversation about [specific topic] was. I have a feeling that would be even better over [coffee/drinks/a walk]. Not a proposal &mdash; just an observation."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">References a specific shared moment. The 'not a proposal &mdash; just an observation' framing is playful and removes pressure while planting the seed. Creates forward momentum naturally.</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 05 — THE VIDEO INVITE & COURTSHIP ENTRY
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="chapter-head">
+    <div class="ch-meta">
+      <span class="ch-number">Chapter 05</span>
+      <span class="ch-phase-tag">Phase 3 &rarr; 4</span>
+    </div>
+    <h2 class="ch-title">The Video Invite &amp; Courtship Entry</h2>
+    <p class="ch-sub">The 20-minute call that eliminates ambiguity, confirms chemistry, and earns the first date.</p>
+  </div>
+  <div class="ch-rule"></div>
+  <div class="cc-badge">Signals 3 and 4 of the Connection Code: Open &rarr; Build</div>
+
+  <p class="bp">The video call is not an optional step. It is the bridge between digital connection and real-world courtship. Most people skip it and go straight to a first date &mdash; which means they often spend two hours with someone they knew in the first five minutes wasn't right.</p>
+  <p class="bp">A 20-minute video call does three things: it confirms that what you experienced in messages translates to real presence, it eliminates the primary risk of wasted time on both sides, and &mdash; if chemistry is real &mdash; it makes the first date feel anticipated rather than tentative.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE VIDEO CALL STANDARD</div>
+    <div class="rb-body">20 minutes. One topic of genuine interest explored. Confirm one real thing you have in common. End the call before it plateaus &mdash; ideally while it's still going well. The invite to meet in person comes at the end of the call, not during a message thread.</div>
+  </div>
+
+  <div class="subh">Phase 3 &middot; The Video Invite Scripts</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Standard Video Invite</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Natural point in a good conversation to suggest a video call</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I think we'd have a much better conversation over a video call. Are you open to that? No pressure &mdash; just feels more real."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">"No pressure" explicitly removes the commitment anxiety. "Feels more real" reframes the call as a quality upgrade, not a commitment escalation. This is the highest-performing Phase 3&rarr;4 transition in the library.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Casual Video Invite</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>The conversation is flowing well and you want to suggest a video call without making it feel like a formal step</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Okay, I have to say &mdash; I'm enjoying this way more than most app conversations. I kind of want to see if you're this interesting in real time. Quick video call sometime this week? Totally low-key."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">The compliment ('enjoying this way more') is specific to the conversation, not generic flattery. 'In real time' reframes the call as curiosity rather than evaluation. 'Totally low-key' removes performance anxiety.</span></div>
+  </div>
+
+  <div class="subh">Phase 4 &middot; Entry &mdash; Moving to Courtship</div>
+  <p class="bp">Phase 4 begins when both people have agreed to meet in person. The scripts below cover the transition from digital conversation to first in-person contact.</p>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Stage 1 Invitation</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Inviting to a first in-person meeting after a successful video call</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'd love to get together for coffee or a drink &mdash; nothing elaborate, just a chance to continue this in person. Are you free [day] in the [afternoon/evening]?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">"Nothing elaborate" removes pressure and expectation. Specific day makes it easy to commit. The callback to 'continue this' keeps momentum from the video call.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Opening</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>First 2 minutes of the call to set a warm, relaxed tone</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Hey &mdash; it's good to actually see you. I was worried my imagination had filled in details that weren't there, but this is better."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Warm, slightly flattering, immediately creates a relaxed atmosphere. Acknowledges that this is a moment of genuine first-meeting energy.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Authentication Request</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 4</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>3&ndash;5 minutes in, to verify you're talking to a real person</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Quick thing before we really get into it &mdash; this will sound slightly paranoid but I always do this: can you wave at me and tell me what the weather is like where you are right now?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Frames it as personal habit ('I always do this') rather than accusation. The combination of physical action and real-time information is instantly verifiable.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Phone Number Exchange</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 4</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You want to move the conversation off the dating app to text messaging</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'm enjoying talking to you and I'd rather not lose this in the app notification graveyard. Want to move this to text? Here's my number: [number]. No pressure if you'd rather stay here for now."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">The 'notification graveyard' line is relatable and honest. Giving your number first removes the vulnerability imbalance. 'No pressure' gives them an easy out without awkwardness.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Between-Dates Check-In</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Between the video call and the first date, or between dates, to maintain momentum</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I just [something that reminded you of them or your conversation] and it made me think of you. Hope your [day/week] is going well."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Short. Specific. Not needy. The callback to a shared reference shows you're thinking about the connection. No question mark means no pressure to respond immediately &mdash; but they will.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Pre-Date Confirmation</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 4</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Day of or day before a planned first meeting to confirm logistics</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Still on for [time] tomorrow? I'm looking forward to it. I'll be the one who [lighthearted identifying detail]."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Confirms without being anxious. 'Looking forward to it' states continued interest. The lighthearted detail adds personality and reduces first-meeting awkwardness.</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 06 — FROM FIRST DATE TO COMMITMENT
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="phase-marker">
+    <div class="pm-num" style="border-color:rgba(201,168,76,.5)">5</div>
+    <div>
+      <div class="pm-title">Phase 5 of 5 &mdash; Commitment</div>
+      <div class="pm-sub">The first date through relationship</div>
+    </div>
+  </div>
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 06</span></div>
+    <h2 class="ch-title">From First Date to Commitment</h2>
+    <p class="ch-sub">The stage most people handle by instinct. The Playbook gives you structure.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <p class="bp">Phase 4 ends when both people have met in person and the connection is real. Phase 5 begins when one person is ready to move from "we're seeing each other" to "we are in a relationship." The distance between those two states is where more connections fail than at any other point &mdash; not because attraction fades, but because neither person knows how to close it.</p>
+  <p class="bp">The scripts in this chapter cover the two most important conversations of Phase 5: the one that surfaces where both people actually are, and the one that defines what happens next.</p>
+
+  <div class="subh">Phase 4 &middot; Stage 2 &mdash; Building Toward Commitment</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Natural Close</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>When the conversation is going well and you want to leave on a high</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I've genuinely enjoyed this &mdash; more than I expected to, honestly. I'd really like to continue it in person. Are you free [day] for coffee or drinks?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">"More than I expected" is a genuine compliment that feels real because it's specific. The immediate suggestion of in-person continues the momentum.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Post-Stage 1 Follow-Up</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Within 30 minutes of ending a successful Stage 1 meeting</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Tonight was really good. I'd like to see you again."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Send within 30 minutes. Three sentences max. Unambiguous about wanting to continue. Direct without being overwhelming. This is the message that separates intentional daters from passive ones. No ambiguity. No games.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Second Date Invitation</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>After a successful first date, you want to see them again and suggest something specific</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I had a great time &mdash; and I've been thinking about what you said about [specific topic from the date]. There's this [specific place/activity] I think you'd love. Are you free [day]?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">References a specific moment from the date, proving you were present and listening. Suggesting a specific activity shows initiative. Tying it to something they said makes the invitation feel personal, not generic.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Morning-After Text</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>The morning after a date that went well &mdash; to express genuine interest without overthinking</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I woke up thinking about [specific moment or topic from the date]. That's usually a good sign. When can I see you again?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Sent the morning after, not three days later. The specific reference proves the date mattered. 'When can I see you again' is direct and confident without being overwhelming.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Deeper Date Conversation</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 4</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You're on a second or third date and want to move past pleasant conversation into real connection</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Can I ask you something real? What's the most important lesson a past relationship taught you &mdash; the one that actually changed how you show up now?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">This question reveals emotional intelligence, self-awareness, and growth patterns. It separates people who've done the inner work from those who haven't. Ask it during a moment of genuine connection, not as an interview question.</span></div>
+  </div>
+
+  <div class="subh">Phase 5 &middot; The Commitment Conversation</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Relationship Progression Conversation</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You want to clarify where things are going after several successful dates</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I've been enjoying this a lot and I want to make sure we're on the same page. I'm looking for [intent] and I think we've been heading in that direction. Is that where you see this going too?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">States your position first. Invites their perspective without pressure. Framing as 'same page' makes it collaborative rather than demanding.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Exclusivity Conversation</div>
+      <div class="sc-badges"><span class="sc-badge cp">&#9670; Core Path</span><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You want to define the relationship and stop seeing other people</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I want to be straightforward with you. I've stopped looking at other profiles &mdash; not because I feel obligated to, but because I genuinely don't want to. I'd like us to be on the same page about that. Where are you?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Leads with action already taken, not a demand. 'Not because I feel obligated' removes transactional pressure. The question at the end invites their truth without requiring a specific answer.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Meet My Friends Invitation</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 5</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>The relationship is established and you want to introduce them to your social circle</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"My friends have been hearing about you &mdash; which means they're very curious. I'd love for you to meet them. [Specific friend] is having [specific event] on [day]. Want to come? No pressure &mdash; but I think you'd really like them."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">The admission that 'friends have been hearing about you' is a genuine compliment. Specific event details make it easy to say yes. 'No pressure' acknowledges this is a meaningful step while keeping it light.</span></div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE COMMITMENT CONVERSATION PRINCIPLE</div>
+    <div class="rb-body">This conversation works because it is honest, not because it is tactical. The goal is not to pressure someone into commitment. It is to surface where both people are so that the right outcome &mdash; whatever it is &mdash; can happen clearly. Ambiguity here is worse than any outcome.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 07 — DIFFICULT SITUATIONS
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 07</span></div>
+    <h2 class="ch-title">Scripts for Every Difficult Situation</h2>
+    <p class="ch-sub">The conversations most people handle badly &mdash; and exactly what to say instead.</p>
+  </div>
+  <div class="ch-rule"></div>
+  <div class="cc-badge">The Connection Code in difficult situations &mdash; which signal broke down, and how to recover it.</div>
+
+  <p class="bp">Not every conversation follows the optimal path. Silence falls. Signals get mixed. Someone pulls back without explanation. Someone asks a question you're not ready for. These are not failures of chemistry &mdash; they are navigation challenges. The scripts in this chapter address the most common ones.</p>
+
+  <div class="subh">When Conversations Stall</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Long Silence Recovery</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>A conversation went cold and you want to re-engage without appearing desperate</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Hey &mdash; life got busy. But I keep thinking about our conversation. Still worth continuing?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">"But I keep thinking about it" is a genuine expression of interest that is low-pressure because it doesn't demand a response. "Still worth continuing" puts the question cleanly without guilt.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">After They Pull Back</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Communication has become infrequent or they've become less engaged</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I've noticed things have slowed down on our end. I'd rather know where things stand than guess &mdash; are you still interested in staying connected?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Direct without being accusatory. Acknowledges the pattern you've noticed. Gives them an easy, honest way to respond in either direction.</span></div>
+  </div>
+
+  <div class="subh">When the Signal Is Unclear</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Mixed Signals Read</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They're engaging warmly but not escalating &mdash; you can't tell if they're interested or just friendly</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I have a genuine question and I'd rather ask it directly than guess: are you enjoying this as more than a friendly conversation, or am I misreading things?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Confidence in asking directly. Specific framing removes ambiguity without pressure. Shows self-awareness and emotional intelligence.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The 'What Are You Looking For?' Question</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They ask directly what you want &mdash; before you've had enough conversation to have context</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Honestly? Something that feels real &mdash; I don't have a rigid script for what that looks like. What about you? What are you hoping to find?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Honest without being heavy. Acknowledges that real connection is complex. Immediately returns the question to create genuine exchange rather than interrogation.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Pressure Response</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They're pushing faster than you're comfortable with &mdash; physically or emotionally</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'm genuinely interested in where this goes, and I want to take it at a pace that feels right for both of us. That means slowing down a little for me. Can you work with that?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Establishes a boundary with a positive framing ('genuinely interested'). Gives them clear information about what you need. Makes it collaborative.</span></div>
+  </div>
+
+  <div class="subh">When They Disappear</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Ghosting Response</div>
+      <div class="sc-badges"><span class="sc-badge hp">&#11088; High Performer</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They've completely stopped responding after what seemed like a good connection</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"Hey &mdash; I noticed things went quiet. I'm not going to pretend I didn't notice or send five more messages hoping for a different result. If you're no longer interested, I respect that. If something came up, the door's still open. Either way, I hope you're doing well."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Acknowledges the silence directly. 'Not going to send five more messages' shows self-respect. Offers both possible explanations without accusation. Closes with genuine warmth regardless of outcome.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Slow Fade Recognition</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Responses are getting shorter, less frequent, and less engaged &mdash; the classic slow fade</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'm getting the sense that the energy here has shifted. I'd rather have an honest five-second conversation about it than slowly watch this fade out. No hard feelings either way &mdash; just tell me where you're at."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Names the pattern without blame. 'Honest five-second conversation' makes the ask feel small and easy. 'No hard feelings either way' creates safety for honesty. Most people respect directness even when the answer isn't what you hoped for.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Dealbreaker Discovery</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You learn something about them that might be incompatible with your intent or values</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I want to be honest about something. When you mentioned [specific thing], it made me think about whether we're aligned on [related value]. That matters to me. Can we talk about it directly?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Addresses the concern immediately rather than letting it fester. The framing 'whether we're aligned' is neutral &mdash; not accusatory. Asking to 'talk about it directly' shows maturity and gives them a chance to explain.</span></div>
+  </div>
+
+  <div class="subh">After a Date &mdash; Handling Uncertainty</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The After-Date Uncertainty</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>The first meeting went well but you don't know if they felt the same way</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I had a really good time tonight. I don't want to be ambiguous about that &mdash; I'd like to see you again. How did you feel?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Expresses your own interest clearly before asking theirs. Removes the 'I don't want to seem too eager' performance. Signals confidence and authenticity.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">If Chemistry Isn't There</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>When you want to close the call graciously without committing to more</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"It was really great to put a face to the conversation. I'm going to think about whether there's something here &mdash; I hope you do the same."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Honest without being harsh. Gives both parties room to reflect without a forced commitment in the moment.</span></div>
+  </div>
+
+  <div class="subh">Closing with Integrity</div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Gracious Decline</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>You want to end a conversation or decline a meeting without being unkind</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I've really enjoyed getting to know you, but I don't think we're the right match. I genuinely wish you the best."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Kind. Direct. Complete. No justification required. No invitation to negotiate.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Gracious Exit</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>Ending Stage 1 at the right moment &mdash; while things are still going well</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"This has been really good &mdash; I want to end while I'm still wanting more. I'd like to see you again. Can we plan that now?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Ending first is a power move that signals confidence. "While I'm still wanting more" is authentic and slightly flattering. Asking to plan next immediately secures the follow-through.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Ex Conversation</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>They ask about your past relationships or you need to navigate the 'tell me about your ex' question</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I'll give you the honest version: [brief, non-bitter summary]. What I learned from it is [genuine lesson]. I'm not carrying that into this &mdash; but it shaped what I know I want now. What about you?"</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Brief, honest, forward-looking. No bitterness, no victim narrative. The lesson framing shows growth. Returning the question creates equal exchange and prevents an interrogation dynamic.</span></div>
+  </div>
+
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-title">The Rejection Recovery</div>
+      <div class="sc-badges"><span class="sc-badge phase">Phase 3</span></div>
+    </div>
+    <div class="sc-meta">USE WHEN: <span>After being turned down or hearing 'I'm not interested' &mdash; to maintain your dignity and emotional composure</span></div>
+    <div class="sc-body">
+      <div class="sc-quote">"I appreciate you being honest with me &mdash; that takes more courage than ghosting, and I respect it. I genuinely enjoyed getting to know you. Take care of yourself."</div>
+    </div>
+    <div class="sc-why"><span class="sc-why-label">Why It Works</span><span class="sc-why-text">Responding to rejection with grace is the single most underrated dating skill. This script acknowledges their honesty, expresses genuine appreciation, and closes cleanly. No negotiation, no guilt, no door left awkwardly open.</span></div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE DIFFICULT SITUATION PRINCIPLE</div>
+    <div class="rb-body">Most difficult conversations fail because of vagueness &mdash; either too much of it ('I've been busy') or the wrong kind of directness ('I don't think this is working'). The scripts here are designed to be honest, kind, and specific. The goal in each case is a clear outcome &mdash; not a comfortable avoidance of one.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 08 — THE SCRIPT BUILDER FRAMEWORK
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 08</span></div>
+    <h2 class="ch-title">The Script Builder Framework</h2>
+    <p class="ch-sub">How to write your own high-performing scripts &mdash; in your voice, for your Intent.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <p class="bp">The 50+ scripts in this Playbook are not templates to copy. They are demonstrations of principles. The Script Builder Framework is what you use when none of the existing scripts fit your specific situation &mdash; or when you want to adapt them to your voice, your Intent, and the specific person in front of you.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE THREE COMPONENTS</div>
+    <div class="rb-body">Every high-performing script in the MatchMakers library shares three components:<br><br><b>1. A specific reference</b> &mdash; something real from their profile, their words, or your shared exchange.<br><b>2. A genuine response</b> &mdash; what you actually think or feel about that specific thing.<br><b>3. One open question</b> &mdash; not rhetorical, not leading. A real invitation to respond.</div>
+  </div>
+
+  <p class="bp">Apply this structure to any situation. The opening message. The depth pivot. The video invite. The difficult conversation. Each can be built from these three components. The scripts in the Playbook are examples of what happens when you fill these components with specificity and honesty.</p>
+
+  <div class="rule-box">
+    <div class="rb-ey">THE QUALITY TEST</div>
+    <div class="rb-body">Before sending any message, ask three questions: Does this reference something specific? Does it reveal something genuine about me? Does the question invite a real response &mdash; not just a yes or no? If all three are yes, send it. If any are no, rebuild.</div>
+  </div>
+
+  <p class="bp">The Script Builder is not a shortcut. It is the inverse of a shortcut &mdash; it takes more effort than copying a template, and it produces dramatically better results. When a match receives a message that could only have been written to them, the entire dynamic of the conversation changes.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAPTER 09 — QUICK REFERENCE
+═══════════════════════════════════════════════════════ -->
+<div class="pb-chapter">
+  <div class="chapter-head">
+    <div class="ch-meta"><span class="ch-number">Chapter 09</span></div>
+    <h2 class="ch-title">Quick Reference &mdash; Complete Script Library</h2>
+    <p class="ch-sub">All scripts organized by phase and situation. Return here when you need one fast.</p>
+  </div>
+  <div class="ch-rule"></div>
+
+  <div class="subh">Phase 3 &mdash; Connection</div>
+  <table class="qr-table">
+    <thead><tr><th>Script</th><th>Use When</th><th>Signal</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="qr-title">The Profile-Specific Opener</div><div class="qr-cat">Opener</div></td>
+        <td>Their profile has something specific worth referencing</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Prompt Opener</div><div class="qr-cat">Opener</div></td>
+        <td>They answered a prompt with something worth engaging</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Shared Interest Opener</div><div class="qr-cat">Opener</div></td>
+        <td>You have a genuine common interest</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Observation Opener</div><div class="qr-cat">Opener</div></td>
+        <td>A photo reveals something about their lifestyle</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Polarizing Statement Opener</div><div class="qr-cat">Opener</div></td>
+        <td>They seem like they'd enjoy a strong opinion</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Pivot to Depth</div><div class="qr-cat">Depth</div></td>
+        <td>Small talk is working but needs to go deeper</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Follow-Through</div><div class="qr-cat">Depth</div></td>
+        <td>They said something worth exploring further</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Reciprocal Share</div><div class="qr-cat">Depth</div></td>
+        <td>You want to create a mutual exchange</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Slow Burn Transition</div><div class="qr-cat">Depth</div></td>
+        <td>The conversation needs to slow down and deepen</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Standard Video Invite</div><div class="qr-cat">Video</div></td>
+        <td>Ready to move from messages to a call</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Casual Video Invite</div><div class="qr-cat">Video</div></td>
+        <td>You want a lower-stakes version of the video invite</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="subh">Phase 4 &mdash; Courtship</div>
+  <table class="qr-table">
+    <thead><tr><th>Script</th><th>Use When</th><th>Signal</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="qr-title">The Stage 1 Invitation</div><div class="qr-cat">Invite</div></td>
+        <td>Video call confirmed chemistry, ready to meet</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Opening</div><div class="qr-cat">First Date</div></td>
+        <td>First in-person meeting starts well</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Authentication Request</div><div class="qr-cat">First Date</div></td>
+        <td>You want to confirm genuine interest during the date</td>
+        <td><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Natural Close</div><div class="qr-cat">Closing</div></td>
+        <td>Date is ending and you want to see them again</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+      <tr>
+        <td><div class="qr-title">The Post-Stage 1 Follow-Up</div><div class="qr-cat">Follow-Up</div></td>
+        <td>Day after first date, maintaining momentum</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);">CP</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="subh">Phase 5 &mdash; Commitment</div>
+  <table class="qr-table">
+    <thead><tr><th>Script</th><th>Use When</th><th>Signal</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="qr-title">The Relationship Progression Conversation</div><div class="qr-cat">Commitment</div></td>
+        <td>Ready to define the relationship</td>
+        <td><span class="qr-badge" style="background:var(--gold);color:var(--dk);margin-right:3px;">CP</span><span class="qr-badge" style="background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2);">HP</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="subh">Difficult Situations</div>
+  <table class="qr-table">
+    <thead><tr><th>Script</th><th>Situation</th></tr></thead>
+    <tbody>
+      <tr><td><div class="qr-title">The Long Silence Recovery</div></td><td>3+ days of silence after good conversation</td></tr>
+      <tr><td><div class="qr-title">After They Pull Back</div></td><td>Sudden drop in engagement with no explanation</td></tr>
+      <tr><td><div class="qr-title">The Mixed Signals Read</div></td><td>Warm one day, distant the next</td></tr>
+      <tr><td><div class="qr-title">The "What Are You Looking For?" Question</div></td><td>They ask about intent directly</td></tr>
+      <tr><td><div class="qr-title">The Pressure Response</div></td><td>They push for faster commitment than you're ready for</td></tr>
+      <tr><td><div class="qr-title">The After-Date Uncertainty</div></td><td>Date went well but you can't read their level of interest</td></tr>
+      <tr><td><div class="qr-title">If Chemistry Isn't There</div></td><td>You like the person but the chemistry isn't present</td></tr>
+      <tr><td><div class="qr-title">The Gracious Decline</div></td><td>You need to end a connection cleanly</td></tr>
+      <tr><td><div class="qr-title">The Gracious Exit</div></td><td>End of a conversation that ran its course</td></tr>
+    </tbody>
+  </table>
+
+  <div class="legend-box">
+    <div>
+      <div class="legend-item-title">&#9670; CP &mdash; Core Path</div>
+      <div class="legend-item-desc">The 8 essential scripts. The minimum you need.</div>
+    </div>
+    <div>
+      <div class="legend-item-title">&#11088; HP &mdash; High Performer</div>
+      <div class="legend-item-desc">15 scripts with the highest observed success rate.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
