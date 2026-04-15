@@ -197,6 +197,14 @@
     }
   }
 
+  // ── Scroll helper: wait for paint then scroll ──
+  function scrollToBottom() {
+    if (!messagesEl) return;
+    requestAnimationFrame(function() {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    });
+  }
+
   // ── Chat Messages ──
   function addMessage(role, text) {
     if (!messagesEl) return;
@@ -216,7 +224,7 @@
     row.appendChild(av);
     row.appendChild(bubble);
     messagesEl.appendChild(row);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    scrollToBottom();
   }
 
   function showTyping() {
@@ -228,7 +236,7 @@
       '<div class="cp-msg-av">M</div>' +
       '<div class="cp-typing"><span></span><span></span><span></span></div>';
     messagesEl.appendChild(row);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    scrollToBottom();
   }
 
   function hideTyping() {
@@ -306,7 +314,7 @@
       wrap.appendChild(btn);
     });
     messagesEl.appendChild(wrap);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    scrollToBottom();
   }
 
   // ── Build API messages with summary compression ──

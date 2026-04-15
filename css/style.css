@@ -79,12 +79,12 @@ nav.scrolled{background:rgba(5,9,15,.96)}
 .nb:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
 
 /* ── HAMBURGER MENU ── */
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;background:none;border:none;cursor:pointer;z-index:110}
-.hamburger span{display:block;width:100%;height:2px;background:rgba(200,214,229,.7);border-radius:2px;transition:transform .3s,opacity .3s}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:4px;width:32px;height:32px;padding:6px;background:none;border:none;cursor:pointer;z-index:110}
+.hamburger span{display:block;width:100%;height:1.5px;background:rgba(200,214,229,.65);border-radius:2px;transition:transform .3s,opacity .3s}
 .hamburger:hover span{background:var(--gold)}
-.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
 .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
 
 /* ── HERO ── */
 .hero{min-height:100svh;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem clamp(1.25rem,5vw,4rem) 4rem;position:relative;overflow:hidden;background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(20,35,60,.9) 0%,var(--dk) 70%)}
@@ -221,6 +221,7 @@ section{position:relative}
 
 /* ── NAV SCROLL STATE ── */
 #app,#strategy,#assistant,#vip{scroll-margin-top:56px}
+@media(max-width:760px){#app,#strategy,#assistant,#vip{scroll-margin-top:44px}}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1060px){
@@ -234,14 +235,17 @@ section{position:relative}
   .g2{grid-template-columns:1fr;gap:2.5rem}
   .five-grid{grid-template-columns:repeat(2,1fr)}
   .phase-grid{grid-template-columns:repeat(2,1fr)}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:rgba(5,9,15,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(65,91,124,.18);padding:.5rem clamp(1.25rem,4vw,3.5rem) .75rem;gap:0}
+  .nav-inner{height:44px}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:44px;left:0;right:0;background:rgba(5,9,15,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(65,91,124,.12);padding:6px 20px 10px;gap:0}
   nav.menu-open .nav-links{display:flex}
-  nav.menu-open .nav-links .nl,
-  nav.menu-open .nav-links .nb{display:block;width:100%;padding:.6rem 0;font-size:.78rem;text-align:left;border-bottom:1px solid rgba(65,91,124,.08)}
-  nav.menu-open .nav-links .nb{border:1px solid rgba(201,168,76,.4);border-radius:6px;padding:.55rem .85rem;margin-top:.5rem;text-align:center;font-size:.7rem}
+  nav.menu-open .nav-links .nl{display:block;width:100%;padding:10px 0;font-size:.72rem;text-align:left;border-bottom:1px solid rgba(65,91,124,.06);color:rgba(200,214,229,.55)}
+  nav.menu-open .nav-links .nl:last-of-type{border-bottom:none}
+  nav.menu-open .nav-links .nb{display:block;width:100%;padding:9px 0;font-size:.72rem;text-align:center;border:1px solid rgba(201,168,76,.3);border-radius:6px;margin-top:6px;background:rgba(201,168,76,.04)}
   .hamburger{display:flex}
   .hero-proof{gap:1rem}
   .trust-inner{gap:1.25rem}
+  /* All fixed progress bars: align to 44px mobile nav */
+  .cc-progress,.pbo-progress,.dc-ov-progress,.vip-progress,.ia-progress-bar{top:44px}
 }
 @media(max-width:480px){
   .five-grid{grid-template-columns:1fr}
@@ -409,8 +413,12 @@ section{position:relative}
   opacity: .65;
   letter-spacing: 0;
 }
+@media(max-width:760px){
+  .nm { font-size: .82rem; margin-left:.35rem; }
+  .ni { width:32px; height:32px; }
+}
 @media(max-width:480px){
-  .nm { font-size: .75rem; }
+  .nm { font-size: .7rem; }
 }
 
 
@@ -488,16 +496,18 @@ section{position:relative}
 
 /* ── MOBILE QA FIXES ── */
 
-/* Nav: optimize for small phones */
+/* Nav: optimize for small phones — 44px standard set at 760px, fine-tune here */
 @media(max-width:480px){
-  .nav-inner { height:48px; padding:0 .85rem; }
-  .nav-links { top:48px !important; }
-  .ni { width:30px; height:30px; border-radius:6px; }
-  .hamburger { width:32px; height:32px; gap:4px; }
+  .nav-inner { padding:0 14px; }
+  .nav-links { padding:4px 14px 8px; }
+  .ni { width:28px; height:28px; border-radius:6px; }
+  .nm { font-size:.7rem; }
+  .hamburger { width:28px; height:28px; gap:3.5px; padding:5px; }
+  .hamburger span { height:1.5px; }
 }
-@media(max-width:400px){
-  nav .ndl { display:none; }
-  .nav-inner { padding:0 .75rem; }
+@media(max-width:380px){
+  .nav-inner { padding:0 10px; }
+  .nm { font-size:.65rem; }
 }
 
 /* Hero proof: clean 2×2 grid — hide dots since they break layout */
@@ -1204,9 +1214,13 @@ body { max-width:100vw; }
 
 /* ── MOBILE ── */
 @media(max-width:900px){
-  .pb-wrap { grid-template-columns:1fr; }
+  .pb-wrap { grid-template-columns:1fr; padding-top:44px; }
   .pb-nav { display:none; }
+  .pb-progress-bar { top:44px; }
   .pb-chapter { padding:2.5rem 1.25rem 3.5rem; }
+  /* Playbook content page nav: hide links, keep logo + CTA */
+  nav .nav-links[style] .nl { display:none; }
+  nav .btn-gold-sm { font-size:.65rem; padding:5px 10px; }
   .intent-grid { grid-template-columns:repeat(2,1fr); }
   .level-grid { grid-template-columns:repeat(3,1fr); }
   .journey-strip { flex-wrap:wrap; }
@@ -1455,7 +1469,7 @@ body { max-width:100vw; }
 .pb-dc-ready::before { content:''; width:5px; height:5px; border-radius:50%; background:rgba(45,184,122,.65); flex-shrink:0; }
 .pb-dc-new { font-family:'Outfit',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(120,149,175,.35); cursor:pointer; padding:3px 8px; border:1px solid rgba(65,91,124,.18); border-radius:5px; background:none; transition:all .18s; }
 .pb-dc-new:hover { color:var(--white); border-color:rgba(65,91,124,.35); }
-.pb-dc-messages { flex:1; overflow-y:auto; padding:1rem 1.25rem; display:flex; flex-direction:column; gap:.75rem; }
+.pb-dc-messages { flex:1; overflow-y:auto; padding:1rem 1.25rem 1.25rem; display:flex; flex-direction:column; gap:.75rem; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; min-height:0; scroll-padding-bottom:16px; }
 .pb-dc-messages::-webkit-scrollbar { width:3px; }
 .pb-dc-messages::-webkit-scrollbar-thumb { background:rgba(65,91,124,.25); border-radius:2px; }
 .pb-msg { display:flex; gap:.5rem; max-width:85%; animation:msgIn .2s ease; }
@@ -1710,7 +1724,7 @@ body { max-width:100vw; }
 
 /* Panel messages */
 .cp-messages{
-  flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 14px;
+  flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 14px 20px;
   display:flex;flex-direction:column;gap:12px;
   scrollbar-width:thin;scrollbar-color:rgba(65,91,124,.2) transparent;
   /* Critical: contain scroll within this element */
@@ -1718,6 +1732,8 @@ body { max-width:100vw; }
   -webkit-overflow-scrolling:touch;
   /* Prevent messages area from collapsing */
   min-height:0;
+  /* Ensure scroll target accounts for bottom spacing */
+  scroll-padding-bottom:20px;
 }
 .cp-messages::-webkit-scrollbar{width:4px;}
 .cp-messages::-webkit-scrollbar-thumb{background:rgba(65,91,124,.25);border-radius:2px;}
@@ -1953,7 +1969,7 @@ body { max-width:100vw; }
   }
   .cp-input{font-size:16px;}
   .cp-input-area{
-    position:sticky;bottom:0;
+    /* flex-shrink:0 already set on desktop — no sticky needed, flex handles it */
     background:var(--navy);z-index:2;
     /* Safe area for iPhone home indicator */
     padding-bottom:max(12px, env(safe-area-inset-bottom));
@@ -1964,13 +1980,14 @@ body { max-width:100vw; }
 
 }
 
-/* Body scroll lock — works cross-platform including iOS Safari */
+/* Body scroll lock — cross-platform including iOS Safari */
 body.coach-open{
   overflow:hidden !important;
-  position:fixed !important;
-  width:100% !important;
+  /* touch-action prevents iOS Safari rubber-band scroll-through */
+  touch-action:none;
+  /* Avoid position:fixed — it causes layout jumps and resets scroll on iOS */
+  height:100%;
   /* JS sets --scroll-y to preserve scroll position on lock/unlock */
-  top:var(--scroll-y, 0);
 }
 
 /* ═══════════════════════════════════════════════════

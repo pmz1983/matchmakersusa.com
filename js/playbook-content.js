@@ -294,7 +294,11 @@ if (window.IntersectionObserver) {
     pb_history.push({ role: 'assistant', content: msg });
   }
 
-  // Chat
+  // Chat — scroll helper waits for paint
+  function pbScrollToBottom(el) {
+    requestAnimationFrame(function() { el.scrollTop = el.scrollHeight; });
+  }
+
   function pbAddMsg(role, text) {
     var msgs = document.getElementById('pb-dc-messages');
     if (!msgs) return;
@@ -303,7 +307,7 @@ if (window.IntersectionObserver) {
     var b = document.createElement('div'); b.className = 'pb-msg-bubble';
     b.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
     d.appendChild(av); d.appendChild(b); msgs.appendChild(d);
-    msgs.scrollTop = msgs.scrollHeight;
+    pbScrollToBottom(msgs);
   }
 
   function pbShowTyping() {
@@ -311,7 +315,7 @@ if (window.IntersectionObserver) {
     if (!msgs) return;
     var d = document.createElement('div'); d.className = 'pb-msg coach'; d.id = 'pb-typing-ind';
     d.innerHTML = '<div class="pb-msg-av">M</div><div class="pb-typing"><span></span><span></span><span></span></div>';
-    msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+    msgs.appendChild(d); pbScrollToBottom(msgs);
   }
 
   function pbHideTyping() {
