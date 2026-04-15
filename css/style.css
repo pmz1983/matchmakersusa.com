@@ -220,7 +220,7 @@ section{position:relative}
 .gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3) 30%,rgba(201,168,76,.4) 50%,rgba(201,168,76,.3) 70%,transparent);margin:2rem 0}
 
 /* ── NAV SCROLL STATE ── */
-#app,#strategy,#assistant,#vip{scroll-margin-top:64px}
+#app,#strategy,#assistant,#vip{scroll-margin-top:56px}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1060px){
@@ -593,7 +593,7 @@ body { max-width:100vw; }
    ═══════════════════════════════════════════════════ */
 
 /* ── CONNECTION CODE GUIDE PAGE ── */
-.cc-progress { position:fixed; top:64px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
+.cc-progress { position:fixed; top:56px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
 .cc-progress-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35)); width:0%; transition:width .1s; }
 
 /* ── CC PAGE LAYOUT ── */
@@ -677,7 +677,7 @@ body { max-width:100vw; }
 
   
 /* ── PLAYBOOK OVERVIEW PAGE ── */
-.pbo-progress { position:fixed; top:64px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
+.pbo-progress { position:fixed; top:56px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
 .pbo-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35)); width:0%; }
 .pbo-w { max-width:900px; margin:0 auto; padding:0 clamp(1.5rem,4vw,3rem); }
 .pbo-sec { padding:5.5rem 0; border-bottom:1px solid rgba(65,91,124,.1); }
@@ -761,7 +761,7 @@ body { max-width:100vw; }
 
   
 /* ── DATING COACH PAGE ── */
-.dc-ov-progress { position:fixed; top:64px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
+.dc-ov-progress { position:fixed; top:56px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
 .dc-ov-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35)); width:0%; }
 
 .dc-ov-w { max-width:880px; margin:0 auto; padding:0 clamp(1.5rem,4vw,3rem); }
@@ -846,7 +846,7 @@ body { max-width:100vw; }
 }
 
 /* ── VIP MATCHMAKING PAGE ── */
-.vip-progress { position:fixed; top:64px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
+.vip-progress { position:fixed; top:56px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
 .vip-progress-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35)); width:0%; transition:width .1s; }
 
 /* ── HERO ── */
@@ -966,7 +966,7 @@ body { max-width:100vw; }
 
   
 /* ── INTENT ASSESSMENT PAGE ── */
-.ia-progress-bar { position:fixed; top:64px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
+.ia-progress-bar { position:fixed; top:56px; left:0; right:0; height:1px; background:rgba(65,91,124,.12); z-index:200; }
 .ia-progress-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35)); width:0%; transition:width .4s ease; }
 
 .ia-wrap { max-width:720px; margin:0 auto; padding:0 clamp(1.5rem,4vw,2.5rem); }
@@ -1070,10 +1070,10 @@ body { max-width:100vw; }
 
 
 /* ── PLAYBOOK CONTENT PAGE ── */
-.pb-wrap { display:grid; grid-template-columns:260px 1fr; min-height:100vh; padding-top:64px; }
+.pb-wrap { display:grid; grid-template-columns:260px 1fr; min-height:100vh; padding-top:56px; }
 
 /* ── SIDEBAR NAV ── */
-.pb-nav { position:sticky; top:64px; height:calc(100vh - 64px); overflow-y:auto; background:var(--navy); border-right:1px solid rgba(65,91,124,.2); padding:1.75rem 0; display:flex; flex-direction:column; }
+.pb-nav { position:sticky; top:56px; height:calc(100vh - 56px); overflow-y:auto; background:var(--navy); border-right:1px solid rgba(65,91,124,.2); padding:1.75rem 0; display:flex; flex-direction:column; }
 .pb-nav-logo { padding:0 1.5rem 1.5rem; border-bottom:1px solid rgba(65,91,124,.15); margin-bottom:1.25rem; }
 .pb-nav-logo .pb-title { font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:rgba(201,168,76,.65); margin-bottom:.2rem; }
 .pb-nav-logo .pb-sub { font-size:.7rem; color:rgba(120,149,175,.5); font-family:'DM Sans',sans-serif; }
@@ -1084,7 +1084,7 @@ body { max-width:100vw; }
 .pb-nav a .nav-phase { font-size:.58rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.5; margin-left:auto; white-space:nowrap; }
 .pb-nav a.active .nav-phase { opacity:.8; }
 .pb-nav-cta { margin-top:auto; padding:1.25rem 1.5rem; border-top:1px solid rgba(65,91,124,.15); }
-.pb-progress-bar { position:fixed; top:64px; left:0; right:0; height:2px; background:rgba(65,91,124,.15); z-index:200; }
+.pb-progress-bar { position:fixed; top:56px; left:0; right:0; height:2px; background:rgba(65,91,124,.15); z-index:200; }
 .pb-progress-fill { height:100%; background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.4)); width:0%; transition:width .1s; }
 
 /* ── MAIN CONTENT ── */
