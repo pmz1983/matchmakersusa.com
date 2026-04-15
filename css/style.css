@@ -68,9 +68,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gb);outline-offset:
 .gr.c{margin-left:auto;margin-right:auto}
 
 /* ── NAVIGATION ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,15,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(65,91,124,.18);transition:background .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,15,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(65,91,124,.18);transition:background .3s;padding-top:env(safe-area-inset-top,0)}
 nav.scrolled{background:rgba(5,9,15,.96)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem);height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem);height:56px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
 .nl{display:inline-flex;align-items:center;font-family:var(--pd);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(200,214,229,.6);padding:4px 0;transition:color .18s}
 .nl:hover{color:var(--gold)}
 .nav-links{display:flex;align-items:center;gap:1.75rem}
@@ -234,11 +234,11 @@ section{position:relative}
   .g2{grid-template-columns:1fr;gap:2.5rem}
   .five-grid{grid-template-columns:repeat(2,1fr)}
   .phase-grid{grid-template-columns:repeat(2,1fr)}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(5,9,15,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(65,91,124,.18);padding:1rem clamp(1.25rem,4vw,3.5rem) 1.25rem;gap:0}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:rgba(5,9,15,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(65,91,124,.18);padding:.5rem clamp(1.25rem,4vw,3.5rem) .75rem;gap:0}
   nav.menu-open .nav-links{display:flex}
   nav.menu-open .nav-links .nl,
-  nav.menu-open .nav-links .nb{display:block;width:100%;padding:.75rem 0;font-size:.82rem;text-align:left;border-bottom:1px solid rgba(65,91,124,.12)}
-  nav.menu-open .nav-links .nb{border:1.5px solid rgba(201,168,76,.5);border-radius:7px;padding:.7rem 1rem;margin-top:.75rem;text-align:center}
+  nav.menu-open .nav-links .nb{display:block;width:100%;padding:.6rem 0;font-size:.78rem;text-align:left;border-bottom:1px solid rgba(65,91,124,.08)}
+  nav.menu-open .nav-links .nb{border:1px solid rgba(201,168,76,.4);border-radius:6px;padding:.55rem .85rem;margin-top:.5rem;text-align:center;font-size:.7rem}
   .hamburger{display:flex}
   .hero-proof{gap:1rem}
   .trust-inner{gap:1.25rem}
@@ -488,10 +488,16 @@ section{position:relative}
 
 /* ── MOBILE QA FIXES ── */
 
-/* Nav: hide CTA button on very small phones to prevent overflow */
+/* Nav: optimize for small phones */
+@media(max-width:480px){
+  .nav-inner { height:48px; padding:0 .85rem; }
+  .nav-links { top:48px !important; }
+  .ni { width:30px; height:30px; border-radius:6px; }
+  .hamburger { width:32px; height:32px; gap:4px; }
+}
 @media(max-width:400px){
   nav .ndl { display:none; }
-  .nav-inner { padding:0 1rem; }
+  .nav-inner { padding:0 .75rem; }
 }
 
 /* Hero proof: clean 2×2 grid — hide dots since they break layout */
