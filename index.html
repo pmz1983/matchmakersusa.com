@@ -19,8 +19,8 @@
   {"@context":"https://schema.org","@graph":[
     {"@type":"Organization","name":"MatchMakers","legalName":"MatchMakers LLC","url":"https://matchmakersusa.com","foundingDate":"2018"},
     {"@type":"SoftwareApplication","name":"MatchMakers","operatingSystem":"iOS","applicationCategory":"SocialNetworkingApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
-    {"@type":"Product","name":"The MatchMakers Playbook","offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}},
-    {"@type":"Product","name":"MatchMakers Dating Coach","offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
+    {"@type":"Product","name":"The MatchMakers Playbook","offers":{"@type":"Offer","price":"250","priceCurrency":"USD"}},
+    {"@type":"Product","name":"MatchMakers Dating Coach","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Premium","price":"500","priceCurrency":"USD"},{"@type":"Offer","name":"Unlimited","price":"1000","priceCurrency":"USD"}]}
   ]}
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -76,7 +76,7 @@
     </div>
     <div class="cta-pair" style="display:flex;align-items:center;justify-content:center;gap:.85rem;flex-wrap:wrap;">
       <a href="https://matchmakersusa.com/guide" class="btn-gold">Get the Free Connection Code →</a>
-      <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get The MatchMakers Playbook — $500 →</button>
+      <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get The MatchMakers Playbook — $250 →</button>
     </div>
   </div>
 </section>
@@ -282,7 +282,7 @@
     <div style="text-align:center;margin-bottom:.5rem;" class="reveal">
       <span class="ey c">Six Ways to Engage</span>
       <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">The app is free. The methodology costs $500.</h2>
+      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">The app is free. The methodology costs $250.</h2>
       <p class="sub" style="text-align:center;max-width:620px;margin:0 auto;">Each product builds on the one before it. None of them are required. All of them work.</p>
     </div>
     <div class="engage-grid reveal r2">
@@ -307,15 +307,15 @@
         <div class="engage-num" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);">3</div>
         <div class="engage-name">The MatchMakers Playbook</div>
         <div class="engage-desc">50+ guided scripts. 9 Intent frameworks. The complete methodology. Yours forever.</div>
-        <div class="engage-price">$500</div>
+        <div class="engage-price">$250</div>
         <span class="engage-cta">Learn More →</span>
       </a>
       <!-- 4 · Dating Coach -->
       <a href="/coach/" class="engage-card engage-card--gold" style="text-decoration:none;">
         <div class="engage-num" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);">4</div>
         <div class="engage-name">MatchMakers Dating Coach</div>
-        <div class="engage-desc">30-day AI coaching built on the methodology. Real-time guidance for your situation.</div>
-        <div class="engage-price">$500</div>
+        <div class="engage-desc">AI coaching built on the methodology. Free, Premium ($500), or Unlimited ($1,000).</div>
+        <div class="engage-price">Free / $500 / $1,000</div>
         <span class="engage-cta">Learn More →</span>
       </a>
       <!-- 5 · VIP -->
@@ -342,7 +342,7 @@
   <div class="w">
     <div class="g2 stretch">
       <div style="display:flex;flex-direction:column;" class="reveal">
-        <span class="sec-eye">The MatchMakers Playbook · $500 One-Time</span>
+        <span class="sec-eye">The MatchMakers Playbook · $250 One-Time</span>
         <div class="sec-rule"></div>
         <h2 class="h2" style="margin-bottom:.4rem;">The complete dating methodology. One document. Yours forever.</h2>
         <a href="/playbook/" target="_blank" rel="noopener" class="btn-gold btn-gold-xs" style="margin:.85rem 0 1.25rem;align-self:flex-start;">Full Details →</a>
@@ -356,7 +356,7 @@
           <div class="top-line"></div>
           <span class="action-badge" style="background:var(--gold);color:var(--dk);">Most Popular · One-Time Payment</span>
           <div class="action-name">The MatchMakers Playbook</div>
-          <div class="action-price">$500</div>
+          <div class="action-price">$250</div>
           <span class="action-psub">One-time · Lifetime access · Instant delivery to your inbox</span>
           <div style="margin-bottom:1.25rem;"><span class="feat-pill">50+ guided scripts</span><span class="feat-pill">9 Intent frameworks</span><span class="feat-pill">Hall of Shame</span><span class="feat-pill">Golden Rule</span><span class="feat-pill">Script Builder</span><span class="feat-pill">Lifetime access</span></div>
           <div style="background:rgba(65,91,124,.12);border:1px solid rgba(65,91,124,.2);border-radius:10px;padding:1rem;margin-bottom:1.25rem;">
@@ -369,9 +369,9 @@
             </div>
           </div>
           <div class="action-footer">
-            <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Get The MatchMakers Playbook — $500 →</button>
+            <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Get The MatchMakers Playbook — $250 →</button>
             <p style="font-size:.7rem;color:var(--sl);text-align:center;margin:.5rem 0 0;"><a href="/playbook/" target="_blank" style="color:rgba(201,168,76,.4);text-decoration:none;font-family:var(--pd);">Read the full program overview →</a></p>
-            <p style="font-size:.7rem;color:rgba(200,214,229,.22);text-align:center;margin:.3rem 0 0;">The Dating Coach is a $500 standalone product</p>
+            <p style="font-size:.7rem;color:rgba(200,214,229,.22);text-align:center;margin:.3rem 0 0;">Dating Coach: Free / Premium $500 / Unlimited $1,000</p>
           </div>
         </div>
       </div>
@@ -383,14 +383,14 @@
   <div class="w">
     <div class="g2 stretch">
       <div style="display:flex;flex-direction:column;" class="reveal">
-        <span class="sec-eye">Dating Coach · $500 · 30-Day Access</span>
+        <span class="sec-eye">Dating Coach · Free / Premium $500 / Unlimited $1,000</span>
         <div class="sec-rule"></div>
         <h2 class="h2" style="margin-bottom:.4rem;">The Playbook, activated. An AI coach layer built on the same methodology.</h2>
         <a href="/coach/" target="_blank" rel="noopener" class="btn-gold btn-gold-xs" style="margin:.85rem 0 1.25rem;align-self:flex-start;">Full Details →</a>
-        <p class="sub" style="margin-bottom:1.1rem;">Not a chatbot with generic advice. A 30-day AI advisor trained on the complete MatchMakers methodology — 9 Intent frameworks, 50+ scripts, and behavioral data from 66,000+ real member interactions.</p>
+        <p class="sub" style="margin-bottom:1.1rem;">Not a chatbot with generic advice. An AI advisor trained on the complete MatchMakers methodology — 9 Intent frameworks, 50+ scripts, and behavioral data from 66,000+ real member interactions.</p>
         <p class="bp">Ask it anything. Paste in a real conversation. Describe a live situation. Get a methodology-grounded response in seconds. The coach knows the difference between a Long-Term member and a Casual member and responds accordingly. It doesn't give you dating advice. It gives you MatchMakers methodology applied to your specific situation.</p>
         <p class="bp" style="margin-bottom:1rem;">Most coaching fails because it's not available when you need it. Not at 11pm when she finally responds. Not mid-date when the conversation shifts unexpectedly. The Dating Coach is there for all of it.</p>
-        <p class="bp" style="margin-bottom:auto;"><strong style="color:var(--gold);">The MatchMakers Playbook ($500) is the foundation. The Dating Coach ($500) applies it in real time.</strong> Your advisor's entire knowledge base is grounded in it from the first message.</p>
+        <p class="bp" style="margin-bottom:auto;"><strong style="color:var(--gold);">Start free with 2 messages per day. Premium ($500) gives you 25 messages. Unlimited ($1,000) removes all limits.</strong> The MatchMakers Playbook ($250) is the foundation.</p>
       </div>
       <div class="reveal r2" style="display:flex;flex-direction:column;gap:0;">
         <div class="chat-demo" style="flex:1;display:flex;flex-direction:column;border-radius:18px 18px 0 0;border-bottom:none;">
@@ -422,11 +422,15 @@
 </div>
         <div style="background:var(--steel);border:1px solid var(--rim);border-radius:0 0 18px 18px;padding:1.5rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-            <div style="font-family:var(--cg);font-size:1.6rem;font-weight:700;color:var(--gold);">$500</div>
-            <div style="font-size:.7rem;color:rgba(200,214,229,.4);font-family:var(--pd);">Standalone · 30-Day Access · 30-day coaching</div>
+            <div style="font-family:var(--cg);font-size:1.6rem;font-weight:700;color:var(--gold);">Free / $500 / $1,000</div>
+            <div style="font-size:.7rem;color:rgba(200,214,229,.4);font-family:var(--pd);">Free · Premium · Unlimited</div>
           </div>
           <p style="font-size:.78rem;color:rgba(200,214,229,.5);font-style:italic;margin-bottom:.85rem;font-family:var(--sr);">"You'll always know what to say."</p>
-          <button data-product="dating_coach" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Get Dating Coach — $500 →</button>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <a href="/coach/" class="btn-gold" style="flex:1;display:flex;">Start Free →</a>
+            <button data-product="dating_coach_premium" onclick="openPreCheckout(this)" class="btn-gold" style="flex:1;display:flex;">Get Premium — $500 →</button>
+            <button data-product="dating_coach_unlimited" onclick="openPreCheckout(this)" class="btn-gold" style="flex:1;display:flex;">Get Unlimited — $1,000 →</button>
+          </div>
           <p style="font-size:.7rem;color:rgba(200,214,229,.22);text-align:center;margin:.5rem 0 0;"><a href="/coach/" style="color:rgba(201,168,76,.3);text-decoration:none;font-family:var(--pd);">Read the full program overview →</a></p>
         </div>
       </div>
@@ -534,8 +538,8 @@
         </div>
       </div>
       <div class="four-card reveal r2" style="border-color:rgba(65,91,124,.3);"><div class="fc-head"><span class="fc-badge" style="background:rgba(65,91,124,.25);color:var(--sl);border:1px solid rgba(65,91,124,.4);">Free · The Framework</span><div class="fc-name">The Connection Code</div><div class="fc-price" style="color:var(--green);">Free</div><span class="fc-psub">No account required</span></div><ul class="fc-list"><li>The 5-Signal framework defined</li><li>Intent · Position · Open · Build · Progress</li><li>Phase-to-Signal mapping</li><li>Safety foundation</li><li>Full ecosystem walkthrough</li></ul><div class="fc-foot"><a href="https://matchmakersusa.com/guide" class="btn-gold">Read Free →</a></div></div>
-      <div class="four-card reveal r3"><div class="fc-head"><span class="fc-badge">Most Popular · $500</span><div class="fc-name">The MatchMakers Playbook</div><div class="fc-price">$500</div><span class="fc-psub">One-time · Lifetime access</span></div><ul class="fc-list"><li>50+ guided scripts</li><li>9 Intent frameworks</li><li>Hall of Shame + Golden Rule</li><li>Script Builder Framework</li><li>Complete 5-phase curriculum</li></ul><div class="fc-foot"><button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Get The Playbook — $500 →</button></div></div>
-      <div class="four-card reveal r4"><div class="fc-head"><span class="fc-badge">Standalone · 30-Day Access · $500</span><div class="fc-name">MatchMakers Dating Coach</div><div class="fc-price">$500</div><span class="fc-psub">30-day access · Always on</span><span class="fc-inc">✦ Requires Playbook</span></div><ul class="fc-list"><li>Requires Playbook as foundation</li><li>AI coaching 24/7 for 30 days</li><li>Full methodology knowledge base</li><li>Real-time guidance</li><li>Phase-specific support</li></ul><div class="fc-foot"><button data-product="dating_coach" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Unlock Coach — $500 →</button></div></div>
+      <div class="four-card reveal r3"><div class="fc-head"><span class="fc-badge">Most Popular · $250</span><div class="fc-name">The MatchMakers Playbook</div><div class="fc-price">$250</div><span class="fc-psub">One-time · Lifetime access</span></div><ul class="fc-list"><li>50+ guided scripts</li><li>9 Intent frameworks</li><li>Hall of Shame + Golden Rule</li><li>Script Builder Framework</li><li>Complete 5-phase curriculum</li></ul><div class="fc-foot"><button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Get Playbook — $250 →</button></div></div>
+      <div class="four-card reveal r4"><div class="fc-head"><span class="fc-badge">Free / Premium $500 / Unlimited $1,000</span><div class="fc-name">MatchMakers Dating Coach</div><div class="fc-price">Free / $500 / $1,000</div><span class="fc-psub">Free tier · 2 messages/day</span><span class="fc-inc">✦ Requires Playbook</span></div><ul class="fc-list"><li>Free: 2 messages per day</li><li>Premium: 25 messages · $500</li><li>Unlimited: Unlimited messages · $1,000</li><li>Full methodology knowledge base</li><li>Real-time guidance</li></ul><div class="fc-foot"><a href="/coach/" class="btn-gold" style="width:100%;display:flex;">Start Free →</a></div></div>
       <div class="four-card reveal r5" style="border-color:rgba(201,168,76,.12);"><div class="fc-head"><span class="fc-badge" style="background:linear-gradient(135deg,rgba(201,168,76,.8),rgba(201,168,76,.6));color:var(--dk);">◆ Invite Only</span><div class="fc-name">VIP MatchMaking</div><div class="fc-price" style="font-size:1.4rem;line-height:1.2;">By Consultation</div><span class="fc-psub">All tiers included</span></div><ul class="fc-list"><li>Dedicated MatchMaker</li><li>Curated 66K+ network</li><li>Full phase coaching</li><li>Unlimited Dating Coach</li><li>Full ecosystem included</li></ul><div class="fc-foot"><a href="/vip/" class="btn-gold">Apply for VIP →</a></div></div>
     </div>
   </div>
@@ -584,16 +588,18 @@
       <span class="ey c" style="margin-bottom:.85rem;">Seven years. 66,000+ members. One methodology.</span>
       <div class="gr c"></div>
       <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">The system exists.<br>Most people never find it.</h2>
-      <p class="sub" style="text-align:center;margin:0 auto 2.5rem;max-width:520px;">Dating doesn't have to be a guessing game. It never should have been. The app is free. The methodology is $500. The coaching layer is another $500. Start with the Playbook — add the coach when you're ready.</p>
+      <p class="sub" style="text-align:center;margin:0 auto 2.5rem;max-width:520px;">Dating doesn't have to be a guessing game. It never should have been. The app is free. The methodology is $250. The coaching layer starts free. Start with the Playbook — add the coach when you're ready.</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
         <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="btn-gold">Download the App — Free →</a>
         <a href="https://matchmakersusa.com/guide" class="btn-gold">Get the Free Connection Code →</a>
       </div>
       <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;">
-        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get The Playbook — $500 →</button>
-        <button data-product="dating_coach" onclick="openPreCheckout(this)" class="btn-gold">Get Dating Coach — $500 →</button>
+        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get Playbook — $250 →</button>
+        <a href="/coach/" class="btn-gold">Start Free →</a>
+        <button data-product="dating_coach_premium" onclick="openPreCheckout(this)" class="btn-gold">Get Premium — $500 →</button>
+        <button data-product="dating_coach_unlimited" onclick="openPreCheckout(this)" class="btn-gold">Get Unlimited — $1,000 →</button>
       </div>
-      <p style="font-size:.72rem;color:rgba(200,214,229,.28);text-align:center;font-family:var(--pd);line-height:1.6;">Dating Coach available separately for $500. · VIP by consultation only. · Free app on iOS now.</p>
+      <p style="font-size:.72rem;color:rgba(200,214,229,.28);text-align:center;font-family:var(--pd);line-height:1.6;">Dating Coach: Free (2 messages/day) · Premium $500 · Unlimited $1,000 · VIP by consultation only. · Free app on iOS now.</p>
       <div class="gold-line" style="margin-top:2.5rem;"></div>
     </div>
   </div>
@@ -608,7 +614,7 @@
       <div style="font-size:.7rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:var(--pd);">The Playbook Comes First</div>
       <div style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
       <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
-      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $500 &rarr;</button>
+      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $250 &rarr;</button>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
         <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -659,8 +665,8 @@
       <h4>Products</h4>
       <a href="/assessment/">Intent Assessment &mdash; Free</a>
       <a href="/guide/">Connection Code &mdash; Free</a>
-      <a href="/playbook/">The MatchMakers Playbook &mdash; $500</a>
-      <a href="/coach/">Dating Coach &mdash; $500</a>
+      <a href="/playbook/">The MatchMakers Playbook &mdash; $250</a>
+      <a href="/coach/">Dating Coach &mdash; Free / $500 / $1,000</a>
       <a href="/vip/">VIP MatchMaking &mdash; By Consultation</a>
     </div>
     <div class="fc">
@@ -695,8 +701,8 @@
 
 <div class="coach-locked-pop">
   <div class="clp-title">MatchMakers Dating Coach</div>
-  <div class="clp-desc">Real-time AI coaching built on the Playbook methodology. Available 24/7 for 30 days.</div>
-  <button class="clp-btn" id="co-locked-buy">Get Dating Coach — $500 →</button>
+  <div class="clp-desc">Real-time AI coaching built on the Playbook methodology. Free tier: 2 messages/day. Premium: $500. Unlimited: $1,000.</div>
+  <button class="clp-btn" id="co-locked-buy">Start Free →</button>
   <span class="clp-code-link" id="co-locked-code-link">Already have a code? Enter it here.</span>
   <div class="clp-code-area" id="co-locked-code-area">
     <input type="text" class="clp-code-input" id="co-locked-code" placeholder="Access code" maxlength="32">

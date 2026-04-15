@@ -210,13 +210,14 @@
     });
   }
 
-  // ── Get message count for a session (for rate limiting) ──
+  // ── Get message count for a session (daily count for free-tier rate limiting) ──
+  // Counts user messages sent since midnight UTC today.
+  // Used by the free tier (2 messages/day). Premium uses localStorage lifetime counter.
   function getMessageCount(sessionId) {
     return loadMessages(sessionId).then(function (msgs) {
-      // Count user messages from today
-      var today = new Date();
-      today.setHours(0, 0, 0, 0);
-      var todayStart = today.getTime();
+      // Count user messages from today (UTC midnight reset)
+      var now = new Date();
+      var todayStart = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
       return msgs.filter(function (m) {
         return m.role === 'user' && m.timestamp >= todayStart;
       }).length;

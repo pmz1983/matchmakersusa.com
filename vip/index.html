@@ -179,13 +179,13 @@
         <div class="inc-label">◆ Exclusive VIP Benefit</div>
         <div class="inc-title">Unlimited Dating Coach Access</div>
         <div class="inc-body">Standard Dating Coach is a 30-day product. VIP clients retain full AI coaching access — 24/7 — for the entire duration of the engagement. No 30-day window. No renewal required.</div>
-        <div class="inc-value">$500 value · Included</div>
+        <div class="inc-value">Up to $1,000 value · Included</div>
       </div>
       <div class="inc-card">
         <div class="inc-label">Included Resource</div>
         <div class="inc-title">The MatchMakers Playbook</div>
         <div class="inc-body">50+ guided scripts, 9 Intent frameworks, the complete 5-phase methodology. Your advisor uses it as their operational reference. You receive it as your guide to the methodology they're applying on your behalf.</div>
-        <div class="inc-value">$500 value · Lifetime Access</div>
+        <div class="inc-value">$250 value · Lifetime Access</div>
       </div>
       <div class="inc-card">
         <div class="inc-label">Included Process</div>
@@ -320,18 +320,18 @@
     <p class="vip-p">The most effective VIP engagements begin with members who have already applied the methodology. The Playbook and Dating Coach aren't prerequisites by accident — they are preparation. Clients who arrive fluent in the framework get dramatically more from every advisor session.</p>
     <div class="redirect-grid">
       <div class="redirect-card">
-        <div class="redirect-badge">$500 · One-Time</div>
+        <div class="redirect-badge">$250 · One-Time</div>
         <div class="redirect-name">The MatchMakers Playbook</div>
-        <div class="redirect-price">$500</div>
+        <div class="redirect-price">$250</div>
         <div class="redirect-desc">50+ guided scripts across all 5 phases. 9 Intent frameworks. The complete methodology. Your VIP advisor will use this as their operational reference — read it first.</div>
-        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get The Playbook — $500 →</button>
+        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get Playbook — $250 →</button>
       </div>
       <div class="redirect-card">
-        <div class="redirect-badge">$500 · Standalone · 30-Day Access</div>
+        <div class="redirect-badge">Free / Premium $500 / Unlimited $1,000</div>
         <div class="redirect-name">MatchMakers Dating Coach</div>
-        <div class="redirect-price">$500</div>
-        <div class="redirect-desc">30-day AI coaching trained on the full methodology. Required before VIP engagement. Apply the framework before your consultation — and arrive knowing exactly what you want.</div>
-        <button data-product="dating_coach" onclick="openPreCheckout(this)" class="btn-gold">Get Dating Coach — $500 →</button>
+        <div class="redirect-price">Free / $500 / $1,000</div>
+        <div class="redirect-desc">AI coaching trained on the full methodology. Start free with 2 messages/day. Upgrade to Premium ($500, 25 messages) or Unlimited ($1,000). Apply the framework before your consultation.</div>
+        <a href="/coach/" class="btn-gold">Start Free →</a>
       </div>
     </div>
   </div>
@@ -346,7 +346,7 @@
       <div style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:var(--pd);">The Playbook Comes First</div>
       <div style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
       <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
-      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $500 &rarr;</button>
+      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $250 &rarr;</button>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
         <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -397,8 +397,8 @@
       <h4>Products</h4>
       <a href="/assessment/">Intent Assessment &mdash; Free</a>
       <a href="/guide/">Connection Code &mdash; Free</a>
-      <a href="/playbook/">The MatchMakers Playbook &mdash; $500</a>
-      <a href="/coach/">Dating Coach &mdash; $500</a>
+      <a href="/playbook/">The MatchMakers Playbook &mdash; $250</a>
+      <a href="/coach/">Dating Coach &mdash; Free / $500 / $1,000</a>
       <a href="/vip/">VIP MatchMaking &mdash; By Consultation</a>
     </div>
     <div class="fc">
@@ -467,7 +467,7 @@ function submitApplication() {
 <div class="coach-locked-pop">
   <div class="clp-title">MatchMakers Dating Coach</div>
   <div class="clp-desc">Real-time AI coaching built on the Playbook methodology. Available 24/7 for 30 days.</div>
-  <button class="clp-btn" id="co-locked-buy">Get Dating Coach — $500 →</button>
+  <button class="clp-btn" id="co-locked-buy">Start Free →</button>
   <span class="clp-code-link" id="co-locked-code-link">Already have a code? Enter it here.</span>
   <div class="clp-code-area" id="co-locked-code-area">
     <input type="text" class="clp-code-input" id="co-locked-code" placeholder="Access code" maxlength="32">

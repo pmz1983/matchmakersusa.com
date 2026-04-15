@@ -35,26 +35,45 @@ var MM_PRODUCTS = {
   playbook: {
     eyebrow: 'The MatchMakers Playbook',
     product: 'The MatchMakers Playbook',
-    price: '$500',
+    price: '$250',
     includes: 'Lifetime access \u00b7 Instant delivery \u00b7 50+ guided scripts \u00b7 9 Intent frameworks \u00b7 Complete 5-phase methodology \u00b7 Hall of Shame \u00b7 Script Builder Framework',
-    priceId: 'price_1TLyin1ihNKVY3uGtdOvWGP2',
-    paymentLink: 'https://buy.stripe.com/4gM00baxrdXLfWz60Q2Nq02',
+    priceId: 'price_1TMYHq1ihNKVY3uGZKNgmSwi',
+    paymentLink: 'https://buy.stripe.com/00wbITcFzdXL11F88Y2Nq03',
     btnBg: '#C9A84C',
     btnColor: '#0B1727'
   },
-  dating_coach: {
-    eyebrow: 'MatchMakers Dating Coach',
-    product: 'MatchMakers Dating Coach',
+  dating_coach_premium: {
+    eyebrow: 'Dating Coach Premium',
+    product: 'MatchMakers Dating Coach \u2014 Premium',
     price: '$500',
-    includes: '30-day AI coaching access \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
+    includes: '25 messages \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
     priceId: 'price_1TLykh1ihNKVY3uG4a08H5UT',
     paymentLink: 'https://buy.stripe.com/3cI00b4939HveSvdti2Nq01',
     requiresPlaybook: true,
     btnBg: '#0B1727',
     btnColor: '#C9A84C',
     btnBorder: '1.5px solid rgba(201,168,76,.4)'
+  },
+  dating_coach_unlimited: {
+    eyebrow: 'Dating Coach Unlimited',
+    product: 'MatchMakers Dating Coach \u2014 Unlimited',
+    price: '$1,000',
+    includes: 'Unlimited messages \u00b7 Available 24/7 \u00b7 Real-time methodology guidance \u00b7 Trained on 7 years of MatchMakers data \u00b7 Phase-specific support',
+    priceId: 'price_1TMYPd1ihNKVY3uGfhptvOAa',
+    paymentLink: 'https://buy.stripe.com/14AeV5493bPD4dRcpe2Nq05',
+    requiresPlaybook: true,
+    btnBg: '#0B1727',
+    btnColor: '#C9A84C',
+    btnBorder: '1.5px solid rgba(201,168,76,.4)'
   }
 };
+
+
+
+// Helper: check if a product key is any Dating Coach tier
+function isDatingCoach(key) {
+  return key === 'dating_coach_premium' || key === 'dating_coach_unlimited';
+}
 
 var _pcmProduct = null;
 
@@ -199,7 +218,7 @@ function applyPromoCode() {
     if (window.mmTrack) mmTrack('promo_code_applied', { code: code, type: 'free', product: _pcmProduct });
     localStorage.setItem('pb_access', '1');
 
-    if (_pcmProduct === 'dating_coach') {
+    if (isDatingCoach(_pcmProduct)) {
       // Unlock both Playbook and Dating Coach access
       localStorage.setItem('pb_dc_access', '1');
       if (!localStorage.getItem('pb_dc_first'))
@@ -268,7 +287,7 @@ function proceedToCheckout() {
     fetch(SUPABASE_FN_URL + '/check-eligibility', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, product: 'dating_coach' }),
+      body: JSON.stringify({ email: email, product: _pcmProduct }),
       signal: eligCtrl.signal
     })
     .then(function(r) { clearTimeout(eligTimeout); return r.json(); })

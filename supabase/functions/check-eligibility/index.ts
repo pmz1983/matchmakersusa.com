@@ -58,10 +58,14 @@ Deno.serve(async (req: Request) => {
     return new Response(JSON.stringify({ captured: true }), { status: 200, headers });
   }
 
-  const product = body.product || "dating_coach";
+  const product = body.product || "dating_coach_premium";
+
+  // Helper: recognize all dating coach product variants
+  const isCoachProduct = (p: string) =>
+    p === "dating_coach_premium" || p === "dating_coach_unlimited" || p === "dating_coach";
 
   // ── Action: check-eligibility (can this email BUY the Dating Coach?) ──
-  if (body.action === "check-eligibility" || (!body.action && product === "dating_coach")) {
+  if (body.action === "check-eligibility" || (!body.action && isCoachProduct(product))) {
     // Check if this email has a completed Playbook purchase
     const { data, error } = await supabase
       .from("purchases")
@@ -95,13 +99,59 @@ Deno.serve(async (req: Request) => {
     );
   }
 
+  // ── Action: check-messages (return user's plan and messages_remaining) ─
+  if (body.action === "check-messages") {
+    // Find the most recent coach purchase (premium or unlimited)
+    const { data, error } = await supabase
+      .from("purchases")
+      .select("id, product, plan, messages_remaining, status, access_code, created_at")
+      .eq("email", email)
+      .in("product", ["dating_coach_premium", "dating_coach_unlimited"])
+      .eq("status", "completed")
+      .order("created_at", { ascending: false })
+      .limit(1);
+
+    if (error) {
+      console.error("Check-messages error:", error);
+      return new Response(JSON.stringify({ error: "Database error" }), { status: 500, headers });
+    }
+
+    if (data && data.length > 0) {
+      const purchase = data[0];
+      return new Response(
+        JSON.stringify({
+          has_plan: true,
+          plan: purchase.plan || (purchase.product === "dating_coach_unlimited" ? "unlimited" : "premium"),
+          messages_remaining: purchase.messages_remaining ?? null,
+          product: purchase.product,
+        }),
+        { status: 200, headers }
+      );
+    }
+
+    return new Response(
+      JSON.stringify({
+        has_plan: false,
+        plan: "free",
+        messages_remaining: null,
+      }),
+      { status: 200, headers }
+    );
+  }
+
   // ── Action: verify-access (does this email OWN a specific product?) ───
+  // For coach products, check any coach variant
+  const productFilter = isCoachProduct(product)
+    ? ["dating_coach_premium", "dating_coach_unlimited"]
+    : [product];
+
   const { data, error } = await supabase
     .from("purchases")
-    .select("id, status, access_code, created_at")
+    .select("id, product, plan, messages_remaining, status, access_code, created_at")
     .eq("email", email)
-    .eq("product", product)
+    .in("product", productFilter)
     .eq("status", "completed")
+    .order("created_at", { ascending: false })
     .limit(1);
 
   if (error) {
@@ -112,28 +162,14 @@ Deno.serve(async (req: Request) => {
   if (data && data.length > 0) {
     const purchase = data[0];
 
-    // For dating_coach, check 30-day window
-    if (product === "dating_coach") {
-      const purchaseDate = new Date(purchase.created_at);
-      const now = new Date();
-      const daysSincePurchase = (now.getTime() - purchaseDate.getTime()) / (1000 * 60 * 60 * 24);
-
-      if (daysSincePurchase > 30) {
-        return new Response(
-          JSON.stringify({
-            has_access: false,
-            reason: "Your 30-day Dating Coach access has expired.",
-            expired: true,
-          }),
-          { status: 200, headers }
-        );
-      }
-
+    // Both Premium and Unlimited have permanent access (no 30-day window)
+    if (isCoachProduct(purchase.product)) {
       return new Response(
         JSON.stringify({
           has_access: true,
           access_code: purchase.access_code,
-          days_remaining: Math.ceil(30 - daysSincePurchase),
+          plan: purchase.plan || (purchase.product === "dating_coach_unlimited" ? "unlimited" : "premium"),
+          messages_remaining: purchase.messages_remaining ?? null,
         }),
         { status: 200, headers }
       );

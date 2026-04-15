@@ -403,11 +403,26 @@
     var txt = inputEl.value.trim();
     if (!txt) return;
 
-    // ── Rate limit check (persistent, daily) ──
-    todayMsgCount++;
-    if (todayMsgCount > 50) {
-      addMessage('coach', 'You\'ve reached today\'s message limit (50 messages). Your limit resets at midnight. Need unlimited access? Premium is coming soon.');
-      return;
+    // ── Tiered rate limit check ──
+    var plan = localStorage.getItem('dc_plan') || 'free';
+    if (plan === 'unlimited') {
+      // no limit
+      todayMsgCount++;
+    } else if (plan === 'premium') {
+      var remaining = parseInt(localStorage.getItem('dc_messages_remaining') || '25');
+      if (remaining <= 0) {
+        addMessage('coach', 'You\'ve used all 25 messages. Upgrade to Unlimited for unrestricted access. <a href="/coach/" class="cp-upgrade-link">Upgrade now</a>');
+        return;
+      }
+      localStorage.setItem('dc_messages_remaining', (remaining - 1).toString());
+      todayMsgCount++;
+    } else {
+      // free tier: 2 per day
+      todayMsgCount++;
+      if (todayMsgCount > 2) {
+        addMessage('coach', 'You\'ve used today\'s free messages. Upgrade to Premium for 25 messages. <a href="/coach/" class="cp-upgrade-link">Upgrade now</a>');
+        return;
+      }
     }
 
     if (window.mmTrack) mmTrack('coach_message_sent', { intent: intent, msg_count: todayMsgCount });
@@ -611,10 +626,18 @@
       }
     });
 
-    // Usage (today's count from persistent storage)
+    // Usage (plan-aware display)
     var usageEl = document.getElementById('co-settings-usage');
     if (usageEl) {
-      usageEl.textContent = todayMsgCount + ' / 50 messages today';
+      var currentPlan = localStorage.getItem('dc_plan') || 'free';
+      if (currentPlan === 'unlimited') {
+        usageEl.textContent = 'Unlimited messages';
+      } else if (currentPlan === 'premium') {
+        var rem = parseInt(localStorage.getItem('dc_messages_remaining') || '25');
+        usageEl.textContent = rem + ' messages remaining';
+      } else {
+        usageEl.textContent = todayMsgCount + ' of 2 free messages today \u00b7 Resets daily';
+      }
     }
 
     // Days

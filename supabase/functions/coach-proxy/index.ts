@@ -1,6 +1,11 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "@supabase/supabase-js";
 
 const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 // ── Server-side system prompt (never sent to or from the client) ──────────
 const SYSTEM_PROMPT = `You are the MatchMakers Advisor — the AI intelligence at the core of the MatchMakers platform, trained on the proprietary 5-phase MatchMakers methodology and seven years of behavioral data from more than 66,000 real member connections.
@@ -198,14 +203,20 @@ The entry point for new members. Combines the MatchMakers Safety Framework with 
 MATCHMAKERS APP (Free download):
 iOS app on the App Store. The core platform. Community rating, Level system, Discovery, Requests, messaging, photo ranking, Spotlight.
 
-THE MATCHMAKERS PLAYBOOK ($500 · one-time · lifetime access):
+THE MATCHMAKERS PLAYBOOK ($250 · one-time · lifetime access):
 The complete 5-phase methodology curriculum. 50+ proven scripts organized by phase. Phase-by-phase frameworks from Intent declaration through the Commitment conversation. The definitive MatchMakers manual. Includes AI coaching layer powered by the same system prompt you are reading now.
 
-DATING COACH ($500 · standalone product · 30-day access):
-30 days of direct AI advisor access, available 24/7 via the MatchMakers platform and app. The advisor (you) can review any message, diagnose any situation, coach through any phase, and apply the full methodology to the member's specific context.
+DATING COACH — FREE TIER (Free · included with Playbook):
+2 messages per day with the AI advisor. A taste of what the coaching experience offers. Resets daily at midnight UTC.
+
+DATING COACH — PREMIUM ($500 · one-time · 25 messages):
+25 lifetime coaching messages with the AI advisor. Available 24/7 via the MatchMakers platform and app. The advisor (you) can review any message, diagnose any situation, coach through any phase, and apply the full methodology to the member's specific context. Messages do not expire.
+
+DATING COACH — UNLIMITED ($1,000 · one-time · unlimited messages):
+Unlimited direct AI advisor access with no message cap. The full coaching experience with no restrictions. Available 24/7 via the MatchMakers platform and app.
 
 VIP MATCHMAKING (By Consultation):
-Human matchmaking with a dedicated MatchMakers advisor. Includes Dating Coach access as part of the engagement. Intake via application form. Applied to members who have completed the methodology and are ready for a guided, curated experience.
+Human matchmaking with a dedicated MatchMakers advisor. Includes Dating Coach Unlimited access as part of the engagement. Intake via application form. Applied to members who have completed the methodology and are ready for a guided, curated experience.
 
 When to recommend products:
 - Member is asking about messaging → recommend Connection Code if they don't have it yet
@@ -355,9 +366,9 @@ const ALLOWED_ORIGINS = [
   "http://127.0.0.1:5500",
 ];
 
-// Rate limiting: track messages per session
-const rateLimits = new Map<string, { count: number; resetAt: number }>();
-const DAILY_LIMIT = 50;
+// Rate limiting: in-memory daily tracker for free-tier users
+const freeRateLimits = new Map<string, { count: number; resetAt: number }>();
+const FREE_DAILY_LIMIT = 2;
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_HISTORY_LENGTH = 40;
 
@@ -365,27 +376,94 @@ function corsHeaders(origin: string) {
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
     "Access-Control-Allow-Origin": allowed,
-    "Access-Control-Allow-Headers": "Content-Type, Authorization, x-session-id",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization, x-session-id, x-user-email, x-user-plan",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Content-Type": "application/json",
   };
 }
 
-function checkRateLimit(sessionId: string): { allowed: boolean; remaining: number } {
+// Free tier: 2 messages/day, resets at midnight UTC
+function checkFreeTierLimit(sessionId: string): { allowed: boolean; remaining: number } {
   const now = Date.now();
-  const entry = rateLimits.get(sessionId);
+  // Calculate next midnight UTC
+  const nextMidnight = new Date();
+  nextMidnight.setUTCHours(24, 0, 0, 0);
+  const resetAt = nextMidnight.getTime();
+
+  const entry = freeRateLimits.get(sessionId);
 
   if (!entry || now > entry.resetAt) {
-    rateLimits.set(sessionId, { count: 1, resetAt: now + 24 * 60 * 60 * 1000 });
-    return { allowed: true, remaining: DAILY_LIMIT - 1 };
+    freeRateLimits.set(sessionId, { count: 1, resetAt });
+    return { allowed: true, remaining: FREE_DAILY_LIMIT - 1 };
   }
 
-  if (entry.count >= DAILY_LIMIT) {
+  if (entry.count >= FREE_DAILY_LIMIT) {
     return { allowed: false, remaining: 0 };
   }
 
   entry.count++;
-  return { allowed: true, remaining: DAILY_LIMIT - entry.count };
+  return { allowed: true, remaining: FREE_DAILY_LIMIT - entry.count };
+}
+
+// Look up user's plan from the purchases table
+async function getUserPlan(email: string): Promise<{ plan: string; messagesRemaining: number | null }> {
+  if (!email) return { plan: "free", messagesRemaining: null };
+
+  const { data, error } = await supabase
+    .from("purchases")
+    .select("product, plan, messages_remaining")
+    .eq("email", email)
+    .in("product", ["dating_coach_premium", "dating_coach_unlimited"])
+    .eq("status", "completed")
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  if (error || !data || data.length === 0) {
+    return { plan: "free", messagesRemaining: null };
+  }
+
+  const purchase = data[0];
+  const plan = purchase.plan || (purchase.product === "dating_coach_unlimited" ? "unlimited" : "premium");
+  return { plan, messagesRemaining: purchase.messages_remaining ?? null };
+}
+
+// Decrement messages_remaining for premium users; returns false if no messages left
+async function decrementPremiumMessage(email: string): Promise<boolean> {
+  // Atomically decrement messages_remaining where it is > 0
+  const { data, error } = await supabase
+    .rpc("decrement_messages_remaining", { user_email: email });
+
+  // If the RPC doesn't exist, fall back to a manual check-and-update
+  if (error) {
+    console.warn("decrement_messages_remaining RPC not available, using fallback:", error.message);
+    const { data: purchases, error: fetchErr } = await supabase
+      .from("purchases")
+      .select("id, messages_remaining")
+      .eq("email", email)
+      .eq("product", "dating_coach_premium")
+      .eq("status", "completed")
+      .order("created_at", { ascending: false })
+      .limit(1);
+
+    if (fetchErr || !purchases || purchases.length === 0) return false;
+
+    const purchase = purchases[0];
+    if (purchase.messages_remaining === null || purchase.messages_remaining <= 0) return false;
+
+    const { error: updateErr } = await supabase
+      .from("purchases")
+      .update({ messages_remaining: purchase.messages_remaining - 1 })
+      .eq("id", purchase.id);
+
+    if (updateErr) {
+      console.error("Failed to decrement messages_remaining:", updateErr);
+      return false;
+    }
+    return true;
+  }
+
+  // RPC returns the number of rows updated (or the new count); treat 0 as "no messages left"
+  return (data ?? 0) > 0;
 }
 
 Deno.serve(async (req: Request) => {
@@ -415,6 +493,7 @@ Deno.serve(async (req: Request) => {
     const body = await req.json();
     const { messages, context } = body;
     const sessionId = req.headers.get("x-session-id") || "anonymous";
+    const userEmail = (req.headers.get("x-user-email") || "").toLowerCase().trim();
 
     // Build system prompt: server-side constant + optional member context
     const systemPrompt = context
@@ -429,16 +508,50 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    // Rate limit check
-    const rateCheck = checkRateLimit(sessionId);
-    if (!rateCheck.allowed) {
-      return new Response(
-        JSON.stringify({
-          error: "Daily message limit reached. You can send up to 50 messages per day. Your limit resets in 24 hours.",
-          limit_reached: true,
-        }),
-        { status: 429, headers }
-      );
+    // ── Tiered rate limiting ────────────────────────────────────────────
+    const { plan, messagesRemaining } = await getUserPlan(userEmail);
+
+    if (plan === "unlimited") {
+      // No rate limit for unlimited users
+    } else if (plan === "premium") {
+      // Premium: 25 lifetime messages, decrement from DB
+      if (messagesRemaining !== null && messagesRemaining <= 0) {
+        return new Response(
+          JSON.stringify({
+            error: "You've used all 25 Premium coaching messages. Upgrade to Unlimited for unrestricted access.",
+            limit_reached: true,
+            plan: "premium",
+            messages_remaining: 0,
+          }),
+          { status: 429, headers }
+        );
+      }
+      const decremented = await decrementPremiumMessage(userEmail);
+      if (!decremented) {
+        return new Response(
+          JSON.stringify({
+            error: "You've used all 25 Premium coaching messages. Upgrade to Unlimited for unrestricted access.",
+            limit_reached: true,
+            plan: "premium",
+            messages_remaining: 0,
+          }),
+          { status: 429, headers }
+        );
+      }
+    } else {
+      // Free tier: 2 messages per day, resets at midnight UTC
+      const rateCheck = checkFreeTierLimit(sessionId);
+      if (!rateCheck.allowed) {
+        return new Response(
+          JSON.stringify({
+            error: "You've reached the free daily limit of 2 messages. Upgrade to Premium (25 messages, $500) or Unlimited ($1,000) for more coaching.",
+            limit_reached: true,
+            plan: "free",
+            remaining: 0,
+          }),
+          { status: 429, headers }
+        );
+      }
     }
 
     // Truncate message history to prevent abuse
@@ -495,10 +608,23 @@ Deno.serve(async (req: Request) => {
 
     const data = await response.json();
 
+    // Build remaining-messages info based on plan
+    let remainingMessages: number | null = null;
+    if (plan === "premium") {
+      // Re-fetch after decrement to get accurate count
+      const updated = await getUserPlan(userEmail);
+      remainingMessages = updated.messagesRemaining;
+    } else if (plan === "free") {
+      const entry = freeRateLimits.get(sessionId);
+      remainingMessages = entry ? FREE_DAILY_LIMIT - entry.count : FREE_DAILY_LIMIT;
+    }
+    // unlimited: remainingMessages stays null (no limit)
+
     return new Response(
       JSON.stringify({
         content: data.content,
-        remaining_messages: rateCheck.remaining,
+        plan,
+        remaining_messages: remainingMessages,
       }),
       { status: 200, headers }
     );

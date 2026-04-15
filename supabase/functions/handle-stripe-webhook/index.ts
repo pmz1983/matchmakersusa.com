@@ -60,25 +60,43 @@ function generateAccessCode(): string {
 
 // ── Product mapping from Stripe Payment Link IDs ────────────────────────
 // Payment Link URLs contain these IDs after /b/
-// Playbook: https://buy.stripe.com/4gM00baxrdXLfWz60Q2Nq02
-// Coach:    https://buy.stripe.com/3cI00b4939HveSvdti2Nq01
+// Playbook $500 (legacy): https://buy.stripe.com/4gM00baxrdXLfWz60Q2Nq02
+// Playbook $250:          https://buy.stripe.com/00wbITcFzdXL11F88Y2Nq03
+// Coach Premium:          https://buy.stripe.com/3cI00b4939HveSvdti2Nq01
+// Coach Unlimited:        https://buy.stripe.com/14AeV5493bPD4dRcpe2Nq05
 const PAYMENT_LINK_TO_PRODUCT: Record<string, string> = {
-  plink_1TM53W1ihNKVY3uGh4TGAg64: "playbook",
-  plink_1TLykw1ihNKVY3uGCd56xqat: "playbook",
-  plink_1TM52z1ihNKVY3uGYDEc34em: "dating_coach",
+  plink_1TM53W1ihNKVY3uGh4TGAg64: "playbook",              // old $500 playbook
+  plink_1TLykw1ihNKVY3uGCd56xqat: "playbook",              // old $500 playbook
+  "00wbITcFzdXL11F88Y2Nq03": "playbook",                    // new $250 playbook
+  plink_1TM52z1ihNKVY3uGYDEc34em: "dating_coach_premium",   // $500 premium (was dating_coach)
+  "14AeV5493bPD4dRcpe2Nq05": "dating_coach_unlimited",      // $1000 unlimited
 };
 
 // Fallback: map by price ID
 const PRICE_TO_PRODUCT: Record<string, string> = {
-  price_1TLyin1ihNKVY3uGtdOvWGP2: "playbook",
-  price_1TLykh1ihNKVY3uG4a08H5UT: "dating_coach",
+  price_1TLyin1ihNKVY3uGtdOvWGP2: "playbook",              // old $500 playbook (legacy)
+  price_1TMYHq1ihNKVY3uGZKNgmSwi: "playbook",              // new $250 playbook
+  price_1TLykh1ihNKVY3uG4a08H5UT: "dating_coach_premium",  // $500 premium (was "dating_coach")
+  price_1TMYPd1ihNKVY3uGfhptvOAa: "dating_coach_unlimited", // $1000 unlimited
 };
 
 // ── Email Templates ────────────────────────────────────────────────────
 function buildEmailHTML(product: string, accessCode: string): string {
   const isPlaybook = product === "playbook";
-  const productName = isPlaybook ? "The MatchMakers Playbook" : "MatchMakers Dating Coach";
-  const accessDuration = isPlaybook ? "Lifetime access" : "30-day access";
+  const isPremium = product === "dating_coach_premium";
+  const isUnlimited = product === "dating_coach_unlimited";
+  const isCoach = isPremium || isUnlimited;
+
+  const productName = isPlaybook
+    ? "The MatchMakers Playbook"
+    : isPremium
+      ? "MatchMakers Dating Coach — Premium"
+      : "MatchMakers Dating Coach — Unlimited";
+  const accessDuration = isPlaybook
+    ? "Lifetime access"
+    : isPremium
+      ? "Premium — 25 messages"
+      : "Unlimited messages";
   const nextStepUrl = isPlaybook
     ? "https://matchmakersusa.com/playbook/content/"
     : "https://matchmakersusa.com/";
@@ -138,7 +156,7 @@ function buildEmailHTML(product: string, accessCode: string): string {
     <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">Your Playbook purchase unlocks the Dating Coach. When you're ready, add AI coaching for real-time methodology guidance.</div>
   </div>` : `<div style="margin-bottom:12px;display:flex;gap:12px;">
     <div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);text-align:center;line-height:24px;font-size:.7rem;font-weight:700;color:#C9A84C;flex-shrink:0;">2</div>
-    <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">Bring real situations — messages, profiles, conversations. Your coach applies the full MatchMakers methodology to your specific context.</div>
+    <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">Bring real situations — messages, profiles, conversations. Your coach applies the full MatchMakers methodology to your specific context.${isPremium ? " You have 25 coaching messages included with your Premium plan." : ""}</div>
   </div>`}
 
   <!-- CTA Button -->
@@ -165,7 +183,12 @@ function buildEmailHTML(product: string, accessCode: string): string {
 
 function buildEmailText(product: string, accessCode: string): string {
   const isPlaybook = product === "playbook";
-  const productName = isPlaybook ? "The MatchMakers Playbook" : "MatchMakers Dating Coach";
+  const isPremium = product === "dating_coach_premium";
+  const productName = isPlaybook
+    ? "The MatchMakers Playbook"
+    : isPremium
+      ? "MatchMakers Dating Coach — Premium (25 messages)"
+      : "MatchMakers Dating Coach — Unlimited";
   const nextStepUrl = isPlaybook
     ? "https://matchmakersusa.com/playbook/content/"
     : "https://matchmakersusa.com/";
@@ -189,9 +212,12 @@ async function sendConfirmationEmail(
   accessCode: string
 ): Promise<void> {
   const isPlaybook = product === "playbook";
+  const isPremium = product === "dating_coach_premium";
   const subject = isPlaybook
     ? "Your MatchMakers Playbook Is Ready"
-    : "Your Dating Coach Is Ready";
+    : isPremium
+      ? "Your Dating Coach Premium Is Ready"
+      : "Your Dating Coach Unlimited Is Ready";
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -293,24 +319,40 @@ Deno.serve(async (req: Request) => {
       return new Response(JSON.stringify({ error: "No email in session" }), { status: 400 });
     }
 
-    if (!product || !["playbook", "dating_coach"].includes(product)) {
+    if (!product || !["playbook", "dating_coach_premium", "dating_coach_unlimited"].includes(product)) {
       console.error("Unknown product for session", sessionId, product);
       return new Response(JSON.stringify({ error: "Unknown product" }), { status: 400 });
     }
 
     const accessCode = generateAccessCode();
 
+    // Determine plan tier and optional messages_remaining
+    const planMap: Record<string, string> = {
+      playbook: "playbook",
+      dating_coach_premium: "premium",
+      dating_coach_unlimited: "unlimited",
+    };
+    const plan = planMap[product] || product;
+
+    const purchaseRecord: Record<string, unknown> = {
+      email,
+      product,
+      plan,
+      stripe_session_id: sessionId,
+      stripe_payment_intent: paymentIntent,
+      amount_cents: amountTotal,
+      access_code: accessCode,
+      status: "completed",
+    };
+
+    // Premium plan gets 25 lifetime messages
+    if (product === "dating_coach_premium") {
+      purchaseRecord.messages_remaining = 25;
+    }
+
     // Idempotent insert — skip if session_id already recorded
     const { data, error } = await supabase.from("purchases").upsert(
-      {
-        email,
-        product,
-        stripe_session_id: sessionId,
-        stripe_payment_intent: paymentIntent,
-        amount_cents: amountTotal,
-        access_code: accessCode,
-        status: "completed",
-      },
+      purchaseRecord,
       { onConflict: "stripe_session_id" }
     );
 
