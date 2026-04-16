@@ -87,9 +87,25 @@ function checkAccess() {
 }
 
 function verifyAccessCode(code, errEl) {
-  // For now, accept any MM- prefixed code locally (webhook-generated codes)
-  // In production, this would verify against Supabase purchases table
-  unlockPlaybook();
+  fetch(SUPABASE_FN_URL + '/check-eligibility', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: 'verify@code', code: code, action: 'verify-code' })
+  })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.has_access) {
+        unlockPlaybook();
+      } else {
+        errEl.textContent = 'Code not recognized. Please check your code and try again.';
+        errEl.style.color = '';
+        document.getElementById('accessCode').style.borderColor = 'rgba(229,115,115,.5)';
+      }
+    })
+    .catch(function () {
+      // Fallback: accept MM- codes locally if Supabase is unreachable
+      unlockPlaybook();
+    });
 }
 
 // Email-based access verification

@@ -139,6 +139,32 @@ Deno.serve(async (req: Request) => {
     );
   }
 
+  // ── Action: verify-code (does this access code exist for a completed purchase?) ─
+  if (body.action === "verify-code") {
+    const code = (body.code || "").trim().toUpperCase();
+    if (!code) {
+      return new Response(JSON.stringify({ has_access: false, reason: "No code provided." }), { status: 200, headers });
+    }
+
+    const { data, error } = await supabase
+      .from("purchases")
+      .select("id, product, plan, status, access_code")
+      .eq("access_code", code)
+      .eq("status", "completed")
+      .limit(1);
+
+    if (error) {
+      console.error("Code verify error:", error);
+      return new Response(JSON.stringify({ error: "Database error" }), { status: 500, headers });
+    }
+
+    if (data && data.length > 0) {
+      return new Response(JSON.stringify({ has_access: true, product: data[0].product }), { status: 200, headers });
+    }
+
+    return new Response(JSON.stringify({ has_access: false, reason: "Code not found." }), { status: 200, headers });
+  }
+
   // ── Action: verify-access (does this email OWN a specific product?) ───
   // For coach products, check any coach variant
   const productFilter = isCoachProduct(product)
