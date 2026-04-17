@@ -135,8 +135,9 @@ nav.scrolled{background:rgba(5,9,15,.96)}
 /* ── BUY-BOX ── */
 .buy-box{background:linear-gradient(135deg,var(--navy) 0%,rgba(11,23,39,.98) 100%);border-top:1px solid rgba(65,91,124,.2);border-bottom:1px solid rgba(65,91,124,.1);position:relative;overflow:hidden}
 .buy-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(201,168,76,.04) 0%,transparent 60%);pointer-events:none}
-.buy-box-inner{max-width:1280px;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3.5rem);display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;position:relative;z-index:1}
-.bb-left{max-width:560px}
+.buy-box-inner{max-width:1280px;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,3.5rem);display:flex;justify-content:center;align-items:center;position:relative;z-index:1}
+.bb-left{max-width:640px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+.bb-left .bb-feats{align-items:flex-start}
 .bb-right{display:flex;flex-direction:column;align-items:flex-end;gap:1rem;min-width:280px}
 .bb-badge{display:inline-flex;font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:.75rem}
 .bb-name{font-family:var(--pd);font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.15rem;letter-spacing:-.02em}
