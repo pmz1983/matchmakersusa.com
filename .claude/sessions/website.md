@@ -8,7 +8,7 @@ Cross-session contract file for Atlas (master-source-of-truth session) to poll s
 
 - **Last activity:** 2026-04-18
 - **Branch:** `main`
-- **Head commit (website work):** _pending — will be stamped post-commit_
+- **Head commit (website work):** `bbe6474` — site: og-image v2 (hero-title-only) + cache-bust rename
 - **Ahead of `origin/main`:** yes (governance bootstrap + og v2, not yet pushed)
 - **In flight:** nothing — awaiting push approval (per `CONSTITUTION` `C-5`)
 
@@ -48,5 +48,5 @@ For a new Claude session reading this file cold:
 
 ## Change log
 
-- **2026-04-18** — og-image v2 committed locally (hero-title-only, cache-bust rename). Awaiting push approval.
+- **2026-04-18** — og-image v2 committed locally as `bbe6474` (hero-title-only, cache-bust rename). Awaiting push approval.
 - **2026-04-17** — governance bootstrap committed (`df8f31a`). `.claude/` structure + `CLAUDE.md` + preflight skill + `R-LEAK-001` mitigated.
