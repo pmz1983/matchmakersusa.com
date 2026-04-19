@@ -9,8 +9,9 @@ Cross-session contract file for Atlas (master-source-of-truth session) to poll s
 - **Last activity:** 2026-04-18
 - **Branch:** `main`
 - **Head commit (website work):** `bbe6474` — site: og-image v2 (hero-title-only) + cache-bust rename
-- **Ahead of `origin/main`:** yes (governance bootstrap + og v2, not yet pushed)
-- **In flight:** nothing — awaiting push approval (per `CONSTITUTION` `C-5`)
+- **Head commit (website work):** `21d394e` — site: update iOS subscription prices (W2 complete)
+- **Ahead of `origin/main`:** no — last push 2026-04-19 (W2 pricing sweep)
+- **In flight:** W1 blocked on 2 structural questions to Atlas/Paul (see below). W3 conditional on time after W1.
 
 ## Most recent shipped change
 
@@ -23,10 +24,9 @@ Cross-session contract file for Atlas (master-source-of-truth session) to poll s
 - Updated `og:image` / `og:image:secure_url` / `twitter:image` on: `index.html`, `coach/`, `playbook/`, `assessment/`, `guide/`, `vip/`
 - Template + render script checked in for reproducibility: `img/og-template.html`, `img/render-og.mjs` (reuses Puppeteer from `playbook-pdf/node_modules/`)
 
-## Post-push checklist (waiting)
+## Post-push checklist
 
-Once `git push origin main` is approved + executed:
-
+- [x] `git push origin main` — pushed 2026-04-18 (Atlas GO approved; Paul confirmed)
 - [ ] Visit https://developers.facebook.com/tools/debug/ — paste each of the 6 URLs, click **Scrape Again**:
   - `https://matchmakersusa.com/`
   - `https://matchmakersusa.com/coach/`
@@ -48,5 +48,7 @@ For a new Claude session reading this file cold:
 
 ## Change log
 
+- **2026-04-19** — W2 pricing sweep pushed as `21d394e`. iOS subscription prices aligned with App Store Connect (Weekly $9.99→$29.99/wk, Monthly $29.99→$99.99/mo, Spotlight $7.99→$9.99). 5 user-facing refs in `index.html`. Post-edit grep confirmed zero stragglers.
+- **2026-04-18** — og-image v2 + governance + heartbeat pushed to `origin/main` (3 commits: `df8f31a`, `bbe6474`, `15d390e`). Atlas GO confirmed. GitHub Pages deploy auto-triggers.
 - **2026-04-18** — og-image v2 committed locally as `bbe6474` (hero-title-only, cache-bust rename). Awaiting push approval.
 - **2026-04-17** — governance bootstrap committed (`df8f31a`). `.claude/` structure + `CLAUDE.md` + preflight skill + `R-LEAK-001` mitigated.
