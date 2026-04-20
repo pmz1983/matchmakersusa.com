@@ -769,14 +769,14 @@
   }
 
   // ── Locked Popover: Purchase Button ──
+  // Routes to /coach/ where the user can pick a tier (Free / $500 / $1,000).
+  // Previously called openPreCheckout() with data-product="dating_coach", but
+  // that key isn't in MM_PRODUCTS (valid keys: playbook, dating_coach_premium,
+  // dating_coach_unlimited) so the modal silently no-op'd. The locked popover
+  // is a tier-info teaser, not a single-product CTA — the coach page is the
+  // correct destination.
   function onLockedPurchase() {
-    if (typeof openPreCheckout === 'function') {
-      var fakeEl = document.createElement('button');
-      fakeEl.setAttribute('data-product', 'dating_coach');
-      openPreCheckout(fakeEl);
-    } else {
-      window.location.href = '/coach/';
-    }
+    window.location.href = '/coach/';
   }
 
   // ── Locked Popover: Toggle code entry ──
