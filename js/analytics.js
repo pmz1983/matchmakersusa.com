@@ -36,6 +36,25 @@
     return sid;
   }
 
+  // ── URL sanitizer: strip non-UTM query params before logging (S-022) ──
+  // Stripe/EPD redirects to /success?email=...&product=... so the raw URL
+  // can leak PII into page_view events. Allow only marketing UTM params.
+  function sanitizeUrl(u) {
+    try {
+      var url = new URL(u);
+      var allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      var clean = new URLSearchParams();
+      url.searchParams.forEach(function (v, k) {
+        if (allowed.indexOf(k) !== -1) clean.append(k, v);
+      });
+      url.search = clean.toString();
+      return url.toString();
+    } catch (e) {
+      // Defensive fallback: drop the query entirely
+      return window.location.origin + window.location.pathname;
+    }
+  }
+
   // ── UTM & Referrer capture (first-touch) ──
   function captureAttribution() {
     if (localStorage.getItem('mm_utm')) return;
@@ -110,7 +129,7 @@
   captureAttribution();
   track('page_view', {
     title: document.title,
-    url: window.location.href
+    url: sanitizeUrl(window.location.href)
   });
 
   // ── Track time on page ──
