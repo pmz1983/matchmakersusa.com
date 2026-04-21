@@ -183,8 +183,10 @@ function unlockFromGate() {
   msg.style.display = 'block';
   input.style.borderColor = 'rgba(201,168,76,.5)';
 
+  // F-3 fix: target the actual panel id #pb-dc-panel (not the
+  // non-existent #dating-coach anchor which silently lands at top).
   setTimeout(function () {
-    window.location.href = '/playbook/content/#dating-coach';
+    window.location.href = '/playbook/content/#pb-dc-panel';
   }, 800);
 }
 
@@ -226,8 +228,9 @@ function applyPromoCode() {
       msg.textContent = 'Code accepted! Redirecting to your Dating Coach…';
       msg.style.color = '#4CAF50';
       msg.style.display = 'block';
+      // F-3 fix: target #pb-dc-panel (not #dating-coach which doesn't exist).
       setTimeout(function () {
-        window.location.href = '/playbook/content/#dating-coach';
+        window.location.href = '/playbook/content/#pb-dc-panel';
       }, 800);
       return;
     }

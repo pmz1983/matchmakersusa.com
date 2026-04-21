@@ -406,7 +406,12 @@
         // already holds the email-to-purchase mapping; product alone suffices
         // for attribution.
         if (window.mmTrack) { mmTrack('purchase_confirmed', { product: product }); mmFlush(); }
-        if (product === 'dating_coach') {
+        // F-7 fix: MM_PRODUCTS keys are 'dating_coach_premium' /
+        // 'dating_coach_unlimited'. Stripe redirect URL passes those as the
+        // ?product= param. The previous check for 'dating_coach' (no tier
+        // suffix) always failed, falling through to showPlaybook() and
+        // showing the Playbook unlock UI to every paying Coach buyer.
+        if (product === 'dating_coach_premium' || product === 'dating_coach_unlimited') {
           showCoach(data.access_code, email);
         } else {
           showPlaybook(data.access_code, email);
@@ -471,7 +476,7 @@
       <a href="/assessment/">Intent Assessment &mdash; Free</a>
       <a href="/guide/">Connection Code &mdash; Free</a>
       <a href="/playbook/">The MatchMakers Playbook &mdash; $250</a>
-      <a href="/coach/">Dating Coach &mdash; Free / $500 / $1,000</a>
+      <a href="/coach/">Dating Coach &mdash; $500 / $1,000</a>
       <a href="/vip/">VIP MatchMaking &mdash; By Consultation</a>
     </div>
     <div class="fc">
