@@ -328,22 +328,30 @@
         <option>I have the Playbook but not the Dating Coach</option>
         <option>Not yet — I'd like guidance on where to start</option>
       </select>
-      <button onclick="submitApplication()" class="btn-gold" style="width:100%;display:flex;">Submit Application →</button>
+      <!-- Honeypot field: bots tend to fill every input. Real users
+           never see this (off-screen + aria-hidden + tabindex=-1). The
+           submit-vip-application Edge Function rejects any submission
+           with hp non-empty. -->
+      <input type="text" id="hp-hidden" name="hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;">
+
+      <button id="appSubmitBtn" onclick="submitApplication()" class="btn-gold" style="width:100%;display:flex;">Submit Application →</button>
+      <p id="appFormErr" style="display:none;font-size:.78rem;color:#E5534B;margin-top:.65rem;font-family:var(--pd);" role="alert"></p>
       <p class="app-form-note">Your application is confidential. We do not share your information with any third parties. Your advisor will reach out within 2 business days.</p>
     </div>
     <div class="app-success" id="appSuccess">
       <div class="app-success-icon">◆</div>
       <div class="app-success-title">Application received.</div>
-      <div class="app-success-body">Your email client should have opened with your application pre-filled. Send that email and your advisor will reach out within 2 business days to schedule your initial consultation.<br><br>In the meantime, if you haven't yet completed the Dating Coach, we recommend starting there. It is included in your VIP engagement once it begins.</div>
+      <div class="app-success-body">Your application is in. Your advisor will review it and reach out within 2 business days to schedule your initial consultation.<br><br>In the meantime, if you haven't yet completed the Dating Coach, we recommend starting there. It is included in your VIP engagement once it begins.</div>
+      <div id="appSuccessRef" style="margin-top:1rem;font-size:.7rem;font-family:var(--pd);color:rgba(120,149,175,.5);letter-spacing:.04em;"></div>
 
-      <!-- Fallback recovery: if the user's mailto: did not open (common on
-           mobile + webmail-only users), let them copy the application body
-           and send it manually to info@matchmakersusa.com. Interim safety
-           net until Workstream 4 replaces mailto: with a Supabase Edge
-           Function + server-side vip_applications table. -->
-      <div class="app-success-fallback" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(65,91,124,.2);">
-        <div style="font-family:var(--pd);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:.5rem;">Email client didn't open?</div>
-        <p style="font-size:.8rem;color:rgba(200,214,229,.7);line-height:1.6;margin:0 0 .75rem;font-family:var(--sr);">Copy your application below and email it directly to <a href="mailto:info@matchmakersusa.com" style="color:var(--gold);text-decoration:underline;">info@matchmakersusa.com</a> so it reaches your advisor.</p>
+      <!-- Belt-and-suspenders fallback: only revealed if the server-side
+           submit-vip-application Edge Function POST fails (network /
+           rate-limit / timeout). Lets the user copy the application body
+           and email it directly to info@matchmakersusa.com. Hidden by
+           default; submitApplication() un-hides it on fetch failure. -->
+      <div id="appSuccessFallback" class="app-success-fallback" style="display:none;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(65,91,124,.2);">
+        <div style="font-family:var(--pd);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:.5rem;">Recovery: send manually</div>
+        <p style="font-size:.8rem;color:rgba(200,214,229,.7);line-height:1.6;margin:0 0 .75rem;font-family:var(--sr);">If the message above said the submission didn't go through, copy your application below and email it directly to <a href="mailto:info@matchmakersusa.com" style="color:var(--gold);text-decoration:underline;">info@matchmakersusa.com</a> so it reaches your advisor.</p>
         <textarea id="appFallbackBody" readonly rows="8" style="width:100%;padding:12px 14px;border:1px solid rgba(65,91,124,.3);border-radius:8px;background:rgba(5,9,15,.5);color:rgba(200,214,229,.85);font-size:.8rem;font-family:var(--pd);line-height:1.5;resize:vertical;box-sizing:border-box;"></textarea>
         <button type="button" onclick="copyApplicationBody(this)" class="btn-gold btn-gold-sm" style="margin-top:.75rem;">Copy Application Text</button>
       </div>
@@ -459,6 +467,54 @@
 </footer>
 
 <script>
+// VIP_SUBMIT_ENDPOINT — server-side submission replaces the previous
+// fragile mailto: mechanism (Step 3 of the dating_coach_audit
+// follow-up). The Edge Function writes to vip_applications and
+// fires a notification email via Resend.
+var VIP_SUBMIT_ENDPOINT = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1/submit-vip-application';
+var VIP_SUBMIT_TIMEOUT_MS = 10000;
+
+function vipShowFormError(msg) {
+  var el = document.getElementById('appFormErr');
+  if (!el) { alert(msg); return; }
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function vipClearFormError() {
+  var el = document.getElementById('appFormErr');
+  if (el) { el.textContent = ''; el.style.display = 'none'; }
+}
+
+function vipSetSubmitting(submitting) {
+  var btn = document.getElementById('appSubmitBtn');
+  if (!btn) return;
+  if (submitting) {
+    btn.dataset.originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'wait';
+    btn.textContent = 'Submitting…';
+  } else {
+    btn.disabled = false;
+    btn.style.opacity = '';
+    btn.style.cursor = '';
+    btn.textContent = btn.dataset.originalLabel || 'Submit Application →';
+  }
+}
+
+function vipShowSuccess(applicationId, withFallback) {
+  var formEl = document.getElementById('appForm');
+  if (formEl) formEl.style.display = 'none';
+  document.getElementById('appSuccess').style.display = 'block';
+  var refEl = document.getElementById('appSuccessRef');
+  if (refEl && applicationId) {
+    refEl.textContent = 'Reference: ' + applicationId;
+  }
+  var fb = document.getElementById('appSuccessFallback');
+  if (fb) fb.style.display = withFallback ? 'block' : 'none';
+}
+
 function submitApplication() {
   var fname = document.getElementById('app-fname').value.trim();
   var lname = document.getElementById('app-lname').value.trim();
@@ -467,56 +523,102 @@ function submitApplication() {
   var seeking = document.getElementById('app-seeking').value.trim();
   var why = document.getElementById('app-why').value.trim();
   var coach = document.getElementById('app-coach').value;
+  var hp = (document.getElementById('hp-hidden') || {}).value || '';
+
+  vipClearFormError();
 
   if (!fname || !lname || !email || !intent || !seeking || !why || !coach) {
-    alert('Please complete all fields before submitting.');
+    vipShowFormError('Please complete all fields before submitting.');
     return;
   }
   if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-    alert('Please enter a valid email address.');
+    vipShowFormError('Please enter a valid email address.');
     return;
   }
 
-  // Build application subject + body
+  // Pre-build the recovery-path body string. Used only if the server
+  // POST fails — keeps the user a copy-to-clipboard escape hatch.
   var subject = 'VIP MatchMaking Application — ' + fname + ' ' + lname;
-  var body = 'Name: ' + fname + ' ' + lname +
+  var bodyPlain = 'Name: ' + fname + ' ' + lname +
     '\nEmail: ' + email +
     '\nIntent: ' + intent +
     '\nSeeking: ' + seeking +
     '\nWhy VIP: ' + why +
     '\nDating Coach: ' + coach;
+  var fallbackEl = document.getElementById('appFallbackBody');
+  if (fallbackEl) {
+    fallbackEl.value = 'To: info@matchmakersusa.com\nSubject: ' + subject + '\n\n' + bodyPlain;
+  }
 
-  // Analytics: record the attempt BEFORE mailto (in case mailto throws
-  // or user's browser blocks it). PII-safe — only non-PII select values.
+  // Analytics: record the attempt BEFORE the network call so we count
+  // even if fetch fails or the user navigates away. PII-safe — only
+  // select-list values, never email/name/free-text.
   if (window.mmTrack) {
     mmTrack('vip_application_attempted', { intent: intent, coach_completion: coach });
     if (window.mmFlush) mmFlush();
   }
 
-  // Fragile primary path: open user's default email client.
-  // Current mailto: delivery mechanism is a known-P1 finding (V-VIP-1
-  // through V-VIP-6). Replaced by Supabase Edge Function + server-side
-  // vip_applications table in Workstream 4.
-  try {
-    window.open('mailto:info@matchmakersusa.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank');
-    if (window.mmTrack) mmTrack('vip_application_mailto_opened', { intent: intent });
-  } catch (e) {
-    // mailto: threw; user will fall through to the copy-to-clipboard
-    // recovery surface below. Nothing else to do here.
-  }
+  vipSetSubmitting(true);
 
-  // Populate the fallback textarea so the recovery path is usable even
-  // if mailto: silently failed (mobile Safari, webmail-only users, etc.).
-  var fallbackEl = document.getElementById('appFallbackBody');
-  if (fallbackEl) {
-    fallbackEl.value = 'To: info@matchmakersusa.com\nSubject: ' + subject + '\n\n' + body;
-  }
+  // 10-second timeout via AbortController; on timeout we fall through
+  // to the recovery fallback rather than hang the UI.
+  var controller = new AbortController();
+  var timeoutId = setTimeout(function () { controller.abort(); }, VIP_SUBMIT_TIMEOUT_MS);
 
-  // Hide the form. NOTE: selector was .app-form-fields (which doesn't
-  // exist); corrected to #appForm which is the actual form container.
-  var formEl = document.getElementById('appForm');
-  if (formEl) formEl.style.display = 'none';
-  document.getElementById('appSuccess').style.display = 'block';
+  fetch(VIP_SUBMIT_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      first_name: fname,
+      last_name: lname,
+      email: email,
+      intent: intent,
+      seeking: seeking,
+      why: why,
+      coach_completion: coach,
+      hp: hp
+    }),
+    signal: controller.signal
+  })
+  .then(function (res) {
+    clearTimeout(timeoutId);
+    return res.json().then(function (data) { return { status: res.status, data: data }; });
+  })
+  .then(function (r) {
+    vipSetSubmitting(false);
+    if (r.status >= 200 && r.status < 300 && r.data && r.data.success) {
+      // Server-confirmed success
+      if (window.mmTrack) {
+        mmTrack('vip_application_submitted', { intent: intent, coach_completion: coach });
+        if (window.mmFlush) mmFlush();
+      }
+      vipShowSuccess(r.data.application_id, false);
+    } else {
+      // Server-side rejection (validation, rate limit, DB error). Show
+      // success UI WITH the manual-recovery fallback so the lead isn't
+      // lost.
+      var msg = (r.data && r.data.error) || 'Submission could not be completed.';
+      vipShowFormError(msg);
+      // Don't auto-flip to success on hard rejection — user may want
+      // to correct + retry. Recovery fallback only opens on network /
+      // timeout failures (caught below).
+    }
+  })
+  .catch(function (err) {
+    clearTimeout(timeoutId);
+    vipSetSubmitting(false);
+    // Network failure or timeout. Show success UI with the
+    // copy-to-clipboard recovery surface so the user has a path.
+    if (window.mmTrack) {
+      mmTrack('vip_application_submit_failed', {
+        intent: intent,
+        coach_completion: coach,
+        reason: err && err.name === 'AbortError' ? 'timeout' : 'network'
+      });
+      if (window.mmFlush) mmFlush();
+    }
+    vipShowSuccess(null, true);
+  });
 }
 
 // Copy the fallback application text to the user's clipboard.
