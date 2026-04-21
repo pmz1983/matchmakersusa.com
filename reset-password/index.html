@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Reset Your Password | MatchMakers</title>
+  <meta name="description" content="Set a new password for your MatchMakers account.">
+  <link rel="canonical" href="https://matchmakersusa.com/reset-password/">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/img/icon.png" type="image/png">
+  <style>
+    .rp-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:3rem clamp(1rem,4vw,2rem); box-sizing:border-box; }
+    .rp-card { max-width:440px; width:100%; }
+    .rp-title { font-family:var(--cg); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:300; color:var(--white); line-height:1.15; margin:0 0 .5rem; }
+    .rp-sub { font-family:var(--sr); font-size:.92rem; color:var(--sl); line-height:1.65; margin:0 0 2rem; }
+    .rp-label { font-family:var(--pd); font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8BA0BC; display:block; margin-bottom:.4rem; margin-top:1rem; }
+    .rp-input { width:100%; padding:14px 16px; border:1px solid rgba(65,91,124,.4); border-radius:10px; background:rgba(5,9,15,.5); color:var(--white); font-size:16px; /* 16px prevents iOS Safari auto-zoom on focus */ font-family:var(--pd); outline:none; box-sizing:border-box; transition:border-color .2s; }
+    .rp-input:focus { border-color:rgba(201,168,76,.5); }
+    .rp-err { display:none; font-size:.8rem; color:#E5534B; margin-top:.75rem; font-family:var(--pd); line-height:1.5; }
+    .rp-btn { width:100%; padding:15px; border-radius:10px; border:none; font-family:var(--pd); font-size:.85rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; margin-top:1.5rem; background:var(--gold); color:var(--navy); transition:opacity .2s; }
+    .rp-btn:disabled { opacity:.55; cursor:wait; }
+    .rp-hint { font-size:.72rem; color:rgba(120,149,175,.5); margin-top:.85rem; text-align:center; font-family:var(--sr); line-height:1.5; }
+    .rp-icon { width:64px; height:64px; border-radius:50%; margin:0 auto 1.5rem; background:radial-gradient(circle at 40% 38%,#F0D878 0%,#D4B65E 25%,#C9A84C 50%,#A8893D 80%); display:flex; align-items:center; justify-content:center; font-size:1.6rem; line-height:1; box-shadow:0 0 40px rgba(201,168,76,.18); }
+    .rp-center { text-align:center; }
+    .rp-success-cta { display:inline-block; padding:14px 32px; background:var(--gold); color:var(--navy); text-decoration:none; font-family:var(--pd); font-weight:700; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; border-radius:10px; margin-top:1.25rem; }
+    .rp-alt { display:block; margin-top:1rem; font-family:var(--sr); font-size:.8rem; color:var(--sl); text-decoration:underline; text-underline-offset:2px; }
+    .rp-alt:hover { color:var(--gold); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" style="display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;">
+      <img src="/img/logo.png" class="ni" alt="MatchMakers" width="36" height="36">
+      <span class="nm">MatchMakers<sup>&trade;</sup></span>
+    </a>
+  </div>
+</nav>
+
+<div class="rp-wrap">
+  <div class="rp-card">
+
+    <!-- Loading state while parsing token (brief) -->
+    <div id="rp-loading" class="rp-center">
+      <div class="rp-icon">M</div>
+      <div style="font-family:var(--sr);font-size:.9rem;color:var(--sl);">Verifying reset link&hellip;</div>
+    </div>
+
+    <!-- Invalid / missing / expired token -->
+    <div id="rp-invalid" class="rp-center" style="display:none;">
+      <div class="rp-icon" aria-hidden="true">!</div>
+      <h1 class="rp-title">This link is invalid or expired.</h1>
+      <p class="rp-sub">Please request a new password reset from the MatchMakers app. Password reset links expire after a short time for your security.</p>
+      <a href="/" class="rp-success-cta">Back to MatchMakers</a>
+    </div>
+
+    <!-- New-password form -->
+    <div id="rp-form" style="display:none;">
+      <div class="rp-icon" aria-hidden="true">&#8634;</div>
+      <h1 class="rp-title rp-center">Set a new password</h1>
+      <p class="rp-sub rp-center">Enter your new password below. You&rsquo;ll use this to sign in going forward.</p>
+      <form id="rp-form-el" novalidate>
+        <label class="rp-label" for="rp-pw">New password</label>
+        <input type="password" id="rp-pw" class="rp-input" autocomplete="new-password" autocapitalize="off" spellcheck="false" required minlength="8" placeholder="At least 8 characters">
+        <label class="rp-label" for="rp-pw2">Confirm password</label>
+        <input type="password" id="rp-pw2" class="rp-input" autocomplete="new-password" autocapitalize="off" spellcheck="false" required minlength="8" placeholder="Type it again">
+        <p id="rp-err" class="rp-err" role="alert"></p>
+        <button type="submit" id="rp-btn" class="rp-btn">Reset Password</button>
+        <p class="rp-hint">Minimum 8 characters. Mix of letters and numbers recommended.</p>
+      </form>
+    </div>
+
+    <!-- Success state -->
+    <div id="rp-success" class="rp-center" style="display:none;">
+      <div class="rp-icon" aria-hidden="true">&#10003;</div>
+      <h1 class="rp-title">Password reset.</h1>
+      <p class="rp-sub">You can now sign in to MatchMakers with your new password.</p>
+      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" class="rp-success-cta">Open MatchMakers</a>
+      <a href="/" class="rp-alt">Or return to matchmakersusa.com</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="f-contact" style="text-align:center;font-size:.75rem;padding:1.75rem clamp(1rem,4vw,2rem) .25rem;color:var(--sl);line-height:1.75;font-family:var(--sr);border-bottom:1px solid rgba(65,91,124,.1);">
+    <strong style="color:var(--tx);font-weight:700;">MatchMakers LLC</strong> &middot; 1991 Crocker Rd, Suite 600-755, Westlake, OH 44145 &middot; <a href="tel:+19293546337" style="color:inherit;text-decoration:none;">(929) 354-6337</a> &middot; <a href="mailto:customerservice@matchmakersusa.com" style="color:inherit;text-decoration:none;">customerservice@matchmakersusa.com</a> &middot; <a href="/contact/" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);">Contact</a>
+  </div>
+  <div class="fbot"><span class="fc-copy">&copy; 2026 MatchMakers LLC &middot; All rights reserved</span></div>
+</footer>
+
+<script src="/js/analytics.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // Supabase project. URL is public (also in coach-orb.js, checkout.js,
+  // analytics.js, success/index.html).
+  var SUPABASE_URL = 'https://peamviowxkyaglyjpagc.supabase.co';
+
+  // SUPABASE ANON / PUBLISHABLE KEY
+  // This is the PUBLIC anon key — safe to ship in the browser, same
+  // design pattern as STRIPE_PK (publishable key) in js/checkout.js.
+  // Obtain from:
+  //   https://supabase.com/dashboard/project/peamviowxkyaglyjpagc/settings/api
+  // Copy the `anon` / `public` key (JWT starting with eyJ...) and
+  // REPLACE the placeholder string below before pushing this file to
+  // production. The page will not function until this is set.
+  var SUPABASE_ANON_KEY = '__REPLACE_WITH_SUPABASE_ANON_KEY_BEFORE_PUSH__';
+
+  // ── State + DOM refs ───────────────────────────────────────────
+  var loadingEl = document.getElementById('rp-loading');
+  var invalidEl = document.getElementById('rp-invalid');
+  var formWrapEl = document.getElementById('rp-form');
+  var successEl = document.getElementById('rp-success');
+  var formEl = document.getElementById('rp-form-el');
+  var pwEl = document.getElementById('rp-pw');
+  var pw2El = document.getElementById('rp-pw2');
+  var errEl = document.getElementById('rp-err');
+  var btnEl = document.getElementById('rp-btn');
+
+  function show(el) { if (el) el.style.display = ''; }
+  function hide(el) { if (el) el.style.display = 'none'; }
+  function showError(msg) {
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+  }
+  function clearError() {
+    errEl.textContent = '';
+    errEl.style.display = 'none';
+  }
+
+  // ── Parse the hash fragment ────────────────────────────────────
+  // Supabase password-reset email links redirect to:
+  //   https://matchmakersusa.com/reset-password/
+  //     #access_token=...&refresh_token=...&expires_in=...
+  //     &token_type=bearer&type=recovery
+  var hash = (window.location.hash || '').replace(/^#/, '');
+  var params = new URLSearchParams(hash);
+  var access_token = params.get('access_token') || '';
+  var refresh_token = params.get('refresh_token') || '';
+  var type = params.get('type') || '';
+  var hasValidToken = !!access_token && !!refresh_token && type === 'recovery';
+
+  if (window.mmTrack) {
+    mmTrack('password_reset_page_loaded', { has_valid_token: hasValidToken });
+    if (window.mmFlush) mmFlush();
+  }
+
+  hide(loadingEl);
+
+  if (!hasValidToken) {
+    show(invalidEl);
+    return;
+  }
+
+  // Valid token present — show the new-password form
+  formWrapEl.style.display = 'block';
+
+  // ── Submit handler ─────────────────────────────────────────────
+  formEl.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearError();
+
+    var pw = pwEl.value;
+    var pw2 = pw2El.value;
+
+    if (!pw || pw.length < 8) {
+      showError('Password must be at least 8 characters.');
+      pwEl.focus();
+      return;
+    }
+    if (pw !== pw2) {
+      showError('Passwords do not match.');
+      pw2El.focus();
+      return;
+    }
+
+    btnEl.disabled = true;
+    btnEl.textContent = 'Resetting\u2026';
+
+    if (window.mmTrack) {
+      mmTrack('password_reset_submitted', {});
+      if (window.mmFlush) mmFlush();
+    }
+
+    // Call Supabase Auth REST API directly: PUT /auth/v1/user with the
+    // recovery access_token as Bearer. Equivalent to the supabase-js
+    // setSession + updateUser pattern Atlas's spec described; skipping
+    // the CDN client library keeps the page lightweight.
+    // 15-second timeout via AbortController so a stalled network
+    // doesn't leave the user staring at a disabled button.
+    var controller = new AbortController();
+    var timeoutId = setTimeout(function () { controller.abort(); }, 15000);
+
+    fetch(SUPABASE_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + access_token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ password: pw }),
+      signal: controller.signal
+    })
+    .then(function (res) {
+      clearTimeout(timeoutId);
+      return res.json().then(
+        function (data) { return { status: res.status, data: data }; },
+        function () { return { status: res.status, data: {} }; }
+      );
+    })
+    .then(function (r) {
+      if (r.status >= 200 && r.status < 300) {
+        if (window.mmTrack) {
+          mmTrack('password_reset_succeeded', {});
+          if (window.mmFlush) mmFlush();
+        }
+        hide(formWrapEl);
+        show(successEl);
+        return;
+      }
+      // Server error — surface message from Supabase if present
+      var d = r.data || {};
+      var msg = d.msg || d.error_description || d.message || d.error ||
+                'We couldn\u2019t reset your password. The link may be expired — please request a new one from the app.';
+      if (window.mmTrack) {
+        mmTrack('password_reset_failed', { reason: 'server', status: r.status });
+        if (window.mmFlush) mmFlush();
+      }
+      showError(msg);
+      btnEl.disabled = false;
+      btnEl.textContent = 'Reset Password';
+    })
+    .catch(function (err) {
+      clearTimeout(timeoutId);
+      var reason = err && err.name === 'AbortError' ? 'timeout' : 'network';
+      if (window.mmTrack) {
+        mmTrack('password_reset_failed', { reason: reason });
+        if (window.mmFlush) mmFlush();
+      }
+      showError(reason === 'timeout'
+        ? 'That took too long. Please check your connection and try again.'
+        : 'Network error. Please check your connection and try again.');
+      btnEl.disabled = false;
+      btnEl.textContent = 'Reset Password';
+    });
+  });
+})();
+</script>
+</body>
+</html>
