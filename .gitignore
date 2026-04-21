@@ -10,3 +10,15 @@ migration/.env
 SETUP-PROGRESS.md
 SESSION-STARTERS.md
 SYSTEMS-AUDIT.md
+
+# ── Internal-only artifacts (NEVER serve publicly via GitHub Pages) ──
+# Claude Code working directory: state, sessions, memory, skills, etc.
+# Contains internal decisions, business context, agent doctrine.
+.claude/
+# Project guide for the Claude session — references owners, paths,
+# session conventions. Internal.
+CLAUDE.md
+# Internal product/strategy docs. Default-deny posture: opt-in
+# specific files by negating the rule (`!docs/whitelisted.md`) if
+# any single doc is intentionally public.
+docs/

@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Internal-only paths — should not be indexed even though dotfile
+# paths are typically not crawled. Belt-and-suspenders for any
+# crawler that does follow them, and for cached references.
+Disallow: /.claude/
+Disallow: /CLAUDE.md
+Disallow: /docs/
+
 Sitemap: https://matchmakersusa.com/sitemap.xml
