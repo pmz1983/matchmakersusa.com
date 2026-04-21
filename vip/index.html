@@ -334,7 +334,19 @@
     <div class="app-success" id="appSuccess">
       <div class="app-success-icon">◆</div>
       <div class="app-success-title">Application received.</div>
-      <div class="app-success-body">Your advisor will review your application and reach out within 2 business days to schedule your initial consultation.<br><br>In the meantime, if you haven't yet completed the Dating Coach, we recommend starting there. It is included in your VIP engagement once it begins.</div>
+      <div class="app-success-body">Your email client should have opened with your application pre-filled. Send that email and your advisor will reach out within 2 business days to schedule your initial consultation.<br><br>In the meantime, if you haven't yet completed the Dating Coach, we recommend starting there. It is included in your VIP engagement once it begins.</div>
+
+      <!-- Fallback recovery: if the user's mailto: did not open (common on
+           mobile + webmail-only users), let them copy the application body
+           and send it manually to info@matchmakersusa.com. Interim safety
+           net until Workstream 4 replaces mailto: with a Supabase Edge
+           Function + server-side vip_applications table. -->
+      <div class="app-success-fallback" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(65,91,124,.2);">
+        <div style="font-family:var(--pd);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:.5rem;">Email client didn't open?</div>
+        <p style="font-size:.8rem;color:rgba(200,214,229,.7);line-height:1.6;margin:0 0 .75rem;font-family:var(--sr);">Copy your application below and email it directly to <a href="mailto:info@matchmakersusa.com" style="color:var(--gold);text-decoration:underline;">info@matchmakersusa.com</a> so it reaches your advisor.</p>
+        <textarea id="appFallbackBody" readonly rows="8" style="width:100%;padding:12px 14px;border:1px solid rgba(65,91,124,.3);border-radius:8px;background:rgba(5,9,15,.5);color:rgba(200,214,229,.85);font-size:.8rem;font-family:var(--pd);line-height:1.5;resize:vertical;box-sizing:border-box;"></textarea>
+        <button type="button" onclick="copyApplicationBody(this)" class="btn-gold btn-gold-sm" style="margin-top:.75rem;">Copy Application Text</button>
+      </div>
     </div>
   </div>
 </section>
@@ -465,7 +477,7 @@ function submitApplication() {
     return;
   }
 
-  // Send application via email
+  // Build application subject + body
   var subject = 'VIP MatchMaking Application — ' + fname + ' ' + lname;
   var body = 'Name: ' + fname + ' ' + lname +
     '\nEmail: ' + email +
@@ -473,11 +485,62 @@ function submitApplication() {
     '\nSeeking: ' + seeking +
     '\nWhy VIP: ' + why +
     '\nDating Coach: ' + coach;
-  window.open('mailto:info@matchmakersusa.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank');
 
-  // Show success
-  document.querySelector('.app-form-fields').style.display = 'none';
+  // Analytics: record the attempt BEFORE mailto (in case mailto throws
+  // or user's browser blocks it). PII-safe — only non-PII select values.
+  if (window.mmTrack) {
+    mmTrack('vip_application_attempted', { intent: intent, coach_completion: coach });
+    if (window.mmFlush) mmFlush();
+  }
+
+  // Fragile primary path: open user's default email client.
+  // Current mailto: delivery mechanism is a known-P1 finding (V-VIP-1
+  // through V-VIP-6). Replaced by Supabase Edge Function + server-side
+  // vip_applications table in Workstream 4.
+  try {
+    window.open('mailto:info@matchmakersusa.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank');
+    if (window.mmTrack) mmTrack('vip_application_mailto_opened', { intent: intent });
+  } catch (e) {
+    // mailto: threw; user will fall through to the copy-to-clipboard
+    // recovery surface below. Nothing else to do here.
+  }
+
+  // Populate the fallback textarea so the recovery path is usable even
+  // if mailto: silently failed (mobile Safari, webmail-only users, etc.).
+  var fallbackEl = document.getElementById('appFallbackBody');
+  if (fallbackEl) {
+    fallbackEl.value = 'To: info@matchmakersusa.com\nSubject: ' + subject + '\n\n' + body;
+  }
+
+  // Hide the form. NOTE: selector was .app-form-fields (which doesn't
+  // exist); corrected to #appForm which is the actual form container.
+  var formEl = document.getElementById('appForm');
+  if (formEl) formEl.style.display = 'none';
   document.getElementById('appSuccess').style.display = 'block';
+}
+
+// Copy the fallback application text to the user's clipboard.
+// Primary path uses the modern navigator.clipboard API; falls back to
+// the legacy execCommand('copy') on older browsers that don't expose it
+// (notably some older iOS Safari versions).
+function copyApplicationBody(btn) {
+  var ta = document.getElementById('appFallbackBody');
+  if (!ta || !ta.value) return;
+  var done = function () {
+    var original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    setTimeout(function () { btn.textContent = original; }, 2500);
+    if (window.mmTrack) mmTrack('vip_application_body_copied', {});
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(ta.value).then(done, function () {
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { /* silent */ }
+    });
+  } else {
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { /* silent */ }
+  }
 }
 </script>
 <!-- ── Coach Orb & Panel ── -->
