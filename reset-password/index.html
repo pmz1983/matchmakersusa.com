@@ -22,13 +22,14 @@
   <link rel="icon" href="/img/icon.png" type="image/png">
   <style>
     .rp-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:3rem clamp(1rem,4vw,2rem); box-sizing:border-box; }
-    .rp-card { max-width:440px; width:100%; }
+    .rp-card { max-width:460px; width:100%; }
     .rp-title { font-family:var(--cg); font-size:clamp(1.8rem,4vw,2.6rem); font-weight:300; color:var(--white); line-height:1.15; margin:0 0 .5rem; }
-    .rp-sub { font-family:var(--sr); font-size:.92rem; color:var(--sl); line-height:1.65; margin:0 0 2rem; }
+    .rp-sub { font-family:var(--sr); font-size:.92rem; color:var(--sl); line-height:1.65; margin:0 0 1.75rem; }
     .rp-label { font-family:var(--pd); font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8BA0BC; display:block; margin-bottom:.4rem; margin-top:1rem; }
     .rp-input { width:100%; padding:14px 16px; border:1px solid rgba(65,91,124,.4); border-radius:10px; background:rgba(5,9,15,.5); color:var(--white); font-size:16px; /* 16px prevents iOS Safari auto-zoom on focus */ font-family:var(--pd); outline:none; box-sizing:border-box; transition:border-color .2s; }
     .rp-input:focus { border-color:rgba(201,168,76,.5); }
-    .rp-err { display:none; font-size:.8rem; color:#E5534B; margin-top:.75rem; font-family:var(--pd); line-height:1.5; }
+    .rp-input.code { font-size:20px; letter-spacing:.5em; text-align:center; font-feature-settings:"tnum"; }
+    .rp-err { display:none; font-size:.8rem; color:#E5534B; margin-top:.85rem; font-family:var(--pd); line-height:1.5; }
     .rp-btn { width:100%; padding:15px; border-radius:10px; border:none; font-family:var(--pd); font-size:.85rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; margin-top:1.5rem; background:var(--gold); color:var(--navy); transition:opacity .2s; }
     .rp-btn:disabled { opacity:.55; cursor:wait; }
     .rp-hint { font-size:.72rem; color:rgba(120,149,175,.5); margin-top:.85rem; text-align:center; font-family:var(--sr); line-height:1.5; }
@@ -37,6 +38,7 @@
     .rp-success-cta { display:inline-block; padding:14px 32px; background:var(--gold); color:var(--navy); text-decoration:none; font-family:var(--pd); font-weight:700; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; border-radius:10px; margin-top:1.25rem; }
     .rp-alt { display:block; margin-top:1rem; font-family:var(--sr); font-size:.8rem; color:var(--sl); text-decoration:underline; text-underline-offset:2px; }
     .rp-alt:hover { color:var(--gold); }
+    .rp-legacy { display:none; background:rgba(229,170,76,.08); border:1px solid rgba(229,170,76,.3); border-left:3px solid #E5AA4C; border-radius:0 10px 10px 0; padding:.85rem 1.1rem; margin-bottom:1.25rem; font-family:var(--sr); font-size:.8rem; color:rgba(229,170,76,.95); line-height:1.55; }
   </style>
 </head>
 <body>
@@ -53,33 +55,35 @@
 <div class="rp-wrap">
   <div class="rp-card">
 
-    <!-- Loading state while parsing token (brief) -->
-    <div id="rp-loading" class="rp-center">
-      <div class="rp-icon">M</div>
-      <div style="font-family:var(--sr);font-size:.9rem;color:var(--sl);">Verifying reset link&hellip;</div>
-    </div>
-
-    <!-- Invalid / missing / expired token -->
-    <div id="rp-invalid" class="rp-center" style="display:none;">
-      <div class="rp-icon" aria-hidden="true">!</div>
-      <h1 class="rp-title">This link is invalid or expired.</h1>
-      <p class="rp-sub">Please request a new password reset from the MatchMakers app. Password reset links expire after a short time for your security.</p>
-      <a href="/" class="rp-success-cta">Back to MatchMakers</a>
-    </div>
-
-    <!-- New-password form -->
-    <div id="rp-form" style="display:none;">
+    <!-- New-password form (shown by default; OTP flow) -->
+    <div id="rp-form">
       <div class="rp-icon" aria-hidden="true">&#8634;</div>
       <h1 class="rp-title rp-center">Set a new password</h1>
-      <p class="rp-sub rp-center">Enter your new password below. You&rsquo;ll use this to sign in going forward.</p>
+      <p class="rp-sub rp-center">Enter the 6-digit code from your email plus your new password.</p>
+
+      <!-- Backward-compat notice: shown only if URL has ?code=<uuid> (legacy
+           PKCE link from a pre-OTP-cutover email). Lets in-flight users know
+           to use the latest email's 6-digit code. -->
+      <div id="rp-legacy-notice" class="rp-legacy" role="alert">
+        If you clicked a link from an older email, those are no longer supported. Please enter the 6-digit code from your latest email, or request a new reset from the app.
+      </div>
+
       <form id="rp-form-el" novalidate>
+        <label class="rp-label" for="rp-email">Email</label>
+        <input type="email" id="rp-email" class="rp-input" autocomplete="email" autocapitalize="off" spellcheck="false" required placeholder="you@example.com" aria-label="Email address">
+
+        <label class="rp-label" for="rp-code">6-digit code from email</label>
+        <input type="text" id="rp-code" class="rp-input code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" required placeholder="123456" aria-label="6-digit code from your email">
+
         <label class="rp-label" for="rp-pw">New password</label>
-        <input type="password" id="rp-pw" class="rp-input" autocomplete="new-password" autocapitalize="off" spellcheck="false" required minlength="8" placeholder="At least 8 characters">
+        <input type="password" id="rp-pw" class="rp-input" autocomplete="new-password" autocapitalize="off" spellcheck="false" required minlength="8" placeholder="At least 8 characters" aria-label="New password">
+
         <label class="rp-label" for="rp-pw2">Confirm password</label>
-        <input type="password" id="rp-pw2" class="rp-input" autocomplete="new-password" autocapitalize="off" spellcheck="false" required minlength="8" placeholder="Type it again">
+        <input type="password" id="rp-pw2" class="rp-input" autocomplete="new-password" autocapitalize="off" spellcheck="false" required minlength="8" placeholder="Type it again" aria-label="Confirm new password">
+
         <p id="rp-err" class="rp-err" role="alert"></p>
         <button type="submit" id="rp-btn" class="rp-btn">Reset Password</button>
-        <p class="rp-hint">Minimum 8 characters. Mix of letters and numbers recommended.</p>
+        <p class="rp-hint">Minimum 8 characters. Codes expire 1 hour after request.</p>
       </form>
     </div>
 
@@ -108,31 +112,29 @@
   'use strict';
 
   // Supabase project. URL is public (also in coach-orb.js, checkout.js,
-  // analytics.js, success/index.html).
+  // analytics.js, success/index.html, submit-vip-application).
   var SUPABASE_URL = 'https://peamviowxkyaglyjpagc.supabase.co';
 
   // SUPABASE ANON / PUBLISHABLE KEY
-  // This is the PUBLIC anon key — safe to ship in the browser, same
-  // design pattern as STRIPE_PK (publishable key) in js/checkout.js.
-  // JWT payload: role=anon, iss=supabase, ref=peamviowxkyaglyjpagc.
-  // Rotate via Supabase Dashboard → Settings → API if ever needed;
-  // key is scoped to anon-role RLS policies only (service_role is
-  // never shipped client-side).
+  // Public anon key — safe to ship in browser, same design pattern as
+  // STRIPE_PK in js/checkout.js. JWT payload: role=anon, iss=supabase,
+  // ref=peamviowxkyaglyjpagc. Rotate via Supabase Dashboard if needed.
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlYW12aW93eGt5YWdseWpwYWdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxMjE0NzIsImV4cCI6MjA5MTY5NzQ3Mn0.Gk5kbwrpoTYBrhiNEbd3q_ehhxXZxqAz1d_E4JH891Q';
 
-  // ── State + DOM refs ───────────────────────────────────────────
-  var loadingEl = document.getElementById('rp-loading');
-  var invalidEl = document.getElementById('rp-invalid');
-  var formWrapEl = document.getElementById('rp-form');
-  var successEl = document.getElementById('rp-success');
-  var formEl = document.getElementById('rp-form-el');
-  var pwEl = document.getElementById('rp-pw');
-  var pw2El = document.getElementById('rp-pw2');
-  var errEl = document.getElementById('rp-err');
-  var btnEl = document.getElementById('rp-btn');
+  var VERIFY_TIMEOUT_MS = 15000;
 
-  function show(el) { if (el) el.style.display = ''; }
-  function hide(el) { if (el) el.style.display = 'none'; }
+  // ── DOM refs ───────────────────────────────────────────────────
+  var formWrapEl = document.getElementById('rp-form');
+  var successEl  = document.getElementById('rp-success');
+  var formEl     = document.getElementById('rp-form-el');
+  var emailEl    = document.getElementById('rp-email');
+  var codeEl     = document.getElementById('rp-code');
+  var pwEl       = document.getElementById('rp-pw');
+  var pw2El      = document.getElementById('rp-pw2');
+  var errEl      = document.getElementById('rp-err');
+  var btnEl      = document.getElementById('rp-btn');
+  var legacyEl   = document.getElementById('rp-legacy-notice');
+
   function showError(msg) {
     errEl.textContent = msg;
     errEl.style.display = 'block';
@@ -141,42 +143,70 @@
     errEl.textContent = '';
     errEl.style.display = 'none';
   }
+  function setSubmitting(submitting) {
+    if (submitting) {
+      btnEl.disabled = true;
+      btnEl.textContent = 'Resetting\u2026';
+    } else {
+      btnEl.disabled = false;
+      btnEl.textContent = 'Reset Password';
+    }
+  }
 
-  // ── Parse the hash fragment ────────────────────────────────────
-  // Supabase password-reset email links redirect to:
-  //   https://matchmakersusa.com/reset-password/
-  //     #access_token=...&refresh_token=...&expires_in=...
-  //     &token_type=bearer&type=recovery
-  var hash = (window.location.hash || '').replace(/^#/, '');
-  var params = new URLSearchParams(hash);
-  var access_token = params.get('access_token') || '';
-  var refresh_token = params.get('refresh_token') || '';
-  var type = params.get('type') || '';
-  var hasValidToken = !!access_token && !!refresh_token && type === 'recovery';
+  // ── Parse query params ─────────────────────────────────────────
+  // After Atlas patches the Supabase email template, recovery links will
+  // look like:
+  //   https://matchmakersusa.com/reset-password/?email=user@example.com
+  // (the 6-digit token is in the email body, not the URL)
+  //
+  // Older emails (pre-cutover) used Supabase's PKCE flow with:
+  //   https://matchmakersusa.com/reset-password/?code=<uuid>
+  // The PKCE code-verifier was stored client-side at INITIATION (in iOS
+  // app), so the web browser cannot complete the exchange. We detect the
+  // UUID-shaped ?code= and surface a friendly notice.
+  var qp = new URLSearchParams(window.location.search);
+  var emailFromUrl = (qp.get('email') || '').trim();
+  var codeFromUrl  = (qp.get('code')  || '').trim();
+  var hasQueryCode = codeFromUrl.length > 0;
+  // UUID v4-ish heuristic — 8-4-4-4-12 hex chars, with dashes
+  var isLegacyPkce = hasQueryCode && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(codeFromUrl);
+
+  if (emailFromUrl) {
+    emailEl.value = emailFromUrl;
+  }
+  if (isLegacyPkce && legacyEl) {
+    legacyEl.style.display = 'block';
+  }
 
   if (window.mmTrack) {
-    mmTrack('password_reset_page_loaded', { has_valid_token: hasValidToken });
+    mmTrack('password_reset_page_loaded', {
+      has_query_code: hasQueryCode,
+      legacy_pkce: isLegacyPkce
+    });
     if (window.mmFlush) mmFlush();
   }
-
-  hide(loadingEl);
-
-  if (!hasValidToken) {
-    show(invalidEl);
-    return;
-  }
-
-  // Valid token present — show the new-password form
-  formWrapEl.style.display = 'block';
 
   // ── Submit handler ─────────────────────────────────────────────
   formEl.addEventListener('submit', function (e) {
     e.preventDefault();
     clearError();
 
-    var pw = pwEl.value;
-    var pw2 = pw2El.value;
+    var email = emailEl.value.trim();
+    var code  = codeEl.value.replace(/\D/g, ''); // strip non-digits if user pasted "123 456"
+    var pw    = pwEl.value;
+    var pw2   = pw2El.value;
 
+    // ── Client-side validation ───────────────────────────────────
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('Please enter a valid email address.');
+      emailEl.focus();
+      return;
+    }
+    if (!/^\d{6}$/.test(code)) {
+      showError('Please enter the 6-digit code from your email.');
+      codeEl.focus();
+      return;
+    }
     if (!pw || pw.length < 8) {
       showError('Password must be at least 8 characters.');
       pwEl.focus();
@@ -188,74 +218,122 @@
       return;
     }
 
-    btnEl.disabled = true;
-    btnEl.textContent = 'Resetting\u2026';
+    setSubmitting(true);
 
     if (window.mmTrack) {
       mmTrack('password_reset_submitted', {});
       if (window.mmFlush) mmFlush();
     }
 
-    // Call Supabase Auth REST API directly: PUT /auth/v1/user with the
-    // recovery access_token as Bearer. Equivalent to the supabase-js
-    // setSession + updateUser pattern Atlas's spec described; skipping
-    // the CDN client library keeps the page lightweight.
-    // 15-second timeout via AbortController so a stalled network
-    // doesn't leave the user staring at a disabled button.
-    var controller = new AbortController();
-    var timeoutId = setTimeout(function () { controller.abort(); }, 15000);
+    // ── Step 1: POST /auth/v1/verify with the 6-digit OTP ────────
+    // On success returns { access_token, refresh_token, user, ... }
+    // 15-second AbortController timeout so a stalled network doesn't
+    // leave the user staring at a disabled button.
+    var ctrl = new AbortController();
+    var tmo  = setTimeout(function () { ctrl.abort(); }, VERIFY_TIMEOUT_MS);
 
-    fetch(SUPABASE_URL + '/auth/v1/user', {
-      method: 'PUT',
+    fetch(SUPABASE_URL + '/auth/v1/verify', {
+      method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON_KEY,
-        'Authorization': 'Bearer ' + access_token,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ password: pw }),
-      signal: controller.signal
+      body: JSON.stringify({
+        type: 'recovery',
+        token: code,
+        email: email
+      }),
+      signal: ctrl.signal
     })
     .then(function (res) {
-      clearTimeout(timeoutId);
+      clearTimeout(tmo);
       return res.json().then(
-        function (data) { return { status: res.status, data: data }; },
-        function () { return { status: res.status, data: {} }; }
+        function (d) { return { status: res.status, data: d }; },
+        function ()  { return { status: res.status, data: {} }; }
       );
     })
     .then(function (r) {
-      if (r.status >= 200 && r.status < 300) {
+      if (r.status < 200 || r.status >= 300) {
+        var d = r.data || {};
+        var msg = d.msg || d.error_description || d.message || d.error ||
+                  'Invalid or expired code. Please request a new reset from the app or enter the correct code from your email.';
+        if (window.mmTrack) {
+          mmTrack('password_reset_verify_failed', { reason: 'server', status: r.status });
+          if (window.mmFlush) mmFlush();
+        }
+        showError(msg);
+        setSubmitting(false);
+        return null; // signal: stop the chain
+      }
+      var accessToken = r.data && r.data.access_token;
+      if (!accessToken) {
+        if (window.mmTrack) {
+          mmTrack('password_reset_verify_failed', { reason: 'no_access_token' });
+          if (window.mmFlush) mmFlush();
+        }
+        showError('Verify succeeded but no session was returned. Please try again.');
+        setSubmitting(false);
+        return null;
+      }
+
+      // ── Step 2: PUT /auth/v1/user with the new password ────────
+      // Uses the access_token from step 1 as the Bearer credential.
+      var ctrl2 = new AbortController();
+      var tmo2  = setTimeout(function () { ctrl2.abort(); }, VERIFY_TIMEOUT_MS);
+      return fetch(SUPABASE_URL + '/auth/v1/user', {
+        method: 'PUT',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + accessToken,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ password: pw }),
+        signal: ctrl2.signal
+      })
+      .then(function (res2) {
+        clearTimeout(tmo2);
+        return res2.json().then(
+          function (d) { return { status: res2.status, data: d }; },
+          function ()  { return { status: res2.status, data: {} }; }
+        );
+      });
+    })
+    .then(function (r2) {
+      if (r2 === null) return; // step-1 failure already handled
+
+      if (r2.status >= 200 && r2.status < 300) {
         if (window.mmTrack) {
           mmTrack('password_reset_succeeded', {});
           if (window.mmFlush) mmFlush();
         }
-        hide(formWrapEl);
-        show(successEl);
+        formWrapEl.style.display = 'none';
+        successEl.style.display = 'block';
         return;
       }
-      // Server error — surface message from Supabase if present
-      var d = r.data || {};
+      var d = r2.data || {};
       var msg = d.msg || d.error_description || d.message || d.error ||
-                'We couldn\u2019t reset your password. The link may be expired — please request a new one from the app.';
+                'We couldn\u2019t update your password. Please try again.';
       if (window.mmTrack) {
-        mmTrack('password_reset_failed', { reason: 'server', status: r.status });
+        mmTrack('password_reset_update_failed', { reason: 'server', status: r2.status });
         if (window.mmFlush) mmFlush();
       }
       showError(msg);
-      btnEl.disabled = false;
-      btnEl.textContent = 'Reset Password';
+      setSubmitting(false);
     })
     .catch(function (err) {
-      clearTimeout(timeoutId);
+      clearTimeout(tmo);
       var reason = err && err.name === 'AbortError' ? 'timeout' : 'network';
+      // Couldn't tell from here which step failed (verify or update),
+      // log as verify_failed since most likely point of failure is the
+      // first network call.
       if (window.mmTrack) {
-        mmTrack('password_reset_failed', { reason: reason });
+        mmTrack('password_reset_verify_failed', { reason: reason });
         if (window.mmFlush) mmFlush();
       }
       showError(reason === 'timeout'
         ? 'That took too long. Please check your connection and try again.'
         : 'Network error. Please check your connection and try again.');
-      btnEl.disabled = false;
-      btnEl.textContent = 'Reset Password';
+      setSubmitting(false);
     });
   });
 })();
