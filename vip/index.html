@@ -347,11 +347,12 @@
       <!-- Belt-and-suspenders fallback: only revealed if the server-side
            submit-vip-application Edge Function POST fails (network /
            rate-limit / timeout). Lets the user copy the application body
-           and email it directly to info@matchmakersusa.com. Hidden by
-           default; submitApplication() un-hides it on fetch failure. -->
+           and email it directly to customerservice@matchmakersusa.com.
+           Hidden by default; submitApplication() un-hides it on fetch
+           failure. -->
       <div id="appSuccessFallback" class="app-success-fallback" style="display:none;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(65,91,124,.2);">
         <div style="font-family:var(--pd);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:.5rem;">Recovery: send manually</div>
-        <p style="font-size:.8rem;color:rgba(200,214,229,.7);line-height:1.6;margin:0 0 .75rem;font-family:var(--sr);">If the message above said the submission didn't go through, copy your application below and email it directly to <a href="mailto:info@matchmakersusa.com" style="color:var(--gold);text-decoration:underline;">info@matchmakersusa.com</a> so it reaches your advisor.</p>
+        <p style="font-size:.8rem;color:rgba(200,214,229,.7);line-height:1.6;margin:0 0 .75rem;font-family:var(--sr);">If the message above said the submission didn't go through, copy your application below and email it directly to <a href="mailto:customerservice@matchmakersusa.com" style="color:var(--gold);text-decoration:underline;">customerservice@matchmakersusa.com</a> so it reaches your advisor.</p>
         <textarea id="appFallbackBody" readonly rows="8" style="width:100%;padding:12px 14px;border:1px solid rgba(65,91,124,.3);border-radius:8px;background:rgba(5,9,15,.5);color:rgba(200,214,229,.85);font-size:.8rem;font-family:var(--pd);line-height:1.5;resize:vertical;box-sizing:border-box;"></textarea>
         <button type="button" onclick="copyApplicationBody(this)" class="btn-gold btn-gold-sm" style="margin-top:.75rem;">Copy Application Text</button>
       </div>
@@ -547,7 +548,7 @@ function submitApplication() {
     '\nDating Coach: ' + coach;
   var fallbackEl = document.getElementById('appFallbackBody');
   if (fallbackEl) {
-    fallbackEl.value = 'To: info@matchmakersusa.com\nSubject: ' + subject + '\n\n' + bodyPlain;
+    fallbackEl.value = 'To: customerservice@matchmakersusa.com\nSubject: ' + subject + '\n\n' + bodyPlain;
   }
 
   // Analytics: record the attempt BEFORE the network call so we count
