@@ -114,12 +114,11 @@
   // SUPABASE ANON / PUBLISHABLE KEY
   // This is the PUBLIC anon key — safe to ship in the browser, same
   // design pattern as STRIPE_PK (publishable key) in js/checkout.js.
-  // Obtain from:
-  //   https://supabase.com/dashboard/project/peamviowxkyaglyjpagc/settings/api
-  // Copy the `anon` / `public` key (JWT starting with eyJ...) and
-  // REPLACE the placeholder string below before pushing this file to
-  // production. The page will not function until this is set.
-  var SUPABASE_ANON_KEY = '__REPLACE_WITH_SUPABASE_ANON_KEY_BEFORE_PUSH__';
+  // JWT payload: role=anon, iss=supabase, ref=peamviowxkyaglyjpagc.
+  // Rotate via Supabase Dashboard → Settings → API if ever needed;
+  // key is scoped to anon-role RLS policies only (service_role is
+  // never shipped client-side).
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlYW12aW93eGt5YWdseWpwYWdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxMjE0NzIsImV4cCI6MjA5MTY5NzQ3Mn0.Gk5kbwrpoTYBrhiNEbd3q_ehhxXZxqAz1d_E4JH891Q';
 
   // ── State + DOM refs ───────────────────────────────────────────
   var loadingEl = document.getElementById('rp-loading');
