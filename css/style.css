@@ -2096,3 +2096,62 @@ body.checkout-open{
 .hero-stat-lbl{color:rgba(200,214,229,.55);}
 .trust-item{color:rgba(120,149,175,.55);}
 .prog-label{color:rgba(120,149,175,.55);}
+
+/* ═══════════════════════════════════════════════════════════════
+   ── SOFT LAUNCH 2026-04-24 ──
+   Dating Coach & Playbook unified product soft-launch additions.
+   Single diff region for clean `git revert` of Job 2 commit.
+   Revertability: removing this block restores prior CSS exactly.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Skip-to-main-content link — WCAG AA a11y baseline.
+   Visually hidden until keyboard focus; keyboard users can skip nav. */
+.skip-link{
+  position:absolute;
+  top:-999px;
+  left:.5rem;
+  z-index:10000;
+  background:var(--gold);
+  color:var(--dk);
+  padding:.85rem 1.25rem;
+  font-family:var(--pd);
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-decoration:none;
+  border-radius:6px;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+}
+.skip-link:focus,
+.skip-link:focus-visible{
+  top:.5rem;
+  outline:2px solid var(--gb);
+  outline-offset:2px;
+}
+
+/* prefers-reduced-motion — a11y baseline upgrade per Design §11.2.1.
+   Users who set OS-level reduced-motion get no entrance transitions,
+   no reveal stagger, no transform animations. Static content renders
+   at final-state opacity. Ratified default per Design Q4. */
+@media (prefers-reduced-motion: reduce){
+  .reveal,
+  .reveal.r1,
+  .reveal.r2,
+  .reveal.r3,
+  .reveal.r4,
+  .reveal.r5{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+    animation:none !important;
+  }
+  .r1,.r2,.r3,.r4,.r5{transition-delay:0s !important;}
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* ─── End SOFT LAUNCH 2026-04-24 ─── */

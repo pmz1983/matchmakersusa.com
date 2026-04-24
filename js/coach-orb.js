@@ -411,7 +411,7 @@
     } else if (plan === 'premium') {
       var remaining = parseInt(localStorage.getItem('dc_messages_remaining') || '25');
       if (remaining <= 0) {
-        addMessage('coach', 'You\'ve used all 25 messages. Upgrade to Unlimited for unrestricted access. <a href="/coach/" class="cp-upgrade-link">Upgrade now</a>');
+        addMessage('coach', 'You\'ve used all 25 messages. Upgrade to Unlimited for unrestricted access. <a href="/playbook/" class="cp-upgrade-link">Upgrade now</a>');
         return;
       }
       localStorage.setItem('dc_messages_remaining', (remaining - 1).toString());
@@ -420,7 +420,7 @@
       // free tier: 2 per day
       todayMsgCount++;
       if (todayMsgCount > 2) {
-        addMessage('coach', 'You\'ve used today\'s free messages. Upgrade to Premium for 25 messages. <a href="/coach/" class="cp-upgrade-link">Upgrade now</a>');
+        addMessage('coach', 'You\'ve used today\'s free messages. Upgrade to Premium for 25 messages. <a href="/playbook/" class="cp-upgrade-link">Upgrade now</a>');
         return;
       }
     }
