@@ -1,0 +1,61 @@
+# ═══════════════════════════════════════════════════════════════
+# webcoach reindex trigger — Tier 2 sub-branch phase1-playbook-rag-pipeline
+#
+# Fires the webcoach pipeline /reindex webhook on commit to /playbook/content/**
+# per Atlas v3 integration trigger directive 2026-04-25 + webcoach handoff
+# (now archived at ~/Desktop/08_ARCHIVE/credential_handoffs/) §3.6.
+#
+# Discipline (C#17 absolute):
+# - Secret consumed via vault env-var indirection ONLY
+#   (${{ secrets.WEBCOACH_REINDEX_WEBHOOK_SECRET }})
+# - Workflow file contains ZERO secret material
+# - Vault state: GitHub Secrets + Supabase Edge Function env (Paul-confirmed
+#   2026-04-25 vault-update-flow complete)
+#
+# Deferred activation (mirrors orb-retirement-migration pattern):
+# - Workflow ships with this commit; trigger only fires on push to main with
+#   playbook/content/** changes. During phase1 dev cycle, no such pushes occur,
+#   so workflow exists but does not fire.
+# - Receiver-side activation gate: webcoach-pipeline Edge Function must be
+#   deployed + tested + Atlas v3 + Paul ratify before workflow is meaningfully
+#   active in production.
+#
+# Reversibility: git revert removes workflow file; production untouched.
+# ═══════════════════════════════════════════════════════════════
+
+name: webcoach reindex trigger
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'playbook/content/**'
+
+jobs:
+  fire-webhook:
+    name: Fire webcoach reindex webhook
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repo (depth 2 — need previous commit for diff)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify webhook script is executable
+        run: |
+          test -x scripts/fire-webcoach-webhook.sh \
+            || (echo "fire-webcoach-webhook.sh not executable; ABORT" && exit 1)
+
+      - name: Fire webcoach reindex webhook
+        env:
+          # Vault env-var indirection — secret value never visible to workflow
+          WEBCOACH_REINDEX_WEBHOOK_SECRET: ${{ secrets.WEBCOACH_REINDEX_WEBHOOK_SECRET }}
+          # Receiver endpoint (Supabase project peamviowxkyaglyjpagc per
+          # ~/Desktop/matchmakersusa.com/.claude/memory/ARCHITECTURE.md
+          # integrations table)
+          ENDPOINT: https://peamviowxkyaglyjpagc.supabase.co/functions/v1/webcoach-pipeline/reindex
+          # Previous commit SHA for diff scope (workflow context translation)
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+        run: ./scripts/fire-webcoach-webhook.sh
