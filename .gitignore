@@ -22,3 +22,8 @@ CLAUDE.md
 # specific files by negating the rule (`!docs/whitelisted.md`) if
 # any single doc is intentionally public.
 docs/
+
+# Playbook PDF — lives in 10_MARKETING/playbook-pdf/, not in public repo
+playbook-pdf/
+CONVERSATION-PLAN.md
+AGENT_BIBLE_website.md
