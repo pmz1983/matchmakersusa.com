@@ -1181,106 +1181,10 @@
   </div>
 </div>
 
-<!-- ── Coach Orb & Panel ── -->
-<div class="coach-orb" role="button" aria-label="Dating Coach" tabindex="0">
-  <div class="co-m-circle"><span class="co-label">M</span></div>
-  <span class="co-text">Dating Coach</span>
-</div>
-
-<div class="coach-tooltip" id="coach-orb-tooltip">
-  <div class="ct-title">MatchMakers Dating Coach</div>
-  Your Dating Coach is ready. Tap to start.
-</div>
-
-<div class="coach-locked-pop">
-  <div class="clp-title">MatchMakers Dating Coach</div>
-  <div class="clp-desc">Real-time AI coaching built on the Playbook methodology. Premium ($500) or Unlimited ($1,000) — 24/7 for 30 days.</div>
-  <button class="clp-btn" id="co-locked-buy">See Dating Coach Plans →</button>
-  <span class="clp-code-link" id="co-locked-code-link">Already have a code? Enter it here.</span>
-  <div class="clp-code-area" id="co-locked-code-area">
-    <input type="text" class="clp-code-input" id="co-locked-code" placeholder="Access code" maxlength="32">
-    <button class="clp-code-submit" id="co-locked-code-submit">Go</button>
-  </div>
-  <div class="clp-code-msg" id="co-locked-err"></div>
-</div>
-
-<div class="coach-panel">
-  <div class="cp-header">
-    <div class="cp-av">M</div>
-    <div class="cp-info">
-      <div class="cp-name">MatchMakers Dating Coach</div>
-      <div class="cp-status" id="co-status">Ready</div>
-    </div>
-    <span class="cp-days" id="co-days"></span>
-    <button class="cp-gear" onclick="coOpenSettings()" aria-label="Settings" title="Settings">&#9881;</button>
-    <button class="cp-new" id="co-new-session" title="New session">New</button>
-    <button class="cp-close" aria-label="Close coach">&#10005;</button>
-  </div>
-
-  <div id="co-settings" class="cp-settings" style="display:none;">
-    <div class="cp-settings-header">
-      <button class="cp-settings-back" onclick="coCloseSettings()">&larr; Back</button>
-      <span>Settings</span>
-    </div>
-    <div class="cp-settings-body">
-      <div class="cp-settings-section">
-        <div class="cp-settings-label">Your Intent</div>
-        <div class="cp-settings-intents" id="co-settings-intents">
-          <button class="cp-settings-opt" data-intent="Long-Term" onclick="coChangeIntent(this,'Long-Term')">Long-Term</button>
-          <button class="cp-settings-opt" data-intent="Marriage" onclick="coChangeIntent(this,'Marriage')">Marriage</button>
-          <button class="cp-settings-opt" data-intent="Fall in Love" onclick="coChangeIntent(this,'Fall in Love')">Fall in Love</button>
-          <button class="cp-settings-opt" data-intent="Casual" onclick="coChangeIntent(this,'Casual')">Casual</button>
-          <button class="cp-settings-opt" data-intent="Short-Term" onclick="coChangeIntent(this,'Short-Term')">Short-Term</button>
-          <button class="cp-settings-opt" data-intent="Friends" onclick="coChangeIntent(this,'Friends')">Friends</button>
-          <button class="cp-settings-opt" data-intent="not_sure" onclick="coChangeIntent(this,'not_sure')">Not Sure</button>
-        </div>
-      </div>
-      <div class="cp-settings-section">
-        <div class="cp-settings-label">Today's Usage</div>
-        <div class="cp-settings-value" id="co-settings-usage">&mdash; / 50 messages</div>
-      </div>
-      <div class="cp-settings-section">
-        <div class="cp-settings-label">Access</div>
-        <div class="cp-settings-value" id="co-settings-days">&mdash;</div>
-      </div>
-      <div class="cp-settings-section">
-        <button class="cp-settings-clear" onclick="coClearHistory()">Clear Conversation History</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="co-onboard" class="cp-onboard">
-    <div class="cp-ob-card">
-      <div class="cp-ob-q">What brings you here?</div>
-      <div class="cp-ob-opts">
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Long-Term')">Long-Term</button>
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Marriage')">Marriage</button>
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Fall in Love')">Fall in Love</button>
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Casual')">Casual</button>
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Short-Term')">Short-Term</button>
-        <button class="cp-ob-opt co-intent-opt" onclick="coSelectIntent(this,'Friends')">Friends</button>
-        <button class="cp-ob-opt co-intent-opt co-intent-notsure" onclick="coSelectIntent(this,'not_sure')">I'm Not Sure Yet</button>
-      </div>
-      <div class="cp-ob-or">or</div>
-      <textarea class="cp-ob-freetext" id="co-freetext" rows="2" placeholder="Tell me in your own words..."></textarea>
-      <button class="cp-ob-begin" id="co-ob-begin" disabled onclick="coStartCoach()">Begin</button>
-    </div>
-  </div>
-
-  <div id="co-chat" style="display:none;flex:1;flex-direction:column;">
-    <div class="cp-messages" id="co-messages"></div>
-    <div class="cp-input-area">
-      <textarea class="cp-input" id="co-input" rows="1" placeholder="Ask your coach anything..."></textarea>
-      <button class="cp-send" id="co-send-btn" aria-label="Send">↑</button>
-    </div>
-  </div>
-</div>
-
 <script src="/js/analytics.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/checkout.js"></script>
 <script src="/js/playbook-content.js"></script>
 <script src="/js/coach-storage.js"></script>
-<script src="/js/coach-orb.js"></script>
 </body>
 </html>
