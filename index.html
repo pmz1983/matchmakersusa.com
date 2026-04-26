@@ -13,31 +13,290 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>MatchMakers — Dating With Intent</title>
-  <meta name="description" content="The first dating app built around declared Intent. 66,000+ members, zero paid advertising, seven years of real outcomes. Free app, 50+ scripts, AI coaching, VIP matchmaking.">
+  <title>MatchMakers &mdash; Dating, by methodology.</title>
+  <meta name="description" content="Built on 7 years of human matchmaking, now scaled into Coach & Playbook. The methodology behind 66,000+ members.">
   <link rel="canonical" href="https://matchmakersusa.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchMakers">
-  <meta property="og:title" content="MatchMakers — Dating With Intent">
-  <meta property="og:description" content="The first dating app built around declared Intent. 66,000+ members, zero paid advertising, seven years of real outcomes. Free app, 50+ scripts, AI coaching, VIP matchmaking.">
+  <meta property="og:title" content="MatchMakers — Dating, by methodology.">
+  <meta property="og:description" content="Built on 7 years of human matchmaking, now scaled into Coach & Playbook.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MatchMakers — Dating With Intent">
+  <meta name="twitter:title" content="MatchMakers — Dating, by methodology.">
   <meta name="twitter:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"Organization","name":"MatchMakers","legalName":"MatchMakers LLC","url":"https://matchmakersusa.com","logo":"https://matchmakersusa.com/apple-touch-icon.png","foundingDate":"2018"},
     {"@type":"SoftwareApplication","name":"MatchMakers","operatingSystem":"iOS","applicationCategory":"SocialNetworkingApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
-    {"@type":"Product","name":"MatchMakers Dating Coach & Playbook","description":"A coached system for how you actually date. Connection Code methodology + AI Coach + Script Studio + Playbook.","url":"https://matchmakersusa.com/playbook/","offers":[{"@type":"Offer","name":"Free","price":"250","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://matchmakersusa.com/playbook/"},{"@type":"Offer","name":"Premium","price":"500","priceCurrency":"USD","availability":"https://schema.org/PreOrder"},{"@type":"Offer","name":"Advanced","price":"1000","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}]}
+    {"@type":"Product","name":"MatchMakers Coach & Playbook","description":"The methodology, applied. Coach is the AI that applies it; Playbook is where you learn it.","url":"https://matchmakersusa.com/playbook/"}
   ]}
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Homepage v1 — design tokens + section styles per Visual Treatment v1.1 §4.4 -->
+  <style>
+    :root {
+      --hp-bg-primary: #050A10;
+      --hp-bg-elevated: #0A1320;
+      --hp-text-primary: #F4F1EA;
+      --hp-text-secondary: #B8B0A0;
+      --hp-text-tertiary: #7A7468;
+      --hp-accent-gold: #C9A84C;
+      --hp-divider: rgba(244,241,234,0.08);
+
+      --hp-display-xl: clamp(2.75rem, 5.5vw, 4.75rem);
+      --hp-display-lg: clamp(2.25rem, 4vw, 3.5rem);
+      --hp-body-lg: clamp(1.125rem, 1.4vw, 1.375rem);
+      --hp-body-md: clamp(1rem, 1.15vw, 1.125rem);
+      --hp-eyebrow: 0.75rem;
+      --hp-trust: clamp(0.875rem, 1vw, 1rem);
+      --hp-cta-primary: 1.0625rem;
+      --hp-cta-link: 1rem;
+
+      --hp-leading-display: 1.08;
+      --hp-leading-body: 1.55;
+      --hp-leading-essay: 1.65;
+      --hp-leading-tight: 1.3;
+
+      --hp-tracking-display: -0.01em;
+      --hp-tracking-eyebrow: 0.12em;
+
+      --hp-s-2: 8px;   --hp-s-3: 12px;  --hp-s-4: 16px;
+      --hp-s-5: 24px;  --hp-s-6: 32px;  --hp-s-8: 48px;
+      --hp-s-10: 64px; --hp-s-12: 96px; --hp-s-16: 128px;
+      --hp-s-20: 160px;
+
+      --hp-fade: 400ms;
+      --hp-hover: 180ms;
+      --hp-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hp-v1 {
+      background: var(--hp-bg-primary);
+      color: var(--hp-text-primary);
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    .hp-v1 *, .hp-v1 *::before, .hp-v1 *::after { box-sizing: border-box; }
+
+    .hp-section { padding: var(--hp-s-16) 48px; }
+    .hp-section-lg { padding: var(--hp-s-20) 48px; }
+    @media (max-width: 1023px) {
+      .hp-section { padding: var(--hp-s-12) 32px; }
+      .hp-section-lg { padding: var(--hp-s-16) 32px; }
+    }
+    @media (max-width: 767px) {
+      .hp-section { padding: var(--hp-s-10) 20px; }
+      .hp-section-lg { padding: var(--hp-s-12) 20px; }
+    }
+
+    .hp-hero {
+      min-height: 88vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: var(--hp-s-16) 48px var(--hp-s-20);
+    }
+    @media (max-width: 1023px) { .hp-hero { min-height: 82vh; padding: var(--hp-s-12) 32px var(--hp-s-16); } }
+    @media (max-width: 767px)  { .hp-hero { min-height: 78vh; padding: var(--hp-s-10) 20px var(--hp-s-12); } }
+    .hp-hero-content { max-width: 760px; width: 100%; }
+
+    .hp-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      font-size: var(--hp-display-xl);
+      line-height: var(--hp-leading-display);
+      letter-spacing: var(--hp-tracking-display);
+      color: var(--hp-text-primary);
+      margin: 0;
+    }
+    .hp-subhead {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: var(--hp-body-lg);
+      line-height: var(--hp-leading-body);
+      color: var(--hp-text-primary);
+      max-width: 56ch;
+      margin: var(--hp-s-6) auto 0;
+    }
+    .hp-cta-primary {
+      display: inline-block;
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: var(--hp-cta-primary);
+      line-height: var(--hp-leading-tight);
+      color: var(--hp-text-primary);
+      background: transparent;
+      border: 1px solid var(--hp-text-primary);
+      padding: var(--hp-s-3) var(--hp-s-5);
+      text-decoration: none;
+      transition: background var(--hp-hover) var(--hp-easing), color var(--hp-hover) var(--hp-easing);
+      margin-top: var(--hp-s-8);
+      min-height: 48px;
+    }
+    .hp-cta-primary:hover {
+      background: var(--hp-text-primary);
+      color: var(--hp-bg-primary);
+    }
+    .hp-cta-primary:focus-visible {
+      outline: 2px solid var(--hp-accent-gold);
+      outline-offset: 4px;
+    }
+    .hp-trust {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: var(--hp-trust);
+      line-height: var(--hp-leading-tight);
+      color: var(--hp-text-secondary);
+      margin: var(--hp-s-5) 0 0;
+    }
+
+    .hp-eyebrow {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: var(--hp-eyebrow);
+      line-height: var(--hp-leading-tight);
+      letter-spacing: var(--hp-tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--hp-text-secondary);
+      margin: 0 0 var(--hp-s-4);
+    }
+    .hp-eyebrow-gold { color: var(--hp-accent-gold); }
+    .hp-section-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      font-size: var(--hp-display-lg);
+      line-height: var(--hp-leading-display);
+      color: var(--hp-text-primary);
+      margin: 0 0 var(--hp-s-6);
+    }
+    .hp-section-body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: var(--hp-body-lg);
+      line-height: var(--hp-leading-body);
+      color: var(--hp-text-primary);
+      max-width: 64ch;
+      margin: 0 auto;
+    }
+    .hp-section-body--essay {
+      font-size: var(--hp-body-md);
+      line-height: var(--hp-leading-essay);
+      max-width: 70ch;
+    }
+
+    .hp-intro { text-align: center; max-width: 720px; margin: 0 auto; }
+
+    .hp-centerpiece { text-align: center; }
+    .hp-centerpiece-content { max-width: 800px; margin: 0 auto; }
+
+    .hp-cta-link {
+      display: inline-block;
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: var(--hp-cta-link);
+      color: var(--hp-text-primary);
+      text-decoration: none;
+      margin-top: var(--hp-s-8);
+      transition: color var(--hp-hover) var(--hp-easing);
+      min-height: 48px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .hp-cta-link:hover { color: var(--hp-accent-gold); }
+    .hp-cta-link:focus-visible {
+      outline: 2px solid var(--hp-text-primary);
+      outline-offset: 4px;
+    }
+
+    .hp-ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--hp-s-6);
+      align-items: stretch;
+      margin-top: var(--hp-s-8);
+      max-width: 1200px;
+      margin-left: auto; margin-right: auto;
+    }
+    @media (max-width: 1023px) { .hp-ecosystem-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px)  { .hp-ecosystem-grid { grid-template-columns: 1fr; } }
+
+    .hp-slot {
+      display: flex; flex-direction: column;
+      padding: var(--hp-s-4);
+      text-align: left;
+    }
+    .hp-slot-vip {
+      background: var(--hp-bg-elevated);
+      border: 1px solid var(--hp-divider);
+      border-radius: 4px;
+      padding: var(--hp-s-6);
+    }
+    .hp-slot-eyebrow {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: var(--hp-eyebrow);
+      letter-spacing: var(--hp-tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--hp-text-secondary);
+      margin: 0;
+    }
+    .hp-slot-vip .hp-slot-eyebrow { color: var(--hp-accent-gold); }
+    .hp-slot-desc {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: var(--hp-body-md);
+      line-height: var(--hp-leading-body);
+      color: var(--hp-text-primary);
+      margin: var(--hp-s-2) 0 var(--hp-s-5);
+      max-width: 50ch;
+      flex: 1;
+    }
+    .hp-slot .hp-cta-link { margin-top: 0; }
+
+    .hp-origin { text-align: center; }
+    .hp-origin-content { max-width: 80ch; margin: 0 auto; }
+    .hp-origin .hp-section-body { margin-top: var(--hp-s-8); }
+
+    .hp-router {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--hp-s-4);
+      margin: var(--hp-s-8) auto 0;
+      max-width: 1200px;
+    }
+    @media (max-width: 1023px) { .hp-router { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px)  { .hp-router { grid-template-columns: 1fr; gap: var(--hp-s-3); } }
+    .hp-router-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: var(--hp-cta-link);
+      color: var(--hp-text-primary);
+      text-decoration: none;
+      padding: var(--hp-s-5) var(--hp-s-6);
+      border: 1px solid var(--hp-divider);
+      background: transparent;
+      transition: border-color var(--hp-hover) var(--hp-easing);
+      min-height: 48px;
+    }
+    .hp-router-btn:hover { border-color: var(--hp-text-primary); }
+    .hp-router-btn:focus-visible {
+      outline: 2px solid var(--hp-text-primary);
+      outline-offset: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hp-v1 *, .hp-v1 *::before, .hp-v1 *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -63,546 +322,126 @@
   </div>
 </nav>
 
-<section class="hero" id="top">
-  <div class="hero-wordmark">MatchMakers<sup>™</sup></div>
-  <div class="hero-wordmark-rule"></div>
-  <span class="hero-eyebrow" style="margin-bottom:1.5rem;">Est. 2018 &nbsp;·&nbsp; matchmakersusa.com &nbsp;·&nbsp; 66,000+ Members</span>
-  <h1 class="hero-title">Take Dating to<br>the <em>Next Level</em></h1>
-  <p class="hero-sub" style="max-width:none;font-size:clamp(0.65rem,2.5vw,0.95rem);"><span style="display:block;">Every other dating platform is engineered to keep you engaged.</span><span style="display:block;">MatchMakers is engineered to find you what you actually came for.</span></p>
-  <div class="hero-proof">
-    <div class="hero-stat"><div class="hero-stat-num count-up" data-target="66000" data-suffix="+">66,000+</div><div class="hero-stat-lbl">Members</div></div>
-    <div class="hero-dot"></div>
-    <div class="hero-stat"><div class="hero-stat-num">7 Years</div><div class="hero-stat-lbl">In Market</div></div>
-    <div class="hero-dot"></div>
-    <div class="hero-stat"><div class="hero-stat-num">$0</div><div class="hero-stat-lbl">Paid Advertising</div></div>
-    <div class="hero-dot"></div>
-    <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-lbl">Organic Growth</div></div>
-  </div>
-  <div class="hero-ctas">
-    <div style="display:flex;align-items:center;justify-content:center;gap:.65rem;margin-bottom:1.25rem;">
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;opacity:.88;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.88'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="140" height="42" viewBox="0 0 156 46" role="img" aria-label="Download on the App Store"><rect width="156" height="46" rx="9" fill="#000"/><rect x=".75" y=".75" width="154.5" height="44.5" rx="8.5" fill="none" stroke="rgba(255,255,255,.15)" stroke-width=".75"/><path d="M29.5 9.4c1.05-1.3 1.76-3.1 1.56-4.9-1.5.06-3.32.99-4.4 2.27-1 1.14-1.87 2.97-1.63 4.73 1.65.12 3.35-.86 4.47-2.1zm1.54 2.4c-2.47-.14-4.58 1.4-5.75 1.4-1.2 0-3.02-1.33-4.98-1.3-2.56.04-4.93 1.49-6.24 3.8-2.66 4.6-.7 11.43 1.9 15.17 1.26 1.85 2.78 3.9 4.76 3.83 1.9-.08 2.63-1.23 4.94-1.23 2.3 0 2.97 1.23 4.98 1.19 2.06-.04 3.35-1.85 4.6-3.7 1.46-2.1 2.06-4.15 2.1-4.26-.05-.02-4.04-1.55-4.08-6.14-.03-3.83 3.13-5.67 3.27-5.77-1.77-2.62-4.55-2.9-5.5-2.99z" fill="white"/><text x="55" y="19" font-family="-apple-system,Arial,sans-serif" font-size="10" fill="rgba(255,255,255,.88)">Download on the</text><text x="55" y="35" font-family="-apple-system,Arial,sans-serif" font-size="18.5" font-weight="600" fill="white" letter-spacing="-.3">App Store</text></svg>
-      </a>
-      <a href="#" onclick="return false;" title="Android — Coming Soon" style="display:inline-block;opacity:.42;cursor:default;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="140" height="42" viewBox="0 0 156 46" role="img" aria-label="Coming Soon on Google Play"><rect width="156" height="46" rx="9" fill="#000"/><rect x=".75" y=".75" width="154.5" height="44.5" rx="8.5" fill="none" stroke="rgba(255,255,255,.1)" stroke-width=".75"/><path d="M14 12l14 11-14 11z" fill="#00D2FF" opacity=".7"/><path d="M28 23l-6.5 6.5L14 23l6.5-6.5z" fill="#FFE000" opacity=".85"/><path d="M14 29.5L21.5 22l6.5 6.5-14 1z" fill="#FF3D5A" opacity=".85"/><text x="36" y="19" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,.65)">Get it on</text><text x="36" y="35" font-family="Arial,sans-serif" font-size="17" font-weight="600" fill="rgba(255,255,255,.65)">Google Play</text><rect x="94" y="7" width="56" height="13" rx="6" fill="rgba(201,168,76,.14)" stroke="rgba(201,168,76,.35)" stroke-width=".75"/><text x="122" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="rgba(201,168,76,.75)">COMING SOON</text></svg>
-      </a>
-    </div>
-    <div class="cta-pair" style="display:flex;align-items:center;justify-content:center;gap:.85rem;flex-wrap:wrap;">
-      <a href="/assessment/" class="btn-gold">Take the Assessment →</a>
-      <a href="/coach/" class="btn-gold">See Dating Coach Plans →</a>
-      <a href="https://matchmakersusa.com/guide" class="btn-gold">Get the Free Connection Code →</a>
-      <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold">Get The MatchMakers Playbook — $250 →</button>
-    </div>
-  </div>
-</section>
+<main id="main" class="hp-v1">
 
-<div class="trust">
-  <div class="trust-inner">
-    <span class="trust-item">✦ Founded 2018</span><span class="trust-sep">·</span>
-    <span class="trust-item">MatchMakers LLC</span><span class="trust-sep">·</span>
-    <span class="trust-item">66,000+ Members</span><span class="trust-sep">·</span>
-    <span class="trust-item">7 Years In Market</span><span class="trust-sep">·</span>
-    <span class="trust-item">Zero Paid Advertising</span><span class="trust-sep">·</span>
-    <span class="trust-item">100% Organic</span>
-  </div>
-</div>
+  <!-- ═══════════════════════════════════════════════════════════════
+       §3 — HERO (Anchor)
+       Editorial spec: HOMEPAGE_EDITORIAL_SPEC_v1 §3
+       Visual: website_homepage_visual_treatment_v1_1 §2/§3
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hp-hero" id="top">
+    <div class="hp-hero-content">
+      <h1 class="hp-headline">Dating, by methodology.</h1>
+      <p class="hp-subhead">Built on 7 years of human matchmaking, now scaled into Coach &amp; Playbook.</p>
+      <a href="/playbook/" class="hp-cta-primary">Start with the Playbook</a>
+      <p class="hp-trust">A method, not a black box.</p>
+    </div>
+  </section>
 
-<section style="background:var(--dk);padding:6rem 0;border-bottom:1px solid rgba(65,91,124,.15);">
-  <div class="w">
-    <div style="max-width:680px;margin:0 auto 3.5rem;text-align:center;" class="reveal">
-      <span class="ey c">The Industry Problem</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">A $9 billion industry.<br>Built on your failure.</h2>
-      <p class="sub" style="text-align:center;margin:0 auto;">Tinder, Hinge, Bumble, and Match operate on a subscription model where continued failure — another month of searching, another year of swiping — is, from a business perspective, optimal. Their revenue grows when you don't find what you're looking for. MatchMakers was built as a direct response to that model.</p>
+  <!-- ═══════════════════════════════════════════════════════════════
+       §4 — THE DIFFERENTIATION (v1 placeholder)
+       Section CTA "See how it works →" HIDDEN in v1 per Website Ed amendment 2026-04-26;
+       restored in v2 when Phase 2 mechanism page ships post-Tier-3 + ALGO_OVR_004 + Legal clearance.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hp-section">
+    <div class="hp-intro">
+      <p class="hp-eyebrow">The Method</p>
+      <h2 class="hp-section-headline">Three systems. One methodology.</h2>
+      <p class="hp-section-body">MatchMakers is built on three systems and a single methodology &mdash; refined over 7 years of human matchmaking, now scaled into the app, the Playbook, and your Coach. The systems are designed to work together, not in isolation. Each one reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
     </div>
-    <div style="display:flex;align-items:stretch;justify-content:center;background:var(--mid);border:1px solid rgba(65,91,124,.2);border-radius:18px;overflow:hidden;max-width:960px;margin:0 auto;" class="reveal r2">
-      <div class="problem-stat reveal r1">
-        <div class="problem-stat-num" style="color:rgba(200,214,229,.35);">$9B</div>
-        <div class="problem-stat-lbl" style="color:rgba(120,149,175,.6);">Annual dating app industry revenue — built on subscription churn</div>
-      </div>
-      <div class="problem-divider"></div>
-      <div class="problem-stat reveal r2">
-        <div class="problem-stat-num" style="color:rgba(200,214,229,.35);">5.2 yrs</div>
-        <div class="problem-stat-lbl" style="color:rgba(120,149,175,.6);">Average time on major dating apps before a committed relationship</div>
-      </div>
-      <div class="problem-divider"></div>
-      <div class="problem-stat reveal r3">
-        <div class="problem-stat-num" style="color:var(--gold);">$0</div>
-        <div class="problem-stat-lbl" style="color:rgba(201,168,76,.65);">MatchMakers paid acquisition spend</div>
-      </div>
-    </div>
-    <p style="text-align:center;font-family:var(--pd);font-size:.82rem;color:rgba(120,149,175,.55);margin-top:1.5rem;font-style:italic;" class="reveal r3">"We've grown to 66,000+ members on word of mouth alone. That statistic only makes sense if the product actually works."</p>
-  </div>
-</section>
+  </section>
 
-<section style="background:var(--navy);padding:7rem 0;" id="about">
-  <div class="w">
-    <div style="max-width:720px;margin:0 auto 4rem;text-align:center;" class="reveal">
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">The platform built for outcomes, not engagement.</h2>
-      <p class="sub" style="text-align:center;margin:0 auto;">Every major dating platform optimizes for time-in-app. MatchMakers optimizes for one thing: helping you find what you actually came for, then getting out of your way.</p>
+  <!-- ═══════════════════════════════════════════════════════════════
+       §5 — THE CENTERPIECE (Coach & Playbook)
+       Largest section padding on the page. Two gold touches permitted: eyebrow + CTA hover.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hp-section-lg hp-centerpiece">
+    <div class="hp-centerpiece-content">
+      <p class="hp-eyebrow hp-eyebrow-gold">Coach &amp; Playbook</p>
+      <h2 class="hp-section-headline">The methodology, applied.</h2>
+      <p class="hp-section-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered 7 years of human matchmaking. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
+      <a href="/playbook/" class="hp-cta-link">See Coach &amp; Playbook <span aria-hidden="true">&rarr;</span></a>
     </div>
-    <div class="pillar-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
-      <div class="pillar reveal r1">
-        <div class="pillar-num">01</div>
-        <div class="pillar-title">Intent Before Everything</div>
-        <div class="pillar-body">Every other dating app shows you photos first and lets you infer intent later — if ever. MatchMakers requires every member to declare Intent before they see a single profile: Long-Term, Casual, Marriage, Fall in Love, and six others. Your match knows exactly what you're there for before the first message is sent. No ambiguity. No wasted conversations.</div>
-      </div>
-      <div class="pillar reveal r2">
-        <div class="pillar-num">02</div>
-        <div class="pillar-title">A Proprietary System, Not Just an App</div>
-        <div class="pillar-body">The 5-Phase Methodology — Intent, Profile, Connection, Courtship, Commitment — was built from years of behavioral data across our members. The app executes it. The Playbook teaches it. The Dating Coach applies it. The VIP service deploys it on your behalf. Every product in the ecosystem runs on the same system.</div>
-      </div>
-      <div class="pillar reveal r3">
-        <div class="pillar-num">03</div>
-        <div class="pillar-title">Community-Rated Quality Signal</div>
-        <div class="pillar-body">Your Level — rated 6 through 10 by real members — determines who you see and who sees you. Not an algorithm. Not a paid boost. A genuine quality signal built by the community. Free to message at your Level. Higher investment in your profile means wider reach. The system rewards effort over spend.</div>
-      </div>
-      <div class="pillar reveal r4">
-        <div class="pillar-num">04</div>
-        <div class="pillar-title">Zero Paid Growth — The Rarest Signal</div>
-        <div class="pillar-body">66,000+ members across seven years with zero paid advertising. No influencer spend. No acquisition campaigns. No growth hacking. Pure word-of-mouth — which is the most unusual metric in consumer technology and the only proof of product-market fit that cannot be manufactured. You cannot buy this statistic. You can only earn it.</div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section style="background:var(--dk);padding:0;border-top:1px solid rgba(65,91,124,.15);border-bottom:1px solid rgba(65,91,124,.15);">
-  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem);">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid rgba(65,91,124,.15);">
-      <div class="stat-card reveal r1" style="border-right:1px solid rgba(65,91,124,.15);border-bottom:0;">
-        <div class="stat-num">66K+</div>
-        <div class="stat-label">Members</div>
-        <div class="stat-sub">Acquired organically</div>
-      </div>
-      <div class="stat-card reveal r2" style="border-right:1px solid rgba(65,91,124,.15);">
-        <div class="stat-num">7</div>
-        <div class="stat-label">Years In Market</div>
-        <div class="stat-sub">Built slowly, built correctly — proven over time</div>
-      </div>
-      <div class="stat-card reveal r3" style="border-right:1px solid rgba(65,91,124,.15);">
-        <div class="stat-num">9</div>
-        <div class="stat-label">Intent Types</div>
-        <div class="stat-sub">Declared before a single profile is shown. The differentiator.</div>
-      </div>
-      <div class="stat-card reveal r4">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Phases</div>
-        <div class="stat-sub">Intent → Profile → Connection → Courtship → Commitment</div>
-      </div>
+  <!-- ═══════════════════════════════════════════════════════════════
+       §6 — THE ECOSYSTEM (4 slots)
+       VIP first / aspirational top-tier (gold eyebrow + bg-elevated panel).
+       App folded in (not hidden). Free Guide + Assessment as lead-magnet bridges.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hp-section" id="ecosystem">
+    <div class="hp-intro">
+      <p class="hp-eyebrow">The Ecosystem</p>
+      <h2 class="hp-section-headline">Four ways into the same practice.</h2>
     </div>
-  </div>
-</section>
+    <div class="hp-ecosystem-grid">
 
-<section style="background:var(--dk);padding:6rem 0;" id="app">
-  <div class="w">
-    <div class="g2 stretch">
-      <div style="display:flex;flex-direction:column;" class="reveal">
-        <span class="ey">Free on the App Store &nbsp;·&nbsp; <span style="color:rgba(65,91,124,.65);font-size:.85em;">Coming Soon · Google Play</span></span>
-        <div class="sec-rule"></div>
-        <h2 class="h2" style="margin-bottom:1.25rem;"><img src="/img/logo.png" alt="" width="36" height="36" style="display:inline-block;vertical-align:middle;margin-right:.4rem;border-radius:8px;position:relative;top:-2px;"> The MatchMakers App</h2>
-        <p class="sub">Every other app is built to keep you swiping. MatchMakers is built to help you stop.</p>
-        <p class="bp">You start by declaring your <strong style="color:var(--white);">Intent</strong> — not preferences, your actual goal. Long-Term, Casual, Marriage, Fall in Love, Not Sure, and six others. Every person you see has declared theirs. Your match knows what you want before the first message is sent.</p>
-        <p class="bp">Your <strong style="color:var(--white);">Level</strong> — rated by real members — determines who you see and who sees you. Free to message at your Level. The higher your investment in your profile, the wider your reach.</p>
-        <p class="bp" style="margin-bottom:auto;">When both members tap <strong style="color:var(--gold);">M</strong>, you match. No one-sided likes. No ghosted swipes. Mutual interest confirmed before a conversation begins.</p>
+      <!-- §6.1 VIP slot -->
+      <div class="hp-slot hp-slot-vip">
+        <h3 class="hp-slot-eyebrow">VIP Matchmaking</h3>
+        <p class="hp-slot-desc">By application. Every application is personally reviewed by a human matchmaker &mdash; never by an algorithm. The matchmaker walks you through it, match by match. For people who want the methodology applied directly, not just delivered as a tool.</p>
+        <a href="/vip/" class="hp-cta-link">Apply for VIP <span aria-hidden="true">&rarr;</span></a>
       </div>
-      <div class="reveal r2">
-        <div style="background:var(--mid);border:1px solid var(--rim);border-radius:18px;padding:2rem;height:100%;box-sizing:border-box;display:flex;flex-direction:column;">
-          <div style="font-family:var(--pd);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,214,229,.4);margin-bottom:1.1rem;">Unlock Premium Features</div>
-          <div class="sc-row">
-            <div class="sc"><div><div class="sc-n">Weekly Member</div><div class="sc-tp">Full premium access</div></div><div class="sc-pr">$29.99<sub>/wk</sub></div></div>
-            <div class="sc feat"><div><div class="sc-n">Monthly Member <span class="sc-baj">Best Value</span></div><div class="sc-tp">Full premium access</div></div><div class="sc-pr">$99.99<sub>/mo</sub></div></div>
-          </div>
-          <div class="spot"><div><div class="sc-n">24-Hour Spotlight</div><div class="sc-tp">One-time · Profile prioritized for 24 hours</div></div><div class="sc-pr">$9.99</div></div>
-          <div style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem;">
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--sl);"><span style="color:rgba(201,168,76,.5);">✓</span> Message users in all Levels</div>
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--sl);"><span style="color:rgba(201,168,76,.5);">✓</span> Access expanded match filters</div>
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--sl);"><span style="color:rgba(201,168,76,.5);">✓</span> View photo ranking + Level data</div>
-          </div>
-          <div style="font-size:.7rem;color:rgba(200,214,229,.28);margin-bottom:1.5rem;line-height:1.5;">Privacy Policy · Terms of Service · Auto-renews. Cancel anytime. Managed through App Store.</div>
-          <div class="prog-bar">
-            <div class="prog-label">The MatchMakers Ecosystem</div>
-            <div class="prog-steps">
-              <span class="prog-step active">Free App</span><span class="prog-arrow">→</span>
-              <span class="prog-step">Playbook</span><span class="prog-arrow">→</span>
-              <span class="prog-step">Dating Coach</span><span class="prog-arrow">→</span>
-              <span class="prog-step">VIP</span>
-            </div>
-            <div class="prog-desc">Start free. Choose what fits.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<div class="buy-box">
-  <div class="buy-box-inner">
-        <div class="bb-left">
-      <span class="bb-badge" style="background:var(--green);color:var(--navy);">Free Download</span>
-      <div class="bb-name"><img src="/img/logo.png" alt="" width="36" height="36" style="display:inline-block;vertical-align:middle;margin-right:.4rem;border-radius:8px;position:relative;top:-1px;"> The MatchMakers App</div>
-      <div class="bb-price" style="color:var(--green);">Free</div>
-      <span class="bb-psub">iOS · Android coming soon · Subscriptions from $29.99/week</span>
-      <p class="bb-desc">Download the app and start connecting with intentional daters today. Set your Intent, build your Level, and start making real connections — free.</p>
-      <div class="bb-feats">
-        <div class="bb-feat">9-Intent matching system</div>
-        <div class="bb-feat">Profile Level system</div>
-        <div class="bb-feat">AI-powered connections at your level</div>
-        <div class="bb-feat">Free to message at your level</div>
+      <!-- §6.2 iOS App slot -->
+      <div class="hp-slot" id="app">
+        <h3 class="hp-slot-eyebrow">MatchMakers App</h3>
+        <p class="hp-slot-desc">The dating app where the methodology meets the community. Built on the same three systems that power the Playbook and the Coach.</p>
+        <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting; on lift, swap CTA + routing per Apple-strip protocol -->
+        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="hp-cta-link">Get the App <span aria-hidden="true">&rarr;</span></a>
+        <!-- APPLE_STRIP_HOLD_END -->
       </div>
-      <div style="margin-top:1rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
-        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" style="display:inline-block;text-decoration:none;transition:transform .2s,opacity .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.opacity='.9';" onmouseout="this.style.transform='';this.style.opacity='1';"><svg xmlns="http://www.w3.org/2000/svg" width="156" height="46" viewBox="0 0 156 46" role="img" aria-label="Download on the App Store">
-  <defs>
-    <linearGradient id="ab-grad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a1a1a"/>
-      <stop offset="100%" stop-color="#000"/>
-    </linearGradient>
-  </defs>
-  <rect width="156" height="46" rx="9" fill="url(#ab-grad)"/>
-  <rect x=".75" y=".75" width="154.5" height="44.5" rx="8.5" fill="none" stroke="rgba(255,255,255,.12)" stroke-width=".75"/>
-  <!-- Apple Logo -->
-  <path d="M29.5 9.4c1.05-1.3 1.76-3.1 1.56-4.9-1.5.06-3.32.99-4.4 2.27-1 1.14-1.87 2.97-1.63 4.73 1.65.12 3.35-.86 4.47-2.1zm1.54 2.4c-2.47-.14-4.58 1.4-5.75 1.4-1.2 0-3.02-1.33-4.98-1.3-2.56.04-4.93 1.49-6.24 3.8-2.66 4.6-.7 11.43 1.9 15.17 1.26 1.85 2.78 3.9 4.76 3.83 1.9-.08 2.63-1.23 4.94-1.23 2.3 0 2.97 1.23 4.98 1.19 2.06-.04 3.35-1.85 4.6-3.7 1.46-2.1 2.06-4.15 2.1-4.26-.05-.02-4.04-1.55-4.08-6.14-.03-3.83 3.13-5.67 3.27-5.77-1.77-2.62-4.55-2.9-5.5-2.99z" fill="white"/>
-  <!-- Download on the -->
-  <text x="55" y="19" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" font-weight="400" fill="rgba(255,255,255,.88)" letter-spacing=".2">Download on the</text>
-  <!-- App Store -->
-  <text x="55" y="35" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="18.5" font-weight="600" fill="white" letter-spacing="-.3">App Store</text>
-</svg></a>
-        <a href="#" onclick="return false;" class="google-play-coming-soon" title="Coming Soon on Google Play" style="display:inline-block;opacity:.55;cursor:default;text-decoration:none;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="156" height="46" viewBox="0 0 156 46" role="img" aria-label="Coming Soon on Google Play">
-    <rect width="156" height="46" rx="9" fill="#000"/>
-    <rect x=".75" y=".75" width="154.5" height="44.5" rx="8.5" fill="none" stroke="rgba(255,255,255,.12)" stroke-width=".75"/>
-    <path d="M14 12l14 11-14 11z" fill="url(#gp-g)" opacity=".9"/>
-    <path d="M14 12l7.5 7.5-7.5 7.5V12z" fill="#00D2FF" opacity=".85"/>
-    <path d="M28 23l-6.5 6.5L14 23l6.5-6.5z" fill="#FFE000" opacity=".85"/>
-    <path d="M14 29.5L21.5 22l6.5 6.5-14 1z" fill="#FF3D5A" opacity=".85"/>
-    <path d="M14 12.5l14 10.5-7 6.5z" fill="#00F076" opacity=".5"/>
-    <text x="36" y="19" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="9" font-weight="400" fill="rgba(255,255,255,.88)">Get it on</text>
-    <text x="36" y="35" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="17" font-weight="600" fill="white" letter-spacing="-.2">Google Play</text>
-    <rect x="96" y="7" width="54" height="13" rx="6.5" fill="rgba(201,168,76,.18)" stroke="rgba(201,168,76,.45)" stroke-width=".75"/>
-    <text x="123" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="var(--gold)" letter-spacing=".4">COMING SOON</text>
-  </svg>
-</a>
-      </div>
-    </div>
-            </div>
-  </div>
 
-<!-- ═══════════════════════════════════════════
-     WAYS TO ENGAGE — 5-CARD GRID
-═══════════════════════════════════════════ -->
+      <!-- §6.3 Free Guide slot -->
+      <div class="hp-slot">
+        <h3 class="hp-slot-eyebrow">Free Guide</h3>
+        <p class="hp-slot-desc">A short read on the Connection Code methodology &mdash; the foundation behind everything we make.</p>
+        <a href="/guide/" class="hp-cta-link">Download <span aria-hidden="true">&rarr;</span></a>
+      </div>
 
-<section style="background:var(--navy);padding:6rem 0;border-top:1px solid rgba(65,91,124,.15);">
-  <div class="w">
-    <div style="text-align:center;margin-bottom:.5rem;" class="reveal">
-      <span class="ey c">Five Ways to Engage</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">The app is free. The methodology costs $250.</h2>
-      <p class="sub" style="text-align:center;max-width:620px;margin:0 auto;">Each product builds on the one before it. None of them are required. All of them work.</p>
-    </div>
-    <div class="engage-grid reveal r2" style="grid-template-columns:repeat(3,1fr);">
-      <!-- 1 · Assessment -->
-      <a href="/assessment/" class="engage-card engage-card--active" style="text-decoration:none;">
-        <div class="engage-num" style="background:rgba(45,184,122,.15);border:1px solid rgba(45,184,122,.3);color:var(--green);">1</div>
-        <div class="engage-name">Intent Assessment</div>
-        <div class="engage-desc">4 minutes. Discover your dating intent and clarity score. Every product uses your result.</div>
-        <div class="engage-price" style="color:var(--green);">Free</div>
-        <span class="engage-cta">Take Assessment →</span>
-      </a>
-      <!-- 2 · App -->
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="engage-card engage-card--active" style="text-decoration:none;">
-        <div class="engage-num" style="background:rgba(45,184,122,.15);border:1px solid rgba(45,184,122,.3);color:var(--green);">2</div>
-        <div class="engage-name">The MatchMakers App</div>
-        <div class="engage-desc">Download free. Declare your Intent. Connect with intentional daters.</div>
-        <div class="engage-price" style="color:var(--green);">Free</div>
-        <span class="engage-cta">Download — iOS →</span>
-      </a>
-      <!-- 3 · Connection Code -->
-      <a href="/guide/" class="engage-card engage-card--active" style="text-decoration:none;">
-        <div class="engage-num" style="background:rgba(45,184,122,.15);border:1px solid rgba(45,184,122,.3);color:var(--green);">3</div>
-        <div class="engage-name">The Connection Code</div>
-        <div class="engage-desc">The 5-Signal framework behind every real connection. Intent · Position · Open · Build · Progress.</div>
-        <div class="engage-price" style="color:var(--green);">Free</div>
-        <span class="engage-cta">Read Free →</span>
-      </a>
-      <!-- 4 · Dating Coach & Playbook (unified; Q-Plan-1 replaces legacy Playbook + Coach cards) -->
-      <a href="/playbook/" class="engage-card engage-card--gold" style="text-decoration:none;" aria-label="Dating Coach and Playbook. A coached system. $250 lifetime access. Explore.">
-        <div class="engage-num" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);">4</div>
-        <div class="engage-name">Dating Coach &amp; Playbook</div>
-        <div class="engage-desc">An AI Coach, a Script Studio, and the Playbook — one coached system grounded in the Connection Code.</div>
-        <div class="engage-price">$250 · LIFETIME</div>
-        <span class="engage-cta">Explore →</span>
-      </a>
-      <!-- ◆ · VIP -->
-      <a href="/vip/" class="engage-card engage-card--vip" style="text-decoration:none;">
-        <div class="engage-num" style="background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.35);color:var(--gold);">◆</div>
-        <div class="engage-name">VIP MatchMaking</div>
-        <div class="engage-desc">A dedicated human MatchMaker. Curated introductions. Full 5-phase coaching. Invite-only.</div>
-        <div class="engage-price" style="font-size:1rem;">By Consultation</div>
-        <span class="engage-cta">Apply →</span>
-      </a>
-    </div>
-  </div>
-</section>
+      <!-- §6.4 Assessment slot -->
+      <div class="hp-slot">
+        <h3 class="hp-slot-eyebrow">Assessment</h3>
+        <p class="hp-slot-desc">A short assessment to surface what you&rsquo;re actually looking for. The results shape how the methodology applies to you.</p>
+        <a href="/assessment/" class="hp-cta-link">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
+      </div>
 
-<section style="background:var(--dk);padding:7rem 0;" id="strategy">
-  <div class="w">
-    <div class="g2 stretch">
-      <div style="display:flex;flex-direction:column;" class="reveal">
-        <span class="sec-eye">The MatchMakers Playbook · $250 One-Time</span>
-        <div class="sec-rule"></div>
-        <h2 class="h2" style="margin-bottom:.4rem;">The complete dating methodology. One document. Yours forever.</h2>
-        <a href="/playbook/" target="_blank" rel="noopener" class="btn-gold btn-gold-xs" style="margin:.85rem 0 1.25rem;align-self:flex-start;">Full Details →</a>
-        <p class="sub" style="margin-bottom:1.1rem;">50+ guided scripts for every situation — organized by Intent, not chapter. The Golden Rule. The Hall of Shame. Nine distinct frameworks for the nine ways people show up. The behavioral science behind why people respond.</p>
-        <p class="bp">This is the intellectual property behind every MatchMakers outcome. Built from what actually worked across real member interactions. Not general dating advice. Not generic scripts. Guidance for every specific moment in the 5-phase path.</p>
-        <p class="bp" style="margin-bottom:auto;">Every script includes the principle behind it. You understand why it works, so you can adapt — not just copy. Delivered instantly. Never expires. No subscription.</p>
-        <div style="margin-top:auto;padding-top:1.5rem;"><span class="feat-pill">50+ guided scripts</span><span class="feat-pill">9 Intent frameworks</span><span class="feat-pill">Hall of Shame</span><span class="feat-pill">The Golden Rule</span><span class="feat-pill">Script Builder Framework</span><span class="feat-pill">Lifetime access · No subscription</span></div>
-      </div>
-      <div class="reveal r2">
-        <div class="action-box">
-          <div class="top-line"></div>
-          <span class="action-badge" style="background:var(--gold);color:var(--dk);">Most Popular · One-Time Payment</span>
-          <div class="action-name">The MatchMakers Playbook</div>
-          <div class="action-price">$250</div>
-          <span class="action-psub">One-time · Lifetime access · Instant delivery to your inbox</span>
-          <div style="margin-bottom:1.25rem;"><span class="feat-pill">50+ guided scripts</span><span class="feat-pill">9 Intent frameworks</span><span class="feat-pill">Hall of Shame</span><span class="feat-pill">Golden Rule</span><span class="feat-pill">Script Builder</span><span class="feat-pill">Lifetime access</span></div>
-          <div style="background:rgba(65,91,124,.12);border:1px solid rgba(65,91,124,.2);border-radius:10px;padding:1rem;margin-bottom:1.25rem;">
-            <div style="font-size:.72rem;font-weight:700;color:rgba(200,214,229,.5);font-family:var(--pd);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;">Standalone Product</div>
-            <div style="display:flex;flex-direction:column;gap:.35rem;">
-              <div style="font-size:.78rem;color:var(--tx);display:flex;gap:.5rem;"><span style="color:rgba(201,168,76,.5);">›</span> 7 situations — Open, Build, Convert, Date, Court, Recover, Commit</div>
-              <div style="font-size:.78rem;color:var(--tx);display:flex;gap:.5rem;"><span style="color:rgba(201,168,76,.5);">›</span> 9 Intent frameworks — one for each declared goal</div>
-              <div style="font-size:.78rem;color:var(--tx);display:flex;gap:.5rem;"><span style="color:rgba(201,168,76,.5);">›</span> The Hall of Shame — every common mistake explained</div>
-              <div style="font-size:.78rem;color:var(--tx);display:flex;gap:.5rem;"><span style="color:rgba(201,168,76,.5);">›</span> The Script Builder — adapt any script to any situation</div>
-            </div>
-          </div>
-          <div class="action-footer">
-            <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold" style="width:100%;display:flex;">Get The MatchMakers Playbook — $250 →</button>
-            <p style="font-size:.7rem;color:var(--sl);text-align:center;margin:.5rem 0 0;"><a href="/playbook/" target="_blank" style="color:rgba(201,168,76,.4);text-decoration:none;font-family:var(--pd);">Read the full program overview →</a></p>
-            <p style="font-size:.7rem;color:rgba(200,214,229,.22);text-align:center;margin:.3rem 0 0;">Pairs with Dating Coach &amp; Playbook — $250 lifetime</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Q-Plan-1 Option C HYBRID POINTER (replaces prior #assistant Coach prominent section
-     with live $500/$1000 Stripe CTAs + legacy pricing copy). Small conservative pointer
-     to /playbook/ reusing D&M §2.1 ratified copy. No commerce surface on homepage — all
-     commerce lands on /playbook/ via the unified tier preview. -->
-<section style="background:var(--navy);padding:7rem 0;" id="assistant">
-  <div class="w">
-    <div style="max-width:720px;margin:0 auto;text-align:center;" class="reveal">
-      <span class="ey c">Dating Coach &amp; Playbook</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">A coached system for how you actually date.</h2>
-      <p class="sub" style="text-align:center;margin:0 auto 2rem;max-width:640px;">An AI Coach who knows your Intent, a Script Studio that writes for the conversation in front of you, and the Playbook that grounds every answer in the Connection Code.</p>
-      <a href="/playbook/" class="btn-gold-fill">Explore Dating Coach &amp; Playbook →</a>
+  <!-- ═══════════════════════════════════════════════════════════════
+       §7 — THE ORIGIN (Trust)
+       Long-form essay scale. NO imagery. Founder-anonymous per FOUNDER_ANONYMITY_RULE_v1.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hp-section-lg hp-origin">
+    <div class="hp-origin-content">
+      <p class="hp-eyebrow">Origin</p>
+      <h2 class="hp-section-headline">Built match by match.</h2>
+      <p class="hp-section-body hp-section-body--essay">MatchMakers was built on 7 years of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools beat the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook, and practiced inside the app.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section style="background:var(--dk);padding:7rem 0;" id="vip">
-  <div class="w">
-    <div class="g2 stretch">
-      <div style="display:flex;flex-direction:column;" class="reveal">
-        <span class="sec-eye">VIP MatchMaking · By Consultation · Invite Only</span>
-        <div class="sec-rule"></div>
-        <h2 class="h2" style="margin-bottom:.4rem;">A dedicated MatchMaker working on your behalf.</h2>
-        <a href="/vip/" target="_blank" rel="noopener" class="btn-gold btn-gold-xs" style="margin:.85rem 0 1.25rem;align-self:flex-start;">Full Details →</a>
-        <p class="sub" style="margin-bottom:1.1rem;">Not an algorithm. Not a subscription. A dedicated human MatchMaker who knows the methodology, knows your Intent, and works actively to find your match from a 66,000+ member network — then coaches you through every phase of the connection.</p>
-        <p class="bp">Legacy matchmaking firms charge $3,000–$50,000 for introductions alone, with no outcome guarantee and no coaching component. MatchMakers VIP includes the Dating Coach, the Playbook, curated introductions, and full 5-phase coaching — all under one engagement with one advisor who knows your situation completely.</p>
-        <p class="bp" style="margin-bottom:auto;">This is the tier where the methodology does the work for you. VIP is invite-only. Availability is limited by design.</p>
-        <div style="margin-top:auto;padding-top:1.5rem;"><span class="feat-pill">Dedicated personal MatchMaker</span><span class="feat-pill">Curated network</span><span class="feat-pill">Intent-verified introductions</span><span class="feat-pill">Full 5-phase coaching</span><span class="feat-pill">Unlimited Dating Coach access</span><span class="feat-pill">Complete confidentiality</span></div>
-      </div>
-      <div class="reveal r2">
-        <div class="action-box" style="border-color:rgba(201,168,76,.18);">
-          <div class="top-line" style="background:linear-gradient(90deg,transparent,rgba(201,168,76,.45) 30%,rgba(201,168,76,.65) 50%,rgba(201,168,76,.45) 70%,transparent);"></div>
-          <span class="action-badge" style="background:linear-gradient(135deg,rgba(201,168,76,.85),rgba(201,168,76,.65));color:var(--dk);">◆ Invite Only · By Consultation</span>
-          <div class="action-name">MatchMakers VIP MatchMaking</div>
-          <div class="action-price" style="font-size:1.85rem;">By Consultation</div>
-          <span class="action-psub">Invite-only · All products included · Price varies by engagement</span>
-          <div style="margin-bottom:1.5rem;">
-            <div style="font-family:var(--pd);font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:.85rem;">How It Works</div>
-            <div style="display:flex;flex-direction:column;gap:.75rem;">
-              <div style="display:flex;gap:.85rem;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.28);display:flex;align-items:center;justify-content:center;font-family:var(--pd);font-size:.7rem;font-weight:800;color:var(--gold);flex-shrink:0;">1</div><div><div style="font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:.15rem;">Apply</div><div style="font-size:.73rem;color:var(--sl);line-height:1.55;">Complete the consultation form. Your MatchMaker reviews your Intent, Level, and profile before the first conversation.</div></div></div>
-              <div style="display:flex;gap:.85rem;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.28);display:flex;align-items:center;justify-content:center;font-family:var(--pd);font-size:.7rem;font-weight:800;color:var(--gold);flex-shrink:0;">2</div><div><div style="font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:.15rem;">Match</div><div style="font-size:.73rem;color:var(--sl);line-height:1.55;">Curated introductions from the network — Intent-verified and Level-matched before you meet.</div></div></div>
-              <div style="display:flex;gap:.85rem;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.28);display:flex;align-items:center;justify-content:center;font-family:var(--pd);font-size:.7rem;font-weight:800;color:var(--gold);flex-shrink:0;">3</div><div><div style="font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:.15rem;">Engage</div><div style="font-size:.73rem;color:var(--sl);line-height:1.55;">Full 5-phase coaching throughout every live connection. Dating Coach access for the duration of your engagement.</div></div></div>
-            </div>
-          </div>
-          <div style="background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.12);border-radius:10px;padding:.85rem 1rem;margin-bottom:1.25rem;">
-            <div style="font-size:.72rem;color:rgba(200,214,229,.45);font-family:var(--sr);line-height:1.5;">VIP includes the Playbook + Dating Coach + dedicated MatchMaker + curated introductions. Every layer of the ecosystem working simultaneously on your behalf.</div>
-          </div>
-          <div class="action-footer">
-            <a href="/vip/" class="btn-gold" style="width:100%;display:flex;">Apply for VIP MatchMaking →</a>
-            <p style="font-size:.7rem;color:rgba(200,214,229,.22);text-align:center;margin:.5rem 0 0;">Limited availability. Invite-only engagement.</p>
-          </div>
-        </div>
-      </div>
+  <!-- ═══════════════════════════════════════════════════════════════
+       §8 — PICK THE LEVEL (Close + product router)
+       Equal-weight 4-button grid. No gold (would imply hierarchy).
+       D&M soft revision applied: "method" → "methodology" in router intro sentence 3.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hp-section">
+    <div class="hp-intro">
+      <h2 class="hp-section-headline">Pick the level that fits where you are.</h2>
+      <p class="hp-section-body">The Playbook is where you learn the methodology. The Coach is where AI applies it to you. The app is where the methodology meets the community. VIP is where a human matchmaker applies it directly. Four ways into the same practice &mdash; pick the one that fits.</p>
     </div>
-  </div>
-</section>
+    <div class="hp-router">
+      <a href="/playbook/" class="hp-router-btn">Coach &amp; Playbook <span aria-hidden="true">&rarr;</span></a>
+      <a href="/vip/" class="hp-router-btn">VIP Matchmaking <span aria-hidden="true">&rarr;</span></a>
+      <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting; on lift, swap router App entry per Apple-strip protocol -->
+      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="hp-router-btn">The App <span aria-hidden="true">&rarr;</span></a>
+      <!-- APPLE_STRIP_HOLD_END -->
+      <a href="/guide/" class="hp-router-btn">Free Guide <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
 
-<section style="background:var(--navy);padding:6rem 0;border-top:1px solid rgba(65,91,124,.12);" id="phases">
-  <div class="w">
-    <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
-      <span class="ey c">The MatchMakers Methodology · Seven Years in Development</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">Five phases. One outcome.</h2>
-      <p class="sub" style="text-align:center;max-width:560px;margin:0 auto;">Built from real member interactions. Every phase exists because the data showed it was necessary. Every product in the ecosystem runs on this foundation.</p>
-    </div>
-    <div class="phase-grid">
-      <div class="phase-connector"></div>
-      <div class="phase-card reveal r1">
-        <div class="phase-num" style="background:var(--mid);border:2px solid var(--rim);color:var(--gold);">01</div>
-        <div class="phase-title" style="color:var(--white);">Intent</div>
-        <div class="phase-desc">Declare your actual goal — not your preferences — before your first connection. 9 types. Visible to every match before a message is sent. The differentiator that changes everything.</div>
-      </div>
-      <div class="phase-card reveal r2">
-        <div class="phase-num" style="background:var(--mid);border:2px solid var(--rim);color:var(--gold);">02</div>
-        <div class="phase-title" style="color:var(--white);">Profile</div>
-        <div class="phase-desc">Build the profile that earns your Level. Community-rated 6–10 by real members. Your Level determines who sees you and who you see. The system rewards genuine investment.</div>
-      </div>
-      <div class="phase-card reveal r3">
-        <div class="phase-num" style="background:rgba(201,168,76,.1);border:2px solid rgba(201,168,76,.45);color:var(--gold);">03</div>
-        <div class="phase-title" style="color:var(--gold);">Connection</div>
-        <div class="phase-desc">The first message through early conversation. 50+ scripts in the Playbook cover every situation in this phase. Where most people fail — and where the system begins.</div>
-      </div>
-      <div class="phase-card reveal r4">
-        <div class="phase-num" style="background:var(--mid);border:2px solid var(--rim);color:var(--gold);">04</div>
-        <div class="phase-title" style="color:var(--white);">Courtship</div>
-        <div class="phase-desc">Building depth and momentum. Moving from digital connection to the first in-person meeting — with intention behind every exchange. The Dating Coach guides this phase in real time.</div>
-      </div>
-      <div class="phase-card reveal r5">
-        <div class="phase-num" style="background:var(--mid);border:2px solid var(--rim);color:var(--gold);">05</div>
-        <div class="phase-title" style="color:var(--white);">Commitment</div>
-        <div class="phase-desc">The first date through committed relationship. The reason every phase before it exists. The only outcome the entire system is built to achieve.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--dk);padding:6rem 0;border-top:1px solid rgba(65,91,124,.12);">
-  <div class="w">
-    <div style="text-align:center;margin-bottom:3rem;" class="reveal">
-      <span class="ey c">The Ecosystem</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.85rem;">Five ways to engage with MatchMakers</h2>
-      <p class="sub" style="text-align:center;max-width:560px;margin:0 auto;">Start free. Each stands on its own.</p>
-    </div>
-    <div class="five-grid">
-      <div class="four-card reveal r1">
-        <div class="fc-head"><span class="fc-badge" style="background:var(--green);color:#fff;">Free</span><div class="fc-name">MatchMakers App</div><div class="fc-price">Free</div><span class="fc-psub">iOS · Android coming soon</span></div>
-        <ul class="fc-list"><li>9 Intent types</li><li>Community Level (6–10)</li><li>Free messaging at your Level</li><li>M-Button mutual match</li><li>Spotlight upgrades from $9.99</li></ul>
-        <div class="fc-foot">
-          <div class="fc-foot-badges">
-            <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" style="display:block;text-decoration:none;width:100%;opacity:.88;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.88'"><svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 156 46"><rect width="156" height="46" rx="9" fill="#000"/><rect x=".75" y=".75" width="154.5" height="44.5" rx="8.5" fill="none" stroke="rgba(255,255,255,.15)" stroke-width=".75"/><path d="M29.5 9.4c1.05-1.3 1.76-3.1 1.56-4.9-1.5.06-3.32.99-4.4 2.27-1 1.14-1.87 2.97-1.63 4.73 1.65.12 3.35-.86 4.47-2.1zm1.54 2.4c-2.47-.14-4.58 1.4-5.75 1.4-1.2 0-3.02-1.33-4.98-1.3-2.56.04-4.93 1.49-6.24 3.8-2.66 4.6-.7 11.43 1.9 15.17 1.26 1.85 2.78 3.9 4.76 3.83 1.9-.08 2.63-1.23 4.94-1.23 2.3 0 2.97 1.23 4.98 1.19 2.06-.04 3.35-1.85 4.6-3.7 1.46-2.1 2.06-4.15 2.1-4.26-.05-.02-4.04-1.55-4.08-6.14-.03-3.83 3.13-5.67 3.27-5.77-1.77-2.62-4.55-2.9-5.5-2.99z" fill="white"/><text x="55" y="19" font-family="-apple-system,Arial,sans-serif" font-size="10" fill="rgba(255,255,255,.88)">Download on the</text><text x="55" y="35" font-family="-apple-system,Arial,sans-serif" font-size="18.5" font-weight="600" fill="white" letter-spacing="-.3">App Store</text></svg></a>
-            <a href="#" onclick="return false;" style="display:block;opacity:.4;cursor:default;width:100%;"><svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 156 46"><rect width="156" height="46" rx="9" fill="#000"/><text x="36" y="19" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,.6)">Get it on</text><text x="36" y="35" font-family="Arial,sans-serif" font-size="17" font-weight="600" fill="rgba(255,255,255,.6)">Google Play</text><rect x="94" y="7" width="56" height="13" rx="6" fill="rgba(201,168,76,.12)" stroke="rgba(201,168,76,.3)" stroke-width=".75"/><text x="122" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="rgba(201,168,76,.7)">COMING SOON</text></svg></a>
-          </div>
-        </div>
-      </div>
-      <div class="four-card reveal r2" style="border-color:rgba(65,91,124,.3);"><div class="fc-head"><span class="fc-badge" style="background:rgba(65,91,124,.25);color:var(--sl);border:1px solid rgba(65,91,124,.4);">Free · The Framework</span><div class="fc-name">The Connection Code</div><div class="fc-price" style="color:var(--green);">Free</div><span class="fc-psub">No account required</span></div><ul class="fc-list"><li>The 5-Signal framework defined</li><li>Intent · Position · Open · Build · Progress</li><li>Phase-to-Signal mapping</li><li>Safety foundation</li><li>Full ecosystem walkthrough</li></ul><div class="fc-foot"><a href="https://matchmakersusa.com/guide" class="btn-gold">Read Free →</a></div></div>
-      <div class="four-card reveal r3"><div class="fc-head"><span class="fc-badge">Most Popular · $250</span><div class="fc-name">Dating Coach &amp; Playbook</div><div class="fc-price">$250</div><span class="fc-psub">One-time · Lifetime access</span></div><ul class="fc-list"><li>Full Playbook — 9 chapters, 50+ scripts</li><li>9 Intent frameworks</li><li>Hall of Shame + Golden Rule</li><li>Script Builder Framework</li><li>Coach + Script Studio as Phase A launches</li></ul><div class="fc-foot"><a href="/playbook/" class="btn-gold" style="width:100%;display:flex;">Explore Dating Coach &amp; Playbook →</a></div></div>
-      <div class="four-card reveal r5" style="border-color:rgba(201,168,76,.12);"><div class="fc-head"><span class="fc-badge" style="background:linear-gradient(135deg,rgba(201,168,76,.8),rgba(201,168,76,.6));color:var(--dk);">◆ Invite Only</span><div class="fc-name">VIP MatchMaking</div><div class="fc-price" style="font-size:1.4rem;line-height:1.2;">By Consultation</div><span class="fc-psub">All tiers included</span></div><ul class="fc-list"><li>Dedicated MatchMaker</li><li>Curated network</li><li>Full phase coaching</li><li>Unlimited Dating Coach</li><li>Full ecosystem included</li></ul><div class="fc-foot"><a href="/vip/" class="btn-gold">Apply for VIP →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--navy);padding:6rem 0;border-top:1px solid rgba(65,91,124,.12);" class="testi">
-  <div class="w">
-    <div style="text-align:center;margin-bottom:3rem;" class="reveal">
-      <span class="ey c">Member Outcomes</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;font-size:clamp(1.5rem,2.5vw,2rem);margin-bottom:.75rem;">The methodology speaks for itself.</h2>
-    </div>
-    <div class="testi-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
-      <div class="testi-card reveal r1">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"MatchMakers is the only dating app that asked me what I actually wanted before showing me a single profile. That one question changed everything about the quality of every connection that followed."</div>
-        <div class="testi-meta">
-          <div class="testi-name">Verified Member</div>
-          <div class="testi-detail">Long-Term Intent · Level 9 · Playbook + Dating Coach</div>
-        </div>
-      </div>
-      <div class="testi-card reveal r2">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"I spent three years on Hinge and Bumble getting nowhere. Six weeks on MatchMakers with the Playbook and I understood exactly why everything before had failed. The framework is genuinely different."</div>
-        <div class="testi-meta">
-          <div class="testi-name">Verified Member</div>
-          <div class="testi-detail">Marriage Intent · Level 8 · Playbook Graduate</div>
-        </div>
-      </div>
-      <div class="testi-card reveal r3">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"The Dating Coach is what I didn't know I needed. Not generic advice — actual methodology applied to my real conversations in real time. There's nothing else like it."</div>
-        <div class="testi-meta">
-          <div class="testi-name">Verified Member</div>
-          <div class="testi-detail">Long-Term Intent · Level 10 · Dating Coach + VIP</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-sec" style="background:var(--dk);padding:8rem 0;">
-  <div class="w" style="max-width:720px;">
-    <div class="reveal">
-      <div class="gold-line"></div>
-      <span class="ey c" style="margin-bottom:.85rem;">Seven years. 66,000+ members. One methodology.</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">The system exists.<br>Most people never find it.</h2>
-      <p class="sub" style="text-align:center;margin:0 auto 2.5rem;max-width:540px;">Dating doesn't have to be a guessing game. The app is free. Add Dating Coach &amp; Playbook to apply the Connection Code methodology to your situation.</p>
-      <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
-        <a href="/playbook/" class="btn-gold-fill">Explore Dating Coach &amp; Playbook →</a>
-        <a href="/assessment/" class="btn-gold">Take the Assessment — Free →</a>
-        <a href="https://matchmakersusa.com/guide" class="btn-gold">Get the Free Connection Code →</a>
-      </div>
-      <p style="font-size:.72rem;color:rgba(200,214,229,.28);text-align:center;font-family:var(--pd);line-height:1.6;">Dating Coach &amp; Playbook · VIP by consultation only.</p>
-      <div class="gold-line" style="margin-top:2.5rem;"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Pre-Checkout Modal -->
-<div id="preCheckoutModal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(8,15,26,.88);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#0F2035;border:1px solid rgba(201,168,76,.3);border-radius:16px;padding:32px;max-width:440px;width:100%;position:relative;">
-    <button onclick="closePreCheckout()" style="position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(200,214,229,.35);font-size:1.5rem;cursor:pointer;line-height:1;width:44px;height:44px;display:flex;align-items:center;justify-content:center;" aria-label="Close">&times;</button>
-    <!-- Playbook Required Gate (shown when Dating Coach attempted without Playbook) -->
-    <div id="pcm-gate" style="display:none;text-align:center;padding:1rem 0;">
-      <div style="font-size:.7rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:var(--pd);">The Playbook Comes First</div>
-      <div style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
-      <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
-      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $250 &rarr;</button>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
-        <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
-          <button onclick="unlockFromGate()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:var(--gold);font-family:var(--pd);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Unlock</button>
-        </div>
-        <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
-      </div>
-    </div>
-    <!-- Normal Checkout (shown for Playbook, or Dating Coach when Playbook owned) -->
-    <div id="pcm-checkout">
-    <div id="pcm-eyebrow" style="font-size:.7rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-family:var(--pd);"></div>
-    <div id="pcm-product" style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:2px;line-height:1.2;"></div>
-    <div id="pcm-price" style="font-family:var(--cg);font-size:2.4rem;font-weight:600;color:var(--gold);margin-bottom:6px;line-height:1;"></div>
-    <div id="pcm-includes" style="font-size:.78rem;color:rgba(200,214,229,.55);margin-bottom:20px;line-height:1.6;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);"></div>
-    <label for="pcm-email" style="font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8BA0BC;font-family:var(--pd);display:block;margin-bottom:6px;">Your Email</label>
-    <input type="email" id="pcm-email" placeholder="your@email.com" style="width:100%;padding:12px 16px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.9rem;font-family:var(--pd);outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')proceedToCheckout()">
-    <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:var(--pd);"></div>
-    <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);transition:all .2s;">Continue to Payment &rarr;</button>
-    <p style="font-size:.7rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
-    <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
-      <p id="pcm-promo-toggle" style="font-size:.75rem;color:rgba(201,168,76,.7);font-family:var(--pd);margin:0 0 8px;">Have an access or promo code?</p>
-      <div id="pcm-promo-area" style="display:flex;gap:8px;margin-top:0;flex-wrap:wrap;">
-        <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
-        <button onclick="applyPromoCode()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:var(--gold);font-family:var(--pd);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Apply</button>
-      </div>
-      <div id="pcm-promo-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
-    </div>
-    </div>
-  </div>
-</div>
+</main>
 
 <footer>
   <div class="fg">
@@ -649,7 +488,5 @@
 
 <script src="/js/analytics.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/checkout.js"></script>
-<script src="/js/coach-storage.js"></script>
 </body>
 </html>
