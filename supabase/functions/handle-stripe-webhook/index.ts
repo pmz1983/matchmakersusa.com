@@ -80,8 +80,24 @@ const PRICE_TO_PRODUCT: Record<string, string> = {
   price_1TMYPd1ihNKVY3uGfhptvOAa: "dating_coach_unlimited", // $1000 unlimited
 };
 
+// ── PDF signed URL generation ──────────────────────────────────────────
+const PLAYBOOK_PDF_PATH = "MatchMakers-Playbook.pdf";
+const PDF_URL_EXPIRY = 60 * 60 * 24 * 7; // 7 days in seconds
+
+async function generatePdfUrl(): Promise<string | null> {
+  const { data, error } = await supabase.storage
+    .from("playbook-pdfs")
+    .createSignedUrl(PLAYBOOK_PDF_PATH, PDF_URL_EXPIRY);
+
+  if (error) {
+    console.error("Failed to generate signed PDF URL:", error);
+    return null;
+  }
+  return data.signedUrl;
+}
+
 // ── Email Templates ────────────────────────────────────────────────────
-function buildEmailHTML(product: string, accessCode: string): string {
+function buildEmailHTML(product: string, accessCode: string, pdfUrl?: string | null): string {
   const isPlaybook = product === "playbook";
   const isPremium = product === "dating_coach_premium";
   const isUnlimited = product === "dating_coach_unlimited";
@@ -159,6 +175,13 @@ function buildEmailHTML(product: string, accessCode: string): string {
     <div style="font-size:.85rem;color:#C2D1E0;line-height:1.5;">Bring real situations — messages, profiles, conversations. Your coach applies the full MatchMakers methodology to your specific context.${isPremium ? " You have 25 coaching messages included with your Premium plan." : ""}</div>
   </div>`}
 
+  ${isPlaybook && pdfUrl ? `<!-- PDF Download -->
+  <div style="background:rgba(5,9,15,.6);border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:20px;text-align:center;margin-top:24px;margin-bottom:4px;">
+    <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7A95AF;margin-bottom:10px;">Premium PDF Edition</div>
+    <a href="${pdfUrl}" style="display:inline-block;padding:12px 28px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:#C9A84C;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:10px;">Download PDF</a>
+    <div style="font-size:.68rem;color:rgba(122,149,175,.5);margin-top:8px;">This link expires in 7 days.</div>
+  </div>` : ""}
+
   <!-- CTA Button -->
   <div style="text-align:center;margin-top:28px;">
     <a href="${nextStepUrl}" style="display:inline-block;padding:14px 36px;background:#C9A84C;color:#0B1727;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:10px;">${nextStepLabel}</a>
@@ -181,7 +204,7 @@ function buildEmailHTML(product: string, accessCode: string): string {
 </html>`;
 }
 
-function buildEmailText(product: string, accessCode: string): string {
+function buildEmailText(product: string, accessCode: string, pdfUrl?: string | null): string {
   const isPlaybook = product === "playbook";
   const isPremium = product === "dating_coach_premium";
   const productName = isPlaybook
@@ -193,12 +216,16 @@ function buildEmailText(product: string, accessCode: string): string {
     ? "https://matchmakersusa.com/playbook/content/"
     : "https://matchmakersusa.com/";
 
+  const pdfLine = isPlaybook && pdfUrl
+    ? `\nDownload your Premium PDF edition (link expires in 7 days):\n${pdfUrl}\n`
+    : "";
+
   return `${productName} — Purchase Confirmed
 
 Your access code: ${accessCode}
 
 Save this code — you'll need it to access your content.
-
+${pdfLine}
 Next step: ${nextStepUrl}
 
 Questions? Contact support@matchmakersusa.com
@@ -209,7 +236,8 @@ Questions? Contact support@matchmakersusa.com
 async function sendConfirmationEmail(
   to: string,
   product: string,
-  accessCode: string
+  accessCode: string,
+  pdfUrl?: string | null
 ): Promise<void> {
   const isPlaybook = product === "playbook";
   const isPremium = product === "dating_coach_premium";
@@ -229,8 +257,8 @@ async function sendConfirmationEmail(
       from: "MatchMakers <noreply@matchmakersusa.com>",
       to: [to],
       subject,
-      html: buildEmailHTML(product, accessCode),
-      text: buildEmailText(product, accessCode),
+      html: buildEmailHTML(product, accessCode, pdfUrl),
+      text: buildEmailText(product, accessCode, pdfUrl),
     }),
   });
 
@@ -363,10 +391,19 @@ Deno.serve(async (req: Request) => {
 
     console.log(`Purchase recorded: ${email} → ${product} (${accessCode})`);
 
+    // ── Generate PDF download URL for Playbook purchases ────────────
+    let pdfUrl: string | null = null;
+    if (product === "playbook") {
+      pdfUrl = await generatePdfUrl();
+      if (pdfUrl) {
+        console.log(`Signed PDF URL generated for ${email}`);
+      }
+    }
+
     // ── Send confirmation email ──────────────────────────────────────
     if (RESEND_API_KEY) {
       try {
-        await sendConfirmationEmail(email, product, accessCode);
+        await sendConfirmationEmail(email, product, accessCode, pdfUrl);
         console.log(`Confirmation email sent to ${email}`);
 
         // Mark email as sent
