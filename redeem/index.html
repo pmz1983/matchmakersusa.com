@@ -206,7 +206,7 @@
           setTimeout(function () { window.location.replace('/playbook/'); }, 1200);
         } else {
           if (window.mmTrack) { try { mmTrack('redeem_failed', { reason: (data && data.reason) || 'unknown' }); } catch (e) {} }
-          setStatus('That code didn't work. Double-check and try again.', 'err');
+          setStatus("That code didn't work. Double-check and try again.", 'err');
           showForm();
           $code.focus();
           $code.select();
