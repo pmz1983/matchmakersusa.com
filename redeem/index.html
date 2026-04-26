@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+  <title>Redeem Access &mdash; MatchMakers Dating Coach &amp; Playbook</title>
+  <meta name="description" content="Redeem your MatchMakers access code.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://matchmakersusa.com/redeem/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <style>
+    :root {
+      --bg:#050A10;
+      --panel:#0B121A;
+      --gold:#C9A84C;
+      --text:#F8FAFC;
+      --muted:#7A95AF;
+      --err:#E57373;
+    }
+    *,*:before,*:after { box-sizing:border-box; }
+    body {
+      margin:0; padding:0;
+      background:var(--bg); color:var(--text);
+      font-family:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      padding:2rem;
+    }
+    .card {
+      width:100%; max-width:480px;
+      background:var(--panel);
+      border:1px solid rgba(201,168,76,.18);
+      border-radius:10px;
+      padding:2.5rem 2rem;
+      text-align:center;
+    }
+    h1 {
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-weight:300;
+      font-size:clamp(1.5rem,3vw,2rem);
+      color:var(--text);
+      margin:0 0 .75rem;
+      letter-spacing:-.01em;
+    }
+    .lede {
+      font-family:'DM Sans',system-ui,sans-serif;
+      font-size:.92rem; line-height:1.7;
+      color:var(--muted);
+      margin:0 0 1.75rem;
+    }
+    .field {
+      display:flex; flex-direction:column;
+      gap:.5rem;
+      text-align:left;
+      margin:1rem 0;
+    }
+    .field label {
+      font-size:.78rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .field input {
+      padding:.85rem 1rem;
+      background:#050A10; color:var(--text);
+      border:1px solid rgba(201,168,76,.25);
+      border-radius:6px;
+      font-size:1rem;
+      font-family:inherit;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .field input:focus { outline:none; border-color:var(--gold); }
+    .btn {
+      display:inline-block;
+      padding:.9rem 1.75rem;
+      background:var(--gold); color:#05090F;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.82rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      border:0; border-radius:6px;
+      cursor:pointer;
+      transition:opacity .2s;
+      font-family:inherit;
+    }
+    .btn:hover, .btn:focus { opacity:.88; }
+    .btn[disabled] { opacity:.5; cursor:default; }
+    .status {
+      font-family:'DM Sans',system-ui,sans-serif;
+      font-size:.95rem;
+      color:var(--muted);
+      margin:1rem 0 0;
+      min-height:1.4em;
+    }
+    .status.err { color:var(--err); }
+    .status.ok { color:var(--gold); }
+    .footnote {
+      font-family:'DM Sans',system-ui,sans-serif;
+      font-size:.78rem; color:var(--muted);
+      margin-top:1.5rem;
+    }
+    .footnote a { color:var(--gold); text-decoration:none; }
+    .spinner {
+      display:inline-block;
+      width:14px; height:14px;
+      border:2px solid rgba(201,168,76,.25);
+      border-top-color:var(--gold);
+      border-radius:50%;
+      animation:spin .8s linear infinite;
+      vertical-align:-3px;
+      margin-right:.5rem;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .hidden { display:none !important; }
+  </style>
+</head>
+<body>
+
+<main class="card" role="main">
+  <h1 id="r-title">Enter your access code</h1>
+  <p class="lede" id="r-lede">From your purchase or gift confirmation.</p>
+
+  <div id="r-form">
+    <div class="field">
+      <label for="r-code">Access code</label>
+      <input type="text" id="r-code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Paste your access code">
+    </div>
+    <button class="btn" id="r-submit" type="button">Redeem</button>
+  </div>
+
+  <div class="status" id="r-status" aria-live="polite"></div>
+
+  <p class="footnote">Lost your code? <a href="/contact/">Contact support</a>.</p>
+</main>
+
+<script src="/js/analytics.js"></script>
+<script>
+(function () {
+  'use strict';
+  var FN_URL = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1';
+
+  var $form = document.getElementById('r-form');
+  var $code = document.getElementById('r-code');
+  var $submit = document.getElementById('r-submit');
+  var $status = document.getElementById('r-status');
+
+  function setStatus(msg, cls) {
+    $status.className = 'status' + (cls ? ' ' + cls : '');
+    $status.innerHTML = msg;
+  }
+  function showForm() { $form.classList.remove('hidden'); }
+  function hideForm() { $form.classList.add('hidden'); }
+
+  // Map verify-code response.product to website localStorage contract.
+  // Mirrors checkout.js:177-180 + coach-orb.js:754-756.
+  function applyEntitlement(product) {
+    var isCoach = product === 'dating_coach_premium' ||
+                  product === 'dating_coach_unlimited' ||
+                  product === 'dating_coach';
+    try {
+      if (product === 'playbook') {
+        localStorage.setItem('pb_access', '1');
+      }
+      if (isCoach) {
+        localStorage.setItem('pb_dc_access', '1');
+        if (!localStorage.getItem('pb_dc_first')) {
+          localStorage.setItem('pb_dc_first', Date.now().toString());
+        }
+        if (product === 'dating_coach_unlimited') {
+          localStorage.setItem('dc_plan', 'unlimited');
+        } else if (product === 'dating_coach_premium') {
+          localStorage.setItem('dc_plan', 'premium');
+        }
+      }
+    } catch (e) { /* localStorage unavailable; proceed to redirect anyway */ }
+  }
+
+  function verify(code) {
+    setStatus('<span class="spinner"></span>Checking your access code&hellip;');
+    hideForm();
+    return fetch(FN_URL + '/check-eligibility', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'verify@code', code: code, action: 'verify-code' })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.has_access) {
+          if (window.mmTrack) { try { mmTrack('redeem_success', { product: data.product || 'unknown' }); } catch (e) {} }
+          applyEntitlement(data.product || '');
+          setStatus('Code accepted. Loading the Playbook&hellip;', 'ok');
+          setTimeout(function () { window.location.replace('/playbook/'); }, 1200);
+        } else {
+          if (window.mmTrack) { try { mmTrack('redeem_failed', { reason: (data && data.reason) || 'unknown' }); } catch (e) {} }
+          setStatus('That code didn't work. Double-check and try again.', 'err');
+          showForm();
+          $code.focus();
+          $code.select();
+        }
+      })
+      .catch(function () {
+        if (window.mmTrack) { try { mmTrack('redeem_error'); } catch (e) {} }
+        // COPY-PLACEHOLDER: network-error message — website-ed input pending
+        setStatus('We could not reach the server. Please check your connection and try again.', 'err');
+        showForm();
+      });
+  }
+
+  function onSubmit() {
+    var raw = ($code.value || '').trim().toUpperCase();
+    if (!raw) {
+      setStatus('Please enter your access code.', 'err');
+      $code.focus();
+      return;
+    }
+    $code.value = raw;
+    verify(raw);
+  }
+
+  $submit.addEventListener('click', onSubmit);
+  $code.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); onSubmit(); }
+  });
+  $code.addEventListener('input', function () {
+    var pos = $code.selectionStart;
+    $code.value = $code.value.toUpperCase();
+    try { $code.setSelectionRange(pos, pos); } catch (e) {}
+  });
+
+  // Auto-verify on page load if ?code= is present (deep-link from email).
+  var params = new URLSearchParams(window.location.search);
+  var initialCode = (params.get('code') || '').trim().toUpperCase();
+  if (initialCode) {
+    $code.value = initialCode;
+    if (window.mmTrack) { try { mmTrack('redeem_deep_link', { has_code: true }); } catch (e) {} }
+    verify(initialCode);
+  } else {
+    $code.focus();
+  }
+})();
+</script>
+
+</body>
+</html>
