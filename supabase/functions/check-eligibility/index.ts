@@ -140,6 +140,10 @@ Deno.serve(async (req: Request) => {
   }
 
   // ── Action: verify-code (does this access code exist for a completed purchase?) ─
+  // Path-scoped 30-day window: the /redeem/ deep-link redemption path expires 30 days
+  // after purchase. The email-lookup path (verify-access) keeps lifetime/permanent
+  // semantics — a user past the 30-day window still has access via /playbook/ email
+  // sign-in. This fence is on the *redemption surface*, not on the entitlement.
   if (body.action === "verify-code") {
     const code = (body.code || "").trim().toUpperCase();
     if (!code) {
@@ -148,7 +152,7 @@ Deno.serve(async (req: Request) => {
 
     const { data, error } = await supabase
       .from("purchases")
-      .select("id, product, plan, status, access_code")
+      .select("id, product, plan, status, access_code, created_at")
       .eq("access_code", code)
       .eq("status", "completed")
       .limit(1);
@@ -159,7 +163,19 @@ Deno.serve(async (req: Request) => {
     }
 
     if (data && data.length > 0) {
-      return new Response(JSON.stringify({ has_access: true, product: data[0].product }), { status: 200, headers });
+      const purchase = data[0];
+      const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
+      if (purchase.created_at && Date.now() - new Date(purchase.created_at).getTime() > thirtyDaysMs) {
+        return new Response(
+          JSON.stringify({
+            has_access: false,
+            reason_code: "code_expired",
+            reason: "This code is older than 30 days. Please sign in with your purchase email at /playbook/ instead.",
+          }),
+          { status: 200, headers }
+        );
+      }
+      return new Response(JSON.stringify({ has_access: true, product: purchase.product }), { status: 200, headers });
     }
 
     return new Response(JSON.stringify({ has_access: false, reason: "Code not found." }), { status: 200, headers });
