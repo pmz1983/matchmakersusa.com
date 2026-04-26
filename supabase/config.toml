@@ -412,3 +412,18 @@ entrypoint = "./functions/coach-proxy/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/coach-proxy/*.html" ]
+
+# Stripe webhook — must NOT verify JWT (Stripe sends its own signature, not a JWT)
+[functions.handle-stripe-webhook]
+enabled = true
+verify_jwt = false
+
+# check-eligibility — called from website without auth, accepts public requests
+[functions.check-eligibility]
+enabled = true
+verify_jwt = false
+
+# track-events — analytics endpoint, called from website without auth
+[functions.track-events]
+enabled = true
+verify_jwt = false
