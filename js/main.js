@@ -6,6 +6,10 @@
 (function () {
   'use strict';
 
+  // Prevent browser scroll restoration (smooth scroll-behavior causes page to load scrolled)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
   // Nav scroll state
   var nav = document.querySelector('nav');
   if (nav) {
