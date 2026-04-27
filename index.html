@@ -326,21 +326,23 @@
       max-width: 56ch;
     }
 
-    /* Hero primary CTA (gold-fill) */
+    /* Hero primary CTA (ring-only — Paul directive 2026-04-27 / gold-fill DEPRECATED) */
     .hp-hero__cta {
       display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.5em;
       width: 100%; height: var(--cta-primary-height);
       padding: var(--space-2) var(--space-5);
-      background: var(--color-accent-gold); color: var(--color-bg-primary);
-      border: 1px solid var(--color-accent-gold);
+      background: transparent;
+      color: var(--color-accent-gold);
+      border: 1px solid rgba(201, 168, 76, 0.45);
       border-radius: var(--cta-primary-radius);
       font-family: var(--font-utility); font-weight: 600;
       font-size: var(--type-cta-primary);
       letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out);
+      transition: background var(--motion-hover) var(--easing-out), border-color var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out);
       margin: 0 0 var(--space-6);
     }
-    .hp-hero__cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
+    .hp-hero__cta:hover { background: rgba(201, 168, 76, 0.06); border-color: var(--color-accent-gold); color: var(--color-accent-gold-bright); }
     .hp-hero__cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
     @media (min-width: 768px) { .hp-hero__cta { width: auto; min-width: 240px; } }
 
@@ -487,16 +489,16 @@
       color: var(--color-text-primary);
     }
 
-    /* v2.1 §9 VIP apex CTA — gold-fill primary, replaces removed .hp-eco-slot--vip context */
+    /* v2.1 §9 VIP apex CTA — ring-only (Paul directive 2026-04-27; gold-fill DEPRECATED) */
     .hp-stage--vip .hp-eco-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4em;
+      gap: 0.5em;
       padding: var(--space-2) var(--space-5);
-      background: var(--color-accent-gold);
-      color: var(--color-bg-primary);
-      border: 1px solid var(--color-accent-gold);
+      background: transparent;
+      color: var(--color-accent-gold);
+      border: 1px solid rgba(201, 168, 76, 0.45);
       border-radius: 2px;
       font-family: var(--font-utility);
       font-weight: 600;
@@ -504,11 +506,11 @@
       letter-spacing: 0.04em;
       text-decoration: none;
       cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
+      transition: background var(--motion-hover) var(--easing-out), border-color var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
       margin-top: var(--space-5);
       min-height: 48px;
     }
-    .hp-stage--vip .hp-eco-cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); transform: translateY(-1px); }
+    .hp-stage--vip .hp-eco-cta:hover { background: rgba(201, 168, 76, 0.06); border-color: var(--color-accent-gold); color: var(--color-accent-gold-bright); transform: translateY(-1px); }
     .hp-stage--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
     /* Section CTA secondary (ghost) — §5 */
@@ -654,23 +656,25 @@
     @media (min-width: 768px) {
       .hp-router-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); }
     }
+    /* §11 closing router buttons — ring-only (Paul directive 2026-04-27; gold-fill DEPRECATED) */
     .hp-router-btn {
       display: flex; align-items: center; justify-content: space-between;
       gap: var(--space-3);
       height: var(--router-btn-height);
       padding: var(--space-4) var(--space-5);
-      background: var(--color-accent-gold);
-      color: var(--color-bg-primary);
-      border: 1px solid var(--color-accent-gold);
+      background: transparent;
+      color: var(--color-accent-gold);
+      border: 1px solid rgba(201, 168, 76, 0.45);
       border-radius: var(--router-btn-radius);
       font-family: var(--font-utility); font-weight: 600;
       font-size: var(--type-cta-secondary);
       letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out);
+      transition: background var(--motion-hover) var(--easing-out), border-color var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out);
     }
-    .hp-router-btn:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
+    .hp-router-btn:hover { background: rgba(201, 168, 76, 0.06); border-color: var(--color-accent-gold); color: var(--color-accent-gold-bright); }
     .hp-router-btn:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-    .hp-router-btn__arrow { color: var(--color-bg-primary); font-size: 1.125em; }
+    .hp-router-btn__arrow { color: var(--color-accent-gold); font-size: 1.125em; transition: color var(--motion-hover) var(--easing-out); }
+    .hp-router-btn:hover .hp-router-btn__arrow { color: var(--color-accent-gold-bright); }
 
     /* Footer credentialing strip */
     .hp-footer__credential {

@@ -71,13 +71,23 @@ img{max-width:100%;height:auto;display:block}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--gb);outline-offset:3px;border-radius:4px}
 
-/* ── BUTTON SYSTEM (v2.1 unified) ──
-   Three classes, one aesthetic. Every button on every page collapses to:
-     .btn-gold-fill  → PRIMARY (gold-fill, navy ink)
-     .btn-gold       → SECONDARY (transparent body, gold hairline)
+/* ── BUTTON SYSTEM (v2.1 ring-only, Paul directive 2026-04-27) ──
+   Single-tier ring aesthetic. Paul: "I like the buttons that have only
+   the gold ring around them, NOT the ones that are filled in with all
+   yellow." Gold-fill DEPRECATED 2026-04-27.
+
+   Every button on every page collapses to:
+     .btn-gold-fill  → PRIMARY (gold ring; visually identical to .btn-gold)
+     .btn-gold       → SECONDARY (gold ring)
      .btn-gold--tertiary → TERTIARY (link-style chevron CTAs)
-   Sharp 2px radius (editorial, not Bootstrap-rounded). Generous padding.
-   Refined elevation. Smooth hover lift. Premium typography (Outfit 600). */
+
+   .btn-gold-fill class name preserved (used 30+ times in HTML across
+   pages) but redefined to the canonical ring style — zero HTML churn.
+   Hierarchy now carried by placement / sizing / surrounding composition,
+   not by treatment difference. Editorial / matchmaking-luxury aesthetic.
+
+   Sharp 2px radius. Generous padding. Refined elevation. Smooth hover
+   lift. Premium typography (Outfit 600, .05em, 0.9375rem). */
 
 .btn-gold,
 .btn-gold-fill,
@@ -93,53 +103,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gb);outline-offset:
   text-transform:uppercase;
   padding:var(--mm-btn-pad-y) var(--mm-btn-pad-x);
   border-radius:var(--mm-btn-radius);
-  border:1px solid var(--gold);
+  border:1px solid rgba(201,168,76,.45);
+  background:transparent;
+  color:var(--gold);
   cursor:pointer;
   white-space:nowrap;
   text-decoration:none;
+  box-shadow:var(--mm-btn-shadow-rest);
   transition:background var(--mm-btn-transition), border-color var(--mm-btn-transition), color var(--mm-btn-transition), box-shadow var(--mm-btn-transition), transform var(--mm-btn-transition);
 }
-
-/* SECONDARY — transparent, gold hairline border */
-.btn-gold{
-  background:transparent;
-  color:var(--gold);
-  border-color:rgba(201,168,76,.45);
-  box-shadow:var(--mm-btn-shadow-rest);
-}
 .btn-gold:hover,
-.btn-gold:focus-visible{
+.btn-gold:focus-visible,
+.btn-gold-fill:hover,
+.btn-gold-fill:focus-visible,
+.btn:hover,
+.btn:focus-visible{
   background:rgba(201,168,76,.06);
   border-color:var(--gold);
   color:var(--gold-hover);
   box-shadow:var(--mm-btn-shadow-hover);
   transform:translateY(-1px);
 }
-.btn-gold:active{ transform:translateY(0); box-shadow:var(--mm-btn-shadow-rest); }
-
-/* PRIMARY — solid gold fill, navy ink */
-.btn-gold-fill,
-.btn{
-  background:var(--gold);
-  color:var(--navy);
-  border-color:var(--gold);
-  box-shadow:var(--mm-btn-shadow-fill);
-}
-.btn-gold-fill:hover,
-.btn-gold-fill:focus-visible,
-.btn:hover,
-.btn:focus-visible{
-  background:var(--gold-hover);
-  border-color:var(--gold-hover);
-  color:var(--navy);
-  box-shadow:var(--mm-btn-shadow-hover);
-  transform:translateY(-1px);
-  opacity:1;
-}
+.btn-gold:active,
 .btn-gold-fill:active,
-.btn:active{ transform:translateY(0); box-shadow:var(--mm-btn-shadow-fill); opacity:1; }
+.btn:active{ transform:translateY(0); box-shadow:var(--mm-btn-shadow-rest); }
+.btn-gold[disabled],
 .btn-gold-fill[disabled],
-.btn[disabled]{ opacity:.5; cursor:default; transform:none; box-shadow:var(--mm-btn-shadow-rest); }
+.btn[disabled]{ opacity:.5; cursor:default; transform:none; box-shadow:var(--mm-btn-shadow-rest); background:transparent; }
 
 /* SIZE VARIANTS — proportional reductions of the canonical block */
 .btn-gold-sm{
@@ -199,8 +189,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gb);outline-offset:
 .btn-gold--tertiary > span[aria-hidden]{ transition:transform var(--mm-btn-transition); display:inline-block; }
 .btn-gold--tertiary:hover > span[aria-hidden]{ transform:translateX(3px); }
 
-/* ALIASES — page-locked one-off classes upgraded to canonical
-   (HTML unchanged; CSS routes them to the unified system) */
+/* ALIASES — page-locked one-off classes upgraded to canonical ring style
+   (HTML unchanged; CSS routes them to the unified ring system) */
 .success-cta,
 .rp-btn,
 .rp-success-cta{
@@ -215,14 +205,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gb);outline-offset:
   text-transform:uppercase;
   padding:var(--mm-btn-pad-y) var(--mm-btn-pad-x);
   border-radius:var(--mm-btn-radius);
-  border:1px solid var(--gold);
-  background:var(--gold);
-  color:var(--navy);
+  border:1px solid rgba(201,168,76,.45);
+  background:transparent;
+  color:var(--gold);
   cursor:pointer;
   white-space:nowrap;
   text-decoration:none;
-  box-shadow:var(--mm-btn-shadow-fill);
-  transition:background var(--mm-btn-transition), border-color var(--mm-btn-transition), box-shadow var(--mm-btn-transition), transform var(--mm-btn-transition), opacity var(--mm-btn-transition);
+  box-shadow:var(--mm-btn-shadow-rest);
+  transition:background var(--mm-btn-transition), border-color var(--mm-btn-transition), color var(--mm-btn-transition), box-shadow var(--mm-btn-transition), transform var(--mm-btn-transition), opacity var(--mm-btn-transition);
 }
 .success-cta:hover,
 .success-cta:focus-visible,
@@ -230,14 +220,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gb);outline-offset:
 .rp-btn:focus-visible,
 .rp-success-cta:hover,
 .rp-success-cta:focus-visible{
-  background:var(--gold-hover);
-  border-color:var(--gold-hover);
+  background:rgba(201,168,76,.06);
+  border-color:var(--gold);
+  color:var(--gold-hover);
   box-shadow:var(--mm-btn-shadow-hover);
   transform:translateY(-1px);
 }
 .success-cta:active,
-.rp-btn:active{ transform:translateY(0); box-shadow:var(--mm-btn-shadow-fill); }
-.rp-btn:disabled{ opacity:.55; cursor:wait; transform:none; box-shadow:var(--mm-btn-shadow-rest); }
+.rp-btn:active{ transform:translateY(0); box-shadow:var(--mm-btn-shadow-rest); }
+.rp-btn:disabled{ opacity:.55; cursor:wait; transform:none; box-shadow:var(--mm-btn-shadow-rest); background:transparent; }
 
 .success-cta-secondary,
 .hw-cta-link{
