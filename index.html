@@ -200,16 +200,20 @@
     @media (min-width: 768px)  { .hp-section { padding-left: var(--space-6); padding-right: var(--space-6); } }
     @media (min-width: 1024px) { .hp-section { padding-left: var(--space-7); padding-right: var(--space-7); } }
 
-    /* Bg luminance shift A→B→A→C→A→B→A */
+    /* Bg luminance shift v2.1 — alternates per canonical journey */
     .hp-method        { background: var(--color-bg-section-b); }
+    .hp-stage         { background: var(--color-bg-section-a); }
+    .hp-stage:nth-of-type(odd) { background: var(--color-bg-section-b); }
+    .hp-bridge        { background: var(--color-bg-section-c); padding-top: var(--space-6); padding-bottom: var(--space-6); }
     .hp-centerpiece   { background: var(--color-bg-section-a); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
     .hp-ecosystem     { background: var(--color-bg-section-c); }
     .hp-app-band      { background: var(--color-bg-section-a); padding-top: var(--space-section-y-app); padding-bottom: var(--space-section-y-app); }
+    .hp-stage--vip    { background: var(--color-bg-section-b); border-top: 1px solid var(--hp-hairline-accent); border-bottom: 1px solid var(--hp-hairline-accent); }
     .hp-origin        { background: var(--color-bg-section-b); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
     .hp-router        { background: var(--color-bg-section-a); }
 
     /* Subtle radial gold atmosphere per non-hero section */
-    .hp-method::before, .hp-centerpiece::before, .hp-ecosystem::before,
+    .hp-method::before, .hp-stage::before, .hp-centerpiece::before, .hp-ecosystem::before,
     .hp-app-band::before, .hp-origin::before, .hp-router::before {
       content: ''; position: absolute; inset: 0;
       background: var(--hp-atmosphere-radial-section);
@@ -220,6 +224,8 @@
       max-width: 720px; margin: 0 auto;
       text-align: center;
     }
+    .hp-stage      .hp-section__content { max-width: 720px; }
+    .hp-bridge     .hp-section__content { max-width: 64ch; }
     .hp-centerpiece .hp-section__content { max-width: 800px; }
     .hp-ecosystem  .hp-section__content { max-width: 1080px; }
     .hp-app-band   .hp-section__content { max-width: 720px; text-align: center; }
@@ -370,6 +376,35 @@
       .hp-stat-cell:nth-child(1) { border-left: 0; }
     }
 
+    /* v2.1 D-5 — 3-cell stat band (Atlas locked: A Decade · By Application · Built on Organic Growth) */
+    .hp-stat-band--3 {
+      max-width: 560px;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+    }
+    .hp-stat-band--3 .hp-stat-cell { border-top: 1px solid var(--hp-hairline-ambient); border-left: 0; }
+    .hp-stat-band--3 .hp-stat-cell:nth-child(1) { border-top: 0; }
+    @media (min-width: 768px) {
+      .hp-stat-band--3 { max-width: 720px; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; }
+      .hp-stat-band--3 .hp-stat-cell { border-top: 0; border-left: 1px solid var(--hp-hairline-ambient); }
+      .hp-stat-band--3 .hp-stat-cell:nth-child(1) { border-left: 0; }
+    }
+
+    /* v2.1 hero — dual CTA row (primary Assessment + secondary Connection Code) */
+    .hp-hero__cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      width: 100%;
+      margin: 0 0 var(--space-6);
+    }
+    @media (min-width: 768px) {
+      .hp-hero__cta-row { flex-direction: row; justify-content: center; gap: var(--space-5); }
+    }
+    .hp-hero__cta-row .hp-hero__cta { margin: 0; }
+    .hp-hero__cta--secondary { margin: 0; }
+
     /* Section eyebrow + 24×1 accent rule */
     .hp-eyebrow {
       font-family: var(--font-utility); font-weight: 500;
@@ -414,6 +449,67 @@
       max-width: 70ch; margin-left: 0; margin-right: 0;
     }
     .hp-origin .hp-eyebrow { text-align: left; }
+
+    /* v2.1 B-1 thesis surface — Cormorant italic, hairline-bracketed */
+    .hp-body--thesis {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.1875rem, 1.8vw, 1.625rem);
+      font-style: normal;
+      line-height: 1.45;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      margin: var(--space-6) auto;
+      padding: var(--space-5) 0;
+      border-top: 1px solid var(--hp-hairline-accent);
+      border-bottom: 1px solid var(--hp-hairline-accent);
+      max-width: 56ch;
+    }
+    .hp-body--thesis em {
+      font-style: italic;
+      color: var(--color-text-primary);
+    }
+
+    /* v2.1 B-3 narrative bridge */
+    .hp-body--bridge {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: normal;
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      max-width: 64ch;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .hp-body--bridge em {
+      font-style: italic;
+      color: var(--color-text-primary);
+    }
+
+    /* v2.1 §9 VIP apex CTA — gold-fill primary, replaces removed .hp-eco-slot--vip context */
+    .hp-stage--vip .hp-eco-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4em;
+      padding: var(--space-2) var(--space-5);
+      background: var(--color-accent-gold);
+      color: var(--color-bg-primary);
+      border: 1px solid var(--color-accent-gold);
+      border-radius: 2px;
+      font-family: var(--font-utility);
+      font-weight: 600;
+      font-size: var(--type-cta-primary);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
+      margin-top: var(--space-5);
+      min-height: 48px;
+    }
+    .hp-stage--vip .hp-eco-cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); transform: translateY(-1px); }
+    .hp-stage--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
     /* Section CTA secondary (ghost) — §5 */
     .hp-cta--secondary {
@@ -650,12 +746,10 @@
       <span class="nm">MatchMakers<sup>&trade;</sup></span>
     </a>
     <div class="nav-links">
-      <a href="/" class="nl">Home</a>
-      <a href="/#app" class="nl">App</a>
-      <a href="/playbook/" class="nl">Coach &amp; Playbook</a>
-      <a href="/vip/" class="nl">VIP</a>
       <a href="/assessment/" class="nl">Assessment</a>
-      <a href="/guide/" class="nb">Free Guide</a>
+      <a href="/guide/" class="nl">Connection Code</a>
+      <a href="/playbook/" class="nl">Coach &amp; Playbook</a>
+      <a href="/vip/" class="nb">VIP</a>
     </div>
     <button class="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -676,14 +770,16 @@
       </p>
       <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>
       <hr class="hp-rule--wordmark" aria-hidden="true">
-      <h1 class="hp-hero__headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Not by algorithm.</em></h1>
-      <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged.<br>MatchMakers is engineered to find what you actually came for.</p>
-      <a href="/playbook/" class="hp-hero__cta">Start with the Playbook</a>
-      <div class="hp-stat-band" aria-label="Institutional posture">
+      <h1 class="hp-hero__headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Refined by practice.</em></h1>
+      <p class="hp-hero__subhead">Start where every match starts &mdash; with what you&rsquo;re actually looking for. A short Assessment surfaces it. The Connection Code methodology shapes the rest.</p>
+      <div class="hp-hero__cta-row">
+        <a href="/assessment/" class="hp-hero__cta">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
+        <a href="/guide/" class="hp-cta--secondary hp-hero__cta--secondary">Read the Connection Code <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="hp-stat-band hp-stat-band--3" aria-label="Institutional posture">
         <div class="hp-stat-cell">A Decade in the Making</div>
         <div class="hp-stat-cell">By Application</div>
-        <div class="hp-stat-cell">0% Paid Acquisition</div>
-        <div class="hp-stat-cell">100% Organic Growth</div>
+        <div class="hp-stat-cell">Built on Organic Growth</div>
       </div>
     </div>
   </section>
@@ -691,21 +787,52 @@
   <!-- §3↔§4 section break hairline -->
   <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- §4 THE METHOD -->
+  <!-- §4 THE METHOD — B-1 thesis surface + B-2 engagement contrast (Atlas D-3 + locked B-2) -->
   <section class="hp-section hp-method hp-reveal">
     <div class="hp-section__content">
       <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">01 &middot;</span> The Method</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">Three systems. <em class="hp-italic-gold-accent">One methodology.</em></h2>
-      <p class="hp-body">Most dating platforms are engineered for engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
-      <p class="hp-body">Three systems. One methodology &mdash; refined over more than a decade of human matchmaking, now scaled into the app, the Playbook, and your Coach. Each reflects how matchmaking actually works when a person does it well: observation, response, and intent. Not how an algorithm guesses at it.</p>
+      <!-- B-1 thesis surface (Atlas D-3 ratified phrasing c) -->
+      <p class="hp-body hp-body--thesis"><em>Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</em></p>
+      <!-- B-2 engagement contrast (locked) -->
+      <p class="hp-body">Most dating platforms are engineered for engagement &mdash; time spent, swipes logged, messages bounced. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
     </div>
   </section>
 
-  <!-- §5 THE CENTERPIECE (Coach & Playbook) -->
-  <section class="hp-section hp-centerpiece hp-reveal">
+  <!-- §5 STAGE 1 — Assessment (canonical journey stage 1) -->
+  <section class="hp-section hp-stage hp-reveal" id="stage-assessment">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">02 &middot;</span> Coach &amp; Playbook</p>
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">02 &middot;</span> Stage 1 &mdash; Assessment</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">Start with <em class="hp-italic-gold-accent">what you&rsquo;re actually looking for.</em></h2>
+      <p class="hp-body">A short Assessment surfaces it &mdash; the kind of relationship, the kind of presence, the kind of standard you&rsquo;re bringing to this. The results shape how the methodology applies to you.</p>
+      <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- §6 STAGE 2 — Connection Code (canonical journey stage 2) -->
+  <section class="hp-section hp-stage hp-reveal" id="stage-connection-code">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">03 &middot;</span> Stage 2 &mdash; Connection Code</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">distilled.</em></h2>
+      <p class="hp-body">A short read on the Connection Code &mdash; the foundation behind everything we make. Five signals, one framework, a different way of reading what&rsquo;s actually in front of you.</p>
+      <a href="/guide/" class="hp-cta--secondary">Read the Connection Code <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- B-3 narrative bridge (Atlas D-6 ratified phrasing) -->
+  <section class="hp-section hp-bridge hp-reveal">
+    <div class="hp-section__content">
+      <p class="hp-body hp-body--bridge">The methodology came out of more than a decade of human matchmaking &mdash; refined match by match, person by person, across thousands of conversations and decisions. <em>Refined in practice, not designed for engagement.</em></p>
+    </div>
+  </section>
+
+  <!-- §7 STAGE 3 — Coach & Playbook (canonical journey stage 3; PAIRED centerpiece per C-3) -->
+  <section class="hp-section hp-centerpiece hp-reveal" id="stage-coach-playbook">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">04 &middot;</span> Stage 3 &mdash; Coach &amp; Playbook</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
       <p class="hp-body">The Playbook is the methodology &mdash; refined over more than a decade of human matchmaking. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
@@ -713,39 +840,10 @@
     </div>
   </section>
 
-  <!-- §6 THE ECOSYSTEM (3-slot — App promoted out per D5) -->
-  <section class="hp-section hp-ecosystem hp-reveal" id="ecosystem">
-    <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">03 &middot;</span> The Ecosystem</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">Three ways into the practice.</h2>
-      <div class="hp-eco-grid">
-        <!-- §6.1 VIP — gold-fill primary CTA per D4 carve-out; Legal §6.1 v2 CLEARED -->
-        <div class="hp-eco-slot hp-eco-slot--vip">
-          <h3 class="hp-eco-slot__eyebrow">VIP Matchmaking</h3>
-          <p class="hp-eco-slot__body">By application. Every application is personally reviewed by your VIP Coach &mdash; a human matchmaker &mdash; never by an algorithm. The matchmaker walks you through it, match by match. For people who want the methodology applied directly, not just delivered as a tool.</p>
-          <a href="/vip/" class="hp-eco-cta">Apply for VIP <span aria-hidden="true">&rarr;</span></a>
-        </div>
-        <!-- §6.2 Free Guide — ghost CTA -->
-        <div class="hp-eco-slot">
-          <h3 class="hp-eco-slot__eyebrow">Free Guide</h3>
-          <p class="hp-eco-slot__body">A short read on the Connection Code methodology &mdash; the foundation behind everything we make.</p>
-          <a href="/guide/" class="hp-cta--secondary">Download <span aria-hidden="true">&rarr;</span></a>
-        </div>
-        <!-- §6.3 Assessment — ghost CTA -->
-        <div class="hp-eco-slot">
-          <h3 class="hp-eco-slot__eyebrow">Assessment</h3>
-          <p class="hp-eco-slot__body">A short assessment to surface what you&rsquo;re actually looking for. The results shape how the methodology applies to you.</p>
-          <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- §6↔§7 section break hairline -->
   <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- §7 THE APP — APP_BADGE_BAND (D5; Bloomberg pattern) -->
+  <!-- §8 THE APP — APP_BADGE_BAND (D5; Bloomberg pattern) -->
   <section class="hp-section hp-app-band hp-reveal" id="app">
     <div class="hp-section__content">
       <p class="hp-eyebrow">The App</p>
@@ -767,28 +865,41 @@
     </div>
   </section>
 
-  <!-- §8 ORIGIN (long-form essay) -->
-  <section class="hp-section hp-origin hp-reveal">
+  <!-- §9 STAGE 4 — VIP (canonical journey stage 4 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
+  <section class="hp-section hp-stage hp-stage--vip hp-reveal" id="stage-vip">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">04 &middot;</span> Origin</p>
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">05 &middot;</span> Stage 4 &mdash; VIP</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">Built <em class="hp-italic-gold-accent">match by match.</em></h2>
-      <p class="hp-body">MatchMakers was built on more than a decade of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools beat the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook, and practiced inside the app.</p>
+      <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied directly.</em></h2>
+      <!-- B-4 ratified narrative (Atlas locked; Legal §6.1 v2 envelope) -->
+      <p class="hp-body">Every VIP application is personally reviewed by a human matchmaker &mdash; never by an algorithm. Match by match. Person by person.</p>
+      <p class="hp-body">For people who want the methodology applied directly, not just delivered as a tool.</p>
+      <a href="/vip/" class="hp-eco-cta">Apply for VIP <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
-  <!-- §8↔§9 section break hairline -->
+  <!-- §10 ORIGIN (long-form essay; thesis-supporting backstop) -->
+  <section class="hp-section hp-origin hp-reveal">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">06 &middot;</span> Origin</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">Built <em class="hp-italic-gold-accent">match by match.</em></h2>
+      <p class="hp-body">MatchMakers was built on more than a decade of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools matter more than the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook, and practiced inside the app.</p>
+    </div>
+  </section>
+
+  <!-- §10↔§11 section break hairline -->
   <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- §9 PICK THE LEVEL (3-button gold-fill router per ADJ-5) -->
+  <!-- §11 CLOSING — "Three ways in. One methodology." (Atlas D-7 ratified router order) -->
   <section class="hp-section hp-router hp-reveal">
     <div class="hp-section__content">
-      <h2 class="hp-headline">Pick the level that fits where you are.</h2>
-      <p class="hp-body">The Playbook is where you learn the methodology. The Coach is where AI applies it to you. The app is where the methodology meets the community. VIP is where a human matchmaker applies it directly. Three ways into the same practice &mdash; pick the one that fits.</p>
+      <h2 class="hp-headline">Three ways in. <em class="hp-italic-gold-accent">One methodology.</em></h2>
+      <p class="hp-body">Connection Code is where the methodology starts. Coach &amp; Playbook is where you put it to work. VIP is where a human matchmaker applies it directly. Pick the one that fits where you are.</p>
       <div class="hp-router-grid">
-        <a href="/coach/" class="hp-router-btn">Coach <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/playbook/" class="hp-router-btn">Playbook <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/vip/" class="hp-router-btn">VIP Matchmaking <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/guide/" class="hp-router-btn">Connection Code <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/playbook/" class="hp-router-btn">Coach &amp; Playbook <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/vip/" class="hp-router-btn">VIP <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -806,7 +917,7 @@
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
     <span>By Application</span>
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>100% Organic Growth</span>
+    <span>Built on Organic Growth</span>
   </div>
 </div>
 
