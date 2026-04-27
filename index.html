@@ -467,6 +467,52 @@
     .hp-hero__cta--card:focus-visible .hp-hero__cta-arrow { transform: translateX(3px); }
     .hp-hero__cta--card:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
+    /* v2.3 hero — compact quick-hit band (4 small pill links above the larger 4-card grid) */
+    .hp-hero__quickhit-band {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2);
+      width: 100%;
+      max-width: 720px;
+      margin: 0 0 var(--space-5);
+    }
+    @media (min-width: 640px) {
+      .hp-hero__quickhit-band { grid-template-columns: repeat(4, 1fr); max-width: 880px; }
+    }
+    .hp-hero__quickhit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--color-accent-gold-bright);
+      border: 1px solid rgba(201, 168, 76, 0.32);
+      border-radius: 2px;
+      font-family: var(--font-utility);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: border-color var(--motion-hover) var(--easing-out), background var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out);
+    }
+    .hp-hero__quickhit:hover,
+    .hp-hero__quickhit:focus-visible {
+      background: rgba(201, 168, 76, 0.06);
+      border-color: var(--color-accent-gold);
+      color: var(--color-accent-gold-bright);
+      outline: none;
+    }
+    .hp-hero__quickhit:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 3px; }
+    .hp-hero__quickhit-arrow {
+      font-size: 0.78em;
+      transition: transform var(--motion-hover) var(--easing-out);
+    }
+    .hp-hero__quickhit:hover .hp-hero__quickhit-arrow,
+    .hp-hero__quickhit:focus-visible .hp-hero__quickhit-arrow { transform: translateX(2px); }
+
     /* Section eyebrow + 24×1 accent rule */
     .hp-eyebrow {
       font-family: var(--font-utility); font-weight: 500;
@@ -836,6 +882,13 @@
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">Start where every match starts &mdash; with what you&rsquo;re actually looking for. A short Assessment surfaces it. The Connection Code&trade; methodology shapes the rest.</p>
+      <!-- v2.3 quick-hit band — compact 4-link top frame for instant entry-point visitors -->
+      <div class="hp-hero__quickhit-band" aria-label="Quick navigation">
+        <a href="/assessment/" class="hp-hero__quickhit">Assessment <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/guide/" class="hp-hero__quickhit">Connection Code <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/playbook/" class="hp-hero__quickhit">Coach &amp; Playbook <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/vip/" class="hp-hero__quickhit">VIP <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
       <div class="hp-hero__cta-grid" aria-label="Choose your starting point">
         <a href="/assessment/" class="hp-hero__cta hp-hero__cta--card">
           <span class="hp-hero__cta-eyebrow">Stage 1</span>
