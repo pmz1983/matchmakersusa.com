@@ -413,7 +413,7 @@ async function getUserPlan(email: string): Promise<{ plan: string; messagesRemai
     .from("purchases")
     .select("product, plan, messages_remaining")
     .eq("email", email)
-    .in("product", ["dating_coach_premium", "dating_coach_unlimited"])
+    .in("product", ["dating_coach_and_playbook", "dating_coach_premium", "dating_coach_unlimited"])
     .eq("status", "completed")
     .order("created_at", { ascending: false })
     .limit(1);
@@ -423,12 +423,19 @@ async function getUserPlan(email: string): Promise<{ plan: string; messagesRemai
   }
 
   const purchase = data[0];
-  const plan = purchase.plan || (purchase.product === "dating_coach_unlimited" ? "unlimited" : "premium");
+  const plan =
+    purchase.plan ||
+    (purchase.product === "dating_coach_unlimited"
+      ? "unlimited"
+      : purchase.product === "dating_coach_and_playbook"
+        ? "dating_coach_and_playbook"
+        : "premium");
   return { plan, messagesRemaining: purchase.messages_remaining ?? null };
 }
 
-// Decrement messages_remaining for premium users; returns false if no messages left
-async function decrementPremiumMessage(email: string): Promise<boolean> {
+// Decrement messages_remaining for any quota-bearing tier (premium or
+// dating_coach_and_playbook). Returns false if no messages left or no row found.
+async function decrementMessageCount(email: string): Promise<boolean> {
   // Atomically decrement messages_remaining where it is > 0
   const { data, error } = await supabase
     .rpc("decrement_messages_remaining", { user_email: email });
@@ -440,7 +447,7 @@ async function decrementPremiumMessage(email: string): Promise<boolean> {
       .from("purchases")
       .select("id, messages_remaining")
       .eq("email", email)
-      .eq("product", "dating_coach_premium")
+      .in("product", ["dating_coach_and_playbook", "dating_coach_premium"])
       .eq("status", "completed")
       .order("created_at", { ascending: false })
       .limit(1);
@@ -526,13 +533,38 @@ Deno.serve(async (req: Request) => {
           { status: 429, headers }
         );
       }
-      const decremented = await decrementPremiumMessage(userEmail);
+      const decremented = await decrementMessageCount(userEmail);
       if (!decremented) {
         return new Response(
           JSON.stringify({
             error: "You've used all 25 Premium coaching messages. Upgrade to Unlimited for unrestricted access.",
             limit_reached: true,
             plan: "premium",
+            messages_remaining: 0,
+          }),
+          { status: 429, headers }
+        );
+      }
+    } else if (plan === "dating_coach_and_playbook") {
+      // Dating Coach & Playbook: 3 lifetime messages included with the $250 set-up fee
+      if (messagesRemaining !== null && messagesRemaining <= 0) {
+        return new Response(
+          JSON.stringify({
+            error: "You've used all 3 free Coach messages included with the Dating Coach & Playbook. Upgrade to Premium for 25 messages.",
+            limit_reached: true,
+            plan: "dating_coach_and_playbook",
+            messages_remaining: 0,
+          }),
+          { status: 429, headers }
+        );
+      }
+      const decremented = await decrementMessageCount(userEmail);
+      if (!decremented) {
+        return new Response(
+          JSON.stringify({
+            error: "You've used all 3 free Coach messages included with the Dating Coach & Playbook. Upgrade to Premium for 25 messages.",
+            limit_reached: true,
+            plan: "dating_coach_and_playbook",
             messages_remaining: 0,
           }),
           { status: 429, headers }
@@ -610,7 +642,7 @@ Deno.serve(async (req: Request) => {
 
     // Build remaining-messages info based on plan
     let remainingMessages: number | null = null;
-    if (plan === "premium") {
+    if (plan === "premium" || plan === "dating_coach_and_playbook") {
       // Re-fetch after decrement to get accurate count
       const updated = await getUserPlan(userEmail);
       remainingMessages = updated.messagesRemaining;
