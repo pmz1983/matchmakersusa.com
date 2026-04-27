@@ -334,7 +334,7 @@
       <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">One set-up fee. Built to work forever.</h2>
       <p class="sub" style="text-align:center;margin:0 auto 2.5rem;max-width:620px;">$250 once. Full Playbook access today — and the Coach, Script Studio, and persistent memory as each lands in Phase A, included in your lifetime access. Every content update we ever ship is yours. No renewal, no expiring access, no downgrade trap.</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
-        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold-fill" style="padding:1.1rem 2.25rem;" aria-label="Start for $250 — lifetime access to Dating Coach and Playbook">Start for $250 →</button>
+        <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold-fill" aria-label="Start for $250 — lifetime access to Dating Coach and Playbook">Start for $250 →</button>
         <a href="/vip/" class="btn-gold">Explore VIP →</a>
       </div>
       <div class="gold-line" style="margin-top:2.5rem;"></div>
@@ -352,12 +352,12 @@
       <div style="font-size:.65rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(201,168,76,.5);margin-bottom:10px;font-family:var(--pd);">The Playbook Comes First</div>
       <div style="font-family:var(--cg);font-size:1.6rem;color:#fff;margin-bottom:12px;line-height:1.2;">The Dating Coach is built on the Playbook.</div>
       <div style="font-size:.85rem;color:rgba(200,214,229,.55);line-height:1.7;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);">Every coaching response draws from the methodology, frameworks, and scripts in the Playbook. This is by design &mdash; your sessions are dramatically more effective when you understand the system they're built on.</div>
-      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);">Get The Playbook &mdash; $250 &rarr;</button>
+      <button data-product="playbook" onclick="closePreCheckout();setTimeout(function(){document.querySelector('[data-product=playbook]').click()},200);" class="btn-gold-fill" style="width:100%;margin-bottom:10px;">Get The Playbook &mdash; $250 &rarr;</button>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
         <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
-          <button onclick="unlockFromGate()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:var(--gold);font-family:var(--pd);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Unlock</button>
+          <button onclick="unlockFromGate()" class="btn-gold btn-gold-sm">Unlock</button>
         </div>
         <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
       </div>
@@ -370,13 +370,13 @@
     <label for="pcm-email" style="font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8BA0BC;font-family:var(--pd);display:block;margin-bottom:6px;">Your Email</label>
     <input type="email" id="pcm-email" placeholder="your@email.com" style="width:100%;padding:12px 16px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.9rem;font-family:var(--pd);outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')proceedToCheckout()">
     <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:var(--pd);"></div>
-    <button id="pcm-proceed" onclick="proceedToCheckout()" style="width:100%;padding:14px;border-radius:10px;border:none;font-family:var(--pd);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;background:var(--gold);color:var(--navy);transition:all .2s;">Continue to Payment &rarr;</button>
+    <button id="pcm-proceed" onclick="proceedToCheckout()" class="btn-gold-fill" style="width:100%;margin-bottom:10px;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
     <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
       <p id="pcm-promo-toggle" style="font-size:.75rem;color:rgba(201,168,76,.7);font-family:var(--pd);margin:0 0 8px;">Have an access or promo code?</p>
       <div id="pcm-promo-area" style="display:flex;gap:8px;margin-top:0;flex-wrap:wrap;">
         <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
-        <button onclick="applyPromoCode()" style="padding:10px 18px;border-radius:8px;border:1.5px solid rgba(201,168,76,.5);background:transparent;color:var(--gold);font-family:var(--pd);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Apply</button>
+        <button onclick="applyPromoCode()" class="btn-gold btn-gold-sm">Apply</button>
       </div>
       <div id="pcm-promo-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
     </div>
