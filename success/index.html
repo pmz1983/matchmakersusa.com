@@ -336,8 +336,15 @@
     if (emailAddr) {
       document.getElementById('playbook-email').textContent = emailAddr;
     }
-    // Store access locally
+    // Store access locally — Playbook + bundled Coach unlock together
+    // (dating_coach_and_playbook product per Q1 ratification 2026-04-27;
+    //  parallel to showCoach pattern so the orb unlocks immediately
+    //  with the 3 free Coach messages bundled in the $250 purchase)
     localStorage.setItem('pb_access', '1');
+    localStorage.setItem('pb_dc_access', '1');
+    if (!localStorage.getItem('pb_dc_first')) {
+      localStorage.setItem('pb_dc_first', Date.now().toString());
+    }
   }
 
   function showCoach(code, emailAddr) {
