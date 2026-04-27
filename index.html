@@ -392,20 +392,80 @@
       .hp-stat-band--3 .hp-stat-cell:nth-child(1) { border-left: 0; }
     }
 
-    /* v2.1 hero — dual CTA row (primary Assessment + secondary Connection Code) */
-    .hp-hero__cta-row {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* v2.2 hero — 4-card stage grid (Assessment / Connection Code / Coach & Playbook / VIP) */
+    .hp-hero__cta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: var(--space-3);
       width: 100%;
+      max-width: 720px;
       margin: 0 0 var(--space-6);
     }
-    @media (min-width: 768px) {
-      .hp-hero__cta-row { flex-direction: row; justify-content: center; gap: var(--space-5); }
+    @media (min-width: 640px) {
+      .hp-hero__cta-grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
     }
-    .hp-hero__cta-row .hp-hero__cta { margin: 0; }
-    .hp-hero__cta--secondary { margin: 0; }
+    @media (min-width: 1024px) {
+      .hp-hero__cta-grid { grid-template-columns: repeat(4, 1fr); max-width: 1080px; }
+    }
+    .hp-hero__cta--card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-2);
+      height: auto;
+      min-height: 110px;
+      padding: var(--space-4) var(--space-4);
+      background: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid rgba(201, 168, 76, 0.32);
+      border-radius: var(--cta-primary-radius);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color var(--motion-hover) var(--easing-out), background var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin: 0;
+    }
+    .hp-hero__cta--card:hover,
+    .hp-hero__cta--card:focus-visible {
+      background: rgba(201, 168, 76, 0.05);
+      border-color: var(--color-accent-gold);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .hp-hero__cta-eyebrow {
+      font-family: var(--font-utility);
+      font-weight: 500;
+      font-size: var(--type-stat-label);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.78);
+      display: block;
+    }
+    .hp-hero__cta-label {
+      font-family: var(--font-utility);
+      font-weight: 600;
+      font-size: var(--type-cta-primary);
+      letter-spacing: 0.04em;
+      color: var(--color-text-primary);
+      line-height: 1.25;
+      text-transform: uppercase;
+      display: block;
+      margin-top: auto;
+    }
+    .hp-hero__cta-arrow {
+      font-family: var(--font-utility);
+      color: var(--color-accent-gold);
+      font-size: 1.125rem;
+      align-self: flex-end;
+      margin-top: var(--space-1);
+      transition: transform var(--motion-hover) var(--easing-out);
+    }
+    .hp-hero__cta--card:hover .hp-hero__cta-arrow,
+    .hp-hero__cta--card:focus-visible .hp-hero__cta-arrow { transform: translateX(3px); }
+    .hp-hero__cta--card:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
     /* Section eyebrow + 24×1 accent rule */
     .hp-eyebrow {
@@ -763,25 +823,43 @@
 
 <main>
 
-  <!-- §3 HERO (anchor) -->
+  <!-- §3 HERO (anchor) — v2.2 "Take Dating to the Next Level" treatment per Atlas locked phrasing -->
   <section class="hp-hero" id="hero">
     <div class="hp-hero__content">
       <p class="hp-hero__eyebrow" aria-label="Institutional credentials">
-        <span class="hp-hero__eyebrow-line">A Decade in the Making</span>
+        <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
         <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
-        <span class="hp-hero__eyebrow-line">matchmakersusa.com</span>
-        <span class="hp-hero__eyebrow-line">By Application</span>
+        <span class="hp-hero__eyebrow-line">Methodology, not algorithm</span>
+        <span class="hp-hero__eyebrow-line">Human-led matchmaking</span>
       </p>
       <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>
       <hr class="hp-rule--wordmark" aria-hidden="true">
-      <h1 class="hp-hero__headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Refined by practice.</em></h1>
+      <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">Start where every match starts &mdash; with what you&rsquo;re actually looking for. A short Assessment surfaces it. The Connection Code&trade; methodology shapes the rest.</p>
-      <div class="hp-hero__cta-row">
-        <a href="/assessment/" class="hp-hero__cta">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
-        <a href="/guide/" class="hp-cta--secondary hp-hero__cta--secondary">Read the Connection Code <span aria-hidden="true">&rarr;</span></a>
+      <div class="hp-hero__cta-grid" aria-label="Choose your starting point">
+        <a href="/assessment/" class="hp-hero__cta hp-hero__cta--card">
+          <span class="hp-hero__cta-eyebrow">Stage 1</span>
+          <span class="hp-hero__cta-label">Take the Assessment</span>
+          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="/guide/" class="hp-hero__cta hp-hero__cta--card">
+          <span class="hp-hero__cta-eyebrow">Stage 2</span>
+          <span class="hp-hero__cta-label">Read the Connection Code</span>
+          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="/playbook/" class="hp-hero__cta hp-hero__cta--card">
+          <span class="hp-hero__cta-eyebrow">Stage 3</span>
+          <span class="hp-hero__cta-label">Coach &amp; Playbook</span>
+          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="/vip/" class="hp-hero__cta hp-hero__cta--card">
+          <span class="hp-hero__cta-eyebrow">Stage 4</span>
+          <span class="hp-hero__cta-label">VIP MatchMaking</span>
+          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
       <div class="hp-stat-band hp-stat-band--3" aria-label="Institutional posture">
-        <div class="hp-stat-cell">A Decade in the Making</div>
+        <div class="hp-stat-cell">Over a decade in the making</div>
         <div class="hp-stat-cell">By Application</div>
         <div class="hp-stat-cell">Built on Organic Growth</div>
       </div>
@@ -796,11 +874,12 @@
     <div class="hp-section__content">
       <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">01 &middot;</span> The Method</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">Three systems. <em class="hp-italic-gold-accent">One methodology.</em></h2>
+      <h2 class="hp-headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Refined by practice.</em></h2>
       <!-- B-1 thesis surface (Atlas D-3 ratified phrasing c) -->
       <p class="hp-body hp-body--thesis"><em>Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</em></p>
       <!-- B-2 engagement contrast (locked) -->
       <p class="hp-body">Most dating platforms are engineered for engagement &mdash; time spent, swipes logged, messages bounced. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
+      <p class="hp-body">Three systems. One methodology &mdash; refined over more than a decade of human matchmaking, now scaled into the app, the Playbook, and your Coach.</p>
     </div>
   </section>
 
@@ -917,7 +996,7 @@
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
     <span>matchmakersusa.com</span>
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>A Decade in the Making</span>
+    <span>Over a decade in the making</span>
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
     <span>By Application</span>
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
@@ -932,7 +1011,7 @@
         <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;">
         <span class="nm">MatchMakers<sup>&trade;</sup></span>
       </div>
-      <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. More than a decade in the making. Word-of-mouth only.</p>
+      <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. Over a decade in the making. Word-of-mouth only.</p>
       <div style="margin-top:1rem;display:flex;align-items:center;gap:.75rem;">
         <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting -->
         <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold" style="display:inline-block;text-decoration:none;opacity:.88;transition:opacity .2s;">
@@ -941,29 +1020,34 @@
         <!-- APPLE_STRIP_HOLD_END -->
       </div>
     </div>
-    <div class="fc">
-      <h4>Products</h4>
-      <a href="/assessment/">Intent Assessment &mdash; Free</a>
-      <a href="/guide/">Connection Code &mdash; Free</a>
+    <div class="fc" aria-labelledby="ftr-h-products">
+      <h4 id="ftr-h-products">Products</h4>
       <a href="/playbook/">Dating Coach &amp; Playbook &mdash; $250</a>
       <a href="/vip/">VIP MatchMaking &mdash; By Consultation</a>
+      <a href="/guide/">Connection Code &mdash; Free</a>
+      <a href="/assessment/">Intent Assessment &mdash; Free</a>
     </div>
-    <div class="fc">
-      <h4>The App</h4>
+    <div class="fc" aria-labelledby="ftr-h-app">
+      <h4 id="ftr-h-app">App</h4>
       <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting -->
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold">Download Free &mdash; App Store</a>
+      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold">Download &mdash; App Store</a>
       <!-- APPLE_STRIP_HOLD_END -->
       <span style="opacity:.45;cursor:default;">Google Play &mdash; Coming Soon</span>
+      <a href="/#app">App Overview</a>
     </div>
-    <div class="fc">
-      <h4>MatchMakers LLC</h4>
+    <div class="fc" aria-labelledby="ftr-h-company">
+      <h4 id="ftr-h-company">Company</h4>
+      <a href="/contact/">Contact</a>
+      <a href="/guide/">Methodology</a>
+      <a href="mailto:customerservice@matchmakersusa.com">customerservice@matchmakersusa.com</a>
+      <a href="tel:+19293546337">(929) 354-6337</a>
+    </div>
+    <div class="fc" aria-labelledby="ftr-h-legal">
+      <h4 id="ftr-h-legal">Legal</h4>
       <a href="/privacy-policy/">Privacy Policy</a>
       <a href="/terms-of-service/">Terms of Service</a>
       <a href="/child-safety/">Child Safety</a>
-      <a href="mailto:customerservice@matchmakersusa.com">customerservice@matchmakersusa.com</a>
-      <a href="tel:+19293546337">(929) 354-6337</a>
-      <span style="display:block;font-family:var(--font-body);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(65,91,124,.15);">1991 Crocker Rd, Suite 600-755</span>
-      <span style="display:block;font-family:var(--font-body);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);">Westlake, OH 44145</span>
+      <span style="display:block;font-family:var(--font-body);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(65,91,124,.15);">MatchMakers LLC<br>1991 Crocker Rd, Suite 600-755<br>Westlake, OH 44145</span>
     </div>
   </div>
   <div class="fbot">
