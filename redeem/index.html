@@ -153,7 +153,7 @@
 
   // Map verify-code response.product to website localStorage contract.
   // Mirrors checkout.js:177-180 + coach-orb.js:754-756.
-  function applyEntitlement(product) {
+  function applyEntitlement(product, emailAddr) {
     var isCoach = product === 'dating_coach_premium' ||
                   product === 'dating_coach_unlimited' ||
                   product === 'dating_coach';
@@ -172,6 +172,10 @@
           localStorage.setItem('dc_plan', 'premium');
         }
       }
+      // Identity for coach-proxy x-user-email + plan lookup; without these,
+      // paid users fall to anonymous free-tier rate limit (webcoach §2.1)
+      if (product) { localStorage.setItem('pb_dc_product', product); }
+      if (emailAddr) { localStorage.setItem('pb_dc_user_email', emailAddr); }
     } catch (e) { /* localStorage unavailable; proceed to redirect anyway */ }
   }
 
@@ -187,7 +191,7 @@
       .then(function (data) {
         if (data && data.has_access) {
           if (window.mmTrack) { try { mmTrack('redeem_success', { product: data.product || 'unknown' }); } catch (e) {} }
-          applyEntitlement(data.product || '');
+          applyEntitlement(data.product || '', data.email || '');
           setStatus('Code accepted. Loading the Playbook&hellip;', 'ok');
           setTimeout(function () { window.location.replace('/playbook/'); }, 1200);
         } else {

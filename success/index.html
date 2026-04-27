@@ -329,18 +329,29 @@
     errorEl.style.display = 'none';
   }
 
-  function showPlaybook(code, emailAddr) {
+  function showPlaybook(code, emailAddr, product) {
     hideAll();
     playbookEl.style.display = 'block';
     document.getElementById('playbook-access-code').textContent = code || 'Check your email';
     if (emailAddr) {
       document.getElementById('playbook-email').textContent = emailAddr;
     }
-    // Store access locally
+    // Store access locally — Playbook + bundled Coach unlock together
+    // (dating_coach_and_playbook product per Q1 ratification 2026-04-27;
+    //  parallel to showCoach pattern so the orb unlocks immediately
+    //  with the 3 free Coach messages bundled in the $250 purchase)
     localStorage.setItem('pb_access', '1');
+    localStorage.setItem('pb_dc_access', '1');
+    if (!localStorage.getItem('pb_dc_first')) {
+      localStorage.setItem('pb_dc_first', Date.now().toString());
+    }
+    // Identity for coach-proxy x-user-email + plan lookup; without these,
+    // paid users fall to anonymous free-tier rate limit (webcoach §2.1)
+    if (emailAddr) { localStorage.setItem('pb_dc_user_email', emailAddr); }
+    if (product) { localStorage.setItem('pb_dc_product', product); }
   }
 
-  function showCoach(code, emailAddr) {
+  function showCoach(code, emailAddr, product) {
     hideAll();
     coachEl.style.display = 'block';
     document.getElementById('coach-access-code').textContent = code || 'Check your email';
@@ -352,6 +363,9 @@
     if (!localStorage.getItem('pb_dc_first')) {
       localStorage.setItem('pb_dc_first', Date.now().toString());
     }
+    // Identity for coach-proxy x-user-email + plan lookup (webcoach §2.1)
+    if (emailAddr) { localStorage.setItem('pb_dc_user_email', emailAddr); }
+    if (product) { localStorage.setItem('pb_dc_product', product); }
   }
 
   function showPending() {
@@ -398,9 +412,9 @@
         // suffix) always failed, falling through to showPlaybook() and
         // showing the Playbook unlock UI to every paying Coach buyer.
         if (product === 'dating_coach_premium' || product === 'dating_coach_unlimited') {
-          showCoach(data.access_code, email);
+          showCoach(data.access_code, email, product);
         } else {
-          showPlaybook(data.access_code, email);
+          showPlaybook(data.access_code, email, product);
         }
       } else if (attempt < MAX_RETRIES) {
         // Webhook may not have fired yet — retry

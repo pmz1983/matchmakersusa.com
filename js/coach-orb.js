@@ -8,6 +8,7 @@
 
   // ── Constants ──
   var COACH_PROXY = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1/coach-proxy';
+  var CHECK_ELIGIBILITY = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1/check-eligibility';
   var HISTORY_CAP = 40;
   var TOOLTIP_DURATION = 5000;
   var MOBILE_BP = 760;
@@ -99,6 +100,40 @@
 
   function hasAccess() {
     return localStorage.getItem('pb_dc_access') === '1';
+  }
+
+  // ── Q4 fold: server re-verify entitlement and invalidate client flags
+  // when the server says access is gone (refund, dispute, manual revoke).
+  // Stateless beyond email + product stored on /success/ + /redeem/.
+  // Skips silently when email is missing — server is authoritative anyway,
+  // so a missing client identifier just means we cannot pre-empt a 4xx.
+  async function verifyAccessOrInvalidate() {
+    var email = localStorage.getItem('pb_dc_user_email') || '';
+    if (!email) return; // Lane 3 has not stored email yet; nothing to verify
+    if (!hasAccess()) return; // already locked; nothing to invalidate
+    var product = localStorage.getItem('pb_dc_product') || 'dating_coach_and_playbook';
+    try {
+      var res = await fetch(CHECK_ELIGIBILITY, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, product: product, action: 'verify-access' })
+      });
+      if (!res.ok) return; // network/transient error: do not punish the user
+      var data = await res.json();
+      if (data && data.has_access === false) {
+        localStorage.removeItem('pb_dc_access');
+        localStorage.removeItem('pb_access');
+        localStorage.removeItem('dc_plan');
+        localStorage.removeItem('dc_messages_remaining');
+        refreshOrbState();
+        if (window.mmTrack) mmTrack('coach_access_revoked', { product: product });
+      } else if (data && typeof data.messages_remaining === 'number') {
+        // Refresh remaining count even when access is still valid
+        localStorage.setItem('dc_messages_remaining', data.messages_remaining.toString());
+      }
+    } catch (e) {
+      // Silent fail: server-side rate limiting catches abuse anyway
+    }
   }
 
   // ── Body Scroll Lock (iOS Safari safe) ──
@@ -403,26 +438,25 @@
     var txt = inputEl.value.trim();
     if (!txt) return;
 
+    // Q4 fold: re-verify access before each send. If access was revoked
+    // (refund / dispute), this clears the flag + locks the orb so the
+    // user does not waste a message into a doomed call.
+    await verifyAccessOrInvalidate();
+    if (!hasAccess()) {
+      hideTyping();
+      addMessage('coach', 'Your Coach access is no longer active. <a href="/playbook/" class="cp-upgrade-link">Restore access</a>');
+      return;
+    }
+
     // ── Tiered rate limit check ──
+    // Server (coach-proxy) is authoritative on quota; client only does an
+    // optimistic free-tier cap so we don't burn round-trips when obvious.
+    // dc_plan + dc_messages_remaining are synced from each server response.
     var plan = localStorage.getItem('dc_plan') || 'free';
-    if (plan === 'unlimited') {
-      // no limit
-      todayMsgCount++;
-    } else if (plan === 'premium') {
-      var remaining = parseInt(localStorage.getItem('dc_messages_remaining') || '25');
-      if (remaining <= 0) {
-        addMessage('coach', 'You\'ve used all 25 messages. Upgrade to Unlimited for unrestricted access. <a href="/playbook/" class="cp-upgrade-link">Upgrade now</a>');
-        return;
-      }
-      localStorage.setItem('dc_messages_remaining', (remaining - 1).toString());
-      todayMsgCount++;
-    } else {
-      // free tier: 2 per day
-      todayMsgCount++;
-      if (todayMsgCount > 2) {
-        addMessage('coach', 'You\'ve used today\'s free messages. Upgrade to Premium for 25 messages. <a href="/playbook/" class="cp-upgrade-link">Upgrade now</a>');
-        return;
-      }
+    todayMsgCount++;
+    if (plan === 'free' && todayMsgCount > 2) {
+      addMessage('coach', 'You\'ve used today\'s free messages. Upgrade to Premium for 25 messages. <a href="/playbook/" class="cp-upgrade-link">Upgrade now</a>');
+      return;
     }
 
     if (window.mmTrack) mmTrack('coach_message_sent', { intent: intent, msg_count: todayMsgCount });
@@ -459,17 +493,32 @@
     try {
       var sessionId = getSessionId();
       var apiMessages = buildApiMessages();
+      var userEmail = localStorage.getItem('pb_dc_user_email') || '';
+      var fetchHeaders = {
+        'Content-Type': 'application/json',
+        'x-session-id': sessionId
+      };
+      if (userEmail) fetchHeaders['x-user-email'] = userEmail;
       var res = await fetch(COACH_PROXY, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-session-id': sessionId
-        },
+        headers: fetchHeaders,
         body: JSON.stringify({ context: memberCtx, messages: apiMessages }),
         signal: controller.signal
       });
       clearTimeout(timeoutId);
       var data = await res.json();
+
+      // Sync server-emitted plan + remaining_messages so settings UI + future
+      // pre-checks reflect authoritative server state (Lane 2 touchpoint #9).
+      if (typeof data.plan === 'string') {
+        localStorage.setItem('dc_plan', data.plan);
+      }
+      if (typeof data.remaining_messages === 'number') {
+        localStorage.setItem('dc_messages_remaining', data.remaining_messages.toString());
+      } else if (data.remaining_messages === null) {
+        // Unlimited tier: no count to display; clear stale counter
+        localStorage.removeItem('dc_messages_remaining');
+      }
 
       // Handle all error response formats (our Edge Function, Supabase gateway, etc.)
       var errMsg = data.error || data.message || null;
@@ -626,15 +675,22 @@
       }
     });
 
-    // Usage (plan-aware display)
+    // Usage (plan-aware display) \u2014 server-authoritative; no hardcoded fallback.
     var usageEl = document.getElementById('co-settings-usage');
     if (usageEl) {
       var currentPlan = localStorage.getItem('dc_plan') || 'free';
+      var remRaw = localStorage.getItem('dc_messages_remaining');
+      var rem = remRaw !== null && remRaw !== '' ? parseInt(remRaw, 10) : null;
       if (currentPlan === 'unlimited') {
         usageEl.textContent = 'Unlimited messages';
       } else if (currentPlan === 'premium') {
-        var rem = parseInt(localStorage.getItem('dc_messages_remaining') || '25');
-        usageEl.textContent = rem + ' messages remaining';
+        usageEl.textContent = rem !== null && !isNaN(rem)
+          ? rem + ' messages remaining'
+          : 'Send a message to see remaining count';
+      } else if (currentPlan === 'dating_coach_and_playbook') {
+        usageEl.textContent = rem !== null && !isNaN(rem)
+          ? rem + ' Coach messages remaining (3 included with the Dating Coach & Playbook)'
+          : 'Up to 3 Coach messages \u2014 included with the Dating Coach & Playbook';
       } else {
         usageEl.textContent = todayMsgCount + ' of 2 free messages today \u00b7 Resets daily';
       }
@@ -1057,6 +1113,10 @@
       initCoachPanel();
       maybeShowTooltip();
     }
+
+    // Q4 fold: re-verify against server in background; revokes flag if
+    // refund / dispute / manual revoke occurred since last visit.
+    verifyAccessOrInvalidate();
   }
 
   // ── Boot ──
