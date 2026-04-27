@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
       .from("purchases")
       .select("id, status, access_code")
       .eq("email", email)
-      .eq("product", "playbook")
+      .eq("product", "dating_coach_and_playbook")
       .eq("status", "completed")
       .limit(1);
 
@@ -106,7 +106,7 @@ Deno.serve(async (req: Request) => {
       .from("purchases")
       .select("id, product, plan, messages_remaining, status, access_code, created_at")
       .eq("email", email)
-      .in("product", ["dating_coach_premium", "dating_coach_unlimited"])
+      .in("product", ["dating_coach_and_playbook", "dating_coach_premium", "dating_coach_unlimited"])
       .eq("status", "completed")
       .order("created_at", { ascending: false })
       .limit(1);
@@ -217,14 +217,17 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    // Playbook = lifetime access
-    return new Response(
-      JSON.stringify({
-        has_access: true,
-        access_code: purchase.access_code,
-      }),
-      { status: 200, headers }
-    );
+    // Playbook (now: dating_coach_and_playbook) = lifetime access; Phase 2
+    // adds messages_remaining for the renamed product (3-msg Coach allowance
+    // bundled with the Playbook purchase per Q1 2026-04-27 ratification).
+    const responsePayload: Record<string, unknown> = {
+      has_access: true,
+      access_code: purchase.access_code,
+    };
+    if (purchase.product === "dating_coach_and_playbook") {
+      responsePayload.messages_remaining = purchase.messages_remaining ?? null;
+    }
+    return new Response(JSON.stringify(responsePayload), { status: 200, headers });
   }
 
   return new Response(

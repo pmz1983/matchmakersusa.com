@@ -65,17 +65,17 @@ function generateAccessCode(): string {
 // Coach Premium:          https://buy.stripe.com/3cI00b4939HveSvdti2Nq01
 // Coach Unlimited:        https://buy.stripe.com/14AeV5493bPD4dRcpe2Nq05
 const PAYMENT_LINK_TO_PRODUCT: Record<string, string> = {
-  plink_1TM53W1ihNKVY3uGh4TGAg64: "playbook",              // old $500 playbook
-  plink_1TLykw1ihNKVY3uGCd56xqat: "playbook",              // old $500 playbook
-  "00wbITcFzdXL11F88Y2Nq03": "playbook",                    // new $250 playbook
+  plink_1TM53W1ihNKVY3uGh4TGAg64: "dating_coach_and_playbook",              // old $500 playbook
+  plink_1TLykw1ihNKVY3uGCd56xqat: "dating_coach_and_playbook",              // old $500 playbook
+  "00wbITcFzdXL11F88Y2Nq03": "dating_coach_and_playbook",                    // new $250 playbook
   plink_1TM52z1ihNKVY3uGYDEc34em: "dating_coach_premium",   // $500 premium (was dating_coach)
   "14AeV5493bPD4dRcpe2Nq05": "dating_coach_unlimited",      // $1000 unlimited
 };
 
 // Fallback: map by price ID
 const PRICE_TO_PRODUCT: Record<string, string> = {
-  price_1TLyin1ihNKVY3uGtdOvWGP2: "playbook",              // old $500 playbook (legacy)
-  price_1TMYHq1ihNKVY3uGZKNgmSwi: "playbook",              // new $250 playbook
+  price_1TLyin1ihNKVY3uGtdOvWGP2: "dating_coach_and_playbook",              // old $500 playbook (legacy)
+  price_1TMYHq1ihNKVY3uGZKNgmSwi: "dating_coach_and_playbook",              // new $250 playbook
   price_1TLykh1ihNKVY3uG4a08H5UT: "dating_coach_premium",  // $500 premium (was "dating_coach")
   price_1TMYPd1ihNKVY3uGfhptvOAa: "dating_coach_unlimited", // $1000 unlimited
 };
@@ -98,7 +98,7 @@ async function generatePdfUrl(): Promise<string | null> {
 
 // ── Email Templates ────────────────────────────────────────────────────
 function buildEmailHTML(product: string, accessCode: string, pdfUrl?: string | null): string {
-  const isPlaybook = product === "playbook";
+  const isPlaybook = product === "dating_coach_and_playbook";
   const isPremium = product === "dating_coach_premium";
   const isUnlimited = product === "dating_coach_unlimited";
   const isCoach = isPremium || isUnlimited;
@@ -205,7 +205,7 @@ function buildEmailHTML(product: string, accessCode: string, pdfUrl?: string | n
 }
 
 function buildEmailText(product: string, accessCode: string, pdfUrl?: string | null): string {
-  const isPlaybook = product === "playbook";
+  const isPlaybook = product === "dating_coach_and_playbook";
   const isPremium = product === "dating_coach_premium";
   const productName = isPlaybook
     ? "The MatchMakers Playbook"
@@ -239,7 +239,7 @@ async function sendConfirmationEmail(
   accessCode: string,
   pdfUrl?: string | null
 ): Promise<void> {
-  const isPlaybook = product === "playbook";
+  const isPlaybook = product === "dating_coach_and_playbook";
   const isPremium = product === "dating_coach_premium";
   const subject = isPlaybook
     ? "Your MatchMakers Playbook Is Ready"
@@ -347,7 +347,7 @@ Deno.serve(async (req: Request) => {
       return new Response(JSON.stringify({ error: "No email in session" }), { status: 400 });
     }
 
-    if (!product || !["playbook", "dating_coach_premium", "dating_coach_unlimited"].includes(product)) {
+    if (!product || !["dating_coach_and_playbook", "dating_coach_premium", "dating_coach_unlimited"].includes(product)) {
       console.error("Unknown product for session", sessionId, product);
       return new Response(JSON.stringify({ error: "Unknown product" }), { status: 400 });
     }
@@ -356,7 +356,7 @@ Deno.serve(async (req: Request) => {
 
     // Determine plan tier and optional messages_remaining
     const planMap: Record<string, string> = {
-      playbook: "playbook",
+      dating_coach_and_playbook: "dating_coach_and_playbook",
       dating_coach_premium: "premium",
       dating_coach_unlimited: "unlimited",
     };
@@ -378,6 +378,12 @@ Deno.serve(async (req: Request) => {
       purchaseRecord.messages_remaining = 25;
     }
 
+    // Dating Coach & Playbook (renamed from "playbook" per Q1 2026-04-27)
+    // gets 3 lifetime Coach messages bundled with the Playbook purchase.
+    if (product === "dating_coach_and_playbook") {
+      purchaseRecord.messages_remaining = 3;
+    }
+
     // Idempotent insert — skip if session_id already recorded
     const { data, error } = await supabase.from("purchases").upsert(
       purchaseRecord,
@@ -393,7 +399,7 @@ Deno.serve(async (req: Request) => {
 
     // ── Generate PDF download URL for Playbook purchases ────────────
     let pdfUrl: string | null = null;
-    if (product === "playbook") {
+    if (product === "dating_coach_and_playbook") {
       pdfUrl = await generatePdfUrl();
       if (pdfUrl) {
         console.log(`Signed PDF URL generated for ${email}`);
