@@ -13,19 +13,19 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>MatchMakers &mdash; Dating, by methodology.</title>
-  <meta name="description" content="Built on 7 years of human matchmaking and 66,000+ real connections, now scaled into Coach & Playbook.">
+  <title>MatchMakers &mdash; Dating, by methodology. Not by algorithm.</title>
+  <meta name="description" content="Built on more than a decade of human matchmaking, now scaled into Coach &amp; Playbook.">
   <link rel="canonical" href="https://matchmakersusa.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchMakers">
-  <meta property="og:title" content="MatchMakers — Dating, by methodology.">
-  <meta property="og:description" content="Built on 7 years of human matchmaking and 66,000+ real connections, now scaled into Coach & Playbook.">
+  <meta property="og:title" content="MatchMakers — Dating, by methodology. Not by algorithm.">
+  <meta property="og:description" content="Built on more than a decade of human matchmaking, now scaled into Coach & Playbook.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MatchMakers — Dating, by methodology.">
+  <meta name="twitter:title" content="MatchMakers — Dating, by methodology. Not by algorithm.">
   <meta name="twitter:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
@@ -39,425 +39,611 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- Homepage v1.2 — design tokens + section styles per Visual Treatment v1.2 §4.4/§4.4a/§4.4b
-       Brand-presence restoration per Paul P1 escalation 2026-04-26 night.
-       Editorial spec §1.1 hard constraints preserved. -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       HOMEPAGE V2 — pr6-homepage-v2-prep branch (PRE-FIRE; awaits Paul §5 ratify)
+       Build authority: ~/Desktop/03_MM_OPS/drafts/atlas_website_v2_synthesis_brief_pr_6_2026-04-27.md
+       Source canon:
+         - Web Ed v2:  HOMEPAGE_EDITORIAL_SPEC_v2_2026-04-26_night.md
+         - Design v1.3: visual_treatment_v1_3_tokens / css_scaffold / wordmark_hairline / asset_handoff_manifest
+         - Legal §6.1: vip_homepage_v2_clearance_2026-04-27.md ✅ CLEARED
+         - Web Ed polish: v2_edge_case_copy_pass_2026-04-27.md + v2_microcopy_variants_2026-04-27.md
+       Atlas adjudications applied:
+         ADJ-1 Hero H1 "Dating, by methodology. / Not by algorithm." italic-gold on line 2
+         ADJ-2 §5 ghost CTA "See Coach & Playbook →"
+         ADJ-3 §6.1 VIP Variant A subhead with "VIP Coach" naming + parenthetical disambiguation
+         ADJ-4 §7 "The method, on hand." headline
+         ADJ-5 §9 router 3 gold-fill buttons (Coach / Playbook / VIP Matchmaking)
+         ADJ-6 stat band 2×2 label-only (no Cormorant numerals)
+         ADJ-7 wordmark restored per Design v1.3
+         ADJ-8 hairline-as-atmosphere per Design v1.3
+         ADJ-9 D1 NO_SCALE_NUMBERS — homepage scope (cross-surface = PR #7)
+         ADJ-10 D2 MOBILE_FIRST_CANONICAL — cross-surface PR #7 follow-on
+       Microcopy: chevron `→` (U+2192), em-dash `—` (U+2014), curly apostrophe `'` (U+2019),
+                  sentence case for headlines, title case for eyebrows, all-caps for stat cells.
+       ═══════════════════════════════════════════════════════════════════════════ -->
   <style>
+    /* Design v1.3 §2 token block (CSS scaffold §2 byte-for-byte) */
     :root {
-      --hp-bg-primary: #050A10;
-      --hp-bg-elevated: #0A1320;
-      --hp-text-primary: #F4F1EA;
-      --hp-text-secondary: #B8B0A0;
-      --hp-text-tertiary: #7A7468;
-      --hp-accent-gold: #C9A84C;
-      /* v1.2 — gold variants */
-      --hp-accent-gold-bright: rgba(201,168,76,0.55);
-      --hp-accent-gold-dim: rgba(201,168,76,0.30);
-      --hp-accent-gold-dim-low: rgba(201,168,76,0.18);
-      --hp-accent-gold-tint: rgba(201,168,76,0.06);
-      --hp-accent-gold-glow: rgba(201,168,76,0.15);
-      --hp-divider: rgba(244,241,234,0.08);
+      /* Color — base palette */
+      --color-bg-primary:           #050A10;
+      --color-bg-section-a:         #050A10;
+      --color-bg-section-b:         #0A1018;
+      --color-bg-section-c:         #080D14;
+      --color-bg-elevated:          #0A1320;
+      --color-text-primary:         #F4F1EA;
+      --color-text-secondary:       #B8B0A0;
+      --color-text-tertiary:        #7A7468;
+      --color-accent-gold:          #C9A84C;
+      --color-accent-gold-bright:   rgba(201, 168, 76, 0.55);
+      --color-accent-gold-dim:      rgba(201, 168, 76, 0.30);
+      --color-accent-gold-tint:     rgba(201, 168, 76, 0.06);
+      --color-accent-gold-glow:     rgba(201, 168, 76, 0.15);
+      --color-divider:              rgba(244, 241, 234, 0.08);
 
-      --hp-display-xl: clamp(2.75rem, 5.5vw, 4.75rem);
-      --hp-display-lg: clamp(2.25rem, 4vw, 3.5rem);
-      --hp-body-lg: clamp(1.125rem, 1.4vw, 1.375rem);
-      --hp-body-md: clamp(1rem, 1.15vw, 1.125rem);
-      --hp-eyebrow: 0.75rem;
-      --hp-trust: clamp(0.875rem, 1vw, 1rem);
-      --hp-cta-primary: 1.0625rem;
-      --hp-cta-link: 1rem;
-      --hp-stat: clamp(0.7rem, 0.85vw, 0.78rem);
+      /* Hairline tokens (D6) */
+      --hp-hairline-ambient:        rgba(201, 168, 76, 0.24);
+      --hp-hairline-emphatic:       rgba(201, 168, 76, 0.70);
+      --hp-hairline-accent:         rgba(201, 168, 76, 0.55);
+      --hp-hairline-neutral:        rgba(244, 241, 234, 0.08);
 
-      --hp-leading-display: 1.08;
-      --hp-leading-body: 1.55;
-      --hp-leading-essay: 1.65;
-      --hp-leading-tight: 1.3;
+      /* Atmosphere — radial gradients + noise */
+      --hp-atmosphere-radial-hero:    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(20, 35, 60, 0.9) 0%, var(--color-bg-primary) 70%);
+      --hp-atmosphere-overlay-hero:   radial-gradient(ellipse 60% 40% at 50% 30%, var(--color-accent-gold-tint) 0%, transparent 70%);
+      --hp-atmosphere-radial-section: radial-gradient(ellipse 60% 50% at 50% 30%, var(--color-accent-gold-tint) 0%, transparent 70%);
+      --hp-noise-overlay-opacity:   0.015;
+      --hp-noise-overlay-blend:     overlay;
 
-      --hp-tracking-display: -0.01em;
-      --hp-tracking-eyebrow: 0.12em;
-      --hp-tracking-stat: 0.08em;
+      /* Typography */
+      --font-display:    'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-body:       'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-utility:    'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-      --hp-s-2: 8px;   --hp-s-3: 12px;  --hp-s-4: 16px;
-      --hp-s-5: 24px;  --hp-s-6: 32px;  --hp-s-8: 48px;
-      --hp-s-10: 64px; --hp-s-12: 96px; --hp-s-16: 128px;
-      --hp-s-20: 160px;
+      --type-hero-wordmark:         clamp(2.5rem, 9vw, 4rem);
+      --type-hero-h1:               clamp(2.75rem, 6vw, 4.5rem);
+      --type-hero-subhead:          clamp(1.0625rem, 1.4vw, 1.25rem);
+      --type-hero-eyebrow:          clamp(0.6875rem, 0.85vw, 0.8125rem);
+      --type-section-h2:            clamp(2rem, 4vw, 3.5rem);
+      --type-section-eyebrow:       clamp(0.6875rem, 0.85vw, 0.8125rem);
+      --type-body:                  clamp(1rem, 1.15vw, 1.125rem);
+      --type-body-essay:            clamp(1rem, 1.15vw, 1.125rem);
+      --type-stat-label:            clamp(0.6875rem, 0.85vw, 0.8125rem);
+      --type-cta-primary:           1rem;
+      --type-cta-secondary:         1rem;
+      --type-app-band-h2:           clamp(2rem, 4vw, 3rem);
+      --type-footer-credential:     0.75rem;
 
-      --hp-fade: 400ms;
-      --hp-hover: 180ms;
-      --hp-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+      /* Spacing — 8-base mobile-first */
+      --space-1:  8px;
+      --space-2: 12px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 32px;
+      --space-6: 48px;
+      --space-7: 80px;
+      --space-section-y:        clamp(48px, 8vw, 96px);
+      --space-section-y-large:  clamp(64px, 10vw, 128px);
+      --space-section-y-app:    clamp(64px, 10vw, 96px);
+      --space-hero-top:         clamp(64px, 10vw, 96px);
+      --space-hero-bottom:      clamp(48px, 8vw, 96px);
+
+      /* Motion */
+      --motion-reveal:              600ms;
+      --motion-hover:               180ms;
+      --motion-active:              100ms;
+      --easing-out:                 cubic-bezier(0.2, 0.8, 0.2, 1);
+      --easing-reveal:              cubic-bezier(0.22, 1, 0.36, 1);
+      --reveal-translate-y:         12px;
+
+      /* Component */
+      --hp-wordmark-glow:           0 0 60px rgba(201, 168, 76, 0.18);
+      --cta-primary-height:         56px;
+      --cta-primary-radius:         8px;
+      --cta-secondary-height:       56px;
+      --cta-secondary-radius:       8px;
+      --router-btn-height:          64px;
+      --router-btn-radius:          8px;
+      --app-band-badge-height:      52px;
+      --statband-cell-min-height:   88px;
+      --stickybar-height:           56px;
+      --stickybar-z-index:          100;
     }
 
-    .hp-v1 {
-      background: var(--hp-bg-primary);
-      color: var(--hp-text-primary);
-      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-    }
-    .hp-v1 *, .hp-v1 *::before, .hp-v1 *::after { box-sizing: border-box; }
-
-    .hp-section { padding: var(--hp-s-16) 48px; position: relative; }
-    .hp-section-lg { padding: var(--hp-s-20) 48px; position: relative; }
-    @media (max-width: 1023px) {
-      .hp-section { padding: var(--hp-s-12) 32px; }
-      .hp-section-lg { padding: var(--hp-s-16) 32px; }
-    }
-    @media (max-width: 767px) {
-      .hp-section { padding: var(--hp-s-10) 20px; }
-      .hp-section-lg { padding: var(--hp-s-12) 20px; }
+    /* Site-wide noise overlay (atmosphere) */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: var(--hp-noise-overlay-opacity);
+      mix-blend-mode: var(--hp-noise-overlay-blend);
+      z-index: 99;
     }
 
-    /* §3.4 Pattern B — section break hairline (used at §3↔§4 + §7↔§8 only) */
-    .hp-section-break {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        var(--hp-accent-gold-dim) 30%,
-        var(--hp-accent-gold-bright) 50%,
-        var(--hp-accent-gold-dim) 70%,
-        transparent 100%);
-      border: 0;
-      margin: 0;
+    /* Sticky top utility bar */
+    .hp-sticky-bar {
+      position: sticky; top: 0;
+      z-index: var(--stickybar-z-index);
+      height: var(--stickybar-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--space-4);
+      background: rgba(5, 10, 16, 0.90);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--hp-hairline-ambient);
+    }
+    .hp-sticky-bar__brand {
+      display: flex; align-items: center; gap: var(--space-2);
+      text-decoration: none; color: var(--color-text-primary);
+    }
+    .hp-sticky-bar__mark { width: 28px; height: 28px; }
+    .hp-sticky-bar__text {
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: 0.875rem; letter-spacing: 0.06em;
+      color: var(--color-text-primary);
+    }
+    .hp-sticky-bar__nav {
+      background: transparent; border: 0; color: var(--color-text-primary);
+      cursor: pointer; font-size: 1.25rem; padding: var(--space-2);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .hp-sticky-bar__nav:focus-visible {
+      outline: 2px solid var(--color-accent-gold-bright); outline-offset: 2px;
     }
 
-    /* §4.4a HERO — atmospheric editorial-rich treatment */
-    .hp-hero {
-      min-height: 88vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center;
-      padding: var(--hp-s-16) 48px var(--hp-s-20);
-      background: radial-gradient(
-        ellipse 100% 80% at 50% 0%,
-        rgba(20,35,60,0.9) 0%,
-        var(--hp-bg-primary) 70%
-      );
+    /* Section wrapper */
+    .hp-section {
       position: relative;
+      padding: var(--space-section-y) var(--space-4);
       overflow: hidden;
     }
-    .hp-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        ellipse 60% 40% at 50% 30%,
-        var(--hp-accent-gold-tint) 0%,
-        transparent 70%
-      );
-      pointer-events: none;
-    }
-    @media (max-width: 1023px) { .hp-hero { min-height: 82vh; padding: var(--hp-s-12) 32px var(--hp-s-16); } }
-    @media (max-width: 767px)  { .hp-hero { min-height: 78vh; padding: var(--hp-s-10) 20px var(--hp-s-12); } }
-    .hp-hero-content { max-width: 760px; width: 100%; position: relative; z-index: 1; }
+    @media (min-width: 768px)  { .hp-section { padding-left: var(--space-6); padding-right: var(--space-6); } }
+    @media (min-width: 1024px) { .hp-section { padding-left: var(--space-7); padding-right: var(--space-7); } }
 
-    /* Hero M-mark prominence per §1.9 v1.2 */
-    .hp-hero-mark {
-      width: 96px; height: 96px;
-      margin: 0 auto var(--hp-s-6);
-      filter: drop-shadow(0 0 60px rgba(201,168,76,0.20));
-      display: block;
-    }
-    @media (max-width: 1023px) { .hp-hero-mark { width: 80px; height: 80px; } }
-    @media (max-width: 767px)  { .hp-hero-mark { width: 64px; height: 64px; } }
+    /* Bg luminance shift A→B→A→C→A→B→A */
+    .hp-method        { background: var(--color-bg-section-b); }
+    .hp-centerpiece   { background: var(--color-bg-section-a); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
+    .hp-ecosystem     { background: var(--color-bg-section-c); }
+    .hp-app-band      { background: var(--color-bg-section-a); padding-top: var(--space-section-y-app); padding-bottom: var(--space-section-y-app); }
+    .hp-origin        { background: var(--color-bg-section-b); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
+    .hp-router        { background: var(--color-bg-section-a); }
 
-    /* Hero proof-stat band */
-    .hp-stat-band {
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: center;
-      gap: var(--hp-s-3) var(--hp-s-5);
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-stat);
-      letter-spacing: var(--hp-tracking-stat);
-      text-transform: uppercase;
-      color: var(--hp-text-secondary);
-      margin: 0 0 var(--hp-s-6);
+    /* Subtle radial gold atmosphere per non-hero section */
+    .hp-method::before, .hp-centerpiece::before, .hp-ecosystem::before,
+    .hp-app-band::before, .hp-origin::before, .hp-router::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--hp-atmosphere-radial-section);
+      pointer-events: none; z-index: 0;
     }
-    .hp-stat-cell { white-space: nowrap; }
-    .hp-stat-sep { color: var(--hp-accent-gold-dim); user-select: none; }
-
-    .hp-headline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 500;
-      font-size: var(--hp-display-xl);
-      line-height: var(--hp-leading-display);
-      letter-spacing: var(--hp-tracking-display);
-      color: var(--hp-text-primary);
-      text-shadow: 0 0 80px var(--hp-accent-gold-glow);
-      margin: 0;
-    }
-    .hp-headline em {
-      font-style: italic;
-      color: var(--hp-accent-gold);
-    }
-    .hp-subhead {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 400;
-      font-size: var(--hp-body-lg);
-      line-height: var(--hp-leading-body);
-      color: var(--hp-text-primary);
-      max-width: 56ch;
-      margin: var(--hp-s-6) auto 0;
-    }
-
-    /* Primary CTA — gold-fill per v1.2 §4.4a */
-    .hp-cta-primary {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-cta-primary);
-      line-height: var(--hp-leading-tight);
-      color: var(--hp-bg-primary);
-      background: var(--hp-accent-gold);
-      border: 1px solid var(--hp-accent-gold);
-      padding: var(--hp-s-3) var(--hp-s-6);
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background var(--hp-hover) var(--hp-easing);
-      margin-top: var(--hp-s-8);
-      min-height: 48px;
-    }
-    .hp-cta-primary:hover {
-      background: color-mix(in oklab, var(--hp-accent-gold) 88%, white 12%);
-    }
-    .hp-cta-primary:focus-visible {
-      outline: 2px solid var(--hp-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    .hp-trust {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 400;
-      font-size: var(--hp-trust);
-      line-height: var(--hp-leading-tight);
-      color: var(--hp-text-secondary);
-      margin: var(--hp-s-5) 0 0;
-    }
-
-    /* §4.4b — section eyebrow + Pattern A gold rule + section headlines + cards */
-    .hp-eyebrow {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-eyebrow);
-      line-height: var(--hp-leading-tight);
-      letter-spacing: var(--hp-tracking-eyebrow);
-      text-transform: uppercase;
-      color: var(--hp-accent-gold);
-      margin: 0;
-    }
-    .hp-eyebrow-num {
-      color: var(--hp-accent-gold-bright);
-      font-weight: 600;
-      margin-right: var(--hp-s-2);
-    }
-    /* Pattern A — eyebrow accent rule */
-    .hp-gold-rule {
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--hp-accent-gold), transparent);
-      border-radius: 1px;
-      margin: var(--hp-s-3) 0 var(--hp-s-4);
-    }
-    .hp-intro .hp-gold-rule { margin-left: auto; margin-right: auto; }
-
-    .hp-section-headline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 500;
-      font-size: var(--hp-display-lg);
-      line-height: var(--hp-leading-display);
-      color: var(--hp-text-primary);
-      text-shadow: 0 0 60px rgba(201,168,76,0.10);
-      margin: 0 0 var(--hp-s-6);
-    }
-    .hp-section-headline em {
-      font-style: italic;
-      color: var(--hp-accent-gold);
-    }
-    .hp-section-body {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 400;
-      font-size: var(--hp-body-lg);
-      line-height: var(--hp-leading-body);
-      color: var(--hp-text-primary);
-      max-width: 64ch;
-      margin: 0 auto;
-    }
-    .hp-section-body--essay {
-      font-size: var(--hp-body-md);
-      line-height: var(--hp-leading-essay);
-      max-width: 70ch;
-    }
-    .hp-section-body + .hp-section-body { margin-top: var(--hp-s-5); }
-
-    .hp-intro { text-align: center; max-width: 720px; margin: 0 auto; }
-
-    /* §5 Centerpiece — atmospheric overlay + gold accents */
-    .hp-centerpiece { text-align: center; }
-    .hp-centerpiece::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        ellipse 60% 60% at 50% 50%,
-        var(--hp-accent-gold-tint) 0%,
-        transparent 70%
-      );
-      pointer-events: none;
-    }
-    .hp-centerpiece-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
-    .hp-centerpiece .hp-section-headline {
-      text-shadow: 0 0 80px var(--hp-accent-gold-glow);
-    }
-
-    .hp-cta-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-cta-link);
-      color: var(--hp-text-primary);
-      text-decoration: none;
-      margin-top: var(--hp-s-8);
-      transition: color var(--hp-hover) var(--hp-easing);
-      min-height: 48px;
-    }
-    .hp-cta-link:hover { color: var(--hp-accent-gold); }
-    .hp-cta-link:focus-visible {
-      outline: 2px solid var(--hp-text-primary);
-      outline-offset: 4px;
-    }
-
-    /* §6 Ecosystem — gold-bordered slots, all 4 gold eyebrows */
-    .hp-ecosystem-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--hp-s-6);
-      align-items: stretch;
-      margin: var(--hp-s-8) auto 0;
-      max-width: 1200px;
-    }
-    @media (max-width: 1023px) { .hp-ecosystem-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 767px)  { .hp-ecosystem-grid { grid-template-columns: 1fr; } }
-
-    .hp-slot {
-      display: flex; flex-direction: column;
-      padding: var(--hp-s-5);
-      text-align: left;
-      border: 1px solid var(--hp-accent-gold-dim-low);
-      background: transparent;
-      border-radius: 4px;
-    }
-    .hp-slot-vip {
-      background: var(--hp-bg-elevated);
-      border: 1px solid var(--hp-accent-gold-dim);
-      padding: var(--hp-s-6);
-    }
-    .hp-slot-eyebrow {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-eyebrow);
-      letter-spacing: var(--hp-tracking-eyebrow);
-      text-transform: uppercase;
-      color: var(--hp-accent-gold);
-      opacity: 0.85;
-      margin: 0;
-    }
-    .hp-slot-vip .hp-slot-eyebrow {
-      opacity: 1;
-      font-weight: 600;
-    }
-    .hp-slot-desc {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 400;
-      font-size: var(--hp-body-md);
-      line-height: var(--hp-leading-body);
-      color: var(--hp-text-primary);
-      margin: var(--hp-s-2) 0 var(--hp-s-5);
-      max-width: 50ch;
-      flex: 1;
-    }
-    .hp-slot .hp-cta-link { margin-top: 0; }
-
-    /* §7 Origin — restored editorial-essay brand presence */
-    .hp-origin { text-align: center; }
-    .hp-origin-content { max-width: 80ch; margin: 0 auto; }
-    .hp-origin .hp-section-body { margin-top: var(--hp-s-8); }
-    .hp-origin .hp-section-body + .hp-section-body { margin-top: var(--hp-s-5); }
-
-    /* §8 Router — gold-bordered + gold arrow + gold-tint hover */
-    .hp-router {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--hp-s-4);
-      margin: var(--hp-s-8) auto 0;
-      max-width: 1200px;
-    }
-    @media (max-width: 1023px) { .hp-router { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 767px)  { .hp-router { grid-template-columns: 1fr; gap: var(--hp-s-3); } }
-    .hp-router-btn {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--hp-s-4);
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-cta-link);
-      color: var(--hp-text-primary);
-      text-decoration: none;
-      padding: var(--hp-s-5) var(--hp-s-6);
-      border: 1px solid var(--hp-accent-gold-dim);
-      background: transparent;
-      border-radius: 8px;
-      transition: border-color var(--hp-hover) var(--hp-easing),
-                  background var(--hp-hover) var(--hp-easing);
-      min-height: 48px;
-    }
-    .hp-router-btn .hp-arrow {
-      color: var(--hp-accent-gold);
-      transition: color var(--hp-hover) var(--hp-easing);
-    }
-    .hp-router-btn:hover {
-      border-color: var(--hp-accent-gold-bright);
-      background: var(--hp-accent-gold-tint);
-    }
-    .hp-router-btn:focus-visible {
-      outline: 2px solid var(--hp-text-primary);
-      outline-offset: 4px;
-    }
-
-    /* Footer credentialing strip (NEW v1.2) */
-    .hp-credentialing {
-      background: var(--hp-bg-primary);
-      border-top: 1px solid var(--hp-accent-gold-dim-low);
-      border-bottom: 1px solid var(--hp-accent-gold-dim-low);
-      padding: var(--hp-s-5) 48px;
+    .hp-section__content {
+      position: relative; z-index: 1;
+      max-width: 720px; margin: 0 auto;
       text-align: center;
     }
-    .hp-credentialing-row {
+    .hp-centerpiece .hp-section__content { max-width: 800px; }
+    .hp-ecosystem  .hp-section__content { max-width: 1080px; }
+    .hp-app-band   .hp-section__content { max-width: 720px; text-align: center; }
+    .hp-origin     .hp-section__content { max-width: 70ch; text-align: left; }
+    .hp-router     .hp-section__content { max-width: 720px; }
+
+    /* Hero — atmosphere + content stack */
+    .hp-hero {
+      position: relative; overflow: hidden;
+      background: var(--hp-atmosphere-radial-hero);
+      min-height: 78vh;
+      padding: var(--space-hero-top) var(--space-4) var(--space-hero-bottom);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    @media (min-width: 768px)  { .hp-hero { min-height: 82vh; padding-left: var(--space-6); padding-right: var(--space-6); } }
+    @media (min-width: 1024px) { .hp-hero { min-height: 88vh; padding-left: var(--space-7); padding-right: var(--space-7); } }
+    .hp-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--hp-atmosphere-overlay-hero);
+      pointer-events: none; z-index: 0;
+    }
+    .hp-hero__content {
+      position: relative; z-index: 1;
+      max-width: 760px; width: 100%;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    /* Pre-headline eyebrow (Treatment A: two-line stack on mobile) */
+    .hp-hero__eyebrow {
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: var(--type-hero-eyebrow);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin: 0 0 var(--space-3);
+      display: flex; flex-direction: column; align-items: center; gap: var(--space-1);
+      line-height: 1.3;
+    }
+    .hp-hero__eyebrow-line { display: block; }
+    .hp-hero__eyebrow-rule {
+      display: block; width: 24px; height: 1px;
+      background: var(--hp-hairline-ambient); margin: 0;
+    }
+    @media (min-width: 768px) {
+      .hp-hero__eyebrow { flex-direction: row; gap: var(--space-2); }
+      .hp-hero__eyebrow-rule { display: none; }
+      .hp-hero__eyebrow-line:not(:last-child)::after {
+        content: '\00B7'; margin-left: var(--space-2); color: var(--color-accent-gold);
+      }
+    }
+
+    /* Hero wordmark + 28×2 emphatic gold rule */
+    .hp-hero__wordmark {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: var(--type-hero-wordmark);
+      line-height: 1.05; letter-spacing: -0.015em;
+      color: var(--color-text-primary);
+      text-shadow: var(--hp-wordmark-glow);
+      margin: 0 0 var(--space-2);
+      text-align: center;
+    }
+    .hp-hero__wordmark-tm {
+      font-size: 0.4em; vertical-align: super;
+      margin-left: 0.05em; font-weight: 400;
+      color: var(--color-accent-gold);
+    }
+    .hp-rule--wordmark {
+      display: block; width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--hp-hairline-emphatic), transparent);
+      border-radius: 1px;
+      margin: 0 auto var(--space-5);
+      border: 0;
+    }
+
+    /* Hero H1 + italic-gold accent */
+    .hp-hero__headline {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: var(--type-hero-h1);
+      line-height: 1.08; letter-spacing: -0.015em;
+      color: var(--color-text-primary);
+      text-shadow: 0 0 80px var(--color-accent-gold-glow);
+      margin: 0 0 var(--space-5);
+      max-width: 18ch;
+    }
+    .hp-italic-gold-accent {
+      font-style: italic;
+      color: var(--color-accent-gold);
+      font-weight: inherit;
+    }
+
+    /* Hero subhead */
+    .hp-hero__subhead {
+      font-family: var(--font-body); font-weight: 400;
+      font-size: var(--type-hero-subhead);
+      line-height: 1.55; color: var(--color-text-primary);
+      margin: 0 0 var(--space-6);
+      max-width: 56ch;
+    }
+
+    /* Hero primary CTA (gold-fill) */
+    .hp-hero__cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 100%; height: var(--cta-primary-height);
+      padding: var(--space-2) var(--space-5);
+      background: var(--color-accent-gold); color: var(--color-bg-primary);
+      border: 1px solid var(--color-accent-gold);
+      border-radius: var(--cta-primary-radius);
+      font-family: var(--font-utility); font-weight: 600;
+      font-size: var(--type-cta-primary);
+      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+      transition: background var(--motion-hover) var(--easing-out);
+      margin: 0 0 var(--space-6);
+    }
+    .hp-hero__cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
+    .hp-hero__cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
+    @media (min-width: 768px) { .hp-hero__cta { width: auto; min-width: 240px; } }
+
+    /* Stat band 2×2 (mobile) → 4-up row (desktop) */
+    .hp-stat-band {
+      width: 100%; max-width: 480px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--hp-hairline-emphatic);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .hp-stat-cell {
+      padding: var(--space-3) var(--space-4);
+      min-height: var(--statband-cell-min-height);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: var(--type-stat-label);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-text-primary);
+      background: transparent;
+      border-top: 1px solid var(--hp-hairline-ambient);
+      border-left: 1px solid var(--hp-hairline-ambient);
+    }
+    .hp-stat-cell:nth-child(1), .hp-stat-cell:nth-child(2) { border-top: 0; }
+    .hp-stat-cell:nth-child(1), .hp-stat-cell:nth-child(3) { border-left: 0; }
+    @media (min-width: 1024px) {
+      .hp-stat-band { max-width: 760px; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr; }
+      .hp-stat-cell { border-top: 0; border-left: 1px solid var(--hp-hairline-ambient); }
+      .hp-stat-cell:nth-child(1) { border-left: 0; }
+    }
+
+    /* Section eyebrow + 24×1 accent rule */
+    .hp-eyebrow {
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: var(--type-section-eyebrow);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin: 0 0 var(--space-1);
+      display: block;
+    }
+    .hp-eyebrow__prefix { font-weight: 600; }
+    .hp-rule--eyebrow {
+      display: block; width: 24px; height: 1px;
+      background: var(--hp-hairline-accent);
+      margin: 0 auto var(--space-3);
+      border: 0;
+    }
+    .hp-origin .hp-rule--eyebrow { margin-left: 0; margin-right: auto; }
+
+    /* Section H2 */
+    .hp-headline {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: var(--type-section-h2);
+      line-height: 1.10; letter-spacing: -0.015em;
+      color: var(--color-text-primary);
+      text-shadow: 0 0 60px rgba(201, 168, 76, 0.10);
+      margin: 0 auto var(--space-5);
+      max-width: 22ch;
+    }
+    .hp-origin .hp-headline { margin-left: 0; max-width: 24ch; }
+
+    /* Section body */
+    .hp-body {
+      font-family: var(--font-body); font-weight: 400;
+      font-size: var(--type-body); line-height: 1.6;
+      color: var(--color-text-primary);
+      margin: 0 auto var(--space-6);
+      max-width: 64ch;
+    }
+    .hp-body + .hp-body { margin-top: 0; }
+    .hp-origin .hp-body {
+      font-size: var(--type-body-essay); line-height: 1.65;
+      max-width: 70ch; margin-left: 0; margin-right: 0;
+    }
+    .hp-origin .hp-eyebrow { text-align: left; }
+
+    /* Section CTA secondary (ghost) — §5 */
+    .hp-cta--secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--space-1);
+      height: var(--cta-secondary-height);
+      padding: var(--space-2) var(--space-5);
+      background: transparent; color: var(--color-accent-gold);
+      border: 1px solid var(--color-accent-gold);
+      border-radius: var(--cta-secondary-radius);
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: var(--type-cta-secondary);
+      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+      transition: background var(--motion-hover) var(--easing-out),
+                  border-color var(--motion-hover) var(--easing-out);
+      min-width: 200px;
+    }
+    .hp-cta--secondary:hover {
+      background: var(--color-accent-gold-tint);
+      border-color: var(--color-accent-gold-bright);
+    }
+    .hp-cta--secondary:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
+
+    /* Section break rules — 3 placements (§3↔§4, §6↔§7, §8↔§9) */
+    .hp-rule--section-break {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--hp-hairline-ambient) 30%,
+        var(--hp-hairline-emphatic) 50%,
+        var(--hp-hairline-ambient) 70%,
+        transparent 100%);
+      border: 0; margin: 0;
+    }
+
+    /* §6 Ecosystem grid */
+    .hp-eco-grid {
+      display: flex; flex-direction: column; gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    @media (min-width: 1024px) {
+      .hp-eco-grid { flex-direction: row; gap: var(--space-5); align-items: stretch; }
+    }
+    .hp-eco-slot {
+      flex: 1;
+      display: flex; flex-direction: column;
+      padding: var(--space-5);
+      background: transparent;
+      border: 1px solid var(--hp-hairline-ambient);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .hp-eco-slot--vip {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-accent-gold-dim);
+    }
+    .hp-eco-slot__eyebrow {
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: var(--type-section-eyebrow);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin: 0 0 var(--space-2);
+    }
+    .hp-eco-slot--vip .hp-eco-slot__eyebrow { font-weight: 600; }
+    .hp-eco-slot__body {
+      font-family: var(--font-body); font-weight: 400;
+      font-size: var(--type-body); line-height: 1.6;
+      color: var(--color-text-primary);
+      margin: 0 0 var(--space-5);
+      max-width: 50ch; flex-grow: 1;
+    }
+    /* §6.1 VIP slot CTA — gold-fill primary (D4 carve-out) */
+    .hp-eco-slot--vip .hp-eco-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: var(--space-1);
+      width: 100%; height: var(--cta-primary-height);
+      padding: var(--space-2) var(--space-5);
+      background: var(--color-accent-gold); color: var(--color-bg-primary);
+      border: 1px solid var(--color-accent-gold);
+      border-radius: var(--cta-primary-radius);
+      font-family: var(--font-utility); font-weight: 600;
+      font-size: var(--type-cta-primary);
+      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+      transition: background var(--motion-hover) var(--easing-out);
+    }
+    .hp-eco-slot--vip .hp-eco-cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
+    .hp-eco-slot--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
+
+    /* §7 APP_BADGE_BAND */
+    .hp-app-band__headline {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: var(--type-app-band-h2);
+      line-height: 1.10; letter-spacing: -0.015em;
+      color: var(--color-text-primary);
+      text-shadow: 0 0 60px rgba(201, 168, 76, 0.10);
+      margin: 0 auto var(--space-5);
+      max-width: 18ch;
+    }
+    .hp-app-band__body {
+      font-family: var(--font-body); font-weight: 400;
+      font-size: var(--type-body); line-height: 1.6;
+      color: var(--color-text-primary);
+      margin: 0 auto var(--space-6);
+      max-width: 56ch;
+    }
+    .hp-rule--app-band {
+      width: 100%; max-width: 480px; height: 1px;
+      background: var(--hp-hairline-accent);
+      border: 0; margin: var(--space-5) auto;
+    }
+    .hp-app-badges {
+      display: flex; flex-direction: row; gap: var(--space-3);
+      justify-content: center; align-items: center;
+      margin: var(--space-5) auto;
+      flex-wrap: wrap;
+    }
+    .hp-app-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: var(--app-band-badge-height); width: auto;
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-bg-primary);
+      border: 1px solid var(--color-accent-gold-dim);
+      border-radius: 8px;
+      color: var(--color-text-primary); text-decoration: none;
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: 0.85rem; letter-spacing: 0.04em;
+      transition: border-color var(--motion-hover) var(--easing-out);
+    }
+    .hp-app-badge:hover { border-color: var(--color-accent-gold-bright); }
+    .hp-app-badge:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
+    .hp-app-badge--coming-soon {
+      color: var(--color-text-secondary);
+      cursor: default;
+      opacity: 0.85;
+    }
+
+    /* §9 Router — 3 gold-fill buttons (per ADJ-5) */
+    .hp-router-grid {
+      display: flex; flex-direction: column; gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    @media (min-width: 768px) {
+      .hp-router-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); }
+    }
+    .hp-router-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-3);
+      height: var(--router-btn-height);
+      padding: var(--space-4) var(--space-5);
+      background: var(--color-accent-gold);
+      color: var(--color-bg-primary);
+      border: 1px solid var(--color-accent-gold);
+      border-radius: var(--router-btn-radius);
+      font-family: var(--font-utility); font-weight: 600;
+      font-size: var(--type-cta-secondary);
+      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+      transition: background var(--motion-hover) var(--easing-out);
+    }
+    .hp-router-btn:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
+    .hp-router-btn:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
+    .hp-router-btn__arrow { color: var(--color-bg-primary); font-size: 1.125em; }
+
+    /* Footer credentialing strip */
+    .hp-footer__credential {
+      font-family: var(--font-utility); font-weight: 500;
+      font-size: var(--type-footer-credential);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-text-secondary);
+      text-align: center;
+      padding: var(--space-5) var(--space-4);
+      border-top: 1px solid var(--hp-hairline-ambient);
+      border-bottom: 1px solid var(--hp-hairline-ambient);
+    }
+    .hp-footer__credential-row {
       display: flex; flex-wrap: wrap;
       align-items: center; justify-content: center;
-      gap: var(--hp-s-3) var(--hp-s-5);
-      max-width: 1200px;
-      margin: 0 auto;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 500;
-      font-size: var(--hp-stat);
-      letter-spacing: var(--hp-tracking-stat);
-      text-transform: uppercase;
-      color: var(--hp-text-secondary);
+      gap: var(--space-2) var(--space-4);
+      max-width: 1200px; margin: 0 auto;
     }
-    .hp-credentialing-sep { color: var(--hp-accent-gold-dim); user-select: none; }
-    @media (max-width: 767px) { .hp-credentialing { padding: var(--hp-s-5) 20px; } }
+    .hp-footer__credential-separator { color: var(--color-accent-gold); user-select: none; }
 
+    /* Reveal animation (single pattern per section) */
+    .hp-reveal {
+      opacity: 0; transform: translateY(var(--reveal-translate-y));
+      transition:
+        opacity var(--motion-reveal) var(--easing-reveal),
+        transform var(--motion-reveal) var(--easing-reveal);
+      will-change: opacity, transform;
+    }
+    .hp-reveal.is-revealed { opacity: 1; transform: translateY(0); }
+
+    /* Reduced-motion master suppression (animations only; static atmosphere preserved) */
     @media (prefers-reduced-motion: reduce) {
-      .hp-v1 *, .hp-v1 *::before, .hp-v1 *::after {
+      *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hp-reveal { opacity: 1; transform: none; transition: none; }
+      .hp-reveal.is-revealed { opacity: 1; transform: none; }
+    }
+
+    /* Sub-canonical floor protection */
+    @media (max-width: 359px) {
+      .hp-hero__headline, .hp-headline, .hp-app-band__headline, .hp-hero__wordmark {
+        font-family: var(--font-body);
       }
     }
   </style>
 </head>
 <body>
 
-<a href="#top" class="skip-link">Skip to main content</a>
+<a href="#hero" class="skip-link">Skip to main content</a>
 
-<nav>
+<!-- Sticky top utility bar (M-mark 28px + brand text + nav glyph) -->
+<header class="hp-sticky-bar">
+  <a href="/" class="hp-sticky-bar__brand">
+    <img src="/img/logo.png" class="hp-sticky-bar__mark" alt="MatchMakers" width="28" height="28">
+    <span class="hp-sticky-bar__text">MatchMakers</span>
+  </a>
+  <nav>
+    <button class="hp-sticky-bar__nav" aria-label="Open navigation" aria-expanded="false">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+  </nav>
+</header>
+
+<!-- Legacy nav preserved for cross-page consistency until sticky-bar nav menu lands -->
+<nav style="display:none;">
   <div class="nav-inner">
     <a href="/" style="display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;">
       <img src="/img/logo.png" class="ni" alt="MatchMakers" width="36" height="36">
@@ -477,159 +663,149 @@
   </div>
 </nav>
 
-<main id="main" class="hp-v1">
+<main>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       §3 — HERO (Anchor) — v1.2 brand-presence-restored
-       Atmospheric radial-gradient + M-mark prominence + gold-fill CTA
-       + headline brand-glow + italic gold accent on "by methodology"
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="hp-hero" id="top">
-    <div class="hp-hero-content">
-      <img src="/img/logo.png" class="hp-hero-mark" alt="MatchMakers" width="96" height="96">
-      <div class="hp-stat-band" aria-label="Institutional credentials">
-        <span class="hp-stat-cell">66,000+ Members</span>
-        <span class="hp-stat-sep" aria-hidden="true">&middot;</span>
-        <span class="hp-stat-cell">7 Years In Market</span>
-        <span class="hp-stat-sep" aria-hidden="true">&middot;</span>
-        <span class="hp-stat-cell">$0 Paid Advertising</span>
-        <span class="hp-stat-sep" aria-hidden="true">&middot;</span>
-        <span class="hp-stat-cell">100% Organic Growth</span>
+  <!-- §3 HERO (anchor) -->
+  <section class="hp-hero" id="hero">
+    <div class="hp-hero__content">
+      <p class="hp-hero__eyebrow" aria-label="Institutional credentials">
+        <span class="hp-hero__eyebrow-line">A Decade in the Making</span>
+        <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
+        <span class="hp-hero__eyebrow-line">matchmakersusa.com</span>
+        <span class="hp-hero__eyebrow-line">By Application</span>
+      </p>
+      <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>
+      <hr class="hp-rule--wordmark" aria-hidden="true">
+      <h1 class="hp-hero__headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Not by algorithm.</em></h1>
+      <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged.<br>MatchMakers is engineered to find what you actually came for.</p>
+      <a href="/playbook/" class="hp-hero__cta">Start with the Playbook</a>
+      <div class="hp-stat-band" aria-label="Institutional posture">
+        <div class="hp-stat-cell">A Decade in the Making</div>
+        <div class="hp-stat-cell">By Application</div>
+        <div class="hp-stat-cell">0% Paid Acquisition</div>
+        <div class="hp-stat-cell">100% Organic Growth</div>
       </div>
-      <h1 class="hp-headline">Dating, <em>by methodology.</em></h1>
-      <p class="hp-subhead">Built on 7 years of human matchmaking and 66,000+ real connections, now scaled into Coach &amp; Playbook.</p>
-      <a href="/playbook/" class="hp-cta-primary">Start with the Playbook</a>
-      <p class="hp-trust">A method, not a black box.</p>
     </div>
   </section>
 
-  <!-- §3↔§4 section break hairline (Pattern B) -->
-  <hr class="hp-section-break" aria-hidden="true">
+  <!-- §3↔§4 section break hairline -->
+  <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       §4 — THE METHOD — v1.2 institutional-critical voice (Web Ed C)
-       Numbered eyebrow + gold + hairline rule. Section CTA HIDDEN.
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="hp-section">
-    <div class="hp-intro">
-      <p class="hp-eyebrow"><span class="hp-eyebrow-num">01</span>The Method</p>
-      <span class="hp-gold-rule" aria-hidden="true"></span>
-      <h2 class="hp-section-headline">Three systems. One methodology.</h2>
-      <p class="hp-section-body">Most dating platforms optimize for engagement &mdash; time spent, swipes, messages sent. The longer you search, the more they earn. MatchMakers was built around a different assumption: that the problem was never access to people. It was clarity about purpose.</p>
-      <p class="hp-section-body">So we built three systems and one methodology &mdash; refined over 7 years of human matchmaking and 66,000+ real connections, now scaled into the app, the Playbook, and your Coach. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
+  <!-- §4 THE METHOD -->
+  <section class="hp-section hp-method hp-reveal">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">01 &middot;</span> The Method</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">Three systems. <em class="hp-italic-gold-accent">One methodology.</em></h2>
+      <p class="hp-body">Most dating platforms are engineered for engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
+      <p class="hp-body">Three systems. One methodology &mdash; refined over more than a decade of human matchmaking, now scaled into the app, the Playbook, and your Coach. Each reflects how matchmaking actually works when a person does it well: observation, response, and intent. Not how an algorithm guesses at it.</p>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       §5 — THE CENTERPIECE (Coach & Playbook) — v1.2 atmospheric
-       Numbered eyebrow + gold + hairline rule + atmospheric overlay
-       + italic gold accent on "applied"
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="hp-section-lg hp-centerpiece">
-    <div class="hp-centerpiece-content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow-num">02</span>Coach &amp; Playbook</p>
-      <span class="hp-gold-rule" aria-hidden="true" style="margin-left:auto;margin-right:auto;"></span>
-      <h2 class="hp-section-headline">The methodology, <em>applied.</em></h2>
-      <p class="hp-section-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered 7 years of human matchmaking. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
-      <a href="/playbook/" class="hp-cta-link">See Coach &amp; Playbook <span aria-hidden="true">&rarr;</span></a>
+  <!-- §5 THE CENTERPIECE (Coach & Playbook) -->
+  <section class="hp-section hp-centerpiece hp-reveal">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">02 &middot;</span> Coach &amp; Playbook</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
+      <p class="hp-body">The Playbook is the methodology &mdash; refined over more than a decade of human matchmaking. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
+      <a href="/playbook/" class="hp-cta--secondary">See Coach &amp; Playbook <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       §6 — THE ECOSYSTEM — v1.2 all-4-slots gold borders + gold eyebrows
-       Numbered eyebrow + gold + hairline rule. VIP retains aspirational lift.
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="hp-section" id="ecosystem">
-    <div class="hp-intro">
-      <p class="hp-eyebrow"><span class="hp-eyebrow-num">03</span>The Ecosystem</p>
-      <span class="hp-gold-rule" aria-hidden="true"></span>
-      <h2 class="hp-section-headline">Four ways into the same practice.</h2>
-    </div>
-    <div class="hp-ecosystem-grid">
-
-      <!-- §6.1 VIP slot -->
-      <div class="hp-slot hp-slot-vip">
-        <h3 class="hp-slot-eyebrow">VIP Matchmaking</h3>
-        <p class="hp-slot-desc">By application. Every application is personally reviewed by a human matchmaker &mdash; never by an algorithm. The matchmaker walks you through it, match by match. For people who want the methodology applied directly, not just delivered as a tool.</p>
-        <a href="/vip/" class="hp-cta-link">Apply for VIP <span aria-hidden="true">&rarr;</span></a>
+  <!-- §6 THE ECOSYSTEM (3-slot — App promoted out per D5) -->
+  <section class="hp-section hp-ecosystem hp-reveal" id="ecosystem">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">03 &middot;</span> The Ecosystem</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">Three ways into the practice.</h2>
+      <div class="hp-eco-grid">
+        <!-- §6.1 VIP — gold-fill primary CTA per D4 carve-out; Legal §6.1 v2 CLEARED -->
+        <div class="hp-eco-slot hp-eco-slot--vip">
+          <h3 class="hp-eco-slot__eyebrow">VIP Matchmaking</h3>
+          <p class="hp-eco-slot__body">By application. Every application is personally reviewed by your VIP Coach &mdash; a human matchmaker &mdash; never by an algorithm. The matchmaker walks you through it, match by match. For people who want the methodology applied directly, not just delivered as a tool.</p>
+          <a href="/vip/" class="hp-eco-cta">Apply for VIP <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <!-- §6.2 Free Guide — ghost CTA -->
+        <div class="hp-eco-slot">
+          <h3 class="hp-eco-slot__eyebrow">Free Guide</h3>
+          <p class="hp-eco-slot__body">A short read on the Connection Code methodology &mdash; the foundation behind everything we make.</p>
+          <a href="/guide/" class="hp-cta--secondary">Download <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <!-- §6.3 Assessment — ghost CTA -->
+        <div class="hp-eco-slot">
+          <h3 class="hp-eco-slot__eyebrow">Assessment</h3>
+          <p class="hp-eco-slot__body">A short assessment to surface what you&rsquo;re actually looking for. The results shape how the methodology applies to you.</p>
+          <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <!-- §6.2 iOS App slot -->
-      <div class="hp-slot" id="app">
-        <h3 class="hp-slot-eyebrow">MatchMakers App</h3>
-        <p class="hp-slot-desc">The dating app where the methodology meets the community. Built on the same three systems that power the Playbook and the Coach.</p>
-        <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting; on lift, swap CTA + routing per Apple-strip protocol -->
-        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="hp-cta-link">Get the App <span aria-hidden="true">&rarr;</span></a>
+  <!-- §6↔§7 section break hairline -->
+  <hr class="hp-rule--section-break" aria-hidden="true">
+
+  <!-- §7 THE APP — APP_BADGE_BAND (D5; Bloomberg pattern) -->
+  <section class="hp-section hp-app-band hp-reveal" id="app">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow">The App</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-app-band__headline">The method, <em class="hp-italic-gold-accent">on hand.</em></h2>
+      <p class="hp-app-band__body">The dating app where the methodology meets the community. Built on the same three systems that power the Playbook and the Coach.</p>
+      <hr class="hp-rule--app-band" aria-hidden="true">
+      <div class="hp-app-badges">
+        <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting; on lift, swap badge per Apple-strip protocol -->
+        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="hp-app-badge" data-apple-strip="hold" aria-label="Download MatchMakers on the App Store">
+          Download on the App Store
+        </a>
         <!-- APPLE_STRIP_HOLD_END -->
+        <span class="hp-app-badge hp-app-badge--coming-soon" aria-label="Google Play coming soon">
+          Google Play &mdash; Coming Soon
+        </span>
       </div>
-
-      <!-- §6.3 Free Guide slot -->
-      <div class="hp-slot">
-        <h3 class="hp-slot-eyebrow">Free Guide</h3>
-        <p class="hp-slot-desc">A short read on the Connection Code methodology &mdash; the foundation behind everything we make.</p>
-        <a href="/guide/" class="hp-cta-link">Download <span aria-hidden="true">&rarr;</span></a>
-      </div>
-
-      <!-- §6.4 Assessment slot -->
-      <div class="hp-slot">
-        <h3 class="hp-slot-eyebrow">Assessment</h3>
-        <p class="hp-slot-desc">A short assessment to surface what you&rsquo;re actually looking for. The results shape how the methodology applies to you.</p>
-        <a href="/assessment/" class="hp-cta-link">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
-      </div>
-
+      <hr class="hp-rule--app-band" aria-hidden="true">
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       §7 — THE ORIGIN — v1.2 institutional credibility paragraph added
-       Numbered eyebrow + gold + hairline rule + italic accent on "match by match"
-       Founder-anonymous per FOUNDER_ANONYMITY_RULE_v1 (engineering doc reference).
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="hp-section-lg hp-origin">
-    <div class="hp-origin-content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow-num">04</span>Origin</p>
-      <span class="hp-gold-rule" aria-hidden="true" style="margin-left:auto;margin-right:auto;"></span>
-      <h2 class="hp-section-headline">Built <em>match by match.</em></h2>
-      <p class="hp-section-body hp-section-body--essay">MatchMakers was built on 7 years of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools beat the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook, and practiced inside the app.</p>
-      <p class="hp-section-body hp-section-body--essay">MatchMakers has grown to 66,000+ members across seven years &mdash; without paid acquisition, without influencer spend, without growth campaigns. Word-of-mouth only. The methodology earned the membership.</p>
+  <!-- §8 ORIGIN (long-form essay) -->
+  <section class="hp-section hp-origin hp-reveal">
+    <div class="hp-section__content">
+      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">04 &middot;</span> Origin</p>
+      <hr class="hp-rule--eyebrow" aria-hidden="true">
+      <h2 class="hp-headline">Built <em class="hp-italic-gold-accent">match by match.</em></h2>
+      <p class="hp-body">MatchMakers was built on more than a decade of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools beat the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook, and practiced inside the app.</p>
     </div>
   </section>
 
-  <!-- §7↔§8 section break hairline (Pattern B) -->
-  <hr class="hp-section-break" aria-hidden="true">
+  <!-- §8↔§9 section break hairline -->
+  <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       §8 — PICK THE LEVEL (Close + product router) — v1.2 gold-bordered
-       Equal-weight 4-button grid; gold borders + gold arrows uniform.
-       ═══════════════════════════════════════════════════════════════ -->
-  <section class="hp-section">
-    <div class="hp-intro">
-      <h2 class="hp-section-headline">Pick the level that fits where you are.</h2>
-      <p class="hp-section-body">The Playbook is where you learn the methodology. The Coach is where AI applies it to you. The app is where the methodology meets the community. VIP is where a human matchmaker applies it directly. Four ways into the same practice &mdash; pick the one that fits.</p>
-    </div>
-    <div class="hp-router">
-      <a href="/playbook/" class="hp-router-btn">Coach &amp; Playbook <span class="hp-arrow" aria-hidden="true">&rarr;</span></a>
-      <a href="/vip/" class="hp-router-btn">VIP Matchmaking <span class="hp-arrow" aria-hidden="true">&rarr;</span></a>
-      <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting; on lift, swap router App entry per Apple-strip protocol -->
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="hp-router-btn">The App <span class="hp-arrow" aria-hidden="true">&rarr;</span></a>
-      <!-- APPLE_STRIP_HOLD_END -->
-      <a href="/guide/" class="hp-router-btn">Free Guide <span class="hp-arrow" aria-hidden="true">&rarr;</span></a>
+  <!-- §9 PICK THE LEVEL (3-button gold-fill router per ADJ-5) -->
+  <section class="hp-section hp-router hp-reveal">
+    <div class="hp-section__content">
+      <h2 class="hp-headline">Pick the level that fits where you are.</h2>
+      <p class="hp-body">The Playbook is where you learn the methodology. The Coach is where AI applies it to you. The app is where the methodology meets the community. VIP is where a human matchmaker applies it directly. Three ways into the same practice &mdash; pick the one that fits.</p>
+      <div class="hp-router-grid">
+        <a href="/coach/" class="hp-router-btn">Coach <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/playbook/" class="hp-router-btn">Playbook <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/vip/" class="hp-router-btn">VIP Matchmaking <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
   </section>
 
 </main>
 
-<!-- Footer credentialing strip (Web Ed E; v1.2 NEW; provenance anchor) -->
-<div class="hp-credentialing">
-  <div class="hp-credentialing-row" aria-label="Institutional credentials">
+<!-- Footer credentialing strip (D1-revised) -->
+<div class="hp-footer__credential">
+  <div class="hp-footer__credential-row" aria-label="Institutional credentials">
     <span>Est. 2018</span>
-    <span class="hp-credentialing-sep" aria-hidden="true">&middot;</span>
-    <span>66,000+ Members</span>
-    <span class="hp-credentialing-sep" aria-hidden="true">&middot;</span>
-    <span>7 Years In Market</span>
-    <span class="hp-credentialing-sep" aria-hidden="true">&middot;</span>
-    <span>$0 Paid Advertising</span>
-    <span class="hp-credentialing-sep" aria-hidden="true">&middot;</span>
+    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
+    <span>matchmakersusa.com</span>
+    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
+    <span>A Decade in the Making</span>
+    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
+    <span>By Application</span>
+    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
     <span>100% Organic Growth</span>
   </div>
 </div>
@@ -641,11 +817,13 @@
         <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;">
         <span class="nm">MatchMakers<sup>&trade;</sup></span>
       </div>
-      <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The first dating app built around declared Intent. 66,000+ members. Zero paid advertising. Seven years of real outcomes.</p>
+      <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. More than a decade in the making. Word-of-mouth only.</p>
       <div style="margin-top:1rem;display:flex;align-items:center;gap:.75rem;">
-        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;opacity:.88;transition:opacity .2s;">
-          <span style="font-family:var(--pd);font-size:.7rem;font-weight:700;color:rgba(200,214,229,.5);letter-spacing:.06em;text-transform:uppercase;">Download on App Store</span>
+        <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting -->
+        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold" style="display:inline-block;text-decoration:none;opacity:.88;transition:opacity .2s;">
+          <span style="font-family:var(--font-utility);font-size:.7rem;font-weight:700;color:rgba(200,214,229,.5);letter-spacing:.06em;text-transform:uppercase;">Download on App Store</span>
         </a>
+        <!-- APPLE_STRIP_HOLD_END -->
       </div>
     </div>
     <div class="fc">
@@ -657,7 +835,9 @@
     </div>
     <div class="fc">
       <h4>The App</h4>
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener">Download Free &mdash; App Store</a>
+      <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting -->
+      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold">Download Free &mdash; App Store</a>
+      <!-- APPLE_STRIP_HOLD_END -->
       <span style="opacity:.45;cursor:default;">Google Play &mdash; Coming Soon</span>
     </div>
     <div class="fc">
@@ -667,8 +847,8 @@
       <a href="/child-safety/">Child Safety</a>
       <a href="mailto:customerservice@matchmakersusa.com">customerservice@matchmakersusa.com</a>
       <a href="tel:+19293546337">(929) 354-6337</a>
-      <span style="display:block;font-family:var(--sr);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(65,91,124,.15);">1991 Crocker Rd, Suite 600-755</span>
-      <span style="display:block;font-family:var(--sr);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);">Westlake, OH 44145</span>
+      <span style="display:block;font-family:var(--font-body);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(65,91,124,.15);">1991 Crocker Rd, Suite 600-755</span>
+      <span style="display:block;font-family:var(--font-body);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);">Westlake, OH 44145</span>
     </div>
   </div>
   <div class="fbot">
@@ -679,5 +859,24 @@
 
 <script src="/js/analytics.js"></script>
 <script src="/js/main.js"></script>
+<script>
+  // Reveal animation observer (single pattern per section per Atlas v2 plan §2.6 + Web Ed v2 §11)
+  (function () {
+    if (!('IntersectionObserver' in window)) {
+      // Graceful fallback: reveal everything immediately
+      document.querySelectorAll('.hp-reveal').forEach(function (el) { el.classList.add('is-revealed'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.hp-reveal').forEach(function (el) { observer.observe(el); });
+  })();
+</script>
 </body>
 </html>
