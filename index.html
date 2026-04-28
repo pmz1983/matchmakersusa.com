@@ -496,53 +496,6 @@
     .hp-hero__cta--card:focus-visible .hp-hero__cta-arrow { transform: translateX(3px); }
     .hp-hero__cta--card:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
-    /* v2.3 hero — compact quick-hit band (4 small pill links above the larger 4-card grid) */
-    /* Visually subordinate to primary CTA cards per single-tier ring system (D-WEB-V2.1-BTN-RING-001). */
-    .hp-hero__quickhit-band {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-1);
-      width: 100%;
-      max-width: 560px;
-      margin: 0 0 var(--space-5);
-    }
-    @media (min-width: 640px) {
-      .hp-hero__quickhit-band { grid-template-columns: repeat(4, 1fr); max-width: 720px; gap: 10px; }
-    }
-    .hp-hero__quickhit {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 7px 10px;
-      background: transparent;
-      color: rgba(201, 168, 76, 0.82);
-      border: 1px solid rgba(201, 168, 76, 0.26);
-      border-radius: 2px;
-      font-family: var(--font-utility);
-      font-weight: 500;
-      font-size: 0.68rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: border-color var(--motion-hover) var(--easing-out), background var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out);
-    }
-    .hp-hero__quickhit:hover,
-    .hp-hero__quickhit:focus-visible {
-      background: rgba(201, 168, 76, 0.06);
-      border-color: var(--color-accent-gold);
-      color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-    .hp-hero__quickhit:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 3px; }
-    .hp-hero__quickhit-arrow {
-      font-size: 0.78em;
-      transition: transform var(--motion-hover) var(--easing-out);
-    }
-    .hp-hero__quickhit:hover .hp-hero__quickhit-arrow,
-    .hp-hero__quickhit:focus-visible .hp-hero__quickhit-arrow { transform: translateX(2px); }
-
     /* Section eyebrow + 24×1 accent rule */
     .hp-eyebrow {
       font-family: var(--font-utility); font-weight: 500;
@@ -826,7 +779,6 @@
     .hp-cta--secondary:active,
     .hp-hero__cta:active,
     .hp-hero__cta--card:active,
-    .hp-hero__quickhit:active,
     .hp-router-btn:active,
     .hp-eco-cta:active {
       transform: scale(0.97);
@@ -841,7 +793,6 @@
       .hp-cta--secondary:active,
       .hp-hero__cta:active,
       .hp-hero__cta--card:active,
-      .hp-hero__quickhit:active,
       .hp-router-btn:active,
       .hp-eco-cta:active {
         transform: none;
@@ -852,8 +803,8 @@
 
     /* C3 — Default focus-visible for non-CTA interactives (links, form
        inputs). Per-component CTA focus rings (4px offset on hero CTAs /
-       router / 3px on quickhit) preserved verbatim — this rule applies
-       only where no per-component override exists. */
+       router) preserved verbatim — this rule applies only where no
+       per-component override exists. */
     a:focus-visible,
     button:focus-visible,
     input:focus-visible,
@@ -879,10 +830,6 @@
        Cohort 2.5 C-B — Mobile + UX (Meridian-validated)
        ───────────────────────────────────────────────────────── */
 
-    /* C2 — 44×44 effective tap area on small interactive elements
-       (visual size unchanged; hit-area enlarged via min-height). */
-    .hp-hero__quickhit { min-height: 44px; }
-
     /* C5 — Safe-area-inset support (iOS notch / Dynamic Island /
        home indicator). Sticky bar accommodates safe-area-inset-top
        under the notch; body respects safe-area-inset-bottom under
@@ -897,14 +844,6 @@
         padding-top: env(safe-area-inset-top);
         height: calc(var(--stickybar-height) + env(safe-area-inset-top));
       }
-    }
-
-    /* C6 — Touch-target spacing on quickhit row (≥var(--space-2) =
-       12px between adjacent interactive elements per Meridian §2.6;
-       was 6px / 10px). */
-    .hp-hero__quickhit-band { gap: var(--space-2); }
-    @media (min-width: 640px) {
-      .hp-hero__quickhit-band { gap: var(--space-2); }
     }
   </style>
 </head>
@@ -945,13 +884,6 @@
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">The Connection Code&trade; methodology shapes how this works &mdash; but it starts with what you&rsquo;re actually looking for. A short Assessment surfaces that.</p>
-      <!-- v2.3 quick-hit band — compact 4-link top frame for instant entry-point visitors -->
-      <div class="hp-hero__quickhit-band" aria-label="Quick navigation">
-        <a href="/assessment/" class="hp-hero__quickhit">Assessment <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/guide/" class="hp-hero__quickhit">Connection Code <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/playbook/" class="hp-hero__quickhit">Coach &amp; Playbook <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/vip/" class="hp-hero__quickhit">VIP <span class="hp-hero__quickhit-arrow" aria-hidden="true">&rarr;</span></a>
-      </div>
       <div class="hp-hero__cta-grid" aria-label="Choose your starting point">
         <a href="/assessment/" class="hp-hero__cta hp-hero__cta--card">
           <span class="hp-hero__cta-eyebrow">Stage 1</span>
