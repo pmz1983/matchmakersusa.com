@@ -143,9 +143,9 @@
       --router-btn-height:          64px;
       --router-btn-radius:          8px;
       --statband-cell-min-height:   88px;
-      --hp-hero-mark-size-desktop:  96px;
-      --hp-hero-mark-size-tablet:   80px;
-      --hp-hero-mark-size-mobile:   64px;
+      --hp-hero-mark-size-desktop:  144px;
+      --hp-hero-mark-size-tablet:   120px;
+      --hp-hero-mark-size-mobile:   96px;
       --stickybar-height:           56px;
       --stickybar-z-index:          100;
     }
@@ -835,16 +835,10 @@
 
 <main>
 
-  <!-- §3 HERO (anchor) — Cohort 4-A restructure: 4-cell stat band ABOVE / M-mark / eyebrow / wordmark / H1 / subhead / single primary CTA -->
+  <!-- §3 HERO (anchor) — Hero reorder per Paul §5 2026-04-28:
+       eyebrow → M-mark (larger) → wordmark → H1 → subhead → primary CTA → 4-cell stat band -->
   <section class="hp-hero" id="hero">
     <div class="hp-hero__content">
-      <div class="hp-stat-band hp-stat-band--4 hp-stat-band--hero" aria-label="Institutional credentials">
-        <div class="hp-stat-cell">7 Years In Market</div>
-        <div class="hp-stat-cell">Methodology-Grounded</div>
-        <div class="hp-stat-cell">$0 Paid Advertising</div>
-        <div class="hp-stat-cell">100% Organic Growth</div>
-      </div>
-      <img src="/img/logo.png" class="hp-hero__mark" alt="MatchMakers" width="96" height="96" decoding="async" fetchpriority="high">
       <p class="hp-hero__eyebrow" aria-label="Institutional posture">
         <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
         <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
@@ -852,11 +846,18 @@
         <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
         <span class="hp-hero__eyebrow-line">Human-led matchmaking</span>
       </p>
+      <img src="/img/logo.png" class="hp-hero__mark" alt="MatchMakers" width="144" height="144" decoding="async" fetchpriority="high">
       <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">The Connection Code&trade; methodology shapes how this works &mdash; but it starts with what you&rsquo;re actually looking for. A short Assessment surfaces that.</p>
-      <a href="/playbook/" class="btn-gold-fill hp-hero__primary-cta">Start with the Playbook &rarr;</a>
+      <a href="/guide/" class="btn-gold-fill hp-hero__primary-cta">Start with the Connection Code &rarr;</a>
+      <div class="hp-stat-band hp-stat-band--4 hp-stat-band--hero" aria-label="Institutional credentials">
+        <div class="hp-stat-cell">7 Years In Market</div>
+        <div class="hp-stat-cell">Methodology-Grounded</div>
+        <div class="hp-stat-cell">$0 Paid Advertising</div>
+        <div class="hp-stat-cell">100% Organic Growth</div>
+      </div>
     </div>
   </section>
 
@@ -866,7 +867,7 @@
   <!-- §4 THE METHOD — B-1 thesis surface + B-2 engagement contrast (Atlas D-3 + locked B-2) -->
   <section class="hp-section hp-method hp-reveal">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">01 &middot;</span> The Method</p>
+      <p class="hp-eyebrow">The Method</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Refined by practice.</em></h2>
       <!-- B-1 thesis surface (Atlas D-3 ratified phrasing c) -->
@@ -880,7 +881,7 @@
   <!-- §5 STAGE 1 — Assessment (canonical journey stage 1) -->
   <section class="hp-section hp-stage hp-reveal" id="stage-assessment">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">02 &middot;</span> Stage 1 &mdash; Assessment</p>
+      <p class="hp-eyebrow">Stage 1 &mdash; Assessment</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">Start with <em class="hp-italic-gold-accent">what you&rsquo;re actually looking for.</em></h2>
       <p class="hp-body">A short Assessment surfaces it &mdash; the kind of relationship, the kind of presence, the kind of standard you&rsquo;re bringing to this. The results shape how the methodology applies to you.</p>
@@ -891,7 +892,7 @@
   <!-- §6 STAGE 2 — Connection Code (canonical journey stage 2) -->
   <section class="hp-section hp-stage hp-reveal" id="stage-connection-code">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">03 &middot;</span> Stage 2 &mdash; Connection Code</p>
+      <p class="hp-eyebrow">Stage 2 &mdash; Connection Code</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">distilled.</em></h2>
       <p class="hp-body">A short read on the Connection Code &mdash; the foundation behind everything we make. Five signals, one framework, a different way of reading what&rsquo;s actually in front of you.</p>
@@ -909,7 +910,7 @@
   <!-- §7 STAGE 3 — Coach & Playbook (canonical journey stage 3; PAIRED centerpiece per C-3) -->
   <section class="hp-section hp-centerpiece hp-reveal" id="stage-coach-playbook">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">04 &middot;</span> Stage 3 &mdash; Coach &amp; Playbook</p>
+      <p class="hp-eyebrow">Stage 3 &mdash; Coach &amp; Playbook</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
       <p class="hp-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered 7 years of human matchmaking. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
@@ -923,7 +924,7 @@
   <!-- §9 STAGE 4 — VIP (canonical journey stage 4 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
   <section class="hp-section hp-stage hp-stage--vip hp-reveal" id="stage-vip">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">05 &middot;</span> Stage 4 &mdash; VIP</p>
+      <p class="hp-eyebrow">Stage 4 &mdash; VIP</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied directly.</em></h2>
       <!-- B-4 ratified narrative (Atlas locked; Legal §6.1 v2 envelope) -->
@@ -936,7 +937,7 @@
   <!-- §10 ORIGIN (long-form essay; thesis-supporting backstop) -->
   <section class="hp-section hp-origin hp-reveal">
     <div class="hp-section__content">
-      <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">06 &middot;</span> Origin</p>
+      <p class="hp-eyebrow">Origin</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">Built <em class="hp-italic-gold-accent">match by match.</em></h2>
       <p class="hp-body hp-body--essay">MatchMakers was built on 7 years of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools matter more than the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook.</p>
