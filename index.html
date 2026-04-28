@@ -143,6 +143,9 @@
       --router-btn-height:          64px;
       --router-btn-radius:          8px;
       --statband-cell-min-height:   88px;
+      --hp-hero-mark-size-desktop:  96px;
+      --hp-hero-mark-size-tablet:   80px;
+      --hp-hero-mark-size-mobile:   64px;
       --stickybar-height:           56px;
       --stickybar-z-index:          100;
     }
@@ -405,98 +408,59 @@
       .hp-stat-cell:nth-child(1) { border-left: 0; }
     }
 
-    /* v2.1 D-5 — 3-cell stat band (Atlas locked: A Decade · By Application · Built on Organic Growth) */
-    .hp-stat-band--3 {
-      max-width: 560px;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, 1fr);
-    }
-    .hp-stat-band--3 .hp-stat-cell { border-top: 1px solid var(--hp-hairline-ambient); border-left: 0; }
-    .hp-stat-band--3 .hp-stat-cell:nth-child(1) { border-top: 0; }
-    @media (min-width: 768px) {
-      .hp-stat-band--3 { max-width: 720px; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; }
-      .hp-stat-band--3 .hp-stat-cell { border-top: 0; border-left: 1px solid var(--hp-hairline-ambient); }
-      .hp-stat-band--3 .hp-stat-cell:nth-child(1) { border-left: 0; }
-    }
-
-    /* v2.2 hero — 4-card stage grid (Assessment / Connection Code / Coach & Playbook / VIP) */
-    .hp-hero__cta-grid {
+    /* Cohort 4-A — 4-cell stat band (hero variant; ABOVE H1 per Meridian SA-A3) */
+    .hp-stat-band--4 {
+      width: 100%;
+      max-width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-3);
-      width: 100%;
-      max-width: 720px;
-      margin: 0 0 var(--space-6);
-    }
-    @media (min-width: 640px) {
-      .hp-hero__cta-grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
-    }
-    @media (min-width: 1024px) {
-      .hp-hero__cta-grid { grid-template-columns: repeat(4, 1fr); max-width: 1080px; }
-    }
-    /* Hero CTA card — card layout (vs btn-gold pill) but token-aligned with global ring system
-       (border alpha 0.45, hover bg 0.06, mm-btn-shadow rest+hover, -1px lift) per P1.W1 audit. */
-    .hp-hero__cta--card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: var(--space-2);
-      height: auto;
-      min-height: 110px;
-      padding: var(--space-4) var(--space-4);
-      background: transparent;
-      color: var(--color-text-primary);
-      border: 1px solid rgba(201, 168, 76, 0.45);
-      border-radius: var(--cta-primary-radius);
-      box-shadow: var(--mm-btn-shadow-rest);
-      text-decoration: none;
-      cursor: pointer;
-      transition: border-color var(--motion-hover) var(--easing-out), background var(--motion-hover) var(--easing-out), box-shadow var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
-      position: relative;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      gap: 0;
+      border: 1px solid var(--hp-hairline-emphatic);
+      border-radius: 4px;
       overflow: hidden;
-      width: 100%;
-      margin: 0;
     }
-    .hp-hero__cta--card:hover,
-    .hp-hero__cta--card:focus-visible {
-      background: rgba(201, 168, 76, 0.06);
-      border-color: var(--color-accent-gold);
-      box-shadow: var(--mm-btn-shadow-hover);
-      transform: translateY(-1px);
-      outline: none;
-    }
-    .hp-hero__cta-eyebrow {
-      font-family: var(--font-utility);
-      font-weight: 500;
+    .hp-stat-band--4 .hp-stat-cell {
+      padding: var(--space-3) var(--space-4);
+      border-right: 1px solid var(--hp-hairline-ambient);
+      border-top: 0;
+      border-left: 0;
+      text-align: center;
       font-size: var(--type-stat-label);
+      font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(201, 168, 76, 0.78);
-      display: block;
-    }
-    .hp-hero__cta-label {
-      font-family: var(--font-utility);
-      font-weight: 600;
-      font-size: var(--type-cta-primary);
-      letter-spacing: 0.04em;
       color: var(--color-text-primary);
-      line-height: 1.25;
-      text-transform: uppercase;
+      min-height: var(--statband-cell-min-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hp-stat-band--4 .hp-stat-cell:last-child { border-right: none; }
+    .hp-stat-band--hero { margin: 0 auto var(--space-6); }
+    @media (max-width: 767px) {
+      .hp-stat-band--4 { grid-template-columns: repeat(2, 1fr); }
+      .hp-stat-band--4 .hp-stat-cell:nth-child(2n) { border-right: none; }
+      .hp-stat-band--4 .hp-stat-cell:nth-child(-n+2) { border-bottom: 1px solid var(--hp-hairline-ambient); }
+    }
+
+    /* Cohort 4-A — Hero M-mark logo (per Meridian SA-A1; 96/80/64 responsive) */
+    .hp-hero__mark {
       display: block;
-      margin-top: auto;
+      width: var(--hp-hero-mark-size-desktop);
+      height: var(--hp-hero-mark-size-desktop);
+      margin: 0 auto var(--space-5);
+      border-radius: 0;
     }
-    .hp-hero__cta-arrow {
-      font-family: var(--font-utility);
-      color: var(--color-accent-gold);
-      font-size: 1.125rem;
-      align-self: flex-end;
-      margin-top: var(--space-1);
-      transition: transform var(--motion-hover) var(--easing-out);
+    @media (max-width: 1023px) {
+      .hp-hero__mark { width: var(--hp-hero-mark-size-tablet); height: var(--hp-hero-mark-size-tablet); }
     }
-    .hp-hero__cta--card:hover .hp-hero__cta-arrow,
-    .hp-hero__cta--card:focus-visible .hp-hero__cta-arrow { transform: translateX(3px); }
-    .hp-hero__cta--card:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
+    @media (max-width: 767px) {
+      .hp-hero__mark { width: var(--hp-hero-mark-size-mobile); height: var(--hp-hero-mark-size-mobile); }
+    }
+
+    /* Cohort 4-A — Hero single primary CTA (per Meridian SA-A2; replaces 4-card stage grid) */
+    .hp-hero__primary-cta { margin: 0 auto var(--space-5); }
 
     /* Section eyebrow + 24×1 accent rule */
     .hp-eyebrow {
@@ -537,6 +501,9 @@
       max-width: 64ch;
     }
     .hp-body + .hp-body { margin-top: 0; }
+    .hp-body--essay {
+      font-size: var(--type-body-essay); line-height: 1.65;
+    }
     .hp-origin .hp-body {
       font-size: var(--type-body-essay); line-height: 1.65;
       max-width: 70ch; margin-left: 0; margin-right: 0;
@@ -777,10 +744,8 @@
        Uses --motion-active (100ms) + --easing-out per v1.3 §7.1. */
     .btn-gold-fill:active,
     .btn-gold:active,
-    .hp-cta-primary:active,
     .hp-cta--secondary:active,
     .hp-hero__cta:active,
-    .hp-hero__cta--card:active,
     .hp-router-btn:active,
     .hp-eco-cta:active {
       transform: scale(0.97);
@@ -791,10 +756,8 @@
     @media (prefers-reduced-motion: reduce) {
       .btn-gold-fill:active,
       .btn-gold:active,
-      .hp-cta-primary:active,
       .hp-cta--secondary:active,
       .hp-hero__cta:active,
-      .hp-hero__cta--card:active,
       .hp-router-btn:active,
       .hp-eco-cta:active {
         transform: none;
@@ -872,10 +835,17 @@
 
 <main>
 
-  <!-- §3 HERO (anchor) — v2.2 "Take Dating to the Next Level" treatment per Atlas locked phrasing -->
+  <!-- §3 HERO (anchor) — Cohort 4-A restructure: 4-cell stat band ABOVE / M-mark / eyebrow / wordmark / H1 / subhead / single primary CTA -->
   <section class="hp-hero" id="hero">
     <div class="hp-hero__content">
-      <p class="hp-hero__eyebrow" aria-label="Institutional credentials">
+      <div class="hp-stat-band hp-stat-band--4 hp-stat-band--hero" aria-label="Institutional credentials">
+        <div class="hp-stat-cell">7 Years In Market</div>
+        <div class="hp-stat-cell">Methodology-Grounded</div>
+        <div class="hp-stat-cell">$0 Paid Advertising</div>
+        <div class="hp-stat-cell">100% Organic Growth</div>
+      </div>
+      <img src="/img/logo.png" class="hp-hero__mark" alt="MatchMakers" width="96" height="96" decoding="async" fetchpriority="high">
+      <p class="hp-hero__eyebrow" aria-label="Institutional posture">
         <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
         <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
         <span class="hp-hero__eyebrow-line">Methodology, not algorithm</span>
@@ -886,33 +856,7 @@
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">The Connection Code&trade; methodology shapes how this works &mdash; but it starts with what you&rsquo;re actually looking for. A short Assessment surfaces that.</p>
-      <div class="hp-hero__cta-grid" aria-label="Choose your starting point">
-        <a href="/assessment/" class="hp-hero__cta hp-hero__cta--card">
-          <span class="hp-hero__cta-eyebrow">Stage 1</span>
-          <span class="hp-hero__cta-label">Take the Assessment</span>
-          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="/guide/" class="hp-hero__cta hp-hero__cta--card">
-          <span class="hp-hero__cta-eyebrow">Stage 2</span>
-          <span class="hp-hero__cta-label">Read the Connection Code</span>
-          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="/playbook/" class="hp-hero__cta hp-hero__cta--card">
-          <span class="hp-hero__cta-eyebrow">Stage 3</span>
-          <span class="hp-hero__cta-label">Coach &amp; Playbook</span>
-          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="/vip/" class="hp-hero__cta hp-hero__cta--card">
-          <span class="hp-hero__cta-eyebrow">Stage 4</span>
-          <span class="hp-hero__cta-label">VIP MatchMaking</span>
-          <span class="hp-hero__cta-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-      <div class="hp-stat-band hp-stat-band--3" aria-label="Institutional posture">
-        <div class="hp-stat-cell">Refined by Practice</div>
-        <div class="hp-stat-cell">By Application</div>
-        <div class="hp-stat-cell">Built on Organic Growth</div>
-      </div>
+      <a href="/playbook/" class="btn-gold-fill hp-hero__primary-cta">Start with the Playbook &rarr;</a>
     </div>
   </section>
 
@@ -928,8 +872,8 @@
       <!-- B-1 thesis surface (Atlas D-3 ratified phrasing c) -->
       <p class="hp-body hp-body--thesis"><em>Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</em></p>
       <!-- B-2 engagement contrast (locked) -->
-      <p class="hp-body">Most dating platforms are engineered for engagement &mdash; time spent, swipes logged, messages bounced. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
-      <p class="hp-body">Three systems. One methodology &mdash; refined in practice, now applied through the Playbook and your Coach.</p>
+      <p class="hp-body">The dating industry is a $9 billion market built around engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
+      <p class="hp-body">So we built three systems and one methodology &mdash; refined over 7 years of human matchmaking, now applied through the Playbook and your Coach. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
     </div>
   </section>
 
@@ -968,7 +912,7 @@
       <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">04 &middot;</span> Stage 3 &mdash; Coach &amp; Playbook</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
-      <p class="hp-body">The Playbook is the methodology &mdash; refined in practice. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
+      <p class="hp-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered 7 years of human matchmaking. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product: the methodology, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
       <a href="/playbook/" class="hp-cta--secondary">See Coach &amp; Playbook <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
@@ -995,7 +939,8 @@
       <p class="hp-eyebrow"><span class="hp-eyebrow__prefix">06 &middot;</span> Origin</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">Built <em class="hp-italic-gold-accent">match by match.</em></h2>
-      <p class="hp-body">MatchMakers was built on human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools matter more than the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook.</p>
+      <p class="hp-body hp-body--essay">MatchMakers was built on 7 years of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined match by match, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools matter more than the smartest algorithm. That&rsquo;s the methodology. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook.</p>
+      <p class="hp-body hp-body--essay">MatchMakers grew across seven years &mdash; without paid acquisition, without influencer spend, without growth campaigns. Word-of-mouth only. The methodology earned the standing.</p>
     </div>
   </section>
 
@@ -1026,9 +971,11 @@
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
     <span>Over a decade in the making</span>
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>By Application</span>
+    <span>Methodology-Grounded</span>
     <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>Built on Organic Growth</span>
+    <span>$0 Paid Advertising</span>
+    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
+    <span>100% Organic Growth</span>
   </div>
 </div>
 
