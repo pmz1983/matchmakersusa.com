@@ -43,6 +43,92 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png">
+  <style>
+    /* /playbook/ COHORT 4-A — Path B 6-tier visual treatment per Meridian
+       ~/Desktop/02_DESIGN/drafts/meridian_playbook_restructure_visual_2026-04-28.md §2.
+       Class names CANONICAL per Web Ed cohort_4a_playbook_restructure_2026-04-28.md.
+       Token base: legacy /playbook/ namespace (--dk/--gold/--tx/--pd/--sr).
+       Mobile-first 390px canonical. Tier 5 deep-dive = preserved-inline (Cohort 4-B v3 absorbs). */
+
+    /* TIER 1 — STRONG BRANDING */
+    .pb-tier-brand { background: var(--dk); padding: 4rem 1.25rem 3rem; text-align: center; border-bottom: 1px solid rgba(65, 91, 124, 0.15); }
+    @media (min-width: 768px) { .pb-tier-brand { padding: 5rem 2rem 4rem; } }
+    @media (min-width: 1024px) { .pb-tier-brand { padding: 6rem 2rem 4.5rem; } }
+    .pb-tier-brand__mark { display: block; width: 64px; height: 64px; margin: 0 auto 1.5rem; border-radius: 0; }
+    @media (min-width: 768px) { .pb-tier-brand__mark { width: 80px; height: 80px; margin-bottom: 1.75rem; } }
+    @media (min-width: 1024px) { .pb-tier-brand__mark { width: 96px; height: 96px; margin-bottom: 2rem; } }
+    .pb-tier-brand__eyebrow { display: block; font-family: var(--pd); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .pb-tier-brand__h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(2rem, 7vw, 3.25rem); line-height: 1.10; letter-spacing: -0.015em; color: var(--tx); margin: 0 auto 1.25rem; max-width: 760px; }
+    .pb-tier-brand__h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
+    .pb-tier-brand__h1-sub { display: inline-block; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: 0.62em; color: rgba(244, 241, 234, 0.78); letter-spacing: -0.005em; margin-top: 0.5rem; }
+    .pb-tier-brand__rule { display: block; width: 28px; height: 2px; background: var(--gold); border: 0; margin: 1.5rem auto 0; opacity: 0.7; }
+
+    /* TIER 2 — SHORT INFO AREA (~145-word trinity explanation) */
+    .pb-tier-info { background: var(--dk); padding: 3.5rem 1.25rem; border-bottom: 1px solid rgba(65, 91, 124, 0.15); }
+    @media (min-width: 768px) { .pb-tier-info { padding: 4.5rem 2rem; } }
+    @media (min-width: 1024px) { .pb-tier-info { padding: 5rem 2rem; } }
+    .pb-tier-info__content { max-width: 720px; margin: 0 auto; }
+    .pb-tier-info__eyebrow { display: block; font-family: var(--pd); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 0.75rem; }
+    .pb-tier-info__rule { display: block; width: 24px; height: 1px; background: rgba(201, 168, 76, 0.55); border: 0; margin: 0 auto 2rem; }
+    .pb-tier-info__lead { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.4; color: var(--tx); text-align: center; margin: 0 0 2rem; }
+    .pb-tier-info__body { font-family: var(--sr); font-weight: 400; font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.7; color: var(--tx); margin: 0 0 1.5rem; }
+    .pb-tier-info__body strong { font-weight: 700; color: var(--gold); }
+    .pb-tier-info__close { font-family: var(--sr); font-weight: 400; font-size: clamp(0.88rem, 1vw, 0.95rem); line-height: 1.65; color: var(--sl); margin: 0; font-style: italic; }
+
+    /* TIER 3 + TIER 4 — ACTION SECTIONS (Coach + Script Studio) */
+    .pb-tier-action { padding: 3.5rem 1.25rem; border-top: 1px solid rgba(65, 91, 124, 0.15); border-bottom: 1px solid rgba(65, 91, 124, 0.15); }
+    @media (min-width: 768px) { .pb-tier-action { padding: 4.5rem 2rem; } }
+    @media (min-width: 1024px) { .pb-tier-action { padding: 5.5rem 2rem; } }
+    .pb-tier-action--coach { background: var(--dk); }
+    .pb-tier-action--studio { background: var(--navy); }
+    .pb-tier-action__content { max-width: 800px; margin: 0 auto; }
+    .pb-tier-action__header { text-align: center; margin-bottom: 2.5rem; }
+    .pb-tier-action__eyebrow { display: inline; font-family: var(--pd); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); vertical-align: middle; }
+    .pb-tier-action__phase-badge { display: inline-block; margin-left: 0.6rem; padding: 3px 10px; border-radius: 3px; background: rgba(201, 168, 76, 0.14); border: 1px solid rgba(201, 168, 76, 0.32); color: var(--gold); font-family: var(--pd); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; vertical-align: middle; }
+    .pb-tier-action__rule { display: block; width: 24px; height: 1px; background: rgba(201, 168, 76, 0.55); border: 0; margin: 1rem auto 1.5rem; }
+    .pb-tier-action__h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(1.75rem, 4.5vw, 2.5rem); line-height: 1.15; letter-spacing: -0.01em; color: var(--tx); margin: 0 0 1rem; }
+    .pb-tier-action__intro { font-family: var(--sr); font-weight: 400; font-size: clamp(0.92rem, 1.05vw, 1rem); line-height: 1.65; color: var(--sl); margin: 0 auto; max-width: 600px; }
+    .pb-tier-action__cta-block { text-align: center; margin: 0 auto 3rem; padding: 2rem 1rem; background: rgba(201, 168, 76, 0.04); border: 1px solid rgba(201, 168, 76, 0.22); border-radius: 8px; max-width: 680px; }
+    .pb-tier-action__cta-primary { display: inline-block; width: 100%; max-width: 360px; padding: 1rem 1.75rem; background: var(--gold); color: var(--dk); border: 1px solid var(--gold); border-radius: 8px; font-family: var(--pd); font-weight: 600; font-size: 1rem; letter-spacing: 0.04em; text-decoration: none; text-align: center; line-height: 1.4; min-height: 56px; transition: background 180ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 100ms ease-out; }
+    .pb-tier-action__cta-primary:hover { background: rgba(216, 187, 95, 1); border-color: rgba(216, 187, 95, 1); }
+    .pb-tier-action__cta-primary:active { transform: scale(0.97); opacity: 0.92; }
+    .pb-tier-action__cta-primary:focus-visible { outline: 2px solid rgba(201, 168, 76, 0.55); outline-offset: 4px; }
+    @media (min-width: 768px) { .pb-tier-action__cta-primary { width: auto; min-width: 280px; } }
+    .pb-tier-action__phase-disclosure { font-family: var(--sr); font-weight: 400; font-size: 0.85rem; line-height: 1.65; color: var(--sl); margin: 1.5rem auto 0; text-align: left; max-width: 560px; }
+    .pb-tier-action__phase-marker { display: block; font-family: var(--pd); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .pb-tier-action__example { border-top: 1px solid rgba(65, 91, 124, 0.18); padding-top: 2.5rem; margin-top: 1rem; }
+    .pb-tier-action__example-label { text-align: center; font-family: var(--pd); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244, 241, 234, 0.45); margin: 0 0 1.5rem; }
+    .pb-tier-action__example-close { font-family: var(--sr); font-size: 0.78rem; color: rgba(120, 149, 175, 0.55); text-align: center; margin: 1.25rem auto 0; max-width: 640px; line-height: 1.7; }
+
+    /* Coach bubble exchange (Tier 3) */
+    .pb-tier-action__bubble { margin: 0 auto 1rem; padding: 1.25rem 1.5rem; max-width: 88%; background: var(--mid); border: 1px solid rgba(65, 91, 124, 0.22); }
+    .pb-tier-action__bubble--user { border-radius: 12px 12px 12px 2px; }
+    .pb-tier-action__bubble--coach { border-radius: 12px 12px 2px 12px; background: rgba(201, 168, 76, 0.06); border-color: rgba(201, 168, 76, 0.22); margin-left: auto; }
+    .pb-tier-action__bubble-label { font-family: var(--pd); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200, 214, 229, 0.55); margin-bottom: 0.55rem; }
+    .pb-tier-action__bubble--coach .pb-tier-action__bubble-label { color: var(--gold); }
+    .pb-tier-action__bubble-text { font-family: var(--sr); font-size: 0.88rem; color: var(--tx); line-height: 1.7; margin-bottom: 0; }
+    .pb-tier-action__bubble--coach .pb-tier-action__bubble-text { margin-bottom: 1rem; }
+    .pb-tier-action__bubble-citation { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(201, 168, 76, 0.18); }
+    .pb-tier-action__citation-label { font-family: var(--pd); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201, 168, 76, 0.45); margin-bottom: 0.4rem; }
+    .pb-tier-action__citation-text { font-family: var(--sr); font-size: 0.78rem; color: var(--sl); line-height: 1.6; }
+
+    /* Script Studio inputs + scripts (Tier 4) */
+    .pb-tier-action__inputs-card { max-width: 760px; margin: 0 auto 2rem; background: var(--mid); border: 1px solid rgba(65, 91, 124, 0.22); border-radius: 12px; padding: 1.5rem 1.75rem; }
+    .pb-tier-action__inputs-label { font-family: var(--pd); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(201, 168, 76, 0.6); margin-bottom: 0.85rem; }
+    .pb-tier-action__inputs-row { font-family: var(--sr); font-size: 0.85rem; color: var(--tx); line-height: 1.65; padding: 0.25rem 0; }
+    .pb-tier-action__inputs-row strong { color: var(--gold); font-weight: 700; margin-right: 0.4rem; }
+    .pb-tier-action__scripts-grid { display: flex; flex-direction: column; gap: 1.5rem; max-width: 760px; margin: 0 auto; }
+    .pb-tier-action__script-card { background: var(--mid); border: 1px solid rgba(65, 91, 124, 0.22); border-radius: 12px; padding: 1.5rem 1.75rem; }
+    .pb-tier-action__script-label { font-family: var(--pd); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201, 168, 76, 0.55); margin-bottom: 0.6rem; }
+    .pb-tier-action__script-text { font-family: var(--sr); font-size: 0.88rem; color: var(--tx); line-height: 1.7; margin-bottom: 1rem; }
+    .pb-tier-action__script-citation { padding-top: 1rem; border-top: 1px solid rgba(201, 168, 76, 0.18); }
+
+    /* Reduced-motion guard (per HOMEPAGE_EDITORIAL_SPEC v2 §11.2) */
+    @media (prefers-reduced-motion: reduce) {
+      .pb-tier-action__cta-primary { transition: none; }
+      .pb-tier-action__cta-primary:active { transform: none; opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -70,36 +156,195 @@
 <main id="main">
 
 <!-- ═══════════════════════════════════════════════════════════════
-     SECTION 1 — HERO (D&M §3.1; Design §5.1)
-     Tagline verbatim per synthesis §16 lock.
+     TIER 1 — STRONG BRANDING (Cohort 4-A Path B; mirrors homepage SA-A1)
+     M-mark logo restored per Meridian SA-A1 cross-page parity.
+     s10 Tier 1 catalog phrase preserved verbatim per D-WEBED-004.
      ═══════════════════════════════════════════════════════════════ -->
-<section class="hero" id="top">
-  <div class="hero-wordmark">MatchMakers<sup>&trade;</sup></div>
-  <div class="hero-wordmark-rule"></div>
-  <span class="hero-eyebrow" style="margin-bottom:1.5rem;">The MatchMakers Dating Coach &amp; Playbook</span>
-  <h1 class="hero-title">Take dating to<br>the <em>next level.</em><br><span style="font-style:normal;font-size:.78em;">To where you're trying to go.</span></h1>
-  <p class="hero-sub" style="max-width:720px;">An AI Coach who remembers every conversation. A Script Studio that writes for your Intent. A Playbook that grounds every answer in a real methodology — the Connection Code&trade;. $250, once, for lifetime access. Use it wherever you're having a conversation.</p>
-  <div class="hero-ctas" style="display:flex;align-items:center;justify-content:center;gap:.85rem;flex-wrap:wrap;">
-    <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold-fill">Start for $250 →</button>
-    <a href="#coach-preview" class="btn-gold" onclick="document.querySelector('#coach-preview').scrollIntoView({behavior:'smooth'});return false;">Try Coach ↓</a>
-    <a href="#studio" class="btn-gold" onclick="document.querySelector('#studio').scrollIntoView({behavior:'smooth'});return false;">Try Script Studio ↓</a>
-  </div>
-  <p style="text-align:center;font-size:.78rem;color:rgba(200,214,229,.55);margin:1.25rem 0 0;font-family:var(--pd);">
-    Already have a code? <button type="button" onclick="showPlaybookRequired();setTimeout(function(){var i=document.getElementById('pcm-gate-code');if(i)i.focus();},100);" style="background:none;border:0;padding:0;color:var(--gold);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font:inherit;">Redeem here</button>
-  </p>
+<section class="pb-tier-brand" id="top" aria-label="MatchMakers Coach and Playbook">
+  <img src="/img/logo.png" class="pb-tier-brand__mark" alt="MatchMakers" width="96" height="96">
+  <span class="pb-tier-brand__eyebrow">The MatchMakers Coach &amp; Playbook</span>
+  <h1 class="pb-tier-brand__h1">Take dating to<br>the <em>next level.</em><br><span class="pb-tier-brand__h1-sub">To where you&rsquo;re trying to go.</span></h1>
+  <hr class="pb-tier-brand__rule" aria-hidden="true">
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     SECTION 2 — FEATURE CALLOUTS (D&M §3.2; Design §5.1)
-     Five callouts per D&M; "(launching Phase A)" clarifiers confined
-     to tier card §4 per Website Ed R1a ruling (graduated
-     CODE_COPY_PARITY standard — aspirational permitted at hero +
-     callouts, strict at commerce moments).
+     TIER 2 — SHORT INFO AREA (Cohort 4-A Path B trinity explanation)
+     Compresses current §1 hero subhead + §2 5-pillar callouts into
+     ~145-word trinity-explanation paragraph. Connection Code™
+     first-prose-mention authoritatively per D-WEBED-003.
+     5 deep-dive pillars preserved — relocated to Tier 5 deep-dive band.
      ═══════════════════════════════════════════════════════════════ -->
-<section style="background:var(--dk);padding:6rem 0;border-bottom:1px solid rgba(65,91,124,.15);" id="what">
+<section class="pb-tier-info" aria-label="What this is">
+  <div class="pb-tier-info__content">
+    <span class="pb-tier-info__eyebrow">What This Is</span>
+    <hr class="pb-tier-info__rule" aria-hidden="true">
+    <p class="pb-tier-info__lead">The Coach &amp; Playbook is three pieces of one system.</p>
+    <p class="pb-tier-info__body">The <strong>Coach</strong> is the AI that knows you &mdash; it remembers every conversation, every match, every script you&rsquo;ve used, and cites the Connection Code&trade; chapter behind every answer. <strong>Script Studio</strong> writes the words: tell it the situation, your Intent, and the tone, and it outputs three tailored scripts &mdash; each with the methodology citation that built it. The <strong>Playbook</strong> is the methodology itself &mdash; nine Intent frameworks, nine chapters, fifty-plus scripts. You learn the Connection Code here; the Coach and Script Studio are where you apply it.</p>
+    <p class="pb-tier-info__close">Not a content library. Not a chatbot. Not a swipe app with AI bolted on. A coached system for how you actually date &mdash; wherever the conversation is happening.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 3 — COACH ACTION SECTION (Cohort 4-A Path B)
+     Action-first layout: prominent "Ask Coach a Question" CTA at TOP
+     of section. Phase A early-access framing. Example exchange below
+     CTA (preview content). Use case binding: user on a date in the
+     bathroom asks Coach a question in 30 seconds.
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="pb-tier-action pb-tier-action--coach" id="coach" aria-label="Ask Coach a Question">
+  <a id="coach-preview" aria-hidden="true"></a>
+  <div class="pb-tier-action__content">
+
+    <div class="pb-tier-action__header">
+      <span class="pb-tier-action__eyebrow">Coach</span>
+      <span class="pb-tier-action__phase-badge">Launching Phase A</span>
+      <hr class="pb-tier-action__rule" aria-hidden="true">
+      <h2 class="pb-tier-action__h2">Tell it where you are. It tells you what&rsquo;s next.</h2>
+      <p class="pb-tier-action__intro">Every Coach exchange grounds in the methodology &mdash; with the Connection Code&trade; chapter that built the answer cited inline.</p>
+    </div>
+
+    <div class="pb-tier-action__cta-block">
+      <a href="mailto:customerservice@matchmakersusa.com?subject=Ask%20Coach%20a%20Question%20%E2%80%94%20Phase%20A%20Early%20Access&amp;body=My%20Intent%3A%20%0A%0AThe%20situation%3A%20%0A%0AMy%20question%3A%20%0A%0A--%0AReplying%20to%20this%20thread%20goes%20straight%20to%20the%20MatchMakers%20Coach%20team."
+         class="pb-tier-action__cta-primary"
+         data-cohort="4a-coach-cta"
+         aria-label="Ask Coach a question — Phase A early access; opens email with prefilled template">
+        Ask Coach a Question &rarr;
+      </a>
+      <p class="pb-tier-action__phase-disclosure">
+        <span class="pb-tier-action__phase-marker" aria-hidden="true">&#9656; Phase A early access</span>
+        Send your Intent + situation + question; a member of the MatchMakers Coach team replies within 24 hours with a methodology-grounded answer. Live AI Coach launches in Phase A &mdash; included in your $250 lifetime access; daily caps apply inside the unlocked product.
+      </p>
+    </div>
+
+    <div class="pb-tier-action__example">
+      <p class="pb-tier-action__example-label">A look at the Coach</p>
+
+      <div class="pb-tier-action__bubble pb-tier-action__bubble--user">
+        <div class="pb-tier-action__bubble-label">You &middot; Long-Term Intent</div>
+        <div class="pb-tier-action__bubble-text">Matched with someone who fits everything I want on paper, but our texts feel flat. I keep wondering whether to push through and meet, or move on. How do I tell?</div>
+      </div>
+
+      <div class="pb-tier-action__bubble pb-tier-action__bubble--coach">
+        <div class="pb-tier-action__bubble-label">Coach</div>
+        <div class="pb-tier-action__bubble-text">Two distinct things here. &ldquo;Fits on paper&rdquo; is Position &mdash; what they look like in your filter. &ldquo;Texts feel flat&rdquo; is Open &mdash; how the early signal is actually carrying. Position without a working Open is the most common misread in Long-Term Intent. Before you decide to push through or move on, run one calibrated in-person ask. Texts compress people; presence rebuilds them. If presence still reads flat, you&rsquo;ve got real data.</div>
+        <div class="pb-tier-action__bubble-citation">
+          <div class="pb-tier-action__citation-label">&#9656; Why this works</div>
+          <div class="pb-tier-action__citation-text">Cites <em>Chapter 3 &mdash; Position vs Open</em>. Long-Term Intent under-weights medium (&ldquo;texts&rdquo; as proxy) and over-weights filter (&ldquo;fits on paper&rdquo;). The Coach reframes the question before answering it &mdash; every methodology citation is linked back to the Playbook chapter that built it.</div>
+        </div>
+      </div>
+
+      <p class="pb-tier-action__example-close">Example exchange. Your live Coach reorients to your Intent, remembers every conversation, and cites the Connection Code&trade; chapter behind every answer.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 4 — SCRIPT STUDIO ACTION SECTION (Cohort 4-A Path B)
+     Parallel pattern to Tier 3 Coach: prominent "Build a Script" CTA
+     at TOP of section. Phase A early-access framing. Example output
+     below CTA. Use case: user on a date in the bathroom builds a
+     script in 30 seconds.
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="pb-tier-action pb-tier-action--studio" id="studio" aria-label="Build a Script">
+  <div class="pb-tier-action__content">
+
+    <div class="pb-tier-action__header">
+      <span class="pb-tier-action__eyebrow">Script Studio</span>
+      <span class="pb-tier-action__phase-badge">Launching Phase A</span>
+      <hr class="pb-tier-action__rule" aria-hidden="true">
+      <h2 class="pb-tier-action__h2">Your inputs go in. Three scripts come out.</h2>
+      <p class="pb-tier-action__intro">Each with the methodology citation that built it.</p>
+    </div>
+
+    <div class="pb-tier-action__cta-block">
+      <a href="mailto:customerservice@matchmakersusa.com?subject=Build%20a%20Script%20%E2%80%94%20Phase%20A%20Early%20Access&amp;body=My%20Intent%3A%20%0A%0AThe%20situation%3A%20%0A%0ATheir%20last%20message%3A%20%0A%0ATone%20I%20want%3A%20%0A%0A--%0AReplying%20to%20this%20thread%20goes%20straight%20to%20the%20MatchMakers%20Script%20Studio%20team."
+         class="pb-tier-action__cta-primary"
+         data-cohort="4a-studio-cta"
+         aria-label="Build a script — Phase A early access; opens email with prefilled template">
+        Build a Script &rarr;
+      </a>
+      <p class="pb-tier-action__phase-disclosure">
+        <span class="pb-tier-action__phase-marker" aria-hidden="true">&#9656; Phase A early access</span>
+        Send your Intent + situation + their last message + tone; a member of the MatchMakers Script Studio team replies within 24 hours with three Playbook-cited script options. Live AI generation launches in Phase A &mdash; included in your $250 lifetime access at no additional cost.
+      </p>
+    </div>
+
+    <div class="pb-tier-action__example">
+      <p class="pb-tier-action__example-label">A look at Script Studio</p>
+
+      <div class="pb-tier-action__inputs-card">
+        <div class="pb-tier-action__inputs-label">Your Inputs</div>
+        <div class="pb-tier-action__inputs-row"><strong>Intent:</strong> Long-Term</div>
+        <div class="pb-tier-action__inputs-row"><strong>Situation:</strong> We matched three weeks ago, had a good first date last Thursday, had to reschedule the second because their work trip moved. It&rsquo;s been four days since we confirmed the new date. I want to send something that keeps the thread warm without making it feel like I&rsquo;m checking up on them.</div>
+        <div class="pb-tier-action__inputs-row"><strong>Their last message:</strong> &ldquo;Totally &mdash; Wednesday works. Looking forward to it.&rdquo;</div>
+        <div class="pb-tier-action__inputs-row"><strong>Tone:</strong> Warm, direct</div>
+        <div class="pb-tier-action__inputs-row"><strong>Length:</strong> Short</div>
+      </div>
+
+      <div class="pb-tier-action__scripts-grid">
+
+        <div class="pb-tier-action__script-card">
+          <div class="pb-tier-action__script-label">Script 1</div>
+          <div class="pb-tier-action__script-text">Wednesday&rsquo;s on the calendar &mdash; looking forward to it too. If you get back earlier than Tuesday and want to grab coffee before the real thing, I&rsquo;m around. If not, I&rsquo;ll see you then.</div>
+          <div class="pb-tier-action__script-citation">
+            <div class="pb-tier-action__citation-label">&#9656; Why this works</div>
+            <div class="pb-tier-action__citation-text">Uses <em>Bridge + Optionality</em> from Chapter 4. A reschedule creates a small warmth gap; a single forward-looking line + one low-stakes optional beat closes it without pressure. The &ldquo;real thing&rdquo; phrasing signals you&rsquo;re taking the actual date seriously.</div>
+          </div>
+        </div>
+
+        <div class="pb-tier-action__script-card">
+          <div class="pb-tier-action__script-label">Script 2</div>
+          <div class="pb-tier-action__script-text">Hope the trip&rsquo;s going well. Not checking in &mdash; just thinking Wednesday&rsquo;s going to be a good one. We never got to the part where I find out how you take your coffee.</div>
+          <div class="pb-tier-action__script-citation">
+            <div class="pb-tier-action__citation-label">&#9656; Why this works</div>
+            <div class="pb-tier-action__citation-text">Uses <em>Callback to Specific Detail</em> from Chapter 5. Naming a small specific (coffee) rather than a generic (&ldquo;the date&rdquo;) signals you remember the texture of the first date, not just that it happened.</div>
+          </div>
+        </div>
+
+        <div class="pb-tier-action__script-card">
+          <div class="pb-tier-action__script-label">Script 3</div>
+          <div class="pb-tier-action__script-text">Quick thing &mdash; Wednesday I had us down for the place on Elm, but if you&rsquo;d rather try the one with the patio I mentioned last time, I&rsquo;ll flip it. Either way, looking forward.</div>
+          <div class="pb-tier-action__script-citation">
+            <div class="pb-tier-action__citation-label">&#9656; Why this works</div>
+            <div class="pb-tier-action__citation-text">Uses <em>Invited Lead</em> from Chapter 6. Giving them a small real decision (venue) 48 hours out keeps them anchored in the plan. Works best when the first date went well and you want to reinforce mutual investment without re-negotiating the date itself.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="pb-tier-action__example-close">Example output. Your generated scripts are personalized to your Intent, your situation, and &mdash; with your consent &mdash; your actual match&rsquo;s profile and conversation history.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 5 sub 5a — METHODOLOGY PROOF (relocated up per Web Ed §1.5)
+     ═══════════════════════════════════════════════════════════════ -->
+<section style="background:var(--navy);padding:6rem 0;" id="methodology">
+  <div class="w" style="max-width:780px;">
+    <div style="text-align:center;margin-bottom:2rem;" class="reveal">
+      <span class="ey c">The Connection Code</span>
+      <div class="gr c"></div>
+      <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">A 5-Signal framework, refined over more than a decade of human matchmaking.</h2>
+    </div>
+    <p class="bp reveal r2" style="margin-bottom:2rem;">Intent, Position, Open, Build, Progress — the five signals that structure every real-world romantic exchange, from the first message to the conversation where it becomes something. The Connection Code isn't a metaphor. It's a diagnostic framework: Coach uses it to read where you are in a conversation and what comes next. Script Studio uses it to decide which of a hundred techniques fits this specific moment. You learn it by using the product — or, if you want to go deeper, by reading it.</p>
+    <div style="text-align:center;" class="reveal r3">
+      <a href="/guide/" class="btn-gold">Learn the Connection Code →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 5 sub 5b — FEATURE CALLOUTS (5-pillar deep-dive; relocated from §2)
+     Per Web Ed §1.5 5b: KEEP verbatim; relocate after 5a Methodology.
+     Aria-label "Five things that make this a coached system".
+     ═══════════════════════════════════════════════════════════════ -->
+<section style="background:var(--dk);padding:6rem 0;border-bottom:1px solid rgba(65,91,124,.15);" aria-label="Five things that make this a coached system">
   <div class="w">
     <div style="max-width:680px;margin:0 auto 3.5rem;text-align:center;" class="reveal">
-      <span class="ey c">What It Is</span>
+      <span class="ey c">The Five Pillars</span>
       <div class="gr c"></div>
       <h2 class="h2" style="text-align:center;margin-bottom:1rem;">Five things that make this a coached system.</h2>
       <p class="sub" style="text-align:center;">Not a content library. Not a chatbot. Not a swipe app with AI bolted on.</p>
@@ -135,128 +380,8 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     SECTION 2.5 — COACH STATIC PREVIEW (Bug W-2026-04-27-1 parity)
-     Coach example exchange, parity with Script Studio teaser §3.
-     Locked-state preview pre-purchase; unlocked + 3 free Coach
-     messages post-purchase per webcoach Lane 2 entitlement
-     (D-WEB-V2.2-SHIP-001). Connection Code™ first-mention preserved.
-     ═══════════════════════════════════════════════════════════════ -->
-<section style="background:var(--dk);padding:6rem 0;border-top:1px solid rgba(65,91,124,.15);border-bottom:1px solid rgba(65,91,124,.15);" id="coach-preview">
-  <div class="w">
-    <div style="max-width:680px;margin:0 auto 2rem;text-align:center;" class="reveal">
-      <span class="ey c">A Look at the Coach</span>
-      <span style="display:inline-block;margin-left:.6rem;padding:3px 10px;border-radius:3px;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.32);color:var(--gold);font-family:var(--pd);font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;vertical-align:middle;">Launching Phase A</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">Tell it where you are. It tells you what's next.</h2>
-      <p class="sub" style="text-align:center;">Every Coach exchange grounds in the methodology — with the Connection Code&trade; chapter that built the answer cited inline.</p>
-    </div>
-
-    <!-- Phase A disclosure callout — parity with Script Studio §3 -->
-    <div class="reveal" style="max-width:760px;margin:0 auto 1.5rem;padding:.95rem 1.15rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.22);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;display:flex;align-items:flex-start;gap:.75rem;">
-      <span aria-hidden="true" style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);flex-shrink:0;padding-top:.1rem;">▸ Phase A</span>
-      <span style="font-family:var(--sr);font-size:.85rem;color:var(--tx);line-height:1.65;">The Coach exchange below is a curated preview. Live AI conversation launches in Phase A — included in your $250 lifetime access. Try the Coach free for three messages on the page once it ships; daily caps apply inside the unlocked product.</span>
-    </div>
-
-    <!-- Example exchange — locked-state preview frame -->
-    <div class="reveal r2" style="max-width:760px;margin:0 auto 1.5rem;display:flex;flex-direction:column;gap:1rem;">
-
-      <!-- User message bubble -->
-      <div style="background:var(--mid);border:1px solid rgba(65,91,124,.22);border-radius:12px 12px 12px 2px;padding:1.25rem 1.5rem;align-self:flex-start;max-width:88%;">
-        <div style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(200,214,229,.55);margin-bottom:.55rem;">You · Long-Term Intent</div>
-        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;">Matched with someone who fits everything I want on paper, but our texts feel flat. I keep wondering whether to push through and meet, or move on. How do I tell?</div>
-      </div>
-
-      <!-- Coach response bubble -->
-      <div class="action-box" style="margin:0;align-self:flex-end;max-width:92%;border-radius:12px 12px 2px 12px;">
-        <div class="top-line"></div>
-        <div style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">Coach</div>
-        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;margin-bottom:1rem;">Two distinct things here. "Fits on paper" is Position — what they look like in your filter. "Texts feel flat" is Open — how the early signal is actually carrying. Position without a working Open is the most common misread in Long-Term Intent. Before you decide to push through or move on, run one calibrated in-person ask. Texts compress people; presence rebuilds them. If presence still reads flat, you've got real data.</div>
-        <div style="border-top:1px solid rgba(65,91,124,.22);padding-top:.85rem;">
-          <div style="font-family:var(--pd);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:.4rem;">▸ Why this works</div>
-          <div style="font-family:var(--sr);font-size:.78rem;color:var(--sl);line-height:1.6;">Cites <em>Chapter 3 — Position vs Open</em>. Long-Term Intent under-weights medium ("texts" as proxy) and over-weights filter ("fits on paper"). The Coach reframes the question before answering it — every methodology citation is linked back to the Playbook chapter that built it.</div>
-        </div>
-      </div>
-
-    </div>
-
-    <p style="font-family:var(--sr);font-size:.78rem;color:rgba(120,149,175,.55);text-align:center;margin-top:1.25rem;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">Example exchange. Your live Coach reorients to your Intent, remembers every conversation, and cites the Connection Code&trade; chapter behind every answer.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SECTION 3 — SCRIPT STUDIO STATIC TEASER (D&M §3.3; Design §8)
-     Curated static example per Product Q6.2 + webcoach Q9 (Coach OUT).
-     Cards labeled "Example" — NO live AI wiring.
-     Pronoun-neutral scenario; gender + orientation inclusive per
-     synthesis §16 binding.
-     ═══════════════════════════════════════════════════════════════ -->
-<section style="background:var(--navy);padding:6rem 0;" id="studio">
-  <div class="w">
-    <div style="max-width:680px;margin:0 auto 2rem;text-align:center;" class="reveal">
-      <span class="ey c">A Look at Script Studio</span>
-      <span style="display:inline-block;margin-left:.6rem;padding:3px 10px;border-radius:3px;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.32);color:var(--gold);font-family:var(--pd);font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;vertical-align:middle;">Launching Phase A</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">Your inputs go in. Three scripts come out.</h2>
-      <p class="sub" style="text-align:center;">Each with the methodology citation that built it. Here's what one generation looks like.</p>
-    </div>
-
-    <!-- Phase A disclosure callout — Atlas Phase 2 FIX Lane 3 Q3 ratified visibility upgrade -->
-    <div class="reveal" style="max-width:760px;margin:0 auto 1.5rem;padding:.95rem 1.15rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.22);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;display:flex;align-items:flex-start;gap:.75rem;">
-      <span aria-hidden="true" style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);flex-shrink:0;padding-top:.1rem;">▸ Phase A</span>
-      <span style="font-family:var(--sr);font-size:.85rem;color:var(--tx);line-height:1.65;">The Script Studio examples below are a curated preview. Live AI generation launches in Phase A — included in your $250 lifetime access at no additional cost.</span>
-    </div>
-
-    <div class="reveal r2" style="background:var(--mid);border:1px solid rgba(65,91,124,.22);border-radius:12px;padding:1.5rem 1.75rem;margin:0 auto 2rem;max-width:760px;">
-      <div style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:.85rem;">Your Inputs</div>
-      <div style="display:flex;flex-direction:column;gap:.5rem;font-family:var(--sr);font-size:.85rem;color:var(--tx);line-height:1.65;">
-        <div><strong style="color:var(--white);">Intent:</strong> Long-Term</div>
-        <div><strong style="color:var(--white);">Situation:</strong> We matched three weeks ago, had a good first date last Thursday, had to reschedule the second because their work trip moved. It's been four days since we confirmed the new date. I want to send something that keeps the thread warm without making it feel like I'm checking up on them.</div>
-        <div><strong style="color:var(--white);">Their last message:</strong> "Totally — Wednesday works. Looking forward to it."</div>
-        <div><strong style="color:var(--white);">Tone:</strong> Warm, direct</div>
-        <div><strong style="color:var(--white);">Length:</strong> Short</div>
-      </div>
-    </div>
-
-    <div class="g3 reveal r3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;align-items:stretch;">
-      <div class="action-box" style="margin:0;">
-        <div class="top-line"></div>
-        <div style="font-family:var(--pd);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:.6rem;">Script 1</div>
-        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;margin-bottom:1rem;">Wednesday's on the calendar — looking forward to it too. If you get back earlier than Tuesday and want to grab coffee before the real thing, I'm around. If not, I'll see you then.</div>
-        <div style="border-top:1px solid rgba(65,91,124,.22);padding-top:.85rem;">
-          <div style="font-family:var(--pd);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:.4rem;">▸ Why this works</div>
-          <div style="font-family:var(--sr);font-size:.78rem;color:var(--sl);line-height:1.6;">Uses <em>Bridge + Optionality</em> from Chapter 4. A reschedule creates a small warmth gap; a single forward-looking line + one low-stakes optional beat closes it without pressure. The "real thing" phrasing signals you're taking the actual date seriously.</div>
-        </div>
-      </div>
-      <div class="action-box" style="margin:0;">
-        <div class="top-line"></div>
-        <div style="font-family:var(--pd);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:.6rem;">Script 2</div>
-        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;margin-bottom:1rem;">Hope the trip's going well. Not checking in — just thinking Wednesday's going to be a good one. We never got to the part where I find out how you take your coffee.</div>
-        <div style="border-top:1px solid rgba(65,91,124,.22);padding-top:.85rem;">
-          <div style="font-family:var(--pd);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:.4rem;">▸ Why this works</div>
-          <div style="font-family:var(--sr);font-size:.78rem;color:var(--sl);line-height:1.6;">Uses <em>Callback to Specific Detail</em> from Chapter 5. Naming a small specific (coffee) rather than a generic ("the date") signals you remember the texture of the first date, not just that it happened.</div>
-        </div>
-      </div>
-      <div class="action-box" style="margin:0;">
-        <div class="top-line"></div>
-        <div style="font-family:var(--pd);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:.6rem;">Script 3</div>
-        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;margin-bottom:1rem;">Quick thing — Wednesday I had us down for the place on Elm, but if you'd rather try the one with the patio I mentioned last time, I'll flip it. Either way, looking forward.</div>
-        <div style="border-top:1px solid rgba(65,91,124,.22);padding-top:.85rem;">
-          <div style="font-family:var(--pd);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:.4rem;">▸ Why this works</div>
-          <div style="font-family:var(--sr);font-size:.78rem;color:var(--sl);line-height:1.6;">Uses <em>Invited Lead</em> from Chapter 6. Giving them a small real decision (venue) 48 hours out keeps them anchored in the plan. Works best when the first date went well and you want to reinforce mutual investment without re-negotiating the date itself.</div>
-        </div>
-      </div>
-    </div>
-
-    <p style="font-family:var(--sr);font-size:.78rem;color:rgba(120,149,175,.55);text-align:center;margin-top:1.5rem;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">Example output. Your generated scripts are personalized to your Intent, your situation, and — with your consent — your actual match's profile and conversation history inside the MatchMakers app.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SECTION 4 — TIER PREVIEW (D&M §3.4; Design §6)
+     TIER 5 sub 5c — TIER PREVIEW (commerce gate; lifetime-access framing)
      Free live-buy ($250) + Premium Coming Soon + Advanced Coming Soon.
-     v1.1 timing clarifiers "(launching Phase A)" embedded per R1
-     resolution (Website Ed APPROVE). Static badges only per Q-Plan-4;
-     no email capture; no live recurring commerce.
      ═══════════════════════════════════════════════════════════════ -->
 <section style="background:var(--dk);padding:6rem 0;border-top:1px solid rgba(65,91,124,.15);border-bottom:1px solid rgba(65,91,124,.15);" id="tiers">
   <div class="w">
@@ -335,35 +460,12 @@
   </div>
 </section>
 
-<!-- F-4 — Free Coach callout (Atlas + website-ed 2026-04-26) -->
-<section style="background:var(--navy);padding:4rem 0;">
-  <div style="max-width:520px;margin:0 auto;text-align:center;padding:0 clamp(1.25rem,4vw,2rem);">
-    <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.45),transparent);margin:0 auto 1.5rem;"></div>
-    <div style="font-family:var(--pd);font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;">Free</div>
-    <p style="font-family:var(--sr);font-size:.9rem;line-height:1.6;color:var(--sl,#7A95AF);margin:0 0 1.5rem;">AI guidance from the methodology. Free to try.</p>
-    <a href="#coach-preview" class="btn-gold" onclick="document.querySelector('#coach-preview').scrollIntoView({behavior:'smooth'});return false;">Try Coach &darr;</a>
-  </div>
-</section>
+<!-- F-4 Free Coach callout DROPPED per Cohort 4-A Web Ed Tier 5 §1.5.1 reorg
+     (Tier 3 Coach action surface above is now the action-first Coach CTA;
+     F-4 became orphan duplicate). -->
 
 <!-- ═══════════════════════════════════════════════════════════════
-     SECTION 5 — METHODOLOGY PROOF BLOCK (D&M §3.5; Design §5.1)
-     ═══════════════════════════════════════════════════════════════ -->
-<section style="background:var(--navy);padding:6rem 0;" id="methodology">
-  <div class="w" style="max-width:780px;">
-    <div style="text-align:center;margin-bottom:2rem;" class="reveal">
-      <span class="ey c">The Connection Code</span>
-      <div class="gr c"></div>
-      <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">A 5-Signal framework, refined over more than a decade of human matchmaking.</h2>
-    </div>
-    <p class="bp reveal r2" style="margin-bottom:2rem;">Intent, Position, Open, Build, Progress — the five signals that structure every real-world romantic exchange, from the first message to the conversation where it becomes something. The Connection Code isn't a metaphor. It's a diagnostic framework: Coach uses it to read where you are in a conversation and what comes next. Script Studio uses it to decide which of a hundred techniques fits this specific moment. You learn it by using the product — or, if you want to go deeper, by reading it.</p>
-    <div style="text-align:center;" class="reveal r3">
-      <a href="/guide/" class="btn-gold">Learn the Connection Code →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SECTION 6 — VIP ALTERNATE PATH (D&M §3.6)
+     TIER 5 sub 5e — VIP ALTERNATE PATH (D&M §3.6; relocated downstream)
      ═══════════════════════════════════════════════════════════════ -->
 <section style="background:var(--dk);padding:6rem 0;" id="vip-alt">
   <div class="w" style="max-width:780px;">
@@ -391,7 +493,7 @@
       <div class="gr c"></div>
       <h2 class="h2" style="text-align:center;margin-bottom:1.25rem;">One set-up fee. Built to work forever.</h2>
       <p class="sub" style="text-align:center;margin:0 auto 2rem;max-width:640px;">$250 once. Full Playbook access today — and the Coach, Script Studio, and persistent memory as each lands in Phase A, included in your lifetime access. Every content update we ever ship is yours. No renewal, no expiring access, no downgrade trap.</p>
-      <p class="sub" style="text-align:center;margin:0 auto 2.5rem;max-width:640px;font-size:.92rem;color:rgba(200,214,229,.55);">Coach &amp; Playbook is the methodology applied. If you want to start free, the Connection Code™ is the foundation. If you want a human matchmaker working directly on your behalf, VIP MatchMaking is the apex.</p>
+      <p class="sub" style="text-align:center;margin:0 auto 2.5rem;max-width:640px;font-size:.92rem;color:rgba(200,214,229,.55);">Coach &amp; Playbook is the methodology applied &mdash; in conversation, on your timeline, wherever the date is happening. If you want to start free, the Connection Code&trade; is the foundation. If you want a human matchmaker working directly on your behalf, VIP MatchMaking is the apex.</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
         <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold-fill" aria-label="Start for $250 — lifetime access to Dating Coach and Playbook">Start for $250 →</button>
         <a href="/vip/" class="btn-gold">Apply for VIP MatchMaking →</a>
