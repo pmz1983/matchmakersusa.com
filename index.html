@@ -287,27 +287,25 @@
       display: flex; flex-direction: column; align-items: center;
     }
 
-    /* Pre-headline eyebrow (Treatment A: two-line stack on mobile) */
+    /* Pre-headline eyebrow — single-line horizontal with · separators (brand-first restructure) */
     .hp-hero__eyebrow {
       font-family: var(--font-utility); font-weight: 500;
       font-size: var(--type-hero-eyebrow);
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--color-accent-gold);
       margin: 0 0 var(--space-3);
-      display: flex; flex-direction: column; align-items: center; gap: var(--space-1);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: 0.5rem 0.75rem;
       line-height: 1.3;
     }
-    .hp-hero__eyebrow-line { display: block; }
-    .hp-hero__eyebrow-rule {
-      display: block; width: 24px; height: 1px;
-      background: var(--hp-hairline-ambient); margin: 0;
+    .hp-hero__eyebrow-line { display: inline; }
+    .hp-hero__eyebrow-sep {
+      color: rgba(201, 168, 76, 0.4);
+      user-select: none;
+      font-size: 0.85em;
     }
-    @media (min-width: 768px) {
-      .hp-hero__eyebrow { flex-direction: row; gap: var(--space-2); }
-      .hp-hero__eyebrow-rule { display: none; }
-      .hp-hero__eyebrow-line:not(:last-child)::after {
-        content: '\00B7'; margin-left: var(--space-2); color: var(--color-accent-gold);
-      }
+    @media (max-width: 480px) {
+      .hp-hero__eyebrow { gap: 0.4rem 0.65rem; }
     }
 
     /* Hero wordmark + 28×2 emphatic gold rule */
@@ -356,6 +354,47 @@
       line-height: 1.55; color: var(--color-text-primary);
       margin: 0 0 var(--space-6);
       max-width: 56ch;
+    }
+
+    /* Brand-first restructure — second scroll-snap "How every part fits" section */
+    .hp-opener-bridge {
+      padding: 4rem 1.25rem;
+      background: var(--color-bg-primary, #050A10);
+      border-top: 1px solid rgba(65, 91, 124, 0.12);
+      border-bottom: 1px solid rgba(65, 91, 124, 0.12);
+      text-align: center;
+    }
+    @media (min-width: 768px) { .hp-opener-bridge { padding: 5rem 2rem; } }
+    .hp-opener-bridge__content { max-width: 640px; margin: 0 auto; }
+    .hp-opener-bridge__body {
+      font-family: var(--font-body), 'Outfit', system-ui, sans-serif;
+      font-size: clamp(1rem, 1.2vw, 1.125rem);
+      line-height: 1.65;
+      color: rgba(244, 241, 234, 0.92);
+      margin: 0 0 1.5rem;
+    }
+    .hp-opener-bridge__manifesto {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1.5rem auto;
+    }
+    .hp-opener-bridge__beat {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      color: rgba(244, 241, 234, 0.85);
+      line-height: 1.4;
+    }
+    .hp-opener-bridge__bridge {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(0.92rem, 1vw, 1rem);
+      color: rgba(201, 168, 76, 0.7);
+      margin: 1.5rem 0 0;
+      line-height: 1.4;
     }
 
     /* Cohort 4.12 — opener micro-rule: 36px gradient hairline between subhead paras
@@ -941,36 +980,45 @@
     <div class="hp-hero__content">
       <p class="hp-hero__eyebrow" aria-label="Institutional posture">
         <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
-        <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
+        <span class="hp-hero__eyebrow-sep" aria-hidden="true">&middot;</span>
         <span class="hp-hero__eyebrow-line">Methodology, not algorithm</span>
-        <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
+        <span class="hp-hero__eyebrow-sep" aria-hidden="true">&middot;</span>
         <span class="hp-hero__eyebrow-line">Human-led matchmaking</span>
       </p>
       <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged. MatchMakers is engineered to deliver what brought you.</p>
-      <p class="hp-hero__subhead">The MatchMakers ecosystem is built around a proven methodology &mdash; Coach, Playbook, VIP &mdash; refined across more than a decade of real results.</p>
-      <hr class="hp-rule--ambient" aria-hidden="true">
-      <p class="hp-opener__manifesto" aria-label="MatchMakers manifesto">
-        <span class="hp-opener__manifesto-beat">Built on a system.</span>
-        <span class="hp-opener__manifesto-beat">Anchored in Intent.</span>
-        <span class="hp-opener__manifesto-beat">Made for your outcome.</span>
-      </p>
-      <p class="hp-opener__bridge">Here&rsquo;s how every part fits.</p>
-      <hr class="hp-rule--ambient" aria-hidden="true">
-      <div class="hp-hero__cta-stack" aria-label="Choose your starting point">
-        <a href="/assessment/" class="btn-gold-fill">Take the Assessment &rarr;</a>
-        <a href="/guide/" class="btn-gold-fill">Read the Connection Code &rarr;</a>
-        <a href="/playbook/" class="btn-gold-fill">See Coach &amp; Playbook &rarr;</a>
-        <a href="/vip/" class="btn-gold-fill">Apply for VIP &rarr;</a>
-      </div>
+      <div class="hp-opener__rule-ambient" aria-hidden="true"></div>
       <div class="hp-stat-band hp-stat-band--4 hp-stat-band--hero" aria-label="Institutional credentials">
         <div class="hp-stat-cell">Over A Decade In Market</div>
         <div class="hp-stat-cell">Methodology-Grounded</div>
         <div class="hp-stat-cell">Built for Outcomes</div>
         <div class="hp-stat-cell">100% Organic Growth</div>
       </div>
+      <div class="hp-hero__cta-stack" aria-label="Choose your starting point">
+        <a href="/assessment/" class="btn-gold-fill">Take the Assessment &rarr;</a>
+        <a href="/guide/" class="btn-gold-fill">Read the Connection Code &rarr;</a>
+        <a href="/playbook/" class="btn-gold-fill">See Coach &amp; Playbook &rarr;</a>
+        <a href="/vip/" class="btn-gold-fill">Apply for VIP &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION — How every part fits (relocated from opening per Path 2 brand-first restructure) ═══ -->
+  <section class="hp-opener-bridge hp-reveal" aria-label="How every part fits">
+    <div class="hp-opener-bridge__content">
+      <p class="hp-opener-bridge__body">The MatchMakers ecosystem is built around a proven methodology &mdash; Coach, Playbook, VIP &mdash; refined across more than a decade of real results.</p>
+
+      <hr class="hp-rule--ambient" aria-hidden="true">
+
+      <div class="hp-opener-bridge__manifesto" aria-label="MatchMakers thesis">
+        <span class="hp-opener-bridge__beat">Built on a system.</span>
+        <span class="hp-opener-bridge__beat">Anchored in Intent.</span>
+        <span class="hp-opener-bridge__beat">Made for your outcome.</span>
+      </div>
+
+      <p class="hp-opener-bridge__bridge">Here&rsquo;s how every part fits.</p>
     </div>
   </section>
 
