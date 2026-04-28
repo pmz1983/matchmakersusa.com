@@ -358,6 +358,17 @@
       max-width: 56ch;
     }
 
+    /* Cohort 4.12 — opener micro-rule: 36px gradient hairline between subhead paras
+       (D6 hairline-as-atmosphere; matches /guide/ + /vip/ + /playbook/content/ pattern). */
+    .hp-opener__rule-ambient {
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.5), transparent);
+      border: 0;
+      margin: 1.75rem auto;
+      display: block;
+    }
+
     /* Cohort 4.9 — opener refinement: ambient hairline + manifesto + bridge classes */
     .hp-rule--ambient {
       display: block; width: 56px; height: 1px;
@@ -939,6 +950,7 @@
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged. MatchMakers is engineered to deliver what brought you.</p>
+      <div class="hp-opener__rule-ambient" aria-hidden="true"></div>
       <p class="hp-hero__subhead">The MatchMakers ecosystem is engineered by a proven methodology &mdash; Coach, Playbook, VIP &mdash; refined across more than a decade of real results.</p>
       <hr class="hp-rule--ambient" aria-hidden="true">
       <p class="hp-opener__manifesto" aria-label="MatchMakers manifesto">
