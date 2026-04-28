@@ -358,6 +358,47 @@
       max-width: 56ch;
     }
 
+    /* Cohort 4.9 — opener refinement: ambient hairline + manifesto + bridge classes */
+    .hp-rule--ambient {
+      display: block; width: 56px; height: 1px;
+      background: var(--hp-hairline-ambient);
+      border: 0;
+      margin: 0 auto var(--space-4);
+    }
+    .hp-opener__manifesto {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+      line-height: 1.5;
+      color: var(--color-text-primary);
+      margin: 0 auto var(--space-3);
+      max-width: 56ch;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .hp-opener__manifesto-beat { display: block; }
+    @media (min-width: 768px) {
+      .hp-opener__manifesto {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+    }
+    .hp-opener__bridge {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+      line-height: 1.55;
+      color: var(--color-accent-gold-bright);
+      margin: 0 auto var(--space-5);
+      max-width: 56ch;
+      text-align: center;
+    }
+
     /* Hero primary CTA (ring-only — Paul directive 2026-04-27 / gold-fill DEPRECATED) */
     .hp-hero__cta {
       display: inline-flex; align-items: center; justify-content: center;
@@ -883,8 +924,15 @@
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged. MatchMakers is engineered to deliver what brought you.</p>
-      <p class="hp-hero__subhead">The dating ecosystem engineered by methodology &mdash; Coach, Playbook, VIP &mdash; refined across more than a decade of human matchmaking.</p>
-      <p class="hp-hero__subhead">Built on a system. Decided by a community. Made for your outcome.<br>Here&rsquo;s how every part fits.</p>
+      <p class="hp-hero__subhead">The MatchMakers ecosystem is engineered by a proven methodology &mdash; Coach, Playbook, VIP &mdash; refined across more than a decade of real results.</p>
+      <hr class="hp-rule--ambient" aria-hidden="true">
+      <p class="hp-opener__manifesto" aria-label="MatchMakers manifesto">
+        <span class="hp-opener__manifesto-beat">Built on a system.</span>
+        <span class="hp-opener__manifesto-beat">Anchored in Intent.</span>
+        <span class="hp-opener__manifesto-beat">Made for your outcome.</span>
+      </p>
+      <p class="hp-opener__bridge">Here&rsquo;s how every part fits.</p>
+      <hr class="hp-rule--ambient" aria-hidden="true">
       <div class="hp-hero__cta-stack" aria-label="Choose your starting point">
         <a href="/assessment/" class="btn-gold-fill">Take the Assessment &rarr;</a>
         <a href="/guide/" class="btn-gold-fill">Read the Connection Code &rarr;</a>
