@@ -778,6 +778,21 @@
       max-width: 1200px; margin: 0 auto;
     }
     .hp-footer__credential-separator { color: var(--color-accent-gold); user-select: none; }
+    /* Cohort 4.11 — mobile 2×3 grid layout (6 cells; · separators hidden);
+       desktop ≥768px flex-wrap row UNCHANGED per Atlas binding. */
+    @media (max-width: 767px) {
+      .hp-footer__credential-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3) var(--space-4);
+        max-width: 480px;
+      }
+      .hp-footer__credential-row > span:not(.hp-footer__credential-separator) {
+        text-align: center;
+        line-height: 1.4;
+      }
+      .hp-footer__credential-separator { display: none; }
+    }
 
     /* Reveal animation (single pattern per section) */
     .hp-reveal {
