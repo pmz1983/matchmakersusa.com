@@ -347,12 +347,14 @@
       font-weight: inherit;
     }
 
-    /* Hero subhead */
+    /* Hero subhead — tightened margin-bottom per Path 2 follow-on micro-spacing
+       (was var(--space-6) = 48px; now var(--space-3) = 16px to bring stat band
+       tighter as continuation of body 1's institutional thesis). */
     .hp-hero__subhead {
       font-family: var(--font-body); font-weight: 400;
       font-size: var(--type-hero-subhead);
       line-height: 1.55; color: var(--color-text-primary);
-      margin: 0 0 var(--space-6);
+      margin: 0 0 var(--space-3);
       max-width: 56ch;
     }
 
@@ -530,7 +532,7 @@
       justify-content: center;
     }
     .hp-stat-band--4 .hp-stat-cell:last-child { border-right: none; }
-    .hp-stat-band--hero { margin: 0 auto var(--space-6); }
+    .hp-stat-band--hero { margin: 0 auto; } /* bottom margin removed per Path 2 follow-on; ambient hairline below carries rhythm */
     @media (max-width: 767px) {
       .hp-stat-band--4 { grid-template-columns: repeat(2, 1fr); }
       .hp-stat-band--4 .hp-stat-cell:nth-child(2n) { border-right: none; }
@@ -989,13 +991,13 @@
       <hr class="hp-rule--wordmark" aria-hidden="true">
       <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
       <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged. MatchMakers is engineered to deliver what brought you.</p>
-      <div class="hp-opener__rule-ambient" aria-hidden="true"></div>
       <div class="hp-stat-band hp-stat-band--4 hp-stat-band--hero" aria-label="Institutional credentials">
         <div class="hp-stat-cell">Over A Decade In Market</div>
         <div class="hp-stat-cell">Methodology-Grounded</div>
         <div class="hp-stat-cell">Built for Outcomes</div>
         <div class="hp-stat-cell">100% Organic Growth</div>
       </div>
+      <div class="hp-opener__rule-ambient" aria-hidden="true"></div>
       <div class="hp-hero__cta-stack" aria-label="Choose your starting point">
         <a href="/assessment/" class="btn-gold-fill">Take the Assessment &rarr;</a>
         <a href="/guide/" class="btn-gold-fill">Read the Connection Code &rarr;</a>
