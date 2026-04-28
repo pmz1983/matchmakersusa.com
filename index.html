@@ -14,12 +14,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>MatchMakers &mdash; Dating, by methodology. Not by algorithm.</title>
-  <meta name="description" content="The Connection Code&trade; — a proprietary 5-Signal framework refined over more than a decade of human matchmaking. Now applied across Coach, Playbook, and the app.">
+  <meta name="description" content="The Connection Code&trade; — a proprietary 5-Signal framework refined over more than a decade of human matchmaking. Now applied across Coach + Playbook.">
   <link rel="canonical" href="https://matchmakersusa.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchMakers">
   <meta property="og:title" content="MatchMakers — Dating, by methodology. Not by algorithm.">
-  <meta property="og:description" content="The Connection Code™ — a proprietary 5-Signal framework refined over more than a decade of human matchmaking. Now applied across Coach, Playbook, and the app.">
+  <meta property="og:description" content="The Connection Code™ — a proprietary 5-Signal framework refined over more than a decade of human matchmaking. Now applied across Coach + Playbook.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
@@ -30,7 +30,6 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"Organization","name":"MatchMakers","legalName":"MatchMakers LLC","url":"https://matchmakersusa.com","logo":"https://matchmakersusa.com/apple-touch-icon.png","foundingDate":"2018"},
-    {"@type":"SoftwareApplication","name":"MatchMakers","operatingSystem":"iOS","applicationCategory":"SocialNetworkingApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
     {"@type":"Product","name":"MatchMakers Coach & Playbook","description":"The methodology, applied. Coach is the AI that applies it; Playbook is where you learn it.","url":"https://matchmakersusa.com/playbook/"}
   ]}
   </script>
@@ -109,7 +108,6 @@
       --type-stat-label:            clamp(0.6875rem, 0.85vw, 0.8125rem);
       --type-cta-primary:           1rem;
       --type-cta-secondary:         1rem;
-      --type-app-band-h2:           clamp(2rem, 4vw, 3rem);
       --type-footer-credential:     0.75rem;
 
       /* Spacing — 8-base mobile-first */
@@ -142,7 +140,6 @@
       --cta-secondary-radius:       8px;
       --router-btn-height:          64px;
       --router-btn-radius:          8px;
-      --app-band-badge-height:      52px;
       --statband-cell-min-height:   88px;
       --stickybar-height:           56px;
       --stickybar-z-index:          100;
@@ -237,14 +234,13 @@
     .hp-bridge        { background: var(--color-bg-section-c); padding-top: var(--space-6); padding-bottom: var(--space-6); }
     .hp-centerpiece   { background: var(--color-bg-section-a); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
     .hp-ecosystem     { background: var(--color-bg-section-c); }
-    .hp-app-band      { background: var(--color-bg-section-a); padding-top: var(--space-section-y-app); padding-bottom: var(--space-section-y-app); }
     .hp-stage--vip    { background: var(--color-bg-section-b); border-top: 1px solid var(--hp-hairline-accent); border-bottom: 1px solid var(--hp-hairline-accent); }
     .hp-origin        { background: var(--color-bg-section-b); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
     .hp-router        { background: var(--color-bg-section-a); }
 
     /* Subtle radial gold atmosphere per non-hero section */
     .hp-method::before, .hp-stage::before, .hp-centerpiece::before, .hp-ecosystem::before,
-    .hp-app-band::before, .hp-origin::before, .hp-router::before {
+    .hp-origin::before, .hp-router::before {
       content: ''; position: absolute; inset: 0;
       background: var(--hp-atmosphere-radial-section);
       pointer-events: none; z-index: 0;
@@ -258,7 +254,6 @@
     .hp-bridge     .hp-section__content { max-width: 64ch; }
     .hp-centerpiece .hp-section__content { max-width: 800px; }
     .hp-ecosystem  .hp-section__content { max-width: 1080px; }
-    .hp-app-band   .hp-section__content { max-width: 720px; text-align: center; }
     .hp-origin     .hp-section__content { max-width: 70ch; text-align: left; }
     .hp-router     .hp-section__content { max-width: 720px; }
 
@@ -741,54 +736,6 @@
     .hp-eco-slot--vip .hp-eco-cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
     .hp-eco-slot--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
-    /* §7 APP_BADGE_BAND */
-    .hp-app-band__headline {
-      font-family: var(--font-display); font-weight: 500;
-      font-size: var(--type-app-band-h2);
-      line-height: 1.10; letter-spacing: -0.015em;
-      color: var(--color-text-primary);
-      text-shadow: 0 0 60px rgba(201, 168, 76, 0.10);
-      margin: 0 auto var(--space-5);
-      max-width: 18ch;
-    }
-    .hp-app-band__body {
-      font-family: var(--font-body); font-weight: 400;
-      font-size: var(--type-body); line-height: 1.6;
-      color: var(--color-text-primary);
-      margin: 0 auto var(--space-6);
-      max-width: 56ch;
-    }
-    .hp-rule--app-band {
-      width: 100%; max-width: 480px; height: 1px;
-      background: var(--hp-hairline-accent);
-      border: 0; margin: var(--space-5) auto;
-    }
-    .hp-app-badges {
-      display: flex; flex-direction: row; gap: var(--space-3);
-      justify-content: center; align-items: center;
-      margin: var(--space-5) auto;
-      flex-wrap: wrap;
-    }
-    .hp-app-badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      height: var(--app-band-badge-height); width: auto;
-      padding: var(--space-2) var(--space-4);
-      background: var(--color-bg-primary);
-      border: 1px solid var(--color-accent-gold-dim);
-      border-radius: 8px;
-      color: var(--color-text-primary); text-decoration: none;
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: 0.85rem; letter-spacing: 0.04em;
-      transition: border-color var(--motion-hover) var(--easing-out);
-    }
-    .hp-app-badge:hover { border-color: var(--color-accent-gold-bright); }
-    .hp-app-badge:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-    .hp-app-badge--coming-soon {
-      color: var(--color-text-secondary);
-      cursor: default;
-      opacity: 0.85;
-    }
-
     /* §9 Router — 3 gold-fill buttons (per ADJ-5) */
     .hp-router-grid {
       display: flex; flex-direction: column; gap: var(--space-3);
@@ -860,7 +807,7 @@
 
     /* Sub-canonical floor protection */
     @media (max-width: 359px) {
-      .hp-hero__headline, .hp-headline, .hp-app-band__headline, .hp-hero__wordmark {
+      .hp-hero__headline, .hp-headline, .hp-hero__wordmark {
         font-family: var(--font-body);
       }
     }
@@ -997,30 +944,8 @@
     </div>
   </section>
 
-  <!-- §6↔§7 section break hairline -->
+  <!-- §6↔§8 section break hairline (post-Apple-strip; APP_BADGE_BAND removed Cohort 2.5) -->
   <hr class="hp-rule--section-break" aria-hidden="true">
-
-  <!-- §8 THE APP — APP_BADGE_BAND (D5; Bloomberg pattern) -->
-  <section class="hp-section hp-app-band hp-reveal" id="app">
-    <div class="hp-section__content">
-      <p class="hp-eyebrow">The App</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-app-band__headline">The method, <em class="hp-italic-gold-accent">on hand.</em></h2>
-      <p class="hp-app-band__body">The dating app where the methodology meets the community. Built on the same three systems that power the Playbook and the Coach.</p>
-      <hr class="hp-rule--app-band" aria-hidden="true">
-      <div class="hp-app-badges">
-        <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting; on lift, swap badge per Apple-strip protocol -->
-        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" class="hp-app-badge" data-apple-strip="hold" aria-label="Download MatchMakers on the App Store">
-          Download on the App Store
-        </a>
-        <!-- APPLE_STRIP_HOLD_END -->
-        <span class="hp-app-badge hp-app-badge--coming-soon" aria-label="Google Play coming soon">
-          Google Play &mdash; Coming Soon
-        </span>
-      </div>
-      <hr class="hp-rule--app-band" aria-hidden="true">
-    </div>
-  </section>
 
   <!-- §9 STAGE 4 — VIP (canonical journey stage 4 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
   <section class="hp-section hp-stage hp-stage--vip hp-reveal" id="stage-vip">
@@ -1086,13 +1011,6 @@
         <span class="nm">MatchMakers<sup>&trade;</sup></span>
       </div>
       <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. Over a decade in the making. Word-of-mouth only.</p>
-      <div style="margin-top:1rem;display:flex;align-items:center;gap:.75rem;">
-        <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting -->
-        <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold" style="display:inline-block;text-decoration:none;opacity:.88;transition:opacity .2s;">
-          <span style="font-family:var(--font-utility);font-size:.7rem;font-weight:700;color:rgba(200,214,229,.5);letter-spacing:.06em;text-transform:uppercase;">Download on App Store</span>
-        </a>
-        <!-- APPLE_STRIP_HOLD_END -->
-      </div>
     </div>
     <div class="fc" aria-labelledby="ftr-h-products">
       <h4 id="ftr-h-products">Products</h4>
@@ -1100,14 +1018,6 @@
       <a href="/vip/">VIP MatchMaking &mdash; By Consultation</a>
       <a href="/guide/">Connection Code &mdash; Free</a>
       <a href="/assessment/">Intent Assessment &mdash; Free</a>
-    </div>
-    <div class="fc" aria-labelledby="ftr-h-app">
-      <h4 id="ftr-h-app">App</h4>
-      <!-- APPLE_STRIP_HOLD_BEGIN: lift-trigger=EPD-final-underwriting -->
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" target="_blank" rel="noopener" data-apple-strip="hold">Download &mdash; App Store</a>
-      <!-- APPLE_STRIP_HOLD_END -->
-      <span style="opacity:.45;cursor:default;">Google Play &mdash; Coming Soon</span>
-      <a href="/#app">App Overview</a>
     </div>
     <div class="fc" aria-labelledby="ftr-h-company">
       <h4 id="ftr-h-company">Company</h4>

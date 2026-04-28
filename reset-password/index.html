@@ -66,7 +66,7 @@
            PKCE link from a pre-OTP-cutover email). Lets in-flight users know
            to use the latest email's 6-digit code. -->
       <div id="rp-legacy-notice" class="rp-legacy" role="alert">
-        If you clicked a link from an older email, those are no longer supported. Please enter the 6-digit code from your latest email, or request a new reset from the app.
+        If you clicked a link from an older email, those are no longer supported. Please enter the 6-digit code from your latest email, or submit a new password reset request.
       </div>
 
       <form id="rp-form-el" novalidate>
@@ -93,7 +93,6 @@
       <div class="rp-icon" aria-hidden="true">&#10003;</div>
       <h1 class="rp-title">Password reset.</h1>
       <p class="rp-sub">You can now sign in to MatchMakers with your new password.</p>
-      <a href="https://apps.apple.com/us/app/matchmakers-dating-singles/id1434394300" class="rp-success-cta">Open MatchMakers</a>
       <a href="/" class="rp-alt">Or return to matchmakersusa.com</a>
     </div>
 
@@ -257,7 +256,7 @@
       if (r.status < 200 || r.status >= 300) {
         var d = r.data || {};
         var msg = d.msg || d.error_description || d.message || d.error ||
-                  'Invalid or expired code. Please request a new reset from the app or enter the correct code from your email.';
+                  'Invalid or expired code. Please submit a new password reset request or enter the correct code from your email.';
         if (window.mmTrack) {
           mmTrack('password_reset_verify_failed', { reason: 'server', status: r.status });
           if (window.mmFlush) mmFlush();
