@@ -204,13 +204,13 @@
       font-family: var(--font-utility);
       font-weight: 500;
       font-size: 0.875rem;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--color-text-primary);
       text-decoration: none;
       padding: 14px 0;
       border-bottom: 1px solid var(--hp-hairline-ambient);
-      transition: color 0.18s;
+      transition: color var(--motion-hover) var(--easing-out);
     }
     .hp-sticky-bar__menu a:last-of-type { border-bottom: 0; }
     .hp-sticky-bar__menu a:hover,
@@ -522,7 +522,7 @@
       font-family: var(--font-utility);
       font-weight: 500;
       font-size: 0.68rem;
-      letter-spacing: 0.10em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       text-decoration: none;
       white-space: nowrap;
@@ -810,6 +810,69 @@
       .hp-hero__headline, .hp-headline, .hp-hero__wordmark {
         font-family: var(--font-body);
       }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       Cohort 2.5 C-A — Surgical polish (Meridian-validated)
+       Token-aligned per v1.3: --motion-active / --motion-hover /
+       --easing-out / --color-accent-gold-bright / --color-accent-gold-tint.
+       ───────────────────────────────────────────────────────── */
+
+    /* C1 — Tap-state polish (button-press feedback; reduced-motion-guarded).
+       Uses --motion-active (100ms) + --easing-out per v1.3 §7.1. */
+    .btn-gold-fill:active,
+    .btn-gold:active,
+    .hp-cta-primary:active,
+    .hp-cta--secondary:active,
+    .hp-hero__cta:active,
+    .hp-hero__cta--card:active,
+    .hp-hero__quickhit:active,
+    .hp-router-btn:active,
+    .hp-eco-cta:active {
+      transform: scale(0.97);
+      opacity: 0.85;
+      transition: transform var(--motion-active) var(--easing-out),
+                  opacity var(--motion-active) var(--easing-out);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-gold-fill:active,
+      .btn-gold:active,
+      .hp-cta-primary:active,
+      .hp-cta--secondary:active,
+      .hp-hero__cta:active,
+      .hp-hero__cta--card:active,
+      .hp-hero__quickhit:active,
+      .hp-router-btn:active,
+      .hp-eco-cta:active {
+        transform: none;
+        opacity: 1;
+        transition: none;
+      }
+    }
+
+    /* C3 — Default focus-visible for non-CTA interactives (links, form
+       inputs). Per-component CTA focus rings (4px offset on hero CTAs /
+       router / 3px on quickhit) preserved verbatim — this rule applies
+       only where no per-component override exists. */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--color-accent-gold-bright);
+      outline-offset: 2px;
+    }
+
+    /* D5 — ::selection brand styling (Apple/Cartier-grade detail).
+       Subtle gold-tint preserves AAA contrast over warm-bone palette. */
+    ::selection {
+      background: var(--color-accent-gold-tint);
+      color: var(--color-text-primary);
+    }
+    ::-moz-selection {
+      background: var(--color-accent-gold-tint);
+      color: var(--color-text-primary);
     }
   </style>
 </head>
