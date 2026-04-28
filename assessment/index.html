@@ -332,7 +332,7 @@
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
         <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
+          <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" autocapitalize="characters" inputmode="text" enterkeyhint="go" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
           <button onclick="unlockFromGate()" class="btn-gold btn-gold-sm">Unlock</button>
         </div>
         <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
@@ -345,14 +345,14 @@
     <div id="pcm-price" style="font-family:var(--cg);font-size:2.4rem;font-weight:600;color:var(--gold);margin-bottom:6px;line-height:1;"></div>
     <div id="pcm-includes" style="font-size:.78rem;color:rgba(200,214,229,.55);margin-bottom:20px;line-height:1.6;padding-bottom:16px;border-bottom:1px solid rgba(65,91,124,.2);"></div>
     <label for="pcm-email" style="font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8BA0BC;font-family:var(--pd);display:block;margin-bottom:6px;">Your Email</label>
-    <input type="email" id="pcm-email" placeholder="your@email.com" style="width:100%;padding:12px 16px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.9rem;font-family:var(--pd);outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')proceedToCheckout()">
+    <input type="email" id="pcm-email" placeholder="your@email.com" autocomplete="email" autocapitalize="off" spellcheck="false" inputmode="email" enterkeyhint="next" style="width:100%;padding:12px 16px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.9rem;font-family:var(--pd);outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')proceedToCheckout()">
     <div id="pcm-err" style="display:none;font-size:.75rem;color:#E5534B;margin-bottom:8px;font-family:var(--pd);"></div>
     <button id="pcm-proceed" onclick="proceedToCheckout()" class="btn-gold-fill" style="width:100%;margin-bottom:10px;">Continue to Payment &rarr;</button>
     <p style="font-size:.65rem;color:rgba(200,214,229,.22);text-align:center;margin:0;">Secure checkout powered by Stripe</p>
     <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(65,91,124,.15);">
       <p id="pcm-promo-toggle" style="font-size:.75rem;color:rgba(201,168,76,.7);font-family:var(--pd);margin:0 0 8px;">Have an access or promo code?</p>
       <div id="pcm-promo-area" style="display:flex;gap:8px;margin-top:0;flex-wrap:wrap;">
-        <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
+        <input type="text" id="pcm-promo-code" placeholder="Enter code" autocomplete="off" autocapitalize="characters" inputmode="text" enterkeyhint="go" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromoCode();}">
         <button onclick="applyPromoCode()" class="btn-gold btn-gold-sm">Apply</button>
       </div>
       <div id="pcm-promo-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
@@ -365,7 +365,7 @@
   <div class="fg">
     <div>
       <div class="fn">
-        <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;">
+        <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;" loading="lazy" decoding="async">
         <span class="nm">MatchMakers<sup>&trade;</sup></span>
       </div>
       <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. Over a decade in the making. Word-of-mouth only.</p>

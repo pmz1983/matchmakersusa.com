@@ -874,6 +874,38 @@
       background: var(--color-accent-gold-tint);
       color: var(--color-text-primary);
     }
+
+    /* ─────────────────────────────────────────────────────────
+       Cohort 2.5 C-B — Mobile + UX (Meridian-validated)
+       ───────────────────────────────────────────────────────── */
+
+    /* C2 — 44×44 effective tap area on small interactive elements
+       (visual size unchanged; hit-area enlarged via min-height). */
+    .hp-hero__quickhit { min-height: 44px; }
+
+    /* C5 — Safe-area-inset support (iOS notch / Dynamic Island /
+       home indicator). Sticky bar accommodates safe-area-inset-top
+       under the notch; body respects safe-area-inset-bottom under
+       the home indicator and side insets in landscape. */
+    @supports (padding: env(safe-area-inset-top)) {
+      body {
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+      .hp-sticky-bar {
+        padding-top: env(safe-area-inset-top);
+        height: calc(var(--stickybar-height) + env(safe-area-inset-top));
+      }
+    }
+
+    /* C6 — Touch-target spacing on quickhit row (≥var(--space-2) =
+       12px between adjacent interactive elements per Meridian §2.6;
+       was 6px / 10px). */
+    .hp-hero__quickhit-band { gap: var(--space-2); }
+    @media (min-width: 640px) {
+      .hp-hero__quickhit-band { gap: var(--space-2); }
+    }
   </style>
 </head>
 <body>
@@ -1070,7 +1102,7 @@
   <div class="fg">
     <div>
       <div class="fn">
-        <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;">
+        <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;" loading="lazy" decoding="async">
         <span class="nm">MatchMakers<sup>&trade;</sup></span>
       </div>
       <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. Over a decade in the making. Word-of-mouth only.</p>
