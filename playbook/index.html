@@ -80,7 +80,8 @@
   <p class="hero-sub" style="max-width:720px;">An AI Coach who remembers every conversation. A Script Studio that writes for your Intent. A Playbook that grounds every answer in a real methodology — the Connection Code&trade;. $250, once, for lifetime access. Use it wherever you're having a conversation.</p>
   <div class="hero-ctas" style="display:flex;align-items:center;justify-content:center;gap:.85rem;flex-wrap:wrap;">
     <button data-product="playbook" onclick="openPreCheckout(this)" class="btn-gold-fill">Start for $250 →</button>
-    <a href="#what" class="btn-gold" onclick="document.querySelector('#what').scrollIntoView({behavior:'smooth'});return false;">See how it works ↓</a>
+    <a href="#coach-preview" class="btn-gold" onclick="document.querySelector('#coach-preview').scrollIntoView({behavior:'smooth'});return false;">Try Coach ↓</a>
+    <a href="#studio" class="btn-gold" onclick="document.querySelector('#studio').scrollIntoView({behavior:'smooth'});return false;">Try Script Studio ↓</a>
   </div>
   <p style="text-align:center;font-size:.78rem;color:rgba(200,214,229,.55);margin:1.25rem 0 0;font-family:var(--pd);">
     Already have a code? <button type="button" onclick="showPlaybookRequired();setTimeout(function(){var i=document.getElementById('pcm-gate-code');if(i)i.focus();},100);" style="background:none;border:0;padding:0;color:var(--gold);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font:inherit;">Redeem here</button>
@@ -129,6 +130,55 @@
         <div class="pillar-body">Intent is the one input that runs everything — the tone Coach takes, the scripts Script Studio writes, the Playbook chapters surfaced first. Long-term. Marriage. Fall in love. Casual. Friendship. Companionship. Short-term. Open. Not sure yet. Pick one, change it whenever, keep your memory — your Coach reorients to wherever you're going next.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 2.5 — COACH STATIC PREVIEW (Bug W-2026-04-27-1 parity)
+     Coach example exchange, parity with Script Studio teaser §3.
+     Locked-state preview pre-purchase; unlocked + 3 free Coach
+     messages post-purchase per webcoach Lane 2 entitlement
+     (D-WEB-V2.2-SHIP-001). Connection Code™ first-mention preserved.
+     ═══════════════════════════════════════════════════════════════ -->
+<section style="background:var(--dk);padding:6rem 0;border-top:1px solid rgba(65,91,124,.15);border-bottom:1px solid rgba(65,91,124,.15);" id="coach-preview">
+  <div class="w">
+    <div style="max-width:680px;margin:0 auto 2rem;text-align:center;" class="reveal">
+      <span class="ey c">A Look at the Coach</span>
+      <span style="display:inline-block;margin-left:.6rem;padding:3px 10px;border-radius:3px;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.32);color:var(--gold);font-family:var(--pd);font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;vertical-align:middle;">Launching Phase A</span>
+      <div class="gr c"></div>
+      <h2 class="h2" style="text-align:center;margin-bottom:1rem;">Tell it where you are. It tells you what's next.</h2>
+      <p class="sub" style="text-align:center;">Every Coach exchange grounds in the methodology — with the Connection Code&trade; chapter that built the answer cited inline.</p>
+    </div>
+
+    <!-- Phase A disclosure callout — parity with Script Studio §3 -->
+    <div class="reveal" style="max-width:760px;margin:0 auto 1.5rem;padding:.95rem 1.15rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.22);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;display:flex;align-items:flex-start;gap:.75rem;">
+      <span aria-hidden="true" style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);flex-shrink:0;padding-top:.1rem;">▸ Phase A</span>
+      <span style="font-family:var(--sr);font-size:.85rem;color:var(--tx);line-height:1.65;">The Coach exchange below is a curated preview. Live AI conversation launches in Phase A — included in your $250 lifetime access. Try the Coach free for three messages on the page once it ships; daily caps apply inside the unlocked product.</span>
+    </div>
+
+    <!-- Example exchange — locked-state preview frame -->
+    <div class="reveal r2" style="max-width:760px;margin:0 auto 1.5rem;display:flex;flex-direction:column;gap:1rem;">
+
+      <!-- User message bubble -->
+      <div style="background:var(--mid);border:1px solid rgba(65,91,124,.22);border-radius:12px 12px 12px 2px;padding:1.25rem 1.5rem;align-self:flex-start;max-width:88%;">
+        <div style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(200,214,229,.55);margin-bottom:.55rem;">You · Long-Term Intent</div>
+        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;">Matched with someone who fits everything I want on paper, but our texts feel flat. I keep wondering whether to push through and meet, or move on. How do I tell?</div>
+      </div>
+
+      <!-- Coach response bubble -->
+      <div class="action-box" style="margin:0;align-self:flex-end;max-width:92%;border-radius:12px 12px 2px 12px;">
+        <div class="top-line"></div>
+        <div style="font-family:var(--pd);font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">Coach</div>
+        <div style="font-family:var(--sr);font-size:.88rem;color:var(--tx);line-height:1.7;margin-bottom:1rem;">Two distinct things here. "Fits on paper" is Position — what they look like in your filter. "Texts feel flat" is Open — how the early signal is actually carrying. Position without a working Open is the most common misread in Long-Term Intent. Before you decide to push through or move on, run one calibrated in-person ask. Texts compress people; presence rebuilds them. If presence still reads flat, you've got real data.</div>
+        <div style="border-top:1px solid rgba(65,91,124,.22);padding-top:.85rem;">
+          <div style="font-family:var(--pd);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.45);margin-bottom:.4rem;">▸ Why this works</div>
+          <div style="font-family:var(--sr);font-size:.78rem;color:var(--sl);line-height:1.6;">Cites <em>Chapter 3 — Position vs Open</em>. Long-Term Intent under-weights medium ("texts" as proxy) and over-weights filter ("fits on paper"). The Coach reframes the question before answering it — every methodology citation is linked back to the Playbook chapter that built it.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-family:var(--sr);font-size:.78rem;color:rgba(120,149,175,.55);text-align:center;margin-top:1.25rem;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">Example exchange. Your live Coach reorients to your Intent, remembers every conversation, and cites the Connection Code&trade; chapter behind every answer.</p>
   </div>
 </section>
 
@@ -290,7 +340,7 @@
     <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.45),transparent);margin:0 auto 1.5rem;"></div>
     <div style="font-family:var(--pd);font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;">Free</div>
     <p style="font-family:var(--sr);font-size:.9rem;line-height:1.6;color:var(--sl,#7A95AF);margin:0 0 1.5rem;">AI guidance from the methodology. Free to try.</p>
-    <a href="/coach/" class="btn-gold">Try Coach &rarr;</a>
+    <a href="#coach-preview" class="btn-gold" onclick="document.querySelector('#coach-preview').scrollIntoView({behavior:'smooth'});return false;">Try Coach &darr;</a>
   </div>
 </section>
 

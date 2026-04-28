@@ -437,6 +437,8 @@
     @media (min-width: 1024px) {
       .hp-hero__cta-grid { grid-template-columns: repeat(4, 1fr); max-width: 1080px; }
     }
+    /* Hero CTA card — card layout (vs btn-gold pill) but token-aligned with global ring system
+       (border alpha 0.45, hover bg 0.06, mm-btn-shadow rest+hover, -1px lift) per P1.W1 audit. */
     .hp-hero__cta--card {
       display: flex;
       flex-direction: column;
@@ -448,11 +450,12 @@
       padding: var(--space-4) var(--space-4);
       background: transparent;
       color: var(--color-text-primary);
-      border: 1px solid rgba(201, 168, 76, 0.32);
+      border: 1px solid rgba(201, 168, 76, 0.45);
       border-radius: var(--cta-primary-radius);
+      box-shadow: var(--mm-btn-shadow-rest);
       text-decoration: none;
       cursor: pointer;
-      transition: border-color var(--motion-hover) var(--easing-out), background var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
+      transition: border-color var(--motion-hover) var(--easing-out), background var(--motion-hover) var(--easing-out), box-shadow var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
       position: relative;
       overflow: hidden;
       width: 100%;
@@ -460,9 +463,10 @@
     }
     .hp-hero__cta--card:hover,
     .hp-hero__cta--card:focus-visible {
-      background: rgba(201, 168, 76, 0.05);
+      background: rgba(201, 168, 76, 0.06);
       border-color: var(--color-accent-gold);
-      transform: translateY(-2px);
+      box-shadow: var(--mm-btn-shadow-hover);
+      transform: translateY(-1px);
       outline: none;
     }
     .hp-hero__cta-eyebrow {
@@ -892,6 +896,7 @@
         <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
         <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
         <span class="hp-hero__eyebrow-line">Methodology, not algorithm</span>
+        <span class="hp-hero__eyebrow-rule" aria-hidden="true"></span>
         <span class="hp-hero__eyebrow-line">Human-led matchmaking</span>
       </p>
       <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>

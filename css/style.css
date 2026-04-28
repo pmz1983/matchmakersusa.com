@@ -447,10 +447,10 @@ section{position:relative}
   .five-grid{grid-template-columns:repeat(2,1fr)}
   .phase-grid{grid-template-columns:repeat(2,1fr)}
   .nav-inner{height:44px}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:44px;left:0;right:0;background:rgba(5,9,15,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(65,91,124,.12);padding:6px 20px 10px;gap:0}
+  /* P1.W2 audit fix: mobile nav uses gap rhythm (matches desktop .nav-links gap token) instead of per-item borders. */
+  .nav-links{display:none;flex-direction:column;position:absolute;top:44px;left:0;right:0;background:rgba(5,9,15,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(65,91,124,.12);padding:10px 20px 12px;gap:.5rem}
   nav.menu-open .nav-links{display:flex}
-  nav.menu-open .nav-links .nl{display:block;width:100%;padding:10px 0;font-size:.72rem;text-align:left;border-bottom:1px solid rgba(65,91,124,.06);color:rgba(200,214,229,.55)}
-  nav.menu-open .nav-links .nl:last-of-type{border-bottom:none}
+  nav.menu-open .nav-links .nl{display:block;width:100%;padding:8px 0;font-size:.72rem;text-align:left;color:rgba(200,214,229,.55)}
   nav.menu-open .nav-links .nb{display:block;width:100%;padding:9px 0;font-size:.72rem;text-align:center;border:1px solid rgba(201,168,76,.3);border-radius:6px;margin-top:6px;background:rgba(201,168,76,.04)}
   .hamburger{display:flex}
   .hero-proof{gap:1rem}
