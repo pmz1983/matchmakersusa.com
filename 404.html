@@ -11,9 +11,9 @@
     gtag('js', new Date());
     gtag('config', 'G-W3EJNGC0JR');
   </script>
-  <title>MatchMakers</title>
-  <meta name="description" content="This page doesn't exist. Head back to MatchMakers.">
-  <meta name="robots" content="noindex">
+  <title>Page Not Found &middot; MatchMakers</title>
+  <meta name="description" content="The page you're looking for may have moved or doesn't exist. Head back to the homepage or pick a starting point below.">
+  <meta name="robots" content="noindex,follow">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -22,11 +22,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <style>
-    .err-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;}
+    .err-page{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 24px 48px;}
     .err-code{font-family:var(--pd);font-weight:700;font-size:4rem;color:rgba(201,168,76,.3);line-height:1;margin-bottom:12px;}
     .err-page h1{font-family:var(--pd);font-weight:700;font-size:1.3rem;color:var(--white);margin-bottom:10px;}
-    .err-page p{font-size:.88rem;color:var(--sl);max-width:400px;line-height:1.6;margin-bottom:28px;}
-    .err-page .btn-gold{display:inline-flex;}
+    .err-page p{font-size:.88rem;color:var(--sl);max-width:480px;line-height:1.6;margin-bottom:28px;}
+    .err-page .btn-gold{display:inline-flex;margin-bottom:42px;}
+    .err-suggest{margin-top:8px;width:100%;max-width:520px;}
+    .err-suggest__hr{display:block;width:36px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);margin:0 auto 18px;}
+    .err-suggest__ey{display:block;font-family:var(--pd);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:18px;}
+    .err-suggest__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;text-align:left;}
+    .err-suggest__list a{display:block;padding:14px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(65,91,124,.18);border-radius:8px;text-decoration:none;color:var(--white);transition:border-color .2s,background .2s;}
+    .err-suggest__list a:hover{border-color:rgba(201,168,76,.4);background:rgba(255,255,255,.06);}
+    .err-suggest__list strong{display:block;font-family:var(--pd);font-weight:600;font-size:.92rem;margin-bottom:4px;}
+    .err-suggest__list span{display:block;font-size:.78rem;color:var(--sl);line-height:1.5;}
   </style>
 </head>
 <body>
@@ -52,8 +60,31 @@
 <div class="err-page">
   <div class="err-code">404</div>
   <h1>This page doesn't exist</h1>
-  <p>The page you're looking for may have moved or doesn't exist. Head back to the homepage to find what you need.</p>
+  <p>The page you're looking for may have moved or doesn't exist. Head back to the homepage &mdash; or pick a starting point below.</p>
   <a href="/" class="btn-gold">Back to MatchMakers</a>
+
+  <div class="err-suggest">
+    <span class="err-suggest__hr" aria-hidden="true"></span>
+    <span class="err-suggest__ey">Where to go</span>
+    <ul class="err-suggest__list">
+      <li><a href="/guide/">
+        <strong>Connection Code &mdash; Free Preview</strong>
+        <span>The 5-Signal framework. A free read of the methodology.</span>
+      </a></li>
+      <li><a href="/playbook/">
+        <strong>Coach &amp; Playbook &mdash; $250</strong>
+        <span>The full system. AI Coach + Script Studio + Playbook.</span>
+      </a></li>
+      <li><a href="/vip/">
+        <strong>VIP MatchMaking</strong>
+        <span>Curated matchmaking by application. A human runs it for you.</span>
+      </a></li>
+      <li><a href="/assessment/">
+        <strong>Intent Assessment &mdash; Free</strong>
+        <span>Eight questions. Four minutes. Find your Intent.</span>
+      </a></li>
+    </ul>
+  </div>
 </div>
 
 <footer>
