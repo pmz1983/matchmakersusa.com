@@ -14,11 +14,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>MatchMakers</title>
-  <meta name="description" content="A dedicated MatchMaker. Curated introductions from a vetted member network. The complete MatchMakers methodology applied personally. Invite-only. By consultation.">
+  <meta name="description" content="Personal Relationship Operating System Design with a dedicated advisor. Bounded 4, 8, or 12-week engagement. Reviewed, not curated. Invite-only. By consultation.">
   <link rel="canonical" href="https://matchmakersusa.com/vip/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="MatchMakers">
-  <meta property="og:description" content="A dedicated MatchMaker. Curated introductions from a vetted member network. The complete MatchMakers methodology applied personally. Invite-only. By consultation.">
+  <meta property="og:description" content="Personal Relationship Operating System Design with a dedicated advisor. Bounded 4, 8, or 12-week engagement. Reviewed, not curated. Invite-only. By consultation.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
@@ -32,7 +32,7 @@
       {"@type":"ListItem","position":2,"name":"VIP MatchMaking","item":"https://matchmakersusa.com/vip/"}
     ]},
     {"@type":"Organization","name":"MatchMakers","legalName":"MatchMakers LLC","url":"https://matchmakersusa.com","logo":"https://matchmakersusa.com/img/logo.png","foundingDate":"2018"},
-    {"@type":"Service","name":"VIP MatchMaking","provider":{"@type":"Organization","name":"MatchMakers"},"description":"Curated human matchmaking — application-based; Connection Code methodology applied directly by a human matchmaker.","url":"https://matchmakersusa.com/vip/","areaServed":"US","serviceType":"Matchmaking"}
+    {"@type":"Service","name":"VIP MatchMaking","provider":{"@type":"Organization","name":"MatchMakers"},"description":"Personal Relationship Operating System Design with a dedicated advisor. Bounded 4-12 week engagement; Connection Code methodology applied directly. Reviewed, not curated.","url":"https://matchmakersusa.com/vip/","areaServed":"US","serviceType":"Matchmaking"}
   ]}
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -42,6 +42,44 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    /* /vip/ reframe baseline CSS — minimal default styling for new Tier 1-7 architecture
+       classes pending Meridian Cartier Pass 1 visual fold-in (Tier 4 sequence post-Tier-1-3). */
+    .vip-credential-band{padding:2.25rem 1.5rem;text-align:center;}
+    .vip-rule--ambient{display:block;width:100%;max-width:680px;height:1px;margin:1rem auto;border:0;background:linear-gradient(90deg,transparent,rgba(201,168,76,.24),transparent);}
+    .vip-hero__cta{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;}
+
+    .vip-plans-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin:2.5rem 0;align-items:stretch;}
+    @media (min-width:768px){.vip-plans-grid{grid-template-columns:repeat(3,1fr);}}
+    .vip-plan-card{position:relative;background:rgba(255,255,255,.02);border:1px solid rgba(65,91,124,.18);border-radius:8px;padding:1.75rem 1.5rem;display:flex;flex-direction:column;}
+    .vip-plan-card--plus{border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.04);}
+    .vip-plan-card__badge{position:absolute;top:-12px;right:14px;background:var(--gold);color:var(--dk);padding:.3rem .65rem;font-family:var(--pd);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;}
+    .vip-plan-card__tier{font-family:var(--pd);font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:.4rem;}
+    .vip-plan-card__matchmaker{font-family:var(--cg);font-style:italic;font-size:1.05rem;color:var(--white);margin-bottom:.75rem;}
+    .vip-plan-card__price{font-family:var(--pd);font-size:1.55rem;font-weight:700;color:var(--white);}
+    .vip-plan-card__price-sub{font-size:.78rem;color:var(--sl);margin-bottom:1rem;}
+    .vip-plan-card__divider{width:36px;height:1px;background:rgba(201,168,76,.35);margin:0 0 1rem;}
+    .vip-plan-card__deliverables{list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:.55rem;font-size:.85rem;color:var(--tx);line-height:1.55;}
+    .vip-plan-card__deliverables li{padding-left:1rem;position:relative;}
+    .vip-plan-card__deliverables li::before{content:"›";position:absolute;left:0;color:rgba(201,168,76,.5);}
+    .vip-plan-card__best-for{font-size:.78rem;color:var(--sl);font-style:italic;margin-bottom:1.25rem;line-height:1.5;}
+    .vip-plan-card__cta{margin-top:auto;justify-content:center;}
+
+    .vip-boundary-list,.vip-commitments-list{list-style:none;padding:0;margin:1.5rem 0 0;display:flex;flex-direction:column;gap:.95rem;}
+    .vip-boundary-list li,.vip-commitments-list li{padding:1rem 1.15rem;background:rgba(255,255,255,.02);border-left:2px solid rgba(201,168,76,.35);font-size:.92rem;color:var(--tx);line-height:1.6;}
+    .vip-boundary-list strong,.vip-commitments-list strong{color:var(--white);display:inline;}
+
+    .vip-path-steps,.vip-method-layers{display:flex;flex-direction:column;gap:1.25rem;margin:2rem 0;}
+    .vip-path-step,.vip-method-layer{display:flex;gap:1.25rem;align-items:flex-start;padding:1.35rem 1.25rem;background:rgba(255,255,255,.02);border:1px solid rgba(65,91,124,.18);border-radius:8px;}
+    .vip-path-step__num,.vip-method-layer__num{font-family:var(--cg);font-style:italic;font-size:1.85rem;color:rgba(201,168,76,.55);line-height:1;flex-shrink:0;min-width:42px;}
+    .vip-path-step__content{flex:1;}
+    .vip-path-step__title,.vip-method-layer__title{font-family:var(--pd);font-weight:700;font-size:1rem;color:var(--white);margin-bottom:.45rem;}
+    .vip-path-step__body,.vip-method-layer__body{font-size:.9rem;color:var(--tx);line-height:1.6;}
+    .vip-method-layers .vip-method-layer{flex-direction:column;}
+    .vip-method-layers .vip-method-layer__num{margin-bottom:.4rem;}
+
+    .vip-path-cta{text-align:center;margin-top:2rem;}
+  </style>
 </head>
 <body>
 
@@ -56,7 +94,7 @@
       <a href="/playbook/" class="nl">Coach &amp; Playbook</a>
       <a href="/vip/" class="nl">VIP</a>
       <a href="/assessment/" class="nl">Assessment</a>
-      <a href="/guide/" class="nb">Free Preview</a>
+      <a href="/guide/" class="nb">Connection Code</a>
     </div>
     <button class="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -65,209 +103,216 @@
 </nav>
 
 <div class="vip-progress"><div class="vip-progress-fill" id="vipProgress"></div></div>
-<section class="vip-hero">
-  <div style="font-family:var(--cg);font-size:clamp(1rem,2.5vw,1.4rem);font-weight:300;color:rgba(200,214,229,.35);letter-spacing:.08em;margin-bottom:.35rem;">MatchMakers<sup style="font-size:.5em;">&trade;</sup></div>
-  <div style="width:36px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);margin:0 auto .75rem;"></div>
-  <div class="vip-invite-badge">&diams; Invite Only &middot; By Consultation &middot; Not Every Application Is Accepted</div>
-  <span class="vip-hero-ey">VIP MatchMaking</span>
-  <h1 class="vip-hero-wm">The pinnacle of<br>intentional <em>matchmaking.</em></h1>
-  <div class="vip-hero-rule"></div>
-  <div style="display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;">
-    <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold">Apply for VIP MatchMaking &rarr;</a>
-    <a href="/playbook/" class="btn-gold">Get Playbook &mdash; $250 &rarr;</a>
-  </div>
-  <p class="vip-hero-sub">A dedicated MatchMaker working directly with you &mdash; on strategy, positioning, vetting, and coaching through every phase. Backed by the only methodology built on over a decade of human matchmaking.</p>
+<section class="vip-hero" id="top">
 
-  <!-- Proof Row — D1 NO_SCALE_NUMBERS aligned -->
-  <div class="pbo-proof-row reveal" style="max-width:680px;">
+  <!-- TIER 1 — STRONG BRANDING (Path 3 Cartier-restraint; D-WEBED-005 chrome-only — NO M-mark img) -->
+  <span class="vip-hero-ey">VIP MatchMaking</span>
+  <div class="vip-invite-badge">&diams; Invite Only &middot; By Consultation &middot; Not Every Application Is Accepted</div>
+  <h1 class="vip-hero-wm">The operating system for <em>your</em> relationship.</h1>
+  <div class="vip-hero-rule"></div>
+  <p class="vip-hero-sub">Personal Relationship Operating System Design with a dedicated advisor &mdash; built over a bounded 4, 8, or 12-week engagement. Reviewed, not curated.</p>
+
+  <div class="vip-hero__cta">
+    <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold-fill">Apply for VIP &rarr;</a>
+  </div>
+
+</section>
+
+<!-- TIER 2 — Institutional credential band (Path 3; Cartier-restraint single-focal-scroll-snap) -->
+<section class="vip-credential-band" aria-label="VIP institutional credentials">
+  <hr class="vip-rule--ambient" aria-hidden="true">
+  <div class="pbo-proof-row reveal" style="max-width:680px;" aria-label="VIP credentials">
+    <div class="pbo-stat"><div class="pbo-stat-n" style="font-family:var(--cg);font-style:italic;font-size:1.4rem;">Bounded</div><div class="pbo-stat-l">4-12 Weeks</div></div>
+    <div class="pbo-stat-div"></div>
     <div class="pbo-stat"><div class="pbo-stat-n">1</div><div class="pbo-stat-l">Dedicated Advisor</div></div>
     <div class="pbo-stat-div"></div>
-    <div class="pbo-stat"><div class="pbo-stat-n">5</div><div class="pbo-stat-l">Phase Coaching</div></div>
+    <div class="pbo-stat"><div class="pbo-stat-n" style="font-family:var(--cg);font-style:italic;font-size:1.4rem;">Reviewed</div><div class="pbo-stat-l">Not Curated</div></div>
     <div class="pbo-stat-div"></div>
-    <div class="pbo-stat"><div class="pbo-stat-n" style="font-family:var(--cg);font-style:italic;font-size:1.4rem;">Vetted</div><div class="pbo-stat-l">Member Network</div></div>
-    <div class="pbo-stat-div"></div>
-    <div class="pbo-stat"><div class="pbo-stat-n">&infin;</div><div class="pbo-stat-l">Coach Access</div></div>
+    <div class="pbo-stat"><div class="pbo-stat-n" style="font-family:var(--cg);font-style:italic;font-size:1.4rem;">Branded</div><div class="pbo-stat-l">PDF + Portal</div></div>
+  </div>
+  <hr class="vip-rule--ambient" aria-hidden="true">
+</section>
+
+<!-- TIER 3 — Three-tier pricing comparison (per Atlas Q1 range-per-tier + Q2 three-card-comparison) -->
+<section class="vip-section" id="plans">
+  <div class="vip-w">
+    <span class="vip-section-label">01 &middot; The Plans</span>
+    <div class="vip-section-rule"></div>
+    <h2 class="vip-h2">Three engagements. <em>One operating system.</em></h2>
+    <p class="vip-p">Each engagement produces the same core artifacts &mdash; the Personal MatchMakers System Document and Execution Playbook. Tiers differ in advisor seniority, suiter-review depth, and concierge access. Pick the engagement that fits where you are.</p>
+
+    <div class="vip-plans-grid">
+
+      <!-- Card 1 — Entry tier -->
+      <div class="vip-plan-card vip-plan-card--entry">
+        <div class="vip-plan-card__tier">Entry</div>
+        <div class="vip-plan-card__matchmaker">Junior MatchMaker</div>
+        <div class="vip-plan-card__price">$2,500 &ndash; $7,500</div>
+        <div class="vip-plan-card__price-sub">per engagement &middot; 4 / 8 / 12 weeks</div>
+        <div class="vip-plan-card__divider"></div>
+        <ul class="vip-plan-card__deliverables">
+          <li>Personal MatchMakers System Document</li>
+          <li>Execution Playbook</li>
+          <li>Bounded engagement; no post-delivery coaching</li>
+          <li>Client executes system independently</li>
+        </ul>
+        <div class="vip-plan-card__best-for">Best for: clients ready to execute the system independently.</div>
+        <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold vip-plan-card__cta">Apply for Entry &rarr;</a>
+      </div>
+
+      <!-- Card 2 — Pro tier -->
+      <div class="vip-plan-card vip-plan-card--pro">
+        <div class="vip-plan-card__tier">Pro</div>
+        <div class="vip-plan-card__matchmaker">Senior MatchMaker</div>
+        <div class="vip-plan-card__price">$5,000 &ndash; $15,000</div>
+        <div class="vip-plan-card__price-sub">per engagement &middot; 4 / 8 / 12 weeks</div>
+        <div class="vip-plan-card__divider"></div>
+        <ul class="vip-plan-card__deliverables">
+          <li>Entry tier deliverables</li>
+          <li>Ongoing matchmaker + AI review of client-sourced potential suiters</li>
+          <li>Weekly cadence + full coaching support (session + async)</li>
+          <li>Reviewed, not curated &mdash; client surfaces; advisor reviews</li>
+        </ul>
+        <div class="vip-plan-card__best-for">Best for: clients who want the system + active advisor review.</div>
+        <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold vip-plan-card__cta">Apply for Pro &rarr;</a>
+      </div>
+
+      <!-- Card 3 — Plus tier -->
+      <div class="vip-plan-card vip-plan-card--plus">
+        <span class="vip-plan-card__badge">&diams; Apex</span>
+        <div class="vip-plan-card__tier">Plus</div>
+        <div class="vip-plan-card__matchmaker">Lead MatchMaker</div>
+        <div class="vip-plan-card__price">$10,000 &ndash; $30,000</div>
+        <div class="vip-plan-card__price-sub">per engagement &middot; 4 / 8 / 12 weeks</div>
+        <div class="vip-plan-card__divider"></div>
+        <ul class="vip-plan-card__deliverables">
+          <li>Pro tier deliverables</li>
+          <li>Concierge experience: priority response + unlimited matchmaker async</li>
+          <li>Introduction sourcing across personal networks</li>
+          <li>Lead-tier matchmaker (top-tier practitioner)</li>
+        </ul>
+        <div class="vip-plan-card__best-for">Best for: highest-touch + top-tier practitioner.</div>
+        <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold-fill vip-plan-card__cta">Apply for Plus &rarr;</a>
+      </div>
+
+    </div>
+
+    <p class="vip-p" style="margin-top:2rem;font-size:.85rem;color:rgba(200,214,229,.6);">Upfront full payment per engagement. No refunds post-consultation; scope changes only at engagement boundary. Re-engagement available as new purchase.</p>
+
   </div>
 </section>
-<section class="vip-section" id="for-whom">
+
+<!-- TIER 4 — What VIP Is Not (boundary discipline per brief §4 binding) -->
+<section class="vip-section" id="boundaries">
   <div class="vip-w">
-    <span class="vip-section-label">Eligibility</span>
+    <span class="vip-section-label">02 &middot; What This Is Not</span>
     <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">VIP MatchMaking is not for everyone.<br>That is the point.</h2>
-    <p class="vip-p">The most effective VIP engagements begin with people who already understand the methodology — who have applied it themselves, who know what they want, and who are ready for a human advisor to take over the search. The consultation is how we determine whether that's you.</p>
-    <div class="for-whom-grid">
-      <div class="for-card for">
-        <div class="for-card-label for">This is for you if —</div>
-        <div class="for-item">You have applied the MatchMakers methodology and understand the 5-phase framework</div>
-        <div class="for-item">You are clear on your Intent and serious about the outcome</div>
-        <div class="for-item">You want a named advisor, not an algorithm, working on your behalf</div>
-        <div class="for-item">You value discretion and expect a confidential, high-touch engagement</div>
-        <div class="for-item">You are ready to invest at the level that serious outcomes require</div>
+    <h2 class="vip-h2">VIP is not curated matchmaking.</h2>
+    <p class="vip-p">Boundary discipline matters. What VIP does is precise; what VIP does not do is just as precise.</p>
+
+    <ul class="vip-boundary-list">
+      <li><strong>Not curated matchmaking.</strong> VIP does not match clients to candidates from the MatchMakers platform or external curation. The client surfaces potential suiters from their own dating activity; the matchmaker + AI review them.</li>
+      <li><strong>Not therapy.</strong> Matchmakers are not licensed therapy providers. Mental-health crises trigger referral out.</li>
+      <li><strong>Not life coaching.</strong> Career and financial advice are out of scope.</li>
+      <li><strong>Not a friendship.</strong> Boundaries are maintained during and after engagement.</li>
+      <li><strong>Not an open-ended retainer.</strong> Engagements are bounded; re-engagement is available as a new purchase.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TIER 5 — The Path (entry gate per brief §5; $750 paid prerequisite) -->
+<section class="vip-section" id="path">
+  <div class="vip-w">
+    <span class="vip-section-label">03 &middot; The Path</span>
+    <div class="vip-section-rule"></div>
+    <h2 class="vip-h2">How you get in.</h2>
+    <p class="vip-p">VIP is application-only. The path has four steps. Acceptance is bidirectional &mdash; we determine fit; you determine fit.</p>
+
+    <div class="vip-path-steps">
+      <div class="vip-path-step">
+        <div class="vip-path-step__num">01</div>
+        <div class="vip-path-step__content">
+          <div class="vip-path-step__title">Coach &amp; Playbook ($250)</div>
+          <div class="vip-path-step__body">Start with the methodology. The Playbook is the operating system you'll customize during your engagement; the Coach is the AI that applies it. Required for VIP application.</div>
+        </div>
       </div>
-      <div class="for-card not">
-        <div class="for-card-label not">This is not for you if —</div>
-        <div class="for-item">You are still exploring or undecided about what you want</div>
-        <div class="for-item">You have not yet engaged with the MatchMakers methodology</div>
-        <div class="for-item">You expect immediate results without process</div>
-        <div class="for-item">You are looking for an app experience or AI-guided support</div>
-        <div class="for-item">You are not ready for a human advisor to hold you to the work</div>
+      <div class="vip-path-step">
+        <div class="vip-path-step__num">02</div>
+        <div class="vip-path-step__content">
+          <div class="vip-path-step__title">Upgrade ($500)</div>
+          <div class="vip-path-step__body">Higher daily Coach + Script Studio caps; deeper script library access. Together with Coach &amp; Playbook, the $750 paid prerequisite signals serious intent + ensures methodology fluency before VIP advisor engagement.</div>
+        </div>
+      </div>
+      <div class="vip-path-step">
+        <div class="vip-path-step__num">03</div>
+        <div class="vip-path-step__content">
+          <div class="vip-path-step__title">Application</div>
+          <div class="vip-path-step__body">Complete the VIP application form below. Your advisor reviews and reaches out within 2 business days to schedule the initial consultation.</div>
+        </div>
+      </div>
+      <div class="vip-path-step">
+        <div class="vip-path-step__num">04</div>
+        <div class="vip-path-step__content">
+          <div class="vip-path-step__title">Initial Consultation</div>
+          <div class="vip-path-step__body">A private 45-60 minute conversation by appointment. Not a sales call. Structured assessment of fit &mdash; in both directions. No obligation to proceed. If accepted, you select your engagement length (4 / 8 / 12 weeks) and tier (Entry / Pro / Plus); we kick off.</div>
+        </div>
       </div>
     </div>
-    <div style="background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:1.25rem 1.5rem;margin-top:.5rem;">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;margin-bottom:.85rem;padding:.75rem 1rem;background:rgba(65,91,124,.1);border:1px solid rgba(65,91,124,.22);border-radius:8px;">
-        <span style="font-family:var(--sr);font-size:.8rem;color:rgba(200,214,229,.55);">If you haven't taken the Intent Assessment, start there — it's the first qualification signal.</span>
-        <a href="/assessment/" class="btn-gold btn-gold-sm">Take the Assessment →</a>
-      </div>
-      <p class="vip-p" style="margin:0;font-size:.85rem;color:rgba(200,214,229,.6);">VIP MatchMaking is designed for clients who are serious about finding their match. Every VIP engagement includes full access to the Playbook and Dating Coach as part of the service. <a href="/playbook/" style="color:rgba(201,168,76,.5);text-decoration:none;">Explore Dating Coach &amp; Playbook →</a></p>
-    </div>
-  </div>
-</section>
-<section class="vip-section" id="ch-difference">
-  <div class="vip-w">
-    <span class="vip-section-label">The Difference</span>
-    <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">What the finest do.<br>And what they can’t.</h2>
-    <p class="vip-p">The finest matchmakers don't sell access to a database. They sell judgment, discretion, and <strong>personal investment in a single client's outcome.</strong> They learn how you present yourself, what your non-negotiables actually are versus what you think they are, and what kind of person will genuinely complement your life.</p>
-    <p class="vip-p">MatchMakers VIP delivers this standard — and goes further, because your advisor operates from a codified methodology, not intuition. They are applying a behavioral system — the MatchMakers Connection Code&trade; — that no traditional matchmaker has, to a situation they know completely.</p>
-    <table class="diff-table">
-      <thead><tr><th>Traditional High-End Matchmaking</th><th>MatchMakers VIP MatchMaking</th></tr></thead>
-      <tbody>
-        <tr><td>Limited private rolodex — hundreds to low thousands</td><td>Seven years of member intelligence informs every introduction — advisor judgment, not database search</td></tr>
-        <tr><td>Intuition-based match selection</td><td>Methodology-guided curation using the 5-phase framework and Intent compatibility</td></tr>
-        <tr><td>Generic date coaching, if any</td><td>Full phase coaching through every live connection — preparation before, debrief after</td></tr>
-        <tr><td>No structured methodology or proprietary IP</td><td>Seven years of real outcomes distilled into a codified methodology — the advisor’s operational foundation</td></tr>
-        <tr><td>$5,000–$50,000+ per month, fixed retainer</td><td>Priced by scope and engagement — not by a fixed monthly rate regardless of results</td></tr>
-        <tr><td>No platform where connections are managed</td><td>Managed within the MatchMakers platform, Intent-aligned from first contact forward</td></tr>
-        <tr><td>Introductions only — no included resources</td><td>Playbook + unlimited Dating Coach access included for the full engagement</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<section class="vip-section" id="ch-process">
-  <div class="vip-w">
-    <span class="vip-section-label">The Process</span>
-    <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">From initial consultation to your first curated introduction.</h2>
-    <p class="vip-p" style="margin-bottom:2rem;">Every step in the VIP process exists for a reason. Nothing is ceremonial. The rigor of the intake is what makes the curation meaningful. The quality of the coaching is what makes every introduction worthwhile.</p>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="ps-num">01</div>
-        <div class="ps-content">
-          <div class="ps-label">Consultation · By Appointment</div>
-          <div class="ps-title">The Initial Consultation</div>
-          <div class="ps-body">A private, 45–60 minute conversation with a senior MatchMakers advisor. This is not a sales call. It is a structured assessment of your goals, your Intent, your current situation, and whether VIP MatchMaking is the right service for where you are. Not every applicant is accepted. The consultation is how we determine fit — in both directions. No obligation to proceed.</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="ps-num">02</div>
-        <div class="ps-content">
-          <div class="ps-label">Intake · Accepted Members Only</div>
-          <div class="ps-title">Deep Intake — Profile, Intent, and Lifestyle Assessment</div>
-          <div class="ps-body">Accepted members complete a comprehensive intake with their dedicated MatchMaker. This goes well beyond what any profile captures. Your advisor learns how you present in person, what you project without realizing it, and what you genuinely need in a partner as distinct from what you believe you want. The Intent framework is the foundation. Your advisor goes much deeper.</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="ps-num">03</div>
-        <div class="ps-content">
-          <div class="ps-label">Positioning · Before You're Presented</div>
-          <div class="ps-title">Profile Optimization and Platform Positioning</div>
-          <div class="ps-body">Your MatchMaker reviews and optimizes your profile with the full methodology applied — photos, bio, prompts, Level strategy, and Intent declaration. They prepare your presence in the platform before any introduction is made. You are positioned before you are presented. The quality of your profile determines the quality of the candidates who are shown to you.</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="ps-num">04</div>
-        <div class="ps-content">
-          <div class="ps-label">Curation · Human Intelligence + Platform Data</div>
-          <div class="ps-title">Curated Match Selection</div>
-          <div class="ps-body">Your advisor identifies and personally vets potential introductions using Intent alignment, compatibility, and the full depth of your intake profile. Every candidate is assessed by a human before any introduction is made — not surfaced by an algorithm. You receive a curated selection with the specific reasoning behind each one. Every decision is grounded in the MatchMakers methodology and over a decade of behavioral intelligence.</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="ps-num">05</div>
-        <div class="ps-content">
-          <div class="ps-label">Coaching · Every Phase, Every Connection</div>
-          <div class="ps-title">Full 5-Phase Coaching Through Every Introduction</div>
-          <div class="ps-body">Once introductions are made, your MatchMaker coaches you through every phase of the methodology as it applies to each specific connection — opening messages, escalation, the video call, the first in-person meeting. Preparation before every stage. Structured debrief after. You are never navigating a promising connection without support.</div>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="ps-num">06</div>
-        <div class="ps-content">
-          <div class="ps-label">Ongoing · Until the Outcome</div>
-          <div class="ps-title">Continuous Advisory — For as Long as It Takes</div>
-          <div class="ps-body">VIP MatchMaking is not a time-limited program. Your advisor is with you for as long as the engagement requires. They adapt as the situations do. If an approach isn't working, they diagnose and adjust. If something is working, they build on it. The engagement continues until you have found what you came here for.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="vip-section" id="ch-includes">
-  <div class="vip-w">
-    <span class="vip-section-label">What's Included</span>
-    <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">The complete MatchMakers ecosystem — plus the human advisory layer on top of all of it.</h2>
-    <p class="vip-p">Every VIP engagement includes the full resource stack. Your MatchMaker draws from every tool and framework available and provides the judgment and accountability layer that no product can replicate.</p>
-    <div class="includes-grid">
-      <div class="inc-card highlight">
-        <div class="inc-label">◆ Core of the Engagement</div>
-        <div class="inc-title">Dedicated Personal MatchMaker</div>
-        <div class="inc-body">A single, named advisor who knows your situation completely. Not a rotating team. Not a call center. One person, fully invested in your outcome, for the duration of the engagement.</div>
-      </div>
-      <div class="inc-card highlight">
-        <div class="inc-label">◆ Exclusive VIP Benefit</div>
-        <div class="inc-title">Unlimited Dating Coach Access</div>
-        <div class="inc-body">Standard Dating Coach is a 30-day product. VIP clients retain full AI coaching access — 24/7 — for the entire duration of the engagement. No 30-day window. No renewal required.</div>
-        <div class="inc-value">Coach access included · For the engagement duration</div>
-      </div>
-      <div class="inc-card">
-        <div class="inc-label">Included Resource</div>
-        <div class="inc-title">The MatchMakers Playbook</div>
-        <div class="inc-body">50+ guided scripts, 9 Intent frameworks, the complete 5-phase methodology. Your advisor uses it as their operational reference. You receive it as your guide to the methodology they're applying on your behalf.</div>
-        <div class="inc-value">$250 value · Lifetime Access</div>
-      </div>
-      <div class="inc-card">
-        <div class="inc-label">Included Process</div>
-        <div class="inc-title">Curated Match Selection</div>
-        <div class="inc-body">Every potential introduction personally reviewed and vetted by your MatchMaker. Intent alignment, compatibility, and lifestyle fit assessed before you ever hear a name. Judgment-driven, not algorithm-driven.</div>
-      </div>
-      <div class="inc-card">
-        <div class="inc-label">Included Service</div>
-        <div class="inc-title">Profile Optimization</div>
-        <div class="inc-body">Full profile review and optimization by your MatchMaker before introductions begin — photos, bio, prompts, Level strategy. You are positioned before you are presented to anyone.</div>
-      </div>
-      <div class="inc-card">
-        <div class="inc-label">Foundational Commitment</div>
-        <div class="inc-title">Complete Confidentiality</div>
-        <div class="inc-body">Your engagement, your matches, and everything discussed with your advisor is held in strict confidence. VIP MatchMaking operates at the discretion standard expected at this level of service. Always.</div>
-      </div>
+
+    <div class="vip-path-cta">
+      <a href="/playbook/" class="btn-gold-fill">Begin the Path &mdash; Coach &amp; Playbook ($250) &rarr;</a>
     </div>
   </div>
 </section>
-<section class="vip-section" id="ch-discretion">
+
+<!-- TIER 6 — How the system gets built (3-layer architecture per brief §2; Connection Code™ first-mention authoritatively) -->
+<section class="vip-section" id="how-it-works">
   <div class="vip-w">
-    <span class="vip-section-label">Discretion</span>
+    <span class="vip-section-label">04 &middot; The Method</span>
     <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">Your engagement is private.<br>That is not a feature. It is a requirement.</h2>
-    <div class="discretion-block">
-      <p class="vip-p">Every conversation with your advisor is confidential. Every introduction is made at the level of discretion you expect from a personal advisor — not a platform. The names, details, and circumstances of every match are handled with the same care your advisor would expect for themselves.</p>
-      <p class="vip-p">Your MatchMakers profile and activity within the platform is visible only within the normal parameters of the platform. Your VIP engagement — the intake, the advisor sessions, the match selections — exists outside those parameters entirely. It is not visible to other members.</p>
-      <p class="vip-p" style="margin-bottom:0;"><strong>We do not share, discuss, or reference client engagements.</strong> Your situation is known to your advisor, and your advisor only. This is the standard, not an accommodation.</p>
+    <h2 class="vip-h2">How the system gets built.</h2>
+    <p class="vip-p">The Personal MatchMakers System and Execution Playbook are built on a three-layer architecture &mdash; designed so the matchmaker provides judgment and observation, structured forms remove variability, and AI generates the consistent, methodology-grounded output.</p>
+
+    <div class="vip-method-layers">
+      <div class="vip-method-layer">
+        <div class="vip-method-layer__num">01</div>
+        <div class="vip-method-layer__title">Human Matchmaker as Input Engine</div>
+        <div class="vip-method-layer__body">Your dedicated matchmaker runs sessions, observes nuance, fills behavioral and interpretive forms, and applies trained judgment. The matchmaker does not improvise &mdash; the matchmaker captures.</div>
+      </div>
+      <div class="vip-method-layer">
+        <div class="vip-method-layer__num">02</div>
+        <div class="vip-method-layer__title">Structured Form System as Control Layer</div>
+        <div class="vip-method-layer__body">Standardized forms remove variability between matchmakers and engagements. What gets captured for one client gets captured for every client. Consistency is the precondition for AI-amplified system generation.</div>
+      </div>
+      <div class="vip-method-layer">
+        <div class="vip-method-layer__num">03</div>
+        <div class="vip-method-layer__title">AI as Output Engine</div>
+        <div class="vip-method-layer__body">Forms + matchmaker notes feed an AI engine grounded in the Connection Code&trade; methodology. The output: your Personal MatchMakers System Document and Execution Playbook &mdash; tailored to your Intent, your situation, and the way you actually date.</div>
+      </div>
     </div>
+
+    <p class="vip-p" style="margin-top:2rem;">The result is a system, not a guess. The matchmaker brings judgment to the input; the system delivers consistency at the output. Reviewed, not curated &mdash; the client surfaces potential suiters; the matchmaker + AI review them through the lens of the system.</p>
   </div>
 </section>
-<section class="vip-section" id="ch-investment">
+
+<!-- TIER 7 — Public commitments (per brief §6) -->
+<section class="vip-section" id="commitments">
   <div class="vip-w">
-    <span class="vip-section-label">Investment</span>
+    <span class="vip-section-label">05 &middot; Commitments</span>
     <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">Priced by what your engagement actually requires.</h2>
-    <p class="vip-p">The fee for VIP MatchMaking is determined by consultation — based on the depth of the intake, the complexity of the curated search, the coaching load across active connections, and the anticipated timeline. It does not operate on a fixed monthly retainer regardless of outcomes.</p>
-    <div class="inv-card">
-      <div class="inv-badge">◆ By Consultation · Invite Only</div>
-      <div class="inv-price">By Consultation</div>
-      <div class="inv-price-sub">Price determined by scope of engagement<br>Initial consultation at no cost · No obligation to proceed</div>
-      <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold">Apply for VIP MatchMaking →</a>
-      <div class="inv-compare">For context: traditional high-end matchmakers typically charge $5,000–$50,000+ per month for access to a limited private rolodex and individual judgment — without the methodology, the platform network, or the included coaching resources. The MatchMakers VIP fee reflects the full scope of a unified engagement.</div>
-    </div>
+    <h2 class="vip-h2">What we hold to.</h2>
+
+    <ul class="vip-commitments-list">
+      <li><strong>Single dedicated MatchMaker per engagement.</strong> Not rotating; not a call center; not a team. One named advisor for the duration of your engagement.</li>
+      <li><strong>Application-only entry.</strong> The path is the path; no shortcuts.</li>
+      <li><strong>Initial consultation by appointment.</strong> 45-60 min, structured, no obligation, not a sales call.</li>
+      <li><strong>Connection Code&trade; methodology.</strong> The codified behavioral system that grounds every advisor decision and every AI-generated output.</li>
+      <li><strong>5-Phase coaching methodology.</strong> Bounded sequential phases that structure the engagement.</li>
+      <li><strong>Complete confidentiality.</strong> Held to the standard, not as an accommodation. Your engagement is known to your advisor and your advisor only.</li>
+      <li><strong>Bidirectional acceptance.</strong> We determine fit; you determine fit. We will tell you directly if a different starting point fits better.</li>
+      <li><strong>Bounded engagement length.</strong> 4, 8, or 12 weeks per tier. No open-ended retainers; no scope creep.</li>
+      <li><strong>Re-engagement available.</strong> Clients return for additional engagement cycles as a new purchase. Hard separation between engagements preserves matchmaker investment + your independence.</li>
+    </ul>
   </div>
 </section>
 <section class="vip-section" id="ch-faq">
@@ -283,7 +328,7 @@
       <div class="faq-a">A private, 45–60 minute conversation with a senior MatchMakers advisor. Your advisor will want to understand your Intent, your current situation, what you've applied from the methodology, and what you're genuinely looking for. They will explain exactly how the VIP service works and what a realistic engagement looks like. No obligation to proceed.</div>
     </div><div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">How is pricing determined?</div>
-      <div class="faq-a">Pricing is set by consultation based on the scope of the engagement — the depth of the intake, the complexity of the curated match search, the level of coaching required through each phase, and the anticipated timeline. MatchMakers VIP does not operate on a fixed monthly retainer. The fee reflects the actual work involved in your specific engagement.</div>
+      <div class="faq-a">Pricing is set by consultation based on the scope of the engagement &mdash; the depth of the intake, the complexity of the matchmaker review across your sourced introductions, the level of coaching required through each phase, and the anticipated timeline. MatchMakers VIP does not operate on a fixed monthly retainer. The fee reflects the actual work involved in your specific engagement.</div>
     </div><div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">Is the Dating Coach required before starting?</div>
       <div class="faq-a">VIP MatchMaking includes full access to both the Playbook and Dating Coach as part of your engagement. Clients who are already familiar with the 5-phase methodology get the most from every advisor session — but the VIP service is designed to bring you up to speed regardless of your starting point.</div>
@@ -299,10 +344,11 @@
     </div></div></div></section>
 <section class="vip-section" id="apply">
   <div class="vip-w">
-    <span class="vip-section-label">Begin Your Application</span>
+    <span class="vip-section-label">06 &middot; Apply</span>
     <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">Apply for VIP MatchMaking.</h2>
-    <p class="vip-p" style="margin-bottom:2rem;">Complete the form below to request a consultation. Your advisor will review your application and reach out within 2 business days to schedule your initial conversation. No obligation to proceed.</p>
+    <h2 class="vip-h2">Begin your application.</h2>
+    <p class="vip-p" style="margin-bottom:2rem;">Complete the form below to request your initial consultation. Your advisor reviews your application and reaches out within 2 business days. No obligation to proceed.</p>
+    <p class="vip-p" style="margin-bottom:2rem;font-size:.88rem;color:rgba(200,214,229,.6);"><strong style="color:var(--gold);">Prerequisite:</strong> VIP application requires Coach &amp; Playbook ($250) + Upgrade ($500) &mdash; the $750 paid prerequisite ensures methodology fluency before advisor engagement. <a href="/playbook/" style="color:var(--gold);">Begin here</a> if you haven't yet.</p>
     <div class="app-form" id="appForm">
       <div class="app-form-grid">
         <div>
@@ -373,10 +419,10 @@
 </section>
 <section class="vip-section" id="not-ready" style="background:var(--navy);margin:0;padding:5rem 0;border-bottom:none;">
   <div class="vip-w">
-    <span class="vip-section-label">Not Ready for VIP?</span>
+    <span class="vip-section-label">07 &middot; Not Ready for VIP?</span>
     <div class="vip-section-rule"></div>
-    <h2 class="vip-h2">Every tier builds toward this one.</h2>
-    <p class="vip-p">The most effective VIP engagements begin with members who have already applied the methodology. The Playbook and Dating Coach aren't prerequisites by accident — they are preparation. Clients who arrive fluent in the framework get dramatically more from every advisor session.</p>
+    <h2 class="vip-h2">The path begins before the application.</h2>
+    <p class="vip-p">Coach &amp; Playbook is the $250 paid prerequisite that ensures methodology fluency before VIP advisor engagement. Upgrade is the $500 next step. Clients who arrive fluent in the Connection Code methodology get dramatically more from every advisor session &mdash; and the $750 paid prerequisite signals the serious intent that VIP requires.</p>
     <div class="redirect-grid">
       <div class="redirect-card">
         <div class="redirect-badge">$250 · One-Time</div>
