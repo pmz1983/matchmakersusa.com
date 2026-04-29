@@ -8,4 +8,15 @@ Disallow: /.claude/
 Disallow: /CLAUDE.md
 Disallow: /docs/
 
+# Transactional / utility surfaces — meta-noindex on each page is
+# canonical; this is reinforcement for crawlers that pre-filter via
+# robots before reading meta.
+Disallow: /success/
+Disallow: /redeem/
+Disallow: /reset-password/
+
+# Alternate / staged variants — not for indexing.
+Disallow: /index.v1.2.html
+Disallow: /index.v2.html
+
 Sitemap: https://matchmakersusa.com/sitemap.xml
