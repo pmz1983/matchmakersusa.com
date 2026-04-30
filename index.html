@@ -309,6 +309,19 @@
     @media (max-width: 480px) {
       .hp-hero__eyebrow { gap: 0.4rem 0.65rem; }
     }
+    /* Round 4 — hero positioning eyebrow (Q2 ratified) */
+    .hp-hero__eyebrow--positioning {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      font-style: italic;
+      font-weight: 400;
+      color: rgba(244, 241, 234, 0.78);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0;
+      text-transform: none;
+      text-align: center;
+    }
+    .hp-hero__eyebrow--positioning .hp-hero__eyebrow-line { letter-spacing: 0; text-transform: none; font-weight: 400; }
 
     /* Hero wordmark + 28×2 emphatic gold rule */
     .hp-hero__wordmark {
@@ -1011,6 +1024,7 @@
        eyebrow → M-mark (larger) → wordmark → H1 → subhead → primary CTA → 4-cell stat band -->
   <section class="hp-hero" id="hero">
     <div class="hp-hero__content">
+      <p class="hp-hero__eyebrow hp-hero__eyebrow--positioning" aria-label="Brand positioning"><span class="hp-hero__eyebrow-line">The system behind every successful relationship decision.</span></p>
       <p class="hp-hero__eyebrow" aria-label="Institutional posture">
         <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
         <span class="hp-hero__eyebrow-sep" aria-hidden="true">&middot;</span>
@@ -1034,7 +1048,7 @@
   <!-- ═══ SECTION — How every part fits (relocated from opening per Path 2 brand-first restructure) ═══ -->
   <section class="hp-opener-bridge hp-reveal" aria-label="How every part fits">
     <div class="hp-opener-bridge__content">
-      <p class="hp-opener-bridge__body">The MatchMakers ecosystem is a five-level system &mdash; methodology refined over more than a decade of human matchmaking, applied through every level of engagement.</p>
+      <p class="hp-opener-bridge__body">The system behind every successful relationship decision &mdash; refined over more than a decade of human matchmaking, applied through five levels of engagement.</p>
 
       <hr class="hp-rule--ambient" aria-hidden="true">
 
@@ -1063,7 +1077,7 @@
       <!-- B-2 engagement contrast (locked) -->
       <p class="hp-body">The dating industry is a $9 billion market built around engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
       <hr class="hp-rule--ambient" aria-hidden="true">
-      <p class="hp-body">So we built a five-level system anchored in one methodology &mdash; refined over more than a decade of human matchmaking, now applied through Dating Studio. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
+      <p class="hp-body">So we built a five-level system anchored in one methodology &mdash; the system behind every successful relationship decision, now applied through Dating Studio. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
     </div>
   </section>
 
@@ -1114,6 +1128,7 @@
       <p class="hp-body">VIP Matchmaking is where the methodology meets a human matchmaker. Three levels &mdash; from system enrollment, to a 30-day in-app live engagement, to bespoke video advisory by consultation.</p>
       <p class="hp-body"><strong>VIP Lite</strong> is the system enrollment, $499.99 &mdash; everything in Level 2, Coach AI upgraded to 25 messages per day, plus your Personal MatchMakers System Document and Execution Playbook. <strong>VIP Premier</strong> adds a dedicated human matchmaker for a 30-day engagement, $999.99. <strong>VIP Diamond</strong> is the apex &mdash; bespoke video engagement, scoped through consultation.</p>
       <p class="hp-body">For people who want it applied directly, not just delivered as a tool.</p>
+      <p class="hp-body" style="font-style:italic;color:rgba(200,214,229,.65);">Not another tool. Not another coach. Not another app.</p>
       <a href="/vip/" class="hp-eco-cta">Explore VIP Matchmaking <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
