@@ -559,8 +559,10 @@
     /* Cohort 4-A — Hero single primary CTA (per Meridian SA-A2; replaces 4-card stage grid) */
     .hp-hero__primary-cta { margin: 0 auto var(--space-5); }
 
-    /* Cohort 4.7 — Hero 4-CTA stack (Assessment / Connection Code / Coach & Playbook / VIP)
-       per Paul §5 2026-04-28: same gold-fill design replicated across all 4. */
+    /* Pre-Cartier §1.B — Hero 3-CTA stack (Connection Code / Dating Studio / VIP)
+       per Paul §5 2026-04-30: 4 → 3 boxes; button-consistent product labels.
+       §1.A mobile-overflow fix: scoped white-space override allows button text to
+       wrap cleanly inside narrow viewports (root-cause fix per Atlas §2.C). */
     .hp-hero__cta-stack {
       display: flex;
       flex-direction: column;
@@ -569,10 +571,17 @@
       max-width: 360px;
       margin: 0 auto var(--space-6);
       align-items: stretch;
+      box-sizing: border-box;
     }
     .hp-hero__cta-stack .btn-gold-fill {
       width: 100%;
       justify-content: center;
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: anywhere;
+      max-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
     }
     @media (min-width: 768px) {
       .hp-hero__cta-stack {
@@ -586,9 +595,21 @@
         width: auto;
         min-width: 200px;
         flex: 1 1 200px;
-        max-width: 220px;
+        max-width: 280px;
       }
     }
+    /* §1.A mobile-overflow defense: ensure all hp-section content respects viewport boundaries */
+    .hp-section__content,
+    .hp-hero__content,
+    .hp-opener-bridge__content { max-width: 100%; box-sizing: border-box; min-width: 0; }
+    .hp-section__content > *,
+    .hp-hero__content > *,
+    .hp-opener-bridge__content > * { max-width: 100%; box-sizing: border-box; }
+    /* Long-string defensive wrap on copy bodies */
+    .hp-body,
+    .hp-headline,
+    .hp-subhead,
+    .hp-eyebrow { overflow-wrap: anywhere; word-break: normal; }
 
     /* Section eyebrow + 24×1 accent rule */
     .hp-eyebrow {
@@ -995,10 +1016,9 @@
       <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged. MatchMakers is engineered to deliver what brought you.</p>
       <div class="hp-opener__rule-ambient" aria-hidden="true"></div>
       <div class="hp-hero__cta-stack" aria-label="Choose your starting point">
-        <a href="/assessment/" class="btn-gold-fill">Take the Assessment &rarr;</a>
-        <a href="/guide/" class="btn-gold-fill">Start with the Connection Code&trade; &mdash; free preview &rarr;</a>
-        <a href="/playbook/" class="btn-gold-fill">See the full system &mdash; MatchMakers Studio AI &rarr;</a>
-        <a href="/vip/" class="btn-gold-fill">Apply for VIP &rarr;</a>
+        <a href="/guide/" class="btn-gold-fill">Connection Code &rarr;</a>
+        <a href="/playbook/" class="btn-gold-fill">Dating Studio &rarr;</a>
+        <a href="/vip/" class="btn-gold-fill">VIP &rarr;</a>
       </div>
     </div>
   </section>
@@ -1006,7 +1026,7 @@
   <!-- ═══ SECTION — How every part fits (relocated from opening per Path 2 brand-first restructure) ═══ -->
   <section class="hp-opener-bridge hp-reveal" aria-label="How every part fits">
     <div class="hp-opener-bridge__content">
-      <p class="hp-opener-bridge__body">The MatchMakers ecosystem is built around a proven system &mdash; Coach, Playbook, VIP &mdash; refined through real results.</p>
+      <p class="hp-opener-bridge__body">The MatchMakers ecosystem is built around a proven system &mdash; Connection Code, Dating Studio, VIP &mdash; refined through real results.</p>
 
       <hr class="hp-rule--ambient" aria-hidden="true">
 
@@ -1039,26 +1059,19 @@
     </div>
   </section>
 
-  <!-- §5 WAY 1 — Assessment (canonical journey way 1) -->
-  <section class="hp-section hp-stage hp-reveal" id="stage-assessment">
-    <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 1 &mdash; Assessment</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">Start with <em class="hp-italic-gold-accent">what you&rsquo;re actually looking for.</em></h2>
-      <p class="hp-body">A short Assessment surfaces it &mdash; the kind of relationship, the kind of presence, the kind of standard you&rsquo;re bringing to this. The results shape how it applies to you.</p>
-      <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </section>
-
-  <!-- §6 WAY 2 — Connection Code (canonical journey way 2) -->
+  <!-- §5 WAY 1 — Connection Code (Free Entry Layer; absorbs Assessment per Pre-Cartier §1.C) -->
   <section class="hp-section hp-stage hp-reveal" id="stage-connection-code">
     <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 2 &mdash; Connection Code&trade;</p>
+      <p class="hp-eyebrow">Way 1 &mdash; Connection Code&trade;</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">distilled.</em></h2>
       <p class="hp-body">A short read on the Connection Code &mdash; the foundation behind everything we make. Five signals, one framework, a different way of reading what&rsquo;s actually in front of you.</p>
-      <p class="hp-body">A free preview of the methodology. The full system lives in MatchMakers Studio AI.</p>
-      <a href="/guide/" class="hp-cta--secondary">Read the Connection Code <span aria-hidden="true">&rarr;</span></a>
+      <p class="hp-body">A free preview of the methodology. The full system lives in Dating Studio.</p>
+      <p class="hp-body">Start with a short Assessment to surface what you&rsquo;re actually looking for &mdash; the kind of relationship, the kind of presence, the kind of standard you&rsquo;re bringing to this. The results shape how the Code applies to you.</p>
+      <div class="hp-cta-row" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+        <a href="/guide/" class="hp-cta--secondary">Read the Connection Code <span aria-hidden="true">&rarr;</span></a>
+        <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
   </section>
 
@@ -1069,25 +1082,25 @@
     </div>
   </section>
 
-  <!-- §7 WAY 3 — Coach & Playbook (canonical journey way 3; PAIRED centerpiece per C-3) -->
-  <section class="hp-section hp-centerpiece hp-reveal" id="stage-coach-playbook">
+  <!-- §7 WAY 2 — Dating Studio (homepage label per Pre-Cartier §2.A; underlying canonical: MatchMakers Studio AI) -->
+  <section class="hp-section hp-centerpiece hp-reveal" id="stage-dating-studio">
     <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 3 &mdash; MatchMakers Studio AI</p>
+      <p class="hp-eyebrow">Way 2 &mdash; Dating Studio</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
-      <p class="hp-subhead">The proprietary methodology &mdash; the system the Connection Code previews.</p>
+      <p class="hp-subhead">The proprietary methodology &mdash; the system the Connection Code previews. (MatchMakers Studio AI &middot; $299.99)</p>
       <p class="hp-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered our human matchmaking practice. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
-      <a href="/playbook/" class="hp-cta--secondary">See MatchMakers Studio AI <span aria-hidden="true">&rarr;</span></a>
+      <a href="/playbook/" class="hp-cta--secondary">See Dating Studio <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
   <!-- §6↔§8 section break hairline (post-Apple-strip; APP_BADGE_BAND removed Cohort 2.5) -->
   <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- §9 WAY 4 — VIP (canonical journey way 4 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
+  <!-- §9 WAY 3 — VIP (canonical journey way 3 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
   <section class="hp-section hp-stage hp-stage--vip hp-reveal" id="stage-vip">
     <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 4 &mdash; VIP</p>
+      <p class="hp-eyebrow">Way 3 &mdash; VIP</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied directly.</em></h2>
       <!-- B-4 ratified narrative (Atlas locked; Legal §6.1 v2 envelope) -->
@@ -1116,10 +1129,10 @@
   <section class="hp-section hp-router hp-reveal">
     <div class="hp-section__content">
       <h2 class="hp-headline">Three ways in. <em class="hp-italic-gold-accent">One methodology.</em></h2>
-      <p class="hp-body">Connection Code is where it starts. MatchMakers Studio AI is where you put it to work. VIP is where a human matchmaker applies it directly. Pick the one that fits where you are.</p>
+      <p class="hp-body">Connection Code is where it starts. Dating Studio is where you put it to work. VIP is where a human matchmaker applies it directly. Pick the one that fits where you are.</p>
       <div class="hp-router-grid">
         <a href="/guide/" class="hp-router-btn">Connection Code <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/playbook/" class="hp-router-btn">MatchMakers Studio AI <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/playbook/" class="hp-router-btn">Dating Studio <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
         <a href="/vip/" class="hp-router-btn">VIP <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
