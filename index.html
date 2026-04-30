@@ -807,7 +807,7 @@
     .hp-eco-slot--vip .hp-eco-cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
     .hp-eco-slot--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
 
-    /* §9 Router — 3 gold-fill buttons (per ADJ-5) */
+    /* §9 Router — 3 gold-fill buttons (per ADJ-5); 5-cell variant per Levels System reframing 2026-04-30 */
     .hp-router-grid {
       display: flex; flex-direction: column; gap: var(--space-3);
       margin-top: var(--space-6);
@@ -815,6 +815,14 @@
     @media (min-width: 768px) {
       .hp-router-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); }
     }
+    /* 5-cell ladder for Levels System (Level 1 / Level 2 / Level 3 / Level 4 / Level 5) */
+    .hp-router-grid--five { grid-template-columns: 1fr; gap: var(--space-3); }
+    @media (min-width: 600px) { .hp-router-grid--five { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .hp-router-grid--five { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); } }
+    .hp-router-grid--five .hp-router-btn { flex-direction: column; align-items: flex-start; height: auto; padding: var(--space-4); gap: var(--space-2); }
+    .hp-router-btn__level { display: block; font-family: var(--font-utility); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-gold); margin-bottom: 0.35rem; }
+    .hp-router-btn__label { display: flex; align-items: center; gap: var(--space-2); width: 100%; }
+    .hp-router-btn__price { display: block; font-family: var(--font-utility); font-size: 0.78rem; color: rgba(200,214,229,0.55); margin-top: 0.35rem; }
     /* §11 closing router buttons — ring-only (Paul directive 2026-04-27; gold-fill DEPRECATED) */
     .hp-router-btn {
       display: flex; align-items: center; justify-content: space-between;
@@ -1026,7 +1034,7 @@
   <!-- ═══ SECTION — How every part fits (relocated from opening per Path 2 brand-first restructure) ═══ -->
   <section class="hp-opener-bridge hp-reveal" aria-label="How every part fits">
     <div class="hp-opener-bridge__content">
-      <p class="hp-opener-bridge__body">The MatchMakers ecosystem is built around a proven system &mdash; Connection Code, Dating Studio, VIP &mdash; refined through real results.</p>
+      <p class="hp-opener-bridge__body">The MatchMakers ecosystem is a five-level system &mdash; Connection Code, Dating Studio, VIP &mdash; refined through real results.</p>
 
       <hr class="hp-rule--ambient" aria-hidden="true">
 
@@ -1055,21 +1063,21 @@
       <!-- B-2 engagement contrast (locked) -->
       <p class="hp-body">The dating industry is a $9 billion market built around engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
       <hr class="hp-rule--ambient" aria-hidden="true">
-      <p class="hp-body">So we built three systems and one methodology &mdash; refined over more than a decade of human matchmaking, now applied through Dating Studio. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
+      <p class="hp-body">So we built a five-level system anchored in one methodology &mdash; refined over more than a decade of human matchmaking, now applied through Dating Studio. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
     </div>
   </section>
 
   <!-- §5 WAY 1 — Connection Code (Free Entry Layer; absorbs Assessment per Pre-Cartier §1.C) -->
   <section class="hp-section hp-stage hp-reveal" id="stage-connection-code">
     <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 1 &mdash; Connection Code&trade;</p>
+      <p class="hp-eyebrow">Level 1 &mdash; Connection Code&trade;</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">distilled.</em></h2>
-      <p class="hp-body">A short read on the Connection Code &mdash; the foundation behind everything we make. Five signals, one framework, a different way of reading what&rsquo;s actually in front of you.</p>
-      <p class="hp-body">A free preview of the methodology. The full system lives in Dating Studio.</p>
+      <p class="hp-body">Access the Connection Code &mdash; the foundation behind everything we make. Five signals, one framework, a different way of reading what&rsquo;s actually in front of you. Free, in full.</p>
+      <p class="hp-body">Level 1 includes the Connection Code itself, a guided Coach with structured workflows, and one free Script Builder session. The full system unfolds at Level 2.</p>
       <p class="hp-body">Start with a short Assessment to surface what you&rsquo;re actually looking for &mdash; the kind of relationship, the kind of presence, the kind of standard you&rsquo;re bringing to this. The results shape how the Code applies to you.</p>
       <div class="hp-cta-row" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
-        <a href="/guide/" class="hp-cta--secondary">Read the Connection Code <span aria-hidden="true">&rarr;</span></a>
+        <a href="/guide/" class="hp-cta--secondary">Access Level 1 <span aria-hidden="true">&rarr;</span></a>
         <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
@@ -1085,12 +1093,13 @@
   <!-- §7 WAY 2 — Dating Studio (homepage label per Pre-Cartier §2.A; underlying canonical: Dating Studio) -->
   <section class="hp-section hp-centerpiece hp-reveal" id="stage-dating-studio">
     <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 2 &mdash; Dating Studio</p>
+      <p class="hp-eyebrow">Level 2 &mdash; Dating Studio</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
-      <p class="hp-subhead">The proprietary methodology &mdash; the system the Connection Code previews. ($299.99)</p>
-      <p class="hp-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered our human matchmaking practice. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Together they&rsquo;re a single product, and a way to use it. The Playbook is where you learn it. Coach is where you put it to work.</p>
-      <a href="/playbook/" class="hp-cta--secondary">See Dating Studio <span aria-hidden="true">&rarr;</span></a>
+      <p class="hp-subhead">The core product. The system the Connection Code previews. ($299.99)</p>
+      <p class="hp-body">The Playbook is the methodology &mdash; the same one that&rsquo;s powered our human matchmaking practice. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Script Builder writes for your Intent. Together they&rsquo;re a single product.</p>
+      <p class="hp-body">Level 2 includes the full Playbook, Coach AI (3 messages per day, Claude-powered), and unlimited Script Builder usage. Premium upgrade available for higher daily caps.</p>
+      <a href="/playbook/" class="hp-cta--secondary">Continue to Level 2 <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
@@ -1100,13 +1109,13 @@
   <!-- §9 WAY 3 — VIP (canonical journey way 3 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
   <section class="hp-section hp-stage hp-stage--vip hp-reveal" id="stage-vip">
     <div class="hp-section__content">
-      <p class="hp-eyebrow">Way 3 &mdash; VIP</p>
+      <p class="hp-eyebrow">Levels 3&ndash;5 &mdash; VIP</p>
       <hr class="hp-rule--eyebrow" aria-hidden="true">
       <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied directly.</em></h2>
-      <!-- B-4 ratified narrative (Atlas locked; Legal §6.1 v2 envelope) -->
-      <p class="hp-body">Every VIP application is personally reviewed by a human matchmaker &mdash; never by an algorithm. Person by person.</p>
+      <p class="hp-body">VIP is where the methodology meets a human matchmaker. Three levels &mdash; from system-design enrollment, to a 30-day in-app live engagement, to bespoke video advisory by consultation.</p>
+      <p class="hp-body"><strong>Level 3</strong> is the system enrollment, $499.99 &mdash; everything in Level 2, Coach AI upgraded to 25 messages per day, plus your Personal MatchMakers System Document and Execution Playbook. <strong>Level 4</strong> adds a dedicated human matchmaker for a 30-day engagement, $999.99. <strong>Level 5</strong> is the apex &mdash; bespoke video engagement, scoped through consultation.</p>
       <p class="hp-body">For people who want it applied directly, not just delivered as a tool.</p>
-      <a href="/vip/" class="hp-eco-cta">Apply for VIP <span aria-hidden="true">&rarr;</span></a>
+      <a href="/vip/" class="hp-eco-cta">Explore VIP Levels <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
@@ -1125,15 +1134,37 @@
   <!-- §10↔§11 section break hairline -->
   <hr class="hp-rule--section-break" aria-hidden="true">
 
-  <!-- §11 CLOSING — "Three ways in. One methodology." (Atlas D-7 ratified router order) -->
+  <!-- §11 CLOSING — "Five Levels. One System." (Levels System reframing 2026-04-30; 5-cell ladder) -->
   <section class="hp-section hp-router hp-reveal">
     <div class="hp-section__content">
-      <h2 class="hp-headline">Three ways in. <em class="hp-italic-gold-accent">One methodology.</em></h2>
-      <p class="hp-body">Connection Code is where it starts. Dating Studio is where you put it to work. VIP is where a human matchmaker applies it directly. Pick the one that fits where you are.</p>
-      <div class="hp-router-grid">
-        <a href="/guide/" class="hp-router-btn">Connection Code <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/playbook/" class="hp-router-btn">Dating Studio <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
-        <a href="/vip/" class="hp-router-btn">VIP <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></a>
+      <h2 class="hp-headline">Five Levels. <em class="hp-italic-gold-accent">One System.</em></h2>
+      <p class="hp-body">Level 1 is the Connection Code &mdash; free, your starting point. Level 2 is Dating Studio &mdash; the core product. Levels 3 through 5 are VIP &mdash; methodology applied directly by a human matchmaker. Start where you are. Move up as needed.</p>
+      <div class="hp-router-grid hp-router-grid--five">
+        <a href="/guide/" class="hp-router-btn">
+          <span class="hp-router-btn__level">Level 1</span>
+          <span class="hp-router-btn__label">Connection Code <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
+          <span class="hp-router-btn__price">Free</span>
+        </a>
+        <a href="/playbook/" class="hp-router-btn">
+          <span class="hp-router-btn__level">Level 2</span>
+          <span class="hp-router-btn__label">Dating Studio <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
+          <span class="hp-router-btn__price">$299.99</span>
+        </a>
+        <a href="/vip/" class="hp-router-btn">
+          <span class="hp-router-btn__level">Level 3</span>
+          <span class="hp-router-btn__label">VIP <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
+          <span class="hp-router-btn__price">$499.99</span>
+        </a>
+        <a href="/vip/" class="hp-router-btn">
+          <span class="hp-router-btn__level">Level 4</span>
+          <span class="hp-router-btn__label">VIP <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
+          <span class="hp-router-btn__price">$999.99</span>
+        </a>
+        <a href="/vip/" class="hp-router-btn">
+          <span class="hp-router-btn__level">Level 5</span>
+          <span class="hp-router-btn__label">VIP <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
+          <span class="hp-router-btn__price">By Consultation</span>
+        </a>
       </div>
     </div>
   </section>
