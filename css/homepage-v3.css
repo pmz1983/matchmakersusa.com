@@ -1,0 +1,1156 @@
+/* ═══════════════════════════════════════════════════
+   HOMEPAGE MASTER PLAN v3.0 — Cartier Reframe Spec v1.6
+   Per Atlas v3 Implementation Commission 2026-05-02 + Web Ed v1.6 batch RATIFIED
+   Layer 1 TRADEMARK CANON (inviolate) + Layer 2 WEBSITE-CREATIVE LATITUDE
+   ═══════════════════════════════════════════════════ */
+
+/* W-v3.2 Foglihten canonical WOFF2 — Design v3 commission output (FoglihtenNo06_076.otf → WOFF2 deployed 2026-05-02) */
+@font-face {
+  font-family: 'Foglihten';
+  src: url('/fonts/FoglihtenNo06_076.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* W-v3.3 CANONICAL COLOR TOKENS per Cartier Reframe Spec v1.6 §4 + Paul §5 lockdowns 2026-05-02 */
+:root {
+  /* Layer 2 website-creative palette */
+  --color-canvas:               #FBF9F5;  /* Warm cream off-white; page-bg */
+  --color-canvas-warm:          #F8F4EC;  /* Subtle cream-warm shift on scroll */
+
+  /* Layer 1 trademark color anchors (Paul §5 LOCKED 2026-05-02) */
+  --color-ink:                  #1C1F3A;  /* Deep dark navy; typography + brand mark */
+  --color-ink-secondary:        rgba(28, 31, 58, 0.78);
+  --color-ink-tertiary:         rgba(28, 31, 58, 0.55);
+
+  /* Layer 1 trademark heritage gold (Paul §5 LOCKED 2026-05-02; #CBA372 canonical) */
+  --color-heritage-gold:        #CBA372;          /* Layer 1 trademark canonical (rules / large-text + dark-bg accents) */
+  --color-heritage-gold-bright: #DDB987;          /* brighter variant for dark-glass surfaces */
+  --color-heritage-gold-text:   #6B4F1E;          /* darker text variant for small text on cream (WCAG AA 4.5:1+) */
+
+  /* Layer 1 trademark cobalt (Paul §5 LOCKED 2026-05-02; #163354 canonical) */
+  --color-cobalt-glass:         #163354;
+  --color-cobalt-glass-bright:  #234A78;
+
+  /* Layer 1 trademark silver ring (M-button signature gesture; top-left → bottom-right per Paul §5 lockdown) */
+  --color-silver-edge:          #E8E8E8;
+  --color-silver-mid:           #A8A8A8;
+  --color-silver-ring:          linear-gradient(135deg, var(--color-silver-edge) 0%, var(--color-silver-mid) 50%, var(--color-silver-edge) 100%);
+
+  /* Hairline atmosphere */
+  --color-hairline-atmosphere:  rgba(28, 31, 58, 0.08);  /* navy at 8% */
+  --color-hairline-rule:        rgba(203, 163, 114, 0.55);  /* heritage gold 55% */
+
+  /* Dark navy glass card surface (Layer 1 carry-over from iOS Dating Coach screen; 5% inner-glow per Paul §5 lockdown) */
+  --color-dark-navy-glass-bg:   #1C1F3A;
+  --color-dark-navy-glass-text: #FBF9F5;
+  --color-dark-navy-glass-glow: rgba(255, 255, 255, 0.05);
+
+  /* Layer 1 Apple-strip discipline: red badge #E42F2F EXPLICITLY EXCLUDED */
+
+  /* W-v3.2 Typography stack — Paul §5 CONFIRMED Hoefler & Co. Gotham license 2026-05-02
+     Foglihten canonical WOFF2 deployed at /fonts/FoglihtenNo06_076.woff2
+     Gotham WOFF2 deployment pending follow-up Design v3 cycle; Inter institutional fallback active */
+  --font-display: 'Foglihten', 'Foglihten No07', 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Gotham', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Motion */
+  --easing-cinematic: cubic-bezier(.22, .61, .36, 1);
+  --easing-ease-out:  cubic-bezier(.16, 1, .3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.v3-skip-link {
+  position: absolute; left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+}
+.v3-skip-link:focus {
+  position: fixed; left: 1rem; top: 1rem;
+  width: auto; height: auto; padding: .6rem 1rem;
+  background: var(--color-ink); color: var(--color-canvas);
+  z-index: 9999;
+}
+
+/* ═══════════════════════════════════════════════════
+   v3 SHARED PRIMITIVES
+   ═══════════════════════════════════════════════════ */
+
+.v3-movement {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  position: relative;
+}
+
+.v3-movement__inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.v3-movement__inner--center { text-align: center; }
+.v3-movement--center { /* trigger inner-center via composed class */ }
+
+.v3-eyebrow {
+  font-family: var(--font-body);
+  font-size: .72rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-text);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.v3-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 0 0 1.6rem;
+}
+
+.v3-display em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+.v3-body {
+  font-size: 1.04rem;
+  line-height: 1.7;
+  color: var(--color-ink-secondary);
+  margin: 0 0 1.4rem;
+  max-width: 56ch;
+}
+
+.v3-body em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+.v3-body--lead {
+  font-size: 1.16rem;
+  color: var(--color-ink);
+  max-width: 60ch;
+}
+
+.v3-body--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.v3-rule--hairline-atmosphere {
+  border: none;
+  border-top: 1px solid var(--color-hairline-atmosphere);
+  margin: 0;
+}
+
+.v3-rule--heritage-gold {
+  border: none;
+  border-top: 1px solid var(--color-heritage-gold);
+  width: 240px;
+  margin: 0 auto;
+  opacity: 0.55;
+}
+
+.v3-rule--heritage-gold-narrow {
+  border: none;
+  border-top: 1px solid var(--color-heritage-gold);
+  width: 96px;
+  margin: 1.4rem 0 2rem;
+  opacity: 0.55;
+}
+
+.v3-rule--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 1 — THE ARRIVAL (sub-3s cinematic choreography)
+   ═══════════════════════════════════════════════════ */
+
+.v3-arrival {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.v3-arrival__brand-mark {
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: v3-fade-in 0.5s var(--easing-ease-out) 0.3s forwards;
+}
+
+.v3-arrival__wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+  line-height: 1;
+  margin: 0;
+}
+
+.v3-arrival__wordmark-tm {
+  font-size: .35em;
+  vertical-align: super;
+  margin-left: 0.06em;
+  color: var(--color-heritage-gold-text);
+}
+
+.v3-arrival__tagline {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(.72rem, 1.4vw, .88rem);
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin: 1rem 0 0;
+  opacity: 0;
+  animation: v3-fade-in 0.7s var(--easing-ease-out) 0.8s forwards;
+}
+
+.v3-arrival__hairline {
+  width: 0;
+  height: 1px;
+  background: var(--color-heritage-gold);
+  margin: 2rem auto;
+  opacity: 0.55;
+  animation: v3-rule-grow 0.5s var(--easing-ease-out) 1.5s forwards;
+  border: 0;
+}
+
+.v3-arrival__anchor {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4.6vw, 3rem);
+  line-height: 1.18;
+  color: var(--color-ink);
+  margin: 0;
+  max-width: 760px;
+}
+
+.v3-arrival__anchor-line {
+  display: block;
+  opacity: 0;
+  animation: v3-fade-in 0.6s var(--easing-ease-out) forwards;
+}
+
+.v3-arrival__anchor-line--1 { animation-delay: 2.0s; }
+.v3-arrival__anchor-line--2 { animation-delay: 2.3s; }
+.v3-arrival__anchor-line--3 { animation-delay: 2.6s; }
+
+.v3-arrival__anchor-line em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+.v3-arrival__scroll-cue {
+  position: absolute;
+  bottom: 2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: .7rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-text);
+  opacity: 0;
+  animation: v3-fade-in 0.5s var(--easing-ease-out) 3.2s forwards;
+  margin: 0;
+}
+
+@keyframes v3-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes v3-rule-grow {
+  from { width: 0; }
+  to   { width: 240px; }
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 2 — THE FRAME (institutional positioning)
+   ═══════════════════════════════════════════════════ */
+
+.v3-frame {
+  background: linear-gradient(to bottom, var(--color-canvas) 0%, var(--color-canvas-warm) 100%);
+}
+
+.v3-frame__theses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.4rem 3rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 767px) {
+  .v3-frame__theses { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.v3-thesis__eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.18rem;
+  color: var(--color-heritage-gold-text);
+  margin: 0 0 0.6rem;
+}
+
+.v3-thesis__body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-ink-secondary);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 3 — THE METHODOLOGY ARCHITECTURE
+   Cobalt glass cards (Layer 1 carry-over reframed Layer 2)
+   ═══════════════════════════════════════════════════ */
+
+.v3-architecture__cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin: 2.4rem 0 3rem;
+}
+
+@media (max-width: 1023px) {
+  .v3-architecture__cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 559px) {
+  .v3-architecture__cards { grid-template-columns: 1fr; }
+}
+
+.v3-architecture__card {
+  background: var(--color-cobalt-glass);
+  color: var(--color-canvas);
+  padding: 1.6rem 1.2rem;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.v3-architecture__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.v3-architecture__card-numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--color-heritage-gold-bright);
+  margin: 0 0 0.4rem;
+  line-height: 1;
+}
+
+.v3-architecture__card-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.04rem;
+  color: var(--color-canvas);
+  margin: 0 0 0.4rem;
+}
+
+.v3-architecture__card-body {
+  font-size: .88rem;
+  line-height: 1.55;
+  color: rgba(251, 249, 245, 0.85);
+  margin: 0;
+}
+
+.v3-architecture__intent-list {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.06rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  text-align: center;
+  max-width: 780px;
+  margin: 1.6rem auto;
+}
+
+.v3-architecture__closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.18rem;
+  color: var(--color-ink);
+  text-align: center;
+  max-width: 720px;
+  margin: 2rem auto 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 4 — THE THREE DOORS (dark navy glass cards)
+   ═══════════════════════════════════════════════════ */
+
+.v3-doors__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 3rem auto;
+  max-width: 1100px;
+}
+
+@media (max-width: 1023px) {
+  .v3-doors__grid { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+
+.v3-door {
+  background: var(--color-dark-navy-glass-bg);
+  color: var(--color-dark-navy-glass-text);
+  padding: 2.2rem 1.8rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 320ms var(--easing-cinematic);
+}
+
+.v3-door:hover,
+.v3-door:focus-visible {
+  transform: translateY(-4px);
+  outline: none;
+}
+
+.v3-door:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-heritage-gold-bright);
+}
+
+/* Heritage gold edge accent (Connection Code + VIP) */
+.v3-door--heritage-gold-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-heritage-gold);
+  opacity: 0.55;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+/* Silver ring accent (Studio PRIMARY signature carry-over from iOS M-button) */
+.v3-door--silver-ring {
+  position: relative;
+  z-index: 1;
+}
+
+.v3-door--silver-ring::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: var(--color-silver-ring);
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.v3-door__embossed-header {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-canvas);
+  margin: 0 0 0.6rem;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.v3-door__embossed-header em {
+  font-style: italic;
+  color: var(--color-heritage-gold-bright);
+}
+
+.v3-door__eyebrow {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .76rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-bright);
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.v3-door__body {
+  font-size: .96rem;
+  line-height: 1.6;
+  color: rgba(251, 249, 245, 0.82);
+  margin: 0 0 1.6rem;
+  flex: 1;
+}
+
+.v3-door__body em {
+  font-style: italic;
+  color: var(--color-heritage-gold-bright);
+}
+
+.v3-door__cta {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: .92rem;
+  letter-spacing: 0.04em;
+  color: var(--color-canvas);
+  background: var(--color-cobalt-glass);
+  border: 1px solid var(--color-cobalt-glass);
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: background 220ms var(--easing-cinematic);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.v3-door:hover .v3-door__cta,
+.v3-door:focus-visible .v3-door__cta {
+  background: var(--color-cobalt-glass-bright);
+}
+
+.v3-door__cta--italic-gold {
+  background: transparent;
+  border: 0;
+  padding: 0.5rem 0;
+  color: var(--color-heritage-gold-bright);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(168, 139, 92, 0.4);
+}
+
+.v3-door:hover .v3-door__cta--italic-gold,
+.v3-door:focus-visible .v3-door__cta--italic-gold {
+  background: transparent;
+}
+
+.v3-door__caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: .82rem;
+  color: rgba(251, 249, 245, 0.55);
+  margin-top: 0.6rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 5 — THE CONNECTION CODE (free resource lead magnet)
+   ═══════════════════════════════════════════════════ */
+
+.v3-cc__tools {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 2.4rem 0;
+}
+
+@media (max-width: 767px) {
+  .v3-cc__tools { grid-template-columns: 1fr; }
+}
+
+.v3-cc__tool {
+  border: 1px solid var(--color-hairline-atmosphere);
+  padding: 1.6rem 1.4rem;
+  background: var(--color-canvas);
+  border-radius: 4px;
+}
+
+.v3-cc__tool-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.18rem;
+  color: var(--color-ink);
+  margin: 0 0 0.6rem;
+}
+
+.v3-cc__tool-body {
+  font-size: .94rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+  margin: 0;
+}
+
+.v3-cc__cta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.v3-cta-cobalt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-canvas);
+  background: var(--color-cobalt-glass);
+  border: 1px solid var(--color-cobalt-glass);
+  padding: 1.05rem 2.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  min-height: 52px;
+  min-width: 280px;
+  justify-content: center;
+  transition: background 240ms var(--easing-cinematic);
+}
+
+.v3-cta-cobalt:hover,
+.v3-cta-cobalt:focus-visible {
+  background: var(--color-cobalt-glass-bright);
+  outline: none;
+}
+
+.v3-cta-cobalt:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+.v3-cta-subline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: .92rem;
+  color: var(--color-ink-tertiary);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 6 — THE PLAYBOOK (embossed artifact)
+   ═══════════════════════════════════════════════════ */
+
+.v3-playbook__artifact {
+  max-width: 480px;
+  margin: 3rem auto;
+  aspect-ratio: 3 / 4;
+  background: var(--color-dark-navy-glass-bg);
+  border-radius: 6px;
+  position: relative;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+    0 12px 36px rgba(28, 31, 58, 0.18);
+  overflow: hidden;
+}
+
+.v3-playbook__artifact::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--color-silver-ring);
+  opacity: 0.85;
+}
+
+.v3-playbook__artifact::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-heritage-gold);
+  opacity: 0.5;
+}
+
+.v3-playbook__artifact-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+}
+
+.v3-playbook__artifact-eyebrow {
+  font-family: var(--font-body);
+  font-size: .68rem;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-bright);
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.v3-playbook__artifact-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.4vw, 2.8rem);
+  color: var(--color-canvas);
+  margin: 0 0 0.4rem;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  line-height: 1.05;
+}
+
+.v3-playbook__artifact-name em {
+  font-style: italic;
+  color: var(--color-heritage-gold-bright);
+}
+
+.v3-playbook__artifact-cardinality {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: .92rem;
+  color: rgba(251, 249, 245, 0.65);
+  margin: 0;
+}
+
+.v3-playbook__closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.16rem;
+  color: var(--color-ink);
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 7 — THE STUDIO (PRIMARY conversion + silver ring CTA)
+   ═══════════════════════════════════════════════════ */
+
+.v3-studio__tools {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 2.4rem 0;
+}
+
+@media (max-width: 767px) {
+  .v3-studio__tools { grid-template-columns: 1fr; }
+}
+
+.v3-studio__tool {
+  background: var(--color-dark-navy-glass-bg);
+  color: var(--color-dark-navy-glass-text);
+  padding: 1.8rem 1.4rem;
+  border-radius: 6px;
+  border: 1px solid rgba(168, 139, 92, 0.22);
+}
+
+.v3-studio__tool-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--color-canvas);
+  margin: 0 0 0.5rem;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.v3-studio__tool-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-heritage-gold-bright);
+  margin: 0 0 0.4rem;
+}
+
+.v3-studio__tool-body {
+  font-size: .94rem;
+  line-height: 1.55;
+  color: rgba(251, 249, 245, 0.78);
+  margin: 0;
+}
+
+.v3-studio__conversion {
+  text-align: center;
+  margin-top: 2.6rem;
+}
+
+.v3-studio__conversion-headline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--color-ink);
+  margin: 0 0 0.6rem;
+}
+
+.v3-studio__conversion-sub {
+  font-size: 1rem;
+  color: var(--color-ink-secondary);
+  max-width: 540px;
+  margin: 0 auto 1.6rem;
+}
+
+/* Silver ring Studio CTA — signature carry-over from iOS M-button (Layer 1 trademark gesture) */
+.v3-cta-silver-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.04rem;
+  letter-spacing: 0.04em;
+  color: var(--color-canvas);
+  background: var(--color-cobalt-glass);
+  padding: 1.15rem 2.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  min-height: 56px;
+  min-width: 320px;
+  justify-content: center;
+  transition: background 240ms var(--easing-cinematic);
+  z-index: 1;
+}
+
+.v3-cta-silver-ring::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: var(--color-silver-ring);
+  border-radius: 999px;
+  z-index: -1;
+}
+
+.v3-cta-silver-ring:hover,
+.v3-cta-silver-ring:focus-visible {
+  background: var(--color-cobalt-glass-bright);
+  outline: none;
+}
+
+.v3-cta-silver-ring:focus-visible {
+  outline: 2px solid var(--color-heritage-gold);
+  outline-offset: 6px;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 8 — THE VIP LAYER (CLOSE SECOND + heritage gold edge)
+   ═══════════════════════════════════════════════════ */
+
+.v3-vip__transition-rule {
+  width: 320px;
+  height: 1px;
+  background: var(--color-heritage-gold);
+  opacity: 0.55;
+  margin: 0 auto 3rem;
+  border: 0;
+}
+
+.v3-vip__tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 2.4rem 0;
+}
+
+@media (max-width: 1023px) {
+  .v3-vip__tiers { grid-template-columns: 1fr; }
+}
+
+.v3-vip__tier {
+  background: var(--color-dark-navy-glass-bg);
+  color: var(--color-dark-navy-glass-text);
+  padding: 1.8rem 1.4rem;
+  border-radius: 6px;
+  position: relative;
+}
+
+.v3-vip__tier::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-heritage-gold);
+  opacity: 0.55;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.v3-vip__tier-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--color-canvas);
+  margin: 0 0 0.4rem;
+}
+
+.v3-vip__tier-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: .98rem;
+  color: var(--color-heritage-gold-bright);
+  margin: 0 0 0.4rem;
+}
+
+.v3-vip__tier-body {
+  font-size: .94rem;
+  line-height: 1.55;
+  color: rgba(251, 249, 245, 0.78);
+  margin: 0;
+}
+
+.v3-vip__provenance {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.16rem;
+  color: var(--color-ink);
+  text-align: center;
+  margin: 2rem auto 0.8rem;
+  max-width: 640px;
+}
+
+.v3-vip__sub {
+  font-size: 1rem;
+  color: var(--color-ink-secondary);
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 1.6rem;
+}
+
+.v3-vip__cta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.v3-cta-italic-gold {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.04rem;
+  color: var(--color-heritage-gold-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(168, 139, 92, 0.4);
+  transition: color 200ms var(--easing-cinematic);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.v3-cta-italic-gold:hover,
+.v3-cta-italic-gold:focus-visible {
+  color: var(--color-ink);
+  text-decoration-color: var(--color-heritage-gold);
+  outline: none;
+}
+
+.v3-cta-italic-gold:focus-visible {
+  outline: 2px solid var(--color-heritage-gold);
+  outline-offset: 4px;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 9 — TRUST + PROVABILITY
+   ═══════════════════════════════════════════════════ */
+
+.v3-trust__anchors {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  margin: 2.4rem 0;
+}
+
+@media (max-width: 767px) {
+  .v3-trust__anchors { grid-template-columns: 1fr; }
+}
+
+.v3-trust__anchor {
+  border: 1px solid var(--color-hairline-atmosphere);
+  padding: 1.4rem 1.4rem;
+  border-radius: 4px;
+}
+
+.v3-trust__anchor-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--color-heritage-gold-text);
+  margin: 0 0 0.4rem;
+}
+
+.v3-trust__anchor-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.16rem;
+  color: var(--color-ink);
+  margin: 0 0 0.6rem;
+}
+
+.v3-trust__anchor-body {
+  font-size: .94rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+  margin: 0;
+}
+
+.v3-trust__anchor-body em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 10 — ORIGIN
+   ═══════════════════════════════════════════════════ */
+
+.v3-origin {
+  text-align: center;
+  padding: 8rem 1.5rem;
+}
+
+.v3-origin__eyebrow { margin-bottom: 1.4rem; }
+
+.v3-origin__paragraph {
+  font-size: 1rem;
+  line-height: 1.78;
+  color: var(--color-ink-secondary);
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+.v3-origin__closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.16rem;
+  color: var(--color-ink);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════
+   MOVEMENT 11 — FOOTER (institutional close)
+   ═══════════════════════════════════════════════════ */
+
+.v3-footer {
+  border-top: 1px solid var(--color-heritage-gold);
+  border-top-color: rgba(168, 139, 92, 0.55);
+  padding: 4rem 1.5rem 2.4rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.v3-footer__rotation {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 2.4rem;
+  max-width: 640px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.04rem;
+  line-height: 1.85;
+  color: var(--color-ink);
+}
+
+.v3-footer__rotation li { padding: 0.2rem 0; }
+
+.v3-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem;
+  font-family: var(--font-body);
+  font-size: .76rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.v3-footer__nav a {
+  color: var(--color-ink);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.v3-footer__nav a:hover,
+.v3-footer__nav a:focus-visible {
+  color: var(--color-heritage-gold-text);
+  outline: none;
+}
+
+.v3-footer__nav a:focus-visible {
+  outline: 2px solid var(--color-heritage-gold);
+  outline-offset: 4px;
+}
+
+.v3-footer__institutional {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--color-ink-tertiary);
+  margin: 0 0 2rem;
+}
+
+.v3-footer__wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--color-ink);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.v3-footer__wordmark-tm {
+  font-size: .35em;
+  vertical-align: super;
+  margin-left: 0.04em;
+  color: var(--color-heritage-gold-text);
+}
+
+/* ═══════════════════════════════════════════════════
+   Reduced-motion + responsive
+   ═══════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .v3-arrival__brand-mark,
+  .v3-arrival__tagline,
+  .v3-arrival__hairline,
+  .v3-arrival__anchor-line,
+  .v3-arrival__scroll-cue {
+    animation: none;
+    opacity: 1;
+  }
+  .v3-arrival__hairline { width: 240px; }
+  .v3-door,
+  .v3-door:hover,
+  .v3-door:focus-visible {
+    transition: none;
+    transform: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 767px) {
+  .v3-movement { padding: 4rem 1.25rem; }
+}
