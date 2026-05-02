@@ -1,0 +1,97 @@
+name: Cloudflare Pages — staging preview deploy
+
+# Preview-deploy gate for the MVP 4-day sprint per github-staging-pr-flow §5.
+# Fires on push to staging-mvp-** branches AFTER ci.yml gates pass.
+# Production main remains served by GitHub Pages until Paul §5 ratifies a
+# Cloudflare Pages cutover for production (separate decision; not Day 1 scope).
+#
+# Requires repo secrets (Paul provisions Day-1-AM via Cloudflare dashboard +
+# GitHub repo Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN  - scope: Account · Cloudflare Pages · Edit
+#   CLOUDFLARE_ACCOUNT_ID - account ID from Cloudflare dashboard URL
+#
+# Project name on Cloudflare side: matchmakersusa-staging (or similar; pick
+# during dashboard setup; pass as `projectName` below).
+
+on:
+  push:
+    branches:
+      - 'staging-mvp-**'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy as preview'
+        required: true
+        default: 'staging-mvp-2026-05-02'
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy preview to Cloudflare Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: staging-preview
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify Cloudflare secrets present
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] || [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "::warning::Cloudflare secrets not yet provisioned. Skipping deploy."
+            echo "::warning::Per MVP Tooling Brief §2 P1 #6, Paul provisions these Day-1-AM."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+        id: secrets-check
+
+      - name: Stage public artifact
+        run: |
+          # Cloudflare Pages serves the deploy directory directly.
+          # Exclude server-side / governance / dev artifacts that would otherwise
+          # be served publicly (matches .gitignore + adds explicit safety belt).
+          mkdir -p _cf_deploy
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.claude/' \
+            --exclude='node_modules/' \
+            --exclude='migration/' \
+            --exclude='supabase/' \
+            --exclude='_cf_deploy/' \
+            --exclude='*.md' \
+            --exclude='package*.json' \
+            --exclude='AGENT_BIBLE_website.md' \
+            --exclude='CLAUDE.md' \
+            --exclude='SETUP-PROGRESS.md' \
+            --exclude='SESSION-STARTERS.md' \
+            --exclude='SYSTEMS-AUDIT.md' \
+            --exclude='CONVERSATION-PLAN.md' \
+            --exclude='SKILLS_LEDGER.md' \
+            ./ _cf_deploy/
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        if: steps.secrets-check.outputs.skip != 'true'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: matchmakersusa-staging
+          directory: _cf_deploy
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
+
+      - name: Phase 8 surface (deploy URL)
+        if: steps.deploy.outputs.url
+        run: |
+          echo "::notice::Cloudflare Pages preview deployed: ${{ steps.deploy.outputs.url }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
