@@ -4,7 +4,7 @@
    localStorage state · hash-routed stages · accessible
    ═══════════════════════════════════════════════════ */
 
-(function () {
+(function (global) {
   'use strict';
 
   const STORAGE_KEY = 'cc-state-v1';
@@ -469,7 +469,7 @@
     renderQuestionCard(opts);
   }
 
-  // ── Stage 5 (Brief preview) ──
+  // ── Stage 5 (Brief generation + render) ──
 
   function renderStage5() {
     const intent = state.intent.dominant || '—';
@@ -482,7 +482,7 @@
     };
 
     setText('[data-brief-intent]', intent);
-    setText('[data-brief-phase]', phase + ' Phase');
+    setText('[data-brief-phase]', phase ? phase + ' Phase' : '—');
 
     const signalLabel = SIGNALS.map((sig) => {
       const resp = Object.values(signals).find((r) => r.signal === sig);
@@ -490,6 +490,415 @@
       return sig + ': ' + resp.value;
     }).filter(Boolean).join(' · ') || '—';
     setText('[data-brief-signals]', signalLabel);
+
+    // If a Brief was already generated this session, re-render it.
+    if (state.brief && state.brief.pages) {
+      renderBriefPages(state.brief);
+    }
+  }
+
+  function generateBriefAction() {
+    const host = document.querySelector('[data-brief-host]');
+    if (!host) return;
+
+    host.replaceChildren();
+    const loading = document.createElement('div');
+    loading.className = 'cc-brief-loading';
+    loading.setAttribute('role', 'status');
+    loading.setAttribute('aria-live', 'polite');
+    loading.textContent = 'A moment, please. The Coach is preparing the Brief.';
+    host.appendChild(loading);
+
+    if (!global.MMConnectionCodeAPI) {
+      renderBriefFallback(host, 'OFFLINE');
+      return;
+    }
+
+    global.MMConnectionCodeAPI.generateBrief(state)
+      .then((data) => {
+        const brief = data && data.brief ? data.brief : data;
+        state.brief = normalizeBrief(brief, state);
+        saveState(state);
+        renderBriefPages(state.brief);
+      })
+      .catch((err) => {
+        // Backend RPC not yet live: render the local-only Brief preview as a
+        // graceful fallback so Day 3 review surfaces the layout for Paul +
+        // Atlas G1. Backend swap happens at handoff per Extended Autonomy v1.
+        const localBrief = buildLocalFallbackBrief(state);
+        state.brief = localBrief;
+        saveState(state);
+        renderBriefPages(localBrief, { degraded: true, code: err && err.code });
+      });
+  }
+
+  function normalizeBrief(brief, currentState) {
+    if (!brief || typeof brief !== 'object') return buildLocalFallbackBrief(currentState);
+    return {
+      intent_dominant: brief.intent_dominant || currentState.intent.dominant || '—',
+      phase_dominant: brief.phase_dominant || currentState.phase.dominant || '—',
+      signal_state: brief.signal_state || signalStateFromResponses(currentState.signal.responses),
+      pages: brief.pages || buildLocalFallbackBrief(currentState).pages,
+      chapter_citations: brief.chapter_citations || [],
+      generated_at: brief.generated_at || new Date().toISOString(),
+      source: 'backend'
+    };
+  }
+
+  function signalStateFromResponses(responses) {
+    const out = {};
+    Object.values(responses || {}).forEach((r) => {
+      if (r && r.signal) out[r.signal] = r.value;
+    });
+    return out;
+  }
+
+  function buildLocalFallbackBrief(currentState) {
+    const intent = currentState.intent.dominant || '—';
+    const phase = currentState.phase.dominant || '—';
+    const sig = signalStateFromResponses(currentState.signal.responses);
+    const sigLine = SIGNALS.map((s) => sig[s] ? s + ': ' + sig[s] : null).filter(Boolean).join(' · ') || '—';
+
+    return {
+      intent_dominant: intent,
+      phase_dominant: phase,
+      signal_state: sig,
+      generated_at: new Date().toISOString(),
+      source: 'local-fallback',
+      pages: [
+        {
+          title: 'Letter of Calibration',
+          body: [
+            'The Connection Code is the methodology behind every successful relationship decision. The Engine has read your responses and surfaces three things on this page: your dominant Intent, your current Phase, and your initial Signal state.',
+            'These are not verdicts. They are the read the methodology arrives with. The Coach holds them as the starting record.'
+          ],
+          highlights: [
+            { label: 'Dominant Intent', value: intent },
+            { label: 'Current Phase', value: phase + ' Phase' },
+            { label: 'Initial Signal Read', value: sigLine }
+          ]
+        },
+        {
+          title: 'Page Two · Intent in Practice',
+          body: [
+            briefIntentNarrative(intent),
+            'The Intent reading shapes which chapters of the Connection Code apply most directly. The Coach references the Intent at every turn, not as a fixed identity, but as the calibration the methodology is currently working with.'
+          ]
+        },
+        {
+          title: 'Page Three · Phase and Signal',
+          body: [
+            briefPhaseNarrative(phase),
+            briefSignalNarrative(sig)
+          ]
+        },
+        {
+          title: 'Page Four · The Next Move',
+          body: [
+            'The next move that earns it begins where you arrive. The Coach is held to the Brief; the Brief is held to the read; the read is yours to recalibrate as practice deepens.',
+            'Coach Lite is the methodology in conversation. Coach AI begins at L2 Studio, where the Connection Code corpus is cited verbatim with each turn.'
+          ]
+        }
+      ]
+    };
+  }
+
+  function briefIntentNarrative(intent) {
+    const map = {
+      'Long-Term': 'Long-Term names the work as enduring, the cadence as deliberate, and the read as patient. The methodology calibrates against the long horizon first; the moment second.',
+      'Marriage': 'Marriage names the explicit outcome. The methodology calibrates against commitment as the form, not the feeling. The Phase the methodology surfaces is the work that earns it.',
+      'Fall in Love': 'Fall in Love names the read as one that must register as real. The methodology does not perform feeling; it surfaces whether the cadence allows the real thing to arrive.',
+      'Casual': 'Casual names the read as light, present, and unburdened by the long horizon. The methodology calibrates honesty across the cadence, regardless of duration.',
+      'Friendship': 'Friendship names the work as the shape of company. The methodology reads connection without the requirement of romantic outcome.',
+      'Companionship': 'Companionship names the read as steady, present, and shared. The methodology calibrates the cadence of company, with or without the romantic frame.',
+      'Not Sure': 'Not Sure names the calibration as in-progress. The methodology reads the uncertainty as data, not deficit. The Brief is the starting record; the read deepens in practice.',
+      'Short-Term': 'Short-Term names the read as honest within a shorter arc. The methodology calibrates symmetry of expectation across the cadence.',
+      'Open to All': 'Open to All names the read as one that surfaces shape from cadence rather than declaring shape ahead of it. The methodology calibrates against what cadence reveals.'
+    };
+    return map[intent] || 'Intent precedes everything. The methodology calibrates against the Intent first; the Phase second; the Signal in motion.';
+  }
+
+  function briefPhaseNarrative(phase) {
+    const map = {
+      'Profile': 'The Profile phase is interior. The work is the read of yourself before someone is in view. The methodology calibrates standing first, presence second, and Intent over both.',
+      'Connection': 'The Connection phase is where someone has surfaced and the read deepens. The Open Signal is what governs whether the cadence advances.',
+      'Courtship': 'The Courtship phase is where the cadence becomes the read. The Build Signal across two cycles is what tells the truth before language arrives.',
+      'Commitment': 'The Commitment phase is where naming converts the read into a record. The Progress Signal across one full cycle is the methodology\'s readiness check.',
+      'Ongoing': 'The Ongoing phase is the holding of shape. Quarterly recalibration is the cadence the methodology reads against; the Brief is the starting record.'
+    };
+    return map[phase] || 'The Phase reading shapes the next move. The Coach holds the Phase as the frame for every subsequent calibration.';
+  }
+
+  function briefSignalNarrative(sig) {
+    const parts = [];
+    if (sig['Open']) parts.push('On Open: ' + sig['Open'] + '. The methodology reads Open as the door the cadence is allowed to walk through.');
+    if (sig['Build']) parts.push('On Build: ' + sig['Build'] + '. The methodology reads Build as whether the cadence cycle holds without you supplying its momentum.');
+    if (sig['Progress']) parts.push('On Progress: ' + sig['Progress'] + '. The methodology reads Progress as the cadence cycle confirming, not the verbal commitment alone.');
+    return parts.join(' ') || 'The Signal state surfaces what the methodology reads in motion.';
+  }
+
+  function renderBriefPages(brief, opts) {
+    opts = opts || {};
+    const host = document.querySelector('[data-brief-host]');
+    if (!host || !brief || !brief.pages) return;
+
+    host.replaceChildren();
+
+    const wrap = document.createElement('div');
+    wrap.className = 'cc-brief--full';
+    wrap.setAttribute('role', 'group');
+    wrap.setAttribute('aria-label', 'Connection Code Brief');
+
+    if (opts.degraded) {
+      const cue = document.createElement('div');
+      cue.className = 'cc-brief-fallback';
+      cue.textContent = 'The Coach is preparing the gateway. The Brief surfaces here as the local read. The full letterhead generation arrives when the Backend lane completes its handoff.';
+      wrap.appendChild(cue);
+    }
+
+    brief.pages.forEach((page, i) => {
+      const article = document.createElement('article');
+      article.className = 'cc-brief-page';
+
+      const head = document.createElement('header');
+      head.className = 'cc-brief-page__head';
+      head.innerHTML =
+        '<p class="cc-brief-page__pagenum">Page ' + ['One', 'Two', 'Three', 'Four'][i] + '</p>' +
+        '<p class="cc-brief-page__letterhead">Connection Code<span style="color:var(--cc-gold);font-size:.5em;vertical-align:super;">&trade;</span> Brief</p>';
+      article.appendChild(head);
+
+      const title = document.createElement('h3');
+      title.className = 'cc-brief-page__value';
+      title.textContent = page.title;
+      article.appendChild(title);
+
+      if (page.highlights) {
+        page.highlights.forEach((h) => {
+          const sec = document.createElement('div');
+          sec.className = 'cc-brief-page__section';
+          const lab = document.createElement('p');
+          lab.className = 'cc-brief-page__label';
+          lab.textContent = h.label;
+          const val = document.createElement('p');
+          val.className = 'cc-brief-page__value';
+          val.textContent = h.value;
+          sec.appendChild(lab);
+          sec.appendChild(val);
+          article.appendChild(sec);
+        });
+      }
+
+      (page.body || []).forEach((para) => {
+        const p = document.createElement('p');
+        p.className = 'cc-brief-page__paragraph';
+        p.textContent = para;
+        article.appendChild(p);
+      });
+
+      (page.citations || []).forEach((cite) => {
+        const c = document.createElement('p');
+        c.className = 'cc-brief-page__cite';
+        c.textContent = cite;
+        article.appendChild(c);
+      });
+
+      wrap.appendChild(article);
+    });
+
+    host.appendChild(wrap);
+  }
+
+  function renderBriefFallback(host, code) {
+    host.replaceChildren();
+    const cue = document.createElement('div');
+    cue.className = 'cc-brief-fallback';
+    cue.textContent = 'The Coach is briefly unavailable. The Brief generates when service returns. (' + (code || 'OFFLINE') + ')';
+    host.appendChild(cue);
+  }
+
+  // ── Stage 6 (Sign-up) ──
+
+  function renderStage6() {
+    // Pre-fill if state already has email captured.
+    const emailEl = document.querySelector('[name="email"]');
+    if (emailEl && state.signup && state.signup.email) emailEl.value = state.signup.email;
+    const nameEl = document.querySelector('[name="given_name"]');
+    if (nameEl && state.signup && state.signup.given_name) nameEl.value = state.signup.given_name;
+  }
+
+  function bindSignupForm() {
+    const form = document.querySelector('[data-signup-form]');
+    if (!form) return;
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const email = (form.querySelector('[name="email"]') || {}).value || '';
+      const given_name = (form.querySelector('[name="given_name"]') || {}).value || '';
+      const terms = (form.querySelector('[name="terms"]') || {}).checked;
+      const status = form.querySelector('[data-signup-status]');
+
+      if (!email || !/^.+@.+\..+$/.test(email)) {
+        if (status) { status.textContent = 'A valid email is required.'; status.setAttribute('data-state', 'error'); }
+        return;
+      }
+      if (!terms) {
+        if (status) { status.textContent = 'Acknowledgment of the Privacy Policy is required.'; status.setAttribute('data-state', 'error'); }
+        return;
+      }
+
+      state.signup = { email: email.trim(), given_name: given_name.trim() };
+      saveState(state);
+
+      if (status) { status.textContent = 'A moment, please. The Coach is creating the standing record.'; status.setAttribute('data-state', ''); }
+
+      const submitBtn = form.querySelector('[data-signup-submit]');
+      if (submitBtn) submitBtn.setAttribute('disabled', '');
+
+      const onResolve = () => {
+        if (status) { status.textContent = 'Welcome. The Coach holds the Brief on your behalf. The Welcome Letter arrives within twenty-four hours.'; status.setAttribute('data-state', 'success'); }
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+        setTimeout(() => setStage(7), 800);
+      };
+
+      const onReject = (err) => {
+        // Day 3 graceful degradation: persist locally; advance to Coach Lite;
+        // Backend handoff replays sign-up server-side at next session.
+        state.signup_pending_backend_sync = true;
+        saveState(state);
+        if (status) {
+          status.textContent = 'The Coach has held your record locally. The standing record completes when service returns.';
+          status.setAttribute('data-state', 'success');
+        }
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+        setTimeout(() => setStage(7), 1000);
+      };
+
+      if (!global.MMConnectionCodeAPI) {
+        onReject({ code: 'OFFLINE' });
+        return;
+      }
+
+      global.MMConnectionCodeAPI.signupL1({
+        email: state.signup.email,
+        given_name: state.signup.given_name,
+        state: stripStateForPayload(state)
+      })
+        .then((res) => {
+          state.signup.user_id = res && res.user_id;
+          state.signup.memory_store_id = res && res.memory_store_id;
+          state.signup.created_at = res && res.created_at;
+          saveState(state);
+          // Fire-and-forget: schedule Welcome Letter (24hr post-signup).
+          if (state.signup.user_id) {
+            global.MMConnectionCodeAPI.scheduleWelcomeLetter(state.signup.user_id).catch(() => {});
+          }
+          onResolve();
+        })
+        .catch(onReject);
+    });
+  }
+
+  function stripStateForPayload(s) {
+    return {
+      stage: s.stage,
+      intent: { dominant: s.intent.dominant, scores: s.intent.scores },
+      phase: { dominant: s.phase.dominant },
+      signal: { state: signalStateFromResponses(s.signal.responses) },
+      brief_summary: s.brief ? { intent_dominant: s.brief.intent_dominant, phase_dominant: s.brief.phase_dominant, signal_state: s.brief.signal_state, source: s.brief.source } : null,
+      startedAt: s.startedAt,
+      completedAt: s.completedAt
+    };
+  }
+
+  // ── Stage 7 (Coach Lite) ──
+
+  function renderStage7() {
+    const host = document.querySelector('[data-coach-lite-host]');
+    if (!host) return;
+    if (!global.MMCoachLite) {
+      host.replaceChildren();
+      const fallback = document.createElement('p');
+      fallback.className = 'cc-coach-prompt';
+      fallback.textContent = 'A moment, please.';
+      host.appendChild(fallback);
+      return;
+    }
+    if (!state.coachLite) state.coachLite = { currentNode: global.MMCoachLite.getRootId(), trail: [] };
+    renderCoachLiteNode();
+  }
+
+  function renderCoachLiteNode() {
+    const host = document.querySelector('[data-coach-lite-host]');
+    if (!host || !state.coachLite) return;
+    const node = global.MMCoachLite.getNode(state.coachLite.currentNode);
+
+    host.replaceChildren();
+
+    const prompt = document.createElement('p');
+    prompt.className = 'cc-coach-prompt';
+    prompt.textContent = node.prompt;
+    prompt.setAttribute('tabindex', '-1');
+    host.appendChild(prompt);
+    prompt.focus();
+
+    if (node.terminal) {
+      if (node.closing) {
+        const closing = document.createElement('p');
+        closing.className = 'cc-coach-closing';
+        closing.textContent = node.closing;
+        host.appendChild(closing);
+      }
+
+      const restart = document.createElement('div');
+      restart.className = 'cc-actions';
+      const back = document.createElement('button');
+      back.type = 'button';
+      back.className = 'cc-btn cc-btn--ghost';
+      back.textContent = 'Return to the Coach';
+      back.addEventListener('click', () => {
+        state.coachLite.currentNode = global.MMCoachLite.getRootId();
+        state.coachLite.trail = [];
+        saveState(state);
+        renderCoachLiteNode();
+      });
+      restart.appendChild(back);
+      host.appendChild(restart);
+    } else {
+      const choices = document.createElement('div');
+      choices.className = 'cc-choices';
+      choices.setAttribute('role', 'group');
+      (node.options || []).forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cc-choice';
+        btn.innerHTML = '<span class="cc-choice__bullet" aria-hidden="true"></span>' + escapeHtml(opt.label);
+        btn.addEventListener('click', () => {
+          state.coachLite.trail.push({ from: state.coachLite.currentNode, choice: opt.label });
+          state.coachLite.currentNode = opt.next;
+          saveState(state);
+          renderCoachLiteNode();
+        });
+        choices.appendChild(btn);
+      });
+      host.appendChild(choices);
+    }
+
+    if (state.coachLite.trail && state.coachLite.trail.length > 0) {
+      const trail = document.createElement('div');
+      trail.className = 'cc-coach-trail';
+      const head = document.createElement('p');
+      head.className = 'cc-coach-trail__head';
+      head.textContent = 'The path the Coach has taken with you';
+      trail.appendChild(head);
+      const list = document.createElement('ul');
+      list.className = 'cc-coach-trail__list';
+      state.coachLite.trail.forEach((step, i) => {
+        const li = document.createElement('li');
+        li.textContent = (i + 1) + '. ' + step.choice;
+        list.appendChild(li);
+      });
+      trail.appendChild(list);
+      host.appendChild(trail);
+    }
   }
 
   // ── Init ──
@@ -498,15 +907,29 @@
     const beginBtn = document.querySelector('[data-action="begin"]');
     if (beginBtn) beginBtn.addEventListener('click', () => setStage(2));
 
-    const reviewBtn = document.querySelector('[data-action="brief-review"]');
-    if (reviewBtn) reviewBtn.addEventListener('click', () => setStage(6));
+    const generateBriefBtn = document.querySelector('[data-action="generate-brief"]');
+    if (generateBriefBtn) generateBriefBtn.addEventListener('click', () => {
+      generateBriefAction();
+      // Move to sign-up after a short delay so user sees the Brief render.
+      // Otherwise scroll keeps the user on Stage 5 to read the Brief.
+      generateBriefBtn.textContent = 'Continue to sign-up →';
+      generateBriefBtn.setAttribute('data-action', 'brief-review');
+      generateBriefBtn.addEventListener('click', () => setStage(6), { once: true });
+    });
 
-    const signupContinue = document.querySelector('[data-action="signup-continue"]');
-    if (signupContinue) signupContinue.addEventListener('click', () => setStage(7));
-
-    const restartBtns = document.querySelectorAll('[data-action="restart"]');
+    const restartBtns = document.querySelectorAll('[data-action="restart"], [data-action="coach-lite-restart"]');
     restartBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
+        const isCoachRestart = btn.getAttribute('data-action') === 'coach-lite-restart';
+        if (isCoachRestart) {
+          if (state.coachLite) {
+            state.coachLite.currentNode = (global.MMCoachLite && global.MMCoachLite.getRootId()) || 'root';
+            state.coachLite.trail = [];
+            saveState(state);
+            renderCoachLiteNode();
+          }
+          return;
+        }
         if (!confirm('Begin again? Your current calibration will be cleared.')) return;
         state = defaultState();
         saveState(state);
@@ -521,6 +944,8 @@
         setStage(target);
       });
     });
+
+    bindSignupForm();
   }
 
   function renderStage(stage) {
@@ -528,6 +953,8 @@
     else if (stage === 3) renderStage3();
     else if (stage === 4) renderStage4();
     else if (stage === 5) renderStage5();
+    else if (stage === 6) renderStage6();
+    else if (stage === 7) renderStage7();
   }
 
   function readHashStage() {
@@ -551,4 +978,4 @@
   } else {
     init();
   }
-})();
+})(typeof window !== 'undefined' ? window : this);

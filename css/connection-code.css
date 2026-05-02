@@ -441,6 +441,289 @@ body {
   border-top: 1px solid var(--cc-rule-ambient);
 }
 
+/* ── 4-page Cartier-letterhead Brief ── */
+
+.cc-brief--full {
+  margin: 2rem 0;
+}
+
+.cc-brief-page {
+  background: var(--cc-bg-card);
+  border: 1px solid var(--cc-rule-accent);
+  padding: 2.8rem 2.4rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+
+.cc-brief-page__head {
+  text-align: center;
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid var(--cc-rule-emphatic);
+}
+
+.cc-brief-page__pagenum {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .64rem;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--cc-text-tertiary);
+  margin-bottom: 0.6rem;
+}
+
+.cc-brief-page__letterhead {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--cc-text-primary);
+}
+
+.cc-brief-page__letterhead em {
+  font-style: italic;
+  color: var(--cc-gold);
+}
+
+.cc-brief-page__section {
+  margin-bottom: 1.6rem;
+}
+
+.cc-brief-page__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cc-gold);
+  margin-bottom: 0.4rem;
+}
+
+.cc-brief-page__value {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--cc-text-primary);
+  line-height: 1.5;
+}
+
+.cc-brief-page__paragraph {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 1.06rem;
+  line-height: 1.72;
+  color: var(--cc-text-primary);
+  margin-bottom: 1.2rem;
+}
+
+.cc-brief-page__cite {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .76rem;
+  letter-spacing: 0.10em;
+  color: var(--cc-text-tertiary);
+  border-left: 1px solid var(--cc-rule-emphatic);
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+.cc-brief-loading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--cc-text-tertiary);
+  text-align: center;
+  padding: 2.6rem 1.6rem;
+  border: 1px solid var(--cc-rule-ambient);
+  margin: 2rem 0;
+}
+
+.cc-brief-fallback {
+  background: var(--cc-bg-card);
+  border: 1px solid var(--cc-rule-accent);
+  padding: 2rem 1.6rem;
+  margin: 2rem 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ── Sign-up form ── */
+
+.cc-signup .cc-card__question {
+  margin-bottom: 1.6rem;
+}
+
+.cc-field {
+  margin-bottom: 1.4rem;
+}
+
+.cc-field__label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .76rem;
+  letter-spacing: 0.10em;
+  color: var(--cc-text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.cc-field__input {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--cc-rule-accent);
+  color: var(--cc-text-primary);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0.9rem 1rem;
+  min-height: 48px;
+  transition: border-color 200ms var(--cc-easing), background 200ms var(--cc-easing);
+}
+
+.cc-field__input:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+  background: var(--cc-gold-faint);
+}
+
+.cc-field__input:focus-visible {
+  outline: 2px solid var(--cc-gold-bright);
+  outline-offset: 2px;
+}
+
+.cc-field__hint {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: .88rem;
+  color: var(--cc-text-tertiary);
+  margin-top: 0.4rem;
+}
+
+.cc-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: .94rem;
+  line-height: 1.5;
+  color: var(--cc-text-secondary);
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0.4rem 0;
+}
+
+.cc-checkbox input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--cc-gold);
+  cursor: pointer;
+}
+
+.cc-link {
+  color: var(--cc-gold-bright);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.cc-link:hover,
+.cc-link:focus-visible {
+  color: var(--cc-text-primary);
+  outline: none;
+}
+
+.cc-link:focus-visible {
+  outline: 2px solid var(--cc-gold-bright);
+  outline-offset: 2px;
+}
+
+.cc-form-status {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: .96rem;
+  margin-top: 1.2rem;
+  min-height: 1.4rem;
+  color: var(--cc-text-secondary);
+}
+
+.cc-form-status[data-state="error"] {
+  color: var(--cc-text-primary);
+  border-left: 2px solid var(--cc-gold);
+  padding-left: 0.8rem;
+}
+
+.cc-form-status[data-state="success"] {
+  color: var(--cc-gold-bright);
+}
+
+/* ── Coach Lite host ── */
+
+.cc-coach-host {
+  margin: 1.6rem 0 0;
+}
+
+.cc-coach-prompt {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.18rem, 2.4vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--cc-text-primary);
+  margin-bottom: 1.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--cc-rule-ambient);
+}
+
+.cc-coach-closing {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.04rem;
+  color: var(--cc-text-secondary);
+  border-left: 2px solid var(--cc-gold);
+  padding: 0.6rem 0 0.6rem 1rem;
+  margin: 1.4rem 0;
+}
+
+.cc-coach-cue {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: .88rem;
+  color: var(--cc-text-tertiary);
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--cc-rule-ambient);
+}
+
+.cc-coach-trail {
+  margin-top: 1.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cc-rule-ambient);
+}
+
+.cc-coach-trail__head {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .64rem;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--cc-text-tertiary);
+  margin-bottom: 0.6rem;
+}
+
+.cc-coach-trail__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: .92rem;
+  color: var(--cc-text-tertiary);
+  line-height: 1.7;
+}
+
+.cc-coach-trail__list li {
+  padding: 0.2rem 0;
+}
+
 /* ── Footer ── */
 
 .cc-footer {
