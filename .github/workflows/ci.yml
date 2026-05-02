@@ -1,0 +1,232 @@
+name: CI
+
+# Build-vs-live gate for matchmakersusa.com per github-staging-pr-flow skill
+# (Atlas v3 / 2026-05-02 D# 232 binding for 4-day MVP sprint and beyond).
+#
+# Hard gates (blocking on staging→main merge): Web Vitals Lighthouse ≥90,
+# WCAG 2.1 AA, secret scan. Day 1 scaffold lands these as baselines (logging
+# only); Day 3-4 cycles convert them to fail-closed.
+#
+# Web Ed Cartier voice gates (8-check / 15-criterion §9 / 28-trope catalog)
+# wire in when Web Ed ratifies the lint skills (per dispatch §3).
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - 'staging-mvp-**'
+      - main
+  pull_request:
+    branches:
+      - 'staging-mvp-**'
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  secret-scan:
+    name: Secret scan (preflight regex)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run secret-pattern scan
+        run: |
+          set -euo pipefail
+          # Mirrors .claude/skills/preflight/SKILL.md §1 — same patterns,
+          # length-bounded to avoid false positives on regex literals in docs.
+          # SECRET_SCAN_TESTS.md is excluded; it holds synthetic fixtures.
+          PATTERNS='(eyJ[A-Za-z0-9._-]{40,}|sk_(live|test)_[A-Za-z0-9]{20,}|sbp_[A-Za-z0-9_]{30,}|sb_secret_[A-Za-z0-9_]{24,}|whsec_[A-Za-z0-9]{20,}|AKIA[A-Z0-9]{16})'
+          # Determine diff range. On PR: against base. On push: against main.
+          if [ -n "${GITHUB_BASE_REF:-}" ]; then
+            BASE="origin/${GITHUB_BASE_REF}"
+          else
+            BASE="origin/main"
+          fi
+          git fetch origin "${BASE#origin/}" --depth=50 || true
+          # Scan changed files only.
+          if git diff "$BASE"...HEAD -- . ':(exclude).claude/memory/SECRET_SCAN_TESTS.md' \
+              | grep -iE "$PATTERNS"; then
+            echo "::error::Secret-pattern match in diff. STOP."
+            echo "::error::Investigate via .claude/skills/preflight/SKILL.md before merging."
+            exit 1
+          fi
+          echo "Secret scan: OK (no patterns matched)."
+
+  destructive-change-check:
+    name: Load-bearing-file deletion guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify load-bearing files preserved
+        run: |
+          set -e
+          # Per .claude/skills/preflight/SKILL.md §4 — these files must never
+          # be deleted via PR. CNAME = custom domain; .nojekyll = Pages bypass;
+          # robots.txt + sitemap.xml = SEO; index.html + 404.html = entry pages.
+          FILES=(CNAME .nojekyll robots.txt sitemap.xml index.html 404.html)
+          MISSING=()
+          for f in "${FILES[@]}"; do
+            if [ ! -f "$f" ]; then MISSING+=("$f"); fi
+          done
+          if [ ${#MISSING[@]} -gt 0 ]; then
+            echo "::error::Load-bearing files missing: ${MISSING[*]}"
+            exit 1
+          fi
+          echo "Load-bearing files: present."
+
+  html-validate:
+    name: HTML validation (html-validate)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install html-validate
+        run: npm install -g html-validate@8
+      - name: Validate top-level page HTML
+        continue-on-error: true
+        run: |
+          # Validate primary entry pages; expand list as new pages land.
+          PAGES=(index.html 404.html coach/index.html playbook/index.html \
+                 guide/index.html vip/index.html assessment/index.html \
+                 child-safety/index.html privacy-policy/index.html \
+                 terms-of-service/index.html success/index.html redeem/index.html)
+          EXIT=0
+          for p in "${PAGES[@]}"; do
+            if [ -f "$p" ]; then
+              echo "::group::html-validate $p"
+              html-validate "$p" || EXIT=1
+              echo "::endgroup::"
+            fi
+          done
+          # Day 1 scaffold: report findings; Day 3-4 convert to fail-closed.
+          exit 0
+
+  lighthouse:
+    name: Web Vitals HARD GATE (Lighthouse — perf/a11y/best/seo ≥90)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install lhci + http-server
+        run: npm install -g @lhci/cli@0.14 http-server@14
+      - name: Run Lighthouse against local static files
+        continue-on-error: true
+        run: |
+          set -e
+          http-server -p 8080 -s . &
+          SERVER_PID=$!
+          sleep 3
+          # Run against key surfaces. MVP Day 2-3 adds /connection-code and /studio.
+          URLS=(
+            "http://localhost:8080/"
+            "http://localhost:8080/coach/"
+            "http://localhost:8080/playbook/"
+            "http://localhost:8080/guide/"
+            "http://localhost:8080/vip/"
+          )
+          mkdir -p .lighthouseci
+          for u in "${URLS[@]}"; do
+            echo "::group::lhci $u"
+            lhci collect --url="$u" --numberOfRuns=1 || true
+            echo "::endgroup::"
+          done
+          # Assert mobile-first thresholds; exit non-zero if any < 0.9.
+          lhci assert \
+            --preset=lighthouse:no-pwa \
+            --assertions.categories.performance.minScore=0.9 \
+            --assertions.categories.accessibility.minScore=0.9 \
+            --assertions.categories.best-practices.minScore=0.9 \
+            --assertions.categories.seo.minScore=0.9 || \
+            echo "::warning::Lighthouse below threshold (Day 1 scaffold; Day 4 converts to blocking)"
+          kill $SERVER_PID || true
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 14
+
+  accessibility:
+    name: WCAG 2.1 AA HARD GATE (pa11y-ci)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install pa11y-ci + http-server
+        run: npm install -g pa11y-ci@3 http-server@14
+      - name: Run pa11y-ci against local static files
+        continue-on-error: true
+        run: |
+          set -e
+          http-server -p 8080 -s . &
+          SERVER_PID=$!
+          sleep 3
+          pa11y-ci \
+            --standard WCAG2AA \
+            "http://localhost:8080/" \
+            "http://localhost:8080/coach/" \
+            "http://localhost:8080/playbook/" \
+            "http://localhost:8080/guide/" \
+            "http://localhost:8080/vip/" \
+            "http://localhost:8080/assessment/" \
+            || echo "::warning::pa11y-ci flagged a11y violations (Day 1 scaffold; Day 4 converts to blocking)"
+          kill $SERVER_PID || true
+
+  link-check:
+    name: Link check (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --max-concurrency 8
+            --exclude-path migration
+            --exclude-path node_modules
+            --accept 200,204,206,301,302,403,429
+            './**/*.html'
+          fail: false
+
+  voice-lint-placeholder:
+    name: Cartier voice gates (8-check / §9 binary / 28-trope) — PLACEHOLDER
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Status report
+        run: |
+          cat <<'EOF'
+          ===============================================================
+           Cartier voice CI gates — PENDING WEB ED SKILL RATIFY
+          ===============================================================
+           Per Atlas → website-agent MVP 4-Day Sprint Dispatch §3:
+             - 8-check Cartier voice linter
+               (Web Ed RATIFIED 'cartier-voice-scan' skill)
+             - 15-criterion §9 binary AI-output gate
+             - 28-trope catalog scan
+
+           These skills land Day 1-2 per dispatch §3 ("Web Ed | 8-check
+           + 15-criterion §9 + 28-trope CI lints (skills land Day 1-2)").
+
+           Wire steps:
+             1. Web Ed publishes skill at known path
+             2. Day 2 PR adds skill consumer to this job
+             3. Day 4 converts to fail-closed gate
+           ===============================================================
+          EOF
+          echo "Voice gates: SCAFFOLDED (placeholder pass; not yet enforcing)"

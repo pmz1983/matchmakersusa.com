@@ -13,12 +13,12 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>MatchMakers</title>
-  <meta name="description" content="A dedicated MatchMaker. Curated introductions from a vetted member network. The complete MatchMakers methodology applied personally. Invite-only. By consultation.">
+  <title>VIP — MatchMakers</title>
+  <meta name="description" content="VIP Matchmaking. The Connection Code, applied directly by a human matchmaker. By application, not by purchase.">
   <link rel="canonical" href="https://matchmakersusa.com/vip/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="MatchMakers">
-  <meta property="og:description" content="A dedicated MatchMaker. Curated introductions from a vetted member network. The complete MatchMakers methodology applied personally. Invite-only. By consultation.">
+  <meta property="og:title" content="VIP — MatchMakers">
+  <meta property="og:description" content="VIP Matchmaking. The Connection Code, applied directly by a human matchmaker. By application, not by purchase.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
@@ -42,6 +42,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- Sentry error tracking — propagated from index.html (Wave 0a 13-edit absorption 2026-05-02) -->
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-02"
+    });
+  </script>
 </head>
 <body>
 
@@ -76,7 +88,12 @@
     <a href="#apply" onclick="document.querySelector('#apply').scrollIntoView({behavior:'smooth'});return false;" class="btn-gold">Apply for VIP Matchmaking &rarr;</a>
     <a href="/playbook/" class="btn-gold">Get Dating Studio &mdash; $299.99 &rarr;</a>
   </div>
-  <p class="vip-hero-sub">A dedicated MatchMaker working directly with you &mdash; on strategy, positioning, vetting, and coaching through every phase. Backed by the only methodology built on over a decade of human matchmaking.</p>
+  <p class="vip-hero-sub">A dedicated MatchMaker working directly with you on strategy, positioning, vetting, and coaching through every phase. Backed by the methodology refined across more than a decade of matchmaking practice.</p>
+
+  <!-- Cartier Reframe Spec v1.0 §4.4 opener — institutional Mission anchor (Wave 0a 13-edit absorption EDIT 12) -->
+  <div class="vip-mission-anchor reveal" style="max-width:680px;margin:1.4rem auto 0;padding:1.4rem 1.6rem;border-top:1px solid rgba(201,168,76,.22);border-bottom:1px solid rgba(201,168,76,.22);">
+    <p style="font-family:var(--cg);font-style:italic;font-weight:300;font-size:1.06rem;line-height:1.62;color:#F0F4F8;margin:0;">A relationship operating system, distilled across more than a decade of matchmaking practice. VIP is where the methodology meets a human matchmaker. By application, not by purchase.</p>
+  </div>
 
   <!-- Proof Row — D1 NO_SCALE_NUMBERS aligned -->
   <div class="pbo-proof-row reveal" style="max-width:680px;">

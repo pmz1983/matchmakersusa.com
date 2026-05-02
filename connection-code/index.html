@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Connection Code Engine — MatchMakers</title>
+  <meta name="description" content="The Connection Code Engine. A short calibration that surfaces your Intent, your Phase, and your current Signal.">
+  <link rel="canonical" href="https://matchmakersusa.com/connection-code/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Connection Code Engine — MatchMakers">
+  <meta property="og:description" content="The Connection Code Engine. A short calibration that surfaces your Intent, your Phase, and your current Signal.">
+  <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/connection-code.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Sentry error tracking — propagated from index.html (Wave 0a 13-edit absorption 2026-05-02) -->
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-02"
+    });
+  </script>
+</head>
+<body>
+
+<a href="#main" class="cc-skip-link">Skip to content</a>
+
+<div class="cc-shell">
+
+  <header class="cc-header">
+    <a href="/" class="cc-header__home" aria-label="MatchMakers home">MatchMakers<span class="cc-header__home-tm">&trade;</span></a>
+    <div class="cc-progress" role="group" aria-label="Calibration progress">
+      <span class="cc-progress__dot" data-stage-marker="1" data-state="active" aria-hidden="true"></span>
+      <span class="cc-progress__dot" data-stage-marker="2" data-state="pending" aria-hidden="true"></span>
+      <span class="cc-progress__dot" data-stage-marker="3" data-state="pending" aria-hidden="true"></span>
+      <span class="cc-progress__dot" data-stage-marker="4" data-state="pending" aria-hidden="true"></span>
+      <span class="cc-progress__dot" data-stage-marker="5" data-state="pending" aria-hidden="true"></span>
+      <span class="cc-progress__dot" data-stage-marker="6" data-state="pending" aria-hidden="true"></span>
+      <span class="cc-progress__dot" data-stage-marker="7" data-state="pending" aria-hidden="true"></span>
+      <span class="cc-progress__label" aria-live="polite">Stage 1 of 7</span>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ═══ Stage 1 — Welcome ═══ -->
+    <section class="cc-stage" data-stage="1" aria-labelledby="cc-stage-1-heading">
+      <div class="cc-welcome">
+        <p class="cc-eyebrow">The Connection Code&trade; Engine</p>
+        <p class="cc-welcome__heritage">More than a decade of matchmaking practice.</p>
+        <hr class="cc-welcome__rule" aria-hidden="true">
+        <h1 id="cc-stage-1-heading" class="cc-headline" tabindex="-1" data-stage-heading>Welcome.<br><em>The Connection Code begins with a question.</em></h1>
+        <p class="cc-body cc-body--lead">A short calibration. Seven questions on Intent. Four on Phase. Three on Signal. The result is your Connection Code Brief.</p>
+        <p class="cc-body">There is no scoring against a feed. There is no swipe queue waiting at the end. The Engine surfaces what the methodology already knows about where you arrive.</p>
+        <div class="cc-actions cc-actions--center">
+          <button type="button" class="cc-btn" data-action="begin">Begin where you arrive. <span aria-hidden="true">&rarr;</span></button>
+        </div>
+        <p class="cc-welcome__cadence">Roughly five to seven minutes. Pause and return as you need.</p>
+      </div>
+    </section>
+
+    <!-- ═══ Stage 2 — 9-Intent Assessment ═══ -->
+    <section class="cc-stage" data-stage="2" aria-labelledby="cc-stage-2-heading" hidden>
+      <p class="cc-eyebrow">Stage Two &middot; Intent</p>
+      <hr class="cc-rule--accent" aria-hidden="true">
+      <h2 id="cc-stage-2-heading" class="cc-headline" tabindex="-1" data-stage-heading>The read on <em>Intent.</em></h2>
+      <p class="cc-body">Seven questions. The Engine surfaces which of the nine Intents the methodology is currently calibrating for.</p>
+      <div data-question-host></div>
+      <div class="cc-actions">
+        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="1">Back to Welcome</button>
+      </div>
+    </section>
+
+    <!-- ═══ Stage 3 — 5-Phase Calibration ═══ -->
+    <section class="cc-stage" data-stage="3" aria-labelledby="cc-stage-3-heading" hidden>
+      <p class="cc-eyebrow">Stage Three &middot; Phase</p>
+      <hr class="cc-rule--accent" aria-hidden="true">
+      <h2 id="cc-stage-3-heading" class="cc-headline" tabindex="-1" data-stage-heading>The read on <em>Phase.</em></h2>
+      <p class="cc-body">Four questions. The five Phases of a Connection Code arc are Profile, Connection, Courtship, Commitment, Ongoing. The Engine reads where you arrive.</p>
+      <div data-question-host></div>
+      <div class="cc-actions">
+        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="2">Back to Intent</button>
+      </div>
+    </section>
+
+    <!-- ═══ Stage 4 — 5-Signal Initial State ═══ -->
+    <section class="cc-stage" data-stage="4" aria-labelledby="cc-stage-4-heading" hidden>
+      <p class="cc-eyebrow">Stage Four &middot; Signal</p>
+      <hr class="cc-rule--accent" aria-hidden="true">
+      <h2 id="cc-stage-4-heading" class="cc-headline" tabindex="-1" data-stage-heading>The read on <em>Signal.</em></h2>
+      <p class="cc-body">Three questions. The five Signals of the Connection Code are Intent, Position, Open, Build, Progress. Intent and Position read upstream; Open, Build, and Progress are the read in motion.</p>
+      <div data-question-host></div>
+      <div class="cc-actions">
+        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="3">Back to Phase</button>
+      </div>
+    </section>
+
+    <!-- ═══ Stage 5 — Connection Code Brief generation ═══ -->
+    <section class="cc-stage" data-stage="5" aria-labelledby="cc-stage-5-heading" hidden>
+      <p class="cc-eyebrow">Stage Five &middot; Brief</p>
+      <hr class="cc-rule--accent" aria-hidden="true">
+      <h2 id="cc-stage-5-heading" class="cc-headline" tabindex="-1" data-stage-heading>The Connection Code <em>Brief.</em></h2>
+      <p class="cc-body">The Coach generates your Brief from the read you just calibrated. It arrives as a four-page Cartier-letterhead document.</p>
+
+      <div data-brief-host>
+        <!-- Pre-generation summary card (replaced by full 4-page Brief on render) -->
+        <div class="cc-brief" role="group" aria-label="Connection Code Brief preview">
+          <p class="cc-brief__letterhead">Connection Code<span class="cc-brief__letterhead-tm">&trade;</span> Brief &middot; Preview</p>
+          <div class="cc-brief__field">
+            <p class="cc-brief__field-label">Dominant Intent</p>
+            <p class="cc-brief__field-value" data-brief-intent>&mdash;</p>
+          </div>
+          <div class="cc-brief__field">
+            <p class="cc-brief__field-label">Current Phase</p>
+            <p class="cc-brief__field-value" data-brief-phase>&mdash;</p>
+          </div>
+          <div class="cc-brief__field">
+            <p class="cc-brief__field-label">Initial Signal Read</p>
+            <p class="cc-brief__field-value" data-brief-signals>&mdash;</p>
+          </div>
+          <p class="cc-brief__placeholder-cue">The full four-page letterhead Brief renders below. Generation takes a moment.</p>
+        </div>
+      </div>
+
+      <div class="cc-actions">
+        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="4">Back to Signal</button>
+        <button type="button" class="cc-btn" data-action="generate-brief">Generate the Brief <span aria-hidden="true">&rarr;</span></button>
+      </div>
+    </section>
+
+    <!-- ═══ Stage 6 — Sign-up gate (functional form) ═══ -->
+    <section class="cc-stage" data-stage="6" aria-labelledby="cc-stage-6-heading" hidden>
+      <p class="cc-eyebrow">Stage Six &middot; Sign-up</p>
+      <hr class="cc-rule--accent" aria-hidden="true">
+      <h2 id="cc-stage-6-heading" class="cc-headline" tabindex="-1" data-stage-heading>A standing record of <em>your read.</em></h2>
+      <p class="cc-body">Sign-up creates your Connection Code account. The Brief is held there. The Coach references it when you return.</p>
+      <p class="cc-body">Sign-up is free, in full. The Connection Code is the entry door. The Studio is the next door, by application.</p>
+
+      <form class="cc-card cc-signup" data-signup-form aria-labelledby="cc-signup-heading" novalidate>
+        <h3 id="cc-signup-heading" class="cc-card__question">Welcome. The Coach holds the Brief on your behalf.</h3>
+
+        <div class="cc-field">
+          <label for="cc-signup-name" class="cc-field__label">Given name (optional)</label>
+          <input type="text" id="cc-signup-name" name="given_name" class="cc-field__input" autocomplete="given-name" maxlength="80">
+          <p class="cc-field__hint">The Coach uses this only when addressing you. It is never shared with another user.</p>
+        </div>
+
+        <div class="cc-field">
+          <label for="cc-signup-email" class="cc-field__label">Email</label>
+          <input type="email" id="cc-signup-email" name="email" class="cc-field__input" autocomplete="email" required maxlength="180">
+          <p class="cc-field__hint">The Welcome Letter from Coach arrives within twenty-four hours.</p>
+        </div>
+
+        <div class="cc-field">
+          <label class="cc-checkbox">
+            <input type="checkbox" name="terms" required>
+            <span>I have read the <a href="/privacy-policy/" class="cc-link">Privacy Policy</a> and consent to the standing record of my read.</span>
+          </label>
+        </div>
+
+        <div class="cc-actions">
+          <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="5">Back to Brief</button>
+          <button type="submit" class="cc-btn" data-signup-submit>Sign up &amp; continue <span aria-hidden="true">&rarr;</span></button>
+        </div>
+
+        <p class="cc-form-status" data-signup-status role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ═══ Stage 7 — Coach Lite first interaction (~30-node choice tree) ═══ -->
+    <section class="cc-stage" data-stage="7" aria-labelledby="cc-stage-7-heading" hidden>
+      <p class="cc-eyebrow">Stage Seven &middot; Coach Lite</p>
+      <hr class="cc-rule--accent" aria-hidden="true">
+      <h2 id="cc-stage-7-heading" class="cc-headline" tabindex="-1" data-stage-heading>The Coach, <em>first read.</em></h2>
+      <p class="cc-body">Coach Lite is the methodology in conversation. A choice tree, grounded in the Connection Code, calibrated to your Brief. Coach AI begins at L2 Studio.</p>
+
+      <div data-coach-lite-host class="cc-coach-host" role="group" aria-label="Coach Lite first interaction"></div>
+
+      <div class="cc-actions">
+        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="5">Review your Brief</button>
+        <button type="button" class="cc-btn cc-btn--ghost" data-action="coach-lite-restart">Return to the Coach</button>
+        <a href="/studio/" class="cc-btn" data-action="cta-studio">Continue to the Studio <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <p class="cc-coach-cue">L1 explores the methodology. Coach AI begins at L2.</p>
+    </section>
+
+  </main>
+
+  <footer class="cc-footer">
+    The Connection Code is a trademark of MatchMakers LLC. More than a decade of matchmaking practice.
+  </footer>
+
+</div>
+
+<script src="/js/coach-lite-tree.js"></script>
+<script src="/js/cc-api.js"></script>
+<script src="/js/connection-code.js"></script>
+
+</body>
+</html>
