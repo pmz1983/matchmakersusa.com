@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -13,19 +12,19 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>MatchMakers</title>
-  <meta name="description" content="Dating, by methodology. Not by algorithm. The Connection Code&trade; — a proprietary 5-Signal framework refined over more than a decade of human matchmaking. Now applied through Dating Studio.">
+  <title>MatchMakers — The Connection Code</title>
+  <meta name="description" content="The Connection Code Engine. A proprietary 5-Signal framework refined over more than a decade of matchmaking practice. Begin where you arrive.">
   <link rel="canonical" href="https://matchmakersusa.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchMakers">
-  <meta property="og:title" content="MatchMakers">
-  <meta property="og:description" content="Dating, by methodology. Not by algorithm. The Connection Code™ — a proprietary 5-Signal framework refined over more than a decade of human matchmaking. Now applied through Dating Studio.">
+  <meta property="og:title" content="MatchMakers — The Connection Code">
+  <meta property="og:description" content="The Connection Code Engine. A proprietary 5-Signal framework refined over more than a decade of matchmaking practice. Begin where you arrive.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MatchMakers">
+  <meta name="twitter:title" content="MatchMakers — The Connection Code">
   <meta name="twitter:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
@@ -33,8 +32,8 @@
     {"@type":"WebSite","name":"MatchMakers","url":"https://matchmakersusa.com","publisher":{"@type":"Organization","name":"MatchMakers"}}
   ]}
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -44,1221 +43,518 @@
   <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png">
 
-  <!-- ═══════════════════════════════════════════════════════════════════════════
-       HOMEPAGE V2 — pr6-homepage-v2-prep branch (PRE-FIRE; awaits Paul §5 ratify)
-       Build authority: ~/Desktop/03_MM_OPS/drafts/atlas_website_v2_synthesis_brief_pr_6_2026-04-27.md
-       Source canon:
-         - Web Ed v2:  HOMEPAGE_EDITORIAL_SPEC_v2_2026-04-26_night.md
-         - Design v1.3: visual_treatment_v1_3_tokens / css_scaffold / wordmark_hairline / asset_handoff_manifest
-         - Legal §6.1: vip_homepage_v2_clearance_2026-04-27.md ✅ CLEARED
-         - Web Ed polish: v2_edge_case_copy_pass_2026-04-27.md + v2_microcopy_variants_2026-04-27.md
-       Atlas adjudications applied:
-         ADJ-1 Hero H1 "Dating, by methodology. / Not by algorithm." italic-gold on line 2
-         ADJ-2 §5 ghost CTA "See Coach & Playbook →"
-         ADJ-3 §6.1 VIP Variant A subhead with "VIP Coach" naming + parenthetical disambiguation
-         ADJ-4 §7 "The method, on hand." headline
-         ADJ-5 §9 router 3 gold-fill buttons (Coach / Playbook / VIP Matchmaking)
-         ADJ-6 stat band 2×2 label-only (no Cormorant numerals)
-         ADJ-7 wordmark restored per Design v1.3
-         ADJ-8 hairline-as-atmosphere per Design v1.3
-         ADJ-9 D1 NO_SCALE_NUMBERS — homepage scope (cross-surface = PR #7)
-         ADJ-10 D2 MOBILE_FIRST_CANONICAL — cross-surface PR #7 follow-on
-       Microcopy: chevron `→` (U+2192), em-dash `—` (U+2014), curly apostrophe `'` (U+2019),
-                  sentence case for headlines, title case for eyebrows, all-caps for stat cells.
-       ═══════════════════════════════════════════════════════════════════════════ -->
   <style>
-    /* Design v1.3 §2 token block (CSS scaffold §2 byte-for-byte) */
     :root {
-      /* Color — base palette */
-      --color-bg-primary:           #050A10;
-      --color-bg-section-a:         #050A10;
-      --color-bg-section-b:         #0A1018;
-      --color-bg-section-c:         #080D14;
+      --color-bg:                   #050A10;
       --color-bg-elevated:          #0A1320;
-      --color-text-primary:         #F4F1EA;
-      --color-text-secondary:       #B8B0A0;
-      --color-text-tertiary:        #7A7468;
+      --color-text-primary:         #F0F4F8;
+      --color-text-secondary:       rgba(200,214,229,.78);
+      --color-text-tertiary:        #BCD0E2;
+      --color-rule-ambient:         rgba(120,149,175,.10);
+      --color-rule-accent:          rgba(201,168,76,.22);
+      --color-rule-emphatic:        rgba(201,168,76,.44);
       --color-accent-gold:          #C9A84C;
-      --color-accent-gold-bright:   rgba(201, 168, 76, 0.55);
-      --color-accent-gold-dim:      rgba(201, 168, 76, 0.30);
-      --color-accent-gold-tint:     rgba(201, 168, 76, 0.06);
-      --color-accent-gold-glow:     rgba(201, 168, 76, 0.15);
-      --color-divider:              rgba(244, 241, 234, 0.08);
-
-      /* Hairline tokens (D6) */
-      --hp-hairline-ambient:        rgba(201, 168, 76, 0.24);
-      --hp-hairline-emphatic:       rgba(201, 168, 76, 0.70);
-      --hp-hairline-accent:         rgba(201, 168, 76, 0.55);
-      --hp-hairline-neutral:        rgba(244, 241, 234, 0.08);
-
-      /* Atmosphere — radial gradients + noise */
-      --hp-atmosphere-radial-hero:    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(20, 35, 60, 0.9) 0%, var(--color-bg-primary) 70%);
-      --hp-atmosphere-overlay-hero:   radial-gradient(ellipse 60% 40% at 50% 30%, var(--color-accent-gold-tint) 0%, transparent 70%);
-      --hp-atmosphere-radial-section: radial-gradient(ellipse 60% 50% at 50% 30%, var(--color-accent-gold-tint) 0%, transparent 70%);
-      --hp-noise-overlay-opacity:   0.015;
-      --hp-noise-overlay-blend:     overlay;
-
-      /* Typography */
-      --font-display:    'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-      --font-body:       'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-utility:    'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-      --type-hero-wordmark:         clamp(3.75rem, 12vw, 7rem);
-      --type-hero-h1:               clamp(2.75rem, 6vw, 4.5rem);
-      --type-hero-subhead:          clamp(1.0625rem, 1.4vw, 1.25rem);
-      --type-hero-eyebrow:          clamp(0.8125rem, 1vw, 0.875rem);
-      --type-section-h2:            clamp(2rem, 4vw, 3.5rem);
-      --type-section-eyebrow:       clamp(0.8125rem, 1vw, 0.875rem);
-      --type-body:                  clamp(1rem, 1.15vw, 1.125rem);
-      --type-body-essay:            clamp(1rem, 1.15vw, 1.125rem);
-      --type-stat-label:            clamp(0.8125rem, 1vw, 0.875rem);
-      --type-cta-primary:           1rem;
-      --type-cta-secondary:         1rem;
-      --type-footer-credential:     0.75rem;
-
-      /* Spacing — 8-base mobile-first */
-      --space-1:  8px;
-      --space-2: 12px;
-      --space-3: 16px;
-      --space-4: 24px;
-      --space-5: 32px;
-      --space-6: 48px;
-      --space-7: 80px;
-      --space-section-y:        clamp(48px, 8vw, 96px);
-      --space-section-y-large:  clamp(64px, 10vw, 128px);
-      --space-section-y-app:    clamp(64px, 10vw, 96px);
-      --space-hero-top:         clamp(64px, 10vw, 96px);
-      --space-hero-bottom:      clamp(48px, 8vw, 96px);
-
-      /* Motion */
-      --motion-reveal:              600ms;
-      --motion-hover:               180ms;
-      --motion-active:              100ms;
-      --easing-out:                 cubic-bezier(0.2, 0.8, 0.2, 1);
-      --easing-reveal:              cubic-bezier(0.22, 1, 0.36, 1);
-      --reveal-translate-y:         12px;
-
-      /* Component */
-      --hp-wordmark-glow:           0 0 60px rgba(201, 168, 76, 0.18);
-      --cta-primary-height:         56px;
-      --cta-primary-radius:         8px;
-      --cta-secondary-height:       56px;
-      --cta-secondary-radius:       8px;
-      --router-btn-height:          64px;
-      --router-btn-radius:          8px;
-      --statband-cell-min-height:   88px;
-      --hp-hero-mark-size-desktop:  144px;
-      --hp-hero-mark-size-tablet:   120px;
-      --hp-hero-mark-size-mobile:   96px;
-      --stickybar-height:           56px;
-      --stickybar-z-index:          100;
+      --color-accent-gold-bright:   #D4B65E;
+      --motion-arrival-stage-1:     320ms;
+      --motion-arrival-stage-2:     480ms;
+      --motion-arrival-stage-3:     640ms;
+      --easing-cartier:             cubic-bezier(.22,.61,.36,1);
     }
 
-    /* Site-wide noise overlay (atmosphere) */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-      opacity: var(--hp-noise-overlay-opacity);
-      mix-blend-mode: var(--hp-noise-overlay-blend);
-      z-index: 99;
-    }
-
-    /* Sticky top utility bar */
-    .hp-sticky-bar {
-      position: sticky; top: 0;
-      z-index: var(--stickybar-z-index);
-      height: var(--stickybar-height);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 var(--space-4);
-      background: rgba(5, 10, 16, 0.90);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--hp-hairline-ambient);
-    }
-    .hp-sticky-bar__brand {
-      display: flex; align-items: center; gap: var(--space-2);
-      text-decoration: none; color: var(--color-text-primary);
-    }
-    .hp-sticky-bar__mark { width: 28px; height: 28px; }
-    .hp-sticky-bar__text {
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: 0.875rem; letter-spacing: 0.06em;
+    body {
+      background: var(--color-bg);
       color: var(--color-text-primary);
-    }
-    .hp-sticky-bar__nav {
-      background: transparent; border: 0; color: var(--color-text-primary);
-      cursor: pointer; font-size: 1.25rem; padding: var(--space-2);
-      display: inline-flex; align-items: center; justify-content: center;
-      min-width: 44px; min-height: 44px;
-    }
-    .hp-sticky-bar__nav:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright); outline-offset: 2px;
-    }
-
-    /* Sticky-bar dropdown menu (toggled by .hp-sticky-bar__nav) */
-    .hp-sticky-bar__menu {
-      position: absolute; top: 100%; left: 0; right: 0;
-      background: rgba(5, 10, 16, 0.96);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--hp-hairline-ambient);
-      padding: var(--space-3) var(--space-4) var(--space-4);
-      display: flex; flex-direction: column; gap: 0;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
-    }
-    .hp-sticky-bar__menu[hidden] { display: none; }
-    .hp-sticky-bar__menu a {
-      font-family: var(--font-utility);
-      font-weight: 500;
-      font-size: 0.875rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--color-text-primary);
-      text-decoration: none;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--hp-hairline-ambient);
-      transition: color var(--motion-hover) var(--easing-out);
-    }
-    .hp-sticky-bar__menu a:last-of-type { border-bottom: 0; }
-    .hp-sticky-bar__menu a:hover,
-    .hp-sticky-bar__menu a:focus-visible {
-      color: var(--color-accent-gold-bright);
-    }
-
-    /* Section wrapper */
-    .hp-section {
-      position: relative;
-      padding: var(--space-section-y) var(--space-4);
-      overflow: hidden;
-    }
-    @media (min-width: 768px)  { .hp-section { padding-left: var(--space-6); padding-right: var(--space-6); } }
-    @media (min-width: 1024px) { .hp-section { padding-left: var(--space-7); padding-right: var(--space-7); } }
-
-    /* Bg luminance shift v2.1 — alternates per canonical journey */
-    .hp-method        { background: var(--color-bg-section-b); }
-    .hp-stage         { background: var(--color-bg-section-a); }
-    .hp-stage:nth-of-type(odd) { background: var(--color-bg-section-b); }
-    .hp-bridge        { background: var(--color-bg-section-c); padding-top: var(--space-6); padding-bottom: var(--space-6); }
-    .hp-centerpiece   { background: var(--color-bg-section-a); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
-    .hp-ecosystem     { background: var(--color-bg-section-c); }
-    .hp-stage--vip    { background: var(--color-bg-section-b); border-top: 1px solid var(--hp-hairline-accent); border-bottom: 1px solid var(--hp-hairline-accent); }
-    .hp-origin        { background: var(--color-bg-section-b); padding-top: var(--space-section-y-large); padding-bottom: var(--space-section-y-large); }
-    .hp-router        { background: var(--color-bg-section-a); }
-
-    /* Subtle radial gold atmosphere per non-hero section */
-    .hp-method::before, .hp-stage::before, .hp-centerpiece::before, .hp-ecosystem::before,
-    .hp-origin::before, .hp-router::before {
-      content: ''; position: absolute; inset: 0;
-      background: var(--hp-atmosphere-radial-section);
-      pointer-events: none; z-index: 0;
-    }
-    .hp-section__content {
-      position: relative; z-index: 1;
-      max-width: 720px; margin: 0 auto;
-      text-align: center;
-    }
-    .hp-stage      .hp-section__content { max-width: 720px; }
-    .hp-bridge     .hp-section__content { max-width: 64ch; }
-    .hp-centerpiece .hp-section__content { max-width: 800px; }
-    .hp-ecosystem  .hp-section__content { max-width: 1080px; }
-    .hp-origin     .hp-section__content { max-width: 70ch; text-align: left; }
-    .hp-router     .hp-section__content { max-width: 720px; }
-
-    /* Hero — atmosphere + content stack */
-    .hp-hero {
-      position: relative; overflow: hidden;
-      background: var(--hp-atmosphere-radial-hero);
-      min-height: 78vh;
-      padding: var(--space-hero-top) var(--space-4) var(--space-hero-bottom);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-    }
-    @media (min-width: 768px)  { .hp-hero { min-height: 82vh; padding-left: var(--space-6); padding-right: var(--space-6); } }
-    @media (min-width: 1024px) { .hp-hero { min-height: 88vh; padding-left: var(--space-7); padding-right: var(--space-7); } }
-    .hp-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: var(--hp-atmosphere-overlay-hero);
-      pointer-events: none; z-index: 0;
-    }
-    .hp-hero__content {
-      position: relative; z-index: 1;
-      max-width: 760px; width: 100%;
-      text-align: center;
-      display: flex; flex-direction: column; align-items: center;
-    }
-
-    /* Pre-headline eyebrow — single-line horizontal with · separators (brand-first restructure) */
-    .hp-hero__eyebrow {
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: var(--type-hero-eyebrow);
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin: 0 0 var(--space-3);
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      gap: 0.5rem 0.75rem;
-      line-height: 1.3;
-    }
-    .hp-hero__eyebrow-line { display: inline; }
-    .hp-hero__eyebrow-sep {
-      color: rgba(201, 168, 76, 0.4);
-      user-select: none;
-      font-size: 0.85em;
-    }
-    @media (max-width: 480px) {
-      .hp-hero__eyebrow { gap: 0.4rem 0.65rem; }
-    }
-    /* Round 4 — hero positioning eyebrow (Q2 ratified) */
-    .hp-hero__eyebrow--positioning {
-      font-family: var(--font-display);
-      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-      font-style: italic;
-      font-weight: 400;
-      color: rgba(244, 241, 234, 0.78);
-      margin-bottom: 1.25rem;
-      letter-spacing: 0;
-      text-transform: none;
-      text-align: center;
-    }
-    .hp-hero__eyebrow--positioning .hp-hero__eyebrow-line { letter-spacing: 0; text-transform: none; font-weight: 400; }
-
-    /* Hero wordmark + 28×2 emphatic gold rule */
-    .hp-hero__wordmark {
-      font-family: var(--font-display); font-weight: 500;
-      font-size: var(--type-hero-wordmark);
-      line-height: 1.05; letter-spacing: -0.015em;
-      color: var(--color-text-primary);
-      text-shadow: var(--hp-wordmark-glow);
-      margin: 0 0 var(--space-2);
-      text-align: center;
-    }
-    .hp-hero__wordmark-tm {
-      font-size: 0.4em; vertical-align: super;
-      margin-left: 0.05em; font-weight: 400;
-      color: var(--color-accent-gold);
-    }
-    .hp-rule--wordmark {
-      display: block; width: 28px; height: 2px;
-      background: linear-gradient(90deg, var(--hp-hairline-emphatic), transparent);
-      border-radius: 1px;
-      margin: 0 auto var(--space-5);
-      border: 0;
-    }
-
-    /* Hero H1 + italic-gold accent */
-    .hp-hero__headline {
-      font-family: var(--font-display); font-weight: 500;
-      font-size: var(--type-hero-h1);
-      line-height: 1.08; letter-spacing: -0.015em;
-      color: var(--color-text-primary);
-      text-shadow: 0 0 80px var(--color-accent-gold-glow);
-      margin: 0 0 var(--space-5);
-      max-width: 18ch;
-    }
-    .hp-italic-gold-accent {
-      font-style: italic;
-      color: var(--color-accent-gold);
-      font-weight: inherit;
-    }
-
-    /* Hero subhead — tightened margin-bottom per Path 2 follow-on micro-spacing
-       (was var(--space-6) = 48px; now var(--space-3) = 16px to bring stat band
-       tighter as continuation of body 1's institutional thesis). */
-    .hp-hero__subhead {
-      font-family: var(--font-body); font-weight: 400;
-      font-size: var(--type-hero-subhead);
-      line-height: 1.55; color: var(--color-text-primary);
-      margin: 0 0 var(--space-3);
-      max-width: 56ch;
-    }
-
-    /* Brand-first restructure — second scroll-snap "How every part fits" section */
-    .hp-opener-bridge {
-      padding: 4rem 1.25rem;
-      background: var(--color-bg-primary, #050A10);
-      border-top: 1px solid rgba(65, 91, 124, 0.12);
-      border-bottom: 1px solid rgba(65, 91, 124, 0.12);
-      text-align: center;
-    }
-    @media (min-width: 768px) { .hp-opener-bridge { padding: 5rem 2rem; } }
-    .hp-opener-bridge__content { max-width: 640px; margin: 0 auto; }
-    .hp-opener-bridge__body {
-      font-family: var(--font-body), 'Outfit', system-ui, sans-serif;
-      font-size: clamp(1rem, 1.2vw, 1.125rem);
-      line-height: 1.65;
-      color: rgba(244, 241, 234, 0.92);
-      margin: 0 0 1.5rem;
-    }
-    .hp-opener-bridge__manifesto {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 1.5rem auto;
-    }
-    .hp-opener-bridge__beat {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-      color: rgba(244, 241, 234, 0.85);
-      line-height: 1.4;
-    }
-    .hp-opener-bridge__bridge {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(0.92rem, 1vw, 1rem);
-      color: rgba(201, 168, 76, 0.7);
-      margin: 1.5rem 0 0;
-      line-height: 1.4;
-    }
-
-    /* Cohort 4.12 — opener micro-rule: 36px gradient hairline between subhead paras
-       (D6 hairline-as-atmosphere; matches /guide/ + /vip/ + /playbook/content/ pattern). */
-    .hp-opener__rule-ambient {
-      width: 36px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.5), transparent);
-      border: 0;
-      margin: 1.75rem auto;
-      display: block;
-    }
-
-    /* Cohort 4.9 — opener refinement: ambient hairline + manifesto + bridge classes */
-    .hp-rule--ambient {
-      display: block; width: 56px; height: 1px;
-      background: var(--hp-hairline-ambient);
-      border: 0;
-      margin: 0 auto var(--space-4);
-    }
-    .hp-opener__manifesto {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.125rem, 1.6vw, 1.4rem);
-      line-height: 1.5;
-      color: var(--color-text-primary);
-      margin: 0 auto var(--space-3);
-      max-width: 56ch;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .hp-opener__manifesto-beat { display: block; }
-    @media (min-width: 768px) {
-      .hp-opener__manifesto {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-    }
-    .hp-opener__bridge {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
-      line-height: 1.55;
-      color: var(--color-accent-gold-bright);
-      margin: 0 auto var(--space-5);
-      max-width: 56ch;
-      text-align: center;
-    }
-
-    /* Hero primary CTA (ring-only — Paul directive 2026-04-27 / gold-fill DEPRECATED) */
-    .hp-hero__cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 0.5em;
-      width: 100%; height: var(--cta-primary-height);
-      padding: var(--space-2) var(--space-5);
-      background: transparent;
-      color: var(--color-accent-gold);
-      border: 1px solid rgba(201, 168, 76, 0.45);
-      border-radius: var(--cta-primary-radius);
-      font-family: var(--font-utility); font-weight: 600;
-      font-size: var(--type-cta-primary);
-      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out), border-color var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out);
-      margin: 0 0 var(--space-6);
-    }
-    .hp-hero__cta:hover { background: rgba(201, 168, 76, 0.06); border-color: var(--color-accent-gold); color: var(--color-accent-gold-bright); }
-    .hp-hero__cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-    @media (min-width: 768px) { .hp-hero__cta { width: auto; min-width: 240px; } }
-
-    /* Stat band 2×2 (mobile) → 4-up row (desktop) */
-    .hp-stat-band {
-      width: 100%; max-width: 480px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 0;
-      border: 1px solid var(--hp-hairline-emphatic);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .hp-stat-cell {
-      padding: var(--space-3) var(--space-4);
-      min-height: var(--statband-cell-min-height);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: var(--type-stat-label);
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--color-text-primary);
-      background: transparent;
-      border-top: 1px solid var(--hp-hairline-ambient);
-      border-left: 1px solid var(--hp-hairline-ambient);
-    }
-    .hp-stat-cell:nth-child(1), .hp-stat-cell:nth-child(2) { border-top: 0; }
-    .hp-stat-cell:nth-child(1), .hp-stat-cell:nth-child(3) { border-left: 0; }
-    @media (min-width: 1024px) {
-      .hp-stat-band { max-width: 760px; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr; }
-      .hp-stat-cell { border-top: 0; border-left: 1px solid var(--hp-hairline-ambient); }
-      .hp-stat-cell:nth-child(1) { border-left: 0; }
-    }
-
-    /* Cohort 4-A — 4-cell stat band (hero variant; ABOVE H1 per Meridian SA-A3) */
-    .hp-stat-band--4 {
-      width: 100%;
-      max-width: 100%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 1fr;
-      gap: 0;
-      border: 1px solid var(--hp-hairline-emphatic);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .hp-stat-band--4 .hp-stat-cell {
-      padding: var(--space-3) var(--space-4);
-      border-right: 1px solid var(--hp-hairline-ambient);
-      border-top: 0;
-      border-left: 0;
-      text-align: center;
-      font-size: var(--type-stat-label);
-      font-weight: 500;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--color-text-primary);
-      min-height: var(--statband-cell-min-height);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hp-stat-band--4 .hp-stat-cell:last-child { border-right: none; }
-    .hp-stat-band--hero { margin: 0 auto; } /* bottom margin removed per Path 2 follow-on; ambient hairline below carries rhythm */
-    @media (max-width: 767px) {
-      .hp-stat-band--4 { grid-template-columns: repeat(2, 1fr); }
-      .hp-stat-band--4 .hp-stat-cell:nth-child(2n) { border-right: none; }
-      .hp-stat-band--4 .hp-stat-cell:nth-child(-n+2) { border-bottom: 1px solid var(--hp-hairline-ambient); }
-    }
-
-    /* Cohort 4-A — Hero M-mark logo (per Meridian SA-A1; 96/80/64 responsive) */
-    .hp-hero__mark {
-      display: block;
-      width: var(--hp-hero-mark-size-desktop);
-      height: var(--hp-hero-mark-size-desktop);
-      margin: 0 auto var(--space-5);
-      border-radius: 0;
-    }
-    @media (max-width: 1023px) {
-      .hp-hero__mark { width: var(--hp-hero-mark-size-tablet); height: var(--hp-hero-mark-size-tablet); }
-    }
-    @media (max-width: 767px) {
-      .hp-hero__mark { width: var(--hp-hero-mark-size-mobile); height: var(--hp-hero-mark-size-mobile); }
-    }
-
-    /* Cohort 4-A — Hero single primary CTA (per Meridian SA-A2; replaces 4-card stage grid) */
-    .hp-hero__primary-cta { margin: 0 auto var(--space-5); }
-
-    /* Pre-Cartier §1.B — Hero 3-CTA stack (Connection Code / Dating Studio / VIP)
-       per Paul §5 2026-04-30: 4 → 3 boxes; button-consistent product labels.
-       §1.A mobile-overflow fix: scoped white-space override allows button text to
-       wrap cleanly inside narrow viewports (root-cause fix per Atlas §2.C). */
-    .hp-hero__cta-stack {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto var(--space-6);
-      align-items: stretch;
-      box-sizing: border-box;
-    }
-    .hp-hero__cta-stack .btn-gold-fill {
-      width: 100%;
-      justify-content: center;
-      white-space: normal;
-      word-break: normal;
-      overflow-wrap: anywhere;
-      max-width: 100%;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    @media (min-width: 768px) {
-      .hp-hero__cta-stack {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 920px;
-        gap: var(--space-3);
-      }
-      .hp-hero__cta-stack .btn-gold-fill {
-        width: auto;
-        min-width: 200px;
-        flex: 1 1 200px;
-        max-width: 280px;
-      }
-    }
-    /* §1.A mobile-overflow defense: ensure all hp-section content respects viewport boundaries */
-    .hp-section__content,
-    .hp-hero__content,
-    .hp-opener-bridge__content { max-width: 100%; box-sizing: border-box; min-width: 0; }
-    .hp-section__content > *,
-    .hp-hero__content > *,
-    .hp-opener-bridge__content > * { max-width: 100%; box-sizing: border-box; }
-    /* Long-string defensive wrap on copy bodies */
-    .hp-body,
-    .hp-headline,
-    .hp-subhead,
-    .hp-eyebrow { overflow-wrap: anywhere; word-break: normal; }
-
-    /* Section eyebrow + 24×1 accent rule */
-    .hp-eyebrow {
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: var(--type-section-eyebrow);
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin: 0 0 var(--space-1);
-      display: block;
-    }
-    .hp-eyebrow__prefix { font-weight: 600; }
-    .hp-rule--eyebrow {
-      display: block; width: 24px; height: 1px;
-      background: var(--hp-hairline-accent);
-      margin: 0 auto var(--space-3);
-      border: 0;
-    }
-    .hp-origin .hp-rule--eyebrow { margin-left: 0; margin-right: auto; }
-
-    /* Section H2 */
-    .hp-headline {
-      font-family: var(--font-display); font-weight: 500;
-      font-size: var(--type-section-h2);
-      line-height: 1.10; letter-spacing: -0.015em;
-      color: var(--color-text-primary);
-      text-shadow: 0 0 60px rgba(201, 168, 76, 0.10);
-      margin: 0 auto var(--space-5);
-      max-width: 22ch;
-    }
-    .hp-origin .hp-headline { margin-left: 0; max-width: 24ch; }
-
-    /* Section body */
-    .hp-body {
-      font-family: var(--font-body); font-weight: 400;
-      font-size: var(--type-body); line-height: 1.6;
-      color: var(--color-text-primary);
-      margin: 0 auto var(--space-6);
-      max-width: 64ch;
-    }
-    .hp-body + .hp-body { margin-top: 0; }
-    .hp-body--essay {
-      font-size: var(--type-body-essay); line-height: 1.65;
-    }
-    .hp-origin .hp-body {
-      font-size: var(--type-body-essay); line-height: 1.65;
-      max-width: 70ch; margin-left: 0; margin-right: 0;
-    }
-    .hp-origin .hp-eyebrow { text-align: left; }
-
-    /* v2.1 B-1 thesis surface — Cormorant italic, hairline-bracketed */
-    .hp-body--thesis {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(1.1875rem, 1.8vw, 1.625rem);
-      font-style: normal;
-      line-height: 1.45;
-      color: var(--color-text-primary);
-      letter-spacing: -0.005em;
-      margin: var(--space-6) auto;
-      padding: var(--space-5) 0;
-      border-top: 1px solid var(--hp-hairline-accent);
-      border-bottom: 1px solid var(--hp-hairline-accent);
-      max-width: 56ch;
-    }
-    .hp-body--thesis em {
-      font-style: italic;
-      color: var(--color-text-primary);
-    }
-
-    /* v2.1 B-3 narrative bridge */
-    .hp-body--bridge {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-style: normal;
-      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 300;
       line-height: 1.6;
-      color: var(--color-text-secondary);
-      max-width: 64ch;
-      margin: 0 auto;
-      padding: 0;
-    }
-    .hp-body--bridge em {
-      font-style: italic;
-      color: var(--color-text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* v2.1 §9 VIP apex CTA — ring-only (Paul directive 2026-04-27; gold-fill DEPRECATED) */
-    .hp-stage--vip .hp-eco-cta {
+    .hp-arrival {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 1.5rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hp-arrival__atmosphere {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 35%, rgba(201,168,76,.04) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hp-arrival__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hp-arrival__eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin-bottom: 2.4rem;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-1) var(--easing-cartier) forwards;
+    }
+
+    .hp-arrival__heritage {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: .92rem;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1.6rem;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-1) var(--easing-cartier) 120ms forwards;
+    }
+
+    .hp-arrival__wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5.6vw, 3.6rem);
+      letter-spacing: 0.04em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.6rem;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-2) var(--easing-cartier) 180ms forwards;
+    }
+
+    .hp-arrival__wordmark-tm {
+      font-size: 0.42em;
+      vertical-align: super;
+      margin-left: 0.04em;
+      color: var(--color-accent-gold);
+    }
+
+    .hp-arrival__rule {
+      width: 96px;
+      height: 1px;
+      background: var(--color-rule-emphatic);
+      margin: 1.6rem auto 2rem;
+      animation: cartier-rule-grow var(--motion-arrival-stage-2) var(--easing-cartier) 280ms forwards;
+    }
+
+    .hp-arrival__headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4.2vw, 2.6rem);
+      line-height: 1.22;
+      color: var(--color-text-primary);
+      margin-bottom: 1.4rem;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-2) var(--easing-cartier) 360ms forwards;
+    }
+
+    .hp-arrival__headline em {
+      font-style: italic;
+      color: var(--color-accent-gold);
+    }
+
+    .hp-arrival__subhead {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 2.4vw, 1.32rem);
+      color: var(--color-text-secondary);
+      max-width: 540px;
+      margin: 0 auto 2.6rem;
+      line-height: 1.5;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-3) var(--easing-cartier) 540ms forwards;
+    }
+
+    .hp-arrival__cta {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5em;
-      padding: var(--space-2) var(--space-5);
+      gap: 0.6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: .98rem;
+      letter-spacing: 0.06em;
+      color: var(--color-text-primary);
       background: transparent;
-      color: var(--color-accent-gold);
-      border: 1px solid rgba(201, 168, 76, 0.45);
-      border-radius: 2px;
-      font-family: var(--font-utility);
-      font-weight: 600;
-      font-size: var(--type-cta-primary);
-      letter-spacing: 0.04em;
+      border: 1px solid var(--color-accent-gold);
+      padding: 1.05rem 2.2rem;
       text-decoration: none;
-      cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out), border-color var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out), transform var(--motion-hover) var(--easing-out);
-      margin-top: var(--space-5);
+      transition: background 240ms var(--easing-cartier), color 240ms var(--easing-cartier);
+      min-width: 280px;
       min-height: 48px;
-    }
-    .hp-stage--vip .hp-eco-cta:hover { background: rgba(201, 168, 76, 0.06); border-color: var(--color-accent-gold); color: var(--color-accent-gold-bright); transform: translateY(-1px); }
-    .hp-stage--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-
-    /* Section CTA secondary (ghost) — §5 */
-    .hp-cta--secondary {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: var(--space-1);
-      height: var(--cta-secondary-height);
-      padding: var(--space-2) var(--space-5);
-      background: transparent; color: var(--color-accent-gold);
-      border: 1px solid var(--color-accent-gold);
-      border-radius: var(--cta-secondary-radius);
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: var(--type-cta-secondary);
-      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out),
-                  border-color var(--motion-hover) var(--easing-out);
-      min-width: 200px;
-    }
-    .hp-cta--secondary:hover {
-      background: var(--color-accent-gold-tint);
-      border-color: var(--color-accent-gold-bright);
-    }
-    .hp-cta--secondary:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-
-    /* Section break rules — 3 placements (§3↔§4, §6↔§7, §8↔§9) */
-    .hp-rule--section-break {
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        var(--hp-hairline-ambient) 30%,
-        var(--hp-hairline-emphatic) 50%,
-        var(--hp-hairline-ambient) 70%,
-        transparent 100%);
-      border: 0; margin: 0;
+      justify-content: center;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-3) var(--easing-cartier) 720ms forwards;
     }
 
-    /* §6 Ecosystem grid */
-    .hp-eco-grid {
-      display: flex; flex-direction: column; gap: var(--space-4);
-      margin-top: var(--space-6);
-    }
-    @media (min-width: 1024px) {
-      .hp-eco-grid { flex-direction: row; gap: var(--space-5); align-items: stretch; }
-    }
-    .hp-eco-slot {
-      flex: 1;
-      display: flex; flex-direction: column;
-      padding: var(--space-5);
-      background: transparent;
-      border: 1px solid var(--hp-hairline-ambient);
-      border-radius: 8px;
-      text-align: center;
-    }
-    .hp-eco-slot--vip {
-      background: var(--color-bg-elevated);
-      border-color: var(--color-accent-gold-dim);
-    }
-    .hp-eco-slot__eyebrow {
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: var(--type-section-eyebrow);
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin: 0 0 var(--space-2);
-    }
-    .hp-eco-slot--vip .hp-eco-slot__eyebrow { font-weight: 600; }
-    .hp-eco-slot__body {
-      font-family: var(--font-body); font-weight: 400;
-      font-size: var(--type-body); line-height: 1.6;
-      color: var(--color-text-primary);
-      margin: 0 0 var(--space-5);
-      max-width: 50ch; flex-grow: 1;
-    }
-    /* §6.1 VIP slot CTA — gold-fill primary (D4 carve-out) */
-    .hp-eco-slot--vip .hp-eco-cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: var(--space-1);
-      width: 100%; height: var(--cta-primary-height);
-      padding: var(--space-2) var(--space-5);
-      background: var(--color-accent-gold); color: var(--color-bg-primary);
-      border: 1px solid var(--color-accent-gold);
-      border-radius: var(--cta-primary-radius);
-      font-family: var(--font-utility); font-weight: 600;
-      font-size: var(--type-cta-primary);
-      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out);
-    }
-    .hp-eco-slot--vip .hp-eco-cta:hover { background: color-mix(in oklab, var(--color-accent-gold) 88%, white 12%); }
-    .hp-eco-slot--vip .hp-eco-cta:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-
-    /* §9 Router — 3 gold-fill buttons (per ADJ-5); 5-cell variant per Levels System reframing 2026-04-30 */
-    .hp-router-grid {
-      display: flex; flex-direction: column; gap: var(--space-3);
-      margin-top: var(--space-6);
-    }
-    @media (min-width: 768px) {
-      .hp-router-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); }
-    }
-    /* 5-cell ladder for Levels System (Level 1 / Level 2 / Level 3 / Level 4 / Level 5) */
-    .hp-router-grid--five { grid-template-columns: 1fr; gap: var(--space-3); }
-    @media (min-width: 600px) { .hp-router-grid--five { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .hp-router-grid--five { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); } }
-    .hp-router-grid--five .hp-router-btn { flex-direction: column; align-items: flex-start; height: auto; padding: var(--space-4); gap: var(--space-2); }
-    .hp-router-btn__level { display: block; font-family: var(--font-utility); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-gold); margin-bottom: 0.35rem; }
-    .hp-router-btn__label { display: flex; align-items: center; gap: var(--space-2); width: 100%; }
-    .hp-router-btn__price { display: block; font-family: var(--font-utility); font-size: 0.78rem; color: rgba(200,214,229,0.55); margin-top: 0.35rem; }
-    /* §11 closing router buttons — ring-only (Paul directive 2026-04-27; gold-fill DEPRECATED) */
-    .hp-router-btn {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--space-3);
-      height: var(--router-btn-height);
-      padding: var(--space-4) var(--space-5);
-      background: transparent;
-      color: var(--color-accent-gold);
-      border: 1px solid rgba(201, 168, 76, 0.45);
-      border-radius: var(--router-btn-radius);
-      font-family: var(--font-utility); font-weight: 600;
-      font-size: var(--type-cta-secondary);
-      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
-      transition: background var(--motion-hover) var(--easing-out), border-color var(--motion-hover) var(--easing-out), color var(--motion-hover) var(--easing-out);
-    }
-    .hp-router-btn:hover { background: rgba(201, 168, 76, 0.06); border-color: var(--color-accent-gold); color: var(--color-accent-gold-bright); }
-    .hp-router-btn:focus-visible { outline: 2px solid var(--color-accent-gold-bright); outline-offset: 4px; }
-    .hp-router-btn__arrow { color: var(--color-accent-gold); font-size: 1.125em; transition: color var(--motion-hover) var(--easing-out); }
-    .hp-router-btn:hover .hp-router-btn__arrow { color: var(--color-accent-gold-bright); }
-
-    /* Footer credentialing strip */
-    .hp-footer__credential {
-      font-family: var(--font-utility); font-weight: 500;
-      font-size: var(--type-footer-credential);
-      letter-spacing: 0.10em; text-transform: uppercase;
-      color: var(--color-text-secondary);
-      text-align: center;
-      padding: var(--space-5) var(--space-4);
-      border-top: 1px solid var(--hp-hairline-ambient);
-      border-bottom: 1px solid var(--hp-hairline-ambient);
-    }
-    .hp-footer__credential-row {
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: center;
-      gap: var(--space-2) var(--space-4);
-      max-width: 1200px; margin: 0 auto;
-    }
-    .hp-footer__credential-separator { color: var(--color-accent-gold); user-select: none; }
-    /* Cohort 4.11 — mobile 2×3 grid layout (6 cells; · separators hidden);
-       desktop ≥768px flex-wrap row UNCHANGED per Atlas binding. */
-    @media (max-width: 767px) {
-      .hp-footer__credential-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-3) var(--space-4);
-        max-width: 480px;
-      }
-      .hp-footer__credential-row > span:not(.hp-footer__credential-separator) {
-        text-align: center;
-        line-height: 1.4;
-      }
-      .hp-footer__credential-separator { display: none; }
+    .hp-arrival__cta:hover,
+    .hp-arrival__cta:focus-visible {
+      background: rgba(201,168,76,.06);
+      color: var(--color-accent-gold-bright);
+      outline: none;
     }
 
-    /* Reveal animation (single pattern per section) */
-    .hp-reveal {
-      opacity: 0; transform: translateY(var(--reveal-translate-y));
-      transition:
-        opacity var(--motion-reveal) var(--easing-reveal),
-        transform var(--motion-reveal) var(--easing-reveal);
-      will-change: opacity, transform;
-    }
-    .hp-reveal.is-revealed { opacity: 1; transform: translateY(0); }
-
-    /* Reduced-motion master suppression (animations only; static atmosphere preserved) */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .hp-reveal { opacity: 1; transform: none; transition: none; }
-      .hp-reveal.is-revealed { opacity: 1; transform: none; }
-    }
-
-    /* Sub-canonical floor protection */
-    @media (max-width: 359px) {
-      .hp-hero__headline, .hp-headline, .hp-hero__wordmark {
-        font-family: var(--font-body);
-      }
-    }
-
-    /* ─────────────────────────────────────────────────────────
-       Cohort 2.5 C-A — Surgical polish (Meridian-validated)
-       Token-aligned per v1.3: --motion-active / --motion-hover /
-       --easing-out / --color-accent-gold-bright / --color-accent-gold-tint.
-       ───────────────────────────────────────────────────────── */
-
-    /* C1 — Tap-state polish (button-press feedback; reduced-motion-guarded).
-       Uses --motion-active (100ms) + --easing-out per v1.3 §7.1. */
-    .btn-gold-fill:active,
-    .btn-gold:active,
-    .hp-cta--secondary:active,
-    .hp-hero__cta:active,
-    .hp-router-btn:active,
-    .hp-eco-cta:active {
-      transform: scale(0.97);
-      opacity: 0.85;
-      transition: transform var(--motion-active) var(--easing-out),
-                  opacity var(--motion-active) var(--easing-out);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .btn-gold-fill:active,
-      .btn-gold:active,
-      .hp-cta--secondary:active,
-      .hp-hero__cta:active,
-      .hp-router-btn:active,
-      .hp-eco-cta:active {
-        transform: none;
-        opacity: 1;
-        transition: none;
-      }
-    }
-
-    /* C3 — Default focus-visible for non-CTA interactives (links, form
-       inputs). Per-component CTA focus rings (4px offset on hero CTAs /
-       router) preserved verbatim — this rule applies only where no
-       per-component override exists. */
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible,
-    [tabindex]:focus-visible {
+    .hp-arrival__cta:focus-visible {
       outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 2px;
+      outline-offset: 4px;
     }
 
-    /* D5 — ::selection brand styling (Apple/Cartier-grade detail).
-       Subtle gold-tint preserves AAA contrast over warm-bone palette. */
-    ::selection {
-      background: var(--color-accent-gold-tint);
-      color: var(--color-text-primary);
-    }
-    ::-moz-selection {
-      background: var(--color-accent-gold-tint);
-      color: var(--color-text-primary);
+    .hp-arrival__cta-arrow {
+      font-size: 1.05em;
+      line-height: 1;
     }
 
-    /* ─────────────────────────────────────────────────────────
-       Cohort 2.5 C-B — Mobile + UX (Meridian-validated)
-       ───────────────────────────────────────────────────────── */
+    .hp-arrival__footer-cue {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: .88rem;
+      color: var(--color-text-tertiary);
+      margin-top: 3.6rem;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-3) var(--easing-cartier) 900ms forwards;
+    }
 
-    /* C5 — Safe-area-inset support (iOS notch / Dynamic Island /
-       home indicator). Sticky bar accommodates safe-area-inset-top
-       under the notch; body respects safe-area-inset-bottom under
-       the home indicator and side insets in landscape. */
-    @supports (padding: env(safe-area-inset-top)) {
-      body {
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
+    @keyframes cartier-arrival-fade {
+      from { transform: translateY(8px); }
+      to   { transform: translateY(0); }
+    }
+
+    @keyframes cartier-rule-grow {
+      from { width: 0; }
+      to   { width: 96px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hp-arrival__eyebrow,
+      .hp-arrival__heritage,
+      .hp-arrival__wordmark,
+      .hp-arrival__rule,
+      .hp-arrival__headline,
+      .hp-arrival__subhead,
+      .hp-arrival__cta,
+      .hp-arrival__footer-cue {
+        animation: none;
+        opacity: 1;
       }
-      .hp-sticky-bar {
-        padding-top: env(safe-area-inset-top);
-        height: calc(var(--stickybar-height) + env(safe-area-inset-top));
-      }
     }
+
+    .hp-section {
+      padding: 5rem 1.5rem;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hp-section__inner { max-width: 720px; margin: 0 auto; }
+
+    .hp-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin-bottom: 1rem;
+    }
+
+    .hp-rule--ambient {
+      border: none;
+      border-top: 1px solid var(--color-rule-ambient);
+      margin: 2rem 0;
+    }
+
+    .hp-rule--accent {
+      border: none;
+      border-top: 1px solid var(--color-rule-accent);
+      margin: 2rem 0;
+      max-width: 96px;
+    }
+
+    .hp-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+      line-height: 1.28;
+      color: var(--color-text-primary);
+      margin-bottom: 1.4rem;
+    }
+
+    .hp-headline em {
+      font-style: italic;
+      color: var(--color-accent-gold);
+    }
+
+    .hp-body {
+      font-size: 1.02rem;
+      line-height: 1.72;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.4rem;
+    }
+
+    .hp-doors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+      margin-top: 2.6rem;
+    }
+
+    .hp-door {
+      border: 1px solid var(--color-rule-accent);
+      padding: 2rem 1.6rem;
+      background: var(--color-bg-elevated);
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+
+    .hp-door__tier {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .64rem;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .hp-door__title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .hp-door__title em { font-style: italic; color: var(--color-accent-gold); }
+
+    .hp-door__body {
+      font-size: 0.94rem;
+      line-height: 1.62;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.4rem;
+      flex: 1;
+    }
+
+    .hp-door__cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem;
+      letter-spacing: 0.06em;
+      color: var(--color-accent-gold-bright);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-rule-accent);
+      padding-bottom: 0.4rem;
+      align-self: flex-start;
+      transition: color 200ms var(--easing-cartier), border-color 200ms var(--easing-cartier);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hp-door__cta:hover,
+    .hp-door__cta:focus-visible {
+      color: var(--color-accent-gold-bright);
+      border-color: var(--color-accent-gold-bright);
+      outline: none;
+    }
+
+    .hp-door__cta:focus-visible {
+      outline: 2px solid var(--color-accent-gold-bright);
+      outline-offset: 4px;
+    }
+
+    .hp-method__beats {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.18rem;
+      color: var(--color-text-primary);
+      line-height: 1.85;
+      margin: 2rem 0;
+    }
+
+    .hp-method__beats span { display: block; }
+
+    .hp-footer {
+      border-top: 1px solid var(--color-rule-ambient);
+      padding: 2.4rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .hp-footer__wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .hp-footer__heritage {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: .88rem;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1.2rem;
+    }
+
+    .hp-footer__nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hp-footer__nav a {
+      color: var(--color-text-tertiary);
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hp-footer__nav a:hover,
+    .hp-footer__nav a:focus-visible {
+      color: var(--color-accent-gold);
+      outline: none;
+    }
+
+    .hp-footer__nav a:focus-visible {
+      outline: 2px solid var(--color-accent-gold-bright);
+      outline-offset: 4px;
+    }
+
+    .hp-footer__legal {
+      font-size: .72rem;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 640px) {
+      .hp-arrival { padding: 4rem 1.25rem 3rem; }
+      .hp-section { padding: 3.6rem 1.25rem; }
+      .hp-arrival__cta { width: 100%; min-width: 0; }
+    }
+
+    .hp-skip-link {
+      position: absolute; left: -9999px; top: auto;
+      width: 1px; height: 1px; overflow: hidden;
+    }
+    .hp-skip-link:focus {
+      position: fixed; left: 1rem; top: 1rem;
+      width: auto; height: auto; padding: .6rem 1rem;
+      background: var(--color-bg-elevated); color: var(--color-text-primary);
+      border: 1px solid var(--color-accent-gold);
+      z-index: 9999;
+    }
+
+    .hp-rule--page { max-width: 1200px; margin: 0 auto; }
+
+    .hp-footer__wordmark-tm { font-size: .6em; color: var(--color-accent-gold); }
+    .hp-method__beats span:not(:last-child) { margin-bottom: 0.2rem; }
   </style>
 </head>
 <body>
 
-<a href="#hero" class="skip-link">Skip to main content</a>
+<a href="#main" class="hp-skip-link">Skip to content</a>
 
-<!-- Sticky top utility bar (M-mark 28px + brand text + nav glyph + dropdown) -->
-<header class="hp-sticky-bar">
-  <a href="/" class="hp-sticky-bar__brand">
-    <img src="/img/logo.png" class="hp-sticky-bar__mark" alt="MatchMakers" width="28" height="28">
-    <span class="hp-sticky-bar__text">MatchMakers</span>
-  </a>
-  <button class="hp-sticky-bar__nav" aria-label="Open navigation" aria-expanded="false" aria-controls="hp-sticky-menu">
-    <span aria-hidden="true">&#9776;</span>
-  </button>
-  <nav class="hp-sticky-bar__menu" id="hp-sticky-menu" hidden>
-    <a href="/assessment/">Assessment</a>
-    <a href="/guide/">Free Preview</a>
-    <a href="/playbook/">Dating Studio</a>
-    <a href="/vip/">VIP</a>
-  </nav>
-</header>
+<main id="main">
 
-<main>
-
-  <!-- §3 HERO (anchor) — Hero reorder per Paul §5 2026-04-28:
-       eyebrow → M-mark (larger) → wordmark → H1 → subhead → primary CTA → 4-cell stat band -->
-  <section class="hp-hero" id="hero">
-    <div class="hp-hero__content">
-      <p class="hp-hero__eyebrow hp-hero__eyebrow--positioning" aria-label="Brand positioning"><span class="hp-hero__eyebrow-line">The system behind every successful relationship decision.</span></p>
-      <p class="hp-hero__eyebrow" aria-label="Institutional posture">
-        <span class="hp-hero__eyebrow-line">Over a decade in the making</span>
-        <span class="hp-hero__eyebrow-sep" aria-hidden="true">&middot;</span>
-        <span class="hp-hero__eyebrow-line">Methodology, not algorithm</span>
-        <span class="hp-hero__eyebrow-sep" aria-hidden="true">&middot;</span>
-        <span class="hp-hero__eyebrow-line">Human-led matchmaking</span>
-      </p>
-      <div class="hp-hero__wordmark">MatchMakers<span class="hp-hero__wordmark-tm">&trade;</span></div>
-      <hr class="hp-rule--wordmark" aria-hidden="true">
-      <h1 class="hp-hero__headline">Take Dating to the<br><em class="hp-italic-gold-accent">Next Level.</em></h1>
-      <p class="hp-hero__subhead">Every other dating platform is engineered to keep you engaged. MatchMakers is engineered to deliver what brought you.</p>
-      <div class="hp-opener__rule-ambient" aria-hidden="true"></div>
-      <div class="hp-hero__cta-stack" aria-label="Choose your starting point">
-        <a href="/guide/" class="btn-gold-fill">Connection Code &rarr;</a>
-        <a href="/playbook/" class="btn-gold-fill">Dating Studio &rarr;</a>
-        <a href="/vip/" class="btn-gold-fill">VIP &rarr;</a>
-      </div>
+  <section class="hp-arrival" aria-labelledby="hp-arrival-headline">
+    <div class="hp-arrival__atmosphere" aria-hidden="true"></div>
+    <div class="hp-arrival__inner">
+      <p class="hp-arrival__eyebrow">The Connection Code Engine</p>
+      <p class="hp-arrival__heritage">More than a decade of matchmaking practice.</p>
+      <div class="hp-arrival__wordmark">MatchMakers<span class="hp-arrival__wordmark-tm">&trade;</span></div>
+      <hr class="hp-arrival__rule" aria-hidden="true">
+      <h1 id="hp-arrival-headline" class="hp-arrival__headline">Dating, by methodology.<br><em>Not by algorithm.</em></h1>
+      <p class="hp-arrival__subhead">Welcome. The Connection Code begins with a question.</p>
+      <a href="/connection-code/" class="hp-arrival__cta">
+        <span>Begin where you arrive.</span>
+        <span class="hp-arrival__cta-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <p class="hp-arrival__footer-cue">Reviewed, not curated.</p>
     </div>
   </section>
 
-  <!-- ═══ SECTION — How every part fits (relocated from opening per Path 2 brand-first restructure) ═══ -->
-  <section class="hp-opener-bridge hp-reveal" aria-label="How every part fits">
-    <div class="hp-opener-bridge__content">
-      <p class="hp-opener-bridge__body">The system behind every successful relationship decision &mdash; refined over more than a decade of human matchmaking, applied through five levels of engagement.</p>
+  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
 
-      <hr class="hp-rule--ambient" aria-hidden="true">
-
-      <div class="hp-opener-bridge__manifesto" aria-label="MatchMakers thesis">
-        <span class="hp-opener-bridge__beat">Built on a system.</span>
-        <span class="hp-opener-bridge__beat">Anchored in Intent.</span>
-        <span class="hp-opener-bridge__beat">Made for your outcome.</span>
-      </div>
-
-      <p class="hp-opener-bridge__bridge">Here&rsquo;s how every part fits.</p>
-    </div>
-  </section>
-
-  <!-- §3↔§4 section break hairline -->
-  <hr class="hp-rule--section-break" aria-hidden="true">
-
-  <!-- §4 THE METHOD — B-1 thesis surface + B-2 engagement contrast (Atlas D-3 + locked B-2) -->
-  <section class="hp-section hp-method hp-reveal">
-    <div class="hp-section__content">
+  <section class="hp-section" aria-labelledby="hp-method-headline">
+    <div class="hp-section__inner">
       <p class="hp-eyebrow">The Method</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">Dating, by methodology.<br><em class="hp-italic-gold-accent">Refined by practice.</em></h2>
-      <!-- B-1 thesis surface (Atlas D-3 ratified phrasing c) -->
-      <p class="hp-body hp-body--thesis"><em>Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</em></p>
+      <hr class="hp-rule--accent" aria-hidden="true">
+      <h2 id="hp-method-headline" class="hp-headline">A framework, <em>not a feed.</em></h2>
+      <p class="hp-body">The Connection Code&trade; is the methodology behind every successful relationship decision. Five Phases. Five Signals. Nine Intents. Refined over more than a decade of matchmaking practice, then encoded as the Connection Code Engine.</p>
       <hr class="hp-rule--ambient" aria-hidden="true">
-      <!-- B-2 engagement contrast (locked) -->
-      <p class="hp-body">The dating industry is a $9 billion market built around engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn. MatchMakers was built around a different assumption: the problem was never access to people. It was clarity about purpose.</p>
-      <hr class="hp-rule--ambient" aria-hidden="true">
-      <p class="hp-body">So we built a five-level system anchored in one methodology &mdash; the system behind every successful relationship decision, now applied through Dating Studio. The systems are designed to work together. Each reflects how matchmaking actually works when a person does it well &mdash; observation, response, and intent &mdash; not how an algorithm guesses at it.</p>
+      <p class="hp-method__beats">
+        <span>Built on a system.</span>
+        <span>Anchored in Intent.</span>
+        <span>Made for your outcome.</span>
+      </p>
     </div>
   </section>
 
-  <!-- §5 WAY 1 — Connection Code (Free Entry Layer; absorbs Assessment per Pre-Cartier §1.C) -->
-  <section class="hp-section hp-stage hp-reveal" id="stage-connection-code">
-    <div class="hp-section__content">
-      <p class="hp-eyebrow">Level 1 &mdash; Connection Code&trade;</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">distilled.</em></h2>
-      <p class="hp-body">Access the Connection Code &mdash; the foundation behind everything we make. Five signals, one framework, a different way of reading what&rsquo;s actually in front of you. Free, in full.</p>
-      <p class="hp-body">Level 1 includes the Connection Code itself, a guided Coach with structured workflows, and one free Script Builder session. The full system unfolds at Level 2.</p>
-      <p class="hp-body">Start with a short Assessment to surface what you&rsquo;re actually looking for &mdash; the kind of relationship, the kind of presence, the kind of standard you&rsquo;re bringing to this. The results shape how the Code applies to you.</p>
-      <div class="hp-cta-row" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
-        <a href="/guide/" class="hp-cta--secondary">Access Connection Code <span aria-hidden="true">&rarr;</span></a>
-        <a href="/assessment/" class="hp-cta--secondary">Take the Assessment <span aria-hidden="true">&rarr;</span></a>
-      </div>
+  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+
+  <section class="hp-section" aria-labelledby="hp-doors-headline">
+    <div class="hp-section__inner">
+      <p class="hp-eyebrow">Three Doors</p>
+      <hr class="hp-rule--accent" aria-hidden="true">
+      <h2 id="hp-doors-headline" class="hp-headline">The methodology, <em>at three depths.</em></h2>
+      <p class="hp-body">The Connection Code is one framework, applied at the level you choose. Begin at the entry. Move when the read is ready.</p>
+    </div>
+
+    <div class="hp-doors">
+      <article class="hp-door">
+        <p class="hp-door__tier">Level 1 &middot; Free</p>
+        <h3 class="hp-door__title">The Connection Code <em>Engine</em></h3>
+        <p class="hp-door__body">A short calibration that surfaces your Intent, your Phase, and your current Signal. The result is a personalized Connection Code Brief and access to Coach Lite.</p>
+        <a href="/connection-code/" class="hp-door__cta">Begin the calibration <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="hp-door">
+        <p class="hp-door__tier">Level 2 &middot; By application</p>
+        <h3 class="hp-door__title">The Dating <em>Studio</em></h3>
+        <p class="hp-door__body">The methodology, applied. Coach AI grounded in the Connection Code corpus. Script Builder that writes for your Intent. A weekly Suitability Report. The methodology earns the membership.</p>
+        <a href="/playbook/" class="hp-door__cta">Continue to the Studio <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="hp-door">
+        <p class="hp-door__tier">Levels 3&ndash;5 &middot; By application</p>
+        <h3 class="hp-door__title">VIP <em>Matchmaking</em></h3>
+        <p class="hp-door__body">Where the methodology meets a human matchmaker. Three levels, from system enrollment to a 30-day in-app live engagement to bespoke video advisory by consultation.</p>
+        <a href="/vip/" class="hp-door__cta">Inquire about VIP <span aria-hidden="true">&rarr;</span></a>
+      </article>
     </div>
   </section>
 
-  <!-- B-3 narrative bridge (Atlas D-6 ratified phrasing) -->
-  <section class="hp-section hp-bridge hp-reveal">
-    <div class="hp-section__content">
-      <p class="hp-body hp-body--bridge">The system came out of human matchmaking &mdash; refined through practice, across thousands of conversations and decisions. <em>Refined in practice, not designed for engagement.</em></p>
-    </div>
-  </section>
+  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
 
-  <!-- §7 WAY 2 — Dating Studio (homepage label per Pre-Cartier §2.A; underlying canonical: Dating Studio) -->
-  <section class="hp-section hp-centerpiece hp-reveal" id="stage-dating-studio">
-    <div class="hp-section__content">
-      <p class="hp-eyebrow">Level 2 &mdash; Dating Studio</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied.</em></h2>
-      <p class="hp-subhead">The core product. The system the Connection Code previews. ($299.99)</p>
-      <p class="hp-body">The MatchMakers Dating Studio Playbook is the methodology &mdash; the same one that&rsquo;s powered our human matchmaking practice. The Coach is the AI that applies it to you, your profile, your conversations, your decisions. Script Builder writes for your Intent. Together they&rsquo;re a single product. Level 2 includes the full Playbook, Coach AI (3 messages per day, Claude-powered), and unlimited Script Builder usage.</p>
-      <a href="/playbook/" class="hp-cta--secondary">Continue to Dating Studio <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </section>
-
-  <!-- §6↔§8 section break hairline (post-Apple-strip; APP_BADGE_BAND removed Cohort 2.5) -->
-  <hr class="hp-rule--section-break" aria-hidden="true">
-
-  <!-- §9 WAY 3 — VIP (canonical journey way 3 / APEX; B-4 narrative inline; Legal §6.1 v2 envelope) -->
-  <section class="hp-section hp-stage hp-stage--vip hp-reveal" id="stage-vip">
-    <div class="hp-section__content">
-      <p class="hp-eyebrow">Levels 3&ndash;5 &mdash; VIP Matchmaking</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">The methodology, <em class="hp-italic-gold-accent">applied directly.</em></h2>
-      <p class="hp-body">VIP Matchmaking is where the methodology meets a human matchmaker. Three levels &mdash; from system enrollment, to a 30-day in-app live engagement, to bespoke video advisory by consultation.</p>
-      <p class="hp-body"><strong>VIP Lite</strong> is the system enrollment, $499.99 &mdash; everything in Level 2, Coach AI upgraded to 25 messages per day, plus your Personal MatchMakers System Document and Execution Playbook. <strong>VIP Premier</strong> adds a dedicated human matchmaker for a 30-day engagement, $999.99. <strong>VIP Diamond</strong> is the apex &mdash; bespoke video engagement, scoped through consultation.</p>
-      <p class="hp-body">For people who want it applied directly, not just delivered as a tool.</p>
-      <p class="hp-body" style="font-style:italic;color:rgba(200,214,229,.65);">Not another tool. Not another coach. Not another app.</p>
-      <a href="/vip/" class="hp-eco-cta">Explore VIP Matchmaking <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </section>
-
-  <!-- §10 ORIGIN (long-form essay; thesis-supporting backstop) -->
-  <section class="hp-section hp-origin hp-reveal">
-    <div class="hp-section__content">
+  <section class="hp-section" aria-labelledby="hp-origin-headline">
+    <div class="hp-section__inner">
       <p class="hp-eyebrow">Origin</p>
-      <hr class="hp-rule--eyebrow" aria-hidden="true">
-      <h2 class="hp-headline">Built <em class="hp-italic-gold-accent">match by match.</em></h2>
-      <p class="hp-body hp-body--essay">MatchMakers was built on years of human matchmaking practice. The Connection Code methodology came out of that work &mdash; not designed in a conference room but refined through practice, applied person by person, across thousands of conversations and decisions. What we ship now is what that practice taught us: standing matters more than swipes, intent matters more than attraction, and the right tools matter more than the smartest algorithm. The systems on this site are the shape of it &mdash; applied through Coach, learned through the Playbook.</p>
-      <hr class="hp-rule--ambient" aria-hidden="true">
-      <p class="hp-body hp-body--essay">MatchMakers grew without paid acquisition, without influencer spend, without growth campaigns. Word-of-mouth only. The work earned the standing.</p>
-    </div>
-  </section>
-
-  <!-- §10↔§11 section break hairline -->
-  <hr class="hp-rule--section-break" aria-hidden="true">
-
-  <!-- §11 CLOSING — "Five Levels. One System." (Levels System reframing 2026-04-30; 5-cell ladder) -->
-  <section class="hp-section hp-router hp-reveal">
-    <div class="hp-section__content">
-      <h2 class="hp-headline">Five Levels. <em class="hp-italic-gold-accent">One System.</em></h2>
-      <p class="hp-body">Level 1 is the Connection Code &mdash; free, your starting point. Level 2 is Dating Studio &mdash; the core product. Levels 3 through 5 are VIP &mdash; methodology applied directly by a human matchmaker. Start where you are. Move up as needed.</p>
-      <div class="hp-router-grid hp-router-grid--five">
-        <a href="/guide/" class="hp-router-btn">
-          <span class="hp-router-btn__level">Level 1</span>
-          <span class="hp-router-btn__label">Connection Code <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
-          <span class="hp-router-btn__price">Free</span>
-        </a>
-        <a href="/playbook/" class="hp-router-btn">
-          <span class="hp-router-btn__level">Level 2</span>
-          <span class="hp-router-btn__label">Dating Studio <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
-          <span class="hp-router-btn__price">$299.99</span>
-        </a>
-        <a href="/vip/" class="hp-router-btn">
-          <span class="hp-router-btn__level">Level 3</span>
-          <span class="hp-router-btn__label">VIP Lite <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
-          <span class="hp-router-btn__price">$499.99</span>
-        </a>
-        <a href="/vip/" class="hp-router-btn">
-          <span class="hp-router-btn__level">Level 4</span>
-          <span class="hp-router-btn__label">VIP Premier <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
-          <span class="hp-router-btn__price">$999.99</span>
-        </a>
-        <a href="/vip/" class="hp-router-btn">
-          <span class="hp-router-btn__level">Level 5</span>
-          <span class="hp-router-btn__label">VIP Diamond <span class="hp-router-btn__arrow" aria-hidden="true">&rarr;</span></span>
-          <span class="hp-router-btn__price">By Consultation</span>
-        </a>
-      </div>
+      <hr class="hp-rule--accent" aria-hidden="true">
+      <h2 id="hp-origin-headline" class="hp-headline">The methodology <em>earned the membership.</em></h2>
+      <p class="hp-body">The Connection Code came out of human matchmaking. Refined through practice, across thousands of conversations and decisions. Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</p>
+      <p class="hp-body">The Connection Code Engine is the same methodology, encoded. Same framework. Same restraint. Applied through Anthropic primitives so the work is real and the trust is auditable.</p>
     </div>
   </section>
 
 </main>
 
-<!-- Footer credentialing strip (D1-revised) -->
-<div class="hp-footer__credential">
-  <div class="hp-footer__credential-row" aria-label="Institutional credentials">
-    <span>Est. 2018</span>
-    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>matchmakersusa.com</span>
-    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>Over a decade in the making</span>
-    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>Methodology-Grounded</span>
-    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>Built for Outcomes</span>
-    <span class="hp-footer__credential-separator" aria-hidden="true">&middot;</span>
-    <span>100% Organic Growth</span>
-  </div>
-</div>
-
-<footer>
-  <div class="fg">
-    <div>
-      <div class="fn">
-        <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;" loading="lazy" decoding="async">
-        <span class="nm">MatchMakers<sup>&trade;</sup></span>
-      </div>
-      <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">The dating ecosystem built around declared Intent. Over a decade in the making. Word-of-mouth only.</p>
-    </div>
-    <div class="fc" aria-labelledby="ftr-h-products">
-      <h4 id="ftr-h-products">Products</h4>
-      <a href="/playbook/">Dating Studio &mdash; $299.99</a>
-      <a href="/vip/">VIP Matchmaking &mdash; From $499.99</a>
-      <a href="/guide/">Connection Code &mdash; Free</a>
-      <a href="/assessment/">Intent Assessment &mdash; Free</a>
-    </div>
-    <div class="fc" aria-labelledby="ftr-h-company">
-      <h4 id="ftr-h-company">Company</h4>
-      <a href="/contact/">Contact</a>
-      <a href="/playbook/">Methodology</a>
-      <a href="mailto:customerservice@matchmakersusa.com">customerservice@matchmakersusa.com</a>
-      <a href="tel:+19293546337">(929) 354-6337</a>
-    </div>
-    <div class="fc" aria-labelledby="ftr-h-legal">
-      <h4 id="ftr-h-legal">Legal</h4>
-      <a href="/privacy-policy/">Privacy Policy</a>
-      <a href="/terms-of-service/">Terms of Service</a>
-      <a href="/child-safety/">Child Safety</a>
-      <span style="display:block;font-family:var(--font-body);font-size:.78rem;line-height:1.7;color:rgba(200,214,229,.55);margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(65,91,124,.15);">MatchMakers LLC<br>1991 Crocker Rd, Suite 600-755<br>Westlake, OH 44145</span>
-    </div>
-  </div>
-  <div class="fbot">
-    <span class="fc-copy">&copy; 2026 MatchMakers LLC &middot; All rights reserved</span>
-    <span class="fc-copy"><a href="/privacy-policy/" style="color:inherit;text-decoration:none;">Privacy</a> &middot; <a href="/terms-of-service/" style="color:inherit;text-decoration:none;">Terms</a> &middot; <a href="/child-safety/" style="color:inherit;text-decoration:none;">Child Safety</a></span>
-  </div>
+<footer class="hp-footer">
+  <p class="hp-footer__wordmark">MatchMakers<span class="hp-footer__wordmark-tm">&trade;</span></p>
+  <p class="hp-footer__heritage">More than a decade of matchmaking practice. Reviewed, not curated.</p>
+  <nav class="hp-footer__nav" aria-label="Footer">
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/playbook/">Dating Studio</a>
+    <a href="/vip/">VIP Matchmaking</a>
+    <a href="/coach/">Coach</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <p class="hp-footer__legal">&copy; MatchMakers LLC. The Connection Code is a trademark of MatchMakers LLC.</p>
 </footer>
 
-<script src="/js/analytics.js"></script>
-<script src="/js/main.js"></script>
-<script>
-  // Reveal animation observer (single pattern per section per Atlas v2 plan §2.6 + Web Ed v2 §11)
-  (function () {
-    if (!('IntersectionObserver' in window)) {
-      // Graceful fallback: reveal everything immediately
-      document.querySelectorAll('.hp-reveal').forEach(function (el) { el.classList.add('is-revealed'); });
-      return;
-    }
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-    document.querySelectorAll('.hp-reveal').forEach(function (el) { observer.observe(el); });
-  })();
-</script>
 </body>
 </html>
