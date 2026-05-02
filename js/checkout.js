@@ -65,6 +65,32 @@ var MM_PRODUCTS = {
     btnBg: '#0B1727',
     btnColor: '#C9A84C',
     btnBorder: '1.5px solid rgba(201,168,76,.4)'
+  },
+  // VIP Level 3 \u2014 application-gated direct purchase (Backend Lane 1, 2026-04-30)
+  // Wired per Paul \u00a75 ratify; PL created via Stripe MCP create_payment_link
+  // Stripe product: prod_UQamOwPr8toLuX \u00b7 price: price_1TRjbV1ihNKVY3uGcFwYadVC ($499.99)
+  'vip-entry': {
+    eyebrow: 'MatchMakers VIP \u2014 Level 3',
+    product: 'MatchMakers VIP \u2014 Level 3',
+    price: '$499.99',
+    includes: 'Application-gated \u00b7 Coach \u00b7 Playbook \u00b7 Studio \u00b7 30-day priority engagement',
+    priceId: 'price_1TRjbV1ihNKVY3uGcFwYadVC',
+    paymentLink: 'https://buy.stripe.com/fZu9ALeNH8DraCf0Gw2Nq06',
+    btnBg: '#C9A84C',
+    btnColor: '#0B1727'
+  },
+  // VIP Level 4 \u2014 application-gated direct purchase (Backend Lane 1, 2026-04-30)
+  // Stripe product: prod_UQamum7SoTVtx7 \u00b7 price: price_1TRjbY1ihNKVY3uGqj8uvyVq ($999.99)
+  // Includes 30-day engagement + in-app live synchronous chat (NOT video) per master brief amendment 2026-04-29
+  'vip-mid': {
+    eyebrow: 'MatchMakers VIP \u2014 Level 4',
+    product: 'MatchMakers VIP \u2014 Level 4',
+    price: '$999.99',
+    includes: 'Application-gated \u00b7 Everything in Level 3 \u00b7 30-day engagement \u00b7 In-app live synchronous chat \u00b7 Post-purchase portal',
+    priceId: 'price_1TRjbY1ihNKVY3uGqj8uvyVq',
+    paymentLink: 'https://buy.stripe.com/14A8wH9tn4nbcKn3SI2Nq07',
+    btnBg: '#C9A84C',
+    btnColor: '#0B1727'
   }
 };
 

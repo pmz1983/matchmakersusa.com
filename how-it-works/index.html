@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>How It Works &mdash; MatchMakers</title>
+  <meta name="description" content="The three systems behind MatchMakers — Community-Rated, Photo Ranking, Intent-First Deck — and the methodology that connects them.">
+  <link rel="canonical" href="https://matchmakersusa.com/how-it-works/">
+  <!-- PHASE 2 PAGE — NOT YET LIVE-FACING. noindex preserved until copy locks + algo cutovers + Legal clearance land. -->
+  <meta name="robots" content="noindex, follow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png">
+
+  <!-- /how-it-works/ Phase 2 skeleton — v1.2 design tokens scoped to .hw-v1 (parallel to .hp-v1).
+       Atlas pre-stage 2026-04-27. Local-only; not pushed. Content blocks are TODO pending Web Ed Phase 2 spec authoring.
+       Activation gates: Tier-3 + ALGO_OVR_004 algo cutovers + Legal clearance memo on 6 differentiation claims. -->
+  <style>
+    :root {
+      /* Mirror v1.2 homepage tokens for cross-surface consistency.
+         If/when v1.2 tokens elevate from .hp-v1 to :root in PR #6/#7, this duplicate block can be removed. */
+      --hw-bg-primary: #050A10;
+      --hw-bg-elevated: #0A1320;
+      --hw-text-primary: #F4F1EA;
+      --hw-text-secondary: #B8B0A0;
+      --hw-text-tertiary: #7A7468;
+      --hw-accent-gold: #C9A84C;
+      --hw-accent-gold-bright: rgba(201,168,76,0.55);
+      --hw-accent-gold-dim: rgba(201,168,76,0.30);
+      --hw-accent-gold-tint: rgba(201,168,76,0.06);
+      --hw-accent-gold-glow: rgba(201,168,76,0.15);
+      --hw-divider: rgba(244,241,234,0.08);
+
+      --hw-display-xl: clamp(2.75rem, 5.5vw, 4.75rem);
+      --hw-display-lg: clamp(2.25rem, 4vw, 3.5rem);
+      --hw-body-lg: clamp(1.125rem, 1.4vw, 1.375rem);
+      --hw-body-md: clamp(1rem, 1.15vw, 1.125rem);
+      --hw-eyebrow: 0.75rem;
+
+      --hw-leading-display: 1.08;
+      --hw-leading-body: 1.55;
+      --hw-leading-essay: 1.65;
+
+      --hw-tracking-display: -0.01em;
+      --hw-tracking-eyebrow: 0.12em;
+
+      --hw-s-3: 12px;  --hw-s-4: 16px; --hw-s-5: 24px;
+      --hw-s-6: 32px;  --hw-s-8: 48px; --hw-s-10: 64px;
+      --hw-s-12: 96px; --hw-s-16: 128px; --hw-s-20: 160px;
+    }
+
+    .hw-v1 {
+      background: var(--hw-bg-primary);
+      color: var(--hw-text-primary);
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    .hw-v1 *, .hw-v1 *::before, .hw-v1 *::after { box-sizing: border-box; }
+
+    .hw-section { padding: var(--hw-s-16) 48px; position: relative; }
+    @media (max-width: 1023px) { .hw-section { padding: var(--hw-s-12) 32px; } }
+    @media (max-width: 767px)  { .hw-section { padding: var(--hw-s-10) 20px; } }
+
+    .hw-hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: var(--hw-s-16) 48px var(--hw-s-12);
+    }
+    .hw-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      font-size: var(--hw-display-xl);
+      line-height: var(--hw-leading-display);
+      letter-spacing: var(--hw-tracking-display);
+      color: var(--hw-text-primary);
+      text-shadow: 0 0 80px var(--hw-accent-gold-glow);
+      margin: 0;
+    }
+    .hw-headline em { font-style: italic; color: var(--hw-accent-gold); }
+    .hw-subhead {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: var(--hw-body-lg);
+      line-height: var(--hw-leading-body);
+      max-width: 56ch;
+      margin: var(--hw-s-6) auto 0;
+    }
+
+    .hw-eyebrow {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: var(--hw-eyebrow);
+      letter-spacing: var(--hw-tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--hw-accent-gold);
+      margin: 0;
+    }
+    .hw-gold-rule {
+      display: block;
+      width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--hw-accent-gold), transparent);
+      border-radius: 1px;
+      margin: var(--hw-s-3) auto var(--hw-s-4);
+    }
+    .hw-section-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      font-size: var(--hw-display-lg);
+      line-height: var(--hw-leading-display);
+      color: var(--hw-text-primary);
+      text-shadow: 0 0 60px rgba(201,168,76,0.10);
+      margin: 0 0 var(--hw-s-6);
+    }
+    .hw-section-body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-size: var(--hw-body-lg);
+      line-height: var(--hw-leading-body);
+      max-width: 64ch;
+      margin: 0 auto;
+    }
+    .hw-intro { text-align: center; max-width: 720px; margin: 0 auto; }
+
+    /* TODO marker styling — visible in dev only; remove or restyle when content lands */
+    .hw-todo {
+      display: block;
+      max-width: 64ch;
+      margin: var(--hw-s-5) auto 0;
+      padding: var(--hw-s-4);
+      border: 1px dashed var(--hw-accent-gold-dim);
+      background: var(--hw-accent-gold-tint);
+      color: var(--hw-text-secondary);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .hw-todo strong { color: var(--hw-accent-gold); }
+
+    .hw-cta-link { margin-top: var(--hw-s-8); }
+    /* .hw-cta-link visual rules sourced from canonical /css/style.css (v2.1 C-5). */
+
+    @media (prefers-reduced-motion: reduce) {
+      .hw-v1 *, .hw-v1 *::before, .hw-v1 *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#top" class="skip-link">Skip to main content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" style="display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;">
+      <img src="/img/logo.png" class="ni" alt="MatchMakers" width="36" height="36">
+      <span class="nm">MatchMakers<sup>&trade;</sup></span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nl">Home</a>
+      <a href="/playbook/" class="nl">Coach &amp; Playbook</a>
+      <a href="/vip/" class="nl">VIP</a>
+      <a href="/assessment/" class="nl">Assessment</a>
+      <a href="/guide/" class="nb">Connection Code</a>
+    </div>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main id="main" class="hw-v1">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §1 HERO — How It Works (intro)
+       Web Ed Phase 2 spec authoring pending.
+       Locks: H1, subhead, optional italic-gold accent word.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-hero" id="top">
+    <div>
+      <h1 class="hw-headline">How it <em>works.</em></h1>
+      <p class="hw-subhead">[TODO: Web Ed Phase 2 spec — hero subhead. Likely pattern: institutional + Connection Code-grounded; no algo-mechanism specifics until Legal clearance.]</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §2 THE THREE SYSTEMS (overview)
+       Frame A umbrella per CYCLE1_CLOSEOUT §4 #1.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-section">
+    <div class="hw-intro">
+      <p class="hw-eyebrow">The Three Systems</p>
+      <span class="hw-gold-rule" aria-hidden="true"></span>
+      <h2 class="hw-section-headline">[TODO: §2 headline lock]</h2>
+      <p class="hw-section-body">[TODO: ~80-word overview body. Web Ed Phase 2 spec — introduces three systems by name without diving into mechanism specifics. Anchor: methodology + community + intent.]</p>
+      <div class="hw-todo">
+        <strong>Pending:</strong> Web Ed Phase 2 spec authoring. Three system names (Community-Rated / Photo Ranking / Intent-First Deck) per editorial spec v1 §4 v2-post-Legal expansion.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §3 SYSTEM 1 — Community-Rated Matching
+       PENDING-LEGAL until clearance memo lands on 6 differentiation claims.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-section">
+    <div class="hw-intro">
+      <p class="hw-eyebrow">System 1</p>
+      <span class="hw-gold-rule" aria-hidden="true"></span>
+      <h2 class="hw-section-headline">[TODO: System 1 headline]</h2>
+      <p class="hw-section-body">[TODO: System 1 body — mechanism description. Gates on Legal clearance + Tier-3 algo cutover. Per CYCLE1_CLOSEOUT §4 #1.]</p>
+      <div class="hw-todo">
+        <strong>Activation gates:</strong> (1) Legal-clearance memo on Frame A "Community-Rated Matching System" claims; (2) Tier-3 algo cutover; (3) Web Ed Phase 2 spec body lock.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §4 SYSTEM 2 — Photo Ranking
+       PENDING-LEGAL.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-section">
+    <div class="hw-intro">
+      <p class="hw-eyebrow">System 2</p>
+      <span class="hw-gold-rule" aria-hidden="true"></span>
+      <h2 class="hw-section-headline">[TODO: System 2 headline]</h2>
+      <p class="hw-section-body">[TODO: System 2 body — photo-ranking-by-real-response mechanism. Gates on Legal clearance + ALGO_OVR_004 cutover.]</p>
+      <div class="hw-todo">
+        <strong>Activation gates:</strong> (1) Legal-clearance memo on Frame A "Photo Ranking" claims; (2) ALGO_OVR_004 cutover; (3) Web Ed Phase 2 spec body lock.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §5 SYSTEM 3 — Intent-First Deck
+       PENDING-LEGAL.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-section">
+    <div class="hw-intro">
+      <p class="hw-eyebrow">System 3</p>
+      <span class="hw-gold-rule" aria-hidden="true"></span>
+      <h2 class="hw-section-headline">[TODO: System 3 headline]</h2>
+      <p class="hw-section-body">[TODO: System 3 body — intent-first matching mechanism. Gates on Legal clearance + algo cutover.]</p>
+      <div class="hw-todo">
+        <strong>Activation gates:</strong> (1) Legal-clearance memo on Frame A "Intent-First Deck" claims; (2) algo cutover; (3) Web Ed Phase 2 spec body lock.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §6 HOW THEY WORK TOGETHER
+       Synthesis section; non-PENDING-LEGAL bridge.
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-section">
+    <div class="hw-intro">
+      <p class="hw-eyebrow">Together</p>
+      <span class="hw-gold-rule" aria-hidden="true"></span>
+      <h2 class="hw-section-headline">[TODO: §6 headline]</h2>
+      <p class="hw-section-body">[TODO: ~70-word synthesis. Connects three systems via Connection Code methodology. May ship pre-Legal-clearance with non-claim-bearing language; Web Ed Phase 2 ratifies.]</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §7 CTA BACK — close + product router
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hw-section">
+    <div class="hw-intro">
+      <h2 class="hw-section-headline">[TODO: close headline]</h2>
+      <p class="hw-section-body">[TODO: brief close bridging back to Coach &amp; Playbook product surface.]</p>
+      <a href="/playbook/" class="hw-cta-link">See Coach &amp; Playbook <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer credentialing strip (mirrors homepage v1.2 pattern; v2 swap to D1-revised content per editorial spec v2 §8.4 once /how-it-works/ ships post-PR-#6) -->
+<div style="background:var(--hw-bg-primary);border-top:1px solid rgba(201,168,76,0.18);border-bottom:1px solid rgba(201,168,76,0.18);padding:24px 48px;text-align:center;">
+  <div style="max-width:1200px;margin:0 auto;font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:clamp(0.7rem,0.85vw,0.78rem);letter-spacing:0.08em;text-transform:uppercase;color:var(--hw-text-secondary);">
+    [TODO: footer credentialing strip — match homepage v2 final per editorial spec v2 §8.4]
+  </div>
+</div>
+
+<footer>
+  <div class="fg">
+    <div>
+      <div class="fn">
+        <img src="/img/logo.png" alt="MatchMakers" width="36" height="36" style="border-radius:8px;">
+        <span class="nm">MatchMakers<sup>&trade;</sup></span>
+      </div>
+      <p style="font-size:.78rem;color:rgba(120,149,175,.55);line-height:1.65;margin-top:.75rem;max-width:280px;">[TODO: footer about-line — match homepage v2 final per editorial spec v2.]</p>
+    </div>
+    <div class="fc">
+      <h4>Products</h4>
+      <a href="/assessment/">Intent Assessment &mdash; Free</a>
+      <a href="/guide/">Connection Code &mdash; Free</a>
+      <a href="/playbook/">Dating Coach &amp; Playbook &mdash; $250</a>
+      <a href="/vip/">VIP MatchMaking &mdash; By Consultation</a>
+    </div>
+    <div class="fc">
+      <h4>MatchMakers LLC</h4>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms-of-service/">Terms of Service</a>
+      <a href="/child-safety/">Child Safety</a>
+      <a href="mailto:customerservice@matchmakersusa.com">customerservice@matchmakersusa.com</a>
+      <a href="tel:+19293546337">(929) 354-6337</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <span class="fc-copy">&copy; 2026 MatchMakers LLC &middot; All rights reserved</span>
+  </div>
+</footer>
+
+<script src="/js/analytics.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

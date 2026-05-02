@@ -139,6 +139,73 @@ Deno.serve(async (req: Request) => {
     );
   }
 
+  // ── Action: check-vip-prerequisite (does this email qualify for VIP application?) ─
+  // v2 (2026-04-28): VIP funnel-form gate. Returns eligible=true ONLY if email
+  // has BOTH dating_coach_and_playbook AND (dating_coach_premium OR
+  // dating_coach_unlimited), both with status='completed'. Combined $750+ spend.
+  // Frontend uses this to redirect unqualified applicants BEFORE form unlock;
+  // server-side submit-vip-application re-verifies for defense-in-depth.
+  if (body.action === "check-vip-prerequisite") {
+    const { data, error } = await supabase
+      .from("purchases")
+      .select("product, status")
+      .eq("email", email)
+      .eq("status", "completed");
+
+    if (error) {
+      console.error("VIP prerequisite check error:", error);
+      return new Response(JSON.stringify({ error: "Database error" }), { status: 500, headers });
+    }
+
+    const products = new Set<string>((data ?? []).map((r: { product: string }) => r.product));
+    const hasPlaybook = products.has("dating_coach_and_playbook");
+    const hasCoachPremium = products.has("dating_coach_premium");
+    const hasCoachUnlimited = products.has("dating_coach_unlimited");
+    const hasCoach = hasCoachPremium || hasCoachUnlimited;
+
+    if (hasPlaybook && hasCoach) {
+      return new Response(
+        JSON.stringify({
+          eligible: true,
+          owned_products: Array.from(products),
+        }),
+        { status: 200, headers },
+      );
+    }
+
+    const missing: string[] = [];
+    if (!hasPlaybook) missing.push("dating_coach_and_playbook");
+    if (!hasCoach) missing.push("dating_coach_premium_or_unlimited");
+
+    let reason_code: string;
+    let reason: string;
+    let redirect_url: string;
+    if (!hasPlaybook && !hasCoach) {
+      reason_code = "both_missing";
+      reason = "VIP applications require completion of the MatchMakers Playbook ($250) AND the Dating Coach ($500 Premium or $1,000 Unlimited). Start with the Playbook to begin your foundation.";
+      redirect_url = "/playbook/";
+    } else if (!hasPlaybook) {
+      reason_code = "no_playbook";
+      reason = "VIP applications require the MatchMakers Playbook ($250) as your foundation. Get the Playbook — your Coach access carries forward.";
+      redirect_url = "/playbook/";
+    } else {
+      reason_code = "no_coach";
+      reason = "VIP applications require the Dating Coach ($500 Premium or $1,000 Unlimited) in addition to the Playbook.";
+      redirect_url = "/coach/";
+    }
+
+    return new Response(
+      JSON.stringify({
+        eligible: false,
+        reason_code,
+        reason,
+        missing_products: missing,
+        redirect_url,
+      }),
+      { status: 200, headers },
+    );
+  }
+
   // ── Action: verify-code (does this access code exist for a completed purchase?) ─
   // Path-scoped 30-day window: the /redeem/ deep-link redemption path expires 30 days
   // after purchase. The email-lookup path (verify-access) keeps lifetime/permanent

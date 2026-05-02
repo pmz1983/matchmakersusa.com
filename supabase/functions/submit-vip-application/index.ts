@@ -1,10 +1,26 @@
 // ═══════════════════════════════════════════════════
-// MATCHMAKERS — submit-vip-application Edge Function
+// MATCHMAKERS — submit-vip-application Edge Function v2
+//
+// v2 (2026-04-28): Adds Coach + Playbook prerequisite verification gate
+// per Atlas dispatch "VIP funnel-form prerequisite verification +
+// Hard separation architecture" 2026-04-28. Westley pattern: pre-v2,
+// the function accepted any submission. v2 BLOCKS submissions from
+// emails that have not paid for BOTH:
+//   • dating_coach_and_playbook  ($250 Playbook + 3 bundled Coach msgs)
+//   • dating_coach_premium ($500) OR dating_coach_unlimited ($1000)
+// Combined: $750+ minimum spend prerequisite.
+//
+// Verification policy (defense-in-depth):
+//   • Server-side (this function): re-verify on submit — catches
+//     direct API hits bypassing the website form
+//   • Client-side (website /vip/ form): pre-submit check via
+//     check-eligibility action='check-vip-prerequisite' — gives
+//     UX-friendly redirect to /playbook/ before form unlock
 //
 // Replaces the fragile mailto:-based VIP application submission
-// path. Receives form POST from vip/index.html, validates, writes
-// to public.vip_applications, and sends a notification email to
-// the configured advisor inbox via Resend.
+// path. Receives form POST from vip/index.html, validates,
+// VERIFIES PREREQUISITE PURCHASE STATE, writes to public.vip_applications,
+// and sends a notification email to the configured advisor inbox via Resend.
 //
 // Schema: see supabase/migrations/20260421000001_create_vip_applications.sql
 // Frontend: see vip/index.html submitApplication() (post-Step-3)
@@ -104,6 +120,70 @@ function validateBody(body: VipApplicationBody): { ok: true } | { ok: false; err
   return { ok: true };
 }
 
+// ── v2 Prerequisite verification (Coach + Playbook + Upgrade) ────
+//
+// Returns ok if email has BOTH:
+//   • dating_coach_and_playbook  ($250)
+//   • dating_coach_premium ($500) OR dating_coach_unlimited ($1000)
+// Both with status='completed'. Refunded/disputed purchases do NOT count.
+//
+// Error envelope shape supports website form's redirect-to-/playbook/
+// UX: { ok: false, reason_code: 'no_playbook' | 'no_coach' | 'both_missing',
+//       missing_products: string[], reason: string }
+//
+interface PrereqCheckResult {
+  ok: boolean;
+  reason_code?: "no_playbook" | "no_coach" | "both_missing" | "db_error";
+  missing_products?: string[];
+  reason?: string;
+}
+
+async function verifyVipPrerequisite(email: string): Promise<PrereqCheckResult> {
+  const { data, error } = await supabase
+    .from("purchases")
+    .select("product, status")
+    .eq("email", email)
+    .eq("status", "completed");
+
+  if (error) {
+    console.error("VIP prerequisite check DB error:", error);
+    return {
+      ok: false,
+      reason_code: "db_error",
+      reason: "Could not verify your purchase history. Please try again or contact support@matchmakersusa.com.",
+    };
+  }
+
+  const products = new Set<string>((data ?? []).map((r: { product: string }) => r.product));
+  const hasPlaybook = products.has("dating_coach_and_playbook");
+  const hasCoachPremium = products.has("dating_coach_premium");
+  const hasCoachUnlimited = products.has("dating_coach_unlimited");
+  const hasCoach = hasCoachPremium || hasCoachUnlimited;
+
+  if (hasPlaybook && hasCoach) {
+    return { ok: true };
+  }
+
+  const missing: string[] = [];
+  if (!hasPlaybook) missing.push("dating_coach_and_playbook");
+  if (!hasCoach) missing.push("dating_coach_premium_or_unlimited");
+
+  let reason_code: PrereqCheckResult["reason_code"];
+  let reason: string;
+  if (!hasPlaybook && !hasCoach) {
+    reason_code = "both_missing";
+    reason = "VIP applications require completion of the MatchMakers Playbook ($250) AND the Dating Coach ($500 Premium or $1,000 Unlimited). Start with the Playbook at /playbook/ to begin your foundation.";
+  } else if (!hasPlaybook) {
+    reason_code = "no_playbook";
+    reason = "VIP applications require the MatchMakers Playbook ($250) as your foundation. Get the Playbook at /playbook/ — your Coach access carries forward.";
+  } else {
+    reason_code = "no_coach";
+    reason = "VIP applications require the Dating Coach ($500 Premium or $1,000 Unlimited) in addition to the Playbook. Add the Coach from /coach/ when ready.";
+  }
+
+  return { ok: false, reason_code, missing_products: missing, reason };
+}
+
 // ── Rate limiting (best-effort, IP-based, in-memory per cold-start) ──
 // Real protection is honeypot + CAPTCHA (future). This is just a
 // noisy-bot speed bump. Edge Function instances are short-lived so
@@ -146,8 +226,10 @@ function buildNotificationHtml(app: {
   seeking: string;
   why: string;
   coach_completion: string;
+  prereq_products: string[];
 }): string {
   const fullName = htmlEscape(`${app.first_name} ${app.last_name}`);
+  const prereqList = htmlEscape(app.prereq_products.join(", "));
   return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"></head>
 <body style="margin:0;padding:0;background:#05090F;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
@@ -161,6 +243,11 @@ function buildNotificationHtml(app: {
     <div style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C9A84C;margin-bottom:8px;">New VIP Application</div>
     <h1 style="font-size:1.4rem;font-weight:700;color:#EDF2F7;margin:0 0 6px;">${fullName}</h1>
     <p style="font-size:.85rem;color:#7A95AF;margin:0 0 24px;"><a href="mailto:${htmlEscape(app.email)}" style="color:#C9A84C;text-decoration:none;">${htmlEscape(app.email)}</a></p>
+
+    <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:12px 16px;margin-bottom:20px;">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9A84C;margin-bottom:4px;">Prerequisite Verified ✓</div>
+      <div style="font-size:.78rem;color:#C2D1E0;line-height:1.5;">Coach + Playbook + Upgrade confirmed: ${prereqList}</div>
+    </div>
 
     <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
       <tr><td style="padding:10px 0;border-top:1px solid rgba(65,91,124,.15);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7A95AF;width:35%;vertical-align:top;">Intent</td>
@@ -197,12 +284,14 @@ function buildNotificationText(app: {
   seeking: string;
   why: string;
   coach_completion: string;
+  prereq_products: string[];
 }): string {
   return `New VIP Application — ${app.first_name} ${app.last_name}
 
 Email:        ${app.email}
 Intent:       ${app.intent}
 Dating Coach: ${app.coach_completion}
+Prerequisite: VERIFIED ✓ (${app.prereq_products.join(", ")})
 
 Looking For:
 ${app.seeking}
@@ -227,6 +316,7 @@ async function sendNotification(app: {
   seeking: string;
   why: string;
   coach_completion: string;
+  prereq_products: string[];
 }): Promise<void> {
   if (!RESEND_API_KEY) {
     console.warn("RESEND_API_KEY not configured — skipping VIP notification email");
@@ -303,6 +393,33 @@ Deno.serve(async (req: Request) => {
     return new Response(JSON.stringify({ error: v.error }), { status: 400, headers });
   }
 
+  // ── v2 Prerequisite gate (server-enforced; defense-in-depth) ──
+  const prereq = await verifyVipPrerequisite(body.email!);
+  if (!prereq.ok) {
+    console.log(`VIP prereq REJECTED: ${body.email} (reason=${prereq.reason_code}; missing=${prereq.missing_products?.join(",")})`);
+    return new Response(
+      JSON.stringify({
+        error: prereq.reason,
+        reason_code: prereq.reason_code,
+        missing_products: prereq.missing_products,
+        redirect_url: prereq.reason_code === "no_playbook" || prereq.reason_code === "both_missing"
+          ? "/playbook/"
+          : "/coach/",
+      }),
+      { status: 403, headers },
+    );
+  }
+
+  // Capture prereq products for advisor notification
+  const { data: prereqRows } = await supabase
+    .from("purchases")
+    .select("product")
+    .eq("email", body.email!)
+    .eq("status", "completed");
+  const prereqProducts: string[] = Array.from(
+    new Set((prereqRows ?? []).map((r: { product: string }) => r.product)),
+  );
+
   // Insert
   const userAgent = req.headers.get("user-agent") || null;
   const { data, error } = await supabase
@@ -330,7 +447,7 @@ Deno.serve(async (req: Request) => {
   }
 
   const applicationId = (data as { id: string }).id;
-  console.log(`VIP application captured: ${body.email} → ${applicationId}`);
+  console.log(`VIP application captured: ${body.email} → ${applicationId} (prereq=${prereqProducts.join(",")})`);
 
   // Send notification email — best-effort. Application is already saved
   // so a Resend failure does NOT fail the user submission.
@@ -344,6 +461,7 @@ Deno.serve(async (req: Request) => {
       seeking: body.seeking!,
       why: body.why!,
       coach_completion: body.coach_completion!,
+      prereq_products: prereqProducts,
     });
     console.log(`VIP notification email sent to ${VIP_NOTIFICATION_EMAIL}`);
   } catch (emailErr) {
