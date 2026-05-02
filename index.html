@@ -51,7 +51,7 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-02-3tier-hero"
+      release: "matchmakersusa.com@2026-05-02-v1.5-naming-hotfix"
     });
   </script>
 
@@ -592,6 +592,74 @@
 
     .hp-footer__wordmark-tm { font-size: .6em; color: var(--color-accent-gold); }
     .hp-method__beats span:not(:last-child) { margin-bottom: 0.2rem; }
+
+    /* CTA row + dual-CTA layout (v1.5 §2.2 Playbook DUAL CTA + §2.3 CC single CTA) */
+    .hp-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .hp-cta-row--dual { gap: 0.8rem 1.6rem; }
+
+    .hp-cta--primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: .98rem;
+      letter-spacing: 0.06em;
+      color: var(--color-text-primary);
+      background: transparent;
+      border: 1px solid var(--color-accent-gold);
+      padding: 0.95rem 1.8rem;
+      text-decoration: none;
+      transition: background 220ms var(--easing-cartier), color 220ms var(--easing-cartier);
+      min-height: 48px;
+    }
+
+    .hp-cta--primary:hover,
+    .hp-cta--primary:focus-visible {
+      background: rgba(201, 168, 76, 0.06);
+      color: var(--color-accent-gold-bright);
+      outline: none;
+    }
+
+    .hp-cta--primary:focus-visible {
+      outline: 2px solid var(--color-accent-gold-bright);
+      outline-offset: 4px;
+    }
+
+    .hp-cta--secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: .92rem;
+      letter-spacing: 0.06em;
+      color: var(--color-accent-gold-bright);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-rule-accent);
+      padding-bottom: 0.4rem;
+      min-height: 44px;
+      transition: color 220ms var(--easing-cartier), border-color 220ms var(--easing-cartier);
+    }
+
+    .hp-cta--secondary:hover,
+    .hp-cta--secondary:focus-visible {
+      color: var(--color-text-primary);
+      border-bottom-color: var(--color-accent-gold-bright);
+      outline: none;
+    }
+
+    .hp-cta--secondary:focus-visible {
+      outline: 2px solid var(--color-accent-gold-bright);
+      outline-offset: 4px;
+    }
   </style>
 </head>
 <body>
@@ -673,7 +741,7 @@
       <p class="hp-eyebrow">The Method</p>
       <hr class="hp-rule--accent" aria-hidden="true">
       <h2 id="hp-method-headline" class="hp-headline">A framework, <em>not a feed.</em></h2>
-      <p class="hp-body">The Connection Code&trade; is the methodology behind every successful relationship decision. Five Phases. Five Signals. Nine Intents. Refined over more than a decade of matchmaking practice, then encoded as the Connection Code Engine.</p>
+      <p class="hp-body">The Connection Code&trade; is the methodology behind every successful relationship decision. Five Phases. Five Signals. Nine Intents. Refined over more than a decade of matchmaking practice. Delivered through the Playbook.</p>
       <hr class="hp-rule--ambient" aria-hidden="true">
       <p class="hp-method__beats">
         <span>Built on a system.</span>
@@ -696,8 +764,8 @@
     <div class="hp-doors">
       <article class="hp-door">
         <p class="hp-door__tier">Level 1 &middot; Free</p>
-        <h3 class="hp-door__title">The Connection Code <em>Engine</em></h3>
-        <p class="hp-door__body">A short calibration that surfaces your Intent, your Phase, and your current Signal. The result is a personalized Connection Code Brief and access to Coach Lite.</p>
+        <h3 class="hp-door__title">The <em>Connection Code</em></h3>
+        <p class="hp-door__body">The free framework. A short calibration that surfaces your Intent, your Phase, and your current Signal. The result is a personalized Connection Code Brief and access to Coach Lite.</p>
         <a href="/connection-code/" class="hp-door__cta">Begin the calibration <span aria-hidden="true">&rarr;</span></a>
       </article>
 
@@ -719,13 +787,44 @@
 
   <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
 
+  <!-- NEW v1.5 §2.3 — "The Connection Code" section (free resource positioning; placed BEFORE Playbook per Paul's funnel logic — free → paid) -->
+  <section class="hp-section" aria-labelledby="hp-cc-headline">
+    <div class="hp-section__inner">
+      <p class="hp-eyebrow">The Connection Code</p>
+      <hr class="hp-rule--accent" aria-hidden="true">
+      <h2 id="hp-cc-headline" class="hp-headline">Begin where you arrive. <em>Free.</em></h2>
+      <p class="hp-body">The Connection Code is your starting place. The free framework that lays the groundwork for the methodology. Take the assessment. Read the Brief. Use the free tools. See where you stand. Built to introduce the system; designed to bring you to the Playbook when you are ready.</p>
+      <div class="hp-cta-row">
+        <a href="/connection-code/" class="hp-cta--primary">Begin the Connection Code <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+
+  <!-- NEW v1.5 §2.2 — "The Playbook" section (replaces previous engine-positioning section per v1.5 canonical naming; heart and soul; DUAL CTA Studio PRIMARY + VIP secondary direct) -->
+  <section class="hp-section" aria-labelledby="hp-playbook-headline">
+    <div class="hp-section__inner">
+      <p class="hp-eyebrow">The Playbook</p>
+      <hr class="hp-rule--accent" aria-hidden="true">
+      <h2 id="hp-playbook-headline" class="hp-headline">The engine. <em>The methodology, fully delivered.</em></h2>
+      <p class="hp-body">The Playbook is the heart and soul of the methodology. The 87-chapter engine refined across more than a decade of matchmaking practice. Every framework, every signal, every decision pattern. Delivered through Dating Studio with the Coach, the Script Builder, and the Suitability Report. The purchase everyone gets.</p>
+      <div class="hp-cta-row hp-cta-row--dual">
+        <a href="/studio/" class="hp-cta--primary">Enter Dating Studio &mdash; $299.99 <span aria-hidden="true">&rarr;</span></a>
+        <a href="/vip/" class="hp-cta--secondary">Skip ahead to VIP <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+
   <section class="hp-section" aria-labelledby="hp-origin-headline">
     <div class="hp-section__inner">
       <p class="hp-eyebrow">Origin</p>
       <hr class="hp-rule--accent" aria-hidden="true">
       <h2 id="hp-origin-headline" class="hp-headline">The methodology <em>earned the membership.</em></h2>
       <p class="hp-body">The Connection Code came out of human matchmaking. Refined through practice, across thousands of conversations and decisions. Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</p>
-      <p class="hp-body">The Connection Code Engine is the same methodology, encoded. Same framework. Same restraint. Applied through Anthropic primitives so the work is real and the trust is auditable.</p>
+      <p class="hp-body">The Playbook is the same methodology, fully delivered. Same framework. Same restraint. Applied through Dating Studio so the work is real and the trust is auditable.</p>
     </div>
   </section>
 
