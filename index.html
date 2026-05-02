@@ -12,13 +12,13 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>MatchMakers — The Connection Code</title>
-  <meta name="description" content="The Connection Code Engine. A proprietary 5-Signal framework refined over more than a decade of matchmaking practice. Begin where you arrive.">
+  <title>MatchMakers — The Connection Code, applied as a system.</title>
+  <meta name="description" content="A relationship operating system, distilled across more than a decade of matchmaking practice. The Connection Code, applied as a system.">
   <link rel="canonical" href="https://matchmakersusa.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchMakers">
-  <meta property="og:title" content="MatchMakers — The Connection Code">
-  <meta property="og:description" content="The Connection Code Engine. A proprietary 5-Signal framework refined over more than a decade of matchmaking practice. Begin where you arrive.">
+  <meta property="og:title" content="MatchMakers — The Connection Code, applied as a system.">
+  <meta property="og:description" content="5-Phase × 5-Signal × 9-Intent framework. 87-chapter Living Knowledge Graph. Every output cited. Trust is provable, not marketed.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
@@ -42,6 +42,18 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png">
+
+  <!-- Sentry error tracking — installed 2026-05-02 (commit 1bad4df) -->
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-02"
+    });
+  </script>
 
   <style>
     :root {
@@ -142,17 +154,28 @@
       animation: cartier-rule-grow var(--motion-arrival-stage-2) var(--easing-cartier) 280ms forwards;
     }
 
-    .hp-arrival__headline {
+    /* Compound brand anchor (Cartier Reframe Spec v1.3 §E.2 cinematic 3-sentence pen-write) */
+    .hp-arrival__anchor {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-weight: 400;
       font-size: clamp(1.8rem, 4.2vw, 2.6rem);
-      line-height: 1.22;
+      line-height: 1.32;
       color: var(--color-text-primary);
-      margin-bottom: 1.4rem;
-      animation: cartier-arrival-fade var(--motion-arrival-stage-2) var(--easing-cartier) 360ms forwards;
+      margin: 0 0 1.4rem;
+      letter-spacing: 0.01em;
     }
 
-    .hp-arrival__headline em {
+    .hp-arrival__anchor-line {
+      display: block;
+      animation: cartier-arrival-fade var(--motion-arrival-stage-2) var(--easing-cartier) forwards;
+      animation-fill-mode: both;
+    }
+
+    .hp-arrival__anchor-line--1 { animation-delay: 200ms; }
+    .hp-arrival__anchor-line--2 { animation-delay: 360ms; }
+    .hp-arrival__anchor-line--3 { animation-delay: 520ms; }
+
+    .hp-arrival__anchor-line em {
       font-style: italic;
       color: var(--color-accent-gold);
     }
@@ -230,7 +253,7 @@
       .hp-arrival__heritage,
       .hp-arrival__wordmark,
       .hp-arrival__rule,
-      .hp-arrival__headline,
+      .hp-arrival__anchor-line,
       .hp-arrival__subhead,
       .hp-arrival__cta,
       .hp-arrival__footer-cue {
@@ -238,6 +261,43 @@
         opacity: 1;
       }
     }
+
+    /* Thesis pair below-fold (Mission + Substance per §1.1 + §3.3) */
+    .hp-thesis {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 1.4rem;
+    }
+
+    .hp-thesis__inner { max-width: 720px; margin: 0 auto; }
+
+    .hp-thesis__paragraph {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.62;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+
+    .hp-thesis__paragraph--mission {
+      font-size: clamp(1.32rem, 2.6vw, 1.6rem);
+      letter-spacing: 0.005em;
+    }
+
+    .hp-thesis__paragraph--substance {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 1.04rem;
+      line-height: 1.78;
+      color: var(--color-text-secondary);
+    }
+
+    .hp-thesis__paragraph em {
+      font-style: italic;
+      color: var(--color-accent-gold);
+    }
+
+    .hp-thesis--substance { padding-top: 1.4rem; padding-bottom: 4rem; }
 
     .hp-section {
       padding: 5rem 1.5rem;
@@ -460,20 +520,41 @@
 
 <main id="main">
 
-  <section class="hp-arrival" aria-labelledby="hp-arrival-headline">
+  <!-- Hero per Cartier Reframe Spec v1.3 §E.2 (compound brand anchor; cinematic 3-sentence pen-write t=200ms-t=600ms) + v1.4 (voice-fidelity verbatim period-form preserved) -->
+  <section class="hp-arrival" aria-labelledby="hp-arrival-anchor">
     <div class="hp-arrival__atmosphere" aria-hidden="true"></div>
     <div class="hp-arrival__inner">
-      <p class="hp-arrival__eyebrow">The Connection Code Engine</p>
+      <p class="hp-arrival__eyebrow">MatchMakers</p>
       <p class="hp-arrival__heritage">More than a decade of matchmaking practice.</p>
       <div class="hp-arrival__wordmark">MatchMakers<span class="hp-arrival__wordmark-tm">&trade;</span></div>
       <hr class="hp-arrival__rule" aria-hidden="true">
-      <h1 id="hp-arrival-headline" class="hp-arrival__headline">Dating, by methodology.<br><em>Not by algorithm.</em></h1>
-      <p class="hp-arrival__subhead">Welcome. The Connection Code begins with a question.</p>
+      <!-- Compound brand anchor: Category Frame → Outcome System (v1.3 §E.2; 3 sequential pen-write moments t=200ms-t=600ms) -->
+      <h1 id="hp-arrival-anchor" class="hp-arrival__anchor">
+        <span class="hp-arrival__anchor-line hp-arrival__anchor-line--1">A relationship operating system, tailored to you.</span>
+        <span class="hp-arrival__anchor-line hp-arrival__anchor-line--2">Not a dating app.</span>
+        <span class="hp-arrival__anchor-line hp-arrival__anchor-line--3"><em>This is an outcome system.</em></span>
+      </h1>
+      <p class="hp-arrival__subhead">The Connection Code, applied as a system. Begin where you arrive.</p>
       <a href="/connection-code/" class="hp-arrival__cta">
-        <span>Begin where you arrive.</span>
+        <span>Begin Suitability Report</span>
         <span class="hp-arrival__cta-arrow" aria-hidden="true">&rarr;</span>
       </a>
-      <p class="hp-arrival__footer-cue">Reviewed, not curated.</p>
+      <p class="hp-arrival__footer-cue">Methodology, not algorithm. Trust is provable, not marketed.</p>
+    </div>
+  </section>
+
+  <!-- Below-the-fold thesis pair (Mission + Substance) per Cartier Reframe Spec v1.0 §1.1 + §3.3 (EDITS 4 + 5) -->
+  <section class="hp-thesis hp-thesis--mission" aria-labelledby="hp-thesis-mission-anchor">
+    <div class="hp-thesis__inner">
+      <p class="hp-thesis__paragraph hp-thesis__paragraph--mission" id="hp-thesis-mission-anchor">A relationship operating system, distilled across <em>more than a decade of matchmaking practice</em> &mdash; built for the millions of people who struggle with relationships. Across years. Across tiers. Across every artifact and every interaction.</p>
+    </div>
+  </section>
+
+  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+
+  <section class="hp-thesis hp-thesis--substance" aria-labelledby="hp-thesis-substance-anchor">
+    <div class="hp-thesis__inner">
+      <p class="hp-thesis__paragraph hp-thesis__paragraph--substance" id="hp-thesis-substance-anchor"><em>5-Phase &times; 5-Signal &times; 9-Intent</em> framework, distilled across more than a decade of matchmaking practice into an <em>87-chapter Living Knowledge Graph</em> called the <em>Playbook</em>. Every Coach turn, every Script, every Suitability Report, every Letter from Coach cites specific chapter chunks. Users can deep-dive into source. Trust is provable, not marketed.</p>
     </div>
   </section>
 
@@ -542,15 +623,20 @@
 
 </main>
 
+<!-- Footer per Cartier Reframe Spec v1.0 §3.5 + EDIT 7 (credentialing strip + institutional alphabetical link order) -->
 <footer class="hp-footer">
   <p class="hp-footer__wordmark">MatchMakers<span class="hp-footer__wordmark-tm">&trade;</span></p>
-  <p class="hp-footer__heritage">More than a decade of matchmaking practice. Reviewed, not curated.</p>
+  <p class="hp-footer__heritage">More than a decade of matchmaking practice. The Connection Code, applied as a system.</p>
   <nav class="hp-footer__nav" aria-label="Footer">
+    <a href="/about/">About</a>
     <a href="/connection-code/">Connection Code</a>
-    <a href="/playbook/">Dating Studio</a>
-    <a href="/vip/">VIP Matchmaking</a>
-    <a href="/coach/">Coach</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/playbook/">Playbook</a>
+    <a href="/studio/">Studio</a>
+    <a href="/vip/">VIP</a>
+    <a href="/account/">Account</a>
     <a href="/privacy-policy/">Privacy</a>
+    <a href="/terms-of-service/">Terms</a>
     <a href="/contact/">Contact</a>
   </nav>
   <p class="hp-footer__legal">&copy; MatchMakers LLC. The Connection Code is a trademark of MatchMakers LLC.</p>

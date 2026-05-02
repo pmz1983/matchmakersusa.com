@@ -29,6 +29,18 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
+  <!-- Sentry error tracking — propagated from index.html (Wave 0a 13-edit absorption 2026-05-02) -->
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-02"
+    });
+  </script>
+
   <style>
     .studio-hero {
       max-width: 720px;
