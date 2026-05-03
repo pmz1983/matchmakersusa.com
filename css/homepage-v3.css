@@ -318,7 +318,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.18rem;
-  color: var(--color-ink);  /* Polish §4 P2: thesis eyebrows = navy ink (Foglihten italic carries register; heritage gold removed) */
+  color: var(--color-heritage-gold-text);  /* Polish v2.9 (Paul §5 2026-05-03 revert): heritage gold restored — Paul preference */
   margin: 0 0 0.6rem;
 }
 
@@ -1191,11 +1191,58 @@ body::before {
   letter-spacing: -0.005em;
 }
 
-/* v2.3 thesis eyebrows full navy + Cormorant italic editorial register */
+/* Polish v2.9 thesis eyebrows REVERTED to heritage gold per Paul §5 2026-05-03 */
 .v3-thesis__eyebrow {
   font-family: var(--cartier-font-display);
   font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+/* ═══════════════════════════════════════════════════
+   v2.9 — SILVER METALLIC CTA (Studio PRIMARY signature; relocates iOS M-button silver from
+   CARD frame to BUTTON treatment per Paul §5 2026-05-03 staging-smoke directive
+   "I really like the silver buttons you had at one point... more metallic looking")
+   Three Doors visual hierarchy: uniform dark navy glass cards + 3 differentiated CTAs:
+   - Connection Code: cobalt navy pill (free tier)
+   - Studio: silver metallic gradient (PRIMARY conversion signature)
+   - VIP: italic-gold subordinate link (premium tier)
+   ═══════════════════════════════════════════════════ */
+.v3-door__cta--silver-metallic {
+  background: linear-gradient(135deg,
+    #E0E0E0 0%,
+    #F8F8F8 18%,
+    #C0C0C0 50%,
+    #F8F8F8 82%,
+    #DCDCDC 100%);
   color: var(--color-ink);
+  border: 1px solid #909090;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.18);
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: background 240ms var(--easing-cinematic), box-shadow 240ms var(--easing-cinematic);
+}
+
+.v3-door:hover .v3-door__cta--silver-metallic,
+.v3-door:focus-visible .v3-door__cta--silver-metallic {
+  background: linear-gradient(135deg,
+    #EAEAEA 0%,
+    #FFFFFF 18%,
+    #CCCCCC 50%,
+    #FFFFFF 82%,
+    #E8E8E8 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.20),
+    0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v3-door__cta--silver-metallic {
+    transition: none;
+  }
 }
 
 /* ═══════════════════════════════════════════════════
