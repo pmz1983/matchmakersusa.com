@@ -203,17 +203,17 @@ body {
   animation: v3-fade-in 0.5s var(--easing-ease-out) 0.3s forwards;
 }
 
-/* Polish Punch-List §3 P1 — canonical PNG brand mark hero surfacing (replaces text-styled wordmark)
-   Polish v2.5 (Paul §5 staging-smoke 2026-05-03): mix-blend-mode: multiply blends canonical PNG's
-   white iPhone-screen BG with cream canvas (white pixels → invisible; navy wordmark → preserved) —
-   interim until transparent-BG SVG asset lands per Cartier v1.6 §5.4 deferred follow-up cycle */
+/* Polish Punch-List §3 P1 + Polish v2.6 (Paul §5 staging-smoke 2026-05-03):
+   Brand mark deploys as TIGHT-CROPPED PNG (wordmark + tagline only; 1113x254 px; 44KB) —
+   replaces full iPhone-canvas logo-screen-white.png (1224x2587) which had excess white BG
+   creating layout problem. Cropped via Python PIL with bounding box detection +40px padding.
+   mix-blend-mode no longer needed (no excess white space to blend). */
 .v3-arrival__brand-mark-img {
   display: block;
   margin: 0 auto;
   max-width: 480px;
   width: 100%;
   height: auto;
-  mix-blend-mode: multiply;  /* Polish v2.5 — eliminates white BG bleed; preserves navy wordmark */
 }
 
 @media (max-width: 1023px) {
