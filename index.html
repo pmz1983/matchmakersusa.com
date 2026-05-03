@@ -54,7 +54,7 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-03-v3-1-five-levels-aligned"
+      release: "matchmakersusa.com@2026-05-03-v3-1-wayfinding"
     });
   </script>
 
@@ -103,6 +103,31 @@
 
     <p class="v3-arrival__scroll-cue" aria-hidden="true">Begin where you arrive &darr;</p>
   </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       WAYFINDING STRIP (Polish v2.13.4 — action surface; placed post-arrival per Paul §5 directive 2026-05-03)
+       3-card Cartier menu register; mirrors v3 hairline brochure cadence; immediate action visibility
+       ═══════════════════════════════════════════════════ -->
+  <nav class="v3-wayfinding" aria-label="Where to begin">
+    <a href="/connection-code/" class="v3-wayfinding__card">
+      <span class="v3-wayfinding__eyebrow">Level 1 &middot; Free Entry</span>
+      <h2 class="v3-wayfinding__name"><em>The Connection Code</em></h2>
+      <p class="v3-wayfinding__body">A free assessment, calibrated to the methodology. The starting place for users who arrive without a tier commitment.</p>
+      <span class="v3-wayfinding__cta">Begin the assessment <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <a href="/studio/" class="v3-wayfinding__card">
+      <span class="v3-wayfinding__eyebrow">Levels 2 &amp; 3 &middot; Core + Personalization</span>
+      <h2 class="v3-wayfinding__name"><em>Dating Studio</em></h2>
+      <p class="v3-wayfinding__body">The Playbook in full. Coach. Script Builder. Suitability. Advanced AI tailors the methodology to the individual.</p>
+      <span class="v3-wayfinding__cta">Open the Studio <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <a href="/vip/" class="v3-wayfinding__card">
+      <span class="v3-wayfinding__eyebrow">Levels 4 &amp; 5 &middot; Guided + Bespoke</span>
+      <h2 class="v3-wayfinding__name"><em>VIP Matchmaking</em></h2>
+      <p class="v3-wayfinding__body">Human matchmaker integration. The bespoke advisory layer. By application; consultation-first.</p>
+      <span class="v3-wayfinding__cta">Begin inquiry <span aria-hidden="true">&rarr;</span></span>
+    </a>
+  </nav>
 
   <!-- ═══════════════════════════════════════════════════
        MOVEMENT 2 — THE PROBLEM (NEW per Homepage v3.1 §5.3 + Cartier Reframe Spec v1.7 §2.2)
