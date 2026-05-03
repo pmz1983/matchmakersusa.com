@@ -673,6 +673,148 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
+   MOVEMENT 5 — THE FIVE LEVELS (Polish v2.13; A+C blend; Cartier patrimonial register)
+   Roman numerals + heritage-gold hairline strata + Cormorant italic Layer names + "to/with/through" canon-extension
+   Replaces Three Levels door grid; supersedes Polish v2.12 "Three Doors → Three Levels" reframe
+   ═══════════════════════════════════════════════════ */
+
+.v3-five-levels {
+  list-style: none;
+  margin: 3rem auto 0;
+  padding: 0;
+  max-width: 920px;
+  counter-reset: levels;
+}
+
+.v3-five-levels__stratum {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: baseline;
+  padding: clamp(28px, 4vw, 44px) clamp(8px, 2vw, 16px);
+  border-top: 1px solid var(--color-heritage-gold);
+}
+
+.v3-five-levels__stratum:last-child {
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.v3-five-levels__numeral {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  align-self: start;
+  padding-top: 0.3em;
+}
+
+.v3-five-levels__content {
+  min-width: 0;
+}
+
+.v3-five-levels__layer-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.5);
+  margin: 0 0 8px;
+}
+
+.v3-five-levels__layer-name {
+  font-family: var(--cartier-font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+}
+
+.v3-five-levels__subhead {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(28, 31, 58, 0.72);
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.v3-five-levels__body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(28, 31, 58, 0.65);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin: 0;
+}
+
+.v3-five-levels__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  align-self: start;
+  padding-top: 0.3em;
+  transition: opacity 200ms ease;
+}
+
+.v3-five-levels__cta:hover,
+.v3-five-levels__cta:focus-visible {
+  opacity: 0.7;
+  outline: none;
+}
+
+.v3-five-levels__cta:focus-visible {
+  outline: 1px solid var(--color-heritage-gold);
+  outline-offset: 4px;
+}
+
+.v3-five-levels__cta-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.5);
+  white-space: nowrap;
+}
+
+.v3-five-levels__cta-arrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--color-heritage-gold);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .v3-five-levels__stratum {
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    padding: clamp(24px, 5vw, 32px) clamp(4px, 1vw, 8px);
+  }
+  .v3-five-levels__numeral {
+    font-size: 1.5rem;
+    padding-top: 0.25em;
+  }
+  .v3-five-levels__cta {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
    MOVEMENT 5 — THE CONNECTION CODE (free resource lead magnet)
    ═══════════════════════════════════════════════════ */
 
