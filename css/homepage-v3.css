@@ -824,34 +824,39 @@ body {
   margin-top: 2rem;
 }
 
+/* Polish v2.13.6 (Paul §5 ratify 2026-05-03): heritage gold wire frame Cartier register
+   Replaces solid cobalt fill — transparent bg, gold border, gold text, auto-fit text, inverted hover
+   Class name preserved (.v3-cta-cobalt) for HTML stability across 8 v3 surfaces */
 .v3-cta-cobalt {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-weight: 600;
+  gap: 0.45rem;
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-weight: 400;
   font-size: 1rem;
-  letter-spacing: 0.04em;
-  color: var(--color-canvas);
-  background: var(--color-cobalt-glass);
-  border: 1px solid var(--color-cobalt-glass);
-  padding: 1.05rem 2.2rem;
-  border-radius: 999px;
+  letter-spacing: 0.015em;
+  color: var(--color-heritage-gold);
+  background: transparent;
+  border: 1px solid var(--color-heritage-gold);
+  padding: 0.78rem 1.6rem;
+  border-radius: 0;
   text-decoration: none;
-  min-height: 52px;
-  min-width: 280px;
+  min-height: 46px;
   justify-content: center;
-  transition: background 240ms var(--easing-cinematic);
+  white-space: nowrap;
+  transition: background 240ms var(--easing-cinematic), color 240ms var(--easing-cinematic);
 }
 
 .v3-cta-cobalt:hover,
 .v3-cta-cobalt:focus-visible {
-  background: var(--color-cobalt-glass-bright);
+  background: var(--color-heritage-gold);
+  color: var(--color-canvas);
   outline: none;
 }
 
 .v3-cta-cobalt:focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 1px solid var(--color-heritage-gold);
   outline-offset: 4px;
 }
 
@@ -1123,6 +1128,241 @@ body {
   .v3-wayfinding__card:not(:first-child) {
     border-left: none;
     border-top: 1px solid rgba(203, 163, 114, 0.4);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   VIP CONTENT RESTORATION (Polish v2.13.6 per Paul §5 directive 2026-05-03 — pull from legacy + adapt to Path α)
+   For Whom · The Process · What's Included
+   ═══════════════════════════════════════════════════ */
+
+/* ── For Whom (eligibility) — 2-column register ── */
+.vip-for-whom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 36px);
+  max-width: 920px;
+  margin: clamp(40px, 5vw, 56px) auto 0;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.vip-for-whom__card {
+  padding: clamp(28px, 4vw, 36px);
+  border-top: 1px solid var(--color-heritage-gold);
+}
+
+.vip-for-whom__card--for {
+  border-top-color: var(--color-heritage-gold);
+}
+
+.vip-for-whom__card--not {
+  border-top-color: rgba(28, 31, 58, 0.25);
+}
+
+.vip-for-whom__label {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-heritage-gold);
+  margin: 0 0 1.2rem;
+  letter-spacing: 0.005em;
+}
+
+.vip-for-whom__card--not .vip-for-whom__label {
+  color: rgba(28, 31, 58, 0.55);
+}
+
+.vip-for-whom__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vip-for-whom__list li {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(28, 31, 58, 0.78);
+  line-height: 1.6;
+  padding: 0.7rem 0 0.7rem 1.4rem;
+  position: relative;
+  border-top: 1px solid rgba(203, 163, 114, 0.15);
+}
+
+.vip-for-whom__list li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.vip-for-whom__list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-heritage-gold);
+  font-style: italic;
+}
+
+.vip-for-whom__card--not .vip-for-whom__list li::before {
+  color: rgba(28, 31, 58, 0.4);
+}
+
+@media (max-width: 700px) {
+  .vip-for-whom {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ── The Process — Cartier numbered hairline strata ── */
+.vip-process {
+  list-style: none;
+  margin: clamp(40px, 5vw, 56px) auto 0;
+  padding: 0;
+  max-width: 880px;
+}
+
+.vip-process__step {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: clamp(20px, 3vw, 32px);
+  align-items: baseline;
+  padding: clamp(28px, 4vw, 40px) clamp(20px, 4vw, 32px);
+  border-top: 1px solid var(--color-heritage-gold);
+}
+
+.vip-process__step:last-child {
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.vip-process__num {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.02em;
+  align-self: start;
+  padding-top: 0.3em;
+}
+
+.vip-process__content {
+  min-width: 0;
+}
+
+.vip-process__label {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(28, 31, 58, 0.55);
+  margin: 0 0 8px;
+  letter-spacing: 0.005em;
+}
+
+.vip-process__title {
+  font-family: var(--cartier-font-display);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.vip-process__body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(28, 31, 58, 0.7);
+  line-height: 1.65;
+  max-width: 60ch;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .vip-process__step {
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    padding: clamp(24px, 5vw, 32px) clamp(8px, 2vw, 16px);
+  }
+  .vip-process__num { font-size: 1.3rem; }
+}
+
+/* ── What's Included — card grid (Cartier hairline-edge cards) ── */
+.vip-includes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 1100px;
+  margin: clamp(40px, 5vw, 56px) auto 0;
+  padding: 0 clamp(20px, 4vw, 40px);
+  border-top: 1px solid var(--color-heritage-gold);
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.vip-includes__card {
+  padding: clamp(28px, 4vw, 36px) clamp(20px, 3vw, 28px);
+  border-left: 1px solid rgba(203, 163, 114, 0.4);
+  border-top: 1px solid rgba(203, 163, 114, 0.4);
+}
+
+.vip-includes__card:nth-child(-n+3) {
+  border-top: none;
+}
+
+.vip-includes__card:nth-child(3n+1) {
+  border-left: none;
+}
+
+.vip-includes__label {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-heritage-gold);
+  margin: 0 0 10px;
+  letter-spacing: 0.005em;
+}
+
+.vip-includes__title {
+  font-family: var(--cartier-font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.vip-includes__body {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(28, 31, 58, 0.68);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .vip-includes {
+    grid-template-columns: 1fr 1fr;
+  }
+  .vip-includes__card:nth-child(-n+3) {
+    border-top: 1px solid rgba(203, 163, 114, 0.4);
+  }
+  .vip-includes__card:nth-child(-n+2) {
+    border-top: none;
+  }
+  .vip-includes__card:nth-child(3n+1) {
+    border-left: 1px solid rgba(203, 163, 114, 0.4);
+  }
+  .vip-includes__card:nth-child(2n+1) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .vip-includes {
+    grid-template-columns: 1fr;
+  }
+  .vip-includes__card {
+    border-left: none !important;
+    border-top: 1px solid rgba(203, 163, 114, 0.4) !important;
+  }
+  .vip-includes__card:first-child {
+    border-top: none !important;
   }
 }
 
