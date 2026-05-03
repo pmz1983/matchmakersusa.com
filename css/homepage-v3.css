@@ -542,6 +542,7 @@ body {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  margin-top: auto;  /* Polish v2.10 — pushes button to bottom of card; aligns CTA position across all 3 doors uniformly */
 }
 
 .v3-door:hover .v3-door__cta,
