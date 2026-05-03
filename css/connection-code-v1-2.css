@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════════
+   CONNECTION CODE PAGE v1.2 — CC-specific overrides atop homepage-v3.css
+   Per Web Ed CC v1.2 IMPLEMENTATION Directive 2026-05-02
+   Inherits all canonical tokens from /css/homepage-v3.css
+   ═══════════════════════════════════════════════════ */
+
+/* CC hero sub-display (below cinematic anchor) */
+.cc-hero__sub-display {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--color-ink);
+  text-align: center;
+  margin: 0.6rem auto 1.6rem;
+  max-width: 640px;
+  font-weight: 400;
+  line-height: 1.32;
+}
+
+.cc-hero__cta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 2rem auto;
+}
+
+/* Tier 2 #19 placement at methodology framing */
+.cc-methodology__patrimony {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-ink);
+  margin-top: 1.6rem;
+  text-align: left;
+}
+
+/* Free Tools showcase — hairline-bordered cards (Tier 0 free register; NOT dark navy glass) */
+.cc-tools__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 2.4rem 0;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  .cc-tools__grid { grid-template-columns: 1fr; }
+}
+
+.cc-tool {
+  border: 1px solid var(--color-hairline-atmosphere);
+  padding: 1.6rem 1.4rem;
+  background: var(--color-canvas);
+  border-radius: 8px;
+  transition: border-color 240ms var(--easing-cinematic);
+}
+
+.cc-tool:hover {
+  border-color: rgba(28, 31, 58, 0.16);
+}
+
+.cc-tool__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 0.6rem;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cc-tool__body {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+  margin: 0;
+}

@@ -34,10 +34,10 @@
   </script>
 
   <!-- v3 Typography stack:
-       Foglihten No07 (Google Fonts proxy until Design v3 commission ships canonical FoglihtenNo06_076.otf → WOFF2 deploy)
-       Inter (Gotham fallback per dispatch §2 W-v3.2 — Hoefler & Co. commercial license gate Paul §5; Foglihten remains canonical at display) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Foglihten+No07&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Foglihten+No07&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+       Foglihten loaded canonically via local WOFF2 (homepage-v3.css @font-face); no Google Fonts fallback needed (Polish §7 P5 dedupe)
+       Inter body fallback (Gotham canonical commercial license confirmed YES per Paul §5 2026-05-02; Gotham WOFF2 deployment pending follow-up Design v3 cycle) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -71,12 +71,14 @@
        Layer 1 trademark canon dominant + Layer 2 editorial register settles
        ═══════════════════════════════════════════════════ -->
   <section class="v3-arrival" aria-labelledby="v3-arrival-anchor">
-    <!-- Layer 1 brand mark (placeholder for Design v3 PNG/SVG asset commission output per W-v3.1) -->
-    <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers wordmark">
-      <p class="v3-arrival__wordmark">MatchMakers<span class="v3-arrival__wordmark-tm">&trade;</span></p>
+    <!-- Layer 1 trademark brand mark — canonical PNG lockup (wordmark + tagline; from MM_FINALS via Design v3 commission) per Polish Punch-List §3 P1 -->
+    <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
+      <img src="/img/brand-mark/v3/wordmark-tagline-lockup.png"
+           alt=""
+           class="v3-arrival__brand-mark-img"
+           aria-hidden="true">
+      <p class="v3-arrival__wordmark--sr-only">MatchMakers &mdash; Take Dating to the Next Level</p>
     </div>
-    <!-- Layer 1 trademark tagline lockup (registered tagline; exempt from C1 per Identity Spec v1.0 §4.1) -->
-    <p class="v3-arrival__tagline">Take Dating to the Next Level</p>
 
     <hr class="v3-arrival__hairline" aria-hidden="true">
 
@@ -191,8 +193,8 @@
     </div>
 
     <div class="v3-doors__grid">
-      <!-- LEFT — The Connection Code (Free); heritage gold edge -->
-      <a href="/connection-code/" class="v3-door v3-door--heritage-gold-edge">
+      <!-- LEFT — The Connection Code (Free); hairline navy edge per Polish §4 P2 (heritage gold restrained to VIP only) -->
+      <a href="/connection-code/" class="v3-door v3-door--hairline-navy-edge">
         <h3 class="v3-door__embossed-header">The <em>Connection Code</em></h3>
         <p class="v3-door__eyebrow">Begin where you arrive</p>
         <p class="v3-door__body">A free assessment, calibrated to the methodology. The methodology, previewed. The starting place for users who arrive without a tier commitment.</p>
@@ -312,7 +314,7 @@
     <div class="v3-studio__conversion">
       <p class="v3-studio__conversion-headline"><em>The methodology earns the membership.</em></p>
       <p class="v3-studio__conversion-sub">One purchase. The Playbook in full. Calibrated continuously through every phase the methodology recognizes.</p>
-      <a href="/studio/" class="v3-cta-silver-ring">Open the Dating Studio &mdash; $299.99</a>
+      <a href="/studio/" class="v3-cta-cobalt">Open the Dating Studio &mdash; $299.99</a>
     </div>
   </section>
 

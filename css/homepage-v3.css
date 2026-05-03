@@ -15,9 +15,9 @@
 
 /* W-v3.3 CANONICAL COLOR TOKENS per Cartier Reframe Spec v1.6 §4 + Paul §5 lockdowns 2026-05-02 */
 :root {
-  /* Layer 2 website-creative palette */
-  --color-canvas:               #FBF9F5;  /* Warm cream off-white; page-bg */
-  --color-canvas-warm:          #F8F4EC;  /* Subtle cream-warm shift on scroll */
+  /* Layer 2 website-creative palette (Polish Punch-List §5 P3 — heritage cream warmer; Paul §5 ratified) */
+  --color-canvas:               #F5F0E5;  /* Heritage cream (warmer; readable as warm against pure white) */
+  --color-canvas-warm:          #F0EAD9;  /* Deeper heritage cream for scroll-shift atmosphere */
 
   /* Layer 1 trademark color anchors (Paul §5 LOCKED 2026-05-02) */
   --color-ink:                  #1C1F3A;  /* Deep dark navy; typography + brand mark */
@@ -52,7 +52,7 @@
   /* W-v3.2 Typography stack — Paul §5 CONFIRMED Hoefler & Co. Gotham license 2026-05-02
      Foglihten canonical WOFF2 deployed at /fonts/FoglihtenNo06_076.woff2
      Gotham WOFF2 deployment pending follow-up Design v3 cycle; Inter institutional fallback active */
-  --font-display: 'Foglihten', 'Foglihten No07', 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Foglihten', 'Cormorant Garamond', Georgia, serif;  /* Polish §7 P5 dedupe — Foglihten No07 Google Fonts fallback dropped (No06 canonical via local WOFF2) */
   --font-body:    'Gotham', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Motion */
@@ -109,7 +109,7 @@ body {
   font-size: .72rem;
   letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--color-heritage-gold-text);
+  color: rgba(28, 31, 58, 0.55);  /* Polish §4 P2: section eyebrows = navy 55% (institutional restraint; heritage gold restrained to signature placements) */
   margin-bottom: 1rem;
   font-weight: 500;
 }
@@ -139,7 +139,7 @@ body {
 
 .v3-body em {
   font-style: italic;
-  color: var(--color-heritage-gold-text);
+  color: var(--color-ink);  /* Polish §4 P2: body em = navy italic only (heritage gold restrained to 4 canonical surfaces) */
 }
 
 .v3-body--lead {
@@ -203,33 +203,31 @@ body {
   animation: v3-fade-in 0.5s var(--easing-ease-out) 0.3s forwards;
 }
 
-.v3-arrival__wordmark {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
-  letter-spacing: 0.01em;
-  color: var(--color-ink);
-  line-height: 1;
-  margin: 0;
+/* Polish Punch-List §3 P1 — canonical PNG brand mark hero surfacing (replaces text-styled wordmark) */
+.v3-arrival__brand-mark-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 480px;
+  width: 100%;
+  height: auto;
 }
 
-.v3-arrival__wordmark-tm {
-  font-size: .35em;
-  vertical-align: super;
-  margin-left: 0.06em;
-  color: var(--color-heritage-gold-text);
+@media (max-width: 1023px) {
+  .v3-arrival__brand-mark-img { max-width: 360px; }
+}
+@media (max-width: 767px) {
+  .v3-arrival__brand-mark-img { max-width: 280px; }
 }
 
-.v3-arrival__tagline {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: clamp(.72rem, 1.4vw, .88rem);
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: var(--color-ink);
-  margin: 1rem 0 0;
-  opacity: 0;
-  animation: v3-fade-in 0.7s var(--easing-ease-out) 0.8s forwards;
+/* Screen-reader-only Layer 1 wordmark + tagline (preserves accessibility/SEO when img is presentational) */
+.v3-arrival__wordmark--sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .v3-arrival__hairline {
@@ -276,7 +274,7 @@ body {
   font-size: .7rem;
   letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--color-heritage-gold-text);
+  color: rgba(28, 31, 58, 0.55);  /* Polish §4 P2: scroll cue = navy 55% (heritage gold restrained) */
   opacity: 0;
   animation: v3-fade-in 0.5s var(--easing-ease-out) 3.2s forwards;
   margin: 0;
@@ -315,7 +313,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.18rem;
-  color: var(--color-heritage-gold-text);
+  color: var(--color-ink);  /* Polish §4 P2: thesis eyebrows = navy ink (Foglihten italic carries register; heritage gold removed) */
   margin: 0 0 0.6rem;
 }
 
@@ -449,13 +447,22 @@ body {
   box-shadow: 0 0 0 2px var(--color-heritage-gold-bright);
 }
 
-/* Heritage gold edge accent (Connection Code + VIP) */
+/* Polish §4 P2 — heritage gold restraint: VIP card edge ONLY (premium tier signal); CC card edge demoted to hairline navy */
 .v3-door--heritage-gold-edge::after {
   content: "";
   position: absolute;
   inset: 0;
   border: 1px solid var(--color-heritage-gold);
   opacity: 0.55;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.v3-door--hairline-navy-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(28, 31, 58, 0.16);  /* navy 16% — Connection Code free-tier register */
   pointer-events: none;
   border-radius: 8px;
 }
@@ -487,7 +494,7 @@ body {
 
 .v3-door__embossed-header em {
   font-style: italic;
-  color: var(--color-heritage-gold-bright);
+  color: var(--color-canvas);  /* Polish §4 P2: door title em = cream on dark glass (italic-only emphasis; heritage gold removed) */
 }
 
 .v3-door__eyebrow {
@@ -496,7 +503,7 @@ body {
   font-size: .76rem;
   letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--color-heritage-gold-bright);
+  color: rgba(251, 249, 245, 0.72);  /* Polish §4 P2: door eyebrow = cream 72% on dark glass (institutional restraint) */
   margin: 0 0 1rem;
   font-weight: 500;
 }
@@ -511,7 +518,7 @@ body {
 
 .v3-door__body em {
   font-style: italic;
-  color: var(--color-heritage-gold-bright);
+  color: var(--color-canvas);  /* Polish §4 P2: door body em = cream italic only (heritage gold removed; restraint) */
 }
 
 .v3-door__cta {
@@ -777,7 +784,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1rem;
-  color: var(--color-heritage-gold-bright);
+  color: rgba(245, 240, 229, 0.78);  /* Polish §4 P2: studio tool eyebrow = cream 78% on dark glass (heritage gold removed) */
   margin: 0 0 0.4rem;
 }
 
@@ -808,47 +815,10 @@ body {
   margin: 0 auto 1.6rem;
 }
 
-/* Silver ring Studio CTA — signature carry-over from iOS M-button (Layer 1 trademark gesture) */
-.v3-cta-silver-ring {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1.04rem;
-  letter-spacing: 0.04em;
-  color: var(--color-canvas);
-  background: var(--color-cobalt-glass);
-  padding: 1.15rem 2.6rem;
-  border-radius: 999px;
-  text-decoration: none;
-  min-height: 56px;
-  min-width: 320px;
-  justify-content: center;
-  transition: background 240ms var(--easing-cinematic);
-  z-index: 1;
-}
-
-.v3-cta-silver-ring::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  background: var(--color-silver-ring);
-  border-radius: 999px;
-  z-index: -1;
-}
-
-.v3-cta-silver-ring:hover,
-.v3-cta-silver-ring:focus-visible {
-  background: var(--color-cobalt-glass-bright);
-  outline: none;
-}
-
-.v3-cta-silver-ring:focus-visible {
-  outline: 2px solid var(--color-heritage-gold);
-  outline-offset: 6px;
-}
+/* Polish Punch-List §2 P0 YELLOW BOX FIX (Web Ed RATIFIED 2026-05-02 + Paul §5):
+   .v3-cta-silver-ring class REMOVED — silver ring relocates from BUTTON to CARD frame.
+   Studio CTA in Movement 7 + cross-page now uses .v3-cta-cobalt (canonical primary CTA).
+   Silver ring at CARD level preserved on .v3-door--silver-ring (Three Doors Studio card; iOS M-button signature). */
 
 /* ═══════════════════════════════════════════════════
    MOVEMENT 8 — THE VIP LAYER (CLOSE SECOND + heritage gold edge)
@@ -904,7 +874,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: .98rem;
-  color: var(--color-heritage-gold-bright);
+  color: var(--color-heritage-gold-bright);  /* Polish §4 P2: VIP tier eyebrow PRESERVED — VIP retains heritage gold per restraint matrix (premium tier signal) */
   margin: 0 0 0.4rem;
 }
 
@@ -993,7 +963,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.02rem;
-  color: var(--color-heritage-gold-text);
+  color: rgba(28, 31, 58, 0.55);  /* Polish §4 P2: trust anchor eyebrow = navy 55% (heritage gold removed; institutional restraint) */
   margin: 0 0 0.4rem;
 }
 

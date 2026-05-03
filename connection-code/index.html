@@ -13,23 +13,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>The Connection Code — MatchMakers</title>
-  <meta name="description" content="The Connection Code. The free framework. A short calibration that surfaces your Intent, your Phase, and your current Signal.">
+  <meta name="description" content="The Connection Code. A free assessment, calibrated to the methodology. The starting place for the relationship operating system.">
   <link rel="canonical" href="https://matchmakersusa.com/connection-code/">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Connection Code — MatchMakers">
-  <meta property="og:description" content="The Connection Code. The free framework. A short calibration that surfaces your Intent, your Phase, and your current Signal.">
+  <meta property="og:description" content="A free assessment, calibrated to the methodology. The starting place for the relationship operating system.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/connection-code.css">
+
+  <!-- v3 Typography stack — Foglihten canonical via local WOFF2 (homepage-v3.css @font-face); Inter institutional fallback (Gotham license confirmed YES per Paul §5 2026-05-02) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- Sentry error tracking — propagated from index.html (Wave 0a 13-edit absorption 2026-05-02) -->
+  <!-- Sentry error tracking — release tag matches v3 master plan -->
   <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
   <script>
     Sentry.init({
@@ -37,185 +39,369 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-02"
+      release: "matchmakersusa.com@2026-05-02-cc-v1-2"
     });
   </script>
+
+  <!-- CC v1.2 inherits Homepage v3 visual canon (color tokens + typography + button system + heritage gold restraint) -->
+  <link rel="stylesheet" href="/css/homepage-v3.css">
+  <link rel="stylesheet" href="/css/connection-code-v1-2.css">
 </head>
 <body>
 
-<a href="#main" class="cc-skip-link">Skip to content</a>
+<a href="#main" class="v3-skip-link">Skip to content</a>
 
-<div class="cc-shell">
+<main id="main">
 
-  <header class="cc-header">
-    <a href="/" class="cc-header__home" aria-label="MatchMakers home">MatchMakers<span class="cc-header__home-tm">&trade;</span></a>
-    <div class="cc-progress" role="group" aria-label="Calibration progress">
-      <span class="cc-progress__dot" data-stage-marker="1" data-state="active" aria-hidden="true"></span>
-      <span class="cc-progress__dot" data-stage-marker="2" data-state="pending" aria-hidden="true"></span>
-      <span class="cc-progress__dot" data-stage-marker="3" data-state="pending" aria-hidden="true"></span>
-      <span class="cc-progress__dot" data-stage-marker="4" data-state="pending" aria-hidden="true"></span>
-      <span class="cc-progress__dot" data-stage-marker="5" data-state="pending" aria-hidden="true"></span>
-      <span class="cc-progress__dot" data-stage-marker="6" data-state="pending" aria-hidden="true"></span>
-      <span class="cc-progress__dot" data-stage-marker="7" data-state="pending" aria-hidden="true"></span>
-      <span class="cc-progress__label" aria-live="polite">Stage 1 of 7</span>
+  <!-- ═══════════════════════════════════════════════════
+       Section 1 — Hero (sub-3s cinematic arrival per Cartier v1.6 §5.2; Movement 1 cross-page parity)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-arrival" aria-labelledby="cc-hero-anchor">
+    <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
+      <img src="/img/brand-mark/v3/wordmark-tagline-lockup.png"
+           alt=""
+           class="v3-arrival__brand-mark-img"
+           aria-hidden="true">
+      <p class="v3-arrival__wordmark--sr-only">MatchMakers &mdash; Take Dating to the Next Level</p>
     </div>
-  </header>
 
-  <main id="main">
+    <hr class="v3-arrival__hairline" aria-hidden="true">
 
-    <!-- ═══ Stage 1 — Welcome ═══ -->
-    <section class="cc-stage" data-stage="1" aria-labelledby="cc-stage-1-heading">
-      <div class="cc-welcome">
-        <p class="cc-eyebrow">The Connection Code&trade;</p>
-        <p class="cc-welcome__heritage">More than a decade of matchmaking practice.</p>
-        <hr class="cc-welcome__rule" aria-hidden="true">
-        <h1 id="cc-stage-1-heading" class="cc-headline" tabindex="-1" data-stage-heading>Welcome.<br><em>The Connection Code begins with a question.</em></h1>
-        <p class="cc-body cc-body--lead">A short calibration. Seven questions on Intent. Four on Phase. Three on Signal. The result is your Connection Code Brief.</p>
-        <p class="cc-body">There is no scoring against a feed. There is no swipe queue waiting at the end. The Engine surfaces what the methodology already knows about where you arrive.</p>
-        <div class="cc-actions cc-actions--center">
-          <button type="button" class="cc-btn" data-action="begin">Begin where you arrive. <span aria-hidden="true">&rarr;</span></button>
-        </div>
-        <p class="cc-welcome__cadence">Roughly five to seven minutes. Pause and return as you need.</p>
+    <!-- Tier 2 #18 verbatim canonical display headline -->
+    <h1 id="cc-hero-anchor" class="v3-arrival__anchor">
+      <span class="v3-arrival__anchor-line">Begin where you <em>arrive.</em></span>
+    </h1>
+
+    <p class="cc-hero__sub-display">A free assessment, calibrated to the methodology.</p>
+
+    <div class="cc-hero__cta-row">
+      <a href="/connection-code/assessment/" class="v3-cta-cobalt">Take the Free Assessment <span aria-hidden="true">&rarr;</span></a>
+      <p class="v3-cta-subline"><em>No registration. No email. The framework opens immediately.</em></p>
+    </div>
+
+    <p class="v3-arrival__scroll-cue" aria-hidden="true">Begin where you arrive &darr;</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 2 — The Methodology framing (Cartier v1.6 §3.4 + Tier 2 #19 placement per CC v1.1 §4)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-methodology-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Methodology</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-methodology-anchor" class="v3-display">A framework, <em>not a feed.</em></h2>
+      <p class="v3-body v3-body--lead">MatchMakers is a relationship operating system, tailored to you. Not a dating app. This is an outcome system. The methodology is the institutional discipline behind every recommendation, every signal read, every refinement made &mdash; the through-line from your first assessment to the relationship you intend.</p>
+      <p class="v3-body">The methodology is a five-phase framework, anchored to a five-signal architecture, calibrated against nine intent classes. It is not a personality test. It is not an algorithm that decides for you. It is a discipline &mdash; refined across more than a decade of matchmaking practice &mdash; that surfaces the questions worth answering and the patterns worth reading.</p>
+      <!-- Tier 2 #19 verbatim canonical placement -->
+      <p class="cc-methodology__patrimony"><em>Patrimony, made operational.</em></p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 3 — AI umbrella (Coach Identity per Tier 2 #23)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-coach-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Coach Identity</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-coach-anchor" class="v3-display">The coach is the methodology, <em>voiced.</em></h2>
+      <!-- Tier 2 #23 verbatim canonical -->
+      <p class="v3-body v3-body--lead">AI provides structure and continuity. Human matchmakers introduce judgment, nuance, and accountability. The methodology authority anchors the work institutionally.</p>
+      <p class="v3-body">The Coach is the methodology, voiced. On the Connection Code page, the methodology speaks for itself. The Coach lives at the Studio &mdash; where the work is the work.</p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 4 — 5 Phases preview (Movement 3 cross-page parity)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-phases-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The 5 Phases</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-phases-anchor" class="v3-display"><em>Five phases.</em></h2>
+      <p class="v3-body v3-body--lead">The methodology recognizes five phases. Each phase asks different questions, reads different signals, and calls for different work. The framework is the same. The work calibrates to the phase.</p>
+    </div>
+
+    <div class="v3-architecture__cards">
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">I.</p>
+        <p class="v3-architecture__card-eyebrow">Calibration.</p>
+        <p class="v3-architecture__card-body">The starting position. Intent surfaces. Patterns establish.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">II.</p>
+        <p class="v3-architecture__card-eyebrow">Recognition.</p>
+        <p class="v3-architecture__card-body">Signal-reading sharpens. The framework calibrates against lived patterns.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">III.</p>
+        <p class="v3-architecture__card-eyebrow">Discernment.</p>
+        <p class="v3-architecture__card-body">Compatibility patterns clarify. Misalignment patterns clarify with them.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">IV.</p>
+        <p class="v3-architecture__card-eyebrow">Commitment.</p>
+        <p class="v3-architecture__card-body">The relationship phase the methodology recognizes as durable.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">V.</p>
+        <p class="v3-architecture__card-eyebrow">Refinement.</p>
+        <p class="v3-architecture__card-body">Continuous calibration. The methodology adapts; the outcome is the constant.</p>
+      </article>
+    </div>
+
+    <p class="v3-architecture__closing"><em>The free assessment opens at Phase 1. The Playbook holds all five.</em></p>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 5 — 5 Signals preview (Movement 3 cross-page parity)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-signals-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The 5 Signals</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-signals-anchor" class="v3-display"><em>Five signals.</em></h2>
+      <p class="v3-body v3-body--lead">Five signals diagnose where you are in the work. They are read together; they refine across time.</p>
+    </div>
+
+    <div class="v3-architecture__cards">
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">i.</p>
+        <p class="v3-architecture__card-eyebrow">Intent.</p>
+        <p class="v3-architecture__card-body">What the relationship is for. The methodology asks first.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">ii.</p>
+        <p class="v3-architecture__card-eyebrow">Pattern.</p>
+        <p class="v3-architecture__card-body">How presence shows up across time. Reading layer one.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">iii.</p>
+        <p class="v3-architecture__card-eyebrow">Discernment.</p>
+        <p class="v3-architecture__card-body">Where alignment holds. Where it does not. Reading layer two.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">iv.</p>
+        <p class="v3-architecture__card-eyebrow">Calibration.</p>
+        <p class="v3-architecture__card-body">What the methodology refines against. Reading layer three.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">v.</p>
+        <p class="v3-architecture__card-eyebrow">Continuity.</p>
+        <p class="v3-architecture__card-body">What persists. What deepens. What the durable phase requires.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 6 — 9 Intent classes preview (Movement 3 closing pattern)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-intents-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The 9 Intent Classes</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-intents-anchor" class="v3-display"><em>Nine intent classes.</em></h2>
+      <p class="v3-body v3-body--lead">Nine intent classes describe what you came for. The free assessment surfaces yours.</p>
+      <p class="v3-architecture__intent-list"><em>I. Establishment / II. Re-establishment / III. Deepening / IV. Realignment / V. Consolidation / VI. Bespoke advisory / VII. Continuity / VIII. Provability / IX. Authority.</em></p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 7 — What the assessment surfaces (Tier 0 free register)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-surface-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Free Assessment</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-surface-anchor" class="v3-display">What the assessment <em>surfaces.</em></h2>
+      <p class="v3-body">Five to seven minutes. Roughly fourteen calibration questions, ledger-card by ledger-card. The framework reads the answers institutionally, not algorithmically. The result is a personalized Connection Code Brief &mdash; four pages, Cartier-letterhead.</p>
+      <p class="v3-body">The Brief surfaces your dominant Intent class, your current Phase, and your initial Signal state. Twelve Playbook chapters open to the user, curated to the calibration. Coach Lite accompanies the user without limit. A Welcome Letter from Coach arrives within twenty-four hours.</p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 8 — Why this is free (brand-positioning anchor)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-why-free-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">Why This Is Free</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-why-free-anchor" class="v3-display">A complete experience, <em>not a trial.</em></h2>
+      <p class="v3-body">The Connection Code is a free resource &mdash; the institutional sell sheet of the methodology. The methodology, previewed. Users who never purchase encounter the framework with the same dignity as the apex tier.</p>
+      <p class="v3-body">Free tier delivers genuine value to users who never convert. Paid tiers compound through methodology grounding, matchmaker craft, and Chief Advisor presence at signature moments. The methodology earns the membership; the engagement record compounds as patrimony.</p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 9 — Free Tools showcase (hairline-bordered cards; Tier 0 register)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="cc-tools-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">Free Tools. Foundational Content.</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="cc-tools-anchor" class="v3-display">Free tools. <em>Foundational content.</em></h2>
+      <p class="v3-body v3-body--lead">Beyond the assessment, the page surfaces three free tools &mdash; calibrated previews of the methodology depth the Playbook holds in full.</p>
+    </div>
+
+    <div class="cc-tools__grid">
+      <article class="cc-tool">
+        <p class="cc-tool__title">Coach Lite</p>
+        <p class="cc-tool__body">A preview of the Coach. The methodology, voiced &mdash; at the depth the Connection Code page calibrates against. The full Coach lives at the Studio.</p>
+      </article>
+      <article class="cc-tool">
+        <p class="cc-tool__title">Suitability Lite</p>
+        <p class="cc-tool__body">A preview of the Suitability reading layer. Discernment patterns surfaced at preview depth. The full Suitability tools live at the Studio.</p>
+      </article>
+      <article class="cc-tool">
+        <p class="cc-tool__title">12-chapter Playbook preview</p>
+        <p class="cc-tool__body">Twelve chapters of the Playbook, surfaced at preview depth. The framework, opened. The full Playbook is the engine. The eighty-seven-chapter Living Knowledge Graph lives at the Studio.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 10 — DUAL CTA section (Movement 4 cross-page parity)
+       Studio LEFT (PRIMARY; silver ring CARD frame) + VIP RIGHT (CLOSE SECOND; heritage gold edge)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-movement--center" aria-labelledby="cc-dual-cta-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Continue</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="cc-dual-cta-anchor" class="v3-display">The Playbook is the <em>engine.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">The free assessment opens the framework. The Playbook holds it. The Dating Studio is where The Playbook is delivered. The bespoke advisory layer extends the work where human matchmaker engagement calibrates against your work directly.</p>
+    </div>
+
+    <div class="v3-doors__grid">
+      <!-- LEFT — Dating Studio ($299.99) — PRIMARY; silver ring CARD frame (canonical from iOS M-button) -->
+      <a href="/studio/" class="v3-door v3-door--silver-ring">
+        <h3 class="v3-door__embossed-header">Dating <em>Studio</em></h3>
+        <p class="v3-door__eyebrow">The methodology earns the membership</p>
+        <p class="v3-door__body">Coach. Script Builder. Suitability tools. The Playbook in full institutional depth &mdash; five phases, five signals, nine intents, calibrated continuously through every phase the methodology recognizes.</p>
+        <span class="v3-door__cta">Open the Dating Studio &mdash; $299.99</span>
+        <p class="v3-door__caption"><em>One purchase. The Playbook in full.</em></p>
+      </a>
+
+      <!-- RIGHT — VIP Matchmaking ($499.99 starting) — CLOSE SECOND; heritage gold edge -->
+      <a href="/vip/" class="v3-door v3-door--heritage-gold-edge">
+        <h3 class="v3-door__embossed-header">VIP <em>Matchmaking</em></h3>
+        <p class="v3-door__eyebrow">The bespoke advisory layer</p>
+        <p class="v3-door__body">The Playbook delivered with bespoke advisory layered. Lite. Premier. Diamond. <em>Letters letterpress. Sessions video. Audits annual.</em></p>
+        <span class="v3-door__cta v3-door__cta--italic-gold">Begin inquiry &mdash; VIP <span aria-hidden="true">&rarr;</span></span>
+        <p class="v3-door__caption"><em>Starting at $499.99. Consultation-first.</em></p>
+      </a>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 11 — Trust + Provability (Movement 9 cross-page parity)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-movement--center" aria-labelledby="cc-trust-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Trust + Provability</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="cc-trust-anchor" class="v3-display"><em>Trust is provable, not marketed.</em></h2>
+    </div>
+
+    <div class="v3-trust__anchors">
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The framework.</p>
+        <h3 class="v3-trust__anchor-title">The methodology.</h3>
+        <p class="v3-trust__anchor-body">Five phases. Five signals. Nine intent classes. Refined across more than a decade of matchmaking practice.</p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The standard.</p>
+        <h3 class="v3-trust__anchor-title">The institutional discipline.</h3>
+        <p class="v3-trust__anchor-body"><em>Selectivity is the discipline. Refinement is the adaptation. Outcome is the constant.</em></p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The artifacts.</p>
+        <h3 class="v3-trust__anchor-title">The provenance.</h3>
+        <p class="v3-trust__anchor-body"><em>Letters are letterpress. Sessions are video. Audits are annual.</em></p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The institutional anchor.</p>
+        <h3 class="v3-trust__anchor-title">The authority.</h3>
+        <p class="v3-trust__anchor-body">The methodology authority anchors the work institutionally. The Chief Advisor preserves the through-line.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 12 — Origin (Movement 10 cross-page parity; negative space; restraint)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-origin" aria-labelledby="cc-origin-anchor">
+    <p class="v3-eyebrow v3-origin__eyebrow">Origin</p>
+    <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+    <h2 id="cc-origin-anchor" class="v3-display"><em>The methodology earned the membership.</em></h2>
+    <p class="v3-origin__paragraph">The framework is not a product spec. It was earned &mdash; refined across more than a decade of matchmaking practice, calibrated against the patterns that hold and the patterns that fail, anchored in the institutional discipline the work demands. Pattern by pattern. Phase by phase. Signal by signal.</p>
+    <p class="v3-origin__closing"><em>The methodology earned. The membership earned. The outcome calibrated continuously.</em></p>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 14 — Repeat CTA at page-end (Tier 0 free register; cobalt glass primary CTA)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-movement--center" aria-labelledby="cc-repeat-cta-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Begin Where You Arrive</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="cc-repeat-cta-anchor" class="v3-display"><em>The methodology asks first.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">The free assessment opens at the entry. The Playbook holds the rest.</p>
+
+      <div class="cc-hero__cta-row">
+        <a href="/connection-code/assessment/" class="v3-cta-cobalt">Take the Free Assessment <span aria-hidden="true">&rarr;</span></a>
+        <p class="v3-cta-subline"><em>No registration. No email. The framework opens immediately.</em></p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══ Stage 2 — 9-Intent Assessment ═══ -->
-    <section class="cc-stage" data-stage="2" aria-labelledby="cc-stage-2-heading" hidden>
-      <p class="cc-eyebrow">Stage Two &middot; Intent</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="cc-stage-2-heading" class="cc-headline" tabindex="-1" data-stage-heading>The read on <em>Intent.</em></h2>
-      <p class="cc-body">Seven questions. The Engine surfaces which of the nine Intents the methodology is currently calibrating for.</p>
-      <div data-question-host></div>
-      <div class="cc-actions">
-        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="1">Back to Welcome</button>
-      </div>
-    </section>
+</main>
 
-    <!-- ═══ Stage 3 — 5-Phase Calibration ═══ -->
-    <section class="cc-stage" data-stage="3" aria-labelledby="cc-stage-3-heading" hidden>
-      <p class="cc-eyebrow">Stage Three &middot; Phase</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="cc-stage-3-heading" class="cc-headline" tabindex="-1" data-stage-heading>The read on <em>Phase.</em></h2>
-      <p class="cc-body">Four questions. The five Phases of a Connection Code arc are Profile, Connection, Courtship, Commitment, Ongoing. The Engine reads where you arrive.</p>
-      <div data-question-host></div>
-      <div class="cc-actions">
-        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="2">Back to Intent</button>
-      </div>
-    </section>
+<!-- ═══════════════════════════════════════════════════
+     Section 13 — Footer (Movement 11 cross-page parity)
+     ═══════════════════════════════════════════════════ -->
+<footer class="v3-footer">
+  <ul class="v3-footer__rotation" role="group" aria-label="Brand-line rotation">
+    <li>A relationship operating system, tailored to you. Not a dating app.</li>
+    <li>The methodology earns the membership.</li>
+    <li>The Playbook is the engine.</li>
+  </ul>
 
-    <!-- ═══ Stage 4 — 5-Signal Initial State ═══ -->
-    <section class="cc-stage" data-stage="4" aria-labelledby="cc-stage-4-heading" hidden>
-      <p class="cc-eyebrow">Stage Four &middot; Signal</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="cc-stage-4-heading" class="cc-headline" tabindex="-1" data-stage-heading>The read on <em>Signal.</em></h2>
-      <p class="cc-body">Three questions. The five Signals of the Connection Code are Intent, Position, Open, Build, Progress. Intent and Position read upstream; Open, Build, and Progress are the read in motion.</p>
-      <div data-question-host></div>
-      <div class="cc-actions">
-        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="3">Back to Phase</button>
-      </div>
-    </section>
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/studio/">Dating Studio</a>
+    <a href="/vip/">VIP</a>
+    <a href="/about/">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/contact/">Inquiry</a>
+  </nav>
 
-    <!-- ═══ Stage 5 — Connection Code Brief generation ═══ -->
-    <section class="cc-stage" data-stage="5" aria-labelledby="cc-stage-5-heading" hidden>
-      <p class="cc-eyebrow">Stage Five &middot; Brief</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="cc-stage-5-heading" class="cc-headline" tabindex="-1" data-stage-heading>The Connection Code <em>Brief.</em></h2>
-      <p class="cc-body">The Coach generates your Brief from the read you just calibrated. It arrives as a four-page Cartier-letterhead document.</p>
+  <p class="v3-footer__institutional">&copy; MatchMakers &middot; Methodology authority anchored institutionally &middot; Letters letterpress &middot; Sessions video &middot; Audits annual.</p>
 
-      <div data-brief-host>
-        <!-- Pre-generation summary card (replaced by full 4-page Brief on render) -->
-        <div class="cc-brief" role="group" aria-label="Connection Code Brief preview">
-          <p class="cc-brief__letterhead">Connection Code<span class="cc-brief__letterhead-tm">&trade;</span> Brief &middot; Preview</p>
-          <div class="cc-brief__field">
-            <p class="cc-brief__field-label">Dominant Intent</p>
-            <p class="cc-brief__field-value" data-brief-intent>&mdash;</p>
-          </div>
-          <div class="cc-brief__field">
-            <p class="cc-brief__field-label">Current Phase</p>
-            <p class="cc-brief__field-value" data-brief-phase>&mdash;</p>
-          </div>
-          <div class="cc-brief__field">
-            <p class="cc-brief__field-label">Initial Signal Read</p>
-            <p class="cc-brief__field-value" data-brief-signals>&mdash;</p>
-          </div>
-          <p class="cc-brief__placeholder-cue">The full four-page letterhead Brief renders below. Generation takes a moment.</p>
-        </div>
-      </div>
-
-      <div class="cc-actions">
-        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="4">Back to Signal</button>
-        <button type="button" class="cc-btn" data-action="generate-brief">Generate the Brief <span aria-hidden="true">&rarr;</span></button>
-      </div>
-    </section>
-
-    <!-- ═══ Stage 6 — Sign-up gate (functional form) ═══ -->
-    <section class="cc-stage" data-stage="6" aria-labelledby="cc-stage-6-heading" hidden>
-      <p class="cc-eyebrow">Stage Six &middot; Sign-up</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="cc-stage-6-heading" class="cc-headline" tabindex="-1" data-stage-heading>A standing record of <em>your read.</em></h2>
-      <p class="cc-body">Sign-up creates your Connection Code account. The Brief is held there. The Coach references it when you return.</p>
-      <p class="cc-body">Sign-up is free, in full. The Connection Code is the entry door. The Studio is the next door, by application.</p>
-
-      <form class="cc-card cc-signup" data-signup-form aria-labelledby="cc-signup-heading" novalidate>
-        <h3 id="cc-signup-heading" class="cc-card__question">Welcome. The Coach holds the Brief on your behalf.</h3>
-
-        <div class="cc-field">
-          <label for="cc-signup-name" class="cc-field__label">Given name (optional)</label>
-          <input type="text" id="cc-signup-name" name="given_name" class="cc-field__input" autocomplete="given-name" maxlength="80">
-          <p class="cc-field__hint">The Coach uses this only when addressing you. It is never shared with another user.</p>
-        </div>
-
-        <div class="cc-field">
-          <label for="cc-signup-email" class="cc-field__label">Email</label>
-          <input type="email" id="cc-signup-email" name="email" class="cc-field__input" autocomplete="email" required maxlength="180">
-          <p class="cc-field__hint">The Welcome Letter from Coach arrives within twenty-four hours.</p>
-        </div>
-
-        <div class="cc-field">
-          <label class="cc-checkbox">
-            <input type="checkbox" name="terms" required>
-            <span>I have read the <a href="/privacy-policy/" class="cc-link">Privacy Policy</a> and consent to the standing record of my read.</span>
-          </label>
-        </div>
-
-        <div class="cc-actions">
-          <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="5">Back to Brief</button>
-          <button type="submit" class="cc-btn" data-signup-submit>Sign up &amp; continue <span aria-hidden="true">&rarr;</span></button>
-        </div>
-
-        <p class="cc-form-status" data-signup-status role="status" aria-live="polite"></p>
-      </form>
-    </section>
-
-    <!-- ═══ Stage 7 — Coach Lite first interaction (~30-node choice tree) ═══ -->
-    <section class="cc-stage" data-stage="7" aria-labelledby="cc-stage-7-heading" hidden>
-      <p class="cc-eyebrow">Stage Seven &middot; Coach Lite</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="cc-stage-7-heading" class="cc-headline" tabindex="-1" data-stage-heading>The Coach, <em>first read.</em></h2>
-      <p class="cc-body">Coach Lite is the methodology in conversation. A choice tree, grounded in the Connection Code, calibrated to your Brief. Coach AI begins at L2 Studio.</p>
-
-      <div data-coach-lite-host class="cc-coach-host" role="group" aria-label="Coach Lite first interaction"></div>
-
-      <div class="cc-actions">
-        <button type="button" class="cc-btn cc-btn--ghost" data-action="back-stage" data-target="5">Review your Brief</button>
-        <button type="button" class="cc-btn cc-btn--ghost" data-action="coach-lite-restart">Return to the Coach</button>
-        <a href="/studio/" class="cc-btn" data-action="cta-studio">Continue to the Studio <span aria-hidden="true">&rarr;</span></a>
-      </div>
-
-      <p class="cc-coach-cue">L1 explores the methodology. Coach AI begins at L2.</p>
-    </section>
-
-  </main>
-
-  <footer class="cc-footer">
-    The Connection Code is a trademark of MatchMakers LLC. More than a decade of matchmaking practice.
-  </footer>
-
-</div>
-
-<script src="/js/coach-lite-tree.js"></script>
-<script src="/js/cc-api.js"></script>
-<script src="/js/connection-code.js"></script>
+  <p class="v3-footer__wordmark">MatchMakers<span class="v3-footer__wordmark-tm">&trade;</span></p>
+</footer>
 
 </body>
 </html>
