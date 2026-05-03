@@ -1124,3 +1124,162 @@ body {
 @media (max-width: 767px) {
   .v3-movement { padding: 4rem 1.25rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   POLISH v2 AMENDMENT — VISUAL TREATMENT (per Web Ed POLISH v2 amendment 2026-05-02)
+   v2.1 navy spine + footer (Option M)
+   v2.2 cream warmer alt section variants (.v3-section--warm)
+   v2.3 Cormorant Garamond Layer 2 editorial canonical (replaces Foglihten Layer 2; Foglihten preserved Layer 1 only)
+   v2.3 Gotham right-sizing (body 300 / 17px / 1.72)
+   v2.3 navy softening #252948 architectural variant (cream-blend surfaces)
+   v2.3 thesis eyebrows full navy
+   v2.3 heritage gold layered preservation (4 canonical surfaces; restraint matrix unchanged)
+   v2.4 S-spin codified (Option B deferred until transparent-BG SVG)
+   PURELY ADDITIVE — preserves all current canon per Paul §5 binding ("never stray too far")
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* v2.3 navy softening — architectural variant for cream-blend surfaces (spine / footer) */
+  --color-ink-architectural: #252948;
+
+  /* v2.3 three-register typography canon (Cartier Reframe Spec v1.7 + Polish v2 §3)
+     Layer 1 trademark: Foglihten (brand mark hero ONLY; preserved via --font-display fallback chain)
+     Layer 2 editorial display: Cormorant Garamond (canonical for v3-display, thesis eyebrows italic, problem stanzas)
+     Layer 2 body: Gotham → Inter institutional fallback */
+  --cartier-font-display: 'Cormorant Garamond', Georgia, serif;
+  --cartier-font-body:    var(--font-body);
+}
+
+/* v2.3 Gotham right-sizing — body Light 300 at 17px / 1.72 line-height */
+body {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+/* v2.1 navy spine — fixed 3px navy hairline along left viewport edge (Option M) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100vh;
+  background: var(--color-ink-architectural);
+  z-index: 100;
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  body::before { width: 2px; }
+}
+
+/* v2.2 cream warmer alt section variants — Movements 3 / 7 / 10 per Homepage v3.1 §5 */
+.v3-section--warm {
+  background: var(--color-canvas-warm);
+}
+
+/* v2.3 Cormorant Garamond Layer 2 editorial display canonical — overrides Foglihten lead at Layer 2 */
+.v3-display {
+  font-family: var(--cartier-font-display);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.005em;
+}
+
+/* v2.3 thesis eyebrows full navy + Cormorant italic editorial register */
+.v3-thesis__eyebrow {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+/* ═══════════════════════════════════════════════════
+   v3.1 — MOVEMENT 2 "THE PROBLEM" (NEW per Homepage Master Plan v3.1 §5.3)
+   3-stanza cinematic + closing per Cartier Reframe Spec v1.7 §2.2
+   ═══════════════════════════════════════════════════ */
+
+.v3-problem {
+  /* uses primary cream canvas; v3-movement padding inherited */
+}
+
+.v3-problem__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.v3-problem__rule {
+  border: 0;
+  border-top: 1px solid var(--color-heritage-gold);
+  width: 240px;
+  opacity: 0.55;
+  margin: 1.4rem auto 2rem;
+}
+
+.v3-problem__stanza {
+  font-family: var(--cartier-font-display);
+  font-weight: 400;
+  font-size: clamp(1.32rem, 2.8vw, 1.76rem);
+  line-height: 1.4;
+  color: var(--color-ink);
+  margin: 0 auto 1.6rem;
+  max-width: 640px;
+}
+
+.v3-problem__stanza--3 {
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 1.92rem);
+  margin-top: 0.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.v3-problem__break {
+  border: 0;
+  border-top: 1px solid var(--color-hairline-atmosphere);
+  margin: 1.6rem auto;
+  max-width: 320px;
+}
+
+.v3-problem__closing {
+  font-family: var(--cartier-font-body);
+  font-weight: 300;
+  font-size: 1.04rem;
+  line-height: 1.72;
+  color: var(--color-ink-secondary);
+  max-width: 560px;
+  margin: 2rem auto 0;
+}
+
+/* v2.1 footer navy band — institutional close on architectural navy with cream typography (Option M) */
+.v3-footer {
+  background: var(--color-ink-architectural);
+  color: var(--color-canvas);
+}
+
+.v3-footer .v3-footer__rotation li {
+  color: var(--color-canvas);
+}
+
+.v3-footer .v3-footer__nav a {
+  color: var(--color-canvas);
+}
+
+.v3-footer .v3-footer__institutional {
+  color: rgba(245, 240, 229, 0.62);
+}
+
+.v3-footer .v3-footer__wordmark {
+  color: var(--color-canvas);
+}
+
+.v3-footer .v3-footer__wordmark-tm {
+  color: var(--color-heritage-gold-bright);
+}
+
+/* v2.4 S-spin codified — single-axis cinematic rotation primitive (Option B deferred until transparent-BG SVG; arrival ends at 3.0s settle until SVG lands) */
+@keyframes v3-s-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* End — Polish v2 amendment block */
