@@ -203,17 +203,19 @@ body {
   animation: v3-fade-in 0.5s var(--easing-ease-out) 0.3s forwards;
 }
 
-/* Polish Punch-List §3 P1 + Polish v2.6 (Paul §5 staging-smoke 2026-05-03):
-   Brand mark deploys as TIGHT-CROPPED PNG (wordmark + tagline only; 1113x254 px; 44KB) —
-   replaces full iPhone-canvas logo-screen-white.png (1224x2587) which had excess white BG
-   creating layout problem. Cropped via Python PIL with bounding box detection +40px padding.
-   mix-blend-mode no longer needed (no excess white space to blend). */
+/* Polish Punch-List §3 P1 + Polish v2.6 + v2.7 (Paul §5 staging-smoke 2026-05-03):
+   Brand mark deploys as TIGHT-CROPPED PNG (wordmark + tagline only; 1043x184 px; 42KB) —
+   replaces full iPhone-canvas logo-screen-white.png (1224x2587) which had excess white BG.
+   Cropped via Python PIL with bounding box detection + 5px tight padding.
+   mix-blend-mode multiply blends residual 5px white padding with cream canvas (white pixels →
+   invisible against cream; navy wordmark preserved). */
 .v3-arrival__brand-mark-img {
   display: block;
   margin: 0 auto;
   max-width: 480px;
   width: 100%;
   height: auto;
+  mix-blend-mode: multiply;  /* residual 5px white padding → invisible against cream canvas */
 }
 
 @media (max-width: 1023px) {
