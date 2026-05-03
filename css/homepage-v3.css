@@ -1065,6 +1065,43 @@ body {
    Silver ring at CARD level preserved on .v3-door--silver-ring (Three Doors Studio card; iOS M-button signature). */
 
 /* ═══════════════════════════════════════════════════
+   VIP CARTIER DISCIPLINE STRIP + CONTINUITY CALLOUT (Polish v2.13 alignment per VIP audit §6.1)
+   Path α canonical: "Suitors are reviewed, not curated"
+   ═══════════════════════════════════════════════════ */
+
+.v3-vip__discipline-strip {
+  text-align: center;
+  padding: clamp(20px, 3vw, 32px) clamp(24px, 5vw, 64px);
+  border-top: 1px solid var(--color-heritage-gold);
+  border-bottom: 1px solid var(--color-heritage-gold);
+  margin: 0;
+  background: rgba(245, 240, 229, 0.6);
+}
+
+.v3-vip__discipline-line {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  color: rgba(28, 31, 58, 0.78);
+  letter-spacing: 0.005em;
+  margin: 0;
+  max-width: 720px;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+.v3-vip__continuity-callout {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  color: var(--color-heritage-gold);
+  text-align: center;
+  margin: clamp(28px, 4vw, 48px) auto 0;
+  max-width: 640px;
+  letter-spacing: 0.01em;
+}
+
+/* ═══════════════════════════════════════════════════
    MOVEMENT 8 — THE VIP LAYER (CLOSE SECOND + heritage gold edge)
    ═══════════════════════════════════════════════════ */
 
@@ -1323,6 +1360,16 @@ body {
   font-style: italic;
   font-size: .82rem;
   color: var(--color-ink-tertiary);
+  margin: 0 0 0.6rem;
+}
+
+/* Connection Code Engine canonical footer line (per VIP audit §6.1; Polish v2.13 alignment) */
+.v3-footer__powered {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.015em;
   margin: 0 0 2rem;
 }
 
