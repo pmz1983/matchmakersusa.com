@@ -12,19 +12,19 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>MatchMakers — The Connection Code, applied as a system.</title>
-  <meta name="description" content="A relationship operating system, distilled across more than a decade of matchmaking practice. The Connection Code, applied as a system.">
+  <title>MatchMakers — A relationship operating system, tailored to you.</title>
+  <meta name="description" content="A relationship operating system, tailored to you. Not a dating app. This is an outcome system. The methodology, refined across more than a decade of matchmaking practice.">
   <link rel="canonical" href="https://matchmakersusa.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MatchMakers">
-  <meta property="og:title" content="MatchMakers — The Connection Code, applied as a system.">
-  <meta property="og:description" content="5-Phase × 5-Signal × 9-Intent framework. 87-chapter Living Knowledge Graph. Every output cited. Trust is provable, not marketed.">
+  <meta property="og:title" content="MatchMakers — A relationship operating system, tailored to you.">
+  <meta property="og:description" content="Not a dating app. This is an outcome system. The Playbook is the engine. Trust is provable, not marketed.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:secure_url" content="https://matchmakersusa.com/img/og-image-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MatchMakers — The Connection Code">
+  <meta name="twitter:title" content="MatchMakers — A relationship operating system, tailored to you.">
   <meta name="twitter:image" content="https://matchmakersusa.com/img/og-image-v2.png">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
@@ -32,18 +32,21 @@
     {"@type":"WebSite","name":"MatchMakers","url":"https://matchmakersusa.com","publisher":{"@type":"Organization","name":"MatchMakers"}}
   ]}
   </script>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
+
+  <!-- v3 Typography stack:
+       Foglihten loaded canonically via local WOFF2 (homepage-v3.css @font-face); no Google Fonts fallback needed (Polish §7 P5 dedupe)
+       Inter body fallback (Gotham canonical commercial license confirmed YES per Paul §5 2026-05-02; Gotham WOFF2 deployment pending follow-up Design v3 cycle) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png">
 
-  <!-- Sentry error tracking — installed 2026-05-02 (commit 1bad4df) -->
+  <!-- Sentry error tracking — release bumped per v3 implementation commission -->
   <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
   <script>
     Sentry.init({
@@ -51,1176 +54,481 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-02-homepage-master-plan-v2"
+      release: "matchmakersusa.com@2026-05-03-v3-1-five-levels-aligned"
     });
   </script>
 
-  <style>
-    :root {
-      --color-bg:                   #050A10;
-      --color-bg-elevated:          #0A1320;
-      --color-text-primary:         #F0F4F8;
-      --color-text-secondary:       rgba(200,214,229,.78);
-      --color-text-tertiary:        #BCD0E2;
-      --color-rule-ambient:         rgba(120,149,175,.10);
-      --color-rule-accent:          rgba(201,168,76,.22);
-      --color-rule-emphatic:        rgba(201,168,76,.44);
-      --color-accent-gold:          #C9A84C;
-      --color-accent-gold-bright:   #D4B65E;
-      --motion-arrival-stage-1:     320ms;
-      --motion-arrival-stage-2:     480ms;
-      --motion-arrival-stage-3:     640ms;
-      --easing-cartier:             cubic-bezier(.22,.61,.36,1);
-    }
-
-    body {
-      background: var(--color-bg);
-      color: var(--color-text-primary);
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .hp-arrival {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 1.5rem 4rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .hp-arrival__atmosphere {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 35%, rgba(201,168,76,.04) 0%, transparent 55%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hp-arrival__inner {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hp-arrival__eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin-bottom: 2.4rem;
-      animation: cartier-arrival-fade var(--motion-arrival-stage-1) var(--easing-cartier) forwards;
-    }
-
-    .hp-arrival__heritage {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: .92rem;
-      color: var(--color-text-tertiary);
-      margin-bottom: 1.6rem;
-      animation: cartier-arrival-fade var(--motion-arrival-stage-1) var(--easing-cartier) 120ms forwards;
-    }
-
-    .hp-arrival__wordmark {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(2.2rem, 5.6vw, 3.6rem);
-      letter-spacing: 0.04em;
-      color: var(--color-text-primary);
-      margin-bottom: 0.6rem;
-      animation: cartier-arrival-fade var(--motion-arrival-stage-2) var(--easing-cartier) 180ms forwards;
-    }
-
-    .hp-arrival__wordmark-tm {
-      font-size: 0.42em;
-      vertical-align: super;
-      margin-left: 0.04em;
-      color: var(--color-accent-gold);
-    }
-
-    .hp-arrival__rule {
-      width: 96px;
-      height: 1px;
-      background: var(--color-rule-emphatic);
-      margin: 1.6rem auto 2rem;
-      animation: cartier-rule-grow var(--motion-arrival-stage-2) var(--easing-cartier) 280ms forwards;
-    }
-
-    /* Compound brand anchor (Cartier Reframe Spec v1.3 §E.2 cinematic 3-sentence pen-write) */
-    .hp-arrival__anchor {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.8rem, 4.2vw, 2.6rem);
-      line-height: 1.32;
-      color: var(--color-text-primary);
-      margin: 0 0 1.4rem;
-      letter-spacing: 0.01em;
-    }
-
-    .hp-arrival__anchor-line {
-      display: block;
-      animation: cartier-arrival-fade var(--motion-arrival-stage-2) var(--easing-cartier) forwards;
-      animation-fill-mode: both;
-    }
-
-    .hp-arrival__anchor-line--1 { animation-delay: 200ms; }
-    .hp-arrival__anchor-line--2 { animation-delay: 360ms; }
-    .hp-arrival__anchor-line--3 { animation-delay: 520ms; }
-
-    .hp-arrival__anchor-line em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-    }
-
-    .hp-arrival__subhead {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.1rem, 2.4vw, 1.32rem);
-      color: var(--color-text-secondary);
-      max-width: 540px;
-      margin: 0 auto 2.6rem;
-      line-height: 1.5;
-      animation: cartier-arrival-fade var(--motion-arrival-stage-3) var(--easing-cartier) 540ms forwards;
-    }
-
-    /* 3-tier card hero (Atlas hot-fix dispatch §2.3; replaces single Suitability CTA) */
-    .hp-tiers {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.6rem;
-      max-width: 980px;
-      margin: 0 auto;
-      width: 100%;
-      text-align: left;
-    }
-
-    .hp-tier {
-      display: flex;
-      flex-direction: column;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-rule-emphatic);
-      padding: 2rem 1.6rem 1.8rem;
-      min-height: 280px;
-      text-decoration: none;
-      color: inherit;
-      transition: background 240ms var(--easing-cartier), border-color 240ms var(--easing-cartier), transform 240ms var(--easing-cartier);
-      opacity: 0;
-      animation: cartier-tier-enter 360ms var(--easing-cartier) forwards;
-    }
-
-    .hp-tier--1 { animation-delay: 600ms; }
-    .hp-tier--2 { animation-delay: 760ms; }
-    .hp-tier--3 { animation-delay: 920ms; }
-
-    .hp-tier:hover,
-    .hp-tier:focus-visible {
-      background: rgba(201, 168, 76, 0.04);
-      border-color: var(--color-accent-gold-bright);
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-    .hp-tier:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    .hp-tier__label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin-bottom: 0.6rem;
-    }
-
-    .hp-tier__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.5rem;
-      color: var(--color-text-primary);
-      margin: 0 0 0.4rem;
-      line-height: 1.2;
-    }
-
-    .hp-tier__title em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-    }
-
-    .hp-tier__description {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: 1.04rem;
-      color: var(--color-text-secondary);
-      margin: 0 0 1.4rem;
-    }
-
-    .hp-tier__rule {
-      border: none;
-      border-top: 1px solid var(--color-rule-ambient);
-      margin: 0 0 1.4rem;
-    }
-
-    .hp-tier__price {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.32rem;
-      color: var(--color-text-primary);
-      margin: 0 0 0.2rem;
-      line-height: 1.2;
-    }
-
-    .hp-tier__price-cue {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: .9rem;
-      color: var(--color-text-tertiary);
-      margin: 0 0 1.6rem;
-    }
-
-    .hp-tier__cta {
-      margin-top: auto;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .92rem;
-      letter-spacing: 0.06em;
-      color: var(--color-accent-gold-bright);
-      border-bottom: 1px solid var(--color-rule-accent);
-      padding-bottom: 0.4rem;
-      align-self: flex-start;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hp-tier:hover .hp-tier__cta,
-    .hp-tier:focus-visible .hp-tier__cta {
-      border-bottom-color: var(--color-accent-gold-bright);
-    }
-
-    @keyframes cartier-tier-enter {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 1023px) {
-      .hp-tiers { grid-template-columns: 1fr; gap: 1.2rem; }
-      .hp-tier { min-height: 0; }
-    }
-
-    @keyframes cartier-arrival-fade {
-      from { transform: translateY(8px); }
-      to   { transform: translateY(0); }
-    }
-
-    @keyframes cartier-rule-grow {
-      from { width: 0; }
-      to   { width: 96px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hp-arrival__eyebrow,
-      .hp-arrival__heritage,
-      .hp-arrival__wordmark,
-      .hp-arrival__rule,
-      .hp-arrival__anchor-line,
-      .hp-arrival__subhead,
-      .hp-tier {
-        animation: none;
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* Thesis pair below-fold (Mission + Substance per §1.1 + §3.3) */
-    .hp-thesis {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem 1.4rem;
-    }
-
-    .hp-thesis__inner { max-width: 720px; margin: 0 auto; }
-
-    .hp-thesis__paragraph {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      line-height: 1.62;
-      color: var(--color-text-primary);
-      margin: 0;
-    }
-
-    .hp-thesis__paragraph--mission {
-      font-size: clamp(1.32rem, 2.6vw, 1.6rem);
-      letter-spacing: 0.005em;
-    }
-
-    .hp-thesis__paragraph--substance {
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 300;
-      font-size: 1.04rem;
-      line-height: 1.78;
-      color: var(--color-text-secondary);
-    }
-
-    .hp-thesis__paragraph em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-    }
-
-    .hp-thesis--substance { padding-top: 1.4rem; padding-bottom: 4rem; }
-
-    .hp-section {
-      padding: 5rem 1.5rem;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .hp-section__inner { max-width: 720px; margin: 0 auto; }
-
-    .hp-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin-bottom: 1rem;
-    }
-
-    .hp-rule--ambient {
-      border: none;
-      border-top: 1px solid var(--color-rule-ambient);
-      margin: 2rem 0;
-    }
-
-    .hp-rule--accent {
-      border: none;
-      border-top: 1px solid var(--color-rule-accent);
-      margin: 2rem 0;
-      max-width: 96px;
-    }
-
-    .hp-headline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.6rem, 3.6vw, 2.2rem);
-      line-height: 1.28;
-      color: var(--color-text-primary);
-      margin-bottom: 1.4rem;
-    }
-
-    .hp-headline em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-    }
-
-    .hp-body {
-      font-size: 1.02rem;
-      line-height: 1.72;
-      color: var(--color-text-secondary);
-      margin-bottom: 1.4rem;
-    }
-
-    .hp-doors {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.4rem;
-      margin-top: 2.6rem;
-    }
-
-    .hp-door {
-      border: 1px solid var(--color-rule-accent);
-      padding: 2rem 1.6rem;
-      background: var(--color-bg-elevated);
-      display: flex;
-      flex-direction: column;
-      min-height: 260px;
-    }
-
-    .hp-door__tier {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .64rem;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--color-accent-gold);
-      margin-bottom: 0.8rem;
-    }
-
-    .hp-door__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.5rem;
-      color: var(--color-text-primary);
-      margin-bottom: 0.6rem;
-    }
-
-    .hp-door__title em { font-style: italic; color: var(--color-accent-gold); }
-
-    .hp-door__body {
-      font-size: 0.94rem;
-      line-height: 1.62;
-      color: var(--color-text-secondary);
-      margin-bottom: 1.4rem;
-      flex: 1;
-    }
-
-    .hp-door__cta {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .88rem;
-      letter-spacing: 0.06em;
-      color: var(--color-accent-gold-bright);
-      text-decoration: none;
-      border-bottom: 1px solid var(--color-rule-accent);
-      padding-bottom: 0.4rem;
-      align-self: flex-start;
-      transition: color 200ms var(--easing-cartier), border-color 200ms var(--easing-cartier);
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .hp-door__cta:hover,
-    .hp-door__cta:focus-visible {
-      color: var(--color-accent-gold-bright);
-      border-color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-
-    .hp-door__cta:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    .hp-method__beats {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: 1.18rem;
-      color: var(--color-text-primary);
-      line-height: 1.85;
-      margin: 2rem 0;
-    }
-
-    .hp-method__beats span { display: block; }
-
-    .hp-footer {
-      border-top: 1px solid var(--color-rule-ambient);
-      padding: 2.4rem 1.5rem 3rem;
-      text-align: center;
-    }
-
-    .hp-footer__wordmark {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.4rem;
-      letter-spacing: 0.06em;
-      color: var(--color-text-primary);
-      margin-bottom: 0.4rem;
-    }
-
-    .hp-footer__heritage {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: .88rem;
-      color: var(--color-text-tertiary);
-      margin-bottom: 1.2rem;
-    }
-
-    .hp-footer__nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.6rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .82rem;
-      letter-spacing: 0.04em;
-      margin-bottom: 1.2rem;
-    }
-
-    .hp-footer__nav a {
-      color: var(--color-text-tertiary);
-      text-decoration: none;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .hp-footer__nav a:hover,
-    .hp-footer__nav a:focus-visible {
-      color: var(--color-accent-gold);
-      outline: none;
-    }
-
-    .hp-footer__nav a:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    .hp-footer__legal {
-      font-size: .72rem;
-      color: var(--color-text-tertiary);
-      letter-spacing: 0.04em;
-    }
-
-    /* v2 §11 footer eyebrow + 6-line rotation (s10 v1.2 expansion) */
-    .hp-footer__eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--color-text-tertiary);
-      margin-bottom: 1.2rem;
-    }
-
-    .hp-footer__rotation {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto 1.4rem;
-      max-width: 640px;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: .9rem;
-      line-height: 1.85;
-      color: var(--color-text-tertiary);
-    }
-
-    .hp-footer__rotation li {
-      padding: 0.2rem 0;
-    }
-
-    @media (max-width: 640px) {
-      .hp-arrival { padding: 4rem 1.25rem 3rem; }
-      .hp-section { padding: 3.6rem 1.25rem; }
-      .hp-arrival__cta { width: 100%; min-width: 0; }
-    }
-
-    .hp-skip-link {
-      position: absolute; left: -9999px; top: auto;
-      width: 1px; height: 1px; overflow: hidden;
-    }
-    .hp-skip-link:focus {
-      position: fixed; left: 1rem; top: 1rem;
-      width: auto; height: auto; padding: .6rem 1rem;
-      background: var(--color-bg-elevated); color: var(--color-text-primary);
-      border: 1px solid var(--color-accent-gold);
-      z-index: 9999;
-    }
-
-    .hp-rule--page { max-width: 1200px; margin: 0 auto; }
-
-    .hp-footer__wordmark-tm { font-size: .6em; color: var(--color-accent-gold); }
-    .hp-method__beats span:not(:last-child) { margin-bottom: 0.2rem; }
-
-    /* CTA row + dual-CTA layout (v1.5 §2.2 Playbook DUAL CTA + §2.3 CC single CTA) */
-    .hp-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem 1.4rem;
-      margin-top: 2rem;
-    }
-
-    .hp-cta-row--dual { gap: 0.8rem 1.6rem; }
-
-    .hp-cta--primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      font-size: .98rem;
-      letter-spacing: 0.06em;
-      color: var(--color-text-primary);
-      background: transparent;
-      border: 1px solid var(--color-accent-gold);
-      padding: 0.95rem 1.8rem;
-      text-decoration: none;
-      transition: background 220ms var(--easing-cartier), color 220ms var(--easing-cartier);
-      min-height: 48px;
-    }
-
-    .hp-cta--primary:hover,
-    .hp-cta--primary:focus-visible {
-      background: rgba(201, 168, 76, 0.06);
-      color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-
-    .hp-cta--primary:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    .hp-cta--secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      font-size: .92rem;
-      letter-spacing: 0.06em;
-      color: var(--color-accent-gold-bright);
-      text-decoration: none;
-      border-bottom: 1px solid var(--color-rule-accent);
-      padding-bottom: 0.4rem;
-      min-height: 44px;
-      transition: color 220ms var(--easing-cartier), border-color 220ms var(--easing-cartier);
-    }
-
-    .hp-cta--secondary:hover,
-    .hp-cta--secondary:focus-visible {
-      color: var(--color-text-primary);
-      border-bottom-color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-
-    .hp-cta--secondary:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    /* v2 Master Plan additions ───────────────────────────────────────── */
-
-    /* Apex section + 28×2 gold gradient closing rule (Playbook engine apex tier per Design D.6 v2 §3.2) */
-    .hp-section--apex {
-      padding-top: 5.6rem;
-      padding-bottom: 5.6rem;
-    }
-
-    .hp-rule--apex {
-      display: block;
-      width: 28px;
-      height: 2px;
-      border: 0;
-      margin: 2.4rem auto 0;
-      background: linear-gradient(to right,
-        rgba(201, 168, 76, 0) 0%,
-        var(--color-accent-gold) 50%,
-        rgba(201, 168, 76, 0) 100%);
-    }
-
-    /* Centered accent rule for Three Doors closing 3-layer architecture statement */
-    .hp-rule--accent--center {
-      margin-left: auto;
-      margin-right: auto;
-      width: 96px;
-    }
-
-    .hp-doors__closing {
-      max-width: 720px;
-      margin: 3rem auto 0;
-      text-align: center;
-    }
-
-    .hp-architecture-statement {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.18rem, 2.4vw, 1.4rem);
-      line-height: 1.6;
-      color: var(--color-text-primary);
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .hp-architecture-statement em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-    }
-
-    /* Cite-tier paragraph (italic Cormorant; gold left-border emphasis) */
-    .hp-body--cite {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.12rem;
-      color: var(--color-text-primary);
-      border-left: 2px solid var(--color-accent-gold);
-      padding-left: 1.2rem;
-      margin: 1.8rem 0;
-    }
-
-    .hp-body--cite em {
-      color: var(--color-accent-gold);
-    }
-
-    /* Studio + VIP feature-list inclusions */
-    .hp-includes {
-      list-style: none;
-      padding: 0;
-      margin: 1.6rem 0;
-    }
-
-    .hp-includes li {
-      font-size: 1rem;
-      line-height: 1.72;
-      color: var(--color-text-secondary);
-      padding: 0.4rem 0 0.4rem 1.2rem;
-      border-left: 1px solid var(--color-rule-ambient);
-      margin-bottom: 0.4rem;
-    }
-
-    .hp-includes em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-      font-weight: 400;
-    }
-
-    /* CTA row centered modifier */
-    .hp-cta-row--centered { justify-content: center; }
-
-    /* CC primary CTA qualifier "( free )" */
-    .hp-cta-qualifier {
-      display: inline-block;
-      margin-left: 0.6rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .76rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--color-text-secondary);
-      text-transform: lowercase;
-    }
-
-    /* CC secondary CTA — italic-gold "Or skip to Studio →" subordinate (Open Ask 5 disposition) */
-    .hp-cta--cc-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-      color: var(--color-accent-gold-bright);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-      text-decoration-color: var(--color-rule-ambient);
-      transition: color 220ms var(--easing-cartier), text-decoration-color 220ms var(--easing-cartier);
-      min-height: 44px;
-      padding: 0.4rem 0.4rem;
-    }
-
-    .hp-cta--cc-secondary:hover,
-    .hp-cta--cc-secondary:focus-visible {
-      color: var(--color-text-primary);
-      text-decoration-color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-
-    .hp-cta--cc-secondary:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 4px;
-    }
-
-    /* DUAL CTA row (Open Asks 1 + 6 dispositions: Studio LEFT PRIMARY + VIP RIGHT CLOSE SECOND; same min-width 280; same padding 18×36) */
-    .hp-dual-cta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      max-width: 720px;
-      margin: 2.4rem auto 0;
-      align-items: stretch;
-    }
-
-    @media (max-width: 767px) {
-      .hp-dual-cta-row {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-      }
-    }
-
-    /* Studio PRIMARY CTA (Open Ask 2: 18×36 padding / min-width 280) */
-    .hp-cta-studio-primary {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.25rem;
-      padding: 18px 36px;
-      background: var(--color-accent-gold);
-      color: #050A10;
-      border: 1px solid var(--color-accent-gold);
-      text-decoration: none;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      min-width: 280px;
-      min-height: 56px;
-      transition: background 220ms var(--easing-cartier);
-    }
-
-    .hp-cta-studio-primary:hover,
-    .hp-cta-studio-primary:focus-visible {
-      background: var(--color-accent-gold-bright);
-      border-color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-
-    .hp-cta-studio-primary:focus-visible {
-      outline: 2px solid #050A10;
-      outline-offset: 3px;
-    }
-
-    .hp-cta-studio-primary__label {
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .hp-cta-studio-primary__qualifier {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .72rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: rgba(5, 10, 16, 0.78);
-      text-transform: none;
-    }
-
-    /* VIP CLOSE SECOND CTA (Open Asks 3 + 6 dispositions: gold-55% accent border / parity padding 18×36 / parity min-width 280) */
-    .hp-cta-vip-close-second {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.25rem;
-      padding: 18px 36px;
-      background: transparent;
-      color: var(--color-text-primary);
-      border: 1px solid rgba(201, 168, 76, 0.55);
-      text-decoration: none;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      min-width: 280px;
-      min-height: 56px;
-      transition: background 220ms var(--easing-cartier), border-color 220ms var(--easing-cartier);
-    }
-
-    .hp-cta-vip-close-second:hover,
-    .hp-cta-vip-close-second:focus-visible {
-      background: rgba(201, 168, 76, 0.04);
-      border-color: var(--color-accent-gold-bright);
-      outline: none;
-    }
-
-    .hp-cta-vip-close-second:focus-visible {
-      outline: 2px solid var(--color-accent-gold-bright);
-      outline-offset: 3px;
-    }
-
-    .hp-cta-vip-close-second__label {
-      font-size: 1rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .hp-cta-vip-close-second__qualifier {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .72rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--color-text-tertiary);
-      text-transform: none;
-    }
-  </style>
-
-  <!-- Sentry error tracking — installed 2026-05-02 -->
-  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
-  <script>
-    Sentry.init({
-      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
-      integrations: [Sentry.browserTracingIntegration()],
-      tracesSampleRate: 0.1,
-      environment: "production",
-      release: "matchmakersusa.com@2026-05-02"
-    });
-  </script>
+  <link rel="stylesheet" href="/css/homepage-v3.css">
 </head>
 <body>
 
-<a href="#main" class="hp-skip-link">Skip to content</a>
+<a href="#main" class="v3-skip-link">Skip to content</a>
+
+<!-- v3.13 Persistent top nav (foundation-of-gold; Polish v2.13) -->
+<nav class="v3-topnav" aria-label="Primary navigation">
+  <div class="v3-topnav__inner">
+    <a href="/" class="v3-topnav__brand">MatchMakers<span class="v3-topnav__brand-tm">&trade;</span></a>
+    <div class="v3-topnav__nav">
+      <a href="/connection-code/" class="v3-topnav__link">Connection Code</a>
+      <a href="/studio/" class="v3-topnav__link">Studio</a>
+      <a href="/vip/" class="v3-topnav__link">VIP</a>
+    </div>
+  </div>
+</nav>
 
 <main id="main">
 
-  <!-- Hero per Cartier Reframe Spec v1.3 §E.2 (compound brand anchor; cinematic 3-sentence pen-write t=200ms-t=600ms) + v1.4 (voice-fidelity verbatim period-form preserved) -->
-  <section class="hp-arrival" aria-labelledby="hp-arrival-anchor">
-    <div class="hp-arrival__atmosphere" aria-hidden="true"></div>
-    <div class="hp-arrival__inner">
-      <p class="hp-arrival__eyebrow">MatchMakers</p>
-      <p class="hp-arrival__heritage">More than a decade of matchmaking practice.</p>
-      <div class="hp-arrival__wordmark">MatchMakers<span class="hp-arrival__wordmark-tm">&trade;</span></div>
-      <hr class="hp-arrival__rule" aria-hidden="true">
-      <!-- Compound brand anchor: Category Frame → Outcome System (v1.3 §E.2; 3 sequential pen-write moments t=200ms-t=600ms) -->
-      <h1 id="hp-arrival-anchor" class="hp-arrival__anchor">
-        <span class="hp-arrival__anchor-line hp-arrival__anchor-line--1">A relationship operating system, tailored to you.</span>
-        <span class="hp-arrival__anchor-line hp-arrival__anchor-line--2">Not a dating app.</span>
-        <span class="hp-arrival__anchor-line hp-arrival__anchor-line--3"><em>This is an outcome system.</em></span>
-      </h1>
-      <p class="hp-arrival__subhead">The Connection Code, applied as a system. Begin where you arrive.</p>
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 1 — THE ARRIVAL (sub-3s cinematic choreography)
+       Layer 1 trademark canon dominant + Layer 2 editorial register settles
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-arrival" aria-labelledby="v3-arrival-anchor">
+    <!-- Layer 1 trademark brand mark — canonical PNG lockup (wordmark + tagline; from MM_FINALS via Design v3 commission) per Polish Punch-List §3 P1 -->
+    <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
+      <img src="/img/brand-mark/v3/wordmark-tight.png"
+           alt=""
+           class="v3-arrival__brand-mark-img"
+           aria-hidden="true">
+      <p class="v3-arrival__wordmark--sr-only">MatchMakers &mdash; Take Dating to the Next Level</p>
+    </div>
 
-      <!-- 3-tier card hero per Atlas hot-fix dispatch §2.3 (Wave 0a hot-fix; replaces single Suitability CTA; cinematic fade-in t=600-1000ms after pen-write completes) -->
-      <div class="hp-tiers" role="group" aria-label="Three doors to the methodology">
-        <a href="/connection-code/" class="hp-tier hp-tier--1" aria-labelledby="hp-tier-1-title">
-          <p class="hp-tier__label">Level 1</p>
-          <h2 id="hp-tier-1-title" class="hp-tier__title">Connection <em>Code</em></h2>
-          <p class="hp-tier__description">The framework.</p>
-          <hr class="hp-tier__rule" aria-hidden="true">
-          <p class="hp-tier__price">Free.</p>
-          <p class="hp-tier__price-cue">The entry door, in full.</p>
-          <span class="hp-tier__cta">Begin <span aria-hidden="true">&rarr;</span></span>
-        </a>
+    <hr class="v3-arrival__hairline" aria-hidden="true">
 
-        <a href="/studio/" class="hp-tier hp-tier--2" aria-labelledby="hp-tier-2-title">
-          <p class="hp-tier__label">Level 2</p>
-          <h2 id="hp-tier-2-title" class="hp-tier__title">Dating <em>Studio</em></h2>
-          <p class="hp-tier__description">The practice.</p>
-          <hr class="hp-tier__rule" aria-hidden="true">
-          <p class="hp-tier__price">$299.99</p>
-          <p class="hp-tier__price-cue">Once. The methodology, applied.</p>
-          <span class="hp-tier__cta">Enter <span aria-hidden="true">&rarr;</span></span>
-        </a>
+    <!-- Layer 2 compound brand anchor — Tier 1 #13 + #14 verbatim (cinematic 3-line write-in) -->
+    <h1 id="v3-arrival-anchor" class="v3-arrival__anchor">
+      <span class="v3-arrival__anchor-line v3-arrival__anchor-line--1">A relationship operating system, tailored to <em>you.</em></span>
+      <span class="v3-arrival__anchor-line v3-arrival__anchor-line--2">Not a dating app.</span>
+      <span class="v3-arrival__anchor-line v3-arrival__anchor-line--3">This is an <em>outcome system.</em></span>
+    </h1>
 
-        <a href="/vip/" class="hp-tier hp-tier--3" aria-labelledby="hp-tier-3-title">
-          <p class="hp-tier__label">Levels 3&ndash;5</p>
-          <h2 id="hp-tier-3-title" class="hp-tier__title">VIP <em>Matchmaking</em></h2>
-          <p class="hp-tier__description">The advisory.</p>
-          <hr class="hp-tier__rule" aria-hidden="true">
-          <p class="hp-tier__price">Starting $499.99</p>
-          <p class="hp-tier__price-cue">Where methodology meets a human matchmaker.</p>
-          <span class="hp-tier__cta">Begin <span aria-hidden="true">&rarr;</span></span>
-        </a>
+    <p class="v3-arrival__scroll-cue" aria-hidden="true">Begin where you arrive &darr;</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 2 — THE PROBLEM (NEW per Homepage v3.1 §5.3 + Cartier Reframe Spec v1.7 §2.2)
+       3-stanza cinematic + closing; Tier 2 #26 NEW thesis ("Dating apps are tools.") closes the stanza set
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-problem" aria-labelledby="v3-problem-anchor">
+    <div class="v3-problem__inner">
+      <p class="v3-eyebrow" id="v3-problem-anchor">The Problem</p>
+      <hr class="v3-problem__rule" aria-hidden="true">
+
+      <p class="v3-problem__stanza">Most dating apps are engineered for engagement &mdash; time spent, swipes logged, messages bounced. The longer you search, the more they earn.</p>
+
+      <p class="v3-problem__stanza">MatchMakers was built around a different assumption. The problem was never access to people. It was clarity about purpose.</p>
+
+      <p class="v3-problem__stanza v3-problem__stanza--3"><em>Dating apps are tools. The methodology teaches the use.</em></p>
+
+      <hr class="v3-problem__break" aria-hidden="true">
+
+      <p class="v3-problem__closing">Refined in practice, not designed for engagement. The methodology returns the work to you &mdash; and the work to its institutional standard.</p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 3 — THE FRAME (institutional positioning; 7 canonical theses per Cartier v1.7)
+       Cream warmer alt section variant per Polish v2 §2
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-section--warm v3-frame" aria-labelledby="v3-frame-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Frame</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="v3-frame-anchor" class="v3-display">A framework, <em>not a feed.</em></h2>
+      <p class="v3-body v3-body--lead">MatchMakers is a relationship operating system, tailored to you. Not a dating app. This is an outcome system. The methodology is the institutional discipline behind every recommendation, every signal read, every refinement made &mdash; the through-line from your first assessment to the relationship you intend.</p>
+    </div>
+
+    <div class="v3-movement__inner v3-frame__theses">
+      <div>
+        <p class="v3-thesis__eyebrow">Provability.</p>
+        <p class="v3-thesis__body">Trust is provable, not marketed. Every claim earns its credentialing. The institutional standard of the work is provable at every layer.</p>
+      </div>
+      <div>
+        <p class="v3-thesis__eyebrow">Mission.</p>
+        <p class="v3-thesis__body">A relationship operating system, refined across more than a decade of matchmaking practice. Built for people who want the work, not the app.</p>
+      </div>
+      <div>
+        <p class="v3-thesis__eyebrow">Category Frame.</p>
+        <p class="v3-thesis__body">A relationship operating system. Not a dating app. This is the category we built &mdash; and the category we operate at.</p>
+      </div>
+      <div>
+        <p class="v3-thesis__eyebrow">Business Model.</p>
+        <p class="v3-thesis__body">The methodology earns the membership. The Playbook is the engine. The Studio is where the engine is delivered. VIP is the bespoke advisory layer.</p>
+      </div>
+      <div>
+        <p class="v3-thesis__eyebrow">Coach Identity.</p>
+        <p class="v3-thesis__body">AI provides structure and continuity. Human matchmakers introduce judgment, nuance, and accountability. The methodology authority anchors the work institutionally.</p>
+      </div>
+      <div>
+        <p class="v3-thesis__eyebrow">System Doesn't Decide.</p>
+        <p class="v3-thesis__body">The methodology surfaces, calibrates, and refines. It does not decide for you. It does not predict. It does not match. The choice is always yours.</p>
+      </div>
+      <div>
+        <p class="v3-thesis__eyebrow">Dating Apps as Tools.</p>
+        <p class="v3-thesis__body">Dating apps are tools. The methodology teaches the use. Most users use them without framework, without strategy, without institutional anchor &mdash; and the apps fail them. The methodology is the framework.</p>
       </div>
     </div>
   </section>
 
-  <!-- Below-the-fold thesis pair (Mission + Substance) per Cartier Reframe Spec v1.0 §1.1 + §3.3 (EDITS 4 + 5) -->
-  <section class="hp-thesis hp-thesis--mission" aria-labelledby="hp-thesis-mission-anchor">
-    <div class="hp-thesis__inner">
-      <p class="hp-thesis__paragraph hp-thesis__paragraph--mission" id="hp-thesis-mission-anchor">A relationship operating system, distilled across <em>more than a decade of matchmaking practice</em> &mdash; built for the millions of people who struggle with relationships. Across years. Across tiers. Across every artifact and every interaction.</p>
-    </div>
-  </section>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
-
-  <section class="hp-thesis hp-thesis--substance" aria-labelledby="hp-thesis-substance-anchor">
-    <div class="hp-thesis__inner">
-      <p class="hp-thesis__paragraph hp-thesis__paragraph--substance" id="hp-thesis-substance-anchor"><em>5-Phase &times; 5-Signal &times; 9-Intent</em> framework, distilled across more than a decade of matchmaking practice into an <em>87-chapter Living Knowledge Graph</em> called the <em>Playbook</em>. Every Coach turn, every Script, every Suitability Report, every Letter from Coach cites specific chapter chunks. Users can deep-dive into source. Trust is provable, not marketed.</p>
-    </div>
-  </section>
-
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
-
-  <!-- v2 §3.2.5 NEW Business Model paragraph (institutional patrimony register; preserved canonical from Web Ed master plan v2) -->
-  <section class="hp-thesis hp-thesis--substance" aria-labelledby="hp-thesis-business-model-anchor">
-    <div class="hp-thesis__inner">
-      <p class="hp-thesis__paragraph hp-thesis__paragraph--substance" id="hp-thesis-business-model-anchor">Free tier delivers genuine value to users who never convert with the same dignity as L5c. Paid tiers compound through methodology grounding, matchmaker craft, and Chief Advisor presence at signature moments. The lifetime arc is preserved across years. The methodology earns the membership; the engagement record compounds as patrimony.</p>
-    </div>
-  </section>
-
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
-
-  <section class="hp-section" aria-labelledby="hp-method-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">The Method</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-method-headline" class="hp-headline">A framework, <em>not a feed.</em></h2>
-      <p class="hp-body">The Connection Code&trade; is the methodology behind every successful relationship decision. Five Phases. Five Signals. Nine Intents. Refined over more than a decade of matchmaking practice. Delivered through the Playbook.</p>
-      <hr class="hp-rule--ambient" aria-hidden="true">
-      <p class="hp-method__beats">
-        <span>Built on a system.</span>
-        <span>Anchored in Intent.</span>
-        <span>Made for your outcome.</span>
-      </p>
-    </div>
-  </section>
-
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
-
-  <!-- v2 §5 Three Doors — tier-progression long-form (canonical "to / with / through" tier-progression eyebrow tokens preserved per Web Ed master plan v2 §5.2; Tier 2 #23 3-layer architecture statement closing) -->
-  <section class="hp-section" aria-labelledby="hp-doors-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">Three Doors</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-doors-headline" class="hp-headline">The methodology, <em>at three depths.</em></h2>
-      <p class="hp-body">Three engagements. One methodology. The depth of engagement scales with the user's intent for craft attention; the methodology remains constant.</p>
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 4 — THE METHODOLOGY ARCHITECTURE
+       Cobalt glass cards (Layer 1 carry-over reframed for Layer 2 register)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="v3-architecture-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Methodology Architecture</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="v3-architecture-anchor" class="v3-display">The methodology, <em>refined across more than a decade of matchmaking practice.</em></h2>
+      <p class="v3-body v3-body--lead">Five phases. Five signals. Nine intent classes. The methodology is a layered framework &mdash; calibrated continuously, refined across the work, anchored institutionally.</p>
     </div>
 
-    <div class="hp-doors">
-      <article class="hp-door">
-        <p class="hp-door__tier">Door One &middot; The Connection Code</p>
-        <h3 class="hp-door__title">Methodology applied <em>to you.</em></h3>
-        <p class="hp-door__body">A free resource. Stateful 9-Intent diagnostic. Coach Lite. Twelve Playbook chapters curated to the user's calibration. Suitability Lite. Welcome Letter from Coach. The methodology, previewed.</p>
-        <a href="/connection-code/" class="hp-door__cta">Begin the Connection Code <span aria-hidden="true">&rarr;</span></a>
+    <div class="v3-architecture__cards">
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">I.</p>
+        <p class="v3-architecture__card-eyebrow">Calibration.</p>
+        <p class="v3-architecture__card-body">The starting position. Intent surfaces. Patterns establish.</p>
       </article>
-
-      <article class="hp-door">
-        <p class="hp-door__tier">Door Two &middot; MatchMakers Dating Studio</p>
-        <h3 class="hp-door__title">Methodology applied <em>with you.</em></h3>
-        <p class="hp-door__body">Three hundred dollars one-time. Coach AI three messages per day. Script Builder five drafts per day. Suitability Reports unlimited. The full eighty-seven-chapter Playbook &mdash; the engine &mdash; delivered through three tools. Cross-tool intelligent state handoff. The methodology compounds across every interaction.</p>
-        <a href="/studio/" class="hp-door__cta">Open the Studio <span aria-hidden="true">&rarr;</span></a>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">II.</p>
+        <p class="v3-architecture__card-eyebrow">Recognition.</p>
+        <p class="v3-architecture__card-body">Signal-reading sharpens. The framework calibrates against lived patterns.</p>
       </article>
-
-      <article class="hp-door">
-        <p class="hp-door__tier">Door Three &middot; VIP</p>
-        <h3 class="hp-door__title">Methodology applied <em>through you.</em></h3>
-        <p class="hp-door__body">Persona signature attention. Senior matchmaker craft. Lead Practitioner relationship. The Chief Advisor of MatchMakers reviews engagement personally at signature moments. By application. Selectivity is the discipline.</p>
-        <a href="/vip/" class="hp-door__cta">Begin VIP inquiry <span aria-hidden="true">&rarr;</span></a>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">III.</p>
+        <p class="v3-architecture__card-eyebrow">Discernment.</p>
+        <p class="v3-architecture__card-body">Compatibility patterns clarify. Misalignment patterns clarify with them.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">IV.</p>
+        <p class="v3-architecture__card-eyebrow">Commitment.</p>
+        <p class="v3-architecture__card-body">The relationship phase the methodology recognizes as durable.</p>
+      </article>
+      <article class="v3-architecture__card">
+        <p class="v3-architecture__card-numeral">V.</p>
+        <p class="v3-architecture__card-eyebrow">Refinement.</p>
+        <p class="v3-architecture__card-body">Continuous calibration. The methodology adapts; the outcome is the constant.</p>
       </article>
     </div>
 
-    <!-- v2 §5.2.7 Three Doors closing — 3-layer architecture statement (s10 catalog v1.1 #23 verbatim; Tier 2 brand line; institutional architectural register) -->
-    <div class="hp-section__inner hp-doors__closing">
-      <hr class="hp-rule--accent hp-rule--accent--center" aria-hidden="true">
-      <p class="hp-architecture-statement"><em>AI provides structure and continuity.</em> Human matchmakers introduce judgment, nuance, and accountability. The methodology authority anchors the work institutionally.</p>
-    </div>
+    <p class="v3-architecture__intent-list"><em>I. Establishment / II. Re-establishment / III. Deepening / IV. Realignment / V. Consolidation / VI. Bespoke advisory / VII. Continuity / VIII. Provability / IX. Authority.</em></p>
+
+    <p class="v3-architecture__closing"><em>Calibration is the discipline. Refinement is the adaptation. Outcome is the constant.</em></p>
   </section>
 
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-  <!-- v2 §6 NEW "The Connection Code" section (free resource / lead magnet / sell sheet positioning per Cartier Reframe Spec v1.5 §E.2; Web Ed master plan v2 §6 canonical copy) -->
-  <section class="hp-section" aria-labelledby="hp-cc-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">The Connection Code &middot; Free Resource</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-cc-headline" class="hp-headline">The <em>starting place.</em></h2>
-      <p class="hp-body">The Connection Code is a free resource &mdash; a sell sheet of the methodology distilled across more than a decade of matchmaking practice. The methodology, previewed. The starting place for users who arrive without a tier commitment.</p>
-      <p class="hp-body">Five to seven minutes calibrate the user's <em>9-Intent</em>. The system generates a personalized <em>Connection Code Brief</em> &mdash; four pages, Cartier-letterhead. Twelve <em>Playbook chapters</em> open to the user, curated to their starting position. <em>Coach Lite</em> accompanies the user without limit. A <em>Welcome Letter from Coach</em> arrives within twenty-four hours.</p>
-      <p class="hp-body">The Connection Code is not a trial. It is a complete free experience. Users who never purchase encounter the methodology with the same dignity as L5c.</p>
-      <p class="hp-body hp-body--cite">The Connection Code lays the groundwork. The Playbook delivers the engagement.</p>
-      <div class="hp-cta-row hp-cta-row--centered">
-        <a href="/connection-code/" class="hp-cta--primary">Begin the Connection Code <span class="hp-cta-qualifier">(free)</span></a>
-        <a href="/studio/" class="hp-cta--cc-secondary">Or skip to Studio <span aria-hidden="true">&rarr;</span></a>
-      </div>
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 5 — THE FIVE LEVELS (5-tier engagement progression; A+C blend per Paul §5 ratify 2026-05-03)
+       Polish v2.13 supersedes Polish v2.12 (Three Levels → Five Levels per Paul §5 fascia delegation):
+         — L1 Free Entry / L2 Core System / L3 Personalization / L4 Guided Execution / L5 Bespoke Advisory
+         — Tri-layer "to/with/through" canon-extension subhead cascade adopted from VIP audit (2026-05-03)
+         — VIP audit ratifies Path α (review-only "Suitors reviewed not curated") for L4 Guided Execution doctrine
+         — Naming canon: VIP Essential/Premier/Diamond (replaces Lite/Premier/Diamond per Paul §5 ratify 2026-05-03)
+         — Mirrors brand mark Layer 1 tagline "Take Dating to the Next Level"
+       Cartier patrimonial register: Roman numerals + heritage-gold hairline strata + Cormorant italic Layer names
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-movement--center" aria-labelledby="v3-levels-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">The Five Levels</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="v3-levels-anchor" class="v3-display"><em>The methodology, layered.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">One framework. Five depths of engagement. From free entry to full-service. The methodology is the same. The work calibrates to the level.</p>
     </div>
-  </section>
 
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+    <ol class="v3-five-levels" aria-label="Five levels of engagement">
 
-  <!-- v2 §7 NEW "The Playbook" section (engine canonical positioning; apex tier per Design D.6 v2 §3; Tier 1 #24 verbatim; NO CTA in section — closing transition leads to §8 Dating Studio PRIMARY) -->
-  <section class="hp-section hp-section--apex" aria-labelledby="hp-playbook-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">The Playbook &middot; The Engine</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-playbook-headline" class="hp-headline">The Playbook is the <em>engine.</em></h2>
-      <p class="hp-body">The Playbook is the methodology corpus &mdash; eighty-seven chapters distilled across more than a decade of matchmaking practice. <em>Five Phases</em>. <em>Five Signals</em>. <em>Nine Intent frameworks</em>. One continuous <em>Living Knowledge Graph</em>. Every Coach turn, every Script, every Suitability Report cites specific chapter chunks. Trust is provable, not marketed.</p>
-      <p class="hp-body">The Playbook is the heart and soul of the engagement. Studio delivers it. VIP extends it. The methodology compounds across every interaction.</p>
-      <p class="hp-body">Every output cites specific chapters. Every claim links to source. The user can deep-dive into the corpus at any moment. The Playbook is the trust layer made operational.</p>
-      <p class="hp-body">The Playbook evolves quarterly from anonymized cohort outcomes. The corpus becomes more valuable the longer it has served. Longer-tenure members benefit from being early members.</p>
-      <p class="hp-body hp-body--cite">The methodology earns the membership. Dating Studio is where the work begins.</p>
-    </div>
-    <!-- v2 §7 apex closing 28×2 gold gradient rule per Design D.6 v2 §3.2 (engine-positioning emphatic placement; matches Hero gradient + Origin closing) -->
-    <hr class="hp-rule--apex" aria-hidden="true">
-  </section>
-
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
-
-  <!-- v2 §8 NEW Dating Studio section (PRIMARY conversion priority elevation per v1.5 §D + Design D.6 v2 §4 + §6 DUAL CTA hierarchy) -->
-  <section class="hp-section" aria-labelledby="hp-studio-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">MatchMakers Dating Studio &middot; Foundation Tier</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-studio-headline" class="hp-headline">Methodology applied <em>with you.</em></h2>
-      <p class="hp-body">The Studio is where The Playbook is delivered. Three tools &mdash; <em>Coach</em>, <em>Script Builder</em>, <em>Suitability Report</em> &mdash; pull from the eighty-seven-chapter corpus with citations on every output. The Studio engagement does not subscribe; it commits.</p>
-      <ul class="hp-includes">
-        <li><em>Coach AI.</em> Three messages per day. Methodology-grounded turns. Citations on every response.</li>
-        <li><em>Script Builder.</em> Five scripts per day. Card-tray input pattern. Methodology-cited output.</li>
-        <li><em>Suitability Report.</em> Unlimited generation. Three-section Cartier ledger structure. Per-suitor reports.</li>
-        <li><em>USER PROFILE.</em> Ten-plus categories. Always updateable.</li>
-        <li><em>Suitor Profile.</em> Anonymized. Ephemeral ninety-day. Multi-suitor unlimited.</li>
-        <li><em>Voice INPUT.</em> Push-to-talk hold gesture. Transcript review.</li>
-        <li><em>Voice OUTPUT.</em> Cartier voice character. Opt-in via Account.</li>
-        <li><em>Cross-tool intelligent state handoff.</em> Context follows the user across the three tools.</li>
-      </ul>
-      <p class="hp-body hp-body--cite">Three hundred dollars one-time. The Studio engagement does not subscribe; it commits.</p>
-
-      <!-- v2 §8 + Design D.6 v2 §6 DUAL CTA row — Studio LEFT PRIMARY + VIP RIGHT CLOSE SECOND (Open Ask 1 + 6 dispositions) -->
-      <div class="hp-dual-cta-row" role="group" aria-label="Studio and VIP CTAs">
-        <a href="/studio/" class="hp-cta-studio-primary">
-          <span class="hp-cta-studio-primary__label">Open Studio</span>
-          <span class="hp-cta-studio-primary__qualifier">$299.99 &middot; one-time</span>
+      <li class="v3-five-levels__stratum">
+        <span class="v3-five-levels__numeral" aria-hidden="true">I</span>
+        <div class="v3-five-levels__content">
+          <p class="v3-five-levels__layer-eyebrow">Level 1</p>
+          <h3 class="v3-five-levels__layer-name"><em>Free Entry</em></h3>
+          <p class="v3-five-levels__subhead">The methodology introduced.</p>
+          <p class="v3-five-levels__body">A free assessment that places you and unlocks twelve foundational chapters of the Playbook. The starting place for users who arrive without a tier commitment.</p>
+        </div>
+        <a href="/connection-code/" class="v3-five-levels__cta">
+          <span class="v3-five-levels__cta-tag">Connection Code</span>
+          <span class="v3-five-levels__cta-arrow">Enter <span aria-hidden="true">&rarr;</span></span>
         </a>
-        <a href="/vip/" class="hp-cta-vip-close-second">
-          <span class="hp-cta-vip-close-second__label">Apply for VIP</span>
-          <span class="hp-cta-vip-close-second__qualifier">by application</span>
+      </li>
+
+      <li class="v3-five-levels__stratum">
+        <span class="v3-five-levels__numeral" aria-hidden="true">II</span>
+        <div class="v3-five-levels__content">
+          <p class="v3-five-levels__layer-eyebrow">Level 2</p>
+          <h3 class="v3-five-levels__layer-name"><em>Core System</em></h3>
+          <p class="v3-five-levels__subhead">The methodology delivered.</p>
+          <p class="v3-five-levels__body">Full access to the Playbook and structured tools &mdash; Coach, Script Builder, Suitability. Calibrated continuously through every phase the methodology recognizes.</p>
+        </div>
+        <a href="/studio/" class="v3-five-levels__cta">
+          <span class="v3-five-levels__cta-tag">Dating Studio</span>
+          <span class="v3-five-levels__cta-arrow">Enter <span aria-hidden="true">&rarr;</span></span>
         </a>
+      </li>
+
+      <li class="v3-five-levels__stratum">
+        <span class="v3-five-levels__numeral" aria-hidden="true">III</span>
+        <div class="v3-five-levels__content">
+          <p class="v3-five-levels__layer-eyebrow">Level 3</p>
+          <h3 class="v3-five-levels__layer-name"><em>Personalization</em></h3>
+          <p class="v3-five-levels__subhead">The methodology applied <em>to</em> you.</p>
+          <p class="v3-five-levels__body">The system tailored to the individual. Advanced AI calibrates the methodology to your signals across Coach, Script Builder, and Suitability &mdash; refining as you engage.</p>
+        </div>
+        <a href="/studio/#personalization" class="v3-five-levels__cta">
+          <span class="v3-five-levels__cta-tag">Dating Studio</span>
+          <span class="v3-five-levels__cta-arrow">Enter <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      </li>
+
+      <li class="v3-five-levels__stratum">
+        <span class="v3-five-levels__numeral" aria-hidden="true">IV</span>
+        <div class="v3-five-levels__content">
+          <p class="v3-five-levels__layer-eyebrow">Level 4</p>
+          <h3 class="v3-five-levels__layer-name"><em>Guided Execution</em></h3>
+          <p class="v3-five-levels__subhead">The methodology applied <em>with</em> you.</p>
+          <p class="v3-five-levels__body">Human matchmaker integration. A methodology-trained matchmaker reviews your work, guides phase transitions, and calibrates against the framework. Sessions video. Audits annual.</p>
+        </div>
+        <a href="/vip/#essential" class="v3-five-levels__cta">
+          <span class="v3-five-levels__cta-tag">VIP Essential</span>
+          <span class="v3-five-levels__cta-arrow">Enter <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      </li>
+
+      <li class="v3-five-levels__stratum">
+        <span class="v3-five-levels__numeral" aria-hidden="true">V</span>
+        <div class="v3-five-levels__content">
+          <p class="v3-five-levels__layer-eyebrow">Level 5</p>
+          <h3 class="v3-five-levels__layer-name"><em>Bespoke Advisory</em></h3>
+          <p class="v3-five-levels__subhead">The methodology applied <em>through</em> you.</p>
+          <p class="v3-five-levels__body">High-touch, full-service engagement. The Chief Advisor anchored to the work institutionally &mdash; bespoke human advisory at every signature moment. <em>Letters letterpress. Sessions video. Audits annual.</em></p>
+        </div>
+        <a href="/vip/#diamond" class="v3-five-levels__cta">
+          <span class="v3-five-levels__cta-tag">VIP Diamond</span>
+          <span class="v3-five-levels__cta-arrow">Enter <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      </li>
+
+    </ol>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 6 — THE CONNECTION CODE (free resource lead magnet)
+       Tier 2 #18 cascade per Cartier v1.7: section headline "Begin where you arrive." → "Standing matters more than swipes."
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="v3-cc-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Connection Code</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="v3-cc-anchor" class="v3-display">Standing matters more than <em>swipes.</em></h2>
+      <p class="v3-body v3-body--lead">The Connection Code is a free assessment, calibrated to the methodology. No registration. No email. The framework opens immediately. The reading surfaces what the methodology asks first &mdash; about you, about the relationship you intend, about the signals you read in others.</p>
+    </div>
+
+    <div class="v3-cc__tools">
+      <div class="v3-cc__tool">
+        <p class="v3-cc__tool-title">Coach Lite</p>
+        <p class="v3-cc__tool-body">A preview of the Coach. The methodology, voiced &mdash; at the depth the Connection Code page calibrates against. The full Coach lives at the Studio.</p>
       </div>
+      <div class="v3-cc__tool">
+        <p class="v3-cc__tool-title">Suitability Lite</p>
+        <p class="v3-cc__tool-body">A preview of the Suitability reading layer. Discernment patterns surfaced at preview depth. The full Suitability tools live at the Studio.</p>
+      </div>
+      <div class="v3-cc__tool">
+        <p class="v3-cc__tool-title">12-chapter Playbook preview</p>
+        <p class="v3-cc__tool-body">Twelve chapters of the Playbook, surfaced at preview depth. The framework, opened. The full Playbook is the engine. The eighty-seven-chapter Living Knowledge Graph lives at the Studio.</p>
+      </div>
+    </div>
+
+    <div class="v3-cc__cta-row">
+      <a href="/connection-code/" class="v3-cta-cobalt">Open the Connection Code <span aria-hidden="true">&rarr;</span></a>
+      <p class="v3-cta-subline"><em>No registration. No email. The framework opens immediately.</em></p>
     </div>
   </section>
 
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-  <!-- v2 §9 NEW VIP Matchmaking section (CLOSE SECOND conversion priority preserved per v1.5 §D; Tier 1 #17 "Selectivity is the discipline." anchor + Tier 2 #20 Letters/Sessions/Audits canonical) -->
-  <section class="hp-section" aria-labelledby="hp-vip-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">VIP Matchmaking &middot; Apex Tiers</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-vip-headline" class="hp-headline">Methodology applied <em>through you.</em></h2>
-      <p class="hp-body">VIP is where the methodology meets a human matchmaker. Three tiers, calibrated to the depth of engagement the work warrants.</p>
-      <ul class="hp-includes">
-        <li><em>VIP Lite.</em> Persona signature attention. Lila persona. The methodology, attended.</li>
-        <li><em>VIP Premier.</em> Senior matchmaker craft. Conversation, Pre-Date, Post-Date Briefs. End-of-Engagement Brief.</li>
-        <li><em>VIP Diamond.</em> Lead Practitioner relationship. Bespoke video advisory. The Chief Advisor of MatchMakers reviews engagement personally at signature moments.</li>
-      </ul>
-      <p class="hp-body hp-body--cite"><em>Letters are letterpress. Sessions are video. Audits are annual.</em></p>
-      <p class="hp-body hp-body--cite">Selectivity is the discipline.</p>
-      <div class="hp-cta-row hp-cta-row--centered">
-        <a href="/vip/" class="hp-cta--primary">Begin VIP inquiry <span aria-hidden="true">&rarr;</span></a>
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 7 — THE PLAYBOOK (engine canonical positioning; embossed artifact)
+       Cream warmer alt section variant per Polish v2 §2
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-section--warm v3-movement--center" aria-labelledby="v3-playbook-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">The Playbook</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="v3-playbook-anchor" class="v3-display">The Playbook is the <em>engine.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">The Playbook is the methodology corpus &mdash; eighty-seven chapters refined across more than a decade of matchmaking practice. <em>Five Phases.</em> <em>Five Signals.</em> <em>Nine Intent frameworks.</em> One continuous <em>Living Knowledge Graph</em>. Every Coach turn, every Script, every Suitability Report cites specific chapter chunks. <em>Trust is provable, not marketed.</em></p>
+    </div>
+
+    <!-- Embossed Playbook artifact (Layer 2 reinterpretation of Layer 1 emboss canon; navy emboss + silver ring binding + heritage gold spine accent) -->
+    <div class="v3-playbook__artifact" role="img" aria-label="The Playbook artifact">
+      <div class="v3-playbook__artifact-title">
+        <p class="v3-playbook__artifact-eyebrow">The Methodology Corpus</p>
+        <p class="v3-playbook__artifact-name">The <em>Playbook</em></p>
+        <p class="v3-playbook__artifact-cardinality">Eighty-seven chapters &middot; Living Knowledge Graph</p>
       </div>
+    </div>
+
+    <p class="v3-playbook__closing"><em>The free assessment is the foreword. The Playbook is the work.</em></p>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 8 — THE STUDIO (PRIMARY conversion; silver ring CTA)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="v3-studio-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Dating Studio &middot; Primary Conversion</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="v3-studio-anchor" class="v3-display">The Dating <em>Studio.</em></h2>
+      <p class="v3-body v3-body--lead">Where the Playbook is delivered. Coach, Script Builder, Suitability tools, full phase work, full signal reading, full intent calibration &mdash; continuous through every phase transition.</p>
+    </div>
+
+    <div class="v3-studio__tools">
+      <article class="v3-studio__tool">
+        <p class="v3-studio__tool-name">Coach</p>
+        <p class="v3-studio__tool-eyebrow">The methodology, voiced.</p>
+        <p class="v3-studio__tool-body">Institutional continuity across every refinement.</p>
+      </article>
+      <article class="v3-studio__tool">
+        <p class="v3-studio__tool-name">Script Builder</p>
+        <p class="v3-studio__tool-eyebrow">Calibrated framework outputs.</p>
+        <p class="v3-studio__tool-body">At every phase the methodology recognizes.</p>
+      </article>
+      <article class="v3-studio__tool">
+        <p class="v3-studio__tool-name">Suitability</p>
+        <p class="v3-studio__tool-eyebrow">The reading layer.</p>
+        <p class="v3-studio__tool-body">The framework brings to discernment work.</p>
+      </article>
+    </div>
+
+    <div class="v3-studio__conversion">
+      <p class="v3-studio__conversion-headline"><em>The methodology earns the membership.</em></p>
+      <p class="v3-studio__conversion-sub">One purchase. The Playbook in full. Calibrated continuously through every phase the methodology recognizes.</p>
+      <a href="/studio/" class="v3-cta-cobalt">Open the Dating Studio <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
-  <hr class="hp-rule--ambient hp-rule--page" aria-hidden="true">
+  <!-- Heritage gold transition rule into VIP (CLOSE SECOND) -->
+  <hr class="v3-vip__transition-rule" aria-hidden="true">
 
-  <!-- v2 §10 Origin section (Tier 1 #15 closing preserved; v1.5 cascade verification per §10.2.5) -->
-  <section class="hp-section" aria-labelledby="hp-origin-headline">
-    <div class="hp-section__inner">
-      <p class="hp-eyebrow">Origin</p>
-      <hr class="hp-rule--accent" aria-hidden="true">
-      <h2 id="hp-origin-headline" class="hp-headline">The methodology <em>earned the membership.</em></h2>
-      <p class="hp-body">The methodology came out of human matchmaking. Refined through practice, across thousands of conversations and decisions. Standing matters more than swipes. Intent matters more than attraction. The right tools matter more than the smartest algorithm.</p>
-      <p class="hp-body">The Connection Code&trade; is the framework, named. The Playbook is the framework, taught. The system applies the framework, daily.</p>
-      <p class="hp-body hp-body--cite">The methodology earns the membership.</p>
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 9 — THE VIP LAYER (CLOSE SECOND; heritage gold edge)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement" aria-labelledby="v3-vip-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">VIP Matchmaking &middot; Close Second</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="v3-vip-anchor" class="v3-display">Or &mdash; the bespoke <em>advisory layer.</em></h2>
+      <p class="v3-body v3-body--lead">VIP Matchmaking is the methodology delivered with human matchmaker engagement layered. The Playbook holds. The Chief Advisor introduces judgment. The work is institutional and personal at once.</p>
     </div>
+
+    <div class="v3-vip__tiers">
+      <article class="v3-vip__tier">
+        <p class="v3-vip__tier-name">Lite</p>
+        <p class="v3-vip__tier-eyebrow">Posture A.</p>
+        <p class="v3-vip__tier-body">The Playbook with bespoke advisory layered at calibration moments.</p>
+      </article>
+      <article class="v3-vip__tier">
+        <p class="v3-vip__tier-name">Premier</p>
+        <p class="v3-vip__tier-eyebrow">Posture A-Plus.</p>
+        <p class="v3-vip__tier-body">The Playbook with continuous advisory across every phase the methodology recognizes.</p>
+      </article>
+      <article class="v3-vip__tier">
+        <p class="v3-vip__tier-name">Diamond</p>
+        <p class="v3-vip__tier-eyebrow">Posture B.</p>
+        <p class="v3-vip__tier-body">The Playbook with the Chief Advisor anchored to the work institutionally.</p>
+      </article>
+    </div>
+
+    <p class="v3-vip__provenance"><em>Letters are letterpress. Sessions are video. Audits are annual.</em></p>
+    <p class="v3-vip__sub">The institutional standard of the work is preserved at every advisory layer.</p>
+
+    <div class="v3-vip__cta-row">
+      <a href="/vip/" class="v3-cta-italic-gold">Begin inquiry &mdash; VIP <span aria-hidden="true">&rarr;</span></a>
+      <p class="v3-cta-subline"><em>Starting at $499.99. Consultation-first. The methodology authority decides the advisory layer that calibrates against your work.</em></p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 10 — TRUST + PROVABILITY (credentialing)
+       Cream warmer alt section variant per Polish v2 §2
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-section--warm v3-movement--center" aria-labelledby="v3-trust-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Trust + Provability</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="v3-trust-anchor" class="v3-display"><em>Trust is provable, not marketed.</em></h2>
+    </div>
+
+    <div class="v3-trust__anchors">
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The framework.</p>
+        <h3 class="v3-trust__anchor-title">The methodology.</h3>
+        <p class="v3-trust__anchor-body">Five phases. Five signals. Nine intent classes. Refined across more than a decade of matchmaking practice.</p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The standard.</p>
+        <h3 class="v3-trust__anchor-title">The institutional discipline.</h3>
+        <p class="v3-trust__anchor-body"><em>Selectivity is the discipline. Refinement is the adaptation. Outcome is the constant.</em></p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The artifacts.</p>
+        <h3 class="v3-trust__anchor-title">The provenance.</h3>
+        <p class="v3-trust__anchor-body"><em>Letters are letterpress. Sessions are video. Audits are annual.</em></p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The institutional anchor.</p>
+        <h3 class="v3-trust__anchor-title">The authority.</h3>
+        <p class="v3-trust__anchor-body">The methodology authority anchors the work institutionally. The Chief Advisor preserves the through-line.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- ═══════════════════════════════════════════════════
+       MOVEMENT 11 — ORIGIN (heritage anchor; maximum negative space)
+       ═══════════════════════════════════════════════════ -->
+  <section class="v3-movement v3-origin" aria-labelledby="v3-origin-anchor">
+    <p class="v3-eyebrow v3-origin__eyebrow">Origin</p>
+    <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+    <h2 id="v3-origin-anchor" class="v3-display"><em>The methodology earned the membership.</em></h2>
+    <p class="v3-origin__paragraph">The framework is not a product spec. It was earned &mdash; refined across more than a decade of matchmaking practice, calibrated against the patterns that hold and the patterns that fail, anchored in the institutional discipline the work demands. Pattern by pattern. Phase by phase. Signal by signal.</p>
+    <p class="v3-origin__closing"><em>The methodology earned. The membership earned. The outcome calibrated continuously.</em></p>
   </section>
 
 </main>
 
-<!-- v2 §11 Footer + credentialing strip — 6-line rotation matrix per s10 catalog v1.2 (Open Ask 7 disposition: 5-line → 6-line; NEW Tier 1 #24 + #15 paired) -->
-<footer class="hp-footer">
-  <p class="hp-footer__eyebrow">The system structures decisions. It does not make them.</p>
-  <p class="hp-footer__wordmark">MatchMakers<span class="hp-footer__wordmark-tm">&trade;</span></p>
-  <ul class="hp-footer__rotation" aria-label="Credentialing rotation">
-    <li>More than a decade of matchmaking practice. The Connection Code, applied as a system.</li>
-    <li>The Playbook is the engine. The methodology earns the membership.</li>
+<!-- ═══════════════════════════════════════════════════
+     MOVEMENT 12 — FOOTER (institutional close + identity loop; navy band per Polish v2 §1 Option M)
+     ═══════════════════════════════════════════════════ -->
+<footer class="v3-footer">
+  <ul class="v3-footer__rotation" role="group" aria-label="Brand-line rotation">
+    <li>A relationship operating system, tailored to you. Not a dating app.</li>
     <li>The methodology earns the membership.</li>
-    <li>Trust is provable, not marketed.</li>
-    <li>A relationship operating system. By application.</li>
-    <li>Patrimony, made operational.</li>
+    <li>The Playbook is the engine.</li>
   </ul>
-  <nav class="hp-footer__nav" aria-label="Footer">
-    <a href="/about/">About</a>
+
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
     <a href="/connection-code/">Connection Code</a>
-    <a href="/methodology/">Methodology</a>
-    <a href="/playbook/">Playbook</a>
-    <a href="/studio/">Studio</a>
+    <a href="/studio/">Dating Studio</a>
     <a href="/vip/">VIP</a>
-    <a href="/account/">Account</a>
-    <a href="/privacy-policy/">Privacy</a>
-    <a href="/terms-of-service/">Terms</a>
-    <a href="/contact/">Contact</a>
+    <a href="/about/">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/contact/">Inquiry</a>
   </nav>
-  <p class="hp-footer__legal">&copy; MatchMakers LLC. The Connection Code is a trademark of MatchMakers LLC.</p>
+
+  <p class="v3-footer__institutional">&copy; MatchMakers &middot; Methodology authority anchored institutionally &middot; Letters letterpress &middot; Sessions video &middot; Audits annual.</p>
+  <p class="v3-footer__powered"><em>Powered by The Connection Code Engine.</em></p>
+
+  <p class="v3-footer__wordmark">MatchMakers<span class="v3-footer__wordmark-tm">&trade;</span></p>
 </footer>
 
 </body>

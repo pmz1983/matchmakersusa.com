@@ -1,0 +1,467 @@
+/* ═══════════════════════════════════════════════════════════════
+   STUDIO TOOLS v3.1 — Post-Purchase Member Surface
+   Coach AI / Script Builder / Suitability Report
+   Per Design's Cartier Component spec adapted to v3 canon
+   (cream canvas + navy ink + heritage gold accents; cross-page parity)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Studio tool surface — fit-to-page layout below brand mark hero */
+.studio-tools__container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 240px);  /* fit-to-page: viewport minus brand-mark hero */
+}
+
+/* Compact brand mark hero (smaller than homepage hero; tool-page register) */
+.studio-tools__hero {
+  padding: clamp(32px, 5vw, 48px) clamp(24px, 4vw, 64px);
+  text-align: center;
+  background: var(--color-canvas);
+}
+
+.studio-tools__hero-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 280px;  /* compact; vs homepage hero 480px */
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .studio-tools__hero-img { max-width: 220px; }
+}
+
+/* 3-tool toggle bar (Coach center default per Paul §5 directive) */
+.studio-3tool-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px clamp(16px, 4vw, 32px);
+  border-top: 1px solid var(--color-hairline-atmosphere);
+  border-bottom: 1px solid var(--color-hairline-atmosphere);
+}
+
+.studio-3tool-toggle__segment {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.45);  /* navy 45% — deemphasized */
+  background: transparent;
+  border: 0;
+  padding: 12px 8px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: color 240ms var(--easing-cinematic);
+}
+
+.studio-3tool-toggle__segment:hover {
+  color: var(--color-ink);
+}
+
+.studio-3tool-toggle__segment--left {
+  text-align: right;
+  justify-self: end;
+}
+
+.studio-3tool-toggle__segment--right {
+  text-align: left;
+  justify-self: start;
+}
+
+.studio-3tool-toggle__segment--active {
+  color: var(--color-ink);
+  font-weight: 600;
+  position: relative;
+  padding: 12px 16px;
+}
+
+.studio-3tool-toggle__segment--active::before {
+  content: "·";
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.4em;
+  color: var(--color-heritage-gold);
+  margin-right: 8px;
+  vertical-align: -0.05em;
+}
+
+.studio-3tool-toggle__segment--active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 1px;
+  background: var(--color-heritage-gold);
+  opacity: 0.55;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COACH SURFACE
+   ═══════════════════════════════════════════════════════════════ */
+
+.studio-coach-surface {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 4vw, 48px) 0;
+  position: relative;
+}
+
+/* Counter pill — top of conversation area */
+.studio-coach-counter {
+  display: inline-block;
+  align-self: center;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.55);
+  padding: 6px 14px;
+  border: 1px solid var(--color-hairline-atmosphere);
+  border-radius: 999px;
+  background: rgba(28, 31, 58, 0.02);
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.studio-coach-counter--limit-near {
+  border-color: rgba(203, 163, 114, 0.55);
+  color: var(--color-heritage-gold-text);
+}
+
+.studio-coach-counter--limit-reached {
+  border-color: rgba(203, 163, 114, 0.55);
+  background: rgba(203, 163, 114, 0.10);
+  color: var(--color-heritage-gold-text);
+}
+
+/* Empty state — thesis stack centered in conversation region */
+.studio-coach-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(32px, 6vw, 64px) 0;
+}
+
+.studio-coach-empty__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-text);
+  margin-bottom: 12px;
+}
+
+.studio-coach-empty__rule {
+  width: 32px;
+  height: 1px;
+  background: var(--color-heritage-gold);
+  border: 0;
+  opacity: 0.55;
+  margin: 0 auto 24px;
+}
+
+.studio-coach-empty__h2 {
+  font-family: var(--cartier-font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.20;
+  color: var(--color-ink);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* Bubble: user (right-aligned) */
+.studio-coach-bubble--user {
+  align-self: flex-end;
+  max-width: 80%;
+  padding: 16px 20px;
+  background: rgba(28, 31, 58, 0.06);
+  border: 1px solid var(--color-hairline-atmosphere);
+  border-radius: 12px;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.96rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+/* Bubble: coach (left-aligned with attribution) */
+.studio-coach-bubble--coach {
+  align-self: flex-start;
+  max-width: 88%;
+  padding: 20px 24px;
+  background: rgba(245, 240, 229, 0.4);  /* warm cream tint */
+  border: 1px solid var(--color-hairline-atmosphere);
+  border-radius: 12px;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.studio-coach-bubble__attribution {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-text);
+  margin-bottom: 8px;
+}
+
+.studio-coach-bubble__citation {
+  display: block;
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--color-heritage-gold-text);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(28, 31, 58, 0.08);
+}
+
+.studio-coach-bubble__citation strong {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-text);
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Cartier seal pulse (thinking indicator) */
+.studio-seal-pulse {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 16px;
+}
+
+.studio-seal-pulse__seal {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-heritage-gold);
+  opacity: 0.30;
+  animation: studio-seal-pulse 800ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.studio-seal-pulse__seal:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.studio-seal-pulse__seal:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+@keyframes studio-seal-pulse {
+  0%, 100% { opacity: 0.30; }
+  50% { opacity: 1.00; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-seal-pulse__seal {
+    animation: none;
+    opacity: 0.55;
+  }
+}
+
+/* Input row — 5 affordances (mic / textarea / TTS / play / send) */
+.studio-coach-input-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px 44px 44px;
+  gap: 8px;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-hairline-atmosphere);
+  margin-top: auto;
+}
+
+.studio-coach-input-row__btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-hairline-atmosphere);
+  background: transparent;
+  border-radius: 999px;
+  color: var(--color-ink);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 240ms var(--easing-cinematic), background 240ms var(--easing-cinematic);
+}
+
+.studio-coach-input-row__btn:hover {
+  border-color: rgba(28, 31, 58, 0.32);
+}
+
+.studio-coach-input-row__btn--send {
+  background: var(--color-heritage-gold);
+  border-color: var(--color-heritage-gold);
+  color: var(--color-canvas);
+}
+
+.studio-coach-input-row__btn--send:hover {
+  background: rgba(203, 163, 114, 0.85);
+}
+
+.studio-coach-input-row__btn--disabled {
+  opacity: 0.40;
+  cursor: not-allowed;
+}
+
+.studio-coach-input-row__field {
+  font-family: var(--font-body);
+  font-size: 16px;  /* iOS auto-zoom safe */
+  font-weight: 400;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-hairline-atmosphere);
+  border-radius: 24px;
+  padding: 12px 18px;
+  width: 100%;
+  min-height: 44px;
+  resize: none;
+  outline: none;
+  transition: border-color 240ms var(--easing-cinematic);
+}
+
+.studio-coach-input-row__field:focus {
+  border-color: rgba(28, 31, 58, 0.32);
+}
+
+.studio-coach-input-row__field--disabled {
+  opacity: 0.40;
+  cursor: not-allowed;
+}
+
+/* Footer copy (Cap-exhausted state / pre-token state) */
+.studio-coach-footer-copy {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: rgba(28, 31, 58, 0.65);
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+/* Pinned suitor header */
+.studio-coach-header-pin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(203, 163, 114, 0.04);
+  border-bottom: 1px solid var(--color-hairline-atmosphere);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.studio-coach-header-pin__mid-dot {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--color-heritage-gold);
+  margin-right: 6px;
+}
+
+/* Memory trail (vertical hairline gold gradient) */
+.studio-coach-memory-trail {
+  position: absolute;
+  left: 24px;
+  top: 80px;
+  bottom: 80px;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(203, 163, 114, 0) 0%,
+    rgba(203, 163, 114, 0.12) 30%,
+    rgba(203, 163, 114, 0.24) 100%);
+  pointer-events: none;
+}
+
+/* Crisis frame (hairline-red ONLY placement; max 2 instances) */
+.studio-coach-crisis-frame {
+  border-top: 1px solid rgba(180, 60, 50, 0.60);
+  padding: 24px 0;
+}
+
+.studio-coach-crisis-acknowledgment {
+  font-family: var(--cartier-font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--color-ink);
+  margin: 0 0 20px;
+}
+
+.studio-coach-crisis-resources {
+  border-left: 1px solid rgba(180, 60, 50, 0.60);
+  padding-left: 16px;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--color-ink);
+  margin: 16px 0;
+}
+
+.studio-coach-crisis-resources a {
+  color: var(--color-heritage-gold-text);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.studio-coach-crisis-closing {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(28, 31, 58, 0.78);
+  margin: 16px 0 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .studio-tools__container {
+    min-height: calc(100vh - 180px);
+  }
+
+  .studio-3tool-toggle__segment {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .studio-coach-empty__h2 {
+    font-size: 1.25rem;
+  }
+}

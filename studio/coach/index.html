@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=auto">
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Coach — MatchMakers Studio</title>
+  <meta name="description" content="The Coach. The methodology, voiced. Institutional continuity across every refinement.">
+  <link rel="canonical" href="https://matchmakersusa.com/studio/coach/">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Coach — MatchMakers Studio">
+  <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
+
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-03-v3-1-five-levels-aligned"
+    });
+  </script>
+
+  <link rel="stylesheet" href="/css/homepage-v3.css">
+  <link rel="stylesheet" href="/css/studio-tools.css">
+</head>
+<body>
+
+<a href="#main" class="v3-skip-link">Skip to content</a>
+
+<!-- v3.13 Persistent top nav -->
+<nav class="v3-topnav" aria-label="Primary navigation">
+  <div class="v3-topnav__inner">
+    <a href="/" class="v3-topnav__brand">MatchMakers<span class="v3-topnav__brand-tm">&trade;</span></a>
+    <div class="v3-topnav__nav">
+      <a href="/connection-code/" class="v3-topnav__link">Connection Code</a>
+      <a href="/studio/" class="v3-topnav__link" aria-current="page">Studio</a>
+      <a href="/vip/" class="v3-topnav__link">VIP</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Compact brand mark hero (cross-page parity preserved; smaller register for tool surface) -->
+<header class="studio-tools__hero">
+  <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
+    <img src="/img/brand-mark/v3/wordmark-tight.png"
+         alt=""
+         class="studio-tools__hero-img"
+         aria-hidden="true">
+    <p class="v3-arrival__wordmark--sr-only">MatchMakers &mdash; Take Dating to the Next Level</p>
+  </div>
+</header>
+
+<!-- 3-tool toggle: Script Builder LEFT | COACH (active center) | Suitability RIGHT (per Paul §5 directive) -->
+<nav class="studio-3tool-toggle" role="tablist" aria-label="Studio tools">
+  <a href="/studio/script-builder/"
+     class="studio-3tool-toggle__segment studio-3tool-toggle__segment--left"
+     role="tab"
+     aria-selected="false">Script Builder</a>
+  <span class="studio-3tool-toggle__segment studio-3tool-toggle__segment--active"
+        role="tab"
+        aria-selected="true"
+        aria-current="page">Coach</span>
+  <a href="/studio/suitability/"
+     class="studio-3tool-toggle__segment studio-3tool-toggle__segment--right"
+     role="tab"
+     aria-selected="false">Suitability</a>
+</nav>
+
+<main id="main" class="studio-tools__container">
+
+  <!-- Coach surface — fit-to-page; State 1 empty (cap-fresh; pre-typing) per Design spec §1.1 -->
+  <div class="studio-coach-surface">
+
+    <span class="studio-coach-counter" role="status" aria-live="polite">0 of 3 today</span>
+
+    <!-- Empty state — thesis stack centered -->
+    <div class="studio-coach-empty">
+      <span class="studio-coach-empty__eyebrow">The MatchMakers Coach</span>
+      <hr class="studio-coach-empty__rule">
+      <h2 class="studio-coach-empty__h2">Begin where you arrive. The Coach is ready.</h2>
+    </div>
+
+    <!-- Input row — 5 affordances (mic / textarea / TTS / play / send) per Design spec §4 -->
+    <div class="studio-coach-input-row">
+      <button class="studio-coach-input-row__btn"
+              aria-label="Hold to speak; release to transcribe"
+              type="button">🜨</button>
+      <input class="studio-coach-input-row__field"
+             type="text"
+             placeholder="Ask the Coach…"
+             aria-label="Compose message to Coach">
+      <button class="studio-coach-input-row__btn"
+              role="switch"
+              aria-checked="false"
+              aria-label="Audio output"
+              type="button">▢</button>
+      <button class="studio-coach-input-row__btn"
+              aria-label="Play last response"
+              type="button">▷</button>
+      <button class="studio-coach-input-row__btn studio-coach-input-row__btn--send studio-coach-input-row__btn--disabled"
+              aria-label="Send"
+              type="button"
+              disabled>↑</button>
+    </div>
+  </div>
+</main>
+
+<!-- Footer (cross-page parity preserved; compact for tool surface) -->
+<footer class="v3-footer" style="margin-top: 0; padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 64px) clamp(28px, 4vw, 40px);">
+  <ul class="v3-footer__rotation" role="group" aria-label="Brand-line rotation">
+    <li>The methodology earns the membership.</li>
+  </ul>
+
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/studio/" aria-current="page">Dating Studio</a>
+    <a href="/vip/">VIP</a>
+    <a href="/about/">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/contact/">Inquiry</a>
+  </nav>
+
+  <p class="v3-footer__institutional">&copy; MatchMakers &middot; Methodology authority anchored institutionally.</p>
+  <p class="v3-footer__powered"><em>Powered by The Connection Code Engine.</em></p>
+</footer>
+
+</body>
+</html>

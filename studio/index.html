@@ -13,23 +13,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>The Dating Studio — MatchMakers</title>
-  <meta name="description" content="The Dating Studio. The Connection Code methodology, applied. Coach AI grounded in the corpus. Script Builder that writes for your Intent. A weekly Suitability Report.">
+  <meta name="description" content="The Dating Studio. Where the Playbook is delivered. Coach, Script Builder, Suitability tools. Calibrated continuously through every phase the methodology recognizes.">
   <link rel="canonical" href="https://matchmakersusa.com/studio/">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Dating Studio — MatchMakers">
-  <meta property="og:description" content="The Dating Studio. The Connection Code methodology, applied. Coach AI grounded in the corpus. Script Builder that writes for your Intent.">
+  <meta property="og:description" content="Where the Playbook is delivered. The methodology earns the membership.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v2.png">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/connection-code.css">
+
+  <!-- v3 Typography stack — Foglihten Layer 1 trademark canonical via local WOFF2 (homepage-v3.css @font-face); Inter institutional fallback -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- Sentry error tracking — propagated from index.html (Wave 0a 13-edit absorption 2026-05-02) -->
   <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
   <script>
     Sentry.init({
@@ -37,281 +38,223 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-02"
+      release: "matchmakersusa.com@2026-05-03-v3-1-five-levels-aligned"
     });
   </script>
 
-  <style>
-    .studio-hero {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 5rem 1.5rem 2rem;
-      text-align: center;
-    }
-
-    .studio-hero__heritage {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: .92rem;
-      color: var(--cc-text-tertiary);
-      margin-bottom: 1.4rem;
-    }
-
-    .studio-hero__rule {
-      width: 96px;
-      height: 1px;
-      background: var(--cc-rule-emphatic);
-      margin: 1.6rem auto 2rem;
-    }
-
-    .studio-hero__headline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.8rem, 4.2vw, 2.6rem);
-      line-height: 1.22;
-      color: var(--cc-text-primary);
-      margin-bottom: 1.4rem;
-    }
-
-    .studio-hero__headline em {
-      font-style: italic;
-      color: var(--cc-gold);
-    }
-
-    .studio-hero__subhead {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: clamp(1.1rem, 2.4vw, 1.32rem);
-      color: var(--cc-text-secondary);
-      max-width: 540px;
-      margin: 0 auto 2.4rem;
-      line-height: 1.5;
-    }
-
-    .studio-section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-
-    .studio-features {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.4rem;
-      margin: 2.4rem 0;
-    }
-
-    .studio-feature {
-      border: 1px solid var(--cc-rule-accent);
-      padding: 1.6rem 1.4rem;
-      background: var(--cc-bg-card);
-    }
-
-    .studio-feature__label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--cc-gold);
-      margin-bottom: 0.6rem;
-    }
-
-    .studio-feature__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.32rem;
-      color: var(--cc-text-primary);
-      margin-bottom: 0.6rem;
-    }
-
-    .studio-feature__title em { font-style: italic; color: var(--cc-gold); }
-
-    .studio-feature__body {
-      font-size: .96rem;
-      line-height: 1.6;
-      color: var(--cc-text-secondary);
-    }
-
-    .studio-door {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-      text-align: center;
-    }
-
-    .studio-door__head {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--cc-gold);
-      margin-bottom: 1rem;
-    }
-
-    .studio-door__price {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 2.4rem;
-      color: var(--cc-text-primary);
-      margin-bottom: 0.4rem;
-    }
-
-    .studio-door__price-cue {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: .96rem;
-      color: var(--cc-text-tertiary);
-      margin-bottom: 2rem;
-    }
-
-    .studio-door__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      letter-spacing: 0.06em;
-      color: var(--cc-text-primary);
-      background: transparent;
-      border: 1px solid var(--cc-gold);
-      padding: 1.05rem 2.4rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 240ms var(--cc-easing), color 240ms var(--cc-easing);
-      min-height: 48px;
-      min-width: 280px;
-      justify-content: center;
-    }
-
-    .studio-door__cta:hover:not([disabled]),
-    .studio-door__cta:focus-visible:not([disabled]) {
-      background: var(--cc-gold-faint);
-      color: var(--cc-gold-bright);
-      outline: none;
-    }
-
-    .studio-door__cta:focus-visible {
-      outline: 2px solid var(--cc-gold-bright);
-      outline-offset: 4px;
-    }
-
-    .studio-door__cta[disabled] {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .studio-door__cue {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: .9rem;
-      color: var(--cc-text-tertiary);
-      margin-top: 1.6rem;
-    }
-
-    .studio-door__status {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--cc-text-secondary);
-      margin-top: 1.4rem;
-      min-height: 1.4rem;
-    }
-
-    .studio-door__status[data-state="error"] {
-      color: var(--cc-text-primary);
-      border-left: 2px solid var(--cc-gold);
-      padding-left: 0.8rem;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-
-    .studio-header-cta {
-      min-height: 40px;
-      padding: 0.5rem 1rem;
-      font-size: .82rem;
-    }
-
-    .studio-door__heading-spaced { margin-bottom: 1.6rem; }
-  </style>
+  <!-- Studio v3.1 inherits Homepage v3 visual canon -->
+  <link rel="stylesheet" href="/css/homepage-v3.css">
 </head>
 <body>
 
-<a href="#main" class="cc-skip-link">Skip to content</a>
+<a href="#main" class="v3-skip-link">Skip to content</a>
 
-<div class="cc-shell">
+<!-- v3.13 Persistent top nav -->
+<nav class="v3-topnav" aria-label="Primary navigation">
+  <div class="v3-topnav__inner">
+    <a href="/" class="v3-topnav__brand">MatchMakers<span class="v3-topnav__brand-tm">&trade;</span></a>
+    <div class="v3-topnav__nav">
+      <a href="/connection-code/" class="v3-topnav__link">Connection Code</a>
+      <a href="/studio/" class="v3-topnav__link" aria-current="page">Studio</a>
+      <a href="/vip/" class="v3-topnav__link">VIP</a>
+    </div>
+  </div>
+</nav>
 
-  <header class="cc-header">
-    <a href="/" class="cc-header__home" aria-label="MatchMakers home">MatchMakers<span class="cc-header__home-tm">&trade;</span></a>
-    <a href="/connection-code/" class="cc-btn cc-btn--ghost studio-header-cta">Connection Code</a>
-  </header>
+<main id="main">
 
-  <main id="main">
+  <!-- MOVEMENT 1 — THE ARRIVAL (cross-page parity with homepage + CC) -->
+  <section class="v3-arrival" aria-labelledby="studio-hero-anchor">
+    <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
+      <img src="/img/brand-mark/v3/wordmark-tight.png"
+           alt=""
+           class="v3-arrival__brand-mark-img"
+           aria-hidden="true">
+      <p class="v3-arrival__wordmark--sr-only">MatchMakers &mdash; Take Dating to the Next Level</p>
+    </div>
 
-    <section class="studio-hero" aria-labelledby="studio-headline">
-      <p class="cc-eyebrow">The Dating Studio</p>
-      <p class="studio-hero__heritage">More than a decade of matchmaking practice.</p>
-      <hr class="studio-hero__rule" aria-hidden="true">
-      <h1 id="studio-headline" class="studio-hero__headline">The methodology, <em>applied.</em></h1>
-      <p class="studio-hero__subhead">Coach AI grounded in the Connection Code corpus. Script Builder that writes for your Intent. A weekly Suitability Report. The methodology earns the membership.</p>
-    </section>
+    <hr class="v3-arrival__hairline" aria-hidden="true">
 
-    <section class="studio-section" aria-labelledby="studio-features-heading">
-      <p class="cc-eyebrow">The Studio</p>
-      <hr class="cc-rule--accent" aria-hidden="true">
-      <h2 id="studio-features-heading" class="cc-headline">What the Studio holds, <em>in full.</em></h2>
+    <h1 id="studio-hero-anchor" class="v3-arrival__anchor">
+      <span class="v3-arrival__anchor-line">Where the Playbook is <em>delivered.</em></span>
+      <span class="v3-arrival__anchor-line">The methodology <em>earns the membership.</em></span>
+    </h1>
 
-      <div class="studio-features">
-        <article class="studio-feature">
-          <p class="studio-feature__label">Coach AI</p>
-          <h3 class="studio-feature__title">A Coach who reads the <em>Brief.</em></h3>
-          <p class="studio-feature__body">Three turns a day. Each turn cites the Connection Code corpus chapter and section the read draws from. Coach memory persists across sessions; the Brief is the standing record.</p>
-        </article>
+    <p class="v3-arrival__scroll-cue" aria-hidden="true">The Dating Studio &darr;</p>
+  </section>
 
-        <article class="studio-feature">
-          <p class="studio-feature__label">Script Builder</p>
-          <h3 class="studio-feature__title">Words that <em>earn the read.</em></h3>
-          <p class="studio-feature__body">Five Scripts a day. Calibrated against your Intent and Phase. Grounded in the methodology, not in tactics-language.</p>
-        </article>
+  <!-- MOVEMENT 2 — THE STUDIO FRAME (Level 2 Core System + Level 3 Personalization both live here) -->
+  <section class="v3-movement" aria-labelledby="studio-frame-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">Levels 2 &amp; 3 &middot; The Studio</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="studio-frame-anchor" class="v3-display">The methodology, <em>delivered and personalized.</em></h2>
+      <p class="v3-body v3-body--lead">The Dating Studio holds two levels of the system. <em>Level 2 &mdash; Core System:</em> full access to the Playbook and structured tools. <em>Level 3 &mdash; Personalization:</em> advanced AI tailors the methodology to the individual. One purchase. Both levels open.</p>
+      <p class="v3-body">The Studio is the canonical purchase. The methodology earns the membership; the membership opens the work; the work calibrates continuously across the phases the methodology recognizes.</p>
+    </div>
+  </section>
 
-        <article class="studio-feature">
-          <p class="studio-feature__label">Suitability Report</p>
-          <h3 class="studio-feature__title">A weekly read on the <em>Build.</em></h3>
-          <p class="studio-feature__body">A three-section ledger that surfaces alignment, cadence, and pattern across the suitor in active view. One Report a week per suitor.</p>
-        </article>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-        <article class="studio-feature">
-          <p class="studio-feature__label">Welcome Letter from Coach</p>
-          <h3 class="studio-feature__title">A first read, <em>at twenty-four hours.</em></h3>
-          <p class="studio-feature__body">A four-paragraph letter from the Coach. Generated from the Brief. Held in your portal Correspondence archive.</p>
-        </article>
+  <!-- MOVEMENT 3 — THE METHODOLOGY ARCHITECTURE (compressed; cream-warm variant) -->
+  <section class="v3-movement v3-section--warm" aria-labelledby="studio-architecture-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Methodology Architecture</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="studio-architecture-anchor" class="v3-display">The methodology, <em>refined across more than a decade of matchmaking practice.</em></h2>
+      <p class="v3-body v3-body--lead">Five phases. Five signals. Nine intent classes. The Playbook holds all three layered in one continuous Living Knowledge Graph. Eighty-seven chapters of methodology corpus, calibrated continuously through every phase the methodology recognizes.</p>
+      <p class="v3-architecture__closing"><em>Calibration is the discipline. Refinement is the adaptation. Outcome is the constant.</em></p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- MOVEMENT 4 — THE PLAYBOOK (engine canonical; Tier 1 #24) -->
+  <section class="v3-movement v3-movement--center" aria-labelledby="studio-playbook-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">The Playbook</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="studio-playbook-anchor" class="v3-display">The Playbook is the <em>engine.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">The Playbook is the methodology corpus &mdash; eighty-seven chapters refined across more than a decade of matchmaking practice. <em>Five Phases. Five Signals. Nine Intent frameworks.</em> One continuous <em>Living Knowledge Graph</em>. Every Coach turn, every Script, every Suitability Report cites specific chapter chunks. <em>Trust is provable, not marketed.</em></p>
+    </div>
+
+    <div class="v3-playbook__artifact" role="img" aria-label="The Playbook artifact">
+      <div class="v3-playbook__artifact-title">
+        <p class="v3-playbook__artifact-eyebrow">The Methodology Corpus</p>
+        <p class="v3-playbook__artifact-name">The <em>Playbook</em></p>
+        <p class="v3-playbook__artifact-cardinality">Eighty-seven chapters &middot; Living Knowledge Graph</p>
       </div>
-    </section>
+    </div>
 
-    <section class="studio-door" aria-labelledby="studio-door-heading">
-      <p class="studio-door__head">Continue to the Studio</p>
-      <p class="studio-door__price">$299</p>
-      <p class="studio-door__price-cue">Once. For thirty days of the methodology, applied.</p>
-      <h2 id="studio-door-heading" class="cc-headline studio-door__heading-spaced">The methodology <em>earned the membership.</em></h2>
-      <button type="button" class="studio-door__cta" data-action="studio-checkout">
-        <span>Begin where you arrive.</span>
-        <span aria-hidden="true">&rarr;</span>
-      </button>
-      <p class="studio-door__status" data-checkout-status role="status" aria-live="polite"></p>
-      <p class="studio-door__cue">A standing record of your read, held by the Coach. The Connection Code Brief, in full.</p>
-    </section>
+    <p class="v3-playbook__closing"><em>The Playbook is what the Studio delivers. The work begins after the purchase.</em></p>
+  </section>
 
-  </main>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-  <footer class="cc-footer">
-    The Connection Code is a trademark of MatchMakers LLC. More than a decade of matchmaking practice.
-  </footer>
+  <!-- MOVEMENT 5 — THE STUDIO TOOLS = LEVEL 3 PERSONALIZATION LAYER (advanced AI tailors the methodology to the individual) -->
+  <section id="personalization" class="v3-movement" aria-labelledby="studio-tools-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">Level 3 &middot; Personalization</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="studio-tools-anchor" class="v3-display">Coach. Script Builder. <em>Suitability.</em></h2>
+      <p class="v3-body v3-body--lead">The Personalization Layer. Advanced AI calibrates the methodology to the individual &mdash; surfacing the framework against your signals, refining as you engage. The methodology applied <em>to</em> you.</p>
+    </div>
 
-</div>
+    <div class="v3-studio__tools">
+      <article class="v3-studio__tool">
+        <p class="v3-studio__tool-name">Coach</p>
+        <p class="v3-studio__tool-eyebrow">The methodology, voiced.</p>
+        <p class="v3-studio__tool-body">Institutional continuity across every refinement. The Coach surfaces, calibrates, and refines under the methodology authority. <em>AI provides structure and continuity. Human matchmakers introduce judgment, nuance, and accountability. The methodology authority anchors the work institutionally.</em></p>
+      </article>
+      <article class="v3-studio__tool">
+        <p class="v3-studio__tool-name">Script Builder</p>
+        <p class="v3-studio__tool-eyebrow">Calibrated framework outputs.</p>
+        <p class="v3-studio__tool-body">At every phase the methodology recognizes. Scripts are framework-calibrated outputs the methodology surfaces against your specific signal pattern. They are not templates. They are the framework, voiced for the moment.</p>
+      </article>
+      <article class="v3-studio__tool">
+        <p class="v3-studio__tool-name">Suitability</p>
+        <p class="v3-studio__tool-eyebrow">The reading layer.</p>
+        <p class="v3-studio__tool-body">The framework brings to discernment work. Suitability surfaces compatibility patterns + misalignment patterns side-by-side. It does not score. It does not rank. It calibrates against the methodology.</p>
+      </article>
+    </div>
+  </section>
 
-<script src="/js/cc-api.js"></script>
-<script src="/js/studio-checkout.js"></script>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- MOVEMENT 6 — THE CONVERSION MOMENT (PRIMARY anchor; common navy CTA per Polish v2.10/v2.11) -->
+  <section class="v3-movement v3-movement--center v3-section--warm" aria-labelledby="studio-conversion-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">The Methodology Earns the Membership</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="studio-conversion-anchor" class="v3-display"><em>Open the Studio.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">One purchase. The Playbook in full. Calibrated continuously through every phase the methodology recognizes. $299.99.</p>
+
+      <div class="cc-hero__cta-row">
+        <a href="/studio/purchase/" class="v3-cta-cobalt">Open the Dating Studio <span aria-hidden="true">&rarr;</span></a>
+        <p class="v3-cta-subline"><em>One purchase. No subscription. The Playbook in full.</em></p>
+      </div>
+
+      <p class="v3-body v3-body--center" style="margin-top:2rem;font-style:italic;color:rgba(28,31,58,0.55);"><em>The framework opens immediately upon purchase. The Coach speaks the methodology from the first turn. Calibration begins.</em></p>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- MOVEMENT 7 — TRUST + PROVABILITY (cross-page parity) -->
+  <section class="v3-movement v3-movement--center" aria-labelledby="studio-trust-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Trust + Provability</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="studio-trust-anchor" class="v3-display"><em>Trust is provable, not marketed.</em></h2>
+    </div>
+
+    <div class="v3-trust__anchors">
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The framework.</p>
+        <h3 class="v3-trust__anchor-title">The methodology.</h3>
+        <p class="v3-trust__anchor-body">Five phases. Five signals. Nine intent classes. Refined across more than a decade of matchmaking practice.</p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The standard.</p>
+        <h3 class="v3-trust__anchor-title">The institutional discipline.</h3>
+        <p class="v3-trust__anchor-body"><em>Selectivity is the discipline. Refinement is the adaptation. Outcome is the constant.</em></p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The artifacts.</p>
+        <h3 class="v3-trust__anchor-title">The provenance.</h3>
+        <p class="v3-trust__anchor-body"><em>Letters are letterpress. Sessions are video. Audits are annual.</em></p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The institutional anchor.</p>
+        <h3 class="v3-trust__anchor-title">The authority.</h3>
+        <p class="v3-trust__anchor-body">The methodology authority anchors the work institutionally. The Chief Advisor preserves the through-line.</p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
+
+  <!-- MOVEMENT 8 — VIP LAYER BRIDGE (CLOSE SECOND alternate; subordinate register) -->
+  <section class="v3-movement" aria-labelledby="studio-vip-bridge-anchor">
+    <hr class="v3-vip__transition-rule" aria-hidden="true">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">Or &mdash; VIP Matchmaking</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="studio-vip-bridge-anchor" class="v3-display">The bespoke <em>advisory layer.</em></h2>
+      <p class="v3-body v3-body--lead">VIP Matchmaking is the methodology delivered with human matchmaker engagement layered. The Playbook holds. The Chief Advisor introduces judgment. <em>Letters are letterpress. Sessions are video. Audits are annual.</em></p>
+
+      <div class="v3-vip__cta-row">
+        <a href="/vip/" class="v3-cta-italic-gold">Begin inquiry &mdash; VIP <span aria-hidden="true">&rarr;</span></a>
+        <p class="v3-cta-subline"><em>Starting at $499.99. Consultation-first. The methodology authority decides the advisory layer that calibrates against your work.</em></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- MOVEMENT 9 — FOOTER (cross-page parity with homepage + CC) -->
+<footer class="v3-footer">
+  <ul class="v3-footer__rotation" role="group" aria-label="Brand-line rotation">
+    <li>A relationship operating system, tailored to you. Not a dating app.</li>
+    <li>The methodology earns the membership.</li>
+    <li>The Playbook is the engine.</li>
+  </ul>
+
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/studio/" aria-current="page">Dating Studio</a>
+    <a href="/vip/">VIP</a>
+    <a href="/about/">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/contact/">Inquiry</a>
+  </nav>
+
+  <p class="v3-footer__institutional">&copy; MatchMakers &middot; Methodology authority anchored institutionally &middot; Letters letterpress &middot; Sessions video &middot; Audits annual.</p>
+  <p class="v3-footer__powered"><em>Powered by The Connection Code Engine.</em></p>
+
+  <p class="v3-footer__wordmark">MatchMakers<span class="v3-footer__wordmark-tm">&trade;</span></p>
+</footer>
 
 </body>
 </html>
