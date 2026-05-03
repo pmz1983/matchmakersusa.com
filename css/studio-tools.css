@@ -465,3 +465,477 @@
     font-size: 1.25rem;
   }
 }
+
+/* Compact footer modifier — for tool surfaces where we want lighter footer presence */
+.v3-footer--compact {
+  margin-top: 0;
+  padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 64px) clamp(28px, 4vw, 40px);
+}
+
+/* 404 brand-mark link — wraps img with display:block */
+.v3-arrival__brand-link {
+  display: block;
+  text-decoration: none;
+}
+
+/* 404 CTA row spacing */
+.v3-not-found__cta-row {
+  margin-top: 3rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STUDIO TOOLS SPRINT — Mission-critical hot-fix per Paul §5 directive 2026-05-03
+   Functional Coach chat + Script Builder template engine + Suitability reading
+   Cartier institutional register; cream canvas; heritage gold + navy ink only
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Coach chat (Coach-only additions; preserves existing State 1 empty) ─── */
+
+.studio-coach-messages {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 720px;
+  margin: 24px auto 16px;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+
+.studio-coach-msg {
+  display: flex;
+  width: 100%;
+}
+
+.studio-coach-msg--user {
+  justify-content: flex-end;
+}
+
+.studio-coach-msg--coach {
+  justify-content: flex-start;
+}
+
+.studio-coach-msg__bubble {
+  max-width: 82%;
+  padding: 12px 16px;
+  border-radius: 0;
+  font-family: var(--cartier-font-body);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.studio-coach-msg--user .studio-coach-msg__bubble {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  border: 1px solid var(--color-ink);
+}
+
+.studio-coach-msg--coach .studio-coach-msg__bubble {
+  background: rgba(203, 163, 114, 0.06);
+  color: var(--color-ink);
+  border: 1px solid rgba(203, 163, 114, 0.4);
+}
+
+.studio-coach-msg--typing .studio-coach-msg__bubble {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 24px;
+}
+
+.studio-coach-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-heritage-gold);
+  opacity: 0.4;
+  animation: studio-coach-typing 1.2s ease-in-out infinite;
+}
+
+.studio-coach-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.studio-coach-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes studio-coach-typing {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 0.9; transform: translateY(-3px); }
+}
+
+/* ── Tool surface (Script Builder + Suitability shared layout) ─────────── */
+
+.studio-tool-surface {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 24px) clamp(40px, 6vw, 80px);
+}
+
+.studio-tool-surface__header {
+  text-align: center;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.studio-tool-surface__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.55);
+  margin: 0 0 12px;
+}
+
+.studio-tool-surface__rule {
+  border: 0;
+  border-top: 1px solid var(--color-heritage-gold);
+  width: 96px;
+  opacity: 0.55;
+  margin: 0 auto 1.4rem;
+}
+
+.studio-tool-surface__h1 {
+  font-family: var(--cartier-font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+  margin: 0 0 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.studio-tool-surface__h1 em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+.studio-tool-surface__lede {
+  font-family: var(--cartier-font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.studio-tool-surface__lede em {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+/* ── Tool form (form fieldsets + radio grids + text fields) ─────────────── */
+
+.studio-tool-form {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.studio-tool-form__fieldset {
+  border: 1px solid rgba(203, 163, 114, 0.3);
+  border-radius: 0;
+  padding: clamp(16px, 3vw, 24px);
+  margin: 0;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.studio-tool-form__legend {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.62);
+  padding: 0 8px;
+}
+
+.studio-tool-form__radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.studio-tool-form__radio-grid--two {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.studio-tool-form__radio {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.studio-tool-form__radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.studio-tool-form__radio-label {
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid rgba(28, 31, 58, 0.18);
+  background: var(--color-canvas);
+  font-family: var(--cartier-font-body);
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.studio-tool-form__radio-label strong {
+  display: block;
+  font-family: var(--cartier-font-display);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.studio-tool-form__radio-label span {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--color-ink-secondary);
+  line-height: 1.4;
+}
+
+.studio-tool-form__radio:hover .studio-tool-form__radio-label,
+.studio-tool-form__radio input:focus-visible + .studio-tool-form__radio-label {
+  border-color: var(--color-heritage-gold);
+  background: rgba(203, 163, 114, 0.04);
+}
+
+.studio-tool-form__radio input:checked + .studio-tool-form__radio-label {
+  border-color: var(--color-heritage-gold);
+  background: rgba(203, 163, 114, 0.10);
+}
+
+.studio-tool-form__field {
+  margin-top: 14px;
+}
+
+.studio-tool-form__field:first-child {
+  margin-top: 12px;
+}
+
+.studio-tool-form__field label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-secondary);
+  margin-bottom: 6px;
+}
+
+.studio-tool-form__field input,
+.studio-tool-form__field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(28, 31, 58, 0.22);
+  border-radius: 0;
+  background: var(--color-canvas);
+  font-family: var(--cartier-font-body);
+  font-size: 0.96rem;
+  color: var(--color-ink);
+  transition: border-color 200ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.studio-tool-form__field textarea {
+  resize: vertical;
+  min-height: 72px;
+  font-family: var(--cartier-font-body);
+  line-height: 1.55;
+}
+
+.studio-tool-form__field input:focus,
+.studio-tool-form__field textarea:focus {
+  outline: none;
+  border-color: var(--color-heritage-gold);
+}
+
+.studio-tool-form__actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.studio-tool-form__reset {
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-tertiary);
+  cursor: pointer;
+  padding: 8px 4px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.studio-tool-form__reset:hover,
+.studio-tool-form__reset:focus-visible {
+  color: var(--color-ink);
+  outline: none;
+}
+
+/* ── Tool output (rendered card) ─────────────────────────────────────────── */
+
+.studio-tool-output-zone {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+.studio-tool-output {
+  border: 1px solid var(--color-heritage-gold);
+  background: var(--color-canvas-warm);
+  padding: clamp(20px, 4vw, 36px);
+  position: relative;
+}
+
+.studio-tool-output__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold-text);
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.studio-tool-output__rule {
+  border: 0;
+  border-top: 1px solid var(--color-heritage-gold);
+  width: 64px;
+  opacity: 0.6;
+  margin: 0 auto 16px;
+}
+
+.studio-tool-output__title {
+  font-family: var(--cartier-font-display);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  color: var(--color-ink);
+  margin: 0 0 1.2rem;
+  text-align: center;
+}
+
+.studio-tool-output__title em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+.studio-tool-output__body {
+  font-family: var(--cartier-font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.66;
+  color: var(--color-ink);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.studio-tool-output__body p {
+  margin: 0 0 0.8rem;
+}
+
+.studio-tool-output__body p:last-child {
+  margin-bottom: 0;
+}
+
+.studio-tool-output__spacer {
+  height: 0.4rem;
+}
+
+.studio-tool-output__section {
+  border-top: 1px solid rgba(203, 163, 114, 0.35);
+  padding-top: 18px;
+  margin-top: 18px;
+}
+
+.studio-tool-output__section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.studio-tool-output__section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.55);
+  margin: 0 0 8px;
+}
+
+.studio-tool-output__section-title {
+  font-family: var(--cartier-font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+}
+
+.studio-tool-output__section-body {
+  font-family: var(--cartier-font-body);
+  font-weight: 300;
+  font-size: 0.96rem;
+  line-height: 1.62;
+  color: var(--color-ink);
+  margin: 0 0 0.6rem;
+}
+
+.studio-tool-output__section-suffix {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--color-ink-secondary);
+  margin: 0;
+}
+
+.studio-tool-output__meta {
+  margin-top: clamp(20px, 3vw, 28px);
+  padding-top: 14px;
+  border-top: 1px solid rgba(203, 163, 114, 0.35);
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--color-ink-secondary);
+  text-align: center;
+}
+
+/* Mobile responsive — Studio Tools sprint */
+@media (max-width: 700px) {
+  .studio-tool-form__radio-grid,
+  .studio-tool-form__radio-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-tool-surface__h1 {
+    font-size: clamp(1.35rem, 5vw, 1.7rem);
+  }
+
+  .studio-tool-form__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .studio-tool-form__actions .v3-cta-cobalt {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .studio-coach-msg__bubble {
+    max-width: 88%;
+  }
+}
+

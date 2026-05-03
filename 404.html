@@ -15,6 +15,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
+  <!-- Sentry error tracking — closes 3-page carryover gap per Studio Tools sprint Paul §5 directive 2026-05-03 -->
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-03-v3-1-studio-tools-functional"
+    });
+  </script>
+
   <link rel="stylesheet" href="/css/homepage-v3.css">
 </head>
 <body>
@@ -37,7 +49,7 @@
 
   <section class="v3-arrival" aria-labelledby="not-found-anchor">
     <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
-      <a href="/" style="display: block;">
+      <a href="/" class="v3-arrival__brand-link" aria-label="Return to MatchMakers home">
         <img src="/img/brand-mark/v3/wordmark-tight.png"
              alt=""
              class="v3-arrival__brand-mark-img"
@@ -53,7 +65,7 @@
       <span class="v3-arrival__anchor-line">Return to the <em>framework.</em></span>
     </h1>
 
-    <div class="cc-hero__cta-row" style="margin-top: 3rem;">
+    <div class="cc-hero__cta-row v3-not-found__cta-row">
       <a href="/" class="v3-cta-cobalt">Return to MatchMakers <span aria-hidden="true">&rarr;</span></a>
       <p class="v3-cta-subline"><em>The methodology holds. The work continues.</em></p>
     </div>

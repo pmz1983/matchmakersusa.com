@@ -23,8 +23,21 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
+  <!-- Sentry error tracking — closes 3-page carryover gap per Studio Tools sprint Paul §5 directive 2026-05-03 -->
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    Sentry.init({
+      dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+      integrations: [Sentry.browserTracingIntegration()],
+      tracesSampleRate: 0.1,
+      environment: "production",
+      release: "matchmakersusa.com@2026-05-03-v3-1-studio-tools-functional"
+    });
+  </script>
+
   <link rel="stylesheet" href="/css/homepage-v3.css">
   <link rel="stylesheet" href="/css/studio-tools.css">
+  <script defer src="/js/studio-suitability.js"></script>
 </head>
 <body>
 
@@ -69,17 +82,120 @@
 </nav>
 
 <main id="main" class="studio-tools__container">
-  <div class="studio-coach-surface">
-    <div class="studio-coach-empty">
-      <span class="studio-coach-empty__eyebrow">Suitability</span>
-      <hr class="studio-coach-empty__rule">
-      <h2 class="studio-coach-empty__h2">The reading layer the framework brings to discernment work.</h2>
-      <p style="margin-top: 24px; font-family: var(--cartier-font-display); font-style: italic; color: rgba(28,31,58,0.55);">The surface is composed in patient register.</p>
-    </div>
-  </div>
+  <section class="studio-tool-surface" aria-labelledby="su-heading">
+    <header class="studio-tool-surface__header">
+      <p class="studio-tool-surface__eyebrow">Suitability</p>
+      <hr class="studio-tool-surface__rule" aria-hidden="true">
+      <h1 id="su-heading" class="studio-tool-surface__h1">The reading layer the framework brings to <em>discernment work.</em></h1>
+      <p class="studio-tool-surface__lede">Describe what you have observed. The methodology returns a structured reading against five canonical signals. <em>Suitors are reviewed, not curated.</em></p>
+    </header>
+
+    <form id="studio-suitability-form" class="studio-tool-form" novalidate>
+      <fieldset class="studio-tool-form__fieldset">
+        <legend class="studio-tool-form__legend">Subject</legend>
+        <div class="studio-tool-form__field">
+          <label for="su-subject">First name (or pseudonym)</label>
+          <input type="text" id="su-subject" name="subject" autocomplete="off" maxlength="60" required>
+        </div>
+        <div class="studio-tool-form__field">
+          <label for="su-summary">Brief summary — what context have you read so far?</label>
+          <textarea id="su-summary" name="summary" rows="3" maxlength="800" placeholder="A few sentences. Profile reading, prior conversation, source / context."></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="studio-tool-form__fieldset">
+        <legend class="studio-tool-form__legend">Cadence signal — pace and depth of their replies</legend>
+        <div class="studio-tool-form__radio-grid" role="radiogroup" aria-label="Cadence signal">
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="cadence" value="fast-shallow">
+            <span class="studio-tool-form__radio-label"><strong>Fast cadence · short content</strong><span>Quick replies; surface-level depth.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="cadence" value="fast-deep">
+            <span class="studio-tool-form__radio-label"><strong>Fast cadence · considered content</strong><span>Quick replies; carefully composed.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="cadence" value="slow-shallow">
+            <span class="studio-tool-form__radio-label"><strong>Slow cadence · short content</strong><span>Long gaps; thin replies.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="cadence" value="slow-deep">
+            <span class="studio-tool-form__radio-label"><strong>Slow cadence · considered content</strong><span>Long gaps; carefully composed.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="cadence" value="silent">
+            <span class="studio-tool-form__radio-label"><strong>Silent — no response</strong><span>Outside any reasonable window.</span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="studio-tool-form__fieldset">
+        <legend class="studio-tool-form__legend">Consistency signal — how do they show up across contexts?</legend>
+        <div class="studio-tool-form__radio-grid studio-tool-form__radio-grid--two" role="radiogroup" aria-label="Consistency signal">
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="consistency" value="consistent">
+            <span class="studio-tool-form__radio-label"><strong>Consistent</strong><span>The same across days and contexts.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="consistency" value="mood-variable">
+            <span class="studio-tool-form__radio-label"><strong>Mood-variable</strong><span>Changes with mood / time of day.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="consistency" value="context-dependent">
+            <span class="studio-tool-form__radio-label"><strong>Context-dependent</strong><span>Different in private vs. public.</span></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="consistency" value="sharp-shift">
+            <span class="studio-tool-form__radio-label"><strong>Sharp shift</strong><span>A discontinuity after a specific event.</span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="studio-tool-form__fieldset">
+        <legend class="studio-tool-form__legend">Stated Intent</legend>
+        <div class="studio-tool-form__radio-grid studio-tool-form__radio-grid--two" role="radiogroup" aria-label="Intent register">
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="intent" value="casual">
+            <span class="studio-tool-form__radio-label"><strong>Casual</strong></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="intent" value="long-term">
+            <span class="studio-tool-form__radio-label"><strong>Long-term</strong></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="intent" value="marriage">
+            <span class="studio-tool-form__radio-label"><strong>Marriage</strong></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="intent" value="fall-in-love">
+            <span class="studio-tool-form__radio-label"><strong>Fall in love</strong></span>
+          </label>
+          <label class="studio-tool-form__radio">
+            <input type="radio" name="intent" value="unsure">
+            <span class="studio-tool-form__radio-label"><strong>Unsure / not stated</strong></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="studio-tool-form__fieldset">
+        <legend class="studio-tool-form__legend">Operator notes (optional)</legend>
+        <div class="studio-tool-form__field">
+          <label for="su-notes">What you have noticed that has not fit a category above</label>
+          <textarea id="su-notes" name="notes" rows="3" maxlength="800" placeholder="Open-ended. The methodology weights what the operator has seen with their own eyes."></textarea>
+        </div>
+      </fieldset>
+
+      <div class="studio-tool-form__actions">
+        <button type="submit" class="v3-cta-cobalt">Read <span aria-hidden="true">&rarr;</span></button>
+        <button type="reset" class="studio-tool-form__reset">Clear</button>
+      </div>
+    </form>
+
+    <div id="studio-suitability-output" class="studio-tool-output-zone" aria-live="polite" aria-atomic="false"></div>
+  </section>
 </main>
 
-<footer class="v3-footer" style="margin-top: 0; padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 64px) clamp(28px, 4vw, 40px);">
+<footer class="v3-footer v3-footer--compact">
   <nav class="v3-footer__nav" aria-label="Footer">
     <a href="/">Homepage</a>
     <a href="/connection-code/">Connection Code</a>

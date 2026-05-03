@@ -36,12 +36,13 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-03-v3-1-doctrine-fix"
+      release: "matchmakersusa.com@2026-05-03-v3-1-studio-tools-functional"
     });
   </script>
 
   <link rel="stylesheet" href="/css/homepage-v3.css">
   <link rel="stylesheet" href="/css/studio-tools.css">
+  <script defer src="/js/studio-coach.js"></script>
 </head>
 <body>
 
@@ -91,7 +92,7 @@
   <!-- Coach surface — fit-to-page; State 1 empty (cap-fresh; pre-typing) per Design spec §1.1 -->
   <div class="studio-coach-surface">
 
-    <span class="studio-coach-counter" role="status" aria-live="polite">0 of 3 today</span>
+    <span class="studio-coach-counter" role="status" aria-live="polite">0 turns this session</span>
 
     <!-- Empty state — thesis stack centered -->
     <div class="studio-coach-empty">
@@ -126,7 +127,7 @@
 </main>
 
 <!-- Footer (cross-page parity preserved; compact for tool surface) -->
-<footer class="v3-footer" style="margin-top: 0; padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 64px) clamp(28px, 4vw, 40px);">
+<footer class="v3-footer v3-footer--compact">
   <ul class="v3-footer__rotation" role="group" aria-label="Brand-line rotation">
     <li>The methodology earns the membership.</li>
   </ul>
