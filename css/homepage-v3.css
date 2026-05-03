@@ -86,6 +86,102 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
+   v3.13 PERSISTENT TOP NAV (Polish v2.13 — foundation-of-gold pre-sprint)
+   Cross-page navigation; institutional restraint; cream + navy + heritage gold accent
+   ═══════════════════════════════════════════════════ */
+
+.v3-topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-canvas);
+  border-bottom: 1px solid var(--color-hairline-atmosphere);
+  padding: 14px clamp(20px, 4vw, 48px);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+}
+
+.v3-topnav__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.v3-topnav__brand {
+  font-family: var(--cartier-font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.v3-topnav__brand-tm {
+  font-size: 0.55em;
+  vertical-align: super;
+  color: var(--color-heritage-gold);
+  margin-left: 1px;
+}
+
+.v3-topnav__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+}
+
+.v3-topnav__link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.55);
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 200ms var(--easing-cinematic);
+}
+
+.v3-topnav__link:hover {
+  color: var(--color-ink);
+}
+
+.v3-topnav__link[aria-current="page"] {
+  color: var(--color-ink);
+  position: relative;
+}
+
+.v3-topnav__link[aria-current="page"]::before {
+  content: "·";
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.2em;
+  color: var(--color-heritage-gold);
+  margin-right: 4px;
+  vertical-align: -0.05em;
+}
+
+@media (max-width: 767px) {
+  .v3-topnav {
+    padding: 10px 16px;
+  }
+  .v3-topnav__nav {
+    gap: 12px;
+  }
+  .v3-topnav__link {
+    font-size: 0.62rem;
+    letter-spacing: 0.10em;
+  }
+  /* Hide some links on mobile to prevent overflow */
+  .v3-topnav__link--hide-mobile {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
    v3 SHARED PRIMITIVES
    ═══════════════════════════════════════════════════ */
 
