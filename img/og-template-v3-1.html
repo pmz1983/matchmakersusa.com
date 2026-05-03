@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+  OG image template v3.1 for matchmakersusa.com link sharing previews.
+  Renders at 1200x630 → /img/og-image-v3-1.png
+
+  Design mirror of v3.1 LIVE hero (Cartier baseline + Polish v2):
+  - Cream canvas (#F5F0E5) — Layer 2 website-creative palette
+  - Navy ink (#1C1F3A) — Layer 1 trademark color anchor
+  - Heritage gold hairline (#CBA372 @ 55% opacity) — restraint matrix
+  - MatchMakers wordmark in Foglihten (Layer 1 trademark display canonical)
+  - Tracked Inter caps tagline "TAKE DATING TO THE NEXT LEVEL"
+  - Cormorant Garamond Layer 2 editorial 3-line anchor (Tier 1 #13 + #14 verbatim)
+  - "you" + "outcome system" italic + heritage gold (em accents)
+  - Captures hero from MatchMakers wordmark down to "outcome system"
+
+  Authored: 2026-05-03 by website-agent per Paul direct request (cached preview refresh)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG image v3.1 — matchmakersusa.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Foglihten Layer 1 trademark display — canonical via local WOFF2 */
+    @font-face {
+      font-family: 'Foglihten';
+      src: url('../fonts/FoglihtenNo06_076.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+
+    :root {
+      --canvas:               #F5F0E5;
+      --ink:                  #1C1F3A;
+      --ink-secondary:        rgba(28, 31, 58, 0.78);
+      --ink-tertiary:         rgba(28, 31, 58, 0.55);
+      --heritage-gold:        #CBA372;
+      --heritage-gold-text:   #6B4F1E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: var(--canvas);
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 80px;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--ink);
+      position: relative;
+    }
+    /* Navy spine — Polish v2.1 Option M (subtle architectural marker) */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #252948;
+    }
+    .brand-mark-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      z-index: 1;
+    }
+    .wordmark {
+      font-family: 'Foglihten', 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 72px;
+      letter-spacing: 0.005em;
+      color: var(--ink);
+      line-height: 1;
+      position: relative;
+    }
+    .wordmark sup {
+      font-size: 0.22em;
+      vertical-align: super;
+      margin-left: 0.08em;
+      color: var(--ink-tertiary);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .tagline {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.32em;
+      color: var(--ink-secondary);
+      text-transform: uppercase;
+    }
+    .heritage-rule {
+      width: 96px;
+      height: 1px;
+      background: var(--heritage-gold);
+      opacity: 0.55;
+      margin-top: 8px;
+    }
+    .anchor {
+      margin-top: 16px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 56px;
+      line-height: 1.18;
+      letter-spacing: -0.005em;
+      text-align: center;
+      color: var(--ink);
+      z-index: 1;
+      max-width: 1000px;
+    }
+    .anchor-line {
+      display: block;
+    }
+    .anchor-line--1 {
+      font-size: 50px;
+      margin-bottom: 8px;
+    }
+    .anchor-line--2 {
+      font-size: 44px;
+      color: var(--ink-secondary);
+      margin-bottom: 6px;
+    }
+    .anchor-line--3 {
+      font-size: 56px;
+      font-weight: 500;
+    }
+    .anchor em {
+      font-style: italic;
+      color: var(--heritage-gold-text);
+    }
+    .url-footer {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.30em;
+      color: var(--ink-tertiary);
+      text-transform: uppercase;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="brand-mark-block">
+    <div class="wordmark">MatchMakers<sup>&trade;</sup></div>
+    <div class="tagline">Take Dating to the Next Level</div>
+    <div class="heritage-rule"></div>
+  </div>
+  <h1 class="anchor">
+    <span class="anchor-line anchor-line--1">A relationship operating system, tailored to <em>you.</em></span>
+    <span class="anchor-line anchor-line--2">Not a dating app.</span>
+    <span class="anchor-line anchor-line--3">This is an <em>outcome system.</em></span>
+  </h1>
+  <p class="url-footer">matchmakersusa.com</p>
+</body>
+</html>
