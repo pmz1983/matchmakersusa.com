@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════════
+   The Playbook — v3 Cartier Library register
+   Polish v2.13.3 — Tier 1 Library landing module
+   Inherits homepage-v3 token canon (cream / navy ink / heritage gold / Cormorant italic / Inter)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Phase Journey Strip ── */
+.playbook-phases {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(8px, 1.5vw, 20px);
+  margin: clamp(40px, 5vw, 64px) auto;
+  max-width: 920px;
+  padding: 0 clamp(8px, 2vw, 16px);
+}
+
+.playbook-phases__step {
+  text-align: center;
+  padding: clamp(16px, 2.5vw, 24px) clamp(8px, 1.5vw, 14px);
+  border-top: 1px solid var(--color-heritage-gold);
+  position: relative;
+}
+
+.playbook-phases__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 1px;
+  height: clamp(40px, 6vw, 56px);
+  background: rgba(203, 163, 114, 0.3);
+}
+
+.playbook-phases__numeral {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.playbook-phases__name {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  color: var(--color-ink);
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 700px) {
+  .playbook-phases {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .playbook-phases__step:not(:last-child)::after { display: none; }
+}
+
+/* ── Chapter Strata (Cartier-grade list register; mirrors Five Levels register) ── */
+.playbook-chapters {
+  list-style: none;
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding: 0;
+  max-width: 920px;
+}
+
+.playbook-chapters__stratum {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: clamp(20px, 3vw, 36px);
+  align-items: baseline;
+  padding: clamp(24px, 3.5vw, 36px) clamp(8px, 2vw, 16px);
+  border-top: 1px solid var(--color-heritage-gold);
+}
+
+.playbook-chapters__stratum:last-child {
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.playbook-chapters__numeral {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  align-self: start;
+  padding-top: 0.3em;
+}
+
+.playbook-chapters__content {
+  min-width: 0;
+}
+
+.playbook-chapters__chapter-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.5);
+  margin: 0 0 6px;
+}
+
+.playbook-chapters__chapter-name {
+  font-family: var(--cartier-font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.playbook-chapters__chapter-body {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(28, 31, 58, 0.65);
+  line-height: 1.6;
+  max-width: 56ch;
+  margin: 0;
+}
+
+.playbook-chapters__phase-tag {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  align-self: start;
+  padding-top: 0.3em;
+}
+
+@media (max-width: 700px) {
+  .playbook-chapters__stratum {
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    padding: clamp(20px, 4vw, 28px) clamp(4px, 1vw, 8px);
+  }
+  .playbook-chapters__numeral {
+    font-size: 1.2rem;
+    padding-top: 0.25em;
+  }
+  .playbook-chapters__phase-tag {
+    grid-column: 2 / -1;
+    margin-top: 8px;
+    padding-top: 0;
+  }
+}
+
+/* ── 5-Signal Connection Code (canonical signals row) ── */
+.playbook-signals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 2.5vw, 28px);
+  margin: clamp(28px, 4vw, 40px) auto 0;
+  max-width: 720px;
+  padding: clamp(24px, 4vw, 36px) clamp(20px, 4vw, 32px);
+  border-top: 1px solid var(--color-heritage-gold);
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.playbook-signals__signal {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--color-ink);
+  letter-spacing: 0.01em;
+}
+
+.playbook-signals__separator {
+  color: var(--color-heritage-gold);
+  font-style: normal;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  align-self: center;
+}
+
+@media (max-width: 700px) {
+  .playbook-signals {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .playbook-signals__separator { display: none; }
+}
+
+/* ── Access CTA register ── */
+.playbook-access {
+  text-align: center;
+  margin: clamp(48px, 6vw, 80px) auto 0;
+  max-width: 640px;
+  padding: 0 clamp(16px, 4vw, 24px);
+}
+
+.playbook-access__caption {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(28, 31, 58, 0.7);
+  margin: 1.2rem 0 0;
+  line-height: 1.55;
+}
