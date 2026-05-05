@@ -13,23 +13,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>About — MatchMakers</title>
-  <meta name="description" content="A relationship operating system, distilled across more than a decade of matchmaking practice. The institution exists to scale that work to the millions who carry the weight of finding the right person.">
+  <meta name="description" content="MatchMakers is the relationship operating system. Built for the work before the relationship, the work of the relationship, and the work that holds it.">
   <link rel="canonical" href="https://matchmakersusa.com/about/">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="About — MatchMakers">
-  <meta property="og:description" content="A relationship operating system, distilled across more than a decade of matchmaking practice.">
+  <meta property="og:description" content="A relationship operating system. Built for the work before, during, and after.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v3-1.png">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/cartier-pages.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/homepage-v3.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- Sentry error tracking — propagated from index.html (Wave 0a 13-edit absorption 2026-05-02) -->
   <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
   <script>
     Sentry.init({
@@ -37,113 +36,149 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-02"
+      release: "matchmakersusa.com@2026-05-05-v3-2-ecosystem-rebuild"
     });
   </script>
 </head>
 <body>
 
-<a href="#main" class="cp-skip-link">Skip to content</a>
+<a href="#main" class="v3-skip-link">Skip to content</a>
 
-<div class="cp-shell">
+<nav class="v3-topnav" aria-label="Primary navigation">
+  <div class="v3-topnav__inner">
+    <a href="/" class="v3-topnav__brand">MatchMakers<span class="v3-topnav__brand-tm">&trade;</span></a>
+    <div class="v3-topnav__nav">
+      <a href="/connection-code/" class="v3-topnav__link">Connection Code</a>
+      <a href="/foundation/" class="v3-topnav__link">Foundation</a>
+      <a href="/search/" class="v3-topnav__link">Search</a>
+      <a href="/practice/" class="v3-topnav__link">Practice</a>
+    </div>
+  </div>
+</nav>
 
-  <header class="cp-header">
-    <a href="/" class="cp-header__home" aria-label="MatchMakers home">MatchMakers<span class="cp-header__home-tm">&trade;</span></a>
-    <nav class="cp-header__nav" aria-label="Primary">
-      <a href="/connection-code/">Connection Code</a>
-      <a href="/methodology/">Methodology</a>
-      <a href="/studio/">Studio</a>
-      <a href="/vip/">VIP</a>
-    </nav>
-  </header>
+<main id="main">
 
-  <main id="main">
+  <section class="v3-arrival" aria-labelledby="about-opening-anchor">
+    <div class="v3-arrival__brand-mark v3-arrival__brand-mark--wordmark-only" role="img" aria-label="MatchMakers">
+      <img src="/img/brand-mark/v3/wordmark-only.png" alt="" class="v3-arrival__brand-mark-img" aria-hidden="true">
+    </div>
+    <hr class="v3-arrival__hairline" aria-hidden="true">
+    <h1 id="about-opening-anchor" class="v3-arrival__anchor v3-arrival__anchor--positioning">
+      <em>About.</em>
+      <span class="v3-arrival__anchor-extension">A relationship operating system. Built for the work before the relationship, the work of the relationship, and the work that holds it.</span>
+    </h1>
+  </section>
 
-    <!-- Section 1 — Opening (canonical Mission paragraph) per §4.1 -->
-    <section class="cp-page-hero" aria-labelledby="about-section-1">
-      <p class="cp-eyebrow">About</p>
-      <p class="cp-page-hero__heritage">More than a decade of matchmaking practice.</p>
-      <h1 id="about-section-1" class="cp-page-hero__headline">A relationship operating system, <em>tailored to you.</em></h1>
-      <hr class="cp-rule--accent" aria-hidden="true">
-      <p class="cp-paragraph cp-paragraph--lead">A relationship operating system, distilled across more than a decade of matchmaking practice &mdash; built for the millions of people who struggle with relationships. Across years. Across tiers. Across every artifact and every interaction.</p>
-    </section>
+  <section class="v3-movement" aria-labelledby="about-origin-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">Origin</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="about-origin-anchor" class="v3-display"><em>Earned, not engineered.</em></h2>
+      <p class="v3-body v3-body--lead">MatchMakers began with a question: why does dating, with all its tools and applications, leave so many people without the relationships they came for? Years of matchmaking practice produced an answer &mdash; a framework that names the work and a Playbook that grounds the practice. The institution exists to scale that work to the millions of people who carry the weight of finding the right person.</p>
+      <p class="v3-body">The methodology began as a single framework for the Search &mdash; observations about how connections form, how they hold, how they progress. Refined across years of practice, it grew to span the work that comes before (the self) and the work that comes after (the partnership). The Playbook is the corpus. Three contexts. One system.</p>
+    </div>
+  </section>
 
-    <!-- Section 2 — Origin (institutional voice; founder-anonymous) per §4.1 -->
-    <section class="cp-section" aria-labelledby="about-section-2">
-      <h2 id="about-section-2" class="cp-section__heading">Origin.</h2>
-      <p class="cp-paragraph">MatchMakers began with a question: why does dating, with all its tools and applications, leave so many people without the relationships they came for? More than a decade of matchmaking practice produced an answer &mdash; a framework that names the work and a Playbook that grounds the practice. The institution exists to scale that work to the millions of people who carry the weight of finding the right person.</p>
-    </section>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-    <hr class="cp-rule--ambient" aria-hidden="true">
+  <section class="v3-movement v3-section--warm" aria-labelledby="about-methodology-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">The Methodology</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="about-methodology-anchor" class="v3-display"><em>What it is. What it is not.</em></h2>
+      <p class="v3-body v3-body--lead">The methodology is the institutional discipline behind every recommendation, every signal read, every refinement made &mdash; the through-line from your first Reading to the relationship you intend.</p>
+      <p class="v3-body">It is a five-phase framework, anchored to a five-signal architecture, calibrated against nine intent classes, and surfaced through a 27-chapter Playbook across three contexts: Foundation (the self) &middot; Search (finding) &middot; Practice (sustaining). It is not a personality test. It is not an algorithm that decides for you. It is a discipline that surfaces the questions worth answering and the patterns worth reading.</p>
+      <p class="v3-body">Every Coach turn, every Script, every Suitability Report cites specific Playbook chapter chunks. Users can deep-dive into source.</p>
 
-    <!-- Section 3 — How it works (Substance paragraph) per §4.1 -->
-    <section class="cp-section" aria-labelledby="about-section-3">
-      <h2 id="about-section-3" class="cp-section__heading">How it works.</h2>
-      <p class="cp-paragraph"><em>5-Phase &times; 5-Signal &times; 9-Intent</em> framework, distilled across more than a decade of matchmaking practice into an <em>87-chapter Living Knowledge Graph</em> called the <em>Playbook</em>. Every Coach turn, every Script, every Suitability Report, every Letter from Coach cites specific chapter chunks. Users can deep-dive into source. Trust is provable, not marketed.</p>
-    </section>
+      <p class="v3-body" style="margin-top: 1.5rem;">The architecture works in layered depth: Connection Code is the entry. Studio is the education. Coach AI is the execution. VIP is the deployment. <a href="/methodology/" style="color: var(--color-heritage-gold); border-bottom: 1px solid var(--color-heritage-gold);">Read the methodology in full &rarr;</a></p>
+    </div>
+  </section>
 
-    <!-- Section 4 — The 5-Phase + Calibration-vs-Refinement meta-thesis interstitial (v1.3 §D.1; binding placement) -->
-    <section class="cp-section" aria-labelledby="about-section-4">
-      <h2 id="about-section-4" class="cp-section__heading">The five phases.</h2>
-      <p class="cp-paragraph">Five phases describe the lifetime arc of a relationship's formation: Profile (where every member shows up in full), Connection (where both sides opt in), Courtship (time and intention, not race-to-conversation), Commitment (the outcome you came here for), Ongoing (live the outcome you've built). Every Coach turn names the phase. Every Suitability Report scores the position. Every Letter from Coach observes the work in context.</p>
-    </section>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-    <!-- Calibration-vs-Refinement meta-thesis (Tier 2 v1.3 NEW; placement per §H.1 About S4 interstitial) -->
-    <aside class="cp-interstitial" role="note" aria-label="Methodology meta-thesis">
-      <p class="cp-interstitial__line"><em>Calibration is the discipline. Refinement is the adaptation. Outcome is the constant.</em></p>
-    </aside>
+  <section class="v3-movement v3-movement--center" aria-labelledby="about-trust-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Trust + Provability</p>
+      <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+      <h2 id="about-trust-anchor" class="v3-display"><em>Trust is provable, not marketed.</em></h2>
+    </div>
 
-    <!-- Section 5 — The 5-Signal -->
-    <section class="cp-section" aria-labelledby="about-section-5">
-      <h2 id="about-section-5" class="cp-section__heading">The five signals.</h2>
-      <p class="cp-paragraph">Five signals diagnose where you are in the work: <em>Intent. Position. Open. Build. Progress.</em> The Coach reads them. The Playbook chapters teach them. The Suitability Report scores them. The signals are the diagnostic; the Playbook is the practice.</p>
-    </section>
+    <div class="v3-trust__anchors">
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The framework.</p>
+        <h3 class="v3-trust__anchor-title">The methodology.</h3>
+        <p class="v3-trust__anchor-body">Five phases. Five signals. Nine intent classes. Three contexts. Refined across years of matchmaking practice.</p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The standard.</p>
+        <h3 class="v3-trust__anchor-title">The institutional discipline.</h3>
+        <p class="v3-trust__anchor-body">Refinement is the adaptation. Outcome is the constant.</p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The artifacts.</p>
+        <h3 class="v3-trust__anchor-title">The provenance.</h3>
+        <p class="v3-trust__anchor-body">Letters letterpress. Sessions video. Audits annual.</p>
+      </article>
+      <article class="v3-trust__anchor">
+        <p class="v3-trust__anchor-eyebrow">The institutional anchor.</p>
+        <h3 class="v3-trust__anchor-title">The authority.</h3>
+        <p class="v3-trust__anchor-body">The Chief Advisor preserves the through-line.</p>
+      </article>
+    </div>
+  </section>
 
-    <!-- Section 6 — The 9-Intent -->
-    <section class="cp-section" aria-labelledby="about-section-6">
-      <h2 id="about-section-6" class="cp-section__heading">The nine intents.</h2>
-      <p class="cp-paragraph">Nine intent classes describe what you came for: <em>Long-Term. Marriage. Fall in Love. Casual. Friendship. Companionship. Not Sure. Short-Term. Open to All.</em> The Connection Code begins with this calibration. The methodology meets you where you are.</p>
-    </section>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-    <hr class="cp-rule--ambient" aria-hidden="true">
+  <section class="v3-movement v3-section--warm" aria-labelledby="about-not-anchor">
+    <div class="v3-movement__inner">
+      <p class="v3-eyebrow">What the Work Is Not</p>
+      <hr class="v3-rule--heritage-gold-narrow" aria-hidden="true">
+      <h2 id="about-not-anchor" class="v3-display"><em>Not therapy. Not coaching. Not mediation.</em></h2>
+      <p class="v3-body v3-body--lead">MatchMakers is a structured communication system. AI is infrastructure, not a participant. The framework is offered; the user holds the practice; the relationship belongs to the people inside it.</p>
+      <p class="v3-body">When something is bigger than what a framework can hold &mdash; mental health crisis, domestic violence, acute distress &mdash; the system steps aside immediately and points to the real resources: 988, Crisis Text Line, the DV hotline, SAMHSA, 911. We don't try to be those resources. We point clearly.</p>
+    </div>
+  </section>
 
-    <!-- Section 7 — Coach Identity Thesis (canonical) + 3-layer architecture statement (v1.4 Q3 Tier 2 elevation) -->
-    <section class="cp-section" aria-labelledby="about-section-7">
-      <h2 id="about-section-7" class="cp-section__heading">What the Coach is.</h2>
-      <p class="cp-paragraph">The Coach is the methodology in conversation. Coach Lite is the choice tree at L1. Coach AI is the methodology applied at L2 Studio, citing the Playbook on every turn. The Coach speaks once, with deliberation. The Coach is held to the Brief. The Brief is held to the read.</p>
-    </section>
+  <hr class="v3-rule--hairline-atmosphere" aria-hidden="true">
 
-    <!-- 3-layer architecture statement (Tier 2 v1.4 NEW; binding placement per §C.3 architectural-clarity interstitial) -->
-    <aside class="cp-interstitial" role="note" aria-label="3-layer architecture">
-      <p class="cp-interstitial__line"><em>AI provides structure and continuity. Human matchmakers introduce judgment, nuance, and accountability. The methodology authority anchors the work institutionally.</em></p>
-    </aside>
+  <section class="v3-movement v3-origin" aria-labelledby="about-close-anchor">
+    <p class="v3-eyebrow v3-origin__eyebrow">The Long Arc</p>
+    <hr class="v3-rule--heritage-gold-narrow v3-rule--center" aria-hidden="true">
+    <h2 id="about-close-anchor" class="v3-display"><em>The methodology does not graduate.</em></h2>
+    <p class="v3-origin__paragraph">Most relationship products help you find someone, then disappear. We don't disappear. The methodology runs across the lifecycle &mdash; preparing the self before, structuring the search during, holding the relationship after. Same operating system. Three contexts. Built so you can engage at the depth you choose, when you choose, with the layer of human help you need.</p>
+    <p class="v3-origin__closing"><em>The work before. The work itself. The work that holds.</em></p>
+  </section>
 
-    <!-- Section 8 — Business Model (canonical thesis) per §4.1 -->
-    <section class="cp-section" aria-labelledby="about-section-8">
-      <h2 id="about-section-8" class="cp-section__heading">The business model.</h2>
-      <p class="cp-paragraph">Every engagement compounds. Nothing resets. The methodology runs the operating model. The Playbook grounds every output. The institution serves the millions who carry the weight of finding the right person. More than a decade in the making. Across years. Across tiers. Across every artifact and every interaction.</p>
-    </section>
+</main>
 
-  </main>
+<footer class="v3-footer">
+  <p class="v3-footer__tagline">The operating system behind every real connection.</p>
 
-  <footer class="cp-footer">
-    <p class="cp-footer__heritage">More than a decade of matchmaking practice. The Connection Code, applied as a system.</p>
-    <nav class="cp-footer__nav" aria-label="Footer">
-      <a href="/about/">About</a>
-      <a href="/connection-code/">Connection Code</a>
-      <a href="/methodology/">Methodology</a>
-      <a href="/playbook/">Playbook</a>
-      <a href="/studio/">Studio</a>
-      <a href="/vip/">VIP</a>
-      <a href="/account/">Account</a>
-      <a href="/privacy-policy/">Privacy</a>
-      <a href="/terms-of-service/">Terms</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <p class="cp-footer__legal">&copy; MatchMakers LLC. The Connection Code is a trademark of MatchMakers LLC.</p>
-  </footer>
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/playbook/">Playbook</a>
+    <a href="/studio/">Studio</a>
+    <a href="/vip/">VIP</a>
+    <a href="/foundation/">Foundation</a>
+    <a href="/practice/">Practice</a>
+    <a href="/about/" aria-current="page">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/contact/">Inquiry</a>
+  </nav>
 
-</div>
+  <p class="v3-footer__legal">&copy; MatchMakers &middot; <a href="/privacy-policy/">Privacy</a> &middot; <a href="/terms-of-service/">Terms</a></p>
+
+  <div class="v3-footer__dmca"><div id="DMCA-badge">
+  <div class="dm-1 dm-1-b" style="left: 0;"><a href="https://www.dmca.com/" title="DMCA">DMCA</a></div>
+  <div class="dm-2 dm-2-b"><a href="https://www.dmca.com/Protection/Status.aspx?ID=546f9af1-2d99-47ce-87e4-0537e6b1fc74" title="DMCA">PROTECTED</a></div>
+</div></div>
+
+  <p class="v3-footer__wordmark">MatchMakers<sup>&trade;</sup></p>
+</footer>
+
+<script>(function(){var c=document.createElement('link');c.type='text/css';c.rel='stylesheet';c.href='https://images.dmca.com/badges/dmca.css?ID=546f9af1-2d99-47ce-87e4-0537e6b1fc74';document.head.appendChild(c);})();</script>
+<script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 
 </body>
 </html>

@@ -111,7 +111,7 @@ body {
 }
 
 .v3-topnav__brand {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.05rem;
   letter-spacing: -0.005em;
@@ -156,7 +156,7 @@ body {
 
 .v3-topnav__link[aria-current="page"]::before {
   content: "·";
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.2em;
   color: var(--color-heritage-gold);
@@ -700,7 +700,7 @@ body {
 }
 
 .v3-five-levels__numeral {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
@@ -717,7 +717,7 @@ body {
 }
 
 .v3-five-levels__layer-name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -727,7 +727,7 @@ body {
 }
 
 .v3-five-levels__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.72);
@@ -747,7 +747,7 @@ body {
 
 .v3-five-levels__link {
   display: inline-block;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.95rem;
   color: var(--color-heritage-gold);
@@ -831,7 +831,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: 1rem;
@@ -1060,7 +1060,7 @@ body {
 }
 
 .v3-arc__position {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.8rem, 1.3vw, 0.95rem);
   color: var(--color-heritage-gold);
@@ -1076,7 +1076,7 @@ body {
 }
 
 .v3-arc__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1086,7 +1086,7 @@ body {
 }
 
 .v3-arc__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.72);
@@ -1106,7 +1106,7 @@ body {
 
 .v3-arc__link {
   display: inline-block;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.95rem;
   color: var(--color-heritage-gold);
@@ -1161,7 +1161,7 @@ body {
 }
 
 .v3-foundation-frameworks__numeral {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
@@ -1174,7 +1174,7 @@ body {
 }
 
 .v3-foundation-frameworks__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1183,7 +1183,7 @@ body {
 }
 
 .v3-foundation-frameworks__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.72);
@@ -1268,7 +1268,7 @@ body {
 }
 
 .v3-wayfinding__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.2vw, 1.75rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1338,7 +1338,7 @@ body {
 }
 
 .vip-for-whom__label {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: var(--color-heritage-gold);
@@ -1412,7 +1412,7 @@ body {
 }
 
 .vip-process__num {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.4rem, 2.2vw, 1.7rem);
   color: var(--color-heritage-gold);
@@ -1426,7 +1426,7 @@ body {
 }
 
 .vip-process__label {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.9rem;
   color: rgba(28, 31, 58, 0.55);
@@ -1435,7 +1435,7 @@ body {
 }
 
 .vip-process__title {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1488,7 +1488,7 @@ body {
 }
 
 .vip-includes__label {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.85rem;
   color: var(--color-heritage-gold);
@@ -1497,7 +1497,7 @@ body {
 }
 
 .vip-includes__title {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1559,7 +1559,7 @@ body {
 }
 
 .v3-vip__discipline-line {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   color: rgba(28, 31, 58, 0.78);
@@ -1571,7 +1571,7 @@ body {
 }
 
 .v3-vip__continuity-callout {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   color: var(--color-heritage-gold);
@@ -1845,7 +1845,7 @@ body {
 
 /* Connection Code Engine canonical footer line (per VIP audit §6.1; Polish v2.13 alignment) */
 .v3-footer__powered {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: .82rem;
   color: var(--color-heritage-gold);
@@ -1913,12 +1913,10 @@ body {
   /* v2.3 navy softening — architectural variant for cream-blend surfaces (spine / footer) */
   --color-ink-architectural: #252948;
 
-  /* v2.3 three-register typography canon (Cartier Reframe Spec v1.7 + Polish v2 §3)
-     Layer 1 trademark: Foglihten (brand mark hero ONLY; preserved via --font-display fallback chain)
+  /* v2.3 three-register typography canon (Polish v2 §3) — neutral var name post Stage A AMEND batch 4 MINOR rename
+     Layer 1 trademark: Foglihten (brand mark hero ONLY; preserved via --font-display fallback chain at line 55)
      Layer 2 editorial display: Cormorant Garamond (canonical for v3-display, thesis eyebrows italic, problem stanzas)
-     Layer 2 body: Gotham → Inter institutional fallback */
-  --cartier-font-display: 'Cormorant Garamond', Georgia, serif;
-  --cartier-font-body:    var(--font-body);
+     Layer 2 body: Gotham → Inter institutional fallback (canonical at line 56) */
 }
 
 /* v2.3 Gotham right-sizing — body Light 300 at 17px / 1.72 line-height */
@@ -1951,7 +1949,7 @@ body::before {
 
 /* v2.3 Cormorant Garamond Layer 2 editorial display canonical — overrides Foglihten lead at Layer 2 */
 .v3-display {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   line-height: 1.14;
   letter-spacing: -0.005em;
@@ -1959,7 +1957,7 @@ body::before {
 
 /* Polish v2.9 thesis eyebrows REVERTED to heritage gold per Paul §5 2026-05-03 */
 .v3-thesis__eyebrow {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   color: var(--color-heritage-gold-text);
 }
@@ -2035,7 +2033,7 @@ body::before {
 }
 
 .v3-problem__stanza {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(1.32rem, 2.8vw, 1.76rem);
   line-height: 1.4;
@@ -2059,7 +2057,7 @@ body::before {
 }
 
 .v3-problem__closing {
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1.04rem;
   line-height: 1.72;
@@ -2101,3 +2099,501 @@ body::before {
 }
 
 /* End — Polish v2 amendment block */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WAVE 1 v3.2 ECOSYSTEM REBUILD — 8 CLASS FAMILIES (Design Meridian 2026-05-05)
+   Per Atlas commission atlas_to_design_WAVE_1_CSS_LANE_FIRE_2026-05-05.md
+   Cartier baseline §5 + canon v1.4 + Ecosystem Audit §4.5 (Hermès restraint).
+   Token system EXTENDED, never overridden. Mobile responsive across all 8.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── #3 .v3-arrival__brand-mark--wordmark-only ──────────────────────────────
+   Canon v1.4 §3.1(b): hero wordmark variant — NO inline tagline in lockup.
+   Modifier on .v3-arrival__brand-mark; preserves base fade-in animation.
+   Asset re-render to wordmark-only canon pending Paul §5 (per Step 2 verdict). */
+.v3-arrival__brand-mark--wordmark-only .v3-arrival__brand-mark-img {
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 1023px) {
+  .v3-arrival__brand-mark--wordmark-only .v3-arrival__brand-mark-img { max-width: 380px; }
+}
+@media (max-width: 767px) {
+  .v3-arrival__brand-mark--wordmark-only .v3-arrival__brand-mark-img { max-width: 280px; }
+}
+
+/* ── #4 .v3-arrival__anchor--positioning ────────────────────────────────────
+   Hero positioning subhead variant on the H1 anchor.
+   The em child carries the lead positioning sentence (display register, block);
+   institutional restraint per canon v1.4 §3.1(b) — meaning carried by sentence,
+   not visual ornament. Base anchor sizing inherited; em becomes block-line lead. */
+.v3-arrival__anchor--positioning {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.v3-arrival__anchor--positioning em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ── #5 .v3-arrival__anchor-extension ───────────────────────────────────────
+   Secondary positioning sentence inside the H1 — body register beneath the lead.
+   Resets inherited display typography from .v3-arrival__anchor parent. */
+.v3-arrival__anchor-extension {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.6vw, 1.16rem);
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+  letter-spacing: 0;
+  max-width: 56ch;
+  margin: 0.6rem auto 0;
+}
+
+/* ── #1 .v3-three-cards ─────────────────────────────────────────────────────
+   3-arm grid: Foundation / Search / Practice (Movement 2; CC Section parallel).
+   Identical structure per arm — visual symmetry telegraphs system unity
+   per canon v1.4 §1.2. Cream canvas + hairline navy frames + heritage gold
+   on hover (restraint matrix preserved; gold reserved for premium signal). */
+.v3-three-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 3rem auto 0;
+  max-width: 1120px;
+}
+
+@media (max-width: 1023px) {
+  .v3-three-cards { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+
+.v3-three-cards__card {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  padding: 2.2rem 1.8rem;
+  border: 1px solid rgba(28, 31, 58, 0.16);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  position: relative;
+  transition: transform 320ms var(--easing-cinematic),
+              border-color 240ms var(--easing-cinematic),
+              box-shadow 320ms var(--easing-cinematic);
+}
+
+.v3-three-cards__card:hover,
+.v3-three-cards__card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-heritage-gold);
+  box-shadow: 0 8px 24px rgba(28, 31, 58, 0.08);
+  outline: none;
+}
+
+.v3-three-cards__card:focus-visible {
+  outline: 2px solid var(--color-heritage-gold);
+  outline-offset: 4px;
+}
+
+.v3-three-cards__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.55);
+  font-weight: 500;
+  margin: 0 0 0.8rem;
+}
+
+.v3-three-cards__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.6vw, 1.92rem);
+  line-height: 1.15;
+  color: var(--color-ink);
+  margin: 0 0 0.6rem;
+}
+
+.v3-three-cards__name em {
+  font-style: italic;
+  color: var(--color-heritage-gold-text);
+}
+
+.v3-three-cards__subhead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.04rem;
+  line-height: 1.45;
+  color: var(--color-ink);
+  margin: 0 0 1rem;
+}
+
+.v3-three-cards__body {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--color-ink-secondary);
+  margin: 0 0 1.2rem;
+  flex: 1;
+}
+
+.v3-three-cards__for-who {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-ink-tertiary);
+  margin: 0 0 1.4rem;
+  border-top: 1px solid var(--color-hairline-atmosphere);
+  padding-top: 1rem;
+}
+
+.v3-three-cards__for-who em {
+  font-style: italic;
+  color: var(--color-ink-secondary);
+}
+
+.v3-three-cards__cta {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-heritage-gold-text);
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v3-three-cards__card,
+  .v3-three-cards__card:hover,
+  .v3-three-cards__card:focus-visible {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ── #2 .v3-layer-stack ─────────────────────────────────────────────────────
+   Single composed table: Entry / Education / Execution / Deployment (Movement 4).
+   Hermès restraint per Ecosystem Audit §4.5 — one table beats four cards on
+   scan-time. Cream canvas + heritage-gold thead rule + hairline navy row
+   dividers. Mobile collapses thead and re-flows as label + product + price block. */
+.v3-layer-stack {
+  width: 100%;
+  max-width: 1080px;
+  margin: 3rem auto 0;
+  border-collapse: collapse;
+  background: var(--color-canvas);
+  font-family: var(--font-body);
+}
+
+.v3-layer-stack thead th {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(28, 31, 58, 0.55);
+  font-weight: 500;
+  padding: 0 1.2rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.v3-layer-stack__row td {
+  padding: 1.6rem 1.2rem;
+  border-bottom: 1px solid var(--color-hairline-atmosphere);
+  vertical-align: top;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+}
+
+.v3-layer-stack__row:last-child td {
+  border-bottom: none;
+}
+
+.v3-layer-stack__layer {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.16rem;
+  color: var(--color-heritage-gold-text);
+  width: 16%;
+  white-space: nowrap;
+}
+
+.v3-layer-stack__product {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.16rem;
+  color: var(--color-ink);
+  width: 24%;
+}
+
+.v3-layer-stack__inline-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--color-ink-tertiary);
+  margin-left: 0.4rem;
+}
+
+.v3-layer-stack__body {
+  color: var(--color-ink-secondary);
+  width: 40%;
+}
+
+.v3-layer-stack__price {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-ink);
+  width: 20%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .v3-layer-stack thead { display: none; }
+
+  .v3-layer-stack,
+  .v3-layer-stack tbody,
+  .v3-layer-stack tr,
+  .v3-layer-stack td {
+    display: block;
+    width: 100%;
+  }
+
+  .v3-layer-stack__row {
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--color-hairline-atmosphere);
+  }
+
+  .v3-layer-stack__row:last-child {
+    border-bottom: none;
+  }
+
+  .v3-layer-stack__row td {
+    padding: 0.2rem 0;
+    border-bottom: none;
+    text-align: left;
+    white-space: normal;
+    width: 100%;
+  }
+
+  .v3-layer-stack__layer {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(28, 31, 58, 0.55);
+    margin-bottom: 0.4rem;
+  }
+
+  .v3-layer-stack__product { font-size: 1.32rem; margin-bottom: 0.4rem; }
+
+  .v3-layer-stack__price { text-align: left; margin-top: 0.4rem; }
+}
+
+/* ── #6 .v3-footer__tagline ─────────────────────────────────────────────────
+   Single canonical footer tagline: "The operating system behind every real connection."
+   Sits at top of footer (architectural-navy background per v2.1 footer band).
+   Cream italic Cormorant; institutional anchor. */
+.v3-footer__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.16rem, 2.4vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--color-canvas);
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 2.4rem;
+}
+
+/* ── #7 .v3-footer__legal ───────────────────────────────────────────────────
+   Footer legal line: "© MatchMakers · Privacy · Terms"
+   Single line; small body register; cream-tertiary against architectural navy. */
+.v3-footer__legal {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: rgba(245, 240, 229, 0.62);
+  text-align: center;
+  margin: 0 0 1.6rem;
+}
+
+.v3-footer__legal a {
+  color: rgba(245, 240, 229, 0.78);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding: 0 0.2rem;
+  min-height: 44px;
+  display: inline-block;
+  line-height: 44px;
+}
+
+.v3-footer__legal a:hover,
+.v3-footer__legal a:focus-visible {
+  color: var(--color-heritage-gold-bright);
+  border-bottom-color: var(--color-heritage-gold-bright);
+  outline: none;
+}
+
+.v3-footer__legal a:focus-visible {
+  outline: 2px solid var(--color-heritage-gold);
+  outline-offset: 3px;
+}
+
+/* ── #8 .v3-footer__dmca ────────────────────────────────────────────────────
+   DMCA badge container — w250-5x1-11 horizontal bar (Paul-approved 2026-05-05).
+   Centered; constrained scale; 0.75 opacity dim to fit cream + navy palette
+   without clash; full opacity on hover/focus for utility-grade interaction. */
+.v3-footer__dmca {
+  text-align: center;
+  margin: 0 0 1.6rem;
+}
+
+.v3-footer__dmca .dmca-badge {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 0;
+  padding: 4px 0;
+  opacity: 0.75;
+  transition: opacity 240ms var(--easing-cinematic);
+}
+
+.v3-footer__dmca .dmca-badge:hover,
+.v3-footer__dmca .dmca-badge:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.v3-footer__dmca .dmca-badge:focus-visible {
+  outline: 2px solid var(--color-heritage-gold);
+  outline-offset: 3px;
+}
+
+.v3-footer__dmca .dmca-badge img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v3-footer__dmca .dmca-badge {
+    transition: none;
+  }
+}
+
+/* End — Wave 1 v3.2 8 class families authored against Cartier baseline */
+
+/* === DMCA badge — Cartier palette per canon §5.1 ============================
+   Overrides DMCA's CDN dmca.css with cream + navy + heritage gold.
+   Result: badge reads as part of the design, not a bolted-on compliance badge.
+   Per Wave 1 Amendments Batch 1 (Atlas G1 ✅ + Paul §5 ratify 2026-05-05).
+   ============================================================================ */
+#DMCA-badge .dm-1,
+#DMCA-badge .dm-2 {
+  background-color: #F5F0E5 !important;   /* cream — canon §5.1 */
+  border-color: #CBA372 !important;        /* heritage gold — canon §5.1 */
+}
+#DMCA-badge .dm-1 a,
+#DMCA-badge .dm-2 a {
+  color: #1C1F3A !important;               /* navy — canon §5.1 */
+  text-decoration: none;
+}
+
+/* === Playbook purchase — what-you-receive list (Stage A Amendment 6b) ====
+   Per REBUILT_PLAYBOOK_STANDALONE_PRODUCT_HTML_v1 §3
+   Cream + navy + heritage-gold palette per canon §5.1.
+   ============================================================================ */
+.v3-purchase-receive {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.v3-purchase-receive__item {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(28, 31, 58, 0.12);
+}
+
+.v3-purchase-receive__item:last-child {
+  border-bottom: 1px solid rgba(28, 31, 58, 0.12);
+}
+
+.v3-purchase-receive__label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #1C1F3A;
+  letter-spacing: 0.02em;
+}
+
+.v3-purchase-receive__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1C1F3A;
+}
+
+.v3-purchase-receive__body code {
+  font-family: 'Inter', monospace;
+  font-size: 0.92rem;
+  background: rgba(203, 163, 114, 0.12);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .v3-purchase-receive__item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+}
+
+/* === FAQ — Stage A Amendment 6b ============================================ */
+.v3-faq {
+  margin: 2rem 0 0;
+}
+
+.v3-faq__q {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #1C1F3A;
+  margin: 1.75rem 0 0.5rem;
+  line-height: 1.4;
+}
+
+.v3-faq__a {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1C1F3A;
+  margin: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(28, 31, 58, 0.12);
+}
+
+.v3-faq__a:last-child {
+  border-bottom: none;
+}
