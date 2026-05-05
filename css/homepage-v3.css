@@ -1035,6 +1035,184 @@ body {
    Silver ring at CARD level preserved on .v3-door--silver-ring (Three Doors Studio card; iOS M-button signature). */
 
 /* ═══════════════════════════════════════════════════
+   THE ARC (Polish v2.13.7 — three-arm methodology architecture per Paul §5 ratify 2026-05-04)
+   The Foundation · The Search · The Practice — same Cartier hairline strata register as Five Levels
+   ═══════════════════════════════════════════════════ */
+
+.v3-arc {
+  list-style: none;
+  margin: 3rem auto 0;
+  padding: 0;
+  max-width: 920px;
+}
+
+.v3-arc__arm {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: clamp(20px, 3vw, 36px);
+  align-items: baseline;
+  padding: clamp(28px, 4vw, 44px) clamp(8px, 2vw, 16px);
+  border-top: 1px solid var(--color-heritage-gold);
+}
+
+.v3-arc__arm:last-child {
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.v3-arc__position {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.04em;
+  align-self: start;
+  padding-top: 0.4em;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.v3-arc__content {
+  min-width: 0;
+}
+
+.v3-arc__name {
+  font-family: var(--cartier-font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+}
+
+.v3-arc__subhead {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(28, 31, 58, 0.72);
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.v3-arc__body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(28, 31, 58, 0.65);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin: 0 0 18px;
+}
+
+.v3-arc__link {
+  display: inline-block;
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-heritage-gold);
+  text-decoration: none;
+  letter-spacing: 0.005em;
+  transition: opacity 200ms ease;
+}
+
+.v3-arc__link:hover,
+.v3-arc__link:focus-visible {
+  opacity: 0.7;
+  outline: none;
+}
+
+.v3-arc__link:focus-visible {
+  outline: 1px solid var(--color-heritage-gold);
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .v3-arc__arm {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: clamp(24px, 5vw, 32px) clamp(4px, 1vw, 8px);
+  }
+  .v3-arc__position {
+    text-align: left;
+    font-size: 0.78rem;
+    padding-top: 0;
+  }
+}
+
+/* The Foundation — 5 Framework strata register (mirrors v3-five-levels) */
+.v3-foundation-frameworks {
+  list-style: none;
+  margin: 3rem auto 0;
+  padding: 0;
+  max-width: 920px;
+}
+
+.v3-foundation-frameworks__stratum {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: clamp(20px, 3vw, 36px);
+  align-items: baseline;
+  padding: clamp(28px, 4vw, 44px) clamp(8px, 2vw, 16px);
+  border-top: 1px solid var(--color-heritage-gold);
+}
+
+.v3-foundation-frameworks__stratum:last-child {
+  border-bottom: 1px solid var(--color-heritage-gold);
+}
+
+.v3-foundation-frameworks__numeral {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  color: var(--color-heritage-gold);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  align-self: start;
+  padding-top: 0.4em;
+}
+
+.v3-foundation-frameworks__name {
+  font-family: var(--cartier-font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+
+.v3-foundation-frameworks__subhead {
+  font-family: var(--cartier-font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(28, 31, 58, 0.72);
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.v3-foundation-frameworks__body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(28, 31, 58, 0.65);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .v3-foundation-frameworks__stratum {
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    padding: clamp(24px, 5vw, 32px) clamp(4px, 1vw, 8px);
+  }
+  .v3-foundation-frameworks__numeral {
+    font-size: 1.35rem;
+    padding-top: 0.3em;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
    WAYFINDING STRIP (Polish v2.13.4 — Cartier menu register; 3-card hairline-separated)
    Placed high on Homepage / CC / Studio for immediate action surface; mirrors institutional brochure cadence
    ═══════════════════════════════════════════════════ */
