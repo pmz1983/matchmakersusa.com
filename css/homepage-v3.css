@@ -111,7 +111,7 @@ body {
 }
 
 .v3-topnav__brand {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.05rem;
   letter-spacing: -0.005em;
@@ -156,7 +156,7 @@ body {
 
 .v3-topnav__link[aria-current="page"]::before {
   content: "·";
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.2em;
   color: var(--color-heritage-gold);
@@ -700,7 +700,7 @@ body {
 }
 
 .v3-five-levels__numeral {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
@@ -717,7 +717,7 @@ body {
 }
 
 .v3-five-levels__layer-name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -727,7 +727,7 @@ body {
 }
 
 .v3-five-levels__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.72);
@@ -747,7 +747,7 @@ body {
 
 .v3-five-levels__link {
   display: inline-block;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.95rem;
   color: var(--color-heritage-gold);
@@ -831,7 +831,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: 1rem;
@@ -1060,7 +1060,7 @@ body {
 }
 
 .v3-arc__position {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.8rem, 1.3vw, 0.95rem);
   color: var(--color-heritage-gold);
@@ -1076,7 +1076,7 @@ body {
 }
 
 .v3-arc__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1086,7 +1086,7 @@ body {
 }
 
 .v3-arc__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.72);
@@ -1106,7 +1106,7 @@ body {
 
 .v3-arc__link {
   display: inline-block;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.95rem;
   color: var(--color-heritage-gold);
@@ -1161,7 +1161,7 @@ body {
 }
 
 .v3-foundation-frameworks__numeral {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.4rem, 2.4vw, 1.8rem);
@@ -1174,7 +1174,7 @@ body {
 }
 
 .v3-foundation-frameworks__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1183,7 +1183,7 @@ body {
 }
 
 .v3-foundation-frameworks__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.72);
@@ -1268,7 +1268,7 @@ body {
 }
 
 .v3-wayfinding__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.2vw, 1.75rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1338,7 +1338,7 @@ body {
 }
 
 .vip-for-whom__label {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: var(--color-heritage-gold);
@@ -1412,7 +1412,7 @@ body {
 }
 
 .vip-process__num {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.4rem, 2.2vw, 1.7rem);
   color: var(--color-heritage-gold);
@@ -1426,7 +1426,7 @@ body {
 }
 
 .vip-process__label {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.9rem;
   color: rgba(28, 31, 58, 0.55);
@@ -1435,7 +1435,7 @@ body {
 }
 
 .vip-process__title {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1488,7 +1488,7 @@ body {
 }
 
 .vip-includes__label {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.85rem;
   color: var(--color-heritage-gold);
@@ -1497,7 +1497,7 @@ body {
 }
 
 .vip-includes__title {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -1559,7 +1559,7 @@ body {
 }
 
 .v3-vip__discipline-line {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   color: rgba(28, 31, 58, 0.78);
@@ -1571,7 +1571,7 @@ body {
 }
 
 .v3-vip__continuity-callout {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   color: var(--color-heritage-gold);
@@ -1845,7 +1845,7 @@ body {
 
 /* Connection Code Engine canonical footer line (per VIP audit §6.1; Polish v2.13 alignment) */
 .v3-footer__powered {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: .82rem;
   color: var(--color-heritage-gold);
@@ -1913,12 +1913,10 @@ body {
   /* v2.3 navy softening — architectural variant for cream-blend surfaces (spine / footer) */
   --color-ink-architectural: #252948;
 
-  /* v2.3 three-register typography canon (Cartier Reframe Spec v1.7 + Polish v2 §3)
-     Layer 1 trademark: Foglihten (brand mark hero ONLY; preserved via --font-display fallback chain)
+  /* v2.3 three-register typography canon (Polish v2 §3) — neutral var name post Stage A AMEND batch 4 MINOR rename
+     Layer 1 trademark: Foglihten (brand mark hero ONLY; preserved via --font-display fallback chain at line 55)
      Layer 2 editorial display: Cormorant Garamond (canonical for v3-display, thesis eyebrows italic, problem stanzas)
-     Layer 2 body: Gotham → Inter institutional fallback */
-  --cartier-font-display: 'Cormorant Garamond', Georgia, serif;
-  --cartier-font-body:    var(--font-body);
+     Layer 2 body: Gotham → Inter institutional fallback (canonical at line 56) */
 }
 
 /* v2.3 Gotham right-sizing — body Light 300 at 17px / 1.72 line-height */
@@ -1951,7 +1949,7 @@ body::before {
 
 /* v2.3 Cormorant Garamond Layer 2 editorial display canonical — overrides Foglihten lead at Layer 2 */
 .v3-display {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   line-height: 1.14;
   letter-spacing: -0.005em;
@@ -1959,7 +1957,7 @@ body::before {
 
 /* Polish v2.9 thesis eyebrows REVERTED to heritage gold per Paul §5 2026-05-03 */
 .v3-thesis__eyebrow {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   color: var(--color-heritage-gold-text);
 }
@@ -2035,7 +2033,7 @@ body::before {
 }
 
 .v3-problem__stanza {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(1.32rem, 2.8vw, 1.76rem);
   line-height: 1.4;
@@ -2059,7 +2057,7 @@ body::before {
 }
 
 .v3-problem__closing {
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1.04rem;
   line-height: 1.72;
@@ -2149,7 +2147,7 @@ body::before {
    Resets inherited display typography from .v3-arrival__anchor parent. */
 .v3-arrival__anchor-extension {
   display: block;
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-style: normal;
   font-weight: 300;
   font-size: clamp(1rem, 1.6vw, 1.16rem);
@@ -2216,7 +2214,7 @@ body::before {
 }
 
 .v3-three-cards__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(1.6rem, 2.6vw, 1.92rem);
   line-height: 1.15;
@@ -2230,7 +2228,7 @@ body::before {
 }
 
 .v3-three-cards__subhead {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.04rem;
   line-height: 1.45;
@@ -2247,7 +2245,7 @@ body::before {
 }
 
 .v3-three-cards__for-who {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.92rem;
   line-height: 1.5;
@@ -2296,7 +2294,7 @@ body::before {
   margin: 3rem auto 0;
   border-collapse: collapse;
   background: var(--color-canvas);
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
 }
 
 .v3-layer-stack thead th {
@@ -2325,7 +2323,7 @@ body::before {
 }
 
 .v3-layer-stack__layer {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.16rem;
   color: var(--color-heritage-gold-text);
@@ -2334,7 +2332,7 @@ body::before {
 }
 
 .v3-layer-stack__product {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.16rem;
   color: var(--color-ink);
@@ -2342,7 +2340,7 @@ body::before {
 }
 
 .v3-layer-stack__inline-note {
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-style: italic;
   font-size: 0.86rem;
   color: var(--color-ink-tertiary);
@@ -2355,7 +2353,7 @@ body::before {
 }
 
 .v3-layer-stack__price {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1rem;
   color: var(--color-ink);
@@ -2412,7 +2410,7 @@ body::before {
    Sits at top of footer (architectural-navy background per v2.1 footer band).
    Cream italic Cormorant; institutional anchor. */
 .v3-footer__tagline {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.16rem, 2.4vw, 1.4rem);

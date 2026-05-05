@@ -32,7 +32,7 @@
 }
 
 .playbook-phases__numeral {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(0.85rem, 1.3vw, 1rem);
   color: var(--color-heritage-gold);
@@ -42,7 +42,7 @@
 }
 
 .playbook-phases__name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   color: var(--color-ink);
@@ -81,7 +81,7 @@
 }
 
 .playbook-chapters__numeral {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   color: var(--color-heritage-gold);
@@ -107,7 +107,7 @@
 }
 
 .playbook-chapters__chapter-name {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 400;
   color: var(--color-ink);
@@ -125,7 +125,7 @@
 }
 
 .playbook-chapters__phase-tag {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.85rem;
   color: var(--color-heritage-gold);
@@ -166,7 +166,7 @@
 }
 
 .playbook-signals__signal {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   color: var(--color-ink);
@@ -217,7 +217,7 @@
 }
 
 .playbook-exec__close {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   color: rgba(28, 31, 58, 0.78);
   font-size: 1.05rem;
@@ -243,7 +243,7 @@
 }
 
 .playbook-access__caption {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.05rem;
   color: rgba(28, 31, 58, 0.7);

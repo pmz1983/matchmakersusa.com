@@ -86,7 +86,7 @@
 
 .studio-3tool-toggle__segment--active::before {
   content: "·";
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.4em;
   color: var(--color-heritage-gold);
@@ -178,7 +178,7 @@
 }
 
 .studio-coach-empty__h2 {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.20;
@@ -233,7 +233,7 @@
 
 .studio-coach-bubble__citation {
   display: block;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.86rem;
   color: var(--color-heritage-gold-text);
@@ -364,7 +364,7 @@
 
 /* Footer copy (Cap-exhausted state / pre-token state) */
 .studio-coach-footer-copy {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.92rem;
   color: rgba(28, 31, 58, 0.65);
@@ -390,7 +390,7 @@
 }
 
 .studio-coach-header-pin__mid-dot {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1.1em;
   color: var(--color-heritage-gold);
@@ -418,7 +418,7 @@
 }
 
 .studio-coach-crisis-acknowledgment {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.25rem;
   color: var(--color-ink);
@@ -443,7 +443,7 @@
 }
 
 .studio-coach-crisis-closing {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 1rem;
   color: rgba(28, 31, 58, 0.78);
@@ -521,7 +521,7 @@
   max-width: 82%;
   padding: 12px 16px;
   border-radius: 0;
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-size: 0.96rem;
   line-height: 1.6;
 }
@@ -595,7 +595,7 @@
 }
 
 .studio-tool-surface__h1 {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.2rem);
   line-height: 1.18;
@@ -613,7 +613,7 @@
 }
 
 .studio-tool-surface__lede {
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.6;
@@ -623,7 +623,7 @@
 }
 
 .studio-tool-surface__lede em {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   color: var(--color-ink);
 }
@@ -683,13 +683,13 @@
   padding: 12px 14px;
   border: 1px solid rgba(28, 31, 58, 0.18);
   background: var(--color-canvas);
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   transition: border-color 200ms ease, background 200ms ease;
 }
 
 .studio-tool-form__radio-label strong {
   display: block;
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: 1rem;
   color: var(--color-ink);
@@ -739,7 +739,7 @@
   border: 1px solid rgba(28, 31, 58, 0.22);
   border-radius: 0;
   background: var(--color-canvas);
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-size: 0.96rem;
   color: var(--color-ink);
   transition: border-color 200ms ease;
@@ -750,7 +750,7 @@
 .studio-tool-form__field textarea {
   resize: vertical;
   min-height: 72px;
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   line-height: 1.55;
 }
 
@@ -820,7 +820,7 @@
 }
 
 .studio-tool-output__title {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(1.25rem, 3vw, 1.55rem);
   color: var(--color-ink);
@@ -834,7 +834,7 @@
 }
 
 .studio-tool-output__body {
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.66;
@@ -878,7 +878,7 @@
 }
 
 .studio-tool-output__section-title {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.1rem;
   color: var(--color-ink);
@@ -886,7 +886,7 @@
 }
 
 .studio-tool-output__section-body {
-  font-family: var(--cartier-font-body);
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 0.96rem;
   line-height: 1.62;
@@ -895,7 +895,7 @@
 }
 
 .studio-tool-output__section-suffix {
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.94rem;
   color: var(--color-ink-secondary);
@@ -906,7 +906,7 @@
   margin-top: clamp(20px, 3vw, 28px);
   padding-top: 14px;
   border-top: 1px solid rgba(203, 163, 114, 0.35);
-  font-family: var(--cartier-font-display);
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 0.86rem;
   color: var(--color-ink-secondary);
