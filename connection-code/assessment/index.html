@@ -20,7 +20,7 @@
   <meta property="og:title" content="The Connection Code — MatchMakers">
   <meta property="og:description" content="The Connection Code. The free framework. A short calibration that surfaces your Intent, your Phase, and your current Signal.">
   <meta property="og:image" content="https://matchmakersusa.com/img/og-image-v3-1.png">
-  <!-- v3 typography stack — Cormorant Garamond display + Inter institutional fallback (Polish v2.2) -->
+  
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/homepage-v3.css">
@@ -39,7 +39,7 @@
       integrations: [Sentry.browserTracingIntegration()],
       tracesSampleRate: 0.1,
       environment: "production",
-      release: "matchmakersusa.com@2026-05-02"
+      release: "matchmakersusa.com@2026-05-05-v3-2-ecosystem-rebuild"
     });
   </script>
 </head>
@@ -47,15 +47,15 @@
 
 <a href="#main" class="cc-skip-link">Skip to content</a>
 
-<!-- v3 brand mark hero (cross-page parity preserved per Polish v2.x; baseline conversion 2026-05-03) -->
+
 <header class="studio-tools__hero" style="background: var(--color-canvas, #F5F0E5); padding: clamp(24px, 4vw, 36px) clamp(16px, 4vw, 32px); text-align: center;">
-  <div class="v3-arrival__brand-mark" role="img" aria-label="MatchMakers — Take Dating to the Next Level">
-    <img src="/img/brand-mark/v3/wordmark-tight.png"
+  <div class="v3-arrival__brand-mark v3-arrival__brand-mark--wordmark-only" role="img" aria-label="MatchMakers">
+    <img src="/img/brand-mark/v3/wordmark-only.png"
          alt=""
          class="studio-tools__hero-img"
          aria-hidden="true"
          style="display:block;margin:0 auto;max-width:280px;width:100%;height:auto;">
-    <p class="v3-arrival__wordmark--sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">MatchMakers — Take Dating to the Next Level</p>
+    <p class="v3-arrival__wordmark--sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">MatchMakers</p>
   </div>
 </header>
 
@@ -77,7 +77,7 @@
 
   <main id="main">
 
-    <!-- ═══ Stage 1 — Welcome ═══ -->
+    
     <section class="cc-stage" data-stage="1" aria-labelledby="cc-stage-1-heading">
       <div class="cc-welcome">
         <p class="cc-eyebrow">The Connection Code&trade;</p>
@@ -93,7 +93,7 @@
       </div>
     </section>
 
-    <!-- ═══ Stage 2 — 9-Intent Assessment ═══ -->
+    
     <section class="cc-stage" data-stage="2" aria-labelledby="cc-stage-2-heading" hidden>
       <p class="cc-eyebrow">Stage Two &middot; Intent</p>
       <hr class="cc-rule--accent" aria-hidden="true">
@@ -105,7 +105,7 @@
       </div>
     </section>
 
-    <!-- ═══ Stage 3 — 5-Phase Calibration ═══ -->
+    
     <section class="cc-stage" data-stage="3" aria-labelledby="cc-stage-3-heading" hidden>
       <p class="cc-eyebrow">Stage Three &middot; Phase</p>
       <hr class="cc-rule--accent" aria-hidden="true">
@@ -117,7 +117,7 @@
       </div>
     </section>
 
-    <!-- ═══ Stage 4 — 5-Signal Initial State ═══ -->
+    
     <section class="cc-stage" data-stage="4" aria-labelledby="cc-stage-4-heading" hidden>
       <p class="cc-eyebrow">Stage Four &middot; Signal</p>
       <hr class="cc-rule--accent" aria-hidden="true">
@@ -129,7 +129,7 @@
       </div>
     </section>
 
-    <!-- ═══ Stage 5 — Connection Code Brief generation ═══ -->
+    
     <section class="cc-stage" data-stage="5" aria-labelledby="cc-stage-5-heading" hidden>
       <p class="cc-eyebrow">Stage Five &middot; Brief</p>
       <hr class="cc-rule--accent" aria-hidden="true">
@@ -162,7 +162,7 @@
       </div>
     </section>
 
-    <!-- ═══ Stage 6 — Sign-up gate (functional form) ═══ -->
+    
     <section class="cc-stage" data-stage="6" aria-labelledby="cc-stage-6-heading" hidden>
       <p class="cc-eyebrow">Stage Six &middot; Sign-up</p>
       <hr class="cc-rule--accent" aria-hidden="true">
@@ -201,12 +201,12 @@
       </form>
     </section>
 
-    <!-- ═══ Stage 7 — Coach Lite first interaction (~30-node choice tree) ═══ -->
+    
     <section class="cc-stage" data-stage="7" aria-labelledby="cc-stage-7-heading" hidden>
       <p class="cc-eyebrow">Stage Seven &middot; Coach Lite</p>
       <hr class="cc-rule--accent" aria-hidden="true">
       <h2 id="cc-stage-7-heading" class="cc-headline" tabindex="-1" data-stage-heading>The Coach, <em>first read.</em></h2>
-      <p class="cc-body">Coach Lite is the methodology in conversation. A choice tree, grounded in the Connection Code, calibrated to your Brief. Coach AI begins at L2 Studio.</p>
+      <p class="cc-body">Coach Lite is the methodology in conversation. A choice tree, grounded in the Connection Code, calibrated to your Brief. Coach AI begins at the Studio purchase.</p>
 
       <div data-coach-lite-host class="cc-coach-host" role="group" aria-label="Coach Lite first interaction"></div>
 
@@ -216,7 +216,7 @@
         <a href="/studio/" class="cc-btn" data-action="cta-studio">Continue to the Studio <span aria-hidden="true">&rarr;</span></a>
       </div>
 
-      <p class="cc-coach-cue">L1 explores the methodology. Coach AI begins at L2.</p>
+      <p class="cc-coach-cue">The Connection Code explores the methodology. Coach AI begins at the Studio.</p>
     </section>
 
   </main>

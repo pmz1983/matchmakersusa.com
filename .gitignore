@@ -27,3 +27,10 @@ docs/
 playbook-pdf/
 CONVERSATION-PLAN.md
 AGENT_BIBLE_website.md
+
+# Atlas inter-agent correspondence — internal dispatches; never serve publicly.
+# Discipline: dispatches must not contain literal iOS IAP price strings even
+# inside this directory (Stripe-load-bearing per Paul §5 hardstop 2026-05-04).
+# Defense-in-depth: this gitignore prevents accidental commit;
+# prose discipline prevents the strings from existing in the first place.
+atlas_correspondence/
