@@ -253,23 +253,39 @@
 <script>(function(){var c=document.createElement('link');c.type='text/css';c.rel='stylesheet';c.href='https://images.dmca.com/badges/dmca.css?ID=546f9af1-2d99-47ce-87e4-0537e6b1fc74';document.head.appendChild(c);})();</script>
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 
-<script src="https://js.stripe.com/v3/"></script>
 <script>
+  // Stripe checkout bridge — POSTs to live Supabase Edge Function (stripe-checkout-session v2);
+  // Backend creates Checkout Session server-side (zero client-side Stripe secret exposure);
+  // client receives session_url + redirects. Per Wave 1 Stage A Backend GREEN 2026-05-05.
   (function(){
+    var ENDPOINT = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1/stripe-checkout-session';
+    var FALLBACK = '/playbook/purchase/coming-soon/';
+    var DEFAULT_SUCCESS = 'https://matchmakersusa.com/playbook/purchase/success/';
+    var DEFAULT_CANCEL  = 'https://matchmakersusa.com/playbook/purchase/';
+
     document.addEventListener('click', function(ev){
       var btn = ev.target.closest('[data-stripe-checkout]');
       if (!btn) return;
       ev.preventDefault();
       var sku = btn.getAttribute('data-sku');
-      fetch('/api/checkout/create-session', {
+      if (!sku) { window.location = FALLBACK; return; }
+
+      fetch(ENDPOINT, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ sku: sku })
-      }).then(function(r){ return r.json(); }).then(function(data){
-        if (data && data.url) { window.location = data.url; }
-        else { window.location = '/playbook/purchase/coming-soon/'; }
+        body: JSON.stringify({
+          sku: sku,
+          success_url: DEFAULT_SUCCESS,
+          cancel_url: DEFAULT_CANCEL
+        })
+      }).then(function(r){
+        if (!r.ok) throw new Error('checkout-session HTTP ' + r.status);
+        return r.json();
+      }).then(function(data){
+        if (data && data.session_url) { window.location = data.session_url; }
+        else { window.location = FALLBACK; }
       }).catch(function(){
-        window.location = '/playbook/purchase/coming-soon/';
+        window.location = FALLBACK;
       });
     });
   })();

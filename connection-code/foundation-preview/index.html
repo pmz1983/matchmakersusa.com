@@ -207,5 +207,37 @@
 <script>(function(){var c=document.createElement('link');c.type='text/css';c.rel='stylesheet';c.href='https://images.dmca.com/badges/dmca.css?ID=546f9af1-2d99-47ce-87e4-0537e6b1fc74';document.head.appendChild(c);})();</script>
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 
+<script>
+  // Email opt-in wiring — POSTs to live Supabase Edge Function (chapter-announcement-optin-submit);
+  // idempotent UPSERT on (email, arm). Per Wave 1 Stage A Backend GREEN 2026-05-05.
+  (function(){
+    var ENDPOINT = 'https://peamviowxkyaglyjpagc.supabase.co/functions/v1/chapter-announcement-optin-submit';
+    var ARM = 'foundation';
+    var form = document.querySelector('[data-foundation-notify-form]');
+    var status = document.querySelector('[data-foundation-notify-status]');
+    if (!form || !status) return;
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var emailInput = form.querySelector('input[type="email"]');
+      var email = emailInput && emailInput.value && emailInput.value.trim();
+      if (!email) { status.textContent = 'Please enter a valid email address.'; return; }
+      status.textContent = 'Submitting…';
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email: email, arm: ARM })
+      }).then(function(r){
+        if (!r.ok) throw new Error('optin HTTP ' + r.status);
+        return r.json().catch(function(){ return {}; });
+      }).then(function(){
+        status.textContent = "You'll be notified when Foundation chapters land.";
+        if (emailInput) emailInput.value = '';
+      }).catch(function(){
+        status.textContent = 'Submission failed; try again or email customerservice@matchmakersusa.com.';
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
