@@ -2500,3 +2500,19 @@ body::before {
 }
 
 /* End — Wave 1 v3.2 8 class families authored against Cartier baseline */
+
+/* === DMCA badge — Cartier palette per canon §5.1 ============================
+   Overrides DMCA's CDN dmca.css with cream + navy + heritage gold.
+   Result: badge reads as part of the design, not a bolted-on compliance badge.
+   Per Wave 1 Amendments Batch 1 (Atlas G1 ✅ + Paul §5 ratify 2026-05-05).
+   ============================================================================ */
+#DMCA-badge .dm-1,
+#DMCA-badge .dm-2 {
+  background-color: #F5F0E5 !important;   /* cream — canon §5.1 */
+  border-color: #CBA372 !important;        /* heritage gold — canon §5.1 */
+}
+#DMCA-badge .dm-1 a,
+#DMCA-badge .dm-2 a {
+  color: #1C1F3A !important;               /* navy — canon §5.1 */
+  text-decoration: none;
+}
