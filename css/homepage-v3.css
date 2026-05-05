@@ -2516,3 +2516,86 @@ body::before {
   color: #1C1F3A !important;               /* navy — canon §5.1 */
   text-decoration: none;
 }
+
+/* === Playbook purchase — what-you-receive list (Stage A Amendment 6b) ====
+   Per REBUILT_PLAYBOOK_STANDALONE_PRODUCT_HTML_v1 §3
+   Cream + navy + heritage-gold palette per canon §5.1.
+   ============================================================================ */
+.v3-purchase-receive {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.v3-purchase-receive__item {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(28, 31, 58, 0.12);
+}
+
+.v3-purchase-receive__item:last-child {
+  border-bottom: 1px solid rgba(28, 31, 58, 0.12);
+}
+
+.v3-purchase-receive__label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #1C1F3A;
+  letter-spacing: 0.02em;
+}
+
+.v3-purchase-receive__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1C1F3A;
+}
+
+.v3-purchase-receive__body code {
+  font-family: 'Inter', monospace;
+  font-size: 0.92rem;
+  background: rgba(203, 163, 114, 0.12);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .v3-purchase-receive__item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+}
+
+/* === FAQ — Stage A Amendment 6b ============================================ */
+.v3-faq {
+  margin: 2rem 0 0;
+}
+
+.v3-faq__q {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #1C1F3A;
+  margin: 1.75rem 0 0.5rem;
+  line-height: 1.4;
+}
+
+.v3-faq__a {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1C1F3A;
+  margin: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(28, 31, 58, 0.12);
+}
+
+.v3-faq__a:last-child {
+  border-bottom: none;
+}
