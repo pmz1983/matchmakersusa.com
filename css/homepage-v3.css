@@ -1255,7 +1255,6 @@ body {
 .v3-arc__rung-inner {
   padding: 1.75rem 1.75rem 2rem;
   background: var(--color-canvas);
-  border-top: 2px solid var(--color-heritage-gold);
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto auto auto;
@@ -1316,11 +1315,7 @@ body {
 }
 
 .v3-arc__connector {
-  width: 1px;
-  height: 32px;
-  background: linear-gradient(to bottom, var(--color-heritage-gold), rgba(203, 163, 114, 0.6));
-  margin: 0 auto;
-  z-index: 1;
+  display: none;
 }
 
 .v3-arc__rung-inner .v3-link-premium {
