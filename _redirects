@@ -1,0 +1,25 @@
+# Cloudflare Pages _redirects — Wave 1 Website MVP Comprehensive 2026-05-06
+# Per Connection Compass Consolidation Master Spec §5.1 + Foundation of Gold v1.6 Cascade Master Spec §2.4
+# + Broken CTAs Wave 1 Cycle 2 Spec §2.2
+
+# Compass URL canonicalization (Q3 ratify Paul §5 2026-05-06)
+/studio/coach              /studio/compass/                          301
+/studio/coach/             /studio/compass/                          301
+/studio/script-builder     /studio/compass/?intent=script            301
+/studio/script-builder/    /studio/compass/?intent=script            301
+/studio/suitability        /studio/compass/?intent=suitability       301
+/studio/suitability/       /studio/compass/?intent=suitability       301
+/coach                     /studio/compass/                          301
+/coach/                    /studio/compass/                          301
+
+# Override-prefix routes (power-user shortcuts per Compass Master Spec §2.3)
+/script                    /studio/compass/?intent=script            301
+/suitability               /studio/compass/?intent=suitability       301
+
+# Legacy surface 301s per Foundation of Gold v1.6 Cascade Master Spec §2.4
+/guide                     /methodology/                             301
+/guide/                    /methodology/                             301
+
+# Broken CTA fixes per Broken CTAs Wave 1 Cycle 2 Spec §2.2
+/connection-code/intent-assessment      /connection-code/assessment/  301
+/connection-code/intent-assessment/     /connection-code/assessment/  301

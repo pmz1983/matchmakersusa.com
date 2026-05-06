@@ -1,0 +1,97 @@
+/* /css/account.css — My Relationship Operating System dashboard
+   Per MY_RELATIONSHIP_OS_DASHBOARD_SPEC v1 2026-05-06 §2.3
+*/
+
+.v3-account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.v3-account-card {
+  padding: 1.75rem;
+  background: var(--color-canvas);
+  border-top: 2px solid var(--color-heritage-gold);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.v3-account-card__display {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: var(--color-ink);
+}
+
+.v3-account-card__cta {
+  margin-top: auto;
+  color: var(--color-heritage-gold-text);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  align-self: flex-start;
+  padding-bottom: 2px;
+}
+
+.v3-account-card__cta:hover,
+.v3-account-card__cta:focus {
+  border-bottom-color: var(--color-heritage-gold);
+}
+
+.v3-account-insights {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.v3-account-insight {
+  padding: 1.25rem;
+  background: var(--color-canvas);
+  border-left: 3px solid var(--color-heritage-gold-soft);
+  border-radius: 2px;
+}
+
+.v3-account-insight--placeholder {
+  background: rgba(203, 163, 114, 0.04);
+  border-left-color: var(--color-hairline-rule);
+}
+
+.v3-account-insight__date {
+  font-size: 0.85rem;
+  color: var(--color-ink-tertiary);
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+
+.v3-account-insight__excerpt {
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  margin: 0.4rem 0;
+  line-height: 1.5;
+}
+
+.v3-account-insight__trail {
+  font-size: 0.85rem;
+  color: var(--color-ink-secondary);
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+.v3-account-insight__cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--color-heritage-gold-text);
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  text-decoration: none;
+}
+
+.v3-account-insight__cta:hover,
+.v3-account-insight__cta:focus {
+  border-bottom-color: var(--color-heritage-gold);
+}

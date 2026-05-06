@@ -1,0 +1,262 @@
+/* /css/compass.css — Connection Compass canvas surface
+   Per COACH_CONSOLIDATION_MASTER_SPEC v1 2026-05-06 §3.3
+   Compass canvas + Apply This Chapter + Methodology Trail UI + 5.1.2(i) modal
+*/
+
+/* ── Compass crisis-referral header chip — always visible above input ────── */
+.v3-compass-crisis-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  background: rgba(203, 163, 114, 0.08);
+  border-left: 3px solid var(--color-heritage-gold);
+  border-radius: 2px;
+  font-size: 0.92rem;
+}
+.v3-compass-crisis-chip__label {
+  font-style: italic;
+  color: var(--color-ink-secondary);
+}
+.v3-compass-crisis-chip__cta {
+  color: var(--color-heritage-gold-text);
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  text-decoration: none;
+}
+
+/* ── Compass canvas main form ────────────────────────────────────────────── */
+.v3-compass-canvas {
+  margin-top: 2rem;
+}
+.v3-compass-canvas__input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid var(--color-hairline-rule);
+  border-radius: 4px;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  resize: vertical;
+  min-height: 8rem;
+}
+.v3-compass-canvas__input:focus {
+  outline: none;
+  border-color: var(--color-heritage-gold);
+  box-shadow: 0 0 0 3px rgba(203, 163, 114, 0.18);
+}
+.v3-compass-canvas__helper {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--color-ink-tertiary);
+  font-style: italic;
+}
+
+/* ── Compass intent chips (optional pre-positioning) ─────────────────────── */
+.v3-compass-canvas__intent-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+.v3-compass-canvas__intent-chip {
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  background: transparent;
+  border: 1px solid var(--color-hairline-rule);
+  border-radius: 999px;
+  color: var(--color-ink-secondary);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.v3-compass-canvas__intent-chip:hover,
+.v3-compass-canvas__intent-chip[aria-pressed="true"] {
+  background: var(--color-heritage-gold);
+  color: var(--color-canvas);
+  border-color: var(--color-heritage-gold);
+}
+
+/* ── Compass submit button ───────────────────────────────────────────────── */
+.v3-compass-canvas__submit {
+  margin-top: 0.5rem;
+}
+
+/* ── Compass output area ─────────────────────────────────────────────────── */
+.v3-compass-canvas__output {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--color-canvas-warm);
+  border-left: 3px solid var(--color-heritage-gold-soft);
+  border-radius: 2px;
+  min-height: 6rem;
+}
+
+/* ── Apply This Chapter actions list ─────────────────────────────────────── */
+.v3-compass-apply-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+}
+.v3-compass-apply-action {
+  padding: 1.25rem;
+  background: var(--color-canvas);
+  border-top: 2px solid var(--color-heritage-gold);
+  border-radius: 2px;
+}
+.v3-compass-apply-action__label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-ink);
+}
+.v3-compass-apply-action__body {
+  font-size: 0.92rem;
+  color: var(--color-ink-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+.v3-compass-apply-action__body a,
+.v3-compass-apply-action__body button {
+  color: var(--color-heritage-gold-text);
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  text-decoration: none;
+  background: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ── Methodology Trail chip — appears on every Compass output ────────────── */
+.v3-methodology-trail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  margin: 0.5rem 0;
+  background: rgba(203, 163, 114, 0.12);
+  border: 1px solid var(--color-heritage-gold-soft);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--color-ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.v3-methodology-trail-chip:hover {
+  background: var(--color-heritage-gold);
+  color: var(--color-canvas);
+}
+.v3-methodology-trail-chip__icon::before {
+  content: "\1F4D6"; /* book emoji */
+  font-size: 0.9em;
+}
+.v3-methodology-trail-chip__label {
+  font-style: italic;
+}
+
+/* ── Compass crisis bypass (rendered when L2 fires-first) ────────────────── */
+.v3-compass-crisis-bypass {
+  margin-bottom: 1.5rem;
+}
+
+/* ── Apple 5.1.2(i) third-party AI consent modal ─────────────────────────── */
+.v3-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(28, 31, 58, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+.v3-modal-overlay[aria-hidden="false"] {
+  display: flex;
+}
+.v3-modal {
+  background: var(--color-canvas);
+  border-radius: 6px;
+  padding: 2rem;
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(28, 31, 58, 0.3);
+  border-top: 3px solid var(--color-heritage-gold);
+}
+.v3-modal__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  color: var(--color-ink);
+}
+.v3-modal__body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+  margin: 0 0 1rem;
+}
+.v3-modal__body em {
+  color: var(--color-ink);
+}
+.v3-modal__body a {
+  color: var(--color-heritage-gold-text);
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  text-decoration: none;
+}
+.v3-modal__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.v3-modal__btn {
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.v3-modal__btn--primary {
+  background: var(--color-heritage-gold);
+  color: var(--color-canvas);
+}
+.v3-modal__btn--primary:hover {
+  background: var(--color-heritage-gold-bright);
+}
+.v3-modal__btn--secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-hairline-rule);
+}
+.v3-modal__btn--secondary:hover {
+  background: rgba(203, 163, 114, 0.08);
+}
+
+@media (max-width: 600px) {
+  .v3-compass-crisis-chip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .v3-modal {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VIP Application — MatchMakers</title>
+  <meta name="description" content="Apply for VIP. The application is reviewed within seven days. No obligation. Not a sales call.">
+  <link rel="canonical" href="https://matchmakersusa.com/vip/apply/">
+  <meta name="robots" content="noindex,nofollow">
+
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/homepage-v3.css">
+  <link rel="stylesheet" href="/css/vip-apply.css">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (typeof Sentry !== 'undefined') {
+      Sentry.init({
+        dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+        integrations: [Sentry.browserTracingIntegration()],
+        tracesSampleRate: 0.1,
+        environment: "production",
+        release: "matchmakersusa.com@2026-05-06-vip-apply-form-wave-1"
+      });
+    }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="v3-skip-link">Skip to content</a>
+
+<nav class="v3-topnav" aria-label="Primary navigation">
+  <div class="v3-topnav__inner">
+    <a href="/" class="v3-topnav__brand">MatchMakers<span class="v3-topnav__brand-tm">&trade;</span></a>
+    <div class="v3-topnav__nav">
+      <a href="/connection-code/" class="v3-topnav__link">Connection Code</a>
+      <a href="/foundation/" class="v3-topnav__link">Foundation</a>
+      <a href="/search/" class="v3-topnav__link">Search</a>
+      <a href="/practice/" class="v3-topnav__link">Practice</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="v3-arrival" aria-labelledby="vip-apply-hero-anchor">
+    <hr class="v3-rule--metallic-gold v3-rule--center" aria-hidden="true">
+    <p class="v3-arrival__eyebrow">VIP Application</p>
+    <h1 id="vip-apply-hero-anchor" class="v3-arrival__anchor">
+      <em>Begin the conversation.</em>
+    </h1>
+    <p class="v3-arrival__subhead">The application is reviewed within seven days. If qualified, a complimentary consultation is scheduled within the following two weeks. No obligation. Not a sales call.</p>
+  </section>
+
+  <section class="v3-movement" aria-labelledby="vip-apply-form-anchor">
+    <div class="v3-movement__inner" style="max-width: 720px;">
+      <p class="v3-eyebrow">The application</p>
+      <hr class="v3-rule--metallic-gold v3-rule--narrow" aria-hidden="true">
+      <h2 id="vip-apply-form-anchor" class="v3-display"><em>What the matchmaker reads first.</em></h2>
+      <p class="v3-body v3-body--lead">Fields marked with an asterisk are required. The application is read by a Senior MatchMaker; you will hear back within seven days regardless of the disposition.</p>
+
+      <form class="v3-vip-apply-form" id="vip-apply-form" method="POST" action="/api/vip/apply">
+
+        <fieldset class="v3-vip-apply-form__fieldset">
+          <legend class="v3-vip-apply-form__legend">Tier of inquiry</legend>
+          <div class="v3-vip-apply-form__radio-group" role="radiogroup" aria-required="true">
+            <label class="v3-vip-apply-form__radio">
+              <input type="radio" name="tier" value="studio_personalized" required>
+              <span><em>Studio AI</em> &mdash; $499 &middot; the system personalized to you (no human matchmaker)</span>
+            </label>
+            <label class="v3-vip-apply-form__radio">
+              <input type="radio" name="tier" value="vip">
+              <span><em>VIP</em> &mdash; $999 &middot; a dedicated MatchMaker for thirty days</span>
+            </label>
+            <label class="v3-vip-apply-form__radio">
+              <input type="radio" name="tier" value="diamond">
+              <span><em>Diamond</em> &mdash; by application &middot; Lead Practitioner anchored institutionally</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-name">
+            Your name <span aria-hidden="true">*</span>
+          </label>
+          <input type="text" id="vip-apply-name" name="name" required maxlength="120" autocomplete="name" class="v3-vip-apply-form__input">
+        </div>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-email">
+            Email <span aria-hidden="true">*</span>
+          </label>
+          <input type="email" id="vip-apply-email" name="email" required maxlength="200" autocomplete="email" class="v3-vip-apply-form__input">
+        </div>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-phone">
+            Phone (optional)
+          </label>
+          <input type="tel" id="vip-apply-phone" name="phone" maxlength="30" autocomplete="tel" class="v3-vip-apply-form__input">
+        </div>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-location">
+            Where you live (city, region; optional)
+          </label>
+          <input type="text" id="vip-apply-location" name="location" maxlength="200" class="v3-vip-apply-form__input">
+        </div>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-intent">
+            What you came here for <span aria-hidden="true">*</span>
+          </label>
+          <select id="vip-apply-intent" name="intent" required class="v3-vip-apply-form__select">
+            <option value="">Select an intent</option>
+            <option value="long_term">Long-Term &mdash; a relationship that earns long-term standing</option>
+            <option value="marriage">Marriage &mdash; the relationship that becomes a marriage</option>
+            <option value="fall_in_love">Fall in Love &mdash; the connection that becomes love</option>
+            <option value="casual">Casual &mdash; a short, honest connection without the long horizon</option>
+            <option value="friendship">Friendship &mdash; with the door left open</option>
+            <option value="companionship">Companionship &mdash; honest, present, unhurried</option>
+            <option value="not_sure">Not Sure &mdash; calibrating in progress</option>
+            <option value="short_term">Short-Term &mdash; an honest read within a shorter arc</option>
+            <option value="open_to_all">Open to All &mdash; surface shape from cadence</option>
+          </select>
+        </div>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-context">
+            Where you are right now <span aria-hidden="true">*</span>
+          </label>
+          <textarea id="vip-apply-context" name="context" required rows="5" maxlength="2000" class="v3-vip-apply-form__textarea" placeholder="The matchmaker reads what you bring. A few sentences about where you are, what you've tried, what's been hard, what you're looking for &mdash; in your own words. Up to 2000 characters."></textarea>
+          <p class="v3-vip-apply-form__helper">The matchmaker is reading for fit, not curating. Direct is better than polished.</p>
+        </div>
+
+        <div class="v3-vip-apply-form__row">
+          <label class="v3-vip-apply-form__label" for="vip-apply-prior-work">
+            Prior work in the system (optional)
+          </label>
+          <select id="vip-apply-prior-work" name="prior_work" class="v3-vip-apply-form__select">
+            <option value="none">No prior MatchMakers products</option>
+            <option value="connection_code">Completed the free Connection Code</option>
+            <option value="playbook">Bought the Playbook ($99)</option>
+            <option value="studio">Have Studio ($299)</option>
+            <option value="studio_ai">Have Studio AI ($499)</option>
+          </select>
+        </div>
+
+        <div class="v3-vip-apply-form__row v3-vip-apply-form__row--consent">
+          <label class="v3-vip-apply-form__checkbox">
+            <input type="checkbox" name="consent_contact" required>
+            <span>I consent to the matchmaker contacting me at the email above regarding this application. <span aria-hidden="true">*</span></span>
+          </label>
+          <p class="v3-vip-apply-form__helper">The matchmaker reaches out by email within seven days. You may opt out of further contact at any time by replying to that email.</p>
+        </div>
+
+        <button type="submit" class="v3-cta-cobalt-glass v3-vip-apply-form__submit">
+          Submit application <span aria-hidden="true">&rarr;</span>
+        </button>
+
+        <p class="v3-vip-apply-form__form-status" id="vip-apply-status" aria-live="polite"></p>
+
+      </form>
+
+      <p class="v3-body v3-body--ghost" style="margin-top: 2.5rem; font-size: 0.9rem;"><em>Your information is held in confidence. The matchmaker reads your application; no automated profiling, no third-party sharing. <a href="/privacy-policy/">Privacy Policy</a>.</em></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="v3-footer">
+  <p class="v3-footer__tagline">The operating system behind every real connection.</p>
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/playbook/">Playbook</a>
+    <a href="/studio/">Studio</a>
+    <a href="/studio/compass/">The Compass</a>
+    <a href="/vip/">VIP</a>
+    <a href="/foundation/">Foundation</a>
+    <a href="/practice/">Practice</a>
+    <a href="/about/">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/crisis/">Crisis Referral</a>
+    <a href="/account/">Account</a>
+    <a href="/contact/">Inquiry</a>
+  </nav>
+  <p class="v3-footer__legal">&copy; MatchMakers &middot; <a href="/privacy-policy/">Privacy</a> &middot; <a href="/terms-of-service/">Terms</a></p>
+  <div class="v3-footer__dmca"><div id="DMCA-badge">
+    <div class="dm-1 dm-1-b" style="left: 0;"><a href="https://www.dmca.com/" title="DMCA">DMCA</a></div>
+    <div class="dm-2 dm-2-b"><a href="https://www.dmca.com/Protection/Status.aspx?ID=546f9af1-2d99-47ce-87e4-0537e6b1fc74" title="DMCA">PROTECTED</a></div>
+  </div></div>
+  <p class="v3-footer__wordmark">MatchMakers<sup>&trade;</sup></p>
+</footer>
+
+<script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+<script src="/js/vip-apply.js" defer></script>
+
+</body>
+</html>
