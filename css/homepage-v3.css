@@ -2597,3 +2597,563 @@ body::before {
 .v3-faq__a:last-child {
   border-bottom: none;
 }
+
+/* === Trust + Provability 4-anchor block (sole placement on /about/) — Wave 2 polish === */
+.v3-trust-anchors {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+.v3-trust-anchor {
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  border-left: 1px solid var(--color-heritage-gold-soft);
+  padding-left: 1.5rem;
+}
+.v3-trust-anchor__label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-navy);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.005em;
+}
+.v3-trust-anchor__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-navy-soft);
+  margin: 0;
+  letter-spacing: 0.005em;
+}
+
+@media (max-width: 720px) {
+  .v3-trust-anchors {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERMÈS POLISH v1.0 — FOUNDATION (Wave 2 Pre-Phase-0 cascade)
+   80/15/4/1/0 color discipline binding
+   Cream canvas · Navy ink · Heritage gold accent · Cobalt CTA
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ---- Color token alignment (Atrium Face v1 doctrine) ---- */
+:root {
+  --color-cream: #F5F0E5;
+  --color-cream-soft: #F7F2E8;
+  --color-cream-paper: #EFE9DA;
+  --color-navy: #1B2940;
+  --color-navy-soft: rgba(27, 41, 64, 0.72);
+  --color-navy-whisper: rgba(27, 41, 64, 0.12);
+  --color-navy-gossamer: rgba(27, 41, 64, 0.06);
+  --color-heritage-gold-soft: rgba(203, 163, 114, 0.6);
+  --color-cobalt-glass-deep: #0E2542;
+}
+
+/* ---- Movement 1: Arrival polish ---- */
+.v3-arrival--polished {
+  background: linear-gradient(180deg, #F7F2E8 0%, #F5F0E5 100%);
+  padding: 8rem 1.5rem 6rem;
+  text-align: center;
+}
+.v3-arrival__brand-mark-img--soft {
+  opacity: 0.92;
+  filter: contrast(0.96);
+}
+.v3-arrival__anchor em {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: var(--color-navy);
+  letter-spacing: -0.005em;
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 18ch;
+  line-height: 1.18;
+}
+.v3-arrival__subhead {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--color-navy-soft);
+  margin: 1rem auto 2.5rem;
+  max-width: 32ch;
+  line-height: 1.55;
+}
+.v3-arrival__cta {
+  margin: 2.5rem auto 1.5rem;
+}
+
+/* ---- Cobalt glass CTA — glassy polish ---- */
+.v3-cta-cobalt-glass {
+  display: inline-block;
+  padding: 0.95rem 2rem;
+  background: var(--color-cobalt-glass);
+  color: #F5F0E5;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(14, 37, 66, 0.5),
+    0 1px 2px rgba(27, 41, 64, 0.08);
+  transition: background 280ms ease, transform 200ms ease, box-shadow 280ms ease;
+}
+.v3-cta-cobalt-glass:hover {
+  background: var(--color-cobalt-glass-deep);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(14, 37, 66, 0.55),
+    0 3px 6px rgba(27, 41, 64, 0.12);
+}
+.v3-cta-cobalt-glass:active {
+  transform: translateY(0);
+}
+.v3-cta-cobalt-glass--secondary {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* ---- Heritage gold metallic rule ---- */
+.v3-rule--metallic-gold {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(203, 163, 114, 0.85) 18%, rgba(203, 163, 114, 0.95) 50%, rgba(203, 163, 114, 0.85) 82%, transparent 100%);
+  margin: 1.5rem auto;
+  width: 100%;
+  max-width: 280px;
+}
+.v3-rule--metallic-gold.v3-rule--center { margin-left: auto; margin-right: auto; }
+.v3-rule--metallic-gold.v3-rule--narrow { max-width: 80px; }
+
+/* ---- Whisper rule (between movements) ---- */
+.v3-rule--whisper {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(27, 41, 64, 0.08) 30%, rgba(27, 41, 64, 0.08) 70%, transparent 100%);
+  margin: 0;
+}
+
+/* ---- Movement 2: Soft cards (cream tonal variation; NO navy blocks) ---- */
+.v3-soft-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+}
+.v3-soft-card {
+  background: linear-gradient(180deg, #F7F2E8 0%, #F5F0E5 100%);
+  border: 1px solid var(--color-navy-gossamer);
+  border-radius: 2px;
+  padding: 2.5rem 2rem;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(27, 41, 64, 0.04);
+  transition: box-shadow 320ms ease, transform 240ms ease, border-color 320ms ease;
+}
+.v3-soft-card:hover {
+  box-shadow: 0 6px 20px rgba(27, 41, 64, 0.07);
+  transform: translateY(-2px);
+  border-color: rgba(203, 163, 114, 0.25);
+}
+.v3-soft-card__numeral {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--color-heritage-gold);
+  display: block;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+.v3-soft-card__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  margin: 0 0 0.4rem;
+  letter-spacing: 0;
+}
+.v3-soft-card__subhead {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  margin: 0 0 1rem;
+  letter-spacing: 0.005em;
+}
+.v3-soft-card__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-navy-soft);
+  margin: 0 0 1.5rem;
+}
+.v3-soft-card__cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-heritage-gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  padding-bottom: 1px;
+  letter-spacing: 0.02em;
+  transition: color 240ms ease, border-color 240ms ease;
+}
+.v3-soft-card__cta:hover {
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+.v3-soft-card__price {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold);
+  margin: 0 0 0.4rem;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'tnum' 1, 'lnum' 1;
+}
+.v3-soft-card--featured {
+  border-color: rgba(203, 163, 114, 0.35);
+  background: linear-gradient(180deg, #F8F4EB 0%, #F5F0E5 100%);
+}
+.v3-soft-card--featured .v3-soft-card__numeral {
+  color: var(--color-cobalt-glass);
+}
+
+@media (max-width: 880px) {
+  .v3-soft-cards { grid-template-columns: 1fr; gap: 1.25rem; }
+  .v3-soft-card { padding: 2rem 1.5rem; }
+}
+
+/* ---- Movement 3: System Flow visual ---- */
+.v3-system-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 1100px;
+  margin: 3rem auto 1.5rem;
+  padding: 2.5rem 1.5rem;
+}
+.v3-system-flow__station {
+  flex: 1 1 180px;
+  min-width: 160px;
+  text-align: center;
+  padding: 1.25rem 0.5rem;
+}
+.v3-system-flow__cost {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold);
+  margin: 0 0 0.5rem;
+}
+.v3-system-flow__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.45rem;
+  color: var(--color-navy);
+  margin: 0 0 0.4rem;
+  line-height: 1.2;
+}
+.v3-system-flow__role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--color-navy-soft);
+  margin: 0;
+  font-style: italic;
+}
+.v3-system-flow__arrow {
+  align-self: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  color: var(--color-heritage-gold);
+  padding: 0 0.5rem;
+  flex-shrink: 0;
+}
+.v3-body--ghost {
+  font-style: italic;
+  color: rgba(27, 41, 64, 0.55);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 880px) {
+  .v3-system-flow { flex-direction: column; gap: 0.5rem; padding: 1.5rem 1rem; }
+  .v3-system-flow__arrow { padding: 0; transform: rotate(90deg); }
+}
+
+/* ---- Movement 4: Layer Stack polished ---- */
+.v3-layer-stack--polished {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0 0;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+.v3-layer-stack--polished thead th {
+  background: transparent;
+  color: var(--color-heritage-gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+}
+.v3-layer-stack--polished tbody tr {
+  border-bottom: 1px solid var(--color-navy-whisper);
+  transition: background 320ms ease;
+}
+.v3-layer-stack--polished tbody tr:last-child { border-bottom: none; }
+.v3-layer-stack--polished tbody tr:hover {
+  background: linear-gradient(90deg, transparent 0%, rgba(247, 242, 232, 0.7) 50%, transparent 100%);
+}
+.v3-layer-stack--polished td {
+  padding: 1.5rem 1rem;
+  vertical-align: top;
+  color: var(--color-navy);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.v3-layer-stack--polished .v3-layer-stack__layer em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  font-weight: 500;
+}
+.v3-layer-stack--polished .v3-layer-stack__product {
+  font-weight: 500;
+  color: var(--color-navy);
+}
+.v3-layer-stack--polished .v3-layer-stack__body {
+  color: var(--color-navy-soft);
+  font-size: 0.92rem;
+}
+.v3-layer-stack--polished .v3-layer-stack__price {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+.v3-layer-stack--polished .v3-layer-stack__inline-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--color-navy-soft);
+  font-size: 0.92rem;
+  margin-left: 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .v3-layer-stack--polished thead { display: none; }
+  .v3-layer-stack--polished tbody tr {
+    display: block;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-navy-whisper);
+  }
+  .v3-layer-stack--polished td {
+    display: block;
+    padding: 0.25rem 0;
+  }
+  .v3-layer-stack--polished td.v3-layer-stack__layer { padding-bottom: 0.5rem; }
+  .v3-layer-stack--polished td.v3-layer-stack__price { padding-top: 0.5rem; font-size: 0.85rem; color: var(--color-heritage-gold); }
+}
+
+/* ---- Footer polish ---- */
+.v3-footer--polished {
+  background: linear-gradient(180deg, #F5F0E5 0%, #EFE9DA 100%);
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+  border-top: 1px solid var(--color-navy-whisper);
+}
+.v3-footer--polished .v3-footer__tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  margin: 0 0 2rem;
+}
+.v3-footer--polished .v3-footer__nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  margin: 0 0 2rem;
+}
+.v3-footer--polished .v3-footer__nav a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--color-navy);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 240ms ease;
+}
+.v3-footer--polished .v3-footer__nav a:hover {
+  color: var(--color-heritage-gold);
+}
+
+/* ---- Movement / section warm tonal variant ---- */
+.v3-section--warm {
+  background: linear-gradient(180deg, #F7F2E8 0%, #F5F0E5 100%);
+  padding: 5rem 1.5rem;
+  margin: 4rem 0 0;
+}
+
+/* ---- Display variant (smaller; for VIP Movement 2 'The wall') ---- */
+.v3-display--small {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  color: var(--color-navy);
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+/* ---- Arrival eyebrow above H1 (vip + arm-pages pattern) ---- */
+.v3-arrival__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold);
+  margin: 1.5rem auto 0.5rem;
+  text-align: center;
+}
+
+/* ---- LB-6 system-context block on arm pages Movement 1 ---- */
+.v3-arrival__system-context {
+  margin: 2.5rem auto 1.5rem;
+  max-width: 36rem;
+  padding: 1.5rem 1.5rem;
+  border-top: 1px solid var(--color-navy-whisper);
+  border-bottom: 1px solid var(--color-navy-whisper);
+  text-align: center;
+}
+.v3-arrival__system-context .v3-body {
+  font-style: italic;
+  color: var(--color-navy-soft);
+  font-size: 0.95rem;
+  margin: 0 0 1.25rem;
+}
+
+/* ---- /playbook/ Movement 2 source-of-truth hierarchy visual ---- */
+.v3-source-of-truth-flow {
+  margin: 3rem 0 0;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--color-navy-whisper);
+  border-bottom: 1px solid var(--color-navy-whisper);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.v3-source-of-truth-flow__row {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 30px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+}
+.v3-source-of-truth-flow__source {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  text-align: right;
+  padding-right: 0.5rem;
+}
+.v3-source-of-truth-flow__row:first-child .v3-source-of-truth-flow__source {
+  color: var(--color-heritage-gold);
+  font-weight: 600;
+}
+.v3-source-of-truth-flow__arrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-heritage-gold);
+  text-align: center;
+}
+.v3-source-of-truth-flow__derived {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-navy-soft);
+  letter-spacing: 0.005em;
+}
+
+@media (max-width: 640px) {
+  .v3-source-of-truth-flow__row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    text-align: center;
+  }
+  .v3-source-of-truth-flow__source { text-align: center; padding-right: 0; }
+  .v3-source-of-truth-flow__arrow { display: none; }
+}
+
+/* ---- /connection-code/ Methodology Search Phase 0 demo ---- */
+.v3-methodology-search {
+  max-width: 640px;
+  margin: 2.5rem auto 0;
+  padding: 0 1rem;
+}
+.v3-methodology-search__label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-heritage-gold);
+  margin: 0 0 0.5rem;
+  text-align: left;
+}
+.v3-methodology-search__input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  background: linear-gradient(180deg, #F7F2E8 0%, #F5F0E5 100%);
+  border: 1px solid var(--color-navy-gossamer);
+  border-radius: 2px;
+  margin: 0 0 1rem;
+  transition: border-color 240ms ease, box-shadow 240ms ease;
+}
+.v3-methodology-search__input:focus {
+  outline: none;
+  border-color: var(--color-heritage-gold);
+  box-shadow: 0 0 0 3px rgba(203, 163, 114, 0.15);
+}
+.v3-methodology-search__output {
+  margin: 2rem auto 0;
+  max-width: 720px;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(180deg, #F7F2E8 0%, #F5F0E5 100%);
+  border: 1px solid var(--color-navy-gossamer);
+  border-radius: 2px;
+  min-height: 4rem;
+}
