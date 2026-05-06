@@ -105,7 +105,7 @@
       <div style="font-family:var(--sr);font-size:.75rem;color:rgba(200,214,229,.45);margin-bottom:.65rem;letter-spacing:.02em;">Enter your access code to begin</div>
       <input type="text" class="pb-gate-input" id="accessCode" placeholder="Access code" autocomplete="off" maxlength="32">
       <div class="pb-gate-error" id="gateError"></div>
-      <button onclick="checkAccess()" class="btn-gold" style="width:100%;display:flex;">Unlock My Playbook →</button>
+      <button onclick="checkAccess()" class="btn-gold" style="width:100%;display:flex;">Open My Playbook →</button>
       <div style="text-align:center;font-family:var(--sr);font-size:.7rem;color:rgba(200,214,229,.35);margin:16px 0 10px;text-transform:lowercase;">or verify with your purchase email</div>
       <input type="email" class="pb-gate-input" id="gateEmail" placeholder="Email used at checkout" autocomplete="email" style="font-size:16px;">
       <button onclick="checkAccessByEmail()" class="btn-gold-subtle btn-gold-sm" style="width:100%;display:flex;margin-top:8px;">Verify Purchase →</button>
@@ -1070,7 +1070,7 @@
         <p style="font-size:.72rem;color:rgba(200,214,229,.45);margin:0 0 10px;">Already have the Playbook? Enter your access code:</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <input type="text" id="pcm-gate-code" placeholder="Enter code" autocomplete="off" maxlength="32" style="flex:1;min-width:0;padding:10px 14px;border:1px solid rgba(65,91,124,.4);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.85rem;font-family:var(--pd);outline:none;box-sizing:border-box;text-transform:uppercase;" onkeydown="if(event.key==='Enter'){event.preventDefault();unlockFromGate();}">
-          <button onclick="unlockFromGate()" class="btn-gold btn-gold-sm">Unlock</button>
+          <button onclick="unlockFromGate()" class="btn-gold btn-gold-sm">Open</button>
         </div>
         <div id="pcm-gate-msg" style="display:none;font-size:.75rem;margin-top:8px;font-family:var(--pd);"></div>
       </div>
