@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Open Studio — MatchMakers</title>
+  <meta name="description" content="Open Studio: the Playbook activated. The Connection Compass across Foundation, Search, and Practice. $299 Studio / $499 Studio AI.">
+  <link rel="canonical" href="https://matchmakersusa.com/studio/purchase/">
+  <meta name="robots" content="noindex,nofollow">
+
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-W3EJNGC0JR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3EJNGC0JR');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/homepage-v3.css">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <script src="https://browser.sentry-cdn.com/8.20.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (typeof Sentry !== 'undefined') {
+      Sentry.init({
+        dsn: "https://9b1e7288070b5b680e8bb51ef3717112@o4511320132288512.ingest.us.sentry.io/4511320153587712",
+        integrations: [Sentry.browserTracingIntegration()],
+        tracesSampleRate: 0.1,
+        environment: "production",
+        release: "matchmakersusa.com@2026-05-06-studio-purchase-stripe-checkout-wave-1"
+      });
+    }
+  </script>
+
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+<a href="#main" class="v3-skip-link">Skip to content</a>
+
+<nav class="v3-topnav" aria-label="Primary navigation">
+  <div class="v3-topnav__inner">
+    <a href="/" class="v3-topnav__brand">MatchMakers<span class="v3-topnav__brand-tm">&trade;</span></a>
+    <div class="v3-topnav__nav">
+      <a href="/connection-code/" class="v3-topnav__link">Connection Code</a>
+      <a href="/foundation/" class="v3-topnav__link">Foundation</a>
+      <a href="/search/" class="v3-topnav__link">Search</a>
+      <a href="/practice/" class="v3-topnav__link">Practice</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="v3-arrival v3-arrival--polished" aria-labelledby="purchase-hero-anchor">
+    <hr class="v3-rule--metallic-gold v3-rule--center" aria-hidden="true">
+    <p class="v3-arrival__eyebrow">Open Studio</p>
+    <h1 id="purchase-hero-anchor" class="v3-arrival__anchor">
+      <em>Choose the depth that matches the work.</em>
+    </h1>
+    <p class="v3-arrival__subhead">Both unlock the Playbook in full plus the Connection Compass across all three pillars. Studio AI adds personalization across sessions.</p>
+  </section>
+
+  <section class="v3-movement v3-movement--center" aria-labelledby="purchase-tier-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Two depths of Studio</p>
+      <hr class="v3-rule--metallic-gold v3-rule--center v3-rule--narrow" aria-hidden="true">
+      <h2 id="purchase-tier-anchor" class="v3-display"><em>One purchase. No subscription.</em></h2>
+    </div>
+
+    <div class="v3-soft-cards" role="group" aria-label="Studio tier options">
+
+      <article class="v3-soft-card">
+        <span class="v3-soft-card__numeral" aria-hidden="true">I</span>
+        <p class="v3-soft-card__price">$299</p>
+        <h3 class="v3-soft-card__name"><em>Studio</em></h3>
+        <p class="v3-soft-card__subhead">The Playbook activated.</p>
+        <p class="v3-soft-card__body">The Playbook in full. The Connection Compass across Foundation, Search, and Practice. Reading. Coach. Scripts. Pattern surfacing. Foundation and Practice deepening included as it lands.</p>
+        <button type="button" class="v3-soft-card__cta v3-cta-cobalt-glass" data-stripe-checkout="studio_core" data-tier-label="Studio">
+          Buy Studio &mdash; $299 <span aria-hidden="true">&rarr;</span>
+        </button>
+      </article>
+
+      <article class="v3-soft-card v3-soft-card--featured">
+        <span class="v3-soft-card__numeral" aria-hidden="true">II</span>
+        <p class="v3-soft-card__price">$499</p>
+        <h3 class="v3-soft-card__name"><em>Studio AI</em></h3>
+        <p class="v3-soft-card__subhead">The system, personalized to you.</p>
+        <p class="v3-soft-card__body">Studio, plus the Compass calibrated to your Reading and reflections. Personalized Reading Path. Chapter-to-Life Mode. Persistent context across sessions.</p>
+        <button type="button" class="v3-soft-card__cta v3-cta-cobalt-glass" data-stripe-checkout="studio_personalized" data-tier-label="Studio AI">
+          Buy Studio AI &mdash; $499 <span aria-hidden="true">&rarr;</span>
+        </button>
+      </article>
+
+    </div>
+
+    <p class="v3-body v3-body--center" style="margin-top: 2rem;"><em>Already have the Playbook standalone? Studio purchase credits the $99 &mdash; you pay $200 to upgrade. No double-purchase.</em></p>
+
+    <p class="v3-body v3-body--center" id="purchase-status" aria-live="polite" style="margin-top: 1.5rem; font-style: italic;"></p>
+  </section>
+
+</main>
+
+<footer class="v3-footer v3-footer--polished">
+  <p class="v3-footer__tagline">The operating system behind every real connection.</p>
+  <nav class="v3-footer__nav" aria-label="Footer">
+    <a href="/">Homepage</a>
+    <a href="/connection-code/">Connection Code</a>
+    <a href="/playbook/">Playbook</a>
+    <a href="/studio/">Studio</a>
+    <a href="/studio/compass/">The Compass</a>
+    <a href="/vip/">VIP</a>
+    <a href="/foundation/">Foundation</a>
+    <a href="/practice/">Practice</a>
+    <a href="/about/">About</a>
+    <a href="/methodology/">Methodology</a>
+    <a href="/crisis/">Crisis Referral</a>
+    <a href="/account/">Account</a>
+    <a href="/contact/">Inquiry</a>
+  </nav>
+  <p class="v3-footer__legal">&copy; MatchMakers &middot; <a href="/privacy-policy/">Privacy</a> &middot; <a href="/terms-of-service/">Terms</a></p>
+  <div class="v3-footer__dmca"><div id="DMCA-badge">
+    <div class="dm-1 dm-1-b" style="left: 0;"><a href="https://www.dmca.com/" title="DMCA">DMCA</a></div>
+    <div class="dm-2 dm-2-b"><a href="https://www.dmca.com/Protection/Status.aspx?ID=546f9af1-2d99-47ce-87e4-0537e6b1fc74" title="DMCA">PROTECTED</a></div>
+  </div></div>
+  <p class="v3-footer__wordmark">MatchMakers<sup>&trade;</sup></p>
+</footer>
+
+<script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+
+<script src="/js/stripe-checkout.js" defer></script>
+
+</body>
+</html>

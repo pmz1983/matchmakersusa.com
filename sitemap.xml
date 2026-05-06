@@ -4,74 +4,144 @@
 
   <url>
     <loc>https://matchmakersusa.com/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://matchmakersusa.com/img/og-image-v2.png</image:loc>
+      <image:loc>https://matchmakersusa.com/img/og-image-v3-1.png</image:loc>
       <image:title>MatchMakers</image:title>
     </image:image>
   </url>
 
   <url>
-    <loc>https://matchmakersusa.com/playbook/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <loc>https://matchmakersusa.com/connection-code/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/connection-code/assessment/</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://matchmakersusa.com/guide/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <loc>https://matchmakersusa.com/connection-code/foundation-preview/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/connection-code/practice-preview/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/playbook/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/studio/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/studio/compass/</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://matchmakersusa.com/vip/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://matchmakersusa.com/assessment/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <loc>https://matchmakersusa.com/foundation/</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://matchmakersusa.com/coach/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <loc>https://matchmakersusa.com/search/</loc>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/practice/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/methodology/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/about/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/crisis/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://matchmakersusa.com/account/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://matchmakersusa.com/contact/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://matchmakersusa.com/privacy-policy/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://matchmakersusa.com/terms-of-service/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://matchmakersusa.com/child-safety/</loc>
-    <lastmod>2026-04-29</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

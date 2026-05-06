@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Personal Operating System Snapshot — {{first_name}} — MatchMakers</title>
+<style>
+  @page { size: Letter; margin: 0.75in 0.85in; }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; color: #1B2940; font-family: 'Inter', 'Helvetica', sans-serif; font-size: 11pt; line-height: 1.55; }
+  .letterhead {
+    text-align: center;
+    padding-bottom: 20pt;
+    border-bottom: 1pt solid #CBA372;
+    margin-bottom: 28pt;
+  }
+  .letterhead__wordmark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 22pt;
+    margin: 0 0 4pt;
+    letter-spacing: 0.04em;
+  }
+  .letterhead__tagline {
+    font-size: 9pt;
+    color: rgba(27, 41, 64, 0.65);
+    margin: 0 0 10pt;
+    font-style: italic;
+  }
+  .letterhead__divider {
+    width: 60pt;
+    margin: 12pt auto;
+    border: none;
+    height: 0.7pt;
+    background: linear-gradient(to right, transparent, #CBA372, transparent);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 22pt;
+    margin: 0 0 6pt;
+    color: #1B2940;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 14pt;
+    margin: 24pt 0 6pt;
+    color: #1B2940;
+    border-bottom: 0.5pt solid rgba(203, 163, 114, 0.55);
+    padding-bottom: 4pt;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 9pt;
+    color: #6B4F1E;
+    margin: 0 0 4pt;
+  }
+  p { margin: 0 0 10pt; }
+  .subject-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 16pt;
+    margin: 0 0 20pt;
+    color: #1B2940;
+  }
+  .field-row {
+    margin: 10pt 0;
+    padding: 6pt 10pt;
+    background: rgba(203, 163, 114, 0.04);
+    border-left: 2pt solid #CBA372;
+  }
+  .field-label {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 9pt;
+    color: #6B4F1E;
+    margin: 0 0 2pt;
+  }
+  .field-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 13pt;
+    margin: 0;
+    color: #1B2940;
+  }
+  ul.chapters { padding-left: 18pt; margin: 0 0 16pt; }
+  ul.chapters li { margin-bottom: 6pt; font-size: 10.5pt; }
+  ul.chapters li em {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #1B2940;
+  }
+  .next-move {
+    margin-top: 18pt;
+    padding: 14pt 16pt;
+    background: rgba(203, 163, 114, 0.06);
+    border-top: 1.5pt solid #CBA372;
+  }
+  .closing {
+    margin-top: 36pt;
+    padding-top: 16pt;
+    border-top: 0.5pt solid rgba(27, 41, 64, 0.15);
+    text-align: center;
+    font-size: 9pt;
+    color: rgba(27, 41, 64, 0.55);
+    font-style: italic;
+  }
+  .signature-mark {
+    text-align: center;
+    margin: 24pt 0 6pt;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: #1B2940;
+  }
+</style>
+</head>
+<body>
+
+<header class="letterhead">
+  <p class="letterhead__wordmark">MatchMakers<sup>&trade;</sup></p>
+  <p class="letterhead__tagline">The operating system behind every real connection.</p>
+  <hr class="letterhead__divider">
+</header>
+
+<p class="eyebrow">Personal Operating System Snapshot</p>
+<h1>What the methodology located.</h1>
+<p class="subject-name">For {{first_name}} {{last_name}} &middot; {{snapshot_date}}</p>
+
+<p>This Snapshot holds what the Connection Code methodology located in your Reading. Yours forever; revisable; held by the Compass across every session.</p>
+
+<h2>The pillar that&rsquo;s loudest right now</h2>
+<div class="field-row">
+  <p class="field-label">Active focus</p>
+  <p class="field-value"><em>{{current_focus_headline}}</em></p>
+</div>
+<p>{{current_focus_body}}</p>
+
+<h2>Your Active Intent</h2>
+<div class="field-row">
+  <p class="field-label">Calibration</p>
+  <p class="field-value"><em>{{active_intent_label}}</em></p>
+</div>
+<p>{{active_intent_body}}</p>
+
+<h2>The chapters the Compass will return to</h2>
+<p>In priority order &mdash; the methodology corpus that speaks to your moment.</p>
+<ul class="chapters">
+  {{#each priority_chapters}}
+    <li><em>{{this.chapter_name}}</em> &middot; {{this.framework_name}} &mdash; {{this.relevance_note}}</li>
+  {{/each}}
+</ul>
+
+<h2>The next move</h2>
+<div class="next-move">
+  <p class="field-label">Recommended next step</p>
+  <p class="field-value" style="margin-bottom: 6pt;"><em>{{next_step_headline}}</em></p>
+  <p style="font-size: 10.5pt; margin: 0;">{{next_step_body}}</p>
+</div>
+
+<p style="margin-top: 24pt;">The Compass remembers everything in this Snapshot. Return to your dashboard at <strong>matchmakersusa.com/account/</strong> to see what&rsquo;s current; the methodology calibrates as your work evolves.</p>
+
+<p class="signature-mark">MatchMakers<sup>&trade;</sup></p>
+
+<div class="closing">
+  <p style="margin: 0 0 4pt;">More than a decade of matchmaking practice &middot; The Connection Code, applied as a system.</p>
+  <p style="margin: 0;">If you need clinical care or crisis support &mdash; matchmakersusa.com/crisis/ is always one tap away.</p>
+</div>
+
+</body>
+</html>

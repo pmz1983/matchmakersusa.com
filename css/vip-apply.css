@@ -1,0 +1,132 @@
+/* /css/vip-apply.css — VIP application intake form
+   Per BROKEN_CTAS_WAVE_1_CYCLE_2_SPEC v1 2026-05-06 §4.3
+*/
+
+.v3-vip-apply-form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.v3-vip-apply-form__fieldset {
+  border: 1px solid var(--color-hairline-rule);
+  border-radius: 4px;
+  padding: 1.25rem;
+  margin: 0;
+}
+
+.v3-vip-apply-form__legend {
+  padding: 0 0.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-ink);
+}
+
+.v3-vip-apply-form__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.v3-vip-apply-form__radio {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 2px;
+  transition: background 200ms ease;
+}
+
+.v3-vip-apply-form__radio:hover {
+  background: rgba(203, 163, 114, 0.06);
+}
+
+.v3-vip-apply-form__radio input[type="radio"] {
+  margin-top: 0.25rem;
+  accent-color: var(--color-heritage-gold);
+}
+
+.v3-vip-apply-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.v3-vip-apply-form__row--consent {
+  margin-top: 0.5rem;
+}
+
+.v3-vip-apply-form__label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+}
+
+.v3-vip-apply-form__input,
+.v3-vip-apply-form__select,
+.v3-vip-apply-form__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1px solid var(--color-hairline-rule);
+  border-radius: 4px;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+.v3-vip-apply-form__textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.v3-vip-apply-form__input:focus,
+.v3-vip-apply-form__select:focus,
+.v3-vip-apply-form__textarea:focus {
+  outline: none;
+  border-color: var(--color-heritage-gold);
+  box-shadow: 0 0 0 3px rgba(203, 163, 114, 0.18);
+}
+
+.v3-vip-apply-form__helper {
+  font-size: 0.85rem;
+  color: var(--color-ink-tertiary);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.v3-vip-apply-form__checkbox {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.v3-vip-apply-form__checkbox input[type="checkbox"] {
+  margin-top: 0.3rem;
+  accent-color: var(--color-heritage-gold);
+}
+
+.v3-vip-apply-form__submit {
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+.v3-vip-apply-form__form-status {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+.v3-vip-apply-form__form-status[data-status="success"] {
+  color: var(--color-heritage-gold-text);
+}
+
+.v3-vip-apply-form__form-status[data-status="error"] {
+  color: #b53a3a;
+}

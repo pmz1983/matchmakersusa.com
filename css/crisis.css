@@ -1,0 +1,135 @@
+/* /css/crisis.css — Crisis Referral standalone surface
+   Per CRISIS_REFERRAL_STANDALONE_SURFACE_SPEC v1 2026-05-06 §2.3
+*/
+
+.v3-crisis-resources {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.v3-crisis-resource {
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--color-canvas);
+  border-left: 3px solid var(--color-heritage-gold);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.v3-crisis-resource--emergency {
+  border-left-color: #b53a3a;
+  background: rgba(181, 58, 58, 0.04);
+}
+
+.v3-crisis-resource__primary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.v3-crisis-resource__name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.v3-crisis-resource__contact {
+  margin: 0;
+}
+
+.v3-crisis-resource__cta-primary {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  background: var(--color-heritage-gold);
+  color: var(--color-canvas);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  transition: background 200ms ease;
+}
+
+.v3-crisis-resource__cta-primary:hover,
+.v3-crisis-resource__cta-primary:focus {
+  background: var(--color-heritage-gold-bright);
+}
+
+.v3-crisis-resource__cta-primary--emergency {
+  background: #b53a3a;
+  color: #FFFFFF;
+}
+
+.v3-crisis-resource__cta-primary--emergency:hover,
+.v3-crisis-resource__cta-primary--emergency:focus {
+  background: #952d2d;
+}
+
+.v3-crisis-resource__description {
+  font-size: 0.95rem;
+  color: var(--color-ink-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.v3-crisis-resource__description a {
+  color: var(--color-heritage-gold-text);
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  text-decoration: none;
+}
+
+.v3-crisis-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.v3-crisis-scope-card {
+  padding: 1.5rem;
+  background: var(--color-canvas);
+  border-top: 2px solid var(--color-heritage-gold);
+  border-radius: 2px;
+}
+
+.v3-crisis-scope-card--out-of-scope {
+  border-top-color: rgba(181, 58, 58, 0.4);
+  background: rgba(181, 58, 58, 0.03);
+}
+
+.v3-crisis-additional {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.v3-crisis-additional li {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--color-hairline-rule);
+  font-size: 0.95rem;
+  color: var(--color-ink-secondary);
+  line-height: 1.55;
+}
+
+.v3-crisis-additional strong {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.v3-crisis-additional a {
+  color: var(--color-heritage-gold-text);
+  border-bottom: 1px solid var(--color-heritage-gold-soft);
+  text-decoration: none;
+}
