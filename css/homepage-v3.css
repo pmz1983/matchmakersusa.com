@@ -824,40 +824,126 @@ body {
   margin-top: 2rem;
 }
 
-/* Polish v2.13.6 (Paul §5 ratify 2026-05-03): heritage gold wire frame Cartier register
-   Replaces solid cobalt fill — transparent bg, gold border, gold text, auto-fit text, inverted hover
-   Class name preserved (.v3-cta-cobalt) for HTML stability across 8 v3 surfaces */
+/* ═══════════════════════════════════════════════════════════════
+   .v3-cta-cobalt — MM_FINALS oval gloss restoration v1.0
+   Per Paul §5 directive 2026-05-06 + Homepage Master Plan v3.0 §2
+   Cobalt glass pill + silver ring accent — signature carry-over from iOS M-button
+   Replaces Polish v2.13.6 wire-frame; class name preserved for HTML stability across 8 v3 surfaces
+   ═══════════════════════════════════════════════════════════════ */
+
 .v3-cta-cobalt {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1rem;
-  letter-spacing: 0.015em;
-  color: var(--color-heritage-gold);
-  background: transparent;
-  border: 1px solid var(--color-heritage-gold);
-  padding: 0.78rem 1.6rem;
-  border-radius: 0;
-  text-decoration: none;
-  min-height: 46px;
   justify-content: center;
+  gap: 0.55rem;
+
+  /* OVAL — pill shape; MM_FINALS canonical */
+  border-radius: 9999px;
+  padding: 0.95rem 2.25rem;
+  min-height: 48px;
+
+  /* COBALT GLASS — multi-stop vertical gradient catches light at top, settles at bottom */
+  background:
+    linear-gradient(180deg,
+      #1F3A6E 0%,         /* light catch — top edge */
+      #163354 48%,        /* canonical cobalt mid */
+      #0F2640 100%);      /* settled depth — bottom edge */
+
+  /* TEXT — Inter institutional; cream on cobalt; saddle-stitched */
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #F5F0E5;
+  text-decoration: none;
   white-space: nowrap;
-  transition: background 240ms var(--easing-cinematic), color 240ms var(--easing-cinematic);
+
+  /* SILVER RING + GLASSY POLISH — five-layer shadow stack */
+  border: 1px solid transparent;          /* base; silver ring lives in box-shadow stack */
+  box-shadow:
+    /* glass curvature — light wash across top */
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    /* glass depth — quiet line at bottom */
+    inset 0 -1px 0 rgba(8, 20, 38, 0.45),
+    /* SILVER RING — signature MM_FINALS carry-over from iOS M-button */
+    0 0 0 1px rgba(232, 232, 232, 0.55),
+    /* soft drop — barely-there lift */
+    0 2px 6px rgba(27, 41, 64, 0.18),
+    /* settled depth — institutional weight */
+    0 8px 20px rgba(27, 41, 64, 0.08);
+
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 280ms ease;
 }
 
 .v3-cta-cobalt:hover,
 .v3-cta-cobalt:focus-visible {
-  background: var(--color-heritage-gold);
-  color: var(--color-canvas);
+  background:
+    linear-gradient(180deg,
+      #234176 0%,
+      #1A3A5E 48%,
+      #112A48 100%);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(8, 20, 38, 0.50),
+    /* silver ring brightens on hover — the M-button signature lifting */
+    0 0 0 1px rgba(255, 255, 255, 0.65),
+    0 4px 10px rgba(27, 41, 64, 0.22),
+    0 12px 28px rgba(27, 41, 64, 0.12);
   outline: none;
 }
 
+.v3-cta-cobalt:active {
+  transform: translateY(0);
+  box-shadow:
+    /* press state — glass compresses inward */
+    inset 0 2px 4px rgba(8, 20, 38, 0.50),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(232, 232, 232, 0.55),
+    0 1px 3px rgba(27, 41, 64, 0.14);
+}
+
 .v3-cta-cobalt:focus-visible {
-  outline: 1px solid var(--color-heritage-gold);
+  outline: 2px solid rgba(203, 163, 114, 0.6);   /* heritage gold focus ring */
   outline-offset: 4px;
+}
+
+/* Honor reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .v3-cta-cobalt {
+    transition: background 120ms ease;
+  }
+  .v3-cta-cobalt:hover,
+  .v3-cta-cobalt:focus-visible {
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   .v3-cta-cobalt--secondary — softer variant for second-position CTAs
+   Same oval gloss canon at quieter weight; preserves signature without competing
+   ═══════════════════════════════════════════════════════════════ */
+
+.v3-cta-cobalt--secondary {
+  background:
+    linear-gradient(180deg,
+      rgba(31, 58, 110, 0.92) 0%,
+      rgba(22, 51, 84, 0.92) 48%,
+      rgba(15, 38, 64, 0.92) 100%);
+  font-size: 0.9rem;
+  padding: 0.8rem 1.85rem;
+  min-height: 44px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(8, 20, 38, 0.40),
+    /* silver ring slightly softer for secondary */
+    0 0 0 1px rgba(232, 232, 232, 0.42),
+    0 1px 4px rgba(27, 41, 64, 0.14),
+    0 6px 16px rgba(27, 41, 64, 0.06);
 }
 
 .v3-cta-subline {
@@ -3156,4 +3242,390 @@ body::before {
   border: 1px solid var(--color-navy-gossamer);
   border-radius: 2px;
   min-height: 4rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HOMEPAGE WOW UPLIFT v2.0 — MAX WEB ED institutional gravitas
+   Per Paul §5 directive 2026-05-06 ("our design needs to WOW")
+   Bundles with CTA Oval Gloss Restoration v1.0 (single dispatch)
+   ENHANCE not REGRESS — surgical uplifts; zero canonical class renames
+
+   ADAPTATION NOTE (Web Ed scope reconciliation 2026-05-06): spec authored
+   against pre-Hermès-polish state targeting .v3-three-cards / .v3-cta-cobalt /
+   .v3-arrival__anchor-extension / .v3-rule--hairline-atmosphere. Post-Pre-
+   Phase-0 homepage uses .v3-soft-card / .v3-cta-cobalt-glass / .v3-arrival__
+   subhead / .v3-rule--whisper. Spec applied literally (.v3-three-cards rules
+   apply to /studio/ + /contact/ + /connection-code/ which still use that
+   class) PLUS oval gloss extended to .v3-cta-cobalt-glass for homepage hero
+   parity per Paul §5 directive intent.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── §2.1 Paper-grain Hermès stationery texture (body::before overlay) ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.12 0 0 0 0 0.23 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+}
+
+/* ── §2.2 Letterpress signature asterism class ── */
+.v3-asterism {
+  display: block;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  color: rgba(203, 163, 114, 0.45);
+  margin: 3rem auto;
+  user-select: none;
+}
+.v3-asterism--page-close {
+  font-size: 0.95rem;
+  color: rgba(203, 163, 114, 0.55);
+  margin: 4rem auto 1.5rem;
+}
+
+/* Origin brand saddle close */
+.v3-origin__brand-saddle {
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-ink-secondary);
+  margin: 0 auto 3rem;
+  letter-spacing: 0.02em;
+}
+.v3-origin__brand-saddle em { font-style: italic; }
+
+/* ── §2.3 Heritage gold metallic taper rule (between movements + within layer stack) ── */
+.v3-rule--metallic-gold-taper {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(203, 163, 114, 0.28) 25%, rgba(203, 163, 114, 0.28) 75%, transparent 100%);
+  margin: 5rem auto;
+  width: 60%;
+  max-width: 480px;
+}
+@media (max-width: 767px) {
+  .v3-rule--metallic-gold-taper { width: 80%; margin: 3.5rem auto; }
+}
+
+/* ── §2.5 Three Cards (Movement 2) — Hermès editorial object register
+   Applies to /studio/ + /contact/ + /connection-code/ surfaces still on
+   .v3-three-cards class (homepage uses .v3-soft-cards post-Pre-Phase-0) ── */
+.v3-three-cards {
+  gap: 2rem;
+  margin-top: 4rem;
+}
+@media (max-width: 1023px) { .v3-three-cards { gap: 1.6rem; } }
+
+.v3-three-cards__card {
+  background: linear-gradient(180deg, #F7F2E8 0%, #F5F0E5 100%);
+  padding: 2.8rem 2.2rem;
+  border: 1px solid rgba(28, 31, 58, 0.08);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(27, 41, 64, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (max-width: 767px) {
+  .v3-three-cards__card { padding: 2.2rem 1.6rem; }
+}
+
+.v3-three-cards__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(203, 163, 114, 0.85) 50%, transparent 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.v3-three-cards__card:hover,
+.v3-three-cards__card:focus-visible {
+  transform: translateY(-4px);
+  background: linear-gradient(180deg, #F8F4EC 0%, #F6F1E7 100%);
+  box-shadow: 0 12px 32px rgba(27, 41, 64, 0.10);
+  border-color: rgba(28, 31, 58, 0.08);
+  outline: none;
+}
+.v3-three-cards__card:hover::before,
+.v3-three-cards__card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.v3-three-cards__numeral {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(203, 163, 114, 0.85);
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+  font-feature-settings: 'smcp' 1;
+}
+
+.v3-three-cards__cta {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-weight: 400;
+  color: #5A4118;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  transition: color 240ms ease;
+}
+.v3-three-cards__card:hover .v3-three-cards__cta,
+.v3-three-cards__card:focus-visible .v3-three-cards__cta {
+  color: var(--color-ink);
+}
+.v3-three-cards__cta span[aria-hidden] {
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.v3-three-cards__card:hover .v3-three-cards__cta span[aria-hidden],
+.v3-three-cards__card:focus-visible .v3-three-cards__cta span[aria-hidden] {
+  transform: translateX(4px);
+}
+
+/* ── §2.7 Layer Stack (Movement 4) editorial product catalog register ── */
+.v3-layer-stack__numeral {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: rgba(203, 163, 114, 0.85);
+  width: 60px;
+  padding-left: 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 767px) {
+  .v3-layer-stack__numeral {
+    width: auto;
+    text-align: left;
+    padding-left: 0;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+/* ── §2.10 Motion choreography (per Atrium Face v1 §1.5.1.A) ── */
+
+/* Brand mark + hero arrival fade-up sequence */
+.v3-arrival--polished .v3-arrival__brand-mark {
+  opacity: 0;
+  transform: translateY(4px);
+  animation: v3-fade-up 600ms cubic-bezier(0.22, 1, 0.36, 1) 200ms forwards;
+}
+.v3-arrival--polished hr.v3-rule--metallic-gold {
+  transform: scaleX(0);
+  animation: v3-rule-taper 1100ms cubic-bezier(0.22, 1, 0.36, 1) 700ms forwards;
+}
+.v3-arrival--polished .v3-arrival__anchor {
+  opacity: 0;
+  animation: v3-fade-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms forwards;
+}
+.v3-arrival--polished .v3-arrival__scroll-cue {
+  opacity: 0;
+  animation: v3-fade-in 600ms cubic-bezier(0.22, 1, 0.36, 1) 1500ms forwards;
+}
+
+@keyframes v3-fade-up {
+  to { opacity: 0.94; transform: translateY(0); }
+}
+@keyframes v3-fade-in {
+  to { opacity: 1; }
+}
+@keyframes v3-rule-taper {
+  to { transform: scaleX(1); }
+}
+@keyframes v3-scroll-pulse {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(3px); opacity: 1; }
+}
+
+.v3-arrival__scroll-cue::after {
+  display: inline-block;
+  margin-left: 0.4rem;
+  animation: v3-scroll-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Three Cards stagger fade-in (intersection observer triggered via .is-in-view) */
+.v3-three-cards__card,
+.v3-soft-card {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.v3-three-cards__card.is-in-view,
+.v3-soft-card.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.v3-three-cards__card.is-in-view:nth-child(1),
+.v3-soft-card.is-in-view:nth-child(1) { transition-delay: 0ms; }
+.v3-three-cards__card.is-in-view:nth-child(2),
+.v3-soft-card.is-in-view:nth-child(2) { transition-delay: 100ms; }
+.v3-three-cards__card.is-in-view:nth-child(3),
+.v3-soft-card.is-in-view:nth-child(3) { transition-delay: 200ms; }
+
+/* Layer Stack rows stagger */
+.v3-layer-stack__row {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.v3-layer-stack__row.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.v3-layer-stack__row.is-in-view:nth-child(1) { transition-delay: 0ms; }
+.v3-layer-stack__row.is-in-view:nth-child(2) { transition-delay: 80ms; }
+.v3-layer-stack__row.is-in-view:nth-child(3) { transition-delay: 160ms; }
+.v3-layer-stack__row.is-in-view:nth-child(4) { transition-delay: 240ms; }
+.v3-layer-stack__row.is-in-view:nth-child(5) { transition-delay: 320ms; }
+
+/* Cobalt CTA first-arrival glassy pulse — fires once via JS .is-arrived class
+   (covers both .v3-cta-cobalt legacy class + .v3-cta-cobalt-glass Hermès polish) */
+.v3-cta-cobalt.is-arrived,
+.v3-cta-cobalt-glass.is-arrived {
+  animation: v3-cobalt-arrive 1500ms cubic-bezier(0.4, 0, 0.6, 1) 1 forwards;
+}
+@keyframes v3-cobalt-arrive {
+  0%, 100% { box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(8, 20, 38, 0.45),
+    0 0 0 1px rgba(232, 232, 232, 0.55),
+    0 2px 6px rgba(27, 41, 64, 0.18),
+    0 8px 20px rgba(27, 41, 64, 0.08); }
+  50% { box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(8, 20, 38, 0.50),
+    0 0 0 1px rgba(255, 255, 255, 0.75),
+    0 4px 12px rgba(27, 41, 64, 0.22),
+    0 12px 28px rgba(27, 41, 64, 0.12); }
+}
+
+/* ── §2.4 / §2.6 Hero + warm-section refinements applied via .v3-arrival--polished
+   already implements +breathing per Hermès polish v1.0; spec section
+   .v3-section--warm extends with editorial border treatment at v2 ── */
+.v3-section--warm {
+  border: 1px solid rgba(28, 31, 58, 0.06);
+  border-radius: 12px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767px) {
+  .v3-section--warm { border-radius: 8px; }
+}
+
+/* ── Oval gloss extension to .v3-cta-cobalt-glass — Hermès polish v1.0
+   homepage hero CTA receives the MM_FINALS oval gloss treatment per Paul §5
+   directive intent (the homepage hero button is the Paul §5 "sample button");
+   class name preserved per ENHANCE-not-REGRESS binding ── */
+.v3-cta-cobalt-glass {
+  border-radius: 9999px;
+  padding: 0.95rem 2.25rem;
+  min-height: 48px;
+  background:
+    linear-gradient(180deg,
+      #1F3A6E 0%,
+      #163354 48%,
+      #0F2640 100%);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #F5F0E5;
+  border: 1px solid transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(8, 20, 38, 0.45),
+    0 0 0 1px rgba(232, 232, 232, 0.55),
+    0 2px 6px rgba(27, 41, 64, 0.18),
+    0 8px 20px rgba(27, 41, 64, 0.08);
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 280ms ease;
+}
+.v3-cta-cobalt-glass:hover,
+.v3-cta-cobalt-glass:focus-visible {
+  background:
+    linear-gradient(180deg,
+      #234176 0%,
+      #1A3A5E 48%,
+      #112A48 100%);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(8, 20, 38, 0.50),
+    0 0 0 1px rgba(255, 255, 255, 0.65),
+    0 4px 10px rgba(27, 41, 64, 0.22),
+    0 12px 28px rgba(27, 41, 64, 0.12);
+  outline: none;
+}
+.v3-cta-cobalt-glass:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 4px rgba(8, 20, 38, 0.50),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(232, 232, 232, 0.55),
+    0 1px 3px rgba(27, 41, 64, 0.14);
+}
+.v3-cta-cobalt-glass:focus-visible {
+  outline: 2px solid rgba(203, 163, 114, 0.6);
+  outline-offset: 4px;
+}
+
+/* Reduced motion preference: disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  body::before { display: none; }
+  .v3-arrival--polished .v3-arrival__brand-mark,
+  .v3-arrival--polished hr.v3-rule--metallic-gold,
+  .v3-arrival--polished .v3-arrival__anchor,
+  .v3-arrival--polished .v3-arrival__scroll-cue,
+  .v3-three-cards__card,
+  .v3-soft-card,
+  .v3-layer-stack__row,
+  .v3-cta-cobalt.is-arrived,
+  .v3-cta-cobalt-glass.is-arrived,
+  .v3-arrival__scroll-cue::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .v3-arrival--polished hr.v3-rule--metallic-gold { transform: scaleX(1); }
+  .v3-three-cards__card,
+  .v3-soft-card { transition: none; }
+  .v3-cta-cobalt-glass {
+    transition: background 120ms ease;
+  }
+  .v3-cta-cobalt-glass:hover,
+  .v3-cta-cobalt-glass:focus-visible {
+    transform: none;
+  }
 }
