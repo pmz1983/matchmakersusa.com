@@ -61,16 +61,45 @@
 
 <main id="main">
 
-  <section class="v3-arrival" aria-labelledby="cc-hero-anchor">
+  <section class="v3-arrival v3-arrival--polished" aria-labelledby="cc-hero-anchor">
     <div class="v3-arrival__brand-mark v3-arrival__brand-mark--wordmark-only" role="img" aria-label="MatchMakers">
-      <img src="/img/brand-mark/v3/wordmark-only.png" alt="" class="v3-arrival__brand-mark-img" aria-hidden="true">
+      <img src="/img/brand-mark/v3/wordmark-only.png" alt="" class="v3-arrival__brand-mark-img v3-arrival__brand-mark-img--soft" width="280" height="60" loading="eager" decoding="sync" aria-hidden="true">
     </div>
-    <hr class="v3-arrival__hairline" aria-hidden="true">
-    <h1 id="cc-hero-anchor" class="v3-arrival__anchor v3-arrival__anchor--positioning">
-      <em>The Connection Code.</em>
-      <span class="v3-arrival__anchor-extension">Three Readings. Yours forever. The free entry to the relationship operating system.</span>
+    <hr class="v3-rule--metallic-gold v3-rule--center" aria-hidden="true">
+    <p class="v3-arrival__eyebrow">The Connection Code</p>
+    <h1 id="cc-hero-anchor" class="v3-arrival__anchor">
+      <em>Three Readings. Yours forever.</em>
     </h1>
-    <p class="v3-arrival__scroll-cue" aria-hidden="true">Begin where you are &darr;</p>
+    <p class="v3-arrival__subhead">The free entry to the relationship operating system. The methodology surfaced through three Readings &mdash; one for the work before, one for the work itself, one for the work that holds.</p>
+
+    <div class="v3-arrival__cta">
+      <a href="/connection-code/intent-assessment/" class="v3-cta-cobalt-glass">Begin the Intent Assessment <span aria-hidden="true">&rarr;</span></a>
+      <p class="v3-cta-subline"><em>Free. Eight minutes. The starting point.</em></p>
+    </div>
+
+    <p class="v3-arrival__scroll-cue" aria-hidden="true">Or ask the methodology directly &darr;</p>
+  </section>
+
+  <!-- MOVEMENT 1.5 (NEW) — METHODOLOGY SEARCH PHASE 0 HOOK -->
+  <section class="v3-movement v3-movement--center v3-section--warm" aria-labelledby="search-demo-anchor">
+    <div class="v3-movement__inner v3-movement__inner--center">
+      <p class="v3-eyebrow">Ask the methodology</p>
+      <hr class="v3-rule--metallic-gold v3-rule--center v3-rule--narrow" aria-hidden="true">
+      <h2 id="search-demo-anchor" class="v3-display"><em>Type a question. The methodology answers from the Playbook.</em></h2>
+      <p class="v3-body v3-body--lead v3-body--center">The Playbook is the methodology in full. The Methodology Search reads your question and returns the chapter excerpt that grounds the answer. No account required; no wait; the framework, surfaced.</p>
+
+      <form class="v3-methodology-search" role="search" data-methodology-search-form>
+        <label for="methodology-search-input" class="v3-methodology-search__label">Your question</label>
+        <input type="search" id="methodology-search-input" name="q" class="v3-methodology-search__input" placeholder="What does the methodology say about ..." maxlength="200">
+        <button type="submit" class="v3-cta-cobalt-glass v3-cta-cobalt-glass--secondary">Ask the methodology <span aria-hidden="true">&rarr;</span></button>
+      </form>
+
+      <div class="v3-methodology-search__output" data-methodology-search-output aria-live="polite">
+        <p class="v3-body v3-body--center v3-body--ghost"><em>The methodology will answer here, with the Playbook chapter excerpt that grounds the answer.</em></p>
+      </div>
+
+      <p class="v3-body v3-body--center" style="margin-top: 1.5rem; font-size: 0.92rem;"><em>The methodology surfaces architecture; it does not diagnose. For clinical or crisis support, please reach the resources at our <a href="/connection-code/foundation-preview/#crisis-resources" style="color: var(--color-heritage-gold); border-bottom: 1px solid var(--color-heritage-gold-soft);">Crisis Referral directory</a>.</em></p>
+    </div>
   </section>
 
   <section class="v3-movement" aria-labelledby="cc-what-anchor">
@@ -162,7 +191,7 @@
         </tr>
         <tr class="v3-layer-stack__row">
           <td class="v3-layer-stack__layer"><em>Education</em></td>
-          <td class="v3-layer-stack__product">Studio</td>
+          <td class="v3-layer-stack__product">Studio AI</td>
           <td class="v3-layer-stack__body">The Playbook activated. Coach + Script Builder + Suitability tools across all three contexts.</td>
           <td class="v3-layer-stack__price">$299 Core / $499 Personalized</td>
         </tr>
@@ -389,7 +418,7 @@
     <a href="/">Homepage</a>
     <a href="/connection-code/" aria-current="page">Connection Code</a>
     <a href="/playbook/">Playbook</a>
-    <a href="/studio/">Studio</a>
+    <a href="/studio/">Studio AI</a>
     <a href="/vip/">VIP</a>
     <a href="/foundation/">Foundation</a>
     <a href="/practice/">Practice</a>
