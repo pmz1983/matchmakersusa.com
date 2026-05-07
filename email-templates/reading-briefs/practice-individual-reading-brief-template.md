@@ -1,8 +1,8 @@
-# Practice Individual Reading Brief — Content Template (Cartier-letterhead PDF)
+# Practice Individual Reading Brief — Content Template (institutional letterhead PDF)
 
 **Authored:** 2026-05-06 by Web Ed (Wave 1.5 deploy per CC Assessment 3-Assessment Full Question Copy v1 §4.3.1)
 **Status:** Content template; Backend Hybrid Option C generation per Backend Cross-Lane Brief Deliverable #16 §7
-**Visual treatment:** Cartier-letterhead canon (Design refines second-wave)
+**Visual treatment:** institutional letterhead canon (Design refines second-wave)
 **Pages:** 4–5 per Brief
 
 Backend orchestrator generates per Reading data + Practice pillar 5-Phase recursing canonical per Algo §3.3. Path D Constitutional AI Practice arm scope governs reflection register.
@@ -108,4 +108,4 @@ Backend orchestrator generates per Reading data + Practice pillar 5-Phase recurs
 
 ---
 
-*End — Practice Individual Reading Brief content template · 2026-05-06 · Cartier-letterhead PDF · 5-Phase recursing canonical per Algo §3.3 · Voice Register v1.5 binding · LMFT 3-layer Layer 3 always-on · pattern-locating discipline preserved · Path D Constitutional AI Practice arm scope*
+*End — Practice Individual Reading Brief content template · 2026-05-06 · institutional letterhead PDF · 5-Phase recursing canonical per Algo §3.3 · Voice Register v1.5 binding · LMFT 3-layer Layer 3 always-on · pattern-locating discipline preserved · Path D Constitutional AI Practice arm scope*

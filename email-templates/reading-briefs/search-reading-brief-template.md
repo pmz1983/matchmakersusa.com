@@ -1,8 +1,8 @@
-# Search Reading Brief — Content Template (Cartier-letterhead PDF)
+# Search Reading Brief — Content Template (institutional letterhead PDF)
 
 **Authored:** 2026-05-06 by Web Ed (Wave 1.5 deploy per CC Assessment 3-Assessment Full Question Copy v1 §4.1)
 **Status:** Content template; Backend Hybrid Option C generation per Backend Cross-Lane Brief Deliverable #16 §7
-**Visual treatment:** Cartier-letterhead canon (Design refines second-wave); MatchMakers wordmark gold-foil-grade · heritage cream canvas · Foglihten/Cormorant display · Inter body
+**Visual treatment:** institutional letterhead canon (Design refines second-wave); MatchMakers wordmark gold-foil-grade · heritage cream canvas · Foglihten/Cormorant display · Inter body
 **Pages:** 4–5 per Brief
 
 Backend orchestrator generates the content per Reading data + methodology corpus citations. Web Ed authors the prose register; Compass orchestrator surfaces methodology-grounded reflection per Algo §1.6 Cross-Signal calibration coherence + Path D Constitutional AI Search arm scope.
@@ -112,4 +112,4 @@ Backend orchestrator generates the content per Reading data + methodology corpus
 
 ---
 
-*End — Search Reading Brief content template · 2026-05-06 · Cartier-letterhead PDF · Web Ed authors content register; Backend Hybrid Option C generates per Reading data; Design refines visual treatment second-wave · Voice Register v1.5 binding throughout · LMFT 3-layer Layer 3 always-on · methodology-locating discipline preserved · Path D Constitutional AI Search arm scope*
+*End — Search Reading Brief content template · 2026-05-06 · institutional letterhead PDF · Web Ed authors content register; Backend Hybrid Option C generates per Reading data; Design refines visual treatment second-wave · Voice Register v1.5 binding throughout · LMFT 3-layer Layer 3 always-on · methodology-locating discipline preserved · Path D Constitutional AI Search arm scope*

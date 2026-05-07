@@ -1,8 +1,8 @@
-# Practice Couples Reading Brief — Content Template (Cartier-letterhead PDF; joint Brief)
+# Practice Couples Reading Brief — Content Template (institutional letterhead PDF; joint Brief)
 
 **Authored:** 2026-05-06 by Web Ed (Wave 1.5 deploy per CC Assessment 3-Assessment Full Question Copy v1 §4.3.2)
 **Status:** Content template; Backend Hybrid Option C generation per Backend Cross-Lane Brief Deliverable #16 §7
-**Visual treatment:** Cartier-letterhead canon
+**Visual treatment:** institutional letterhead canon
 **Pages:** 5 per Brief (joint format; both Partner A + Partner B reads surfaced)
 
 Backend orchestrator pairs Partner A + Partner B Readings via shared `couples_thread_id`; surfaces methodology observation about Phase coherence vs Phase divergence between partners. Customer-facing surfaces "Side-by-side reading on different surfaces" framing per Q6.
@@ -101,4 +101,4 @@ Backend orchestrator pairs Partner A + Partner B Readings via shared `couples_th
 
 ---
 
-*End — Practice Couples Reading Brief content template · 2026-05-06 · Cartier-letterhead PDF · joint Brief surfaces both Partner A + Partner B reads + the work between you · 5-Phase recursing canonical per Algo §3.3 · "Side-by-side reading on different surfaces" customer-facing surfacing per Q6 · Voice Register v1.5 binding · LMFT 3-layer Layer 3 always-on · divergence-locating never side-taking discipline · Path D Constitutional AI Practice arm scope*
+*End — Practice Couples Reading Brief content template · 2026-05-06 · institutional letterhead PDF · joint Brief surfaces both Partner A + Partner B reads + the work between you · 5-Phase recursing canonical per Algo §3.3 · "Side-by-side reading on different surfaces" customer-facing surfacing per Q6 · Voice Register v1.5 binding · LMFT 3-layer Layer 3 always-on · divergence-locating never side-taking discipline · Path D Constitutional AI Practice arm scope*

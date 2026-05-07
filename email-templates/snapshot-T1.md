@@ -3,13 +3,13 @@
 **Subject:** Your Personal Operating System Snapshot.
 **Preheader:** What the methodology located in your Reading. Yours forever.
 **Send trigger:** Backend scheduler T+1 post-Reading completion. Conditional on `user_methodology_state.reading_completed_at IS NOT NULL`.
-**Attachment:** `personal-operating-system-snapshot-{{user_id}}.pdf` (Cartier-letterhead; generated per Backend Hybrid Option C from `/email-templates/snapshot-pdf-template.html`).
+**Attachment:** `personal-operating-system-snapshot-{{user_id}}.pdf` (institutional letterhead; generated per Backend Hybrid Option C from `/email-templates/snapshot-pdf-template.html`).
 
 ---
 
 {{first_name}},
 
-Attached is your Personal Operating System Snapshot — a Cartier-letterhead PDF holding what the methodology located in your Reading.
+Attached is your Personal Operating System Snapshot — a institutional letterhead PDF holding what the methodology located in your Reading.
 
 Inside:
 

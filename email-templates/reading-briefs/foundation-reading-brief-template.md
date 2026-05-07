@@ -1,8 +1,8 @@
-# Foundation Reading Brief — Content Template (Cartier-letterhead PDF)
+# Foundation Reading Brief — Content Template (institutional letterhead PDF)
 
 **Authored:** 2026-05-06 by Web Ed (Wave 1.5 deploy per CC Assessment 3-Assessment Full Question Copy v1 §4.2)
 **Status:** Content template; Backend Hybrid Option C generation per Backend Cross-Lane Brief Deliverable #16 §7
-**Visual treatment:** Cartier-letterhead canon (Design refines second-wave)
+**Visual treatment:** institutional letterhead canon (Design refines second-wave)
 **Pages:** 4–5 per Brief
 
 Backend orchestrator generates per Reading data + Foundation pillar 5-Framework canonical (NOT 5-Phase per Algo §3.2). Path D Constitutional AI Foundation arm scope governs reflection register.
@@ -116,4 +116,4 @@ Backend orchestrator generates per Reading data + Foundation pillar 5-Framework 
 
 ---
 
-*End — Foundation Reading Brief content template · 2026-05-06 · Cartier-letterhead PDF · 5-Framework canonical per Algo §3.2 · Voice Register v1.5 binding · LMFT 3-layer Layer 3 always-on · framework-locating discipline preserved · Path D Constitutional AI Foundation arm scope*
+*End — Foundation Reading Brief content template · 2026-05-06 · institutional letterhead PDF · 5-Framework canonical per Algo §3.2 · Voice Register v1.5 binding · LMFT 3-layer Layer 3 always-on · framework-locating discipline preserved · Path D Constitutional AI Foundation arm scope*
