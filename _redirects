@@ -20,6 +20,12 @@
 /guide                     /methodology/                             301
 /guide/                    /methodology/                             301
 
-# Broken CTA fixes per Broken CTAs Wave 1 Cycle 2 Spec §2.2
-/connection-code/intent-assessment      /connection-code/assessment/  301
-/connection-code/intent-assessment/     /connection-code/assessment/  301
+# Connection Code Assessment URL canonicalization (Wave 1 Global Refinement Pass §1.11 + §0.1 ratify)
+/connection-code/intent-assessment       /connection-code/search-assessment/      301
+/connection-code/intent-assessment/      /connection-code/search-assessment/      301
+/connection-code/assessment              /connection-code/search-assessment/      301
+/connection-code/assessment/             /connection-code/search-assessment/      301
+/connection-code/foundation-preview      /connection-code/foundation-assessment/  301
+/connection-code/foundation-preview/     /connection-code/foundation-assessment/  301
+/connection-code/practice-preview        /connection-code/practice-assessment/    301
+/connection-code/practice-preview/       /connection-code/practice-assessment/    301
